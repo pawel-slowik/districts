@@ -1,0 +1,22 @@
+{
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paweł Słowik",
+            "email": "pawel.slowik@zoho.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "zendframework/zend-uri": "^2.7",
+        "doctrine/orm": "^2.6",
+        "ext-xml": "^7.3",
+        "symfony/console": "^4.3",
+        "ext-pdo_mysql": "^7.3",
+        "ext-pdo_sqlite": "^7.3",
+        "ext-dom": "20031129"
+    },
+    "autoload": {
+        "psr-4": {"": "./src/"}
+    }
+}

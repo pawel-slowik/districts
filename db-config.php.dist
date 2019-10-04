@@ -1,0 +1,16 @@
+<?php
+
+// SQLite
+return [
+    "driver" => "pdo_sqlite",
+    "path" => __DIR__ . "/db.sqlite",
+];
+
+// MySQL / MariaDB
+return [
+    "driver" => "pdo_mysql",
+    "host" => "localhost",
+    "user" => "districts_app",
+    "password" => "password",
+    "dbname" => "districts_app",
+];
