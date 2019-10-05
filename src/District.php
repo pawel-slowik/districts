@@ -36,8 +36,8 @@ class District
     protected $population;
 
     /**
-    * @ORM\ManyToOne(targetEntity="City", inversedBy="districts")
-    */
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="districts")
+     */
     protected $city;
 
     public function __construct(string $name, float $area, int $population)

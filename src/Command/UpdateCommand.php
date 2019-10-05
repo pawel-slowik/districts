@@ -10,7 +10,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Doctrine\ORM\EntityManager;
 
 use City;
-use District;
 
 use Scraper\HtmlFinder;
 use Scraper\HtmlFetcher;
@@ -69,7 +68,7 @@ class UpdateCommand extends Command
     protected function findCity(string $cityName): ?City
     {
         $cityRepository = $this->entityManager->getRepository(City::class);
-        $city = $cityRepository->findOneBy(array("name" => $cityName));
+        $city = $cityRepository->findOneBy(["name" => $cityName]);
         return $city;
     }
 }
