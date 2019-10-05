@@ -36,6 +36,7 @@ class UpdateCommand extends Command
         $this->setDescription("Update the districts database with scraped data. Overwrites all changes.");
     }
 
+    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     protected function execute(InputInterface $input, OutputInterface $output): void
     {
         foreach ($this->scrapers as $scraper) {
