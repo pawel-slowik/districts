@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Scraper\City;
 
-use District;
+use Entity\District;
 use Scraper\HtmlFinder;
 
 class KrakowDistrictBuilder
