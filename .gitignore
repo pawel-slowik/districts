@@ -1,3 +1,4 @@
 /vendor
 /db.sqlite
 db-config.php
+/.php_cs.cache
