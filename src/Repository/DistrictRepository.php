@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Repository;
 
-use Entity\District;
 use Doctrine\ORM\EntityManager;
+
+use Entity\City;
+use Entity\District;
 
 class DistrictRepository
 {
@@ -50,6 +52,13 @@ class DistrictRepository
         $this->entityManager->flush();
     }
 
+    public function add(City $city, District $district): void
+    {
+        $district->setCity($city);
+        $this->entityManager->persist($district);
+        $this->entityManager->flush();
+    }
+
     public function list($orderBy): array
     {
         $dqlOrderBy = $this->dqlOrderBy($orderBy);
@@ -57,6 +66,18 @@ class DistrictRepository
         $query = $this->entityManager->createQuery($dql);
         $districts = $query->getResult();
         return $districts;
+    }
+
+    public function getCity(int $id): ?City
+    {
+        $ormRepository = $this->entityManager->getRepository(City::class);
+        return $ormRepository->find($id);
+    }
+
+    public function listCities(): array
+    {
+        $ormRepository = $this->entityManager->getRepository(City::class);
+        return $ormRepository->findAll();
     }
 
     protected function dqlOrderBy($orderBy): string

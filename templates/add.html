@@ -6,8 +6,52 @@
     <a href="{{ path_for('list') }}">list of districts</a>
 </p>
 
-<p>
-    TODO: add district form
-</p>
+<form action="" method="post">
+
+    <div>
+        <label for="name">city:</label>
+        <select name="city">
+            {% for city in cities %}
+            <option value="{{ city.id }}">{{ city.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <br>
+
+    <div>
+        <label for="name">name:</label>
+        <input type="text" name="name" value="{{ district.name }}">
+    </div>
+    <br>
+
+    <div>
+        <label for="area">area:</label>
+        <input type="text" name="area" value="{{ district.area }}"> km²
+    </div>
+    <br>
+
+    <div>
+        <label for="population">population:</label>
+        <input type="text" name="population" value="{{ district.population }}">
+    </div>
+    <br>
+
+    <input type="submit" name="save" value="save">
+
+</form>
+
+<style type="text/css">
+
+form div {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+form label {
+    width: 7em;
+    display: inline-block;
+}
+
+</style>
 
 {% endblock %}
