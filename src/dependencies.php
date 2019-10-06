@@ -35,51 +35,22 @@ return function (App $app): void {
         return $repository;
     };
 
-    $container[ListController::class] = function ($container) {
-        return new ListController(
-            $container->get(DistrictRepository::class),
-            $container->get("router"),
-            $container->get("view")
-        );
-    };
-
-    $container[AddFormController::class] = function ($container) {
-        return new AddFormController(
-            $container->get(DistrictRepository::class),
-            $container->get("router"),
-            $container->get("view")
-        );
-    };
-
-    $container[AddActionController::class] = function ($container) {
-        return new AddActionController(
-            $container->get(DistrictRepository::class),
-            $container->get("router"),
-            $container->get("view")
-        );
-    };
-
-    $container[EditController::class] = function ($container) {
-        return new EditController(
-            $container->get(DistrictRepository::class),
-            $container->get("router"),
-            $container->get("view")
-        );
-    };
-
-    $container[RemoveFormController::class] = function ($container) {
-        return new RemoveFormController(
-            $container->get(DistrictRepository::class),
-            $container->get("router"),
-            $container->get("view")
-        );
-    };
-
-    $container[RemoveActionController::class] = function ($container) {
-        return new RemoveActionController(
-            $container->get(DistrictRepository::class),
-            $container->get("router"),
-            $container->get("view")
-        );
-    };
+    // all the basic controllers have the same dependencies
+    $basicControllerClasses = [
+        ListController::class,
+        AddFormController::class,
+        AddActionController::class,
+        EditController::class,
+        RemoveFormController::class,
+        RemoveActionController::class,
+    ];
+    foreach ($basicControllerClasses as $controllerClass) {
+        $container[$controllerClass] = function ($container) use ($controllerClass) {
+            return new $controllerClass(
+                $container->get(DistrictRepository::class),
+                $container->get("router"),
+                $container->get("view")
+            );
+        };
+    }
 };
