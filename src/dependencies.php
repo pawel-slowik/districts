@@ -6,7 +6,8 @@ use Slim\App;
 
 use Repository\DistrictRepository;
 use Controller\ListController;
-use Controller\AddController;
+use Controller\AddFormController;
+use Controller\AddActionController;
 use Controller\EditController;
 use Controller\RemoveFormController;
 use Controller\RemoveActionController;
@@ -35,20 +36,41 @@ return function (App $app): void {
     };
 
     $container[ListController::class] = function ($container) {
-        return new ListController($container->get(DistrictRepository::class), $container->get("view"));
+        return new ListController(
+            $container->get(DistrictRepository::class),
+            $container->get("router"),
+            $container->get("view")
+        );
     };
 
-    $container[AddController::class] = function ($container) {
-        return new AddController($container->get(DistrictRepository::class), $container->get("view"));
+    $container[AddFormController::class] = function ($container) {
+        return new AddFormController(
+            $container->get(DistrictRepository::class),
+            $container->get("router"),
+            $container->get("view")
+        );
+    };
+
+    $container[AddActionController::class] = function ($container) {
+        return new AddActionController(
+            $container->get(DistrictRepository::class),
+            $container->get("router"),
+            $container->get("view")
+        );
     };
 
     $container[EditController::class] = function ($container) {
-        return new EditController($container->get(DistrictRepository::class), $container->get("view"));
+        return new EditController(
+            $container->get(DistrictRepository::class),
+            $container->get("router"),
+            $container->get("view")
+        );
     };
 
     $container[RemoveFormController::class] = function ($container) {
         return new RemoveFormController(
             $container->get(DistrictRepository::class),
+            $container->get("router"),
             $container->get("view")
         );
     };

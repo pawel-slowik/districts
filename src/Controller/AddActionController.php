@@ -7,7 +7,7 @@ namespace Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class AddController extends BaseCrudController
+class AddActionController extends BaseCrudController
 {
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args)
