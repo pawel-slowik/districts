@@ -59,6 +59,12 @@ class DistrictRepository
         $this->entityManager->flush();
     }
 
+    public function update(District $district): void
+    {
+        $this->entityManager->persist($district);
+        $this->entityManager->flush();
+    }
+
     public function list($orderBy): array
     {
         $dqlOrderBy = $this->dqlOrderBy($orderBy);

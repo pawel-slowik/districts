@@ -75,6 +75,21 @@ class District
         return $this->city;
     }
 
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function setArea(float $area): void
+    {
+        $this->area = $area;
+    }
+
+    public function setPopulation(int $population): void
+    {
+        $this->population = $population;
+    }
+
     public function setCity(City $city): void
     {
         $this->city = $city;

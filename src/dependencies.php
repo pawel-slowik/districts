@@ -8,7 +8,8 @@ use Repository\DistrictRepository;
 use Controller\ListController;
 use Controller\AddFormController;
 use Controller\AddActionController;
-use Controller\EditController;
+use Controller\EditFormController;
+use Controller\EditActionController;
 use Controller\RemoveFormController;
 use Controller\RemoveActionController;
 
@@ -40,7 +41,8 @@ return function (App $app): void {
         ListController::class,
         AddFormController::class,
         AddActionController::class,
-        EditController::class,
+        EditFormController::class,
+        EditActionController::class,
         RemoveFormController::class,
         RemoveActionController::class,
     ];
