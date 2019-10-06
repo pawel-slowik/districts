@@ -11,7 +11,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity
  * @ORM\Table(
  *   name="cities",
- *   uniqueConstraints={@ORM\Uniqueconstraint(columns={"name"})}
+ *   uniqueConstraints={@ORM\Uniqueconstraint(columns={"name"})},
+ *   options={"collate"="utf8_polish_ci"}
  * )
  */
 class City

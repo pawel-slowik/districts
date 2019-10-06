@@ -10,7 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(
  *   name="districts",
- *   uniqueConstraints={@ORM\Uniqueconstraint(columns={"city_id", "name"})}
+ *   uniqueConstraints={@ORM\Uniqueconstraint(columns={"city_id", "name"})},
+ *   options={"collate"="utf8_polish_ci"}
  * )
  */
 class District
