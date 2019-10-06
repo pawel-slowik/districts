@@ -30,7 +30,7 @@ return \PhpCsFixer\Config::create()
         'blank_line_after_opening_tag' => true, // @Symfony
         'blank_line_before_statement' => ['statements' => ['break', 'continue', 'declare', 'throw']], // @Symfony
         'cast_spaces' => true, // @Symfony
-        'class_attributes_separation' => ['elements' => ['const', 'method']], // @Symfony
+        'class_attributes_separation' => ['elements' => ['method']], // @Symfony
         'combine_consecutive_issets' => true,
         'combine_consecutive_unsets' => true,
         'compact_nullable_typehint' => true,

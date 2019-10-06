@@ -50,6 +50,11 @@ class District
         $this->population = $population;
     }
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
     public function getName(): string
     {
         return $this->name;
@@ -63,6 +68,11 @@ class District
     public function getPopulation(): int
     {
         return $this->population;
+    }
+
+    public function getCity(): ?City
+    {
+        return $this->city;
     }
 
     public function setCity(City $city): void

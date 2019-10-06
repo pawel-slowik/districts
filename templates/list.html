@@ -1,0 +1,109 @@
+{% macro sort_link(link_column, link_name, current_column, current_direction) %}
+{% if current_column == link_column and current_direction == 'asc' %}
+{% set params = {'column': link_column, 'direction': 'desc'} %}
+{% else %}
+{% set params = {'column': link_column, 'direction': 'asc'} %}
+{% endif %}
+<a href="{{ path_for('list', params) }}">
+    {{ link_name }}
+</a>
+{% endmacro %}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>
+    <a href="{{ path_for('add') }}">add a district</a>
+</p>
+
+<table id="districts">
+
+    <thead>
+        <tr>
+            <th class="city">
+                {{ _self.sort_link('city', 'city name', orderColumn, orderDirection) }}
+            </th>
+            <th class="name">
+                {{ _self.sort_link('name', 'district name', orderColumn, orderDirection) }}
+            </th>
+            <th class="area">
+                {{ _self.sort_link('area', 'area [km²]', orderColumn, orderDirection) }}
+            </th>
+            <th class="population">
+                {{ _self.sort_link('population', 'population', orderColumn, orderDirection) }}
+            </th>
+            <th class="edit"></th>
+            <th class="remove"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for district in districts %}
+
+        <tr>
+            <td class="city">
+                {{ district.city.name }}
+            </td>
+            <td class="name">
+                {{ district.name }}
+            </td>
+            <td class="area">
+                {{ district.area|number_format(2) }}
+            </td>
+            <td class="population">
+                {{ district.population }}
+            </td>
+            <td class="edit">
+                <a href="{{ path_for('edit', {'id': district.id }) }}">edit</a>
+            </td>
+            <td class="remove">
+                <a href="{{ path_for('remove', {'id': district.id }) }}">remove</a>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+<style type="text/css">
+
+table#districts {
+    border-spacing: 0;
+}
+
+table#districts td,
+table#districts th {
+    padding: 1ex;
+    border-bottom: solid 1px black;
+}
+
+table#districts th {
+    border-top: solid 1px black;
+}
+
+table#districts th {
+    font-weight: normal;
+    text-align: center;
+    background-color: lightgray;
+}
+
+table#districts th.edit,
+table#districts th.remove,
+table#districts td.edit,
+table#districts td.remove {
+    width: 5em;
+    text-align: center;
+}
+
+table#districts td.area,
+table#districts td.population {
+    text-align: right;
+}
+    
+</style>
+
+{% endblock %}
