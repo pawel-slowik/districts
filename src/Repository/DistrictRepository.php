@@ -38,6 +38,18 @@ class DistrictRepository
         $this->entityManager = $entityManager;
     }
 
+    public function get(int $id): ?District
+    {
+        $ormRepository = $this->entityManager->getRepository(District::class);
+        return $ormRepository->find($id);
+    }
+
+    public function remove(District $district): void
+    {
+        $this->entityManager->remove($district);
+        $this->entityManager->flush();
+    }
+
     public function list($orderBy): array
     {
         $dqlOrderBy = $this->dqlOrderBy($orderBy);

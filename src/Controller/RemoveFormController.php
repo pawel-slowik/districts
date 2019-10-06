@@ -7,13 +7,19 @@ namespace Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class RemoveController extends BaseCrudController
+use Slim\Exception\NotFoundException;
+
+class RemoveFormController extends BaseCrudController
 {
-    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args)
     {
+        $district = $this->repository->get(intval($args["id"]));
+        if (!$district) {
+            throw new NotFoundException($request, $response);
+        }
         $templateData = [
             "title" => "Remove a district",
+            "district" => $district,
         ];
         return $this->view->render($response, "remove.html", $templateData);
     }

@@ -7,7 +7,16 @@
 </p>
 
 <p>
-    TODO: confirm district removal form
+    Are you sure you want to remove this district?
+    <ul>
+        <li>city name: <strong>{{ district.city.name }}</strong></li>
+        <li>district name: <strong>{{ district.name }}</strong></li>
+    </ul>
 </p>
+
+<form action="" method="post">
+    <input type="submit" name="confirm" value="confirm">
+    <input type="submit" name="cancel" value="cancel">
+</form>
 
 {% endblock %}

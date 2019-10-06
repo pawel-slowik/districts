@@ -8,7 +8,8 @@ use Repository\DistrictRepository;
 use Controller\ListController;
 use Controller\AddController;
 use Controller\EditController;
-use Controller\RemoveController;
+use Controller\RemoveFormController;
+use Controller\RemoveActionController;
 
 return function (App $app): void {
     $container = $app->getContainer();
@@ -45,7 +46,18 @@ return function (App $app): void {
         return new EditController($container->get(DistrictRepository::class), $container->get("view"));
     };
 
-    $container[RemoveController::class] = function ($container) {
-        return new RemoveController($container->get(DistrictRepository::class), $container->get("view"));
+    $container[RemoveFormController::class] = function ($container) {
+        return new RemoveFormController(
+            $container->get(DistrictRepository::class),
+            $container->get("view")
+        );
+    };
+
+    $container[RemoveActionController::class] = function ($container) {
+        return new RemoveActionController(
+            $container->get(DistrictRepository::class),
+            $container->get("router"),
+            $container->get("view")
+        );
     };
 };
