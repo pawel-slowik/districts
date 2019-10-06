@@ -18,23 +18,7 @@
     </div>
     <br>
 
-    <div>
-        <label for="name">name:</label>
-        <input type="text" name="name" value="{{ district.name }}">
-    </div>
-    <br>
-
-    <div>
-        <label for="area">area:</label>
-        <input type="text" name="area" value="{{ district.area }}"> km²
-    </div>
-    <br>
-
-    <div>
-        <label for="population">population:</label>
-        <input type="text" name="population" value="{{ district.population }}">
-    </div>
-    <br>
+    {{ include('form.html') }}
 
     <input type="submit" name="save" value="save">
 
