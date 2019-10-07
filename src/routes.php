@@ -12,6 +12,9 @@ use Controller\RemoveFormController;
 use Controller\RemoveActionController;
 
 return function (App $app): void {
+    $app->get("/", function ($request, $response, $args) {
+        return $response->withRedirect("/list");
+    });
     $app->get("/list[/order/{column}/{direction}]", ListController::class)->setName("list");
     $app->get("/add", AddFormController::class)->setName("add");
     $app->post("/add", AddActionController::class);
