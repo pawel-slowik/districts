@@ -1,5 +1,7 @@
 Scrape city districts data and save it to a SQL database.
 
+Provide a simple web interface for editing scraped data.
+
 Note: this is a job interview task.
 
 ## Installation
@@ -18,6 +20,12 @@ Create the database structure:
 
 ## Usage
 
+Run the scraper to populate the database:
+
     ./console.php update --help
 
     ./console.php update
+
+Start the web interface:
+
+    php -S localhost:8080 -t public public/index.php
