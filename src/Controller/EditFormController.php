@@ -11,14 +11,20 @@ class EditFormController extends BaseCrudController
 {
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $district = $this->repository->get(intval($args["id"]));
+        $district = $this->session["form.edit.values"];
+        if (!$district) {
+            $district = $this->repository->get(intval($args["id"]));
+        }
         if (!$district) {
             throw new NotFoundException($request, $response);
         }
         $templateData = [
             "title" => "Edit a district",
             "district" => $district,
+            "errors" => $this->session["form.edit.errors"],
         ];
+        unset($this->session["form.edit.values"]);
+        unset($this->session["form.edit.errors"]);
         return $this->view->render($response, "edit.html", $templateData);
     }
 }

@@ -24,11 +24,12 @@ class AddActionController extends BaseCrudController
             $this->repository->listCities()
         );
         $validator = new NewDistrictValidator($validCityIds);
-        $validationResult = $validator->validate($request->getParsedBody());
+        $parsed = $request->getParsedBody();
+        $validationResult = $validator->validate($parsed);
         if (!$validationResult->isOk()) {
             // TODO: flash error message
-            // TODO: mark form fields as invalid
-            // TODO: save filled in values in session
+            $this->session["form.add.values"] = $parsed;
+            $this->session["form.add.errors"] = array_fill_keys($validationResult->getErrors(), true);
             return $this->redirectToAddResponse($response);
         }
         $validated = $validationResult->getValidatedData();
@@ -36,8 +37,8 @@ class AddActionController extends BaseCrudController
         $district = new District($validated["name"], $validated["area"], $validated["population"]);
         $this->repository->add($city, $district);
         // TODO: flash success message
-        // TODO: clear invalid field markings
-        // TODO: clear saved values from session
+        unset($this->session["form.add.values"]);
+        unset($this->session["form.add.errors"]);
         return $this->redirectToListResponse($response);
     }
 

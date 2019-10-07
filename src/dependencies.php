@@ -29,6 +29,11 @@ return function (App $app): void {
     };
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
+    $container["session"] = function ($container) {
+        return new \SlimSession\Helper();
+    };
+
+    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     $container[DistrictRepository::class] = function ($container) {
         $entityManagerFactory = require "doctrine-bootstrap.php";
         $entityManager = $entityManagerFactory();
@@ -50,6 +55,7 @@ return function (App $app): void {
         $container[$controllerClass] = function ($container) use ($controllerClass) {
             return new $controllerClass(
                 $container->get(DistrictRepository::class),
+                $container->get("session"),
                 $container->get("router"),
                 $container->get("view")
             );

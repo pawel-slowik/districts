@@ -21,11 +21,12 @@ class EditActionController extends BaseCrudController
             throw new NotFoundException($request, $response);
         }
         $validator = new DistrictValidator();
-        $validationResult = $validator->validate($request->getParsedBody());
+        $parsed = $request->getParsedBody();
+        $validationResult = $validator->validate($parsed);
         if (!$validationResult->isOk()) {
             // TODO: flash error message
-            // TODO: mark form fields as invalid
-            // TODO: save filled in values in session
+            $this->session["form.edit.values"] = $parsed;
+            $this->session["form.edit.errors"] = array_fill_keys($validationResult->getErrors(), true);
             return $this->redirectToEditResponse($response, $district);
         }
         $validated = $validationResult->getValidatedData();
@@ -34,8 +35,8 @@ class EditActionController extends BaseCrudController
         $district->setPopulation($validated["population"]);
         $this->repository->update($district);
         // TODO: flash success message
-        // TODO: clear invalid field markings
-        // TODO: clear saved values from session
+        unset($this->session["form.edit.values"]);
+        unset($this->session["form.edit.errors"]);
         return $this->redirectToListResponse($response);
     }
 

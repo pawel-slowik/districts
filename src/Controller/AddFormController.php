@@ -16,7 +16,11 @@ class AddFormController extends BaseCrudController
         $templateData = [
             "title" => "Add a district",
             "cities" => $cities,
+            "district" => $this->session["form.add.values"],
+            "errors" => $this->session["form.add.errors"],
         ];
+        unset($this->session["form.add.values"]);
+        unset($this->session["form.add.errors"]);
         return $this->view->render($response, "add.html", $templateData);
     }
 }
