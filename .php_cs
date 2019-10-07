@@ -32,7 +32,6 @@ return \PhpCsFixer\Config::create()
         'cast_spaces' => true, // @Symfony
         'class_attributes_separation' => ['elements' => ['method']], // @Symfony
         'combine_consecutive_issets' => true,
-        'combine_consecutive_unsets' => true,
         'compact_nullable_typehint' => true,
         'concat_space' => ['spacing' => 'one'], // @Symfony
         'declare_equal_normalize' => true, // @Symfony
