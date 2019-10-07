@@ -17,14 +17,58 @@ class ListController extends BaseCrudController
         $orderColumn = $args["column"] ?? null;
         $orderDirection = $args["direction"] ?? null;
         $orderBy = $this->repositoryOrderBy($orderColumn, $orderDirection);
-        $districts = $this->repository->list($orderBy);
+
+        $queryParams = $request->getQueryParams();
+        $filterColumn = $queryParams["filterColumn"] ?? null;
+        $filterValue = $queryParams["filterValue"] ?? null;
+        list($repositoryFilterType, $repositoryFilterValue) = $this->repositoryFilter($filterColumn, $filterValue);
+
+        $districts = $this->repository->list($orderBy, $repositoryFilterType, $repositoryFilterValue);
         $templateData = [
             "title" => "List of districts",
             "districts" => $districts,
             "orderColumn" => $orderColumn,
             "orderDirection" => $orderDirection,
+            "filterColumn" => $filterColumn,
+            "filterValue" => $filterValue,
         ];
         return $this->view->render($response, "list.html", $templateData);
+    }
+
+    protected function repositoryFilter(?string $filterColumn, ?string $filterValue): array
+    {
+        switch ($filterColumn) {
+            case "city":
+                return [
+                    DistrictRepository::FILTER_CITY,
+                    strval($filterValue),
+                ];
+            case "name":
+                return [
+                    DistrictRepository::FILTER_NAME,
+                    strval($filterValue),
+                ];
+            case "area":
+                return [
+                    DistrictRepository::FILTER_AREA,
+                    $this->filterStringToRange($filterValue),
+                ];
+            case "population":
+                return [
+                    DistrictRepository::FILTER_POPULATION,
+                    $this->filterStringToRange($filterValue),
+                ];
+        }
+        return [DistrictRepository::FILTER_NONE, null];
+    }
+
+    protected function filterStringToRange(string $input): array
+    {
+        $range = array_map("floatval", explode("-", $input, 2));
+        if (count($range) < 2) {
+            $range[1] = $range[0];
+        }
+        return $range;
     }
 
     protected function repositoryOrderBy(?string $orderColumn, ?string $orderDirection)

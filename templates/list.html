@@ -1,10 +1,10 @@
-{% macro sort_link(link_column, link_name, current_column, current_direction) %}
-{% if current_column == link_column and current_direction == 'asc' %}
+{% macro sort_link(link_column, link_name, context) %}
+{% if context.orderColumn == link_column and context.orderDirection == 'asc' %}
 {% set params = {'column': link_column, 'direction': 'desc'} %}
 {% else %}
 {% set params = {'column': link_column, 'direction': 'asc'} %}
 {% endif %}
-<a href="{{ path_for('list', params) }}">
+<a href="{{ path_for('list', params) }}?filterColumn={{ context.filterColumn }}&amp;filterValue={{ context.filterValue }}">
     {{ link_name }}
 </a>
 {% endmacro %}
@@ -17,21 +17,42 @@
     <a href="{{ path_for('add') }}">add a district</a>
 </p>
 
+<form action="" method="get" id="filter">
+
+    <label for="filterColumn">filter column:</label>
+    <select name="filterColumn">
+        <option value="city" {% if filterColumn == 'city' %} selected="selected" {% endif %}>city name</option>
+        <option value="name" {% if filterColumn == 'name' %} selected="selected" {% endif %}>district name</option>
+        <option value="area" {% if filterColumn == 'area' %} selected="selected" {% endif %}>area</option>
+        <option value="population" {% if filterColumn == 'population' %} selected="selected" {% endif %}>population</option>
+    </select>
+
+    <label for="name">filter value:</label>
+    <input type="text" name="filterValue" value="{{ filterValue }}">
+
+    <input type="submit" name="" value="filter">
+
+    <p>
+        Filter value can be substring for names, range (123-456) for numbers.
+    </p>
+
+</form>
+
 <table id="districts">
 
     <thead>
         <tr>
             <th class="city">
-                {{ _self.sort_link('city', 'city name', orderColumn, orderDirection) }}
+                {{ _self.sort_link('city', 'city name', _context) }}
             </th>
             <th class="name">
-                {{ _self.sort_link('name', 'district name', orderColumn, orderDirection) }}
+                {{ _self.sort_link('name', 'district name', _context) }}
             </th>
             <th class="area">
-                {{ _self.sort_link('area', 'area [km²]', orderColumn, orderDirection) }}
+                {{ _self.sort_link('area', 'area [km²]', _context) }}
             </th>
             <th class="population">
-                {{ _self.sort_link('population', 'population', orderColumn, orderDirection) }}
+                {{ _self.sort_link('population', 'population', _context) }}
             </th>
             <th class="edit"></th>
             <th class="remove"></th>
