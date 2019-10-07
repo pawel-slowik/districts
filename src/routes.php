@@ -12,6 +12,7 @@ use Controller\RemoveFormController;
 use Controller\RemoveActionController;
 
 return function (App $app): void {
+    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     $app->get("/", function ($request, $response, $args) {
         return $response->withRedirect("/list");
     });
