@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManager;
 use Entity\City;
 
 use Scraper\HtmlFinder;
-use Scraper\HtmlFetcher;
+use Scraper\GuzzleHtmlFetcher;
 use Scraper\City\GdanskScraper;
 use Scraper\City\KrakowScraper;
 
@@ -27,7 +27,7 @@ class UpdateCommand extends Command
         parent::__construct();
         $this->entityManager = $entityManager;
         $finder = new HtmlFinder();
-        $fetcher = new HtmlFetcher();
+        $fetcher = new GuzzleHtmlFetcher();
         $this->scrapers = [
             new GdanskScraper($fetcher, $finder),
             new KrakowScraper($fetcher, $finder),
