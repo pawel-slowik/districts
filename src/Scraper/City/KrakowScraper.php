@@ -7,6 +7,7 @@ namespace Scraper\City;
 use Scraper\DistrictScraper;
 use Scraper\HtmlFetcher;
 use Scraper\HtmlFinder;
+use Scraper\RuntimeException;
 use Zend\Uri\Uri;
 
 class KrakowScraper implements DistrictScraper

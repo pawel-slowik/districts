@@ -6,6 +6,7 @@ namespace Scraper\City;
 
 use Entity\District;
 use Scraper\HtmlFinder;
+use Scraper\RuntimeException;
 
 class KrakowDistrictBuilder
 {
