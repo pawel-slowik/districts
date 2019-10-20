@@ -8,6 +8,7 @@ use Scraper\DistrictScraper;
 use Scraper\HtmlFetcher;
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
+use Validator\DistrictValidator;
 use Zend\Uri\Uri;
 
 class GdanskScraper implements DistrictScraper
@@ -23,7 +24,7 @@ class GdanskScraper implements DistrictScraper
     {
         $this->htmlFetcher = $htmlFetcher;
         $this->htmlFinder = $htmlFinder;
-        $this->districtBuilder = new GdanskDistrictBuilder($htmlFinder);
+        $this->districtBuilder = new GdanskDistrictBuilder($htmlFinder, new DistrictValidator());
     }
 
     public function getCityName(): string

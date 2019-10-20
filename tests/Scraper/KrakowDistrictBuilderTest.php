@@ -6,6 +6,7 @@ namespace Scraper;
 
 use Entity\District;
 use Scraper\City\KrakowDistrictBuilder;
+use Validator\DistrictValidator;
 
 class KrakowDistrictBuilderTest extends ScraperTestBase
 {
@@ -13,10 +14,15 @@ class KrakowDistrictBuilderTest extends ScraperTestBase
 
     protected $validHtml;
 
+    protected $invalidPopulationHtml;
+
     protected function setUp(): void
     {
-        $this->builder = new KrakowDistrictBuilder(new HtmlFinder());
+        $this->builder = new KrakowDistrictBuilder(new HtmlFinder(), new DistrictValidator());
         $this->validHtml = $this->loadTestFile("Krakow/DzlViewGlw.jsf?id=17&lay=normal&fo=0");
+        $this->invalidPopulationHtml = $this->loadTestFile(
+            "Krakow/DzlViewGlw.jsf?id=17&lay=normal&fo=0_invalid_population"
+        );
     }
 
     public function testReturnsDistrict(): void
@@ -47,5 +53,11 @@ class KrakowDistrictBuilderTest extends ScraperTestBase
     {
         $this->expectException(RuntimeException::class);
         $this->builder->buildFromHtml("");
+    }
+
+    public function testValidator(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->builder->buildFromHtml($this->invalidPopulationHtml);
     }
 }

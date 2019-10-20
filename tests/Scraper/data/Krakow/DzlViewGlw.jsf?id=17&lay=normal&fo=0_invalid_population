@@ -1,0 +1,4192 @@
+
+
+
+
+
+
+
+
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml"
+	      xmlns:rich="http://richfaces.org/rich"
+	      xmlns:h="http://java.sun.com/jsf/html"
+	      xmlns:a4j="http://richfaces.org/a4j">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Biuletyn Informacji Publicznej Miasta Krakowa</title>
+		<meta name="Author" content="IMERI Software" />
+		<meta name="Keywords" content="" />
+		
+		<link href="https://www.bip.krakow.pl/_css/normal.php" rel="stylesheet" type="text/css"/>
+		<link href="https://www.bip.krakow.pl/_css/styl_uni.php" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="https://www.bip.krakow.pl/_css/float-columns.css" />
+	
+        <link href="https://www.bip.krakow.pl/_css/kalrmk.css" rel="stylesheet" type="text/css" />
+		<link href="https://www.bip.krakow.pl/_css/bipPrint.css" rel="stylesheet" media="print" type="text/css" />		<script type="text/javascript" language="JavaScript" src= "https://www.bip.krakow.pl/_js/OKO/functions.js"></script>
+
+		<script type="text/javascript" language="JavaScript" src=" https://www.bip.krakow.pl/_js/OKO/functions.js"></script>
+		<script type="text/javascript" language="JavaScript" src=" https://www.bip.krakow.pl/_js/mm_menu.js"></script>
+		<script type="text/javascript" language="JavaScript" src=" https://www.bip.krakow.pl/_js/eNabor/prototype.js"></script>
+
+	</head>	
+		<body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" class="iframe" style="background-image: none;" >
+		  
+		  
+		  	
+			
+		  
+			<div class="tabela_ogloszenia_srodek">
+				<div id="mainDiv">		  
+		  
+		   
+
+			<center>
+				<h3>
+					Dzielnica XVII&nbsp;Wzg&oacute;rza Krzes&#322;awickie				
+				</h3>			
+					<a href="DzlViewZrz.jsf;jsessionid=721BA13831202DA3A1EDC200BF8AE487?id=17&lay=normal&fo=0">Zarz¹d</a>&nbsp;&nbsp;|&nbsp;
+					<a href="DzlViewRda.jsf;jsessionid=721BA13831202DA3A1EDC200BF8AE487?id=17&lay=normal&fo=0">Rada</a>&nbsp;&nbsp;|&nbsp;	
+					<a href="DzlViewKms.jsf;jsessionid=721BA13831202DA3A1EDC200BF8AE487?id=17&lay=normal&fo=0">Komisje</a>&nbsp;&nbsp;|&nbsp;
+					<a href="DzlViewBro.jsf;jsessionid=721BA13831202DA3A1EDC200BF8AE487?id=17&lay=normal&fo=0">Biuro</a>&nbsp;&nbsp;|&nbsp;	
+					<a href="DzlViewGlw.jsf;jsessionid=721BA13831202DA3A1EDC200BF8AE487?id=17&lay=normal&fo=0">Granice</a>										
+			</center>			
+			
+			<table width="100%">
+			<tr><td width="300"><H4>Informacje ogólne.</H4>
+				<table>
+				  <tr>
+				      <td><b>Powierzchnia:</b></td>
+				      <td>
+				      		<span lang="pl-PL">2381,55</span>				      			
+				      ha</td>
+				  </tr>
+				  <tr>
+				      <td><b>Liczba ludnoœci:</b></td>
+				      <td>0</td>
+				  </tr>
+			    </table><br>
+				    
+			    <table>
+			      <tr>
+			        <td><b>Siedziba:</b></td>
+			        <td>Osiedle Na Stoku 15, 31-703 Krak&oacute;w</td>
+			      </tr>
+			      <tr>
+			        <td><b>Telefon:</b> </td><td>12 645 3009</td>
+			      </tr>
+			      <tr>
+			        <td><b>Faks:</b></td><td>12 645 1417</td>
+			      </tr>
+
+			      <tr>
+			        <td><b>E-mail:</b></td>
+			         <td>
+			           <a href="mailto:rada@dzielnica17.krakow.pl">rada@dzielnica17.krakow.pl</a>
+			           				           
+			           	
+			         </td>
+			      </tr>
+
+			      <tr>
+			        <td><b>Strona WWW:</b></td>
+			         <td>
+			           <a href="http://www.dzielnica17.krakow.pl" target="_blank">www.dzielnica17.krakow.pl</a>
+
+			           	
+			           
+			           	
+			         </td>
+			      </tr>
+
+
+ 			    </table>	
+			</td>
+			<td><br/><br/><center>
+			<img src="../img/mapa17.jpg;jsessionid=721BA13831202DA3A1EDC200BF8AE487" width="350" />
+			</center>
+			</td>
+			</tr></table>
+			
+
+			<br/><H4>Granice dzielnicy:</H4>
+			
+			
+			<table><tr><td>&nbsp;&nbsp;&nbsp;</td><td>
+			<P>Obejmuje obszar miasta wyznaczony nastêpuj¹cymi granicami:<BR><BR>- od strony pó³nocnej, od przeciêcia siê granicy m. Krakowa ze wschodni¹ granic¹ dzia³ki 475/9 , w kierunku wschodnim wzd³u¿ granicy m. Krakowa do styku granicy m. Krakowa z granic¹ obrêbów nr: 60 i 61 Nowa Huta,<BR><BR>z DZIELNIC¥ XV MISTRZEJOWICE graniczy na odcinku - od skrzy¿owania ul. Gen. Okulickiego z rzek¹ D³ubni¹ w kierunku pó³nocnym, wschodni¹ stron¹ rzeki D³ubni, do przeciêcia z ul. Morcinka, nastêpnie na wschód po³udniow¹ granic¹ dzia³ki nr 475/9, dalej na pó³noc wschodnimi granicami dzia³ek nr: 475/9 i 49/2, nastêpnie w kierunku zachodnim pó³nocn¹ granic¹ dzia³ki nr 49/2, dalej w kierunku pó³nocnozachodnim pó³nocnymi granicami dzia³ek nr: 50/2 i 51/2, nastêpnie w kierunku pó³nocnym wschodni¹ granic¹ dzia³ki nr 51/2 do granicy m. Krakowa,<BR><BR>z DZIELNIC¥ XVI BIEÑCZYCE graniczy na odcinku - od skrzy¿owania rzeki D³ubni z ul. Gen. Okulickiego w kierunku wschodnim pó³nocn¹ stron¹ ul. Gen. Okulickiego do skrzy¿owania z ul. Nowolipki, dalej wschodni¹ stron¹ ul. Nowolipki do ul. Makuszyñskiego, dalej w kierunku wschodnim pó³nocn¹ stron¹ ul. Makuszyñskiego ul. Wañkowicza, dalej na po³udnie zachodni¹ stron¹ ul. Wañkowicza do ul. Kocmyrzowskiej, dalej na po³udnie wschodni¹ stron¹ rzeki D³ubni do skrzy¿owania z Al. Solidarnoœci,<BR><BR>z DZIELNIC¥ XVIII NOWA HUTA graniczy na odcinku - od skrzy¿owania rzeki D³ubni z Al. Solidarnoœci pó³nocn¹ stron¹ Al. Solidarnoœci w kierunku pó³nocno - wschodnim do skrzy¿owania z ulic¹ Ujastek, dalej wschodni¹ stron¹ ulicy Ujastek w kierunku pó³nocnym do skrzy¿owania z ul. Mrozow¹, dalej w kierunku pó³nocno - wschodnim, wschodni¹ stron¹ ul. Mrozowej do styku dzia³ek nr 27/5, 1/539 i 1/547, nastêpnie do styku dzia³ek 2, 1/239 i 1/547, dalej na wschód, po³udniow¹ granic¹ dzia³ki nr 2, nastêpnie wschodni¹ granic¹ dzia³ki nr 2 do styku granicy obrêbów nr: 17, 19, 20 Nowa Huta, nastêpnie wzd³u¿ po³udniowej granicy obrêbów nr: 17, 18 Nowa Huta do styku granicy obrêbów nr: 18, 19, 23 Nowa Huta, dalej na pó³noc granic¹ pomiêdzy obrêbami nr: 18 i 23 Nowa Huta, dalej granic¹ miêdzy obrêbami nr: 60 i 24 Nowa Huta, nastêpnie granic¹ miêdzy obrêbami nr: 60 i 61 Nowa Huta do przeciêcia granicy m. Krakowa z granic¹ obrêbów nr: 60 i 61 Nowa Huta.<BR></P> 
+			</td></tr></table>
+		
+			
+
+	<br/>
+		<hr/>
+		<a href="DzlDocView.jsf;jsessionid=721BA13831202DA3A1EDC200BF8AE487">
+			<span style="font-size:14px">TWÓJ ELEKTRONICZNY PRZEWODNIK PO DZIELNICACH</span>
+		</a>
+		<br/>
+			
+				wydrukuj lub zapisz w postaci pliku tekstowego wybrane dane informacyjne o 
+				wybranej Radzie Dzielnicy lub wszystkich Radach Dzielnic Miasta Krakowa
+				
+		
+			
+
+
+<table width="100%">
+<tr>
+<td>
+
+<p>&nbsp;</p>
+
+<div id="techLabelMore" style="text-align:right">
+	<a href="#" onClick="document.getElementById('metkaDiv').style.display='inline'; this.style.display='none'">Poka¿ metkê</a>
+</div>
+
+<div id="metkaDiv" style="display:none;text-align:left">
+  			<div class="dziennik_div">
+  				<div class="metka_td1">Podmiot publikuj¹cy:</div>     
+  				<div class="metka_td3"><em>Biuro ds. Dzielnic Miasta Krakowa</em></div>
+  			</div>		
+  			<div>
+  				<div class="metka_td2">Osoba odpowiedzialna:</div>     
+  				<div class="metka_td3"><em>Natasza Kucharska - Dyrektor Biura</em></div>
+  			</div>		
+  			<div>
+  				<div class="metka_td1">Osoba publikuj¹ca:</div>     
+  				<div class="metka_td3"><em>Robert Rolka </em></div>
+  			</div>	
+ 			<div class="dziennik_div">
+  				<div class="metka_td2">Data wytworzenia:</div>     
+  				<div class="metka_td3"><em>
+  					2003-07-01</em>
+    			</div>
+  			</div>
+  			<div>
+  				<div class="metka_td1">Data publikacji:</div>     
+  				<div class="metka_td3"><em>
+  					2003-07-01
+  				</em></div>
+  			</div>	  				
+ 			<div class="dziennik_div">
+  				<div class="metka_td2">Data aktualizacji:</div>     
+  				<div class="metka_td3"><em>
+				    2019-09-30    
+    				</em>
+    			</div>
+  			</div>  				
+	
+
+</div>
+
+
+
+<div id="techLabelMore" style="text-align:right">
+	<a href="#" onClick="document.getElementById('dziennikDiv').style.display='inline'; this.style.display='none'">Dziennik zmian dokumentu</a>
+</div>
+
+<div id="dziennikDiv" style="display:none">
+
+<hr>
+<p class="techLabel">Dziennik zmian dokumentu:</p>
+<br/>
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-09-30 14:02:58
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-08-30 09:22:38
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-07-25 12:15:38
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-07-25 12:15:37
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+		
+<div id="techLabelMore" style="text-align:right">
+	<a href="#" onClick="document.getElementById('dziennikAllDiv').style.display='inline'; this.style.display='none'">Ca³y dziennik dla dokumentu</a>
+</div>
+
+<div id="dziennikAllDiv" style="display:none">
+
+
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-07-12 09:46:42
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-06-28 08:59:51
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-06-28 08:59:49
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-05-31 09:01:18
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-05-31 09:01:15
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-04-05 11:04:21
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-03-26 10:59:06
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-03-26 10:59:04
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-02-25 12:10:13
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-02-08 07:57:50
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-02-07 15:08:55
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-02-01 08:53:06
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-02-01 08:53:05
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-01-16 08:29:39
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-01-11 10:20:58
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-01-11 10:20:32
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-01-11 10:20:31
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-01-11 10:15:50
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-01-11 10:15:41
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-01-03 08:24:21
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2019-01-03 08:23:38
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-12-28 09:21:04
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-12-28 09:21:03
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-12-19 11:59:40
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-12-07 08:36:42
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-12-07 08:36:42
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-12-07 08:35:19
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-12-04 11:09:30
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-12-04 11:09:28
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-11-28 13:11:24
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-10-29 13:47:56
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-10-29 13:47:54
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-09-28 08:04:52
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-09-28 08:04:51
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-08-31 08:37:18
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-08-31 08:37:17
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-07-26 12:28:09
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-07-26 12:28:08
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-06-29 08:33:06
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-06-29 08:33:03
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-05-28 13:30:52
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-05-28 13:30:51
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-04-27 08:29:39
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-04-27 08:29:37
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-04-03 11:35:31
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-04-03 11:35:29
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2018-01-17 12:22:03
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-11-30 11:40:47
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-11-06 09:11:23
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-09-01 10:51:32
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-09-01 10:51:27
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-09-01 10:51:24
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-07-28 08:18:54
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-07-11 10:41:59
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-06-30 08:42:52
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-06-07 13:24:28
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-05-18 11:03:47
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-04-26 12:39:03
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-04-05 12:58:32
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-03-31 08:28:23
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-03-31 08:28:21
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-03-15 09:48:18
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-03-08 08:15:21
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-02-23 11:08:03
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2017-02-02 12:14:13
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-12-08 11:06:37
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-12-08 11:06:35
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-10-28 08:45:31
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-10-28 08:45:29
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-10-25 14:08:30
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-10-19 10:24:51
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-09-29 17:25:28
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-08-30 11:29:14
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-07-29 11:33:05
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-07-29 11:33:04
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-07-22 09:55:09
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-07-22 09:55:08
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-07-06 11:35:25
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-07-05 13:19:31
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-07-05 13:19:28
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-06-23 11:07:54
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-06-23 11:07:51
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-06-08 10:26:25
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-05-30 10:22:50
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-05-16 09:15:20
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-05-12 08:58:01
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-04-15 10:35:16
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-03-30 09:50:54
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-03-30 09:50:52
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-02-17 09:07:53
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-02-17 09:07:52
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-02-10 11:13:56
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-02-10 11:13:54
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-01-25 12:08:00
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2016-01-25 12:07:56
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-12-09 09:52:20
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-12-09 09:52:19
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-11-19 10:03:23
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-11-19 10:03:22
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-10-28 10:25:32
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-10-28 10:25:30
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-10-05 08:50:13
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-10-05 08:50:08
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-09-18 10:31:13
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-09-18 10:31:10
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-08-21 09:24:17
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-08-21 09:24:14
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-06-17 12:50:19
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-06-17 12:50:17
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-05-26 11:41:11
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-05-26 11:41:09
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-04-29 10:22:56
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-03-17 13:17:15
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-03-17 13:17:13
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-03-09 10:30:43
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-01-14 10:03:26
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2015-01-14 10:02:26
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-12-22 16:09:32
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-12-18 09:09:47
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-12-18 09:09:43
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-11-27 08:31:52
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-11-27 08:31:51
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-04-23 09:10:23
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-04-22 11:13:48
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-03-24 10:13:15
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-03-24 10:13:14
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-03-05 09:41:30
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-03-05 09:41:29
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-02-17 10:38:36
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-02-06 12:00:51
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-02-06 12:00:50
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-01-31 09:34:00
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-01-20 14:31:14
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-01-20 14:31:11
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-01-08 14:03:45
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2014-01-08 14:03:42
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-12-10 11:32:56
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-12-10 11:32:54
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-11-07 12:13:47
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-11-07 12:13:45
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-10-14 14:40:47
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-10-14 14:40:43
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-09-04 12:41:07
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-08-23 10:46:20
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-08-23 10:46:17
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-07-08 13:12:27
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-07-08 13:12:24
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-06-06 10:49:07
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-06-06 10:49:05
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-05-22 14:05:58
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-05-10 09:14:43
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-04-11 12:42:35
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-03-19 14:01:28
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-02-11 10:25:53
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2013-01-15 12:08:26
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-12-12 09:47:17
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-12-06 14:19:45
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-11-14 09:44:39
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-09-06 10:01:07
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-09-06 10:01:04
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-08-20 13:15:41
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-08-20 13:15:38
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-07-03 11:11:22
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-07-03 11:11:16
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-07-03 11:11:03
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-06-20 14:07:07
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-05-31 16:59:30
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-03-15 13:16:10
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-03-15 11:48:45
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-03-15 11:48:43
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-03-07 12:33:45
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-03-07 12:33:39
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-02-16 09:35:24
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-02-16 09:35:13
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-01-04 10:51:19
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2012-01-04 10:51:17
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-11-18 10:59:47
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-11-18 10:59:44
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-10-26 11:43:01
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-10-26 11:42:57
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-09-15 12:38:40
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-09-15 12:38:38
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-09-05 09:20:27
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-08-25 11:16:10
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-08-25 11:16:06
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-07-07 09:53:24
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-07-07 09:53:22
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-06-29 10:55:49
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-04-14 08:26:37
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-04-14 08:26:35
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-04-13 08:24:29
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-04-13 08:24:26
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-03-31 11:11:45
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-03-31 11:11:42
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-03-01 08:49:34
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-02-04 09:04:56
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-02-04 09:04:49
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-01-31 09:32:19
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-01-31 09:32:16
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2011-01-28 16:01:16
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2010-12-28 09:32:43
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2010-11-04 14:14:30
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2010-10-14 12:30:14
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2010-06-11 13:45:20
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2010-05-31 12:45:19
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2010-05-31 12:45:17
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2010-05-17 11:26:52
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2010-05-12 11:56:21
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2010-05-12 09:16:18
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2010-05-12 09:16:14
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2010-05-12 08:51:45
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2010-02-23 14:11:16
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2009-12-07 12:57:07
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2009-11-04 10:56:46
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2009-10-12 13:05:11
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2009-09-09 12:45:04
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2009-08-24 10:31:49
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2009-07-02 11:40:51
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2009-05-06 13:58:32
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2009-03-16 15:04:44
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2009-01-30 10:16:11
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-11-28 10:12:17
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-11-28 10:12:09
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-10-31 09:43:54
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-10-31 09:43:47
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-09-29 09:52:33
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-09-04 09:59:12
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-09-04 09:59:08
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-08-01 12:28:49
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-07-07 15:50:37
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-07-07 15:50:33
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-07-04 11:52:57
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-07-03 12:58:12
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-07-03 12:58:09
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-06-03 08:30:46
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-06-02 09:15:37
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-05-07 12:00:28
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-05-05 10:04:29
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-04-30 08:36:34
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-04-28 09:47:24
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-04-28 09:47:09
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">KATARZYNA SK&Oacute;RA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-04-18 13:26:08
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-04-15 14:05:03
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">ROBERT ROLKA</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Edycja
+  				</div>  				
+  				
+  			</div>	
+	
+  			<div class="dziennik_div">
+  				
+	  				<div class="dziennik_td2">
+					    2008-04-09 00:47:49
+					</div>     
+				
+  								
+  				<div class="dziennik_div2">
+  					<span class="">Imeri Imeri</span>
+  				</div>
+  				<div class="class="dziennik_div3"">
+					Utworzenie
+  				</div>  				
+  				
+  			</div>	
+	
+
+		
+		
+</div>
+
+	
+</div>
+
+
+
+<div id="techLabelMore" style="text-align:right">
+  <a href="/?sub_dok_id=15447&amp;sub=zarzad&query=id%3D1&vReg=1&metka=1&amp;vReg=3"></a>
+</div>
+
+</td></tr></table>
+
+
+		
+		</div>
+		</div>
+			
+		</body>
+
+</html>

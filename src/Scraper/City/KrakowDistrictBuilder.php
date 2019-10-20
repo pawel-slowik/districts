@@ -7,14 +7,18 @@ namespace Scraper\City;
 use Entity\District;
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
+use Validator\Validator;
 
 class KrakowDistrictBuilder
 {
     protected $htmlFinder;
 
-    public function __construct(HtmlFinder $htmlFinder)
+    protected $validator;
+
+    public function __construct(HtmlFinder $htmlFinder, Validator $validator)
     {
         $this->htmlFinder = $htmlFinder;
+        $this->validator = $validator;
     }
 
     public function buildFromHtml(string $html): District
@@ -34,7 +38,18 @@ class KrakowDistrictBuilder
             "//td/b[contains(., 'Liczba ludno')]/../following-sibling::td",
             [$this, "extractPopulation"]
         );
-        return new District($name, $area, $population);
+        $result = $this->validator->validate([
+            "name" => $name,
+            "area" => $area,
+            "population" => $population,
+        ]);
+        if (!$result->isOk()) {
+            throw new RuntimeException(
+                "validation failed: " . implode(", ", array_map("strval", $result->getErrors()))
+            );
+        }
+        $validated = $result->getValidatedData();
+        return new District($validated["name"], $validated["area"], $validated["population"]);
     }
 
     protected function getSingleItem(string $html, string $xpath, callable $callback)
