@@ -7,9 +7,10 @@ namespace Scraper\City;
 use Entity\District;
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
+use Scraper\DistrictBuilderBase;
 use Validator\Validator;
 
-class GdanskDistrictBuilder
+class GdanskDistrictBuilder extends DistrictBuilderBase
 {
     protected $htmlFinder;
 
@@ -40,18 +41,14 @@ class GdanskDistrictBuilder
         $name = $texts[0];
         $area = $this->findSingleItem($texts, [$this, "extractArea"]);
         $population = $this->findSingleItem($texts, [$this, "extractPopulation"]);
-        $result = $this->validator->validate([
-            "name" => $name,
-            "area" => $area,
-            "population" => $population,
-        ]);
-        if (!$result->isOk()) {
-            throw new RuntimeException(
-                "validation failed: " . implode(", ", array_map("strval", $result->getErrors()))
-            );
-        }
-        $validated = $result->getValidatedData();
-        return new District($validated["name"], $validated["area"], $validated["population"]);
+        return $this->createValidatedDistrict(
+            $this->validator,
+            [
+                "name" => $name,
+                "area" => $area,
+                "population" => $population,
+            ]
+        );
     }
 
     protected function findSingleItem(array $texts, callable $callback)
