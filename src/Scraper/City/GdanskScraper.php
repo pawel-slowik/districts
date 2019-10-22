@@ -56,7 +56,7 @@ class GdanskScraper implements DistrictScraper
         }
         foreach ($nodes as $node) {
             $id = $node->getAttribute("id");
-            $href = "subpages/dzielnice/[dzielnice]/html/dzielnice_mapa_alert.php?id={$id}";
+            $href = "subpages/dzielnice/html/dzielnice_mapa_alert.php?id={$id}";
             yield Uri::merge($baseUrl, $href)->toString();
         }
     }

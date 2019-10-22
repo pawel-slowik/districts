@@ -17,7 +17,7 @@ class FakeHtmlFetcher implements HtmlFetcher
         // (only Builders do).
 
         $urlFileMap["https://www.gdansk.pl/dzielnice"] = "Gdansk/dzielnice.html";
-        $pattern = "https://www.gdansk.pl/subpages/dzielnice/%%5Bdzielnice%%5D/html/dzielnice_mapa_alert.php?id=%d";
+        $pattern = "https://www.gdansk.pl/subpages/dzielnice/html/dzielnice_mapa_alert.php?id=%d";
         for ($i = 1; $i <= 35; $i++) {
             $urlFileMap[sprintf($pattern, $i)] = "Gdansk/dzielnice_mapa_alert.php?id=16";
         }
