@@ -33,7 +33,6 @@ Start the web interface:
 ## TODO
 
 - flash messages
-- progress report for the update CLI command
 - select cities for updating
 - replace the validator with Valitron? zend-validator?
 - automatically generate forms with [zend-form and model annotations](https://docs.zendframework.com/zend-form/quick-start/#using-annotations)?

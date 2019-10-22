@@ -7,6 +7,7 @@ namespace Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Doctrine\ORM\EntityManager;
 
 use Entity\City;
@@ -42,12 +43,13 @@ class UpdateCommand extends Command
         foreach ($this->scrapers as $scraper) {
             $cityName = $scraper->getCityName();
             $districts = $scraper->listDistricts();
-            $this->updateCity($cityName, $districts);
+            $this->updateCity($cityName, $districts, $output);
         }
     }
 
-    protected function updateCity(string $cityName, iterable $districts): void
+    protected function updateCity(string $cityName, iterable $districts, OutputInterface $output): void
     {
+        $output->writeln("processing city: " . $cityName);
         $city = $this->findCity($cityName);
         if ($city) {
             foreach ($city->listDistricts() as $district) {
@@ -57,11 +59,16 @@ class UpdateCommand extends Command
         } else {
             $city = new City($cityName);
         }
+        $progressBar = new ProgressBar($output);
+        $progressBar->start();
         foreach ($districts as $district) {
             $city->addDistrict($district);
             $district->setCity($city);
             $this->entityManager->persist($district);
+            $progressBar->advance();
         }
+        $progressBar->finish();
+        $output->writeln("");
         $this->entityManager->persist($city);
         $this->entityManager->flush();
     }
