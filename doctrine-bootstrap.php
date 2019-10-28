@@ -13,7 +13,7 @@ return function (): EntityManager {
         null, // cache
         false // useSimpleAnnotationReader - will be removed in version 3.0
     );
-    $connectionConfig = require __DIR__ . "/db-config.php";
+    $connectionConfig = ["url" => require __DIR__ . "/db-config.php"];
     $entityManager = EntityManager::create($connectionConfig, $metadataConfig);
     return $entityManager;
 };
