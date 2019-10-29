@@ -1,7 +1,0 @@
-<?php
-
-// SQLite
-return "sqlite:///" . __DIR__ . "/db.sqlite";
-
-// MySQL / MariaDB
-return "mysql://districts_app:password@localhost/districts_app";

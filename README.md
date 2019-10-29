@@ -10,9 +10,9 @@ Install required components:
 
 	composer install
 
-Configure a database connection:
+Configure a developement database connection:
 
-    cp db-config.php.dist db-config.php
+    export $(< env-dev)
 
 Create the database structure:
 

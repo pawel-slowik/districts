@@ -13,7 +13,6 @@ EOF;
 
 $finder = PhpCsFixer\Finder::create()
     ->exclude(['templates'])
-    ->notName('db-config.php')
     ->in(__DIR__);
 
 return \PhpCsFixer\Config::create()
