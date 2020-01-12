@@ -9,7 +9,7 @@ use Scraper\HtmlFetcher;
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
 use Validator\DistrictValidator;
-use Zend\Uri\Uri;
+use Laminas\Uri\Uri;
 
 class GdanskScraper implements DistrictScraper
 {
