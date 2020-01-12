@@ -13,12 +13,13 @@ return function (App $app): void {
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     $container->set(Twig::class, function ($container) {
-        $options = [
-            "cache" => "/tmp/twig_cache",
-            "auto_reload" => true,
-        ];
-        $view = Twig::create("templates", $options);
-        return $view;
+        return Twig::create(
+            "templates",
+            [
+                "cache" => "/tmp/twig_cache",
+                "auto_reload" => true,
+            ]
+        );
     });
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
@@ -30,7 +31,6 @@ return function (App $app): void {
     $container->set(DistrictRepository::class, function ($container) {
         $entityManagerFactory = require "doctrine-bootstrap.php";
         $entityManager = $entityManagerFactory();
-        $repository = new DistrictRepository($entityManager);
-        return $repository;
+        return new DistrictRepository($entityManager);
     });
 };
