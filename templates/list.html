@@ -4,7 +4,7 @@
 {% else %}
 {% set params = {'column': link_column, 'direction': 'asc'} %}
 {% endif %}
-<a href="{{ path_for('list', params) }}?filterColumn={{ context.filterColumn }}&amp;filterValue={{ context.filterValue }}">
+<a href="{{ url_for('list', params) }}?filterColumn={{ context.filterColumn }}&amp;filterValue={{ context.filterValue }}">
     {{ link_name }}
 </a>
 {% endmacro %}
@@ -14,7 +14,7 @@
 {% block content %}
 
 <p>
-    <a href="{{ path_for('add') }}">add a district</a>
+    <a href="{{ url_for('add') }}">add a district</a>
 </p>
 
 <form action="" method="get" id="filter">
@@ -77,10 +77,10 @@
                 {{ district.population }}
             </td>
             <td class="edit">
-                <a href="{{ path_for('edit', {'id': district.id }) }}">edit</a>
+                <a href="{{ url_for('edit', {'id': district.id }) }}">edit</a>
             </td>
             <td class="remove">
-                <a href="{{ path_for('remove', {'id': district.id }) }}">remove</a>
+                <a href="{{ url_for('remove', {'id': district.id }) }}">remove</a>
             </td>
         </tr>
 

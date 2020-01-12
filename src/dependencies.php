@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Slim\App;
+use Slim\Views\Twig;
 
 use Repository\DistrictRepository;
 use Controller\ListController;
@@ -16,30 +17,33 @@ use Controller\RemoveActionController;
 return function (App $app): void {
     $container = $app->getContainer();
 
-    $container["view"] = function ($container) {
+    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
+    $container->set("view", function ($container) {
         $options = [
             "cache" => "/tmp/twig_cache",
             "auto_reload" => true,
         ];
-        $view = new \Slim\Views\Twig("templates", $options);
-        $router = $container->get("router");
-        $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
-        $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
+        $view = Twig::create("templates", $options);
         return $view;
-    };
+    });
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-    $container["session"] = function ($container) {
+    $container->set("route_parser", function ($container) use ($app) {
+        return $app->getRouteCollector()->getRouteParser();
+    });
+
+    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
+    $container->set("session", function ($container) {
         return new \SlimSession\Helper();
-    };
+    });
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-    $container[DistrictRepository::class] = function ($container) {
+    $container->set(DistrictRepository::class, function ($container) {
         $entityManagerFactory = require "doctrine-bootstrap.php";
         $entityManager = $entityManagerFactory();
         $repository = new DistrictRepository($entityManager);
         return $repository;
-    };
+    });
 
     // all the basic controllers have the same dependencies
     $basicControllerClasses = [
@@ -52,13 +56,13 @@ return function (App $app): void {
         RemoveActionController::class,
     ];
     foreach ($basicControllerClasses as $controllerClass) {
-        $container[$controllerClass] = function ($container) use ($controllerClass) {
+        $container->set($controllerClass, function ($container) use ($controllerClass) {
             return new $controllerClass(
                 $container->get(DistrictRepository::class),
                 $container->get("session"),
-                $container->get("router"),
+                $container->get("route_parser"),
                 $container->get("view")
             );
-        };
+        });
     }
 };

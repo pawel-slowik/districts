@@ -21,7 +21,7 @@ class RemoveActionController extends BaseCrudController
             $this->repository->remove($district);
             // TODO: flash message
         }
-        return $this->redirectToListResponse($response);
+        return $this->redirectToListResponse($request, $response);
     }
 
     protected function isConfirmed(Request $request): bool

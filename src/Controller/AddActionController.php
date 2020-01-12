@@ -7,8 +7,6 @@ namespace Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-use Slim\Http\StatusCode;
-
 use Entity\District;
 use Validator\NewDistrictValidator;
 
@@ -30,7 +28,7 @@ class AddActionController extends BaseCrudController
             // TODO: flash error message
             $this->session["form.add.values"] = $parsed;
             $this->session["form.add.errors"] = array_fill_keys($validationResult->getErrors(), true);
-            return $this->redirectToAddResponse($response);
+            return $this->redirectToAddResponse($request, $response);
         }
         $validated = $validationResult->getValidatedData();
         $city = $this->repository->getCity($validated["city"]);
@@ -39,12 +37,12 @@ class AddActionController extends BaseCrudController
         // TODO: flash success message
         unset($this->session["form.add.values"]);
         unset($this->session["form.add.errors"]);
-        return $this->redirectToListResponse($response);
+        return $this->redirectToListResponse($request, $response);
     }
 
-    protected function redirectToAddResponse(Response $response)
+    protected function redirectToAddResponse(Request $request, Response $response)
     {
-        $url = $this->router->pathFor("add");
-        return $response->withHeader("Location", $url)->withStatus(StatusCode::HTTP_FOUND);
+        $url = $this->routeParser->fullUrlFor($request->getUri(), "add");
+        return $response->withHeader("Location", $url)->withStatus(302);
     }
 }

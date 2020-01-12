@@ -13,8 +13,10 @@ use Controller\RemoveActionController;
 
 return function (App $app): void {
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-    $app->get("/", function ($request, $response, $args) {
-        return $response->withRedirect("/list");
+    $app->get("/", function ($request, $response, $args) use ($app) {
+        $routeParser = $app->getRouteCollector()->getRouteParser();
+        $url = $routeParser->fullUrlFor($request->getUri(), "list");
+        return $response->withHeader("Location", $url)->withStatus(302);
     });
     $app->get("/list[/order/{column}/{direction}]", ListController::class)->setName("list");
     $app->get("/add", AddFormController::class)->setName("add");

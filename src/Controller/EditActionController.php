@@ -7,8 +7,6 @@ namespace Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-use Slim\Http\StatusCode;
-
 use Entity\District;
 use Validator\DistrictValidator;
 
@@ -27,7 +25,7 @@ class EditActionController extends BaseCrudController
             // TODO: flash error message
             $this->session["form.edit.values"] = $parsed;
             $this->session["form.edit.errors"] = array_fill_keys($validationResult->getErrors(), true);
-            return $this->redirectToEditResponse($response, $district);
+            return $this->redirectToEditResponse($request, $response, $district);
         }
         $validated = $validationResult->getValidatedData();
         $district->setName($validated["name"]);
@@ -37,12 +35,12 @@ class EditActionController extends BaseCrudController
         // TODO: flash success message
         unset($this->session["form.edit.values"]);
         unset($this->session["form.edit.errors"]);
-        return $this->redirectToListResponse($response);
+        return $this->redirectToListResponse($request, $response);
     }
 
-    protected function redirectToEditResponse(Response $response, District $district)
+    protected function redirectToEditResponse(Request $request, Response $response, District $district)
     {
-        $url = $this->router->pathFor("edit", ["id" => $district->getId()]);
-        return $response->withHeader("Location", $url)->withStatus(StatusCode::HTTP_FOUND);
+        $url = $this->routeParser->fullUrlFor($request->getUri(), "edit", ["id" => $district->getId()]);
+        return $response->withHeader("Location", $url)->withStatus(302);
     }
 }
