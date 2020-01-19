@@ -6,7 +6,7 @@ use Slim\App;
 use Slim\Views\Twig;
 use Slim\Interfaces\RouteParserInterface;
 
-use Repository\DistrictRepository;
+use Doctrine\ORM\EntityManager;
 
 return function (App $app): void {
     $dependencies = [
@@ -28,10 +28,8 @@ return function (App $app): void {
         },
 
         // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-        DistrictRepository::class => function ($container) {
-            $entityManagerFactory = require "doctrine-bootstrap.php";
-            $entityManager = $entityManagerFactory();
-            return new DistrictRepository($entityManager);
+        EntityManager::class => function ($container) {
+            return (require "doctrine-bootstrap.php")();
         },
 
     ];
