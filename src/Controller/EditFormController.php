@@ -13,7 +13,7 @@ class EditFormController extends BaseCrudController
     {
         $district = $this->session["form.edit.values"];
         if (!$district) {
-            $district = $this->repository->get(intval($args["id"]));
+            $district = $this->districtRepository->get(intval($args["id"]));
         }
         if (!$district) {
             throw new NotFoundException($request, $response);

@@ -23,7 +23,7 @@ class ListController extends BaseCrudController
         $filterValue = $queryParams["filterValue"] ?? null;
         list($repositoryFilterType, $repositoryFilterValue) = $this->repositoryFilter($filterColumn, $filterValue);
 
-        $districts = $this->repository->list($orderBy, $repositoryFilterType, $repositoryFilterValue);
+        $districts = $this->districtRepository->list($orderBy, $repositoryFilterType, $repositoryFilterValue);
         $templateData = [
             "title" => "List of districts",
             "districts" => $districts,

@@ -13,7 +13,7 @@ class RemoveFormController extends BaseCrudController
 {
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $district = $this->repository->get(intval($args["id"]));
+        $district = $this->districtRepository->get(intval($args["id"]));
         if (!$district) {
             throw new NotFoundException($request, $response);
         }

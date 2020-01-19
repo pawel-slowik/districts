@@ -19,7 +19,7 @@ class AddActionController extends BaseCrudController
             function ($city) {
                 return $city->getId();
             },
-            $this->repository->listCities()
+            $this->cityRepository->list()
         );
         $validator = new NewDistrictValidator($validCityIds);
         $parsed = $request->getParsedBody();
@@ -31,9 +31,9 @@ class AddActionController extends BaseCrudController
             return $this->redirectToAddResponse($request, $response);
         }
         $validated = $validationResult->getValidatedData();
-        $city = $this->repository->getCity($validated["city"]);
+        $city = $this->cityRepository->get($validated["city"]);
         $district = new District($validated["name"], $validated["area"], $validated["population"]);
-        $this->repository->add($city, $district);
+        $this->districtRepository->add($city, $district);
         // TODO: flash success message
         unset($this->session["form.add.values"]);
         unset($this->session["form.add.errors"]);

@@ -90,18 +90,6 @@ class DistrictRepository
         return $districts;
     }
 
-    public function getCity(int $id): ?City
-    {
-        $ormRepository = $this->entityManager->getRepository(City::class);
-        return $ormRepository->find($id);
-    }
-
-    public function listCities(): array
-    {
-        $ormRepository = $this->entityManager->getRepository(City::class);
-        return $ormRepository->findAll();
-    }
-
     protected function dqlOrderBy($orderBy): string
     {
         if (!is_scalar($orderBy) || !array_key_exists($orderBy, $this->orderDqlMap)) {

@@ -11,11 +11,14 @@ use Slim\Interfaces\RouteParserInterface;
 use Slim\Views\Twig as View;
 use SlimSession\Helper as Session;
 
+use Repository\CityRepository;
 use Repository\DistrictRepository;
 
 abstract class BaseCrudController
 {
-    protected $repository;
+    protected $cityRepository;
+
+    protected $districtRepository;
 
     protected $session;
 
@@ -24,12 +27,14 @@ abstract class BaseCrudController
     protected $view;
 
     public function __construct(
-        DistrictRepository $repository,
+        CityRepository $cityRepository,
+        DistrictRepository $districtRepository,
         Session $session,
         RouteParserInterface $routeParser,
         View $view
     ) {
-        $this->repository = $repository;
+        $this->cityRepository = $cityRepository;
+        $this->districtRepository = $districtRepository;
         $this->session = $session;
         $this->routeParser = $routeParser;
         $this->view = $view;

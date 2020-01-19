@@ -12,7 +12,7 @@ class AddFormController extends BaseCrudController
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $cities = $this->repository->listCities();
+        $cities = $this->cityRepository->list();
         $templateData = [
             "title" => "Add a district",
             "cities" => $cities,

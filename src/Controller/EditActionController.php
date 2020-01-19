@@ -14,7 +14,7 @@ class EditActionController extends BaseCrudController
 {
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $district = $this->repository->get(intval($args["id"]));
+        $district = $this->districtRepository->get(intval($args["id"]));
         if (!$district) {
             throw new NotFoundException($request, $response);
         }
@@ -31,7 +31,7 @@ class EditActionController extends BaseCrudController
         $district->setName($validated["name"]);
         $district->setArea($validated["area"]);
         $district->setPopulation($validated["population"]);
-        $this->repository->update($district);
+        $this->districtRepository->update($district);
         // TODO: flash success message
         unset($this->session["form.edit.values"]);
         unset($this->session["form.edit.errors"]);
