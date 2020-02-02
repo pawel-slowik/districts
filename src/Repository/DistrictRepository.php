@@ -57,9 +57,28 @@ class DistrictRepository
         $this->entityManager->flush();
     }
 
+    public function removeMultiple(iterable $districts): void
+    {
+        foreach ($districts as $district) {
+            $this->entityManager->remove($district);
+        }
+        $this->entityManager->flush();
+    }
+
     public function add(District $district): void
     {
         $this->entityManager->persist($district);
+        $this->entityManager->flush();
+    }
+
+    public function addMultiple(iterable $districts, ?ProgressReporter $progressReporter = null): void
+    {
+        foreach ($districts as $district) {
+            $this->entityManager->persist($district);
+            if (!is_null($progressReporter)) {
+                $progressReporter->advance();
+            }
+        }
         $this->entityManager->flush();
     }
 
