@@ -33,7 +33,8 @@ class AddActionController extends BaseCrudController
         $validated = $validationResult->getValidatedData();
         $city = $this->cityRepository->get($validated["city"]);
         $district = new District($validated["name"], $validated["area"], $validated["population"]);
-        $this->districtRepository->add($city, $district);
+        $district->setCity($city);
+        $this->districtRepository->add($district);
         // TODO: flash success message
         unset($this->session["form.add.values"]);
         unset($this->session["form.add.errors"]);

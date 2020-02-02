@@ -6,7 +6,6 @@ namespace Repository;
 
 use Doctrine\ORM\EntityManager;
 
-use Entity\City;
 use Entity\District;
 
 class DistrictRepository
@@ -58,9 +57,8 @@ class DistrictRepository
         $this->entityManager->flush();
     }
 
-    public function add(City $city, District $district): void
+    public function add(District $district): void
     {
-        $district->setCity($city);
         $this->entityManager->persist($district);
         $this->entityManager->flush();
     }
