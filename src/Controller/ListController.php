@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 use Repository\DistrictRepository;
 
-class ListController extends BaseCrudController
+final class ListController extends BaseCrudController
 {
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args)
@@ -35,7 +35,7 @@ class ListController extends BaseCrudController
         return $this->view->render($response, "list.html", $templateData);
     }
 
-    protected function repositoryFilter(?string $filterColumn, ?string $filterValue): array
+    private function repositoryFilter(?string $filterColumn, ?string $filterValue): array
     {
         switch ($filterColumn) {
             case "city":
@@ -62,7 +62,7 @@ class ListController extends BaseCrudController
         return [DistrictRepository::FILTER_NONE, null];
     }
 
-    protected function filterStringToRange(string $input): array
+    private function filterStringToRange(string $input): array
     {
         $range = array_map("floatval", explode("-", $input, 2));
         if (count($range) < 2) {
@@ -71,7 +71,7 @@ class ListController extends BaseCrudController
         return $range;
     }
 
-    protected function repositoryOrderBy(?string $orderColumn, ?string $orderDirection)
+    private function repositoryOrderBy(?string $orderColumn, ?string $orderDirection)
     {
         $rules = [
             ["city", "asc", DistrictRepository::ORDER_CITY_ASC],

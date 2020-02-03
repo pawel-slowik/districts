@@ -9,9 +9,9 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 use Slim\Interfaces\RouteParserInterface;
 
-class HomeController
+final class HomeController
 {
-    protected $routeParser;
+    private $routeParser;
 
     public function __construct(RouteParserInterface $routeParser)
     {

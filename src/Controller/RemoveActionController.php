@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 use Slim\Exception\NotFoundException;
 
-class RemoveActionController extends BaseCrudController
+final class RemoveActionController extends BaseCrudController
 {
     public function __invoke(Request $request, Response $response, array $args)
     {
@@ -24,7 +24,7 @@ class RemoveActionController extends BaseCrudController
         return $this->redirectToListResponse($request, $response);
     }
 
-    protected function isConfirmed(Request $request): bool
+    private function isConfirmed(Request $request): bool
     {
         $parsed = $request->getParsedBody();
         return array_key_exists("confirm", $parsed);

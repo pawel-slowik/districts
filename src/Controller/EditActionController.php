@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Entity\District;
 use Validator\DistrictValidator;
 
-class EditActionController extends BaseCrudController
+final class EditActionController extends BaseCrudController
 {
     public function __invoke(Request $request, Response $response, array $args)
     {
@@ -38,7 +38,7 @@ class EditActionController extends BaseCrudController
         return $this->redirectToListResponse($request, $response);
     }
 
-    protected function redirectToEditResponse(Request $request, Response $response, District $district)
+    private function redirectToEditResponse(Request $request, Response $response, District $district)
     {
         $url = $this->routeParser->fullUrlFor($request->getUri(), "edit", ["id" => $district->getId()]);
         return $response->withHeader("Location", $url)->withStatus(302);

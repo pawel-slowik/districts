@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 use Slim\Exception\NotFoundException;
 
-class RemoveFormController extends BaseCrudController
+final class RemoveFormController extends BaseCrudController
 {
     public function __invoke(Request $request, Response $response, array $args)
     {
