@@ -18,13 +18,13 @@ use Scraper\GuzzleHtmlFetcher;
 use Scraper\City\GdanskScraper;
 use Scraper\City\KrakowScraper;
 
-class UpdateCommand extends Command
+final class UpdateCommand extends Command
 {
-    protected $cityRepository;
+    private $cityRepository;
 
-    protected $districtRepository;
+    private $districtRepository;
 
-    protected $scrapers;
+    private $scrapers;
 
     public function __construct(
         CityRepository $cityRepository,
@@ -53,7 +53,7 @@ class UpdateCommand extends Command
         }
     }
 
-    protected function updateCity(string $cityName, iterable $districts, OutputInterface $output): void
+    private function updateCity(string $cityName, iterable $districts, OutputInterface $output): void
     {
         $output->writeln("processing city: " . $cityName);
         $city = $this->cityRepository->findByName($cityName);
@@ -73,7 +73,7 @@ class UpdateCommand extends Command
         $output->writeln("");
     }
 
-    protected function prepareDistricts(iterable $districts, City $city): iterable
+    private function prepareDistricts(iterable $districts, City $city): iterable
     {
         foreach ($districts as $district) {
             $city->addDistrict($district);
