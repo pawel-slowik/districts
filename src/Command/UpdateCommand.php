@@ -61,8 +61,7 @@ final class UpdateCommand extends Command
             if (!$this->cityFilterMatches($cityName, $inputCityNames)) {
                 continue;
             }
-            $districts = $scraper->listDistricts();
-            $this->updateCity($cityName, $districts, $output);
+            $this->updateCity($cityName, $scraper->listDistricts(), $output);
         }
     }
 
