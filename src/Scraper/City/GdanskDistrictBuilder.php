@@ -10,11 +10,11 @@ use Scraper\RuntimeException;
 use Scraper\DistrictBuilderBase;
 use Validator\Validator;
 
-class GdanskDistrictBuilder extends DistrictBuilderBase
+final class GdanskDistrictBuilder extends DistrictBuilderBase
 {
-    protected $htmlFinder;
+    private $htmlFinder;
 
-    protected $validator;
+    private $validator;
 
     public function __construct(HtmlFinder $htmlFinder, Validator $validator)
     {
@@ -51,7 +51,7 @@ class GdanskDistrictBuilder extends DistrictBuilderBase
         );
     }
 
-    protected function findSingleItem(array $texts, callable $callback)
+    private function findSingleItem(array $texts, callable $callback)
     {
         $values = $this->filterNulls(array_map($callback, $texts));
         if (count($values) !== 1) {
@@ -60,7 +60,7 @@ class GdanskDistrictBuilder extends DistrictBuilderBase
         return array_values($values)[0];
     }
 
-    protected function extractArea(string $text): ?float
+    private function extractArea(string $text): ?float
     {
         $regexp = "/Powierzchnia:[[:space:]]+([0-9]+(,[0-9]+){0,1})[[:space:]]+km/";
         $matches = [];
@@ -71,7 +71,7 @@ class GdanskDistrictBuilder extends DistrictBuilderBase
         return floatval($area);
     }
 
-    protected function extractPopulation(string $text): ?int
+    private function extractPopulation(string $text): ?int
     {
         $regexp = "/Liczba[[:space:]]ludno.+ci:[[:space:]]+([0-9]+)[[:space:]]/";
         $matches = [];
@@ -81,7 +81,7 @@ class GdanskDistrictBuilder extends DistrictBuilderBase
         return intval($matches[1]);
     }
 
-    protected function filterNulls(array $values): array
+    private function filterNulls(array $values): array
     {
         return array_filter(
             $values,

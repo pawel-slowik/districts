@@ -11,14 +11,14 @@ use Scraper\RuntimeException;
 use Validator\DistrictValidator;
 use Laminas\Uri\Uri;
 
-class KrakowScraper implements DistrictScraper
+final class KrakowScraper implements DistrictScraper
 {
-    protected $htmlFetcher;
+    private $htmlFetcher;
 
-    protected $htmlFinder;
+    private $htmlFinder;
 
     // not injectable
-    protected $districtBuilder;
+    private $districtBuilder;
 
     public function __construct(HtmlFetcher $htmlFetcher, HtmlFinder $htmlFinder)
     {
@@ -40,14 +40,14 @@ class KrakowScraper implements DistrictScraper
         }
     }
 
-    protected function listDistrictUrls(): iterable
+    private function listDistrictUrls(): iterable
     {
         $startUrl = "http://appimeri.um.krakow.pl/app-pub-dzl/pages/DzlViewAll.jsf?a=1&lay=normal&fo=0";
         $startHtml = $this->htmlFetcher->fetchHtml($startUrl);
         return $this->extractDistrictUrls($startHtml, $startUrl);
     }
 
-    protected function extractDistrictUrls(string $html, string $baseUrl): iterable
+    private function extractDistrictUrls(string $html, string $baseUrl): iterable
     {
         $xpath = "//map[@name='wyb']/area[@href]";
         $nodes = $this->htmlFinder->findNodes($html, $xpath);

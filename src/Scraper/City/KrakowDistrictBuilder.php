@@ -10,11 +10,11 @@ use Scraper\RuntimeException;
 use Scraper\DistrictBuilderBase;
 use Validator\Validator;
 
-class KrakowDistrictBuilder extends DistrictBuilderBase
+final class KrakowDistrictBuilder extends DistrictBuilderBase
 {
-    protected $htmlFinder;
+    private $htmlFinder;
 
-    protected $validator;
+    private $validator;
 
     public function __construct(HtmlFinder $htmlFinder, Validator $validator)
     {
@@ -49,7 +49,7 @@ class KrakowDistrictBuilder extends DistrictBuilderBase
         );
     }
 
-    protected function getSingleItem(string $html, string $xpath, callable $callback)
+    private function getSingleItem(string $html, string $xpath, callable $callback)
     {
         $nodes = $this->htmlFinder->findNodes($html, $xpath);
         if (count($nodes) !== 1) {
@@ -62,7 +62,7 @@ class KrakowDistrictBuilder extends DistrictBuilderBase
         return $value;
     }
 
-    protected function extractName(string $text): ?string
+    private function extractName(string $text): ?string
     {
         $text = trim($text);
         $regexp = "/^Dzielnica[[:space:]]+[IVXLCDM]+[[:space:]]+(.*)$/u";
@@ -73,7 +73,7 @@ class KrakowDistrictBuilder extends DistrictBuilderBase
         return $matches[1];
     }
 
-    protected function extractArea(string $text): ?float
+    private function extractArea(string $text): ?float
     {
         $text = trim($text);
         $regexp = "/([0-9]+(,[0-9]+){0,1})[[:space:]]+ha/";
@@ -87,7 +87,7 @@ class KrakowDistrictBuilder extends DistrictBuilderBase
         return $area;
     }
 
-    protected function extractPopulation(string $text): ?int
+    private function extractPopulation(string $text): ?int
     {
         if (!preg_match("/^[0-9]+$/", $text)) {
             return null;
