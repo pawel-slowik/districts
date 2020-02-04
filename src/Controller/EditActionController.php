@@ -7,6 +7,7 @@ namespace Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
+use Slim\Exception\HttpNotFoundException;
 use Entity\District;
 use Validator\DistrictValidator;
 
@@ -16,7 +17,7 @@ final class EditActionController extends BaseCrudController
     {
         $district = $this->districtRepository->get(intval($args["id"]));
         if (!$district) {
-            throw new NotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
         $validator = new DistrictValidator();
         $parsed = $request->getParsedBody();

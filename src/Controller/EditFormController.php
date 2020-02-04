@@ -7,6 +7,8 @@ namespace Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
+use Slim\Exception\HttpNotFoundException;
+
 final class EditFormController extends BaseCrudController
 {
     public function __invoke(Request $request, Response $response, array $args): Response
@@ -16,7 +18,7 @@ final class EditFormController extends BaseCrudController
             $district = $this->districtRepository->get(intval($args["id"]));
         }
         if (!$district) {
-            throw new NotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
         $templateData = [
             "title" => "Edit a district",
