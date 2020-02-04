@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 final class EditFormController extends BaseCrudController
 {
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $district = $this->session["form.edit.values"];
         if (!$district) {

@@ -13,7 +13,7 @@ use Validator\NewDistrictValidator;
 final class AddActionController extends BaseCrudController
 {
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $validCityIds = array_map(
             function ($city) {
@@ -41,7 +41,7 @@ final class AddActionController extends BaseCrudController
         return $this->redirectToListResponse($request, $response);
     }
 
-    private function redirectToAddResponse(Request $request, Response $response)
+    private function redirectToAddResponse(Request $request, Response $response): Response
     {
         $url = $this->routeParser->fullUrlFor($request->getUri(), "add");
         return $response->withHeader("Location", $url)->withStatus(302);

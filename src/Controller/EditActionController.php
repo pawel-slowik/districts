@@ -12,7 +12,7 @@ use Validator\DistrictValidator;
 
 final class EditActionController extends BaseCrudController
 {
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $district = $this->districtRepository->get(intval($args["id"]));
         if (!$district) {
@@ -38,7 +38,7 @@ final class EditActionController extends BaseCrudController
         return $this->redirectToListResponse($request, $response);
     }
 
-    private function redirectToEditResponse(Request $request, Response $response, District $district)
+    private function redirectToEditResponse(Request $request, Response $response, District $district): Response
     {
         $url = $this->routeParser->fullUrlFor($request->getUri(), "edit", ["id" => $district->getId()]);
         return $response->withHeader("Location", $url)->withStatus(302);

@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 final class AddFormController extends BaseCrudController
 {
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $cities = $this->cityRepository->list();
         $templateData = [

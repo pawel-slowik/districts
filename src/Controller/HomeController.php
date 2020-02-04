@@ -19,7 +19,7 @@ final class HomeController
     }
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $url = $this->routeParser->fullUrlFor($request->getUri(), "list");
         return $response->withHeader("Location", $url)->withStatus(302);

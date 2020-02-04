@@ -12,7 +12,7 @@ use Repository\DistrictRepository;
 final class ListController extends BaseCrudController
 {
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $orderColumn = $args["column"] ?? null;
         $orderDirection = $args["direction"] ?? null;
@@ -71,7 +71,7 @@ final class ListController extends BaseCrudController
         return $range;
     }
 
-    private function repositoryOrderBy(?string $orderColumn, ?string $orderDirection)
+    private function repositoryOrderBy(?string $orderColumn, ?string $orderDirection): int
     {
         $rules = [
             ["city", "asc", DistrictRepository::ORDER_CITY_ASC],

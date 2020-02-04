@@ -11,7 +11,7 @@ use Slim\Exception\NotFoundException;
 
 final class RemoveFormController extends BaseCrudController
 {
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $district = $this->districtRepository->get(intval($args["id"]));
         if (!$district) {

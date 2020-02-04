@@ -40,7 +40,7 @@ abstract class BaseCrudController
         $this->view = $view;
     }
 
-    protected function redirectToListResponse(Request $request, Response $response)
+    protected function redirectToListResponse(Request $request, Response $response): Response
     {
         $url = $this->routeParser->fullUrlFor($request->getUri(), "list");
         return $response->withHeader("Location", $url)->withStatus(302);
