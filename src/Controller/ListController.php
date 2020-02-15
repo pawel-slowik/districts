@@ -50,6 +50,9 @@ final class ListController
 
     private function repositoryFilter(?string $filterColumn, ?string $filterValue): array
     {
+        if (is_null($filterValue) || (strval($filterValue) === "")) {
+            return [DistrictRepository::FILTER_NONE, null];
+        }
         switch ($filterColumn) {
             case "city":
                 return [
