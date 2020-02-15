@@ -6,12 +6,36 @@ namespace Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Interfaces\RouteParserInterface;
+use SlimSession\Helper as Session;
 
 use Entity\District;
 use Validator\NewDistrictValidator;
+use Repository\DistrictRepository;
+use Repository\CityRepository;
 
-final class AddActionController extends BaseCrudController
+final class AddActionController
 {
+    private $cityRepository;
+
+    private $districtRepository;
+
+    private $session;
+
+    private $routeParser;
+
+    public function __construct(
+        CityRepository $cityRepository,
+        DistrictRepository $districtRepository,
+        Session $session,
+        RouteParserInterface $routeParser
+    ) {
+        $this->cityRepository = $cityRepository;
+        $this->districtRepository = $districtRepository;
+        $this->session = $session;
+        $this->routeParser = $routeParser;
+    }
+
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args): Response
     {
@@ -44,6 +68,12 @@ final class AddActionController extends BaseCrudController
     private function redirectToAddResponse(Request $request, Response $response): Response
     {
         $url = $this->routeParser->fullUrlFor($request->getUri(), "add");
+        return $response->withHeader("Location", $url)->withStatus(302);
+    }
+
+    private function redirectToListResponse(Request $request, Response $response): Response
+    {
+        $url = $this->routeParser->fullUrlFor($request->getUri(), "list");
         return $response->withHeader("Location", $url)->withStatus(302);
     }
 }

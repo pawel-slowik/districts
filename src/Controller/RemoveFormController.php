@@ -6,11 +6,25 @@ namespace Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-
 use Slim\Exception\HttpNotFoundException;
+use Slim\Views\Twig as View;
 
-final class RemoveFormController extends BaseCrudController
+use Repository\DistrictRepository;
+
+final class RemoveFormController
 {
+    private $districtRepository;
+
+    private $view;
+
+    public function __construct(
+        DistrictRepository $districtRepository,
+        View $view
+    ) {
+        $this->districtRepository = $districtRepository;
+        $this->view = $view;
+    }
+
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $district = $this->districtRepository->get(intval($args["id"]));

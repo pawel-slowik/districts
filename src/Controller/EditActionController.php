@@ -6,13 +6,32 @@ namespace Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-
 use Slim\Exception\HttpNotFoundException;
+use Slim\Interfaces\RouteParserInterface;
+use SlimSession\Helper as Session;
+
 use Entity\District;
 use Validator\DistrictValidator;
+use Repository\DistrictRepository;
 
-final class EditActionController extends BaseCrudController
+final class EditActionController
 {
+    private $districtRepository;
+
+    private $session;
+
+    private $routeParser;
+
+    public function __construct(
+        DistrictRepository $districtRepository,
+        Session $session,
+        RouteParserInterface $routeParser
+    ) {
+        $this->districtRepository = $districtRepository;
+        $this->session = $session;
+        $this->routeParser = $routeParser;
+    }
+
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $district = $this->districtRepository->get(intval($args["id"]));
@@ -42,6 +61,12 @@ final class EditActionController extends BaseCrudController
     private function redirectToEditResponse(Request $request, Response $response, District $district): Response
     {
         $url = $this->routeParser->fullUrlFor($request->getUri(), "edit", ["id" => $district->getId()]);
+        return $response->withHeader("Location", $url)->withStatus(302);
+    }
+
+    private function redirectToListResponse(Request $request, Response $response): Response
+    {
+        $url = $this->routeParser->fullUrlFor($request->getUri(), "list");
         return $response->withHeader("Location", $url)->withStatus(302);
     }
 }
