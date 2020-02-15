@@ -6,7 +6,6 @@ namespace Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Interfaces\RouteParserInterface;
 use SlimSession\Helper as Session;
 
 use Entity\District;
@@ -22,18 +21,18 @@ final class AddActionController
 
     private $session;
 
-    private $routeParser;
+    private $redirector;
 
     public function __construct(
         CityRepository $cityRepository,
         DistrictRepository $districtRepository,
         Session $session,
-        RouteParserInterface $routeParser
+        Redirector $redirector
     ) {
         $this->cityRepository = $cityRepository;
         $this->districtRepository = $districtRepository;
         $this->session = $session;
-        $this->routeParser = $routeParser;
+        $this->redirector = $redirector;
     }
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
@@ -67,13 +66,11 @@ final class AddActionController
 
     private function redirectToAddResponse(Request $request, Response $response): Response
     {
-        $url = $this->routeParser->fullUrlFor($request->getUri(), "add");
-        return $response->withHeader("Location", $url)->withStatus(302);
+        return $this->redirector->redirect($request, $response, "add");
     }
 
     private function redirectToListResponse(Request $request, Response $response): Response
     {
-        $url = $this->routeParser->fullUrlFor($request->getUri(), "list");
-        return $response->withHeader("Location", $url)->withStatus(302);
+        return $this->redirector->redirect($request, $response, "list");
     }
 }

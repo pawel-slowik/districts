@@ -7,7 +7,6 @@ namespace Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpNotFoundException;
-use Slim\Interfaces\RouteParserInterface;
 
 use Repository\DistrictRepository;
 
@@ -15,14 +14,14 @@ final class RemoveActionController
 {
     private $districtRepository;
 
-    private $routeParser;
+    private $redirector;
 
     public function __construct(
         DistrictRepository $districtRepository,
-        RouteParserInterface $routeParser
+        Redirector $redirector
     ) {
         $this->districtRepository = $districtRepository;
-        $this->routeParser = $routeParser;
+        $this->redirector = $redirector;
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response
@@ -46,7 +45,6 @@ final class RemoveActionController
 
     private function redirectToListResponse(Request $request, Response $response): Response
     {
-        $url = $this->routeParser->fullUrlFor($request->getUri(), "list");
-        return $response->withHeader("Location", $url)->withStatus(302);
+        return $this->redirector->redirect($request, $response, "list");
     }
 }

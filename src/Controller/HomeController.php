@@ -7,21 +7,18 @@ namespace Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-use Slim\Interfaces\RouteParserInterface;
-
 final class HomeController
 {
-    private $routeParser;
+    private $redirector;
 
-    public function __construct(RouteParserInterface $routeParser)
+    public function __construct(Redirector $redirector)
     {
-        $this->routeParser = $routeParser;
+        $this->redirector = $redirector;
     }
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $url = $this->routeParser->fullUrlFor($request->getUri(), "list");
-        return $response->withHeader("Location", $url)->withStatus(302);
+        return $this->redirector->redirect($request, $response, "list");
     }
 }
