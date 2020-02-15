@@ -9,7 +9,6 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpNotFoundException;
 use SlimSession\Helper as Session;
 
-use Entity\District;
 use Validator\DistrictValidator;
 use Repository\DistrictRepository;
 
@@ -44,7 +43,7 @@ final class EditActionController
             // TODO: flash error message
             $this->session["form.edit.values"] = $parsed;
             $this->session["form.edit.errors"] = array_fill_keys($validationResult->getErrors(), true);
-            return $this->redirectToEditResponse($request, $response, $district);
+            return $this->redirector->redirect($request, $response, "edit", ["id" => $district->getId()]);
         }
         $validated = $validationResult->getValidatedData();
         $district->setName($validated["name"]);
@@ -54,16 +53,6 @@ final class EditActionController
         // TODO: flash success message
         unset($this->session["form.edit.values"]);
         unset($this->session["form.edit.errors"]);
-        return $this->redirectToListResponse($request, $response);
-    }
-
-    private function redirectToEditResponse(Request $request, Response $response, District $district): Response
-    {
-        return $this->redirector->redirect($request, $response, "edit", ["id" => $district->getId()]);
-    }
-
-    private function redirectToListResponse(Request $request, Response $response): Response
-    {
         return $this->redirector->redirect($request, $response, "list");
     }
 }

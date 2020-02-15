@@ -51,7 +51,7 @@ final class AddActionController
             // TODO: flash error message
             $this->session["form.add.values"] = $parsed;
             $this->session["form.add.errors"] = array_fill_keys($validationResult->getErrors(), true);
-            return $this->redirectToAddResponse($request, $response);
+            return $this->redirector->redirect($request, $response, "add");
         }
         $validated = $validationResult->getValidatedData();
         $city = $this->cityRepository->get($validated["city"]);
@@ -61,16 +61,6 @@ final class AddActionController
         // TODO: flash success message
         unset($this->session["form.add.values"]);
         unset($this->session["form.add.errors"]);
-        return $this->redirectToListResponse($request, $response);
-    }
-
-    private function redirectToAddResponse(Request $request, Response $response): Response
-    {
-        return $this->redirector->redirect($request, $response, "add");
-    }
-
-    private function redirectToListResponse(Request $request, Response $response): Response
-    {
         return $this->redirector->redirect($request, $response, "list");
     }
 }

@@ -34,17 +34,12 @@ final class RemoveActionController
             $this->districtRepository->remove($district);
             // TODO: flash message
         }
-        return $this->redirectToListResponse($request, $response);
+        return $this->redirector->redirect($request, $response, "list");
     }
 
     private function isConfirmed(Request $request): bool
     {
         $parsed = $request->getParsedBody();
         return array_key_exists("confirm", $parsed);
-    }
-
-    private function redirectToListResponse(Request $request, Response $response): Response
-    {
-        return $this->redirector->redirect($request, $response, "list");
     }
 }
