@@ -88,7 +88,7 @@ class DistrictRepository
         $this->entityManager->flush();
     }
 
-    public function list($orderBy, $filterType = self::FILTER_NONE, $filterValue = null): array
+    public function list($orderBy, int $filterType = self::FILTER_NONE, $filterValue = null): array
     {
         $dqlOrderBy = $this->dqlOrderBy($orderBy);
         list($dqlWhere, $dqlParameters) = $this->dqlFilter($filterType, $filterValue);
@@ -115,7 +115,7 @@ class DistrictRepository
         return $this->orderDqlMap[$orderBy];
     }
 
-    protected function dqlFilter($filterType, $filterValue): array
+    protected function dqlFilter(int $filterType, $filterValue): array
     {
         switch ($filterType) {
             case self::FILTER_CITY:
@@ -152,7 +152,7 @@ class DistrictRepository
         return ["", []];
     }
 
-    protected function dqlLike($string): string
+    protected function dqlLike(string $string): string
     {
         // Doctrine will handle SQL injections, we just need to escape the LIKE syntax
         return "%" . addcslashes($string, "%_") . "%";
