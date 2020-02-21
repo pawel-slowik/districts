@@ -26,7 +26,7 @@ final class DistrictRepository
     public const ORDER_POPULATION_ASC = 7;
     public const ORDER_POPULATION_DESC = 8;
 
-    private $orderDqlMap = [
+    private const ORDER_DQL_MAP = [
         self::ORDER_DEFAULT => "c.name ASC, d.name ASC",
         self::ORDER_CITY_ASC => "c.name ASC",
         self::ORDER_CITY_DESC => "c.name DESC",
@@ -109,10 +109,10 @@ final class DistrictRepository
 
     private function dqlOrderBy($orderBy): string
     {
-        if (!is_scalar($orderBy) || !array_key_exists($orderBy, $this->orderDqlMap)) {
+        if (!is_scalar($orderBy) || !array_key_exists($orderBy, self::ORDER_DQL_MAP)) {
             $orderBy = self::ORDER_DEFAULT;
         }
-        return $this->orderDqlMap[$orderBy];
+        return self::ORDER_DQL_MAP[$orderBy];
     }
 
     private function dqlFilter(int $filterType, $filterValue): array
