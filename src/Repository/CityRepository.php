@@ -8,11 +8,11 @@ use Doctrine\ORM\EntityManager;
 
 use Entity\City;
 
-class CityRepository
+final class CityRepository
 {
-    protected $entityManager;
+    private $entityManager;
 
-    protected $ormRepository;
+    private $ormRepository;
 
     public function __construct(EntityManager $entityManager)
     {
