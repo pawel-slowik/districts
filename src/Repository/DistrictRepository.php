@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManager;
 
 use Entity\District;
 
-class DistrictRepository
+final class DistrictRepository
 {
     public const FILTER_NONE = 0;
     public const FILTER_CITY = 1;
@@ -26,7 +26,7 @@ class DistrictRepository
     public const ORDER_POPULATION_ASC = 7;
     public const ORDER_POPULATION_DESC = 8;
 
-    protected $orderDqlMap = [
+    private $orderDqlMap = [
         self::ORDER_DEFAULT => "c.name ASC, d.name ASC",
         self::ORDER_CITY_ASC => "c.name ASC",
         self::ORDER_CITY_DESC => "c.name DESC",
@@ -38,7 +38,7 @@ class DistrictRepository
         self::ORDER_POPULATION_DESC => "d.population DESC",
     ];
 
-    protected $entityManager;
+    private $entityManager;
 
     public function __construct(EntityManager $entityManager)
     {
@@ -107,7 +107,7 @@ class DistrictRepository
         return $districts;
     }
 
-    protected function dqlOrderBy($orderBy): string
+    private function dqlOrderBy($orderBy): string
     {
         if (!is_scalar($orderBy) || !array_key_exists($orderBy, $this->orderDqlMap)) {
             $orderBy = self::ORDER_DEFAULT;
@@ -115,7 +115,7 @@ class DistrictRepository
         return $this->orderDqlMap[$orderBy];
     }
 
-    protected function dqlFilter(int $filterType, $filterValue): array
+    private function dqlFilter(int $filterType, $filterValue): array
     {
         switch ($filterType) {
             case self::FILTER_CITY:
@@ -152,7 +152,7 @@ class DistrictRepository
         return ["", []];
     }
 
-    protected function dqlLike(string $string): string
+    private function dqlLike(string $string): string
     {
         // Doctrine will handle SQL injections, we just need to escape the LIKE syntax
         return "%" . addcslashes($string, "%_") . "%";
