@@ -88,7 +88,7 @@ final class DistrictRepository
         $this->entityManager->flush();
     }
 
-    public function list($orderBy, int $filterType = self::FILTER_NONE, $filterValue = null): array
+    public function list(int $orderBy, int $filterType = self::FILTER_NONE, $filterValue = null): array
     {
         $dqlOrderBy = $this->dqlOrderBy($orderBy);
         list($dqlWhere, $dqlParameters) = $this->dqlFilter($filterType, $filterValue);
@@ -107,9 +107,9 @@ final class DistrictRepository
         return $districts;
     }
 
-    private function dqlOrderBy($orderBy): string
+    private function dqlOrderBy(int $orderBy): string
     {
-        if (!is_scalar($orderBy) || !array_key_exists($orderBy, self::ORDER_DQL_MAP)) {
+        if (!array_key_exists($orderBy, self::ORDER_DQL_MAP)) {
             $orderBy = self::ORDER_DEFAULT;
         }
         return self::ORDER_DQL_MAP[$orderBy];
