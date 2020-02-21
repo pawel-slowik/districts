@@ -12,27 +12,24 @@ final class CityRepository
 {
     private $entityManager;
 
-    private $ormRepository;
-
     public function __construct(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
-        $this->ormRepository = $entityManager->getRepository(City::class);
     }
 
     public function get(int $id): ?City
     {
-        return $this->ormRepository->find($id);
+        return $this->entityManager->getRepository(City::class)->find($id);
     }
 
     public function findByName(string $name): ?City
     {
-        return $this->ormRepository->findOneBy(["name" => $name]);
+        return $this->entityManager->getRepository(City::class)->findOneBy(["name" => $name]);
     }
 
     public function list(): array
     {
-        return $this->ormRepository->findAll();
+        return $this->entityManager->getRepository(City::class)->findAll();
     }
 
     public function add(City $city): void
