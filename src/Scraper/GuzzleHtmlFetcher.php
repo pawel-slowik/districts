@@ -8,7 +8,7 @@ use GuzzleHttp\Client as HttpClient;
 
 class GuzzleHtmlFetcher implements HtmlFetcher
 {
-    protected $httpClient;
+    private $httpClient;
 
     public function __construct()
     {
