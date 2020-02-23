@@ -6,7 +6,7 @@ namespace Validator;
 
 class NewDistrictValidator extends DistrictValidator implements Validator
 {
-    protected $validCityIds;
+    private $validCityIds;
 
     public function __construct(array $validCityIds)
     {
