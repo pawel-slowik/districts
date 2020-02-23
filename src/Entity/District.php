@@ -21,27 +21,27 @@ class District
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string")
      */
-    protected $name;
+    private $name;
 
     /**
      * @ORM\Column(type="float")
      */
-    protected $area;
+    private $area;
 
     /**
      * @ORM\Column(type="integer")
      */
-    protected $population;
+    private $population;
 
     /**
      * @ORM\ManyToOne(targetEntity="City", inversedBy="districts")
      */
-    protected $city;
+    private $city;
 
     public function __construct(string $name, float $area, int $population)
     {
