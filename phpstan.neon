@@ -1,3 +1,5 @@
 parameters:
     inferPrivatePropertyTypeFromConstructor: true
     checkMissingIterableValueType: false
+includes:
+    - vendor/phpstan/phpstan-doctrine/extension.neon
