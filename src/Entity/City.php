@@ -22,17 +22,17 @@ class City
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string")
      */
-    protected $name;
+    private $name;
 
     /**
      * @ORM\OneToMany(targetEntity="District", mappedBy="city")
      */
-    protected $districts;
+    private $districts;
 
     public function __construct(string $name)
     {
