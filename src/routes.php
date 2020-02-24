@@ -3,14 +3,16 @@
 declare(strict_types=1);
 
 use Slim\App;
-use Controller\HomeController;
-use Controller\ListController;
-use Controller\AddFormController;
-use Controller\AddActionController;
-use Controller\EditFormController;
-use Controller\EditActionController;
-use Controller\RemoveFormController;
-use Controller\RemoveActionController;
+use Controller\{
+    HomeController,
+    ListController,
+    AddFormController,
+    AddActionController,
+    EditFormController,
+    EditActionController,
+    RemoveFormController,
+    RemoveActionController,
+};
 
 return function (App $app): void {
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter

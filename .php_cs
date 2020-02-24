@@ -154,5 +154,6 @@ return \PhpCsFixer\Config::create()
         'visibility_required' => true,
         'void_return' => true, // @PHP71Migration:risky
         'whitespace_after_comma_in_array' => true, // @Symfony
+        'single_import_per_statement' => false,
     ])
     ->setFinder($finder);
