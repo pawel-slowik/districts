@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
+use DI\Container;
 use Slim\App;
 use Slim\Views\Twig;
 use Slim\Interfaces\RouteParserInterface;
 
 use Doctrine\ORM\EntityManager;
 
-return function (App $app): void {
+return function (Container $container, App $app): void {
     $dependencies = [
 
         // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
@@ -35,6 +36,6 @@ return function (App $app): void {
     ];
 
     foreach ($dependencies as $dependency => $factory) {
-        $app->getContainer()->set($dependency, $factory);
+        $container->set($dependency, $factory);
     }
 };
