@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Scraper;
+namespace Test\Scraper;
 
 use Entity\District;
+use Scraper\HtmlFinder;
+use Scraper\RuntimeException;
 use Scraper\City\GdanskDistrictBuilder;
 use Validator\DistrictValidator;
 

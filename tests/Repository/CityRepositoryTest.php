@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Repository;
+namespace Test\Repository;
 
 use Entity\City;
 use Repository\CityRepository;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Repository;
+namespace Test\Repository;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;

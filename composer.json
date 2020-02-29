@@ -33,7 +33,7 @@
         "phpstan/phpstan-doctrine": "^0.12.9"
     },
     "autoload-dev": {
-        "psr-4": {"": "./tests/"}
+        "psr-4": {"Test\\": "./tests/"}
     },
     "scripts": {
         "cs": [

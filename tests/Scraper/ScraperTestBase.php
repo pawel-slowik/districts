@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Scraper;
+namespace Test\Scraper;
 
 use PHPUnit\Framework\TestCase;
 
