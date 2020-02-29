@@ -8,6 +8,9 @@ use Entity\District;
 use Scraper\HtmlFinder;
 use Scraper\City\GdanskScraper;
 
+/**
+ * @covers \Scraper\City\GdanskScraper
+ */
 class GdanskScraperTest extends ScraperTestBase
 {
     protected $scraper;

@@ -10,6 +10,9 @@ use Scraper\RuntimeException;
 use Scraper\City\KrakowDistrictBuilder;
 use Validator\DistrictValidator;
 
+/**
+ * @covers \Scraper\City\KrakowDistrictBuilder
+ */
 class KrakowDistrictBuilderTest extends ScraperTestBase
 {
     protected $builder;
