@@ -2,7 +2,8 @@ Scrape city districts data and save it to a SQL database.
 
 Provide a simple web interface for editing scraped data.
 
-Note: this is a job interview task.
+Note: originally, this was a job interview task. Now it is a playground for
+trying out tools, frameworks, patterns etc.
 
 ## Installation
 
