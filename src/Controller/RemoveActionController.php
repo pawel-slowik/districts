@@ -8,31 +8,32 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpNotFoundException;
 
-use Repository\DistrictRepository;
+use Service\DistrictService;
+use Service\NotFoundException;
 
 final class RemoveActionController
 {
-    private $districtRepository;
+    private $districtService;
 
     private $redirector;
 
     public function __construct(
-        DistrictRepository $districtRepository,
+        DistrictService $districtService,
         Redirector $redirector
     ) {
-        $this->districtRepository = $districtRepository;
+        $this->districtService = $districtService;
         $this->redirector = $redirector;
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $district = $this->districtRepository->get(intval($args["id"]));
-        if (!$district) {
-            throw new HttpNotFoundException($request);
-        }
         if ($this->isConfirmed($request)) {
-            $this->districtRepository->remove($district);
-            // TODO: flash message
+            try {
+                $this->districtService->remove($args["id"]);
+                // TODO: flash message
+            } catch (NotFoundException $exception) {
+                throw new HttpNotFoundException($request);
+            }
         }
         return $this->redirector->redirect($request, $response, "list");
     }

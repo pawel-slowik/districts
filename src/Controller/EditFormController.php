@@ -10,22 +10,23 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Views\Twig as View;
 use SlimSession\Helper as Session;
 
-use Repository\DistrictRepository;
+use Service\DistrictService;
+use Service\NotFoundException;
 
 final class EditFormController
 {
-    private $districtRepository;
+    private $districtService;
 
     private $session;
 
     private $view;
 
     public function __construct(
-        DistrictRepository $districtRepository,
+        DistrictService $districtService,
         Session $session,
         View $view
     ) {
-        $this->districtRepository = $districtRepository;
+        $this->districtService = $districtService;
         $this->session = $session;
         $this->view = $view;
     }
@@ -34,10 +35,11 @@ final class EditFormController
     {
         $district = $this->session["form.edit.values"];
         if (!$district) {
-            $district = $this->districtRepository->get(intval($args["id"]));
-        }
-        if (!$district) {
-            throw new HttpNotFoundException($request);
+            try {
+                $district = $this->districtService->get($args["id"]);
+            } catch (NotFoundException $exception) {
+                throw new HttpNotFoundException($request);
+            }
         }
         $templateData = [
             "title" => "Edit a district",
