@@ -1,3 +1,11 @@
+[![Build Status][build-badge]][build-url]
+[![Coverage][coverage-badge]][coverage-url]
+
+[build-badge]: https://travis-ci.org/pawel-slowik/districts.svg?branch=master
+[build-url]: https://travis-ci.org/pawel-slowik/districts
+[coverage-badge]: https://codecov.io/gh/pawel-slowik/districts/branch/master/graph/badge.svg
+[coverage-url]: https://codecov.io/gh/pawel-slowik/districts
+
 Scrape city districts data and save it to a SQL database.
 
 Provide a simple web interface for editing scraped data.
