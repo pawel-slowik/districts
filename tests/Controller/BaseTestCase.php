@@ -39,7 +39,6 @@ abstract class BaseTestCase extends TestCase
     private function createApp(ContainerInterface $container): App
     {
         $app = new App(new Psr17Factory(), $container);
-        $app->add(new \Slim\Middleware\Session());
 
         $dependencies = require __DIR__ . "/../../src/dependencies.php";
         $dependencies($container, $app);
