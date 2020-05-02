@@ -11,9 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 
-use Entity\City;
-use Repository\CityRepository;
-use Repository\DistrictRepository;
+use Service\DistrictService;
 
 use Scraper\HtmlFinder;
 use Scraper\GuzzleHtmlFetcher;
@@ -22,19 +20,14 @@ use Scraper\City\KrakowScraper;
 
 final class UpdateCommand extends Command
 {
-    private $cityRepository;
-
-    private $districtRepository;
+    private $districtService;
 
     private $scrapers;
 
-    public function __construct(
-        CityRepository $cityRepository,
-        DistrictRepository $districtRepository
-    ) {
+    public function __construct(DistrictService $districtService)
+    {
         parent::__construct();
-        $this->cityRepository = $cityRepository;
-        $this->districtRepository = $districtRepository;
+        $this->districtService = $districtService;
         $finder = new HtmlFinder();
         $fetcher = new GuzzleHtmlFetcher();
         $this->scrapers = [
@@ -68,30 +61,15 @@ final class UpdateCommand extends Command
     private function updateCity(string $cityName, iterable $districts, OutputInterface $output): void
     {
         $output->writeln("processing city: " . $cityName);
-        $city = $this->cityRepository->findByName($cityName);
-        if ($city) {
-            $this->districtRepository->removeMultiple($city->listDistricts());
-        } else {
-            $city = new City($cityName);
-            $this->cityRepository->add($city);
-        }
         $progressBar = new ProgressBar($output);
         $progressBar->start();
-        $this->districtRepository->addMultiple(
-            $this->prepareDistricts($districts, $city),
-            new ProgressBarProgressReporter($progressBar)
+        $this->districtService->setDistrictsForCityName(
+            $cityName,
+            $districts,
+            new ProgressBarProgressReporter($progressBar),
         );
         $progressBar->finish();
         $output->writeln("");
-    }
-
-    private function prepareDistricts(iterable $districts, City $city): iterable
-    {
-        foreach ($districts as $district) {
-            $city->addDistrict($district);
-            $district->setCity($city);
-            yield $district;
-        }
     }
 
     private function cityFilterMatches(string $cityName, array $cityNameFilter): bool

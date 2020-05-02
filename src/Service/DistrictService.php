@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Service;
 
+use Entity\City;
 use Entity\District;
 use Repository\DistrictRepository;
+use Repository\ProgressReporter;
 use Validator\DistrictValidator;
 use Validator\NewDistrictValidator;
 
@@ -119,6 +121,21 @@ class DistrictService
         $this->districtRepository->update($district);
     }
 
+    public function setDistrictsForCityName(
+        string $cityName,
+        iterable $districts,
+        ?ProgressReporter $progressReporter = null
+    ): void {
+        $city = $this->cityRepository->findByName($cityName);
+        if ($city) {
+            $this->districtRepository->removeMultiple($city->listDistricts());
+        } else {
+            $city = new City($cityName);
+            $this->cityRepository->add($city);
+        }
+        $this->districtRepository->addMultiple($this->prepareDistricts($districts, $city), $progressReporter);
+    }
+
     public function remove(string $id): void
     {
         $this->districtRepository->remove($this->get($id));
@@ -136,5 +153,14 @@ class DistrictService
     public function listCities(): array
     {
         return $this->cityRepository->list();
+    }
+
+    private function prepareDistricts(iterable $districts, City $city): iterable
+    {
+        foreach ($districts as $district) {
+            $city->addDistrict($district);
+            $district->setCity($city);
+            yield $district;
+        }
     }
 }

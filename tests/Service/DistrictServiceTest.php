@@ -200,4 +200,37 @@ class DistrictServiceTest extends TestCase
         $this->expectException(NotFoundException::class);
         $this->districtService->update("999", "test", "1", "2");
     }
+
+    public function testSetDistrictsForCityName(): void
+    {
+        $this->districtService->setDistrictsForCityName("Bar", [new District("Hola", 1, 2)]);
+        $list = $this->districtService->listDistricts(
+            DistrictService::ORDER_DEFAULT,
+            DistrictService::FILTER_CITY,
+            "Bar",
+        );
+        $this->assertCount(1, $list);
+    }
+
+    public function testSetEmptyDistrictsForCityName(): void
+    {
+        $this->districtService->setDistrictsForCityName("Bar", []);
+        $list = $this->districtService->listDistricts(
+            DistrictService::ORDER_DEFAULT,
+            DistrictService::FILTER_CITY,
+            "Bar",
+        );
+        $this->assertEmpty($list);
+    }
+
+    public function testSetDistrictsForNonexistentCityName(): void
+    {
+        $this->districtService->setDistrictsForCityName("New City", [new District("Hola", 1, 2)]);
+        $list = $this->districtService->listDistricts(
+            DistrictService::ORDER_DEFAULT,
+            DistrictService::FILTER_CITY,
+            "New City",
+        );
+        $this->assertCount(1, $list);
+    }
 }
