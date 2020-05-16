@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Controller;
 
+use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Interfaces\RouteParserInterface;
@@ -24,6 +25,6 @@ class Redirector
         array $routeData = []
     ): Response {
         $url = $this->routeParser->fullUrlFor($request->getUri(), $routeName, $routeData);
-        return $response->withHeader("Location", $url)->withStatus(302);
+        return $response->withHeader("Location", $url)->withStatus(StatusCode::STATUS_FOUND);
     }
 }

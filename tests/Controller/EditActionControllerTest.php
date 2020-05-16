@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Test\Controller;
 
+use Fig\Http\Message\StatusCodeInterface as StatusCode;
+
 /**
  * @covers \Controller\EditActionController
  * @runTestsInSeparateProcesses
@@ -18,7 +20,7 @@ class EditActionControllerTest extends BaseTestCase
             "population" => "6789",
         ];
         $response = $this->runApp("POST", "/edit/1", $postData);
-        $this->assertSame(302, $response->getStatusCode());
+        $this->assertSame(StatusCode::STATUS_FOUND, $response->getStatusCode());
         $this->assertEmpty((string) $response->getBody());
         $this->assertTrue($response->hasHeader("location"));
         $this->assertStringEndsWith("/list", $response->getHeader("location")[0]);
@@ -32,7 +34,7 @@ class EditActionControllerTest extends BaseTestCase
             "population" => "",
         ];
         $response = $this->runApp("POST", "/edit/1", $postData);
-        $this->assertSame(302, $response->getStatusCode());
+        $this->assertSame(StatusCode::STATUS_FOUND, $response->getStatusCode());
         $this->assertEmpty((string) $response->getBody());
         $this->assertTrue($response->hasHeader("location"));
         $this->assertStringEndsWith("/edit/1", $response->getHeader("location")[0]);
@@ -46,6 +48,6 @@ class EditActionControllerTest extends BaseTestCase
             "population" => "6789",
         ];
         $response = $this->runApp("POST", "/edit/999", $postData);
-        $this->assertSame(404, $response->getStatusCode());
+        $this->assertSame(StatusCode::STATUS_NOT_FOUND, $response->getStatusCode());
     }
 }

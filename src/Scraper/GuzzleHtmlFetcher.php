@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Scraper;
 
+use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use GuzzleHttp\Client as HttpClient;
 
 class GuzzleHtmlFetcher implements HtmlFetcher
@@ -18,7 +19,7 @@ class GuzzleHtmlFetcher implements HtmlFetcher
     public function fetchHtml(string $url): string
     {
         $response = $this->httpClient->request("GET", $url);
-        if ($response->getStatusCode() !== 200) {
+        if ($response->getStatusCode() !== StatusCode::STATUS_OK) {
             throw new RuntimeException();
         }
         $contentType = $response->getHeader("content-type")[0];

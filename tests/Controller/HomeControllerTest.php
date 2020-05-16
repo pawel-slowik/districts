@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Test\Controller;
 
+use Fig\Http\Message\StatusCodeInterface as StatusCode;
+
 /**
  * @covers \Controller\HomeController
  * @runTestsInSeparateProcesses
@@ -13,7 +15,7 @@ class HomeControllerTest extends BaseTestCase
     public function testRedirect(): void
     {
         $response = $this->runApp("GET", "/");
-        $this->assertSame(302, $response->getStatusCode());
+        $this->assertSame(StatusCode::STATUS_FOUND, $response->getStatusCode());
         $this->assertEmpty((string) $response->getBody());
         $this->assertTrue($response->hasHeader("location"));
         $this->assertStringEndsWith("/list", $response->getHeader("location")[0]);
@@ -22,6 +24,6 @@ class HomeControllerTest extends BaseTestCase
     public function testPostNotAllowed(): void
     {
         $response = $this->runApp("POST", "/");
-        $this->assertSame(405, $response->getStatusCode());
+        $this->assertSame(StatusCode::STATUS_METHOD_NOT_ALLOWED, $response->getStatusCode());
     }
 }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Test\Controller;
 
+use Fig\Http\Message\StatusCodeInterface as StatusCode;
+
 /**
  * @covers \Controller\ListController
  * @runTestsInSeparateProcesses
@@ -16,7 +18,7 @@ class ListControllerTest extends BaseTestCase
     public function testList($url): void
     {
         $response = $this->runApp("GET", $url);
-        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame(StatusCode::STATUS_OK, $response->getStatusCode());
         $this->assertNotEmpty((string) $response->getBody());
     }
 
@@ -37,6 +39,6 @@ class ListControllerTest extends BaseTestCase
     public function testPostNotAllowed(): void
     {
         $response = $this->runApp("POST", "/list");
-        $this->assertSame(405, $response->getStatusCode());
+        $this->assertSame(StatusCode::STATUS_METHOD_NOT_ALLOWED, $response->getStatusCode());
     }
 }

@@ -20,7 +20,8 @@
         "bryanjhv/slim-session": "^4.0",
         "nyholm/psr7": "^1.2",
         "nyholm/psr7-server": "^0.4.1",
-        "php-di/php-di": "^6.0"
+        "php-di/php-di": "^6.0",
+        "fig/http-message-util": "^1.1"
     },
     "autoload": {
         "psr-4": {"": "./src/"}

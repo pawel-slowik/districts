@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Test\Controller;
 
+use Fig\Http\Message\StatusCodeInterface as StatusCode;
+
 /**
  * @covers \Controller\AddActionController
  * @runTestsInSeparateProcesses
@@ -19,7 +21,7 @@ class AddActionControllerTest extends BaseTestCase
             "city" => "3",
         ];
         $response = $this->runApp("POST", "/add", $postData);
-        $this->assertSame(302, $response->getStatusCode());
+        $this->assertSame(StatusCode::STATUS_FOUND, $response->getStatusCode());
         $this->assertEmpty((string) $response->getBody());
         $this->assertTrue($response->hasHeader("location"));
         $this->assertStringEndsWith("/list", $response->getHeader("location")[0]);
@@ -34,7 +36,7 @@ class AddActionControllerTest extends BaseTestCase
             "city" => "",
         ];
         $response = $this->runApp("POST", "/add", $postData);
-        $this->assertSame(302, $response->getStatusCode());
+        $this->assertSame(StatusCode::STATUS_FOUND, $response->getStatusCode());
         $this->assertEmpty((string) $response->getBody());
         $this->assertTrue($response->hasHeader("location"));
         $this->assertStringEndsWith("/add", $response->getHeader("location")[0]);
