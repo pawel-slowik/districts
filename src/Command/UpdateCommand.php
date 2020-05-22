@@ -45,13 +45,14 @@ final class UpdateCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): void
     {
-        $inputCityNames = $input->getArgument("city_names");
-        if (!$this->checkCityFilter($inputCityNames)) {
-            throw new InvalidArgumentException("unsupported city filter: " . var_export($inputCityNames, true));
+        try {
+            $cityFilter = new ScraperCityFilter($this->scrapers, $input->getArgument("city_names"));
+        } catch (\InvalidArgumentException $ex) {
+            throw new InvalidArgumentException($ex->getMessage(), $ex->getCode());
         }
         foreach ($this->scrapers as $scraper) {
             $cityName = $scraper->getCityName();
-            if (!$this->cityFilterMatches($cityName, $inputCityNames)) {
+            if (!$cityFilter->matches($cityName)) {
                 continue;
             }
             $this->updateCity($cityName, $scraper->listDistricts(), $output);
@@ -70,21 +71,5 @@ final class UpdateCommand extends Command
         );
         $progressBar->finish();
         $output->writeln("");
-    }
-
-    private function cityFilterMatches(string $cityName, array $cityNameFilter): bool
-    {
-        return empty($cityNameFilter) || in_array($cityName, $cityNameFilter, true);
-    }
-
-    private function checkCityFilter(array $cityNameFilter): bool
-    {
-        $supportedCityNames = array_map(
-            function ($scraper) {
-                return $scraper->getCityName();
-            },
-            $this->scrapers
-        );
-        return empty(array_diff($cityNameFilter, $supportedCityNames));
     }
 }
