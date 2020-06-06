@@ -15,7 +15,7 @@ class HttpMethodNotAllowedHandler
     public function __invoke(Request $request, \Throwable $exception, bool $displayErrorDetails): ResponseInterface
     {
         $response = new Response();
-        $response->getBody()->write(StatusCode::STATUS_METHOD_NOT_ALLOWED . ' NOT ALLOWED');
+        $response->getBody()->write(StatusCode::STATUS_METHOD_NOT_ALLOWED . ' METHOD NOT ALLOWED');
         return $response->withStatus(StatusCode::STATUS_METHOD_NOT_ALLOWED);
     }
 }
