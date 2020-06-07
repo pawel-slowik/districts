@@ -14,25 +14,33 @@ use PHPUnit\Framework\TestCase;
  */
 class ScraperCityFilterTest extends TestCase
 {
+    private $fooScraper;
+
+    private $barScraper;
+
     private $scrapers;
 
     protected function setUp(): void
     {
-        $scraper = $this->createMock(DistrictScraper::class);
-        $scraper->method("getCityName")->willReturn("foo");
-        $this->scrapers = [$scraper];
+        $this->fooScraper = $this->createMock(DistrictScraper::class);
+        $this->fooScraper->method("getCityName")->willReturn("foo");
+
+        $this->barScraper = $this->createMock(DistrictScraper::class);
+        $this->barScraper->method("getCityName")->willReturn("bar");
+
+        $this->scrapers = [$this->fooScraper, $this->barScraper];
     }
 
     public function testMatch(): void
     {
-        $filter = new ScraperCityFilter($this->scrapers, ["foo"]);
-        $this->assertTrue($filter->matches("foo"));
+        $filtered = (new ScraperCityFilter($this->scrapers, ["foo"]))->filter($this->scrapers);
+        $this->assertContains($this->fooScraper, $filtered);
     }
 
     public function testNoMatch(): void
     {
-        $filter = new ScraperCityFilter($this->scrapers, ["foo"]);
-        $this->assertFalse($filter->matches("bar"));
+        $filtered = (new ScraperCityFilter($this->scrapers, ["foo"]))->filter($this->scrapers);
+        $this->assertNotContains($this->barScraper, $filtered);
     }
 
     public function testInvalid(): void

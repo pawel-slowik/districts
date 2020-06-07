@@ -50,10 +50,7 @@ final class UpdateCommand extends Command
         } catch (\InvalidArgumentException $ex) {
             throw new InvalidArgumentException($ex->getMessage(), $ex->getCode());
         }
-        foreach ($this->scrapers as $scraper) {
-            if (!$cityFilter->matches($scraper->getCityName())) {
-                continue;
-            }
+        foreach ($cityFilter->filter($this->scrapers) as $scraper) {
             $this->updateCity($scraper->getCityName(), $scraper->listDistricts(), $output);
         }
     }

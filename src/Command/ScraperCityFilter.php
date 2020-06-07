@@ -19,7 +19,16 @@ class ScraperCityFilter
         $this->names = $names;
     }
 
-    public function matches(string $name): bool
+    public function filter(iterable $scrapers): iterable
+    {
+        foreach ($scrapers as $scraper) {
+            if ($this->matches($scraper->getCityName())) {
+                yield $scraper;
+            }
+        }
+    }
+
+    private function matches(string $name): bool
     {
         return empty($this->names) || in_array($name, $this->names, true);
     }
