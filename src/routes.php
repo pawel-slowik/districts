@@ -15,7 +15,6 @@ use Controller\{
 };
 
 return function (App $app): void {
-    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     $app->get("/", HomeController::class);
     $app->get("/list[/order/{column}/{direction}]", ListController::class)->setName("list");
     $app->get("/add", AddFormController::class)->setName("add");
