@@ -183,9 +183,6 @@ class NewDistrictValidatorTest extends TestCase
         $input["city"] = null;
         yield [$input];
 
-        $input["city"] = "2";
-        yield [$input];
-
         $input["city"] = 2;
         yield [$input];
 
