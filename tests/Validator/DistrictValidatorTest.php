@@ -73,6 +73,13 @@ class DistrictValidatorTest extends TestCase
         return [
             [
                 [
+                    "name" => null,
+                    "area" => 123,
+                    "population" => 456,
+                ],
+            ],
+            [
+                [
                     "name" => "",
                     "area" => 123,
                     "population" => 456,
@@ -101,6 +108,13 @@ class DistrictValidatorTest extends TestCase
     public function invalidAreaDataProvider(): array
     {
         return [
+            [
+                [
+                    "name" => "test",
+                    "area" => null,
+                    "population" => 456,
+                ],
+            ],
             [
                 [
                     "name" => "test",
@@ -152,6 +166,13 @@ class DistrictValidatorTest extends TestCase
     public function invalidPopulationDataProvider(): array
     {
         return [
+            [
+                [
+                    "name" => "test",
+                    "area" => 123,
+                    "population" => null,
+                ],
+            ],
             [
                 [
                     "name" => "test",
