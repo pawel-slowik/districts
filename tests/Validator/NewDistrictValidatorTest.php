@@ -19,13 +19,6 @@ class NewDistrictValidatorTest extends TestCase
         $this->newDistrictValidator = new NewDistrictValidator([1, 3]);
     }
 
-    public function testExceptionOnReadingInvalidData(): void
-    {
-        $result = $this->newDistrictValidator->validate([]);
-        $this->expectException(\LogicException::class);
-        $result->getValidatedData();
-    }
-
     /**
      * @dataProvider validDataProvider
      */
@@ -34,7 +27,6 @@ class NewDistrictValidatorTest extends TestCase
         $result = $this->newDistrictValidator->validate($input);
         $this->assertTrue($result->isOk());
         $this->assertEmpty($result->getErrors());
-        $this->assertNotEmpty($result->getValidatedData());
     }
 
     public function validDataProvider(): array
@@ -43,25 +35,9 @@ class NewDistrictValidatorTest extends TestCase
             [
                 [
                     "name" => "test",
-                    "area" => "123",
-                    "population" => "456",
-                    "city" => "1",
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
                     "area" => 123,
                     "population" => 456,
-                    "city" => "3",
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => "123.4",
-                    "population" => "567",
-                    "city" => 1,
+                    "city" => 3,
                 ],
             ],
             [
@@ -77,7 +53,7 @@ class NewDistrictValidatorTest extends TestCase
                     "name" => "test",
                     "area" => 0.0001,
                     "population" => 1,
-                    "city" => "1",
+                    "city" => 1,
                 ],
             ],
         ];
@@ -100,16 +76,16 @@ class NewDistrictValidatorTest extends TestCase
             [
                 [
                     "name" => "",
-                    "area" => "123",
-                    "population" => "456",
-                    "city" => "1",
+                    "area" => 123,
+                    "population" => 456,
+                    "city" => 1,
                 ],
             ],
             [
                 [
-                    "area" => "123",
-                    "population" => "456",
-                    "city" => "1",
+                    "area" => 123,
+                    "population" => 456,
+                    "city" => 1,
                 ],
             ],
         ];
@@ -133,39 +109,39 @@ class NewDistrictValidatorTest extends TestCase
                 [
                     "name" => "test",
                     "area" => "",
-                    "population" => "456",
-                    "city" => "1",
+                    "population" => 456,
+                    "city" => 1,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "0",
-                    "population" => "456",
-                    "city" => "1",
+                    "area" => 0,
+                    "population" => 456,
+                    "city" => 1,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "-1",
-                    "population" => "456",
-                    "city" => "1",
+                    "area" => -1,
+                    "population" => 456,
+                    "city" => 1,
                 ],
             ],
             [
                 [
                     "name" => "test",
                     "area" => "foo",
-                    "population" => "456",
-                    "city" => "1",
+                    "population" => 456,
+                    "city" => 1,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "population" => "456",
-                    "city" => "1",
+                    "population" => 456,
+                    "city" => 1,
                 ],
             ],
         ];
@@ -188,48 +164,48 @@ class NewDistrictValidatorTest extends TestCase
             [
                 [
                     "name" => "test",
-                    "area" => "123",
+                    "area" => 123,
                     "population" => "",
-                    "city" => "1",
+                    "city" => 1,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "123",
-                    "population" => "0",
-                    "city" => "1",
+                    "area" => 123,
+                    "population" => 0,
+                    "city" => 1,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "123",
-                    "population" => "-1",
-                    "city" => "1",
+                    "area" => 123,
+                    "population" => -1,
+                    "city" => 1,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "123",
-                    "population" => "0.1",
-                    "city" => "1",
+                    "area" => 123,
+                    "population" => 0.1,
+                    "city" => 1,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "123",
+                    "area" => 123,
                     "population" => "bar",
-                    "city" => "1",
+                    "city" => 1,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "123",
-                    "city" => "1",
+                    "area" => 123,
+                    "city" => 1,
                 ],
             ],
         ];
@@ -252,26 +228,26 @@ class NewDistrictValidatorTest extends TestCase
             [
                 [
                     "name" => "test",
-                    "area" => "123",
-                    "population" => "456",
+                    "area" => 123,
+                    "population" => 456,
                     "city" => "2",
                 ],
                 [
                     "name" => "test",
-                    "area" => "123",
-                    "population" => "456",
+                    "area" => 123,
+                    "population" => 456,
                     "city" => 2,
                 ],
                 [
                     "name" => "test",
-                    "area" => "123",
-                    "population" => "456",
+                    "area" => 123,
+                    "population" => 456,
                     "city" => "foo",
                 ],
                 [
                     "name" => "test",
-                    "area" => "123",
-                    "population" => "456",
+                    "area" => 123,
+                    "population" => 456,
                 ],
             ],
         ];

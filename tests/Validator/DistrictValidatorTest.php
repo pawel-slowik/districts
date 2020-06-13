@@ -20,13 +20,6 @@ class DistrictValidatorTest extends TestCase
         $this->districtValidator = new DistrictValidator();
     }
 
-    public function testExceptionOnReadingInvalidData(): void
-    {
-        $result = $this->districtValidator->validate([]);
-        $this->expectException(\LogicException::class);
-        $result->getValidatedData();
-    }
-
     /**
      * @dataProvider validDataProvider
      */
@@ -35,7 +28,6 @@ class DistrictValidatorTest extends TestCase
         $result = $this->districtValidator->validate($input);
         $this->assertTrue($result->isOk());
         $this->assertEmpty($result->getErrors());
-        $this->assertNotEmpty($result->getValidatedData());
     }
 
     public function validDataProvider(): array
@@ -44,22 +36,8 @@ class DistrictValidatorTest extends TestCase
             [
                 [
                     "name" => "test",
-                    "area" => "123",
-                    "population" => "456",
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
                     "area" => 123,
                     "population" => 456,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => "123.4",
-                    "population" => "567",
                 ],
             ],
             [
@@ -96,14 +74,14 @@ class DistrictValidatorTest extends TestCase
             [
                 [
                     "name" => "",
-                    "area" => "123",
-                    "population" => "456",
+                    "area" => 123,
+                    "population" => 456,
                 ],
             ],
             [
                 [
-                    "area" => "123",
-                    "population" => "456",
+                    "area" => 123,
+                    "population" => 456,
                 ],
             ],
         ];
@@ -127,34 +105,34 @@ class DistrictValidatorTest extends TestCase
                 [
                     "name" => "test",
                     "area" => "",
-                    "population" => "456",
+                    "population" => 456,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "0",
-                    "population" => "456",
+                    "area" => 0,
+                    "population" => 456,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "-1",
-                    "population" => "456",
+                    "area" => -1,
+                    "population" => 456,
                 ],
             ],
             [
                 [
                     "name" => "test",
                     "area" => "foo",
-                    "population" => "456",
+                    "population" => 456,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "population" => "456",
+                    "population" => 456,
                 ],
             ],
         ];
@@ -177,42 +155,42 @@ class DistrictValidatorTest extends TestCase
             [
                 [
                     "name" => "test",
-                    "area" => "123",
+                    "area" => 123,
                     "population" => "",
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "123",
-                    "population" => "0",
+                    "area" => 123,
+                    "population" => 0,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "123",
-                    "population" => "-1",
+                    "area" => 123,
+                    "population" => -1,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "123",
-                    "population" => "0.1",
+                    "area" => 123,
+                    "population" => 0.1,
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "123",
+                    "area" => 123,
                     "population" => "bar",
                 ],
             ],
             [
                 [
                     "name" => "test",
-                    "area" => "123",
+                    "area" => 123,
                 ],
             ],
         ];

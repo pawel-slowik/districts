@@ -26,11 +26,10 @@ class NewDistrictValidator extends DistrictValidator implements Validator
             $result->addError("city");
             return;
         }
-        $city = intval($data["city"]);
+        $city = $data["city"];
         if (!in_array($city, $this->validCityIds, true)) {
             $result->addError("city");
             return;
         }
-        $result->addValidatedData("city", $city);
     }
 }

@@ -17,7 +17,6 @@ abstract class DistrictBuilderBase
                 "validation failed: " . implode(", ", array_map("strval", $result->getErrors()))
             );
         }
-        $validated = $result->getValidatedData();
-        return new District($validated["name"], $validated["area"], $validated["population"]);
+        return new District($data["name"], $data["area"], $data["population"]);
     }
 }

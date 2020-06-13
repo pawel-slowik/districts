@@ -21,12 +21,15 @@ class DistrictValidator implements Validator
             $result->addError("name");
             return;
         }
-        $name = trim(strval($data["name"]));
+        $name = $data["name"];
+        if (!is_string($name)) {
+            $result->addError("name");
+            return;
+        }
         if ($name === "") {
             $result->addError("name");
             return;
         }
-        $result->addValidatedData("name", $name);
     }
 
     protected function validateArea(array $data, ValidationResult $result): void
@@ -35,12 +38,15 @@ class DistrictValidator implements Validator
             $result->addError("area");
             return;
         }
-        $area = floatval($data["area"]);
+        $area = $data["area"];
+        if (!is_int($area) && !is_float($area)) {
+            $result->addError("area");
+            return;
+        }
         if ($area <= 0) {
             $result->addError("area");
             return;
         }
-        $result->addValidatedData("area", $area);
     }
 
     protected function validatePopulation(array $data, ValidationResult $result): void
@@ -49,11 +55,14 @@ class DistrictValidator implements Validator
             $result->addError("population");
             return;
         }
-        $population = intval($data["population"]);
+        $population = $data["population"];
+        if (!is_int($population)) {
+            $result->addError("population");
+            return;
+        }
         if ($population <= 0) {
             $result->addError("population");
             return;
         }
-        $result->addValidatedData("population", $population);
     }
 }

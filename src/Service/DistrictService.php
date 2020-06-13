@@ -75,10 +75,10 @@ class DistrictService
     public function add(string $name, string $area, string $population, string $cityId): void
     {
         $input = [
-            "name" => $name,
-            "area" => $area,
-            "population" => $population,
-            "city" => $cityId,
+            "name" => trim($name),
+            "area" => floatval($area),
+            "population" => intval($population),
+            "city" => intval($cityId),
         ];
         $validCityIds = array_map(
             function ($city) {
@@ -91,13 +91,12 @@ class DistrictService
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }
-        $validated = $validationResult->getValidatedData();
         $district = new District(
-            $validated["name"],
-            $validated["area"],
-            $validated["population"]
+            $input["name"],
+            $input["area"],
+            $input["population"]
         );
-        $district->setCity($this->cityRepository->get($validated["city"]));
+        $district->setCity($this->cityRepository->get($input["city"]));
         $this->districtRepository->add($district);
     }
 
@@ -105,19 +104,18 @@ class DistrictService
     {
         $district = $this->get($id);
         $input = [
-            "name" => $name,
-            "area" => $area,
-            "population" => $population,
+            "name" => trim($name),
+            "area" => floatval($area),
+            "population" => intval($population),
         ];
         $validator = new DistrictValidator();
         $validationResult = $validator->validate($input);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }
-        $validated = $validationResult->getValidatedData();
-        $district->setName($validated["name"]);
-        $district->setArea($validated["area"]);
-        $district->setPopulation($validated["population"]);
+        $district->setName($input["name"]);
+        $district->setArea($input["area"]);
+        $district->setPopulation($input["population"]);
         $this->districtRepository->update($district);
     }
 
