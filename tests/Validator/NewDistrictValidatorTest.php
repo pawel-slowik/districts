@@ -232,18 +232,24 @@ class NewDistrictValidatorTest extends TestCase
                     "population" => 456,
                     "city" => "2",
                 ],
+            ],
+            [
                 [
                     "name" => "test",
                     "area" => 123,
                     "population" => 456,
                     "city" => 2,
                 ],
+            ],
+            [
                 [
                     "name" => "test",
                     "area" => 123,
                     "population" => 456,
                     "city" => "foo",
                 ],
+            ],
+            [
                 [
                     "name" => "test",
                     "area" => 123,
