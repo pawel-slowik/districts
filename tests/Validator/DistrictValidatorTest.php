@@ -30,31 +30,25 @@ class DistrictValidatorTest extends TestCase
         $this->assertEmpty($result->getErrors());
     }
 
-    public function validDataProvider(): array
+    public function validDataProvider(): iterable
     {
-        return [
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => 456,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123.4,
-                    "population" => 567,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 0.0001,
-                    "population" => 1,
-                ],
-            ],
-        ];
+        yield [[
+            "name" => "test",
+            "area" => 123,
+            "population" => 456,
+        ]];
+
+        yield [[
+            "name" => "test",
+            "area" => 123.4,
+            "population" => 567,
+        ]];
+
+        yield [[
+            "name" => "test",
+            "area" => 0.0001,
+            "population" => 1,
+        ]];
     }
 
     /**
@@ -68,30 +62,21 @@ class DistrictValidatorTest extends TestCase
         $this->assertCount(1, $result->getErrors());
     }
 
-    public function invalidNameDataProvider(): array
+    public function invalidNameDataProvider(): iterable
     {
-        return [
-            [
-                [
-                    "name" => null,
-                    "area" => 123,
-                    "population" => 456,
-                ],
-            ],
-            [
-                [
-                    "name" => "",
-                    "area" => 123,
-                    "population" => 456,
-                ],
-            ],
-            [
-                [
-                    "area" => 123,
-                    "population" => 456,
-                ],
-            ],
+        $input = [
+            "area" => 123,
+            "population" => 456,
         ];
+
+        $input["name"] = null;
+        yield [$input];
+
+        $input["name"] = "";
+        yield [$input];
+
+        unset($input["name"]);
+        yield [$input];
     }
 
     /**
@@ -105,51 +90,30 @@ class DistrictValidatorTest extends TestCase
         $this->assertCount(1, $result->getErrors());
     }
 
-    public function invalidAreaDataProvider(): array
+    public function invalidAreaDataProvider(): iterable
     {
-        return [
-            [
-                [
-                    "name" => "test",
-                    "area" => null,
-                    "population" => 456,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => "",
-                    "population" => 456,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 0,
-                    "population" => 456,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => -1,
-                    "population" => 456,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => "foo",
-                    "population" => 456,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "population" => 456,
-                ],
-            ],
+        $input = [
+            "name" => "test",
+            "population" => 456,
         ];
+
+        $input["area"] = null;
+        yield [$input];
+
+        $input["area"] = "";
+        yield [$input];
+
+        $input["area"] = 0;
+        yield [$input];
+
+        $input["area"] = -1;
+        yield [$input];
+
+        $input["area"] = "foo";
+        yield [$input];
+
+        unset($input["area"]);
+        yield [$input];
     }
 
     /**
@@ -163,57 +127,32 @@ class DistrictValidatorTest extends TestCase
         $this->assertCount(1, $result->getErrors());
     }
 
-    public function invalidPopulationDataProvider(): array
+    public function invalidPopulationDataProvider(): iterable
     {
-        return [
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => null,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => "",
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => 0,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => -1,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => 0.1,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => "bar",
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                ],
-            ],
+        $input = [
+            "name" => "test",
+            "area" => 123,
         ];
+
+        $input["population"] = null;
+        yield [$input];
+
+        $input["population"] = "";
+        yield [$input];
+
+        $input["population"] = 0;
+        yield [$input];
+
+        $input["population"] = -1;
+        yield [$input];
+
+        $input["population"] = 0.1;
+        yield [$input];
+
+        $input["population"] = "bar";
+        yield [$input];
+
+        unset($input["population"]);
+        yield [$input];
     }
 }

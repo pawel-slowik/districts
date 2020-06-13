@@ -29,34 +29,28 @@ class NewDistrictValidatorTest extends TestCase
         $this->assertEmpty($result->getErrors());
     }
 
-    public function validDataProvider(): array
+    public function validDataProvider(): iterable
     {
-        return [
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => 456,
-                    "city" => 3,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123.4,
-                    "population" => 567,
-                    "city" => 3,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 0.0001,
-                    "population" => 1,
-                    "city" => 1,
-                ],
-            ],
-        ];
+        yield [[
+            "name" => "test",
+            "area" => 123,
+            "population" => 456,
+            "city" => 3,
+        ]];
+
+        yield [[
+            "name" => "test",
+            "area" => 123.4,
+            "population" => 567,
+            "city" => 3,
+        ]];
+
+        yield [[
+            "name" => "test",
+            "area" => 0.0001,
+            "population" => 1,
+            "city" => 1,
+        ]];
     }
 
     /**
@@ -70,33 +64,22 @@ class NewDistrictValidatorTest extends TestCase
         $this->assertCount(1, $result->getErrors());
     }
 
-    public function invalidNameDataProvider(): array
+    public function invalidNameDataProvider(): iterable
     {
-        return [
-            [
-                [
-                    "name" => null,
-                    "area" => 123,
-                    "population" => 456,
-                    "city" => 1,
-                ],
-            ],
-            [
-                [
-                    "name" => "",
-                    "area" => 123,
-                    "population" => 456,
-                    "city" => 1,
-                ],
-            ],
-            [
-                [
-                    "area" => 123,
-                    "population" => 456,
-                    "city" => 1,
-                ],
-            ],
+        $input = [
+            "area" => 123,
+            "population" => 456,
+            "city" => 1,
         ];
+
+        $input["name"] = null;
+        yield [$input];
+
+        $input["name"] = "";
+        yield [$input];
+
+        unset($input["name"]);
+        yield [$input];
     }
 
     /**
@@ -110,57 +93,31 @@ class NewDistrictValidatorTest extends TestCase
         $this->assertCount(1, $result->getErrors());
     }
 
-    public function invalidAreaDataProvider(): array
+    public function invalidAreaDataProvider(): iterable
     {
-        return [
-            [
-                [
-                    "name" => "test",
-                    "area" => null,
-                    "population" => 456,
-                    "city" => 1,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => "",
-                    "population" => 456,
-                    "city" => 1,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 0,
-                    "population" => 456,
-                    "city" => 1,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => -1,
-                    "population" => 456,
-                    "city" => 1,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => "foo",
-                    "population" => 456,
-                    "city" => 1,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "population" => 456,
-                    "city" => 1,
-                ],
-            ],
+        $input = [
+            "name" => "test",
+            "population" => 456,
+            "city" => 1,
         ];
+
+        $input["area"] = null;
+        yield [$input];
+
+        $input["area"] = "";
+        yield [$input];
+
+        $input["area"] = 0;
+        yield [$input];
+
+        $input["area"] = -1;
+        yield [$input];
+
+        $input["area"] = "foo";
+        yield [$input];
+
+        unset($input["area"]);
+        yield [$input];
     }
 
     /**
@@ -174,65 +131,34 @@ class NewDistrictValidatorTest extends TestCase
         $this->assertCount(1, $result->getErrors());
     }
 
-    public function invalidPopulationDataProvider(): array
+    public function invalidPopulationDataProvider(): iterable
     {
-        return [
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => null,
-                    "city" => 1,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => "",
-                    "city" => 1,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => 0,
-                    "city" => 1,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => -1,
-                    "city" => 1,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => 0.1,
-                    "city" => 1,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => "bar",
-                    "city" => 1,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "city" => 1,
-                ],
-            ],
+        $input = [
+            "name" => "test",
+            "area" => 123,
+            "city" => 1,
         ];
+
+        $input["population"] = null;
+        yield [$input];
+
+        $input["population"] = "";
+        yield [$input];
+
+        $input["population"] = 0;
+        yield [$input];
+
+        $input["population"] = -1;
+        yield [$input];
+
+        $input["population"] = 0.1;
+        yield [$input];
+
+        $input["population"] = "bar";
+        yield [$input];
+
+        unset($input["population"]);
+        yield [$input];
     }
 
     /**
@@ -246,48 +172,27 @@ class NewDistrictValidatorTest extends TestCase
         $this->assertCount(1, $result->getErrors());
     }
 
-    public function invalidCityDataProvider(): array
+    public function invalidCityDataProvider(): iterable
     {
-        return [
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => 456,
-                    "city" => null,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => 456,
-                    "city" => "2",
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => 456,
-                    "city" => 2,
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => 456,
-                    "city" => "foo",
-                ],
-            ],
-            [
-                [
-                    "name" => "test",
-                    "area" => 123,
-                    "population" => 456,
-                ],
-            ],
+        $input = [
+            "name" => "test",
+            "area" => 123,
+            "population" => 456,
         ];
+
+        $input["city"] = null;
+        yield [$input];
+
+        $input["city"] = "2";
+        yield [$input];
+
+        $input["city"] = 2;
+        yield [$input];
+
+        $input["city"] = "foo";
+        yield [$input];
+
+        unset($input["city"]);
+        yield [$input];
     }
 }
