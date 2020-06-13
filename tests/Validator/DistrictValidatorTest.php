@@ -87,6 +87,7 @@ class DistrictValidatorTest extends TestCase
         $result = $this->districtValidator->validate($input);
         $this->assertFalse($result->isOk());
         $this->assertContains("name", $result->getErrors());
+        $this->assertCount(1, $result->getErrors());
     }
 
     public function invalidNameDataProvider(): array
@@ -116,6 +117,7 @@ class DistrictValidatorTest extends TestCase
         $result = $this->districtValidator->validate($input);
         $this->assertFalse($result->isOk());
         $this->assertContains("area", $result->getErrors());
+        $this->assertCount(1, $result->getErrors());
     }
 
     public function invalidAreaDataProvider(): array
@@ -166,6 +168,7 @@ class DistrictValidatorTest extends TestCase
         $result = $this->districtValidator->validate($input);
         $this->assertFalse($result->isOk());
         $this->assertContains("population", $result->getErrors());
+        $this->assertCount(1, $result->getErrors());
     }
 
     public function invalidPopulationDataProvider(): array
