@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Scraper;
 
 use Entity\District;
-use Validator\Validator;
+use Validator\DistrictValidator;
 
 abstract class DistrictBuilderBase
 {
-    protected function createValidatedDistrict(Validator $validator, array $data): District
+    protected function createValidatedDistrict(DistrictValidator $validator, array $data): District
     {
         $result = $validator->validate($data);
         if (!$result->isOk()) {

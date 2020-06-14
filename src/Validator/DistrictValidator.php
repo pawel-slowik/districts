@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Validator;
 
-class DistrictValidator implements Validator
+class DistrictValidator
 {
     public function validate(array $data): ValidationResult
     {

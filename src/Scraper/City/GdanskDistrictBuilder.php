@@ -8,7 +8,7 @@ use Entity\District;
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
 use Scraper\DistrictBuilderBase;
-use Validator\Validator;
+use Validator\DistrictValidator;
 
 final class GdanskDistrictBuilder extends DistrictBuilderBase
 {
@@ -16,7 +16,7 @@ final class GdanskDistrictBuilder extends DistrictBuilderBase
 
     private $validator;
 
-    public function __construct(HtmlFinder $htmlFinder, Validator $validator)
+    public function __construct(HtmlFinder $htmlFinder, DistrictValidator $validator)
     {
         $this->htmlFinder = $htmlFinder;
         $this->validator = $validator;

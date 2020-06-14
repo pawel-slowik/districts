@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Validator;
 
-class NewDistrictValidator extends DistrictValidator implements Validator
+class NewDistrictValidator extends DistrictValidator
 {
     private $validCityIds;
 
