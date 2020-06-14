@@ -21,12 +21,11 @@ class DistrictValidator implements Validator
             $result->addError("name");
             return;
         }
-        $name = $data["name"];
-        if (!is_string($name)) {
+        if (!is_string($data["name"])) {
             $result->addError("name");
             return;
         }
-        if ($name === "") {
+        if ($data["name"] === "") {
             $result->addError("name");
             return;
         }
@@ -38,12 +37,11 @@ class DistrictValidator implements Validator
             $result->addError("area");
             return;
         }
-        $area = $data["area"];
-        if (!is_int($area) && !is_float($area)) {
+        if (!is_int($data["area"]) && !is_float($data["area"])) {
             $result->addError("area");
             return;
         }
-        if ($area <= 0) {
+        if ($data["area"] <= 0) {
             $result->addError("area");
             return;
         }
@@ -55,12 +53,11 @@ class DistrictValidator implements Validator
             $result->addError("population");
             return;
         }
-        $population = $data["population"];
-        if (!is_int($population)) {
+        if (!is_int($data["population"])) {
             $result->addError("population");
             return;
         }
-        if ($population <= 0) {
+        if ($data["population"] <= 0) {
             $result->addError("population");
             return;
         }
