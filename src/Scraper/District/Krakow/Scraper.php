@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Scraper\City;
+namespace Scraper\District\Krakow;
 
-use Scraper\DistrictScraper;
+use Scraper\District\Scraper as ScraperInterface;
 use Scraper\HtmlFetcher;
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
 use Validator\DistrictValidator;
 use Laminas\Uri\Uri;
 
-final class GdanskScraper implements DistrictScraper
+final class Scraper implements ScraperInterface
 {
     private $htmlFetcher;
 
@@ -24,12 +24,12 @@ final class GdanskScraper implements DistrictScraper
     {
         $this->htmlFetcher = $htmlFetcher;
         $this->htmlFinder = $htmlFinder;
-        $this->districtBuilder = new GdanskDistrictBuilder($htmlFinder, new DistrictValidator());
+        $this->districtBuilder = new Builder($htmlFinder, new DistrictValidator());
     }
 
     public function getCityName(): string
     {
-        return "Gdańsk";
+        return "Kraków";
     }
 
     public function listDistricts(): iterable
@@ -42,21 +42,20 @@ final class GdanskScraper implements DistrictScraper
 
     private function listDistrictUrls(): iterable
     {
-        $startUrl = "https://www.gdansk.pl/dzielnice";
+        $startUrl = "http://appimeri.um.krakow.pl/app-pub-dzl/pages/DzlViewAll.jsf?a=1&lay=normal&fo=0";
         $startHtml = $this->htmlFetcher->fetchHtml($startUrl);
         return $this->extractDistrictUrls($startHtml, $startUrl);
     }
 
     private function extractDistrictUrls(string $html, string $baseUrl): iterable
     {
-        $xpath = "//svg/g/polygon[@id]";
+        $xpath = "//map[@name='wyb']/area[@href]";
         $nodes = $this->htmlFinder->findNodes($html, $xpath);
         if (count($nodes) < 1) {
             throw new RuntimeException();
         }
         foreach ($nodes as $node) {
-            $id = $node->getAttribute("id");
-            $href = "subpages/dzielnice/html/dzielnice_mapa_alert.php?id={$id}";
+            $href = $node->getAttribute("href");
             yield Uri::merge($baseUrl, $href)->toString();
         }
     }

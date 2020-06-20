@@ -2,18 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Test\Scraper;
+namespace Test\Scraper\District\Krakow;
 
 use Entity\District;
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
-use Scraper\City\KrakowDistrictBuilder;
+use Scraper\District\Krakow\Builder;
 use Validator\DistrictValidator;
+use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Scraper\City\KrakowDistrictBuilder
+ * @covers \Scraper\District\Krakow\Builder
  */
-class KrakowDistrictBuilderTest extends ScraperTestBase
+class BuilderTest extends TestCase
 {
     protected $builder;
 
@@ -23,10 +24,10 @@ class KrakowDistrictBuilderTest extends ScraperTestBase
 
     protected function setUp(): void
     {
-        $this->builder = new KrakowDistrictBuilder(new HtmlFinder(), new DistrictValidator());
-        $this->validHtml = $this->loadTestFile("Krakow/DzlViewGlw.jsf?id=17&lay=normal&fo=0");
-        $this->invalidPopulationHtml = $this->loadTestFile(
-            "Krakow/DzlViewGlw.jsf?id=17&lay=normal&fo=0_invalid_population"
+        $this->builder = new Builder(new HtmlFinder(), new DistrictValidator());
+        $this->validHtml = file_get_contents(__DIR__ . "/DzlViewGlw.jsf?id=17&lay=normal&fo=0");
+        $this->invalidPopulationHtml = file_get_contents(
+            __DIR__ . "/DzlViewGlw.jsf?id=17&lay=normal&fo=0_invalid_population"
         );
     }
 

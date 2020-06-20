@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Scraper;
+namespace Scraper\District;
 
 use Entity\District;
 use Validator\DistrictValidator;
+use Scraper\RuntimeException;
 
-abstract class DistrictBuilderBase
+abstract class BuilderBase
 {
     protected function createValidatedDistrict(DistrictValidator $validator, array $data): District
     {

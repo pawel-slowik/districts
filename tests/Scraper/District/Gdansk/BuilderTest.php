@@ -2,18 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Test\Scraper;
+namespace Test\Scraper\District\Gdansk;
 
 use Entity\District;
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
-use Scraper\City\GdanskDistrictBuilder;
+use Scraper\District\Gdansk\Builder;
 use Validator\DistrictValidator;
+use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Scraper\City\GdanskDistrictBuilder
+ * @covers \Scraper\District\Gdansk\Builder
  */
-class GdanskDistrictBuilderTest extends ScraperTestBase
+class BuilderTest extends TestCase
 {
     protected $builder;
 
@@ -23,9 +24,9 @@ class GdanskDistrictBuilderTest extends ScraperTestBase
 
     protected function setUp(): void
     {
-        $this->builder = new GdanskDistrictBuilder(new HtmlFinder(), new DistrictValidator());
-        $this->validHtml = $this->loadTestFile("Gdansk/dzielnice_mapa_alert.php?id=16");
-        $this->invalidAreaHtml = $this->loadTestFile("Gdansk/dzielnice_mapa_alert.php?id=16_invalid_area");
+        $this->builder = new Builder(new HtmlFinder(), new DistrictValidator());
+        $this->validHtml = file_get_contents(__DIR__ . "/dzielnice_mapa_alert.php?id=16");
+        $this->invalidAreaHtml = file_get_contents(__DIR__ . "/dzielnice_mapa_alert.php?id=16_invalid_area");
     }
 
     public function testReturnsDistrict(): void

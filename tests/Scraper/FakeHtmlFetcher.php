@@ -18,21 +18,21 @@ class FakeHtmlFetcher implements HtmlFetcher
         // because Scrapers don't have any knowledge about district properties
         // (only Builders do).
 
-        $urlFileMap["https://www.gdansk.pl/dzielnice"] = "Gdansk/dzielnice.html";
+        $urlFileMap["https://www.gdansk.pl/dzielnice"] = "District/Gdansk/dzielnice.html";
         $pattern = "https://www.gdansk.pl/subpages/dzielnice/html/dzielnice_mapa_alert.php?id=%d";
         for ($i = 1; $i <= 35; $i++) {
-            $urlFileMap[sprintf($pattern, $i)] = "Gdansk/dzielnice_mapa_alert.php?id=16";
+            $urlFileMap[sprintf($pattern, $i)] = "District/Gdansk/dzielnice_mapa_alert.php?id=16";
         }
 
         $urlFileMap["http://appimeri.um.krakow.pl/app-pub-dzl/pages/DzlViewAll.jsf?a=1&lay=normal&fo=0"] =
-            "Krakow/DzlViewAll.jsf?a=1&lay=normal&fo=0";
+            "District/Krakow/DzlViewAll.jsf?a=1&lay=normal&fo=0";
         $pattern = "http://appimeri.um.krakow.pl/app-pub-dzl/pages/DzlViewGlw.jsf?id=%d&lay=normal&fo=0";
         for ($i = 1; $i <= 18; $i++) {
-            $urlFileMap[sprintf($pattern, $i)] = "Krakow/DzlViewGlw.jsf?id=17&lay=normal&fo=0";
+            $urlFileMap[sprintf($pattern, $i)] = "District/Krakow/DzlViewGlw.jsf?id=17&lay=normal&fo=0";
         }
 
         foreach ($urlFileMap as $url => $filename) {
-            $this->data[$url] = file_get_contents(__DIR__ . "/data/" . $filename);
+            $this->data[$url] = file_get_contents(__DIR__ . '/' . $filename);
         }
     }
 

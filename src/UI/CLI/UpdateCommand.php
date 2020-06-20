@@ -15,8 +15,8 @@ use Service\DistrictService;
 
 use Scraper\HtmlFinder;
 use Scraper\GuzzleHtmlFetcher;
-use Scraper\City\GdanskScraper;
-use Scraper\City\KrakowScraper;
+use Scraper\District\Gdansk\Scraper as GdanskScraper;
+use Scraper\District\Krakow\Scraper as KrakowScraper;
 
 final class UpdateCommand extends Command
 {

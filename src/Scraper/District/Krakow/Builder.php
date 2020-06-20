@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Scraper\City;
+namespace Scraper\District\Krakow;
 
 use Entity\District;
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
-use Scraper\DistrictBuilderBase;
+use Scraper\District\BuilderBase;
 use Validator\DistrictValidator;
 
-final class KrakowDistrictBuilder extends DistrictBuilderBase
+final class Builder extends BuilderBase
 {
     private $htmlFinder;
 

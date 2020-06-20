@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Scraper;
+namespace Scraper\District;
 
-interface DistrictScraper
+interface Scraper
 {
     public function getCityName(): string;
 

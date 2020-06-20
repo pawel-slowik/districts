@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Test\Command;
 
 use UI\CLI\ScraperCityFilter;
-use Scraper\DistrictScraper;
+use Scraper\District\Scraper;
 
 use PHPUnit\Framework\TestCase;
 
@@ -22,10 +22,10 @@ class ScraperCityFilterTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->fooScraper = $this->createMock(DistrictScraper::class);
+        $this->fooScraper = $this->createMock(Scraper::class);
         $this->fooScraper->method("getCityName")->willReturn("foo");
 
-        $this->barScraper = $this->createMock(DistrictScraper::class);
+        $this->barScraper = $this->createMock(Scraper::class);
         $this->barScraper->method("getCityName")->willReturn("bar");
 
         $this->scrapers = [$this->fooScraper, $this->barScraper];

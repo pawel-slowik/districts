@@ -2,22 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Test\Scraper;
+namespace Test\Scraper\District\Krakow;
 
 use Entity\District;
 use Scraper\HtmlFinder;
-use Scraper\City\GdanskScraper;
+use Scraper\District\Krakow\Scraper;
+use Test\Scraper\FakeHtmlFetcher;
+use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Scraper\City\GdanskScraper
+ * @covers \Scraper\District\Krakow\Scraper
  */
-class GdanskScraperTest extends ScraperTestBase
+class ScraperTest extends TestCase
 {
     protected $scraper;
 
     protected function setUp(): void
     {
-        $this->scraper = new GdanskScraper(new FakeHtmlFetcher(), new HtmlFinder());
+        $this->scraper = new Scraper(new FakeHtmlFetcher(), new HtmlFinder());
     }
 
     public function testReturnsNonEmpty(): void
