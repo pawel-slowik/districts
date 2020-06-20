@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Test\Command;
 
-use Command\ScraperCityFilter;
+use UI\CLI\ScraperCityFilter;
 use Scraper\DistrictScraper;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Command\ScraperCityFilter
+ * @covers \UI\CLI\ScraperCityFilter
  */
 class ScraperCityFilterTest extends TestCase
 {

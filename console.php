@@ -6,7 +6,7 @@ declare(strict_types=1);
 require __DIR__ . "/vendor/autoload.php";
 
 use Symfony\Component\Console\Application;
-use Command\UpdateCommand;
+use UI\CLI\UpdateCommand;
 use Repository\CityRepository;
 use Repository\DistrictRepository;
 use Service\DistrictService;
