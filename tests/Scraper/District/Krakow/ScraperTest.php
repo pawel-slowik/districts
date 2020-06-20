@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ScraperTest extends TestCase
 {
-    protected $scraper;
+    private $scraper;
 
     protected function setUp(): void
     {

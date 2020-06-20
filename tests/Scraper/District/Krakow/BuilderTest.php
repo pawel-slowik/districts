@@ -16,11 +16,11 @@ use PHPUnit\Framework\TestCase;
  */
 class BuilderTest extends TestCase
 {
-    protected $builder;
+    private $builder;
 
-    protected $validHtml;
+    private $validHtml;
 
-    protected $invalidPopulationHtml;
+    private $invalidPopulationHtml;
 
     protected function setUp(): void
     {
