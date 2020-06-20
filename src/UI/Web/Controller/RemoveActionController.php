@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Controller;
+namespace UI\Web\Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpNotFoundException;
+
+use UI\Web\Redirector;
 
 use Service\DistrictService;
 use Service\NotFoundException;

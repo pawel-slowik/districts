@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Test\ErrorHandlers;
+namespace Test\UI\Web\ErrorHandler;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;

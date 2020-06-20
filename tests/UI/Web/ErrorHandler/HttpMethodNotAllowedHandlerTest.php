@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Test\ErrorHandlers;
+namespace Test\UI\Web\ErrorHandler;
 
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Psr\Http\Message\ResponseInterface;
 
-use ErrorHandlers\HttpMethodNotAllowedHandler;
+use UI\Web\ErrorHandler\HttpMethodNotAllowedHandler;
 
 /**
- * @covers \ErrorHandlers\HttpMethodNotAllowedHandler
+ * @covers \UI\Web\ErrorHandler\HttpMethodNotAllowedHandler
  */
 class HttpMethodNotAllowedHandlerTest extends BaseTestCase
 {

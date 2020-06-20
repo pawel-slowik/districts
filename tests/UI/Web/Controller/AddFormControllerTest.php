@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Test\Controller;
+namespace Test\UI\Web\Controller;
 
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 
 /**
- * @covers \Controller\AddFormController
+ * @covers \UI\Web\Controller\AddFormController
  * @runTestsInSeparateProcesses
  */
 class AddFormControllerTest extends BaseTestCase

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Slim\App;
-use Controller\{
+use UI\Web\Controller\{
     HomeController,
     ListController,
     AddFormController,

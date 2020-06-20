@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Test\Controller;
+namespace Test\UI\Web\Controller;
 
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 
 /**
- * @covers \Controller\EditActionController
+ * @covers \UI\Web\Controller\AddActionController
  * @runTestsInSeparateProcesses
  */
-class EditActionControllerTest extends BaseTestCase
+class AddActionControllerTest extends BaseTestCase
 {
     public function testAction(): void
     {
@@ -18,8 +18,9 @@ class EditActionControllerTest extends BaseTestCase
             "name" => "test",
             "area" => "123.45",
             "population" => "6789",
+            "city" => "3",
         ];
-        $response = $this->runApp("POST", "/edit/1", $postData);
+        $response = $this->runApp("POST", "/add", $postData);
         $this->assertSame(StatusCode::STATUS_FOUND, $response->getStatusCode());
         $this->assertEmpty((string) $response->getBody());
         $this->assertTrue($response->hasHeader("location"));
@@ -32,22 +33,12 @@ class EditActionControllerTest extends BaseTestCase
             "name" => "",
             "area" => "",
             "population" => "",
+            "city" => "",
         ];
-        $response = $this->runApp("POST", "/edit/1", $postData);
+        $response = $this->runApp("POST", "/add", $postData);
         $this->assertSame(StatusCode::STATUS_FOUND, $response->getStatusCode());
         $this->assertEmpty((string) $response->getBody());
         $this->assertTrue($response->hasHeader("location"));
-        $this->assertStringEndsWith("/edit/1", $response->getHeader("location")[0]);
-    }
-
-    public function testNonexistent(): void
-    {
-        $postData = [
-            "name" => "test",
-            "area" => "123.45",
-            "population" => "6789",
-        ];
-        $response = $this->runApp("POST", "/edit/999", $postData);
-        $this->assertSame(StatusCode::STATUS_NOT_FOUND, $response->getStatusCode());
+        $this->assertStringEndsWith("/add", $response->getHeader("location")[0]);
     }
 }

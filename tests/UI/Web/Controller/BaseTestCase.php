@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Test\Controller;
+namespace Test\UI\Web\Controller;
 
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -23,7 +23,7 @@ abstract class BaseTestCase extends TestCase
         $container = new Container();
         $app = $this->createApp($container);
 
-        $entityManager = (require __DIR__ . "/../../doctrine-bootstrap.php")();
+        $entityManager = (require __DIR__ . "/../../../../doctrine-bootstrap.php")();
         $container->set(EntityManager::class, $entityManager);
 
         FixtureTool::reset($entityManager);
@@ -40,13 +40,13 @@ abstract class BaseTestCase extends TestCase
     {
         $app = new App(new Psr17Factory(), $container);
 
-        $dependencies = require __DIR__ . "/../../src/dependencies.php";
+        $dependencies = require __DIR__ . "/../../../../src/dependencies.php";
         $dependencies($container, $app);
 
-        $middleware = require __DIR__ . "/../../src/middleware.php";
+        $middleware = require __DIR__ . "/../../../../src/middleware.php";
         $middleware($app);
 
-        $routes = require __DIR__ . "/../../src/routes.php";
+        $routes = require __DIR__ . "/../../../../src/routes.php";
         $routes($app);
 
         return $app;

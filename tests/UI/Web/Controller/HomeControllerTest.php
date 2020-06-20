@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Test\Controller;
+namespace Test\UI\Web\Controller;
 
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 
 /**
- * @covers \Controller\HomeController
+ * @covers \UI\Web\Controller\HomeController
  * @runTestsInSeparateProcesses
  */
 class HomeControllerTest extends BaseTestCase

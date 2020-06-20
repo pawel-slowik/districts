@@ -8,8 +8,8 @@ use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 use Slim\Exception\HttpMethodNotAllowedException;
 use Slim\Exception\HttpNotFoundException;
-use ErrorHandlers\HttpNotFoundHandler;
-use ErrorHandlers\HttpMethodNotAllowedHandler;
+use UI\Web\ErrorHandler\HttpNotFoundHandler;
+use UI\Web\ErrorHandler\HttpMethodNotAllowedHandler;
 
 return function (App $app): void {
     $app->add(new Session());
