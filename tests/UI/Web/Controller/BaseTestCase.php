@@ -12,6 +12,7 @@ use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7\ServerRequest;
 use Nyholm\Psr7\Uri;
 use Slim\App;
+use UI\Web\RoutingConfiguration;
 use PHPUnit\Framework\TestCase;
 use Test\Repository\FixtureTool;
 use Doctrine\ORM\EntityManager;
@@ -46,8 +47,7 @@ abstract class BaseTestCase extends TestCase
         $middleware = require __DIR__ . "/../../../../src/middleware.php";
         $middleware($app);
 
-        $routes = require __DIR__ . "/../../../../src/routes.php";
-        $routes($app);
+        $app = RoutingConfiguration::apply($app);
 
         return $app;
     }
