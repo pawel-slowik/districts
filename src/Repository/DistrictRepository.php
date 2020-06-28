@@ -71,17 +71,6 @@ final class DistrictRepository
         $this->entityManager->flush();
     }
 
-    public function addMultiple(iterable $districts, ?ProgressReporter $progressReporter = null): void
-    {
-        foreach ($districts as $district) {
-            $this->entityManager->persist($district);
-            if (!is_null($progressReporter)) {
-                $progressReporter->advance();
-            }
-        }
-        $this->entityManager->flush();
-    }
-
     public function update(District $district): void
     {
         $this->entityManager->persist($district);

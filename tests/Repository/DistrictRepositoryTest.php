@@ -7,7 +7,6 @@ namespace Test\Repository;
 use Entity\District;
 use Repository\CityRepository;
 use Repository\DistrictRepository;
-use Repository\ProgressReporter;
 
 use PHPUnit\Framework\TestCase;
 
@@ -66,83 +65,6 @@ class DistrictRepositoryTest extends TestCase
                 "Lorem ipsum"
             )
         );
-    }
-
-    /**
-     * @dataProvider addMultipleDataProvider
-     */
-    public function testAddMultiple(
-        array $newDistricts,
-        int $expectedCount,
-        array $expectedNames
-    ): void {
-        foreach ($newDistricts as $newDistrict) {
-            $newDistrict->setCity($this->cityRepository->findByName("Foo"));
-        }
-        $this->districtRepository->addMultiple($newDistricts);
-        $this->assertCount(
-            $expectedCount,
-            $this->districtRepository->list(
-                DistrictRepository::ORDER_DEFAULT
-            )
-        );
-        foreach ($expectedNames as $expectedName) {
-            $this->assertNotEmpty(
-                $this->districtRepository->list(
-                    DistrictRepository::ORDER_DEFAULT,
-                    DistrictRepository::FILTER_NAME,
-                    $expectedName
-                )
-            );
-        }
-    }
-
-    /**
-     * @dataProvider addMultipleDataProvider
-     */
-    public function testAddMultipleWithProgressReporting(
-        array $newDistricts,
-        int $expectedCount,
-        array $expectedNames
-    ): void {
-        foreach ($newDistricts as $newDistrict) {
-            $newDistrict->setCity($this->cityRepository->findByName("Foo"));
-        }
-        $progressReporter = $this->createMock(ProgressReporter::class);
-        $progressReporter->expects($this->exactly(count($newDistricts)))->method("advance");
-        $this->districtRepository->addMultiple($newDistricts, $progressReporter);
-        $this->assertCount(
-            $expectedCount,
-            $this->districtRepository->list(
-                DistrictRepository::ORDER_DEFAULT
-            )
-        );
-        foreach ($expectedNames as $expectedName) {
-            $this->assertNotEmpty(
-                $this->districtRepository->list(
-                    DistrictRepository::ORDER_DEFAULT,
-                    DistrictRepository::FILTER_NAME,
-                    $expectedName
-                )
-            );
-        }
-    }
-
-    public function addMultipleDataProvider(): array
-    {
-        return [
-            [
-                [
-                    new District("Lorem ipsum", 12.3, 456),
-                    new District("nulla pariatur", 7.8, 901),
-                ],
-                17,
-                [
-                    "Lorem ipsum",
-                    "nulla pariatur",
-                ],
-            ],
-        ];
     }
 
     public function testUpdate(): void

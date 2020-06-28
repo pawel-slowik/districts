@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace UI\CLI;
 
-use Repository\ProgressReporter;
+use Service\ProgressReporter;
 
 use Symfony\Component\Console\Helper\ProgressBar;
 

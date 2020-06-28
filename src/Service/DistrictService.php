@@ -7,7 +7,6 @@ namespace Service;
 use Entity\City;
 use Entity\District;
 use Repository\DistrictRepository;
-use Repository\ProgressReporter;
 use Validator\DistrictValidator;
 use Validator\NewDistrictValidator;
 
@@ -131,7 +130,12 @@ class DistrictService
             $city = new City($cityName);
             $this->cityRepository->add($city);
         }
-        $this->districtRepository->addMultiple($this->prepareDistricts($districts, $city), $progressReporter);
+        foreach ($this->prepareDistricts($districts, $city) as $district) {
+            $this->districtRepository->add($district);
+            if ($progressReporter) {
+                $progressReporter->advance();
+            }
+        }
     }
 
     public function remove(string $id): void
