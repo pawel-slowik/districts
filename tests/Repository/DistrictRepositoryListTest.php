@@ -121,7 +121,7 @@ class DistrictRepositoryListTest extends TestCase
     /**
      * @dataProvider listFilterDataProvider
      */
-    public function testListFilter(int $filterType, $filterValue, array $expectedIds): void
+    public function testListFilter(?int $filterType, $filterValue, array $expectedIds): void
     {
         sort($expectedIds);
         $actualIds = array_map(
@@ -138,7 +138,7 @@ class DistrictRepositoryListTest extends TestCase
     {
         return [
             [
-                DistrictRepository::FILTER_NONE,
+                null,
                 null,
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             ],

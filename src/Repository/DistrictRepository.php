@@ -10,7 +10,6 @@ use Entity\District;
 
 final class DistrictRepository
 {
-    public const FILTER_NONE = 0;
     public const FILTER_CITY = 1;
     public const FILTER_NAME = 2;
     public const FILTER_AREA = 3;
@@ -77,7 +76,7 @@ final class DistrictRepository
         $this->entityManager->flush();
     }
 
-    public function list(int $orderBy, int $filterType = self::FILTER_NONE, $filterValue = null): array
+    public function list(int $orderBy, ?int $filterType = null, $filterValue = null): array
     {
         $dqlOrderBy = $this->dqlOrderBy($orderBy);
         list($dqlWhere, $dqlParameters) = $this->dqlFilter($filterType, $filterValue);
@@ -104,7 +103,7 @@ final class DistrictRepository
         return self::ORDER_DQL_MAP[$orderBy];
     }
 
-    private function dqlFilter(int $filterType, $filterValue): array
+    private function dqlFilter(?int $filterType, $filterValue): array
     {
         switch ($filterType) {
             case self::FILTER_CITY:

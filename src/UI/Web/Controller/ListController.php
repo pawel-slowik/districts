@@ -51,7 +51,7 @@ final class ListController
     private function serviceFilter(?string $filterColumn, ?string $filterValue): array
     {
         if (is_null($filterValue) || (strval($filterValue) === "")) {
-            return [DistrictService::FILTER_NONE, null];
+            return [null, null];
         }
         switch ($filterColumn) {
             case "city":
@@ -75,7 +75,7 @@ final class ListController
                     $this->filterStringToRange($filterValue),
                 ];
         }
-        return [DistrictService::FILTER_NONE, null];
+        return [null, null];
     }
 
     private function filterStringToRange(string $input): array

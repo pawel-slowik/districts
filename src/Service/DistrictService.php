@@ -14,7 +14,6 @@ use Repository\CityRepository;
 
 class DistrictService
 {
-    public const FILTER_NONE = 0;
     public const FILTER_CITY = 1;
     public const FILTER_NAME = 2;
     public const FILTER_AREA = 3;
@@ -31,7 +30,6 @@ class DistrictService
     public const ORDER_POPULATION_DESC = 8;
 
     private const REPOSITORY_FILTER_MAP = [
-        self::FILTER_NONE => DistrictRepository::FILTER_NONE,
         self::FILTER_CITY => DistrictRepository::FILTER_CITY,
         self::FILTER_NAME => DistrictRepository::FILTER_NAME,
         self::FILTER_AREA => DistrictRepository::FILTER_AREA,
@@ -143,11 +141,11 @@ class DistrictService
         $this->districtRepository->remove($this->get($id));
     }
 
-    public function listDistricts(int $orderBy, int $filterType, $filterValue): array
+    public function listDistricts(int $orderBy, ?int $filterType, $filterValue): array
     {
         return $this->districtRepository->list(
             self::REPOSITORY_ORDER_MAP[$orderBy],
-            self::REPOSITORY_FILTER_MAP[$filterType],
+            is_null($filterType) ? null : self::REPOSITORY_FILTER_MAP[$filterType],
             $filterValue
         );
     }

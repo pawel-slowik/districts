@@ -39,7 +39,7 @@ class DistrictServiceListTest extends TestCase
     {
         $list = $this->districtService->listDistricts(
             DistrictService::ORDER_DEFAULT,
-            DistrictService::FILTER_NONE,
+            null,
             null,
         );
         $this->assertCount(15, $list);
@@ -57,7 +57,7 @@ class DistrictServiceListTest extends TestCase
                 function ($district) {
                     return $district->getCity()->getName();
                 },
-                $this->districtService->listDistricts($sortType, DistrictService::FILTER_NONE, null)
+                $this->districtService->listDistricts($sortType, null, null)
             )))
         );
     }
@@ -87,7 +87,7 @@ class DistrictServiceListTest extends TestCase
                 function ($district) {
                     return $district->getId();
                 },
-                $this->districtService->listDistricts($sortType, DistrictService::FILTER_NONE, null)
+                $this->districtService->listDistricts($sortType, null, null)
             )
         );
     }
@@ -129,7 +129,7 @@ class DistrictServiceListTest extends TestCase
     /**
      * @dataProvider listFilterDataProvider
      */
-    public function testListFilter(int $filterType, $filterValue, array $expectedIds): void
+    public function testListFilter(?int $filterType, $filterValue, array $expectedIds): void
     {
         sort($expectedIds);
         $actualIds = array_map(
@@ -146,7 +146,7 @@ class DistrictServiceListTest extends TestCase
     {
         return [
             [
-                DistrictService::FILTER_NONE,
+                null,
                 null,
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             ],

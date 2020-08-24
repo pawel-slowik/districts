@@ -61,7 +61,7 @@ class DistrictServiceTest extends TestCase
             14,
             $this->districtService->listDistricts(
                 DistrictService::ORDER_DEFAULT,
-                DistrictService::FILTER_NONE,
+                null,
                 null
             )
         );
@@ -89,7 +89,7 @@ class DistrictServiceTest extends TestCase
             16,
             $this->districtService->listDistricts(
                 DistrictService::ORDER_DEFAULT,
-                DistrictService::FILTER_NONE,
+                null,
                 null
             )
         );
