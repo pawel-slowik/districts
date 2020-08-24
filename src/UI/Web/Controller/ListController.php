@@ -9,6 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\Twig as View;
 
 use Service\DistrictService;
+use Service\DistrictFilter;
 
 final class ListController
 {
@@ -34,9 +35,9 @@ final class ListController
         $queryParams = $request->getQueryParams();
         $filterColumn = $queryParams["filterColumn"] ?? null;
         $filterValue = $queryParams["filterValue"] ?? null;
-        list($serviceFilterType, $serviceFilterValue) = $this->serviceFilter($filterColumn, $filterValue);
+        $filter = DistrictFilter::createFromRequestInput($filterColumn, $filterValue);
 
-        $districts = $this->districtService->listDistricts($orderBy, $serviceFilterType, $serviceFilterValue);
+        $districts = $this->districtService->listDistricts($orderBy, $filter);
         $templateData = [
             "title" => "List of districts",
             "districts" => $districts,
@@ -46,45 +47,6 @@ final class ListController
             "filterValue" => $filterValue,
         ];
         return $this->view->render($response, "list.html", $templateData);
-    }
-
-    private function serviceFilter(?string $filterColumn, ?string $filterValue): array
-    {
-        if (is_null($filterValue) || (strval($filterValue) === "")) {
-            return [null, null];
-        }
-        switch ($filterColumn) {
-            case "city":
-                return [
-                    DistrictService::FILTER_CITY,
-                    strval($filterValue),
-                ];
-            case "name":
-                return [
-                    DistrictService::FILTER_NAME,
-                    strval($filterValue),
-                ];
-            case "area":
-                return [
-                    DistrictService::FILTER_AREA,
-                    $this->filterStringToRange($filterValue),
-                ];
-            case "population":
-                return [
-                    DistrictService::FILTER_POPULATION,
-                    $this->filterStringToRange($filterValue),
-                ];
-        }
-        return [null, null];
-    }
-
-    private function filterStringToRange(string $input): array
-    {
-        $range = array_map("floatval", explode("-", $input, 2));
-        if (count($range) < 2) {
-            $range[1] = $range[0];
-        }
-        return $range;
     }
 
     private function serviceOrderBy(?string $orderColumn, ?string $orderDirection): int

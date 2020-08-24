@@ -141,12 +141,12 @@ class DistrictService
         $this->districtRepository->remove($this->get($id));
     }
 
-    public function listDistricts(int $orderBy, ?int $filterType, $filterValue): array
+    public function listDistricts(int $orderBy, ?DistrictFilter $filter): array
     {
         return $this->districtRepository->list(
             self::REPOSITORY_ORDER_MAP[$orderBy],
-            is_null($filterType) ? null : self::REPOSITORY_FILTER_MAP[$filterType],
-            $filterValue
+            is_null($filter) ? null : self::REPOSITORY_FILTER_MAP[$filter->getType()],
+            is_null($filter) ? null : $filter->getValue(),
         );
     }
 
