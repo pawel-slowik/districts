@@ -150,27 +150,27 @@ class DistrictServiceListTest extends TestCase
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             ],
             [
-                new DistrictFilter(DistrictService::FILTER_CITY, "Bar"),
+                new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
                 [12, 13, 14, 15],
             ],
             [
-                new DistrictFilter(DistrictService::FILTER_CITY, "o"),
+                new DistrictFilter(DistrictFilter::TYPE_CITY, "o"),
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
             ],
             [
-                new DistrictFilter(DistrictService::FILTER_NAME, "Xyzzy"),
+                new DistrictFilter(DistrictFilter::TYPE_NAME, "Xyzzy"),
                 [11],
             ],
             [
-                new DistrictFilter(DistrictService::FILTER_NAME, "bb"),
+                new DistrictFilter(DistrictFilter::TYPE_NAME, "bb"),
                 [12, 13, 15],
             ],
             [
-                new DistrictFilter(DistrictService::FILTER_AREA, [100, 101]),
+                new DistrictFilter(DistrictFilter::TYPE_AREA, [100, 101]),
                 [5, 10],
             ],
             [
-                new DistrictFilter(DistrictService::FILTER_POPULATION, [900, 1300]),
+                new DistrictFilter(DistrictFilter::TYPE_POPULATION, [900, 1300]),
                 [2, 3, 5, 6, 10],
             ],
         ];

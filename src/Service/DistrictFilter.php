@@ -6,21 +6,26 @@ namespace Service;
 
 class DistrictFilter
 {
+    public const TYPE_CITY = 1;
+    public const TYPE_NAME = 2;
+    public const TYPE_AREA = 3;
+    public const TYPE_POPULATION = 4;
+
     private const PARSERS = [
         "city" => [
-            "type" => DistrictService::FILTER_CITY,
+            "type" => self::TYPE_CITY,
             "callback" => "strval",
         ],
         "name" => [
-            "type" => DistrictService::FILTER_NAME,
+            "type" => self::TYPE_NAME,
             "callback" => "strval",
         ],
         "area" => [
-            "type" => DistrictService::FILTER_AREA,
+            "type" => self::TYPE_AREA,
             "callback" => [self::class, "stringToRange"],
         ],
         "population" => [
-            "type" => DistrictService::FILTER_POPULATION,
+            "type" => self::TYPE_POPULATION,
             "callback" => [self::class, "stringToRange"],
         ],
     ];

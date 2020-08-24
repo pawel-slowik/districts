@@ -14,11 +14,6 @@ use Repository\CityRepository;
 
 class DistrictService
 {
-    public const FILTER_CITY = 1;
-    public const FILTER_NAME = 2;
-    public const FILTER_AREA = 3;
-    public const FILTER_POPULATION = 4;
-
     public const ORDER_DEFAULT = 0;
     public const ORDER_CITY_ASC = 1;
     public const ORDER_CITY_DESC = 2;
@@ -30,10 +25,10 @@ class DistrictService
     public const ORDER_POPULATION_DESC = 8;
 
     private const REPOSITORY_FILTER_MAP = [
-        self::FILTER_CITY => DistrictRepository::FILTER_CITY,
-        self::FILTER_NAME => DistrictRepository::FILTER_NAME,
-        self::FILTER_AREA => DistrictRepository::FILTER_AREA,
-        self::FILTER_POPULATION => DistrictRepository::FILTER_POPULATION,
+        DistrictFilter::TYPE_CITY => DistrictRepository::FILTER_CITY,
+        DistrictFilter::TYPE_NAME => DistrictRepository::FILTER_NAME,
+        DistrictFilter::TYPE_AREA => DistrictRepository::FILTER_AREA,
+        DistrictFilter::TYPE_POPULATION => DistrictRepository::FILTER_POPULATION,
     ];
 
     private const REPOSITORY_ORDER_MAP = [

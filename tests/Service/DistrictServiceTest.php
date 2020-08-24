@@ -95,7 +95,7 @@ class DistrictServiceTest extends TestCase
         $this->assertNotEmpty(
             $this->districtService->listDistricts(
                 DistrictService::ORDER_DEFAULT,
-                new DistrictFilter(DistrictService::FILTER_NAME, "Lorem ipsum"),
+                new DistrictFilter(DistrictFilter::TYPE_NAME, "Lorem ipsum"),
             )
         );
     }
@@ -204,7 +204,7 @@ class DistrictServiceTest extends TestCase
         $this->districtService->setDistrictsForCityName("Bar", [new District("Hola", 1, 2)]);
         $list = $this->districtService->listDistricts(
             DistrictService::ORDER_DEFAULT,
-            new DistrictFilter(DistrictService::FILTER_CITY, "Bar"),
+            new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
         );
         $this->assertCount(1, $list);
     }
@@ -214,7 +214,7 @@ class DistrictServiceTest extends TestCase
         $this->districtService->setDistrictsForCityName("Bar", []);
         $list = $this->districtService->listDistricts(
             DistrictService::ORDER_DEFAULT,
-            new DistrictFilter(DistrictService::FILTER_CITY, "Bar"),
+            new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
         );
         $this->assertEmpty($list);
     }
@@ -224,7 +224,7 @@ class DistrictServiceTest extends TestCase
         $this->districtService->setDistrictsForCityName("New City", [new District("Hola", 1, 2)]);
         $list = $this->districtService->listDistricts(
             DistrictService::ORDER_DEFAULT,
-            new DistrictFilter(DistrictService::FILTER_CITY, "New City"),
+            new DistrictFilter(DistrictFilter::TYPE_CITY, "New City"),
         );
         $this->assertCount(1, $list);
     }
