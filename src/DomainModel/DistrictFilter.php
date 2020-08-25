@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Service;
+namespace DomainModel;
 
 class DistrictFilter
 {

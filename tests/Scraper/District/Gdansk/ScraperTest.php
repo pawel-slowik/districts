@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Test\Scraper\District\Gdansk;
 
-use Entity\District;
+use DomainModel\Entity\District;
 use Scraper\HtmlFetcher;
 use Scraper\HtmlFinder;
 use Scraper\District\Gdansk\Scraper;

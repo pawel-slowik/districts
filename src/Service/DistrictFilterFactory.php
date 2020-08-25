@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Service;
 
+use DomainModel\DistrictFilter;
+
 class DistrictFilterFactory
 {
     private const PARSERS = [

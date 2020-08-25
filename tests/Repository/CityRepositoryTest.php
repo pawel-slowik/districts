@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Test\Repository;
 
-use Entity\City;
+use DomainModel\Entity\City;
 use Repository\CityRepository;
 
 use PHPUnit\Framework\TestCase;

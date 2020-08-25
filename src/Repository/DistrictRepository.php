@@ -6,7 +6,7 @@ namespace Repository;
 
 use Doctrine\ORM\EntityManager;
 
-use Entity\District;
+use DomainModel\Entity\District;
 
 final class DistrictRepository
 {

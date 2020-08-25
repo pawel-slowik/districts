@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Test\Service;
 
-use Service\DistrictFilter;
+use DomainModel\DistrictFilter;
 use Service\DistrictFilterFactory;
 
 use PHPUnit\Framework\TestCase;

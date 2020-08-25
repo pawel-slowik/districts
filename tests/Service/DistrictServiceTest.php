@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Test\Service;
 
-use Entity\City;
-use Entity\District;
+use DomainModel\Entity\City;
+use DomainModel\Entity\District;
+use DomainModel\DistrictFilter;
 
 use Service\DistrictService;
-use Service\DistrictFilter;
 use Service\NotFoundException;
 use Service\ValidationException;
 

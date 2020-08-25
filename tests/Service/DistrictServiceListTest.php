@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Test\Service;
 
-use Entity\District;
+use DomainModel\Entity\District;
 
 use Service\DistrictService;
-use Service\DistrictFilter;
+use DomainModel\DistrictFilter;
 
 use Repository\CityRepository;
 use Repository\DistrictRepository;

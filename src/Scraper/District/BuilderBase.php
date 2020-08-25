@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Scraper\District;
 
-use Entity\District;
+use DomainModel\Entity\District;
 use Validator\DistrictValidator;
 use Scraper\RuntimeException;
 

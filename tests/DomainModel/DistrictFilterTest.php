@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Test\Service;
+namespace Test\DomainModel;
 
-use Service\DistrictFilter;
+use DomainModel\DistrictFilter;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Service\DistrictFilter
+ * @covers \DomainModel\DistrictFilter
  */
 class DistrictFilterTest extends TestCase
 {

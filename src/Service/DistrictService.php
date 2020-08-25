@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Service;
 
-use Entity\City;
-use Entity\District;
+use DomainModel\Entity\City;
+use DomainModel\Entity\District;
+use DomainModel\DistrictFilter;
 use Repository\DistrictRepository;
 use Validator\DistrictValidator;
 use Validator\NewDistrictValidator;

@@ -6,7 +6,7 @@ namespace Repository;
 
 use Doctrine\ORM\EntityManager;
 
-use Entity\City;
+use DomainModel\Entity\City;
 
 final class CityRepository
 {
