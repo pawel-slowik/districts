@@ -104,9 +104,8 @@ final class DistrictRepository
         if (!$filter) {
             return ["", []];
         }
-        $filterType = $filter->getType();
         $filterValue = $filter->getValue();
-        switch ($filterType) {
+        switch ($filter->getType()) {
             case DistrictFilter::TYPE_CITY:
                 return [
                     " c.name LIKE :search",
