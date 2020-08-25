@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\Twig as View;
 
 use Service\DistrictService;
-use Service\DistrictFilter;
+use Service\DistrictFilterFactory;
 
 final class ListController
 {
@@ -35,7 +35,7 @@ final class ListController
         $queryParams = $request->getQueryParams();
         $filterColumn = $queryParams["filterColumn"] ?? null;
         $filterValue = $queryParams["filterValue"] ?? null;
-        $filter = DistrictFilter::createFromRequestInput($filterColumn, $filterValue);
+        $filter = DistrictFilterFactory::createFromRequestInput($filterColumn, $filterValue);
 
         $districts = $this->districtService->listDistricts($orderBy, $filter);
         $templateData = [
