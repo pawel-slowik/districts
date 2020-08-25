@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Test\Repository;
 
 use DomainModel\Entity\District;
+use DomainModel\DistrictFilter;
 use Repository\DistrictRepository;
 
 use PHPUnit\Framework\TestCase;
@@ -121,14 +122,14 @@ class DistrictRepositoryListTest extends TestCase
     /**
      * @dataProvider listFilterDataProvider
      */
-    public function testListFilter(?int $filterType, $filterValue, array $expectedIds): void
+    public function testListFilter(?DistrictFilter $filter, array $expectedIds): void
     {
         sort($expectedIds);
         $actualIds = array_map(
             function ($district) {
                 return $district->getId();
             },
-            $this->districtRepository->list(DistrictRepository::ORDER_DEFAULT, $filterType, $filterValue)
+            $this->districtRepository->list(DistrictRepository::ORDER_DEFAULT, $filter)
         );
         sort($actualIds);
         $this->assertSame($expectedIds, $actualIds);
@@ -139,37 +140,30 @@ class DistrictRepositoryListTest extends TestCase
         return [
             [
                 null,
-                null,
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             ],
             [
-                DistrictRepository::FILTER_CITY,
-                "Bar",
+                new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
                 [12, 13, 14, 15],
             ],
             [
-                DistrictRepository::FILTER_CITY,
-                "o",
+                new DistrictFilter(DistrictFilter::TYPE_CITY, "o"),
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
             ],
             [
-                DistrictRepository::FILTER_NAME,
-                "Xyzzy",
+                new DistrictFilter(DistrictFilter::TYPE_NAME, "Xyzzy"),
                 [11],
             ],
             [
-                DistrictRepository::FILTER_NAME,
-                "bb",
+                new DistrictFilter(DistrictFilter::TYPE_NAME, "bb"),
                 [12, 13, 15],
             ],
             [
-                DistrictRepository::FILTER_AREA,
-                [100, 101],
+                new DistrictFilter(DistrictFilter::TYPE_AREA, [100, 101]),
                 [5, 10],
             ],
             [
-                DistrictRepository::FILTER_POPULATION,
-                [900, 1300],
+                new DistrictFilter(DistrictFilter::TYPE_POPULATION, [900, 1300]),
                 [2, 3, 5, 6, 10],
             ],
         ];

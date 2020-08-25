@@ -25,13 +25,6 @@ class DistrictService
     public const ORDER_POPULATION_ASC = 7;
     public const ORDER_POPULATION_DESC = 8;
 
-    private const REPOSITORY_FILTER_MAP = [
-        DistrictFilter::TYPE_CITY => DistrictRepository::FILTER_CITY,
-        DistrictFilter::TYPE_NAME => DistrictRepository::FILTER_NAME,
-        DistrictFilter::TYPE_AREA => DistrictRepository::FILTER_AREA,
-        DistrictFilter::TYPE_POPULATION => DistrictRepository::FILTER_POPULATION,
-    ];
-
     private const REPOSITORY_ORDER_MAP = [
         self::ORDER_DEFAULT => DistrictRepository::ORDER_DEFAULT,
         self::ORDER_CITY_ASC => DistrictRepository::ORDER_CITY_ASC,
@@ -141,8 +134,7 @@ class DistrictService
     {
         return $this->districtRepository->list(
             self::REPOSITORY_ORDER_MAP[$orderBy],
-            is_null($filter) ? null : self::REPOSITORY_FILTER_MAP[$filter->getType()],
-            is_null($filter) ? null : $filter->getValue(),
+            $filter,
         );
     }
 

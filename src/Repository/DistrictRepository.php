@@ -7,14 +7,10 @@ namespace Repository;
 use Doctrine\ORM\EntityManager;
 
 use DomainModel\Entity\District;
+use DomainModel\DistrictFilter;
 
 final class DistrictRepository
 {
-    public const FILTER_CITY = 1;
-    public const FILTER_NAME = 2;
-    public const FILTER_AREA = 3;
-    public const FILTER_POPULATION = 4;
-
     public const ORDER_DEFAULT = 0;
     public const ORDER_CITY_ASC = 1;
     public const ORDER_CITY_DESC = 2;
@@ -76,10 +72,10 @@ final class DistrictRepository
         $this->entityManager->flush();
     }
 
-    public function list(int $orderBy, ?int $filterType = null, $filterValue = null): array
+    public function list(int $orderBy, ?DistrictFilter $filter = null): array
     {
         $dqlOrderBy = $this->dqlOrderBy($orderBy);
-        list($dqlWhere, $dqlParameters) = $this->dqlFilter($filterType, $filterValue);
+        list($dqlWhere, $dqlParameters) = $this->dqlFilter($filter);
         $dql = "SELECT d, c FROM " . District::class . " d JOIN d.city c";
         if ($dqlWhere !== "") {
             $dql .= " WHERE " . $dqlWhere;
@@ -103,24 +99,29 @@ final class DistrictRepository
         return self::ORDER_DQL_MAP[$orderBy];
     }
 
-    private function dqlFilter(?int $filterType, $filterValue): array
+    private function dqlFilter(?DistrictFilter $filter): array
     {
+        if (!$filter) {
+            return ["", []];
+        }
+        $filterType = $filter->getType();
+        $filterValue = $filter->getValue();
         switch ($filterType) {
-            case self::FILTER_CITY:
+            case DistrictFilter::TYPE_CITY:
                 return [
                     " c.name LIKE :search",
                     [
                         "search" => $this->dqlLike($filterValue),
                     ],
                 ];
-            case self::FILTER_NAME:
+            case DistrictFilter::TYPE_NAME:
                 return [
                     " d.name LIKE :search",
                     [
                         "search" => $this->dqlLike($filterValue),
                     ],
                 ];
-            case self::FILTER_AREA:
+            case DistrictFilter::TYPE_AREA:
                 return [
                     " d.area >= :low AND d.area <= :high",
                     [
@@ -128,7 +129,7 @@ final class DistrictRepository
                         "high" => $filterValue[1],
                     ],
                 ];
-            case self::FILTER_POPULATION:
+            case DistrictFilter::TYPE_POPULATION:
                 return [
                     " d.population >= :low AND d.population <= :high",
                     [
@@ -137,7 +138,8 @@ final class DistrictRepository
                     ],
                 ];
         }
-        return ["", []];
+
+        throw new \InvalidArgumentException();
     }
 
     private function dqlLike(string $string): string

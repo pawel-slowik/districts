@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Test\Repository;
 
 use DomainModel\Entity\District;
+use DomainModel\DistrictFilter;
 use Repository\CityRepository;
 use Repository\DistrictRepository;
 
@@ -61,8 +62,7 @@ class DistrictRepositoryTest extends TestCase
         $this->assertNotEmpty(
             $this->districtRepository->list(
                 DistrictRepository::ORDER_DEFAULT,
-                DistrictRepository::FILTER_NAME,
-                "Lorem ipsum"
+                new DistrictFilter(DistrictFilter::TYPE_NAME, "Lorem ipsum"),
             )
         );
     }
