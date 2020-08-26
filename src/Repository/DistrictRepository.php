@@ -8,29 +8,20 @@ use Doctrine\ORM\EntityManager;
 
 use DomainModel\Entity\District;
 use DomainModel\DistrictFilter;
+use DomainModel\DistrictOrdering;
 
 final class DistrictRepository
 {
-    public const ORDER_DEFAULT = 0;
-    public const ORDER_CITY_ASC = 1;
-    public const ORDER_CITY_DESC = 2;
-    public const ORDER_NAME_ASC = 3;
-    public const ORDER_NAME_DESC = 4;
-    public const ORDER_AREA_ASC = 5;
-    public const ORDER_AREA_DESC = 6;
-    public const ORDER_POPULATION_ASC = 7;
-    public const ORDER_POPULATION_DESC = 8;
-
     private const ORDER_DQL_MAP = [
-        self::ORDER_DEFAULT => "c.name ASC, d.name ASC",
-        self::ORDER_CITY_ASC => "c.name ASC",
-        self::ORDER_CITY_DESC => "c.name DESC",
-        self::ORDER_NAME_ASC => "d.name ASC",
-        self::ORDER_NAME_DESC => "d.name DESC",
-        self::ORDER_AREA_ASC => "d.area ASC",
-        self::ORDER_AREA_DESC => "d.area DESC",
-        self::ORDER_POPULATION_ASC => "d.population ASC",
-        self::ORDER_POPULATION_DESC => "d.population DESC",
+        DistrictOrdering::DEFAULT => "c.name ASC, d.name ASC",
+        DistrictOrdering::CITY_ASC => "c.name ASC",
+        DistrictOrdering::CITY_DESC => "c.name DESC",
+        DistrictOrdering::NAME_ASC => "d.name ASC",
+        DistrictOrdering::NAME_DESC => "d.name DESC",
+        DistrictOrdering::AREA_ASC => "d.area ASC",
+        DistrictOrdering::AREA_DESC => "d.area DESC",
+        DistrictOrdering::POPULATION_ASC => "d.population ASC",
+        DistrictOrdering::POPULATION_DESC => "d.population DESC",
     ];
 
     private $entityManager;
@@ -72,9 +63,9 @@ final class DistrictRepository
         $this->entityManager->flush();
     }
 
-    public function list(int $orderBy, ?DistrictFilter $filter = null): array
+    public function list(DistrictOrdering $order, ?DistrictFilter $filter = null): array
     {
-        $dqlOrderBy = $this->dqlOrderBy($orderBy);
+        $dqlOrderBy = $this->dqlOrderBy($order);
         list($dqlWhere, $dqlParameters) = $this->dqlFilter($filter);
         $dql = "SELECT d, c FROM " . District::class . " d JOIN d.city c";
         if ($dqlWhere !== "") {
@@ -91,12 +82,9 @@ final class DistrictRepository
         return $districts;
     }
 
-    private function dqlOrderBy(int $orderBy): string
+    private function dqlOrderBy(DistrictOrdering $order): string
     {
-        if (!array_key_exists($orderBy, self::ORDER_DQL_MAP)) {
-            $orderBy = self::ORDER_DEFAULT;
-        }
-        return self::ORDER_DQL_MAP[$orderBy];
+        return self::ORDER_DQL_MAP[$order->getOrder()];
     }
 
     private function dqlFilter(?DistrictFilter $filter): array

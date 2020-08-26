@@ -6,6 +6,7 @@ namespace Test\Repository;
 
 use DomainModel\Entity\District;
 use DomainModel\DistrictFilter;
+use DomainModel\DistrictOrdering;
 use Repository\CityRepository;
 use Repository\DistrictRepository;
 
@@ -56,12 +57,12 @@ class DistrictRepositoryTest extends TestCase
         $this->assertCount(
             16,
             $this->districtRepository->list(
-                DistrictRepository::ORDER_DEFAULT
+                new DistrictOrdering(DistrictOrdering::DEFAULT)
             )
         );
         $this->assertNotEmpty(
             $this->districtRepository->list(
-                DistrictRepository::ORDER_DEFAULT,
+                new DistrictOrdering(DistrictOrdering::DEFAULT),
                 new DistrictFilter(DistrictFilter::TYPE_NAME, "Lorem ipsum"),
             )
         );
@@ -89,7 +90,7 @@ class DistrictRepositoryTest extends TestCase
         $this->assertCount(
             14,
             $this->districtRepository->list(
-                DistrictRepository::ORDER_DEFAULT
+                new DistrictOrdering(DistrictOrdering::DEFAULT)
             )
         );
         $this->assertNull($this->districtRepository->get(1));
@@ -106,7 +107,7 @@ class DistrictRepositoryTest extends TestCase
         $this->assertCount(
             13,
             $this->districtRepository->list(
-                DistrictRepository::ORDER_DEFAULT
+                new DistrictOrdering(DistrictOrdering::DEFAULT)
             )
         );
         $this->assertNull($this->districtRepository->get(1));
