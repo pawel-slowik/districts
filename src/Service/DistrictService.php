@@ -111,10 +111,7 @@ class DistrictService
 
     public function listDistricts(DistrictOrdering $order, ?DistrictFilter $filter): array
     {
-        return $this->districtRepository->list(
-            $order,
-            $filter,
-        );
+        return $this->districtRepository->list($order, $filter);
     }
 
     public function listCities(): array
