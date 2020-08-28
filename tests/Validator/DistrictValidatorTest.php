@@ -23,136 +23,83 @@ class DistrictValidatorTest extends TestCase
     /**
      * @dataProvider validDataProvider
      */
-    public function testValid($input): void
+    public function testValid($name, $area, $population): void
     {
-        $result = $this->districtValidator->validate($input);
+        $result = $this->districtValidator->validate($name, $area, $population);
         $this->assertTrue($result->isOk());
         $this->assertEmpty($result->getErrors());
     }
 
-    public function validDataProvider(): iterable
+    public function validDataProvider(): array
     {
-        yield [[
-            "name" => "test",
-            "area" => 123,
-            "population" => 456,
-        ]];
-
-        yield [[
-            "name" => "test",
-            "area" => 123.4,
-            "population" => 567,
-        ]];
-
-        yield [[
-            "name" => "test",
-            "area" => 0.0001,
-            "population" => 1,
-        ]];
+        return [
+            ["test", 123, 456],
+            ["test", 123.4, 567],
+            ["test", 0.0001, 1],
+        ];
     }
 
     /**
      * @dataProvider invalidNameDataProvider
      */
-    public function testInvalidName($input): void
+    public function testInvalidName($name): void
     {
-        $result = $this->districtValidator->validate($input);
+        $result = $this->districtValidator->validate($name, 123, 456);
         $this->assertFalse($result->isOk());
         $this->assertContains("name", $result->getErrors());
         $this->assertCount(1, $result->getErrors());
     }
 
-    public function invalidNameDataProvider(): iterable
+    public function invalidNameDataProvider(): array
     {
-        $input = [
-            "area" => 123,
-            "population" => 456,
+        return [
+            [null],
+            [""],
         ];
-
-        $input["name"] = null;
-        yield [$input];
-
-        $input["name"] = "";
-        yield [$input];
-
-        unset($input["name"]);
-        yield [$input];
     }
 
     /**
      * @dataProvider invalidAreaDataProvider
      */
-    public function testinValidArea($input): void
+    public function testinValidArea($area): void
     {
-        $result = $this->districtValidator->validate($input);
+        $result = $this->districtValidator->validate("test", $area, 456);
         $this->assertFalse($result->isOk());
         $this->assertContains("area", $result->getErrors());
         $this->assertCount(1, $result->getErrors());
     }
 
-    public function invalidAreaDataProvider(): iterable
+    public function invalidAreaDataProvider(): array
     {
-        $input = [
-            "name" => "test",
-            "population" => 456,
+        return [
+            [null],
+            [""],
+            [0],
+            [-1],
+            ["foo"],
         ];
-
-        $input["area"] = null;
-        yield [$input];
-
-        $input["area"] = "";
-        yield [$input];
-
-        $input["area"] = 0;
-        yield [$input];
-
-        $input["area"] = -1;
-        yield [$input];
-
-        $input["area"] = "foo";
-        yield [$input];
-
-        unset($input["area"]);
-        yield [$input];
     }
 
     /**
      * @dataProvider invalidPopulationDataProvider
      */
-    public function testinValidPopulation($input): void
+    public function testinValidPopulation($population): void
     {
-        $result = $this->districtValidator->validate($input);
+        $result = $this->districtValidator->validate("test", 123, $population);
         $this->assertFalse($result->isOk());
         $this->assertContains("population", $result->getErrors());
         $this->assertCount(1, $result->getErrors());
     }
 
-    public function invalidPopulationDataProvider(): iterable
+    public function invalidPopulationDataProvider(): array
     {
-        $input = [
-            "name" => "test",
-            "area" => 123,
+        return [
+            [null],
+            [""],
+            [0],
+            [-1],
+            [0.1],
+            ["bar"],
         ];
-
-        $input["population"] = null;
-        yield [$input];
-
-        $input["population"] = "";
-        yield [$input];
-
-        $input["population"] = 0;
-        yield [$input];
-
-        $input["population"] = -1;
-        yield [$input];
-
-        $input["population"] = 0.1;
-        yield [$input];
-
-        $input["population"] = "bar";
-        yield [$input];
-
-        unset($input["population"]);
-        yield [$input];
     }
 }

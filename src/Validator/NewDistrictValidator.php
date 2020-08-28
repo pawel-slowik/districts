@@ -16,21 +16,27 @@ final class NewDistrictValidator
         $this->validCityIds = $validCityIds;
     }
 
-    public function validate(array $data): ValidationResult
+    /**
+     * @param scalar $city
+     * @param scalar $name
+     * @param scalar $area
+     * @param scalar $population
+     */
+    public function validate($city, $name, $area, $population): ValidationResult
     {
-        $result = $this->districtValidator->validate($data);
-        if (!$this->validateCity($data)) {
+        $result = $this->districtValidator->validate($name, $area, $population);
+        if (!$this->validateCity($city)) {
             $result->addError("city");
         }
         return $result;
     }
 
-    private function validateCity(array $data): bool
+    /**
+     * @param scalar $city
+     */
+    private function validateCity($city): bool
     {
-        if (!array_key_exists("city", $data)) {
-            return false;
-        }
-        if (!in_array($data["city"], $this->validCityIds, true)) {
+        if (!in_array($city, $this->validCityIds, true)) {
             return false;
         }
         return true;

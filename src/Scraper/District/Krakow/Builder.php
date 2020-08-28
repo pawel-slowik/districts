@@ -41,11 +41,9 @@ final class Builder extends BuilderBase
         );
         return $this->createValidatedDistrict(
             $this->validator,
-            [
-                "name" => $name,
-                "area" => $area,
-                "population" => $population,
-            ]
+            $name,
+            $area,
+            $population,
         );
     }
 

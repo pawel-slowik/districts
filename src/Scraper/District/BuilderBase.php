@@ -10,14 +10,27 @@ use Scraper\RuntimeException;
 
 abstract class BuilderBase
 {
-    protected function createValidatedDistrict(DistrictValidator $validator, array $data): District
-    {
-        $result = $validator->validate($data);
+    /**
+     * @param scalar $name
+     * @param scalar $area
+     * @param scalar $population
+     */
+    // phpcs:ignore PEAR.Commenting.FunctionComment.ParamNameNoMatch
+    protected function createValidatedDistrict(
+        DistrictValidator $validator,
+        $name,
+        $area,
+        $population
+    ): District {
+        $result = $validator->validate($name, $area, $population);
         if (!$result->isOk()) {
             throw new RuntimeException(
                 "validation failed: " . implode(", ", array_map("strval", $result->getErrors()))
             );
         }
-        return new District($data["name"], $data["area"], $data["population"]);
+        /** @var string $name */
+        /** @var float $area */
+        /** @var int $population */
+        return new District($name, $area, $population);
     }
 }

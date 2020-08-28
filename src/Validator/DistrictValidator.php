@@ -6,58 +6,63 @@ namespace Validator;
 
 final class DistrictValidator
 {
-    public function validate(array $data): ValidationResult
+    /**
+     * @param scalar $name
+     * @param scalar $area
+     * @param scalar $population
+     */
+    public function validate($name, $area, $population): ValidationResult
     {
         $result = new ValidationResult();
-        if (!$this->validateName($data)) {
+        if (!$this->validateName($name)) {
             $result->addError("name");
         }
-        if (!$this->validateArea($data)) {
+        if (!$this->validateArea($area)) {
             $result->addError("area");
         }
-        if (!$this->validatePopulation($data)) {
+        if (!$this->validatePopulation($population)) {
             $result->addError("population");
         }
         return $result;
     }
 
-    private function validateName(array $data): bool
+    /**
+     * @param scalar $name
+     */
+    private function validateName($name): bool
     {
-        if (!array_key_exists("name", $data)) {
+        if (!is_string($name)) {
             return false;
         }
-        if (!is_string($data["name"])) {
-            return false;
-        }
-        if ($data["name"] === "") {
+        if ($name === "") {
             return false;
         }
         return true;
     }
 
-    private function validateArea(array $data): bool
+    /**
+     * @param scalar $area
+     */
+    private function validateArea($area): bool
     {
-        if (!array_key_exists("area", $data)) {
+        if (!is_int($area) && !is_float($area)) {
             return false;
         }
-        if (!is_int($data["area"]) && !is_float($data["area"])) {
-            return false;
-        }
-        if ($data["area"] <= 0) {
+        if ($area <= 0) {
             return false;
         }
         return true;
     }
 
-    private function validatePopulation(array $data): bool
+    /**
+     * @param scalar $population
+     */
+    private function validatePopulation($population): bool
     {
-        if (!array_key_exists("population", $data)) {
+        if (!is_int($population)) {
             return false;
         }
-        if (!is_int($data["population"])) {
-            return false;
-        }
-        if ($data["population"] <= 0) {
+        if ($population <= 0) {
             return false;
         }
         return true;

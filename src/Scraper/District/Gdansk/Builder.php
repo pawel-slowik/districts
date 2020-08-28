@@ -43,11 +43,9 @@ final class Builder extends BuilderBase
         $population = $this->findSingleItem($texts, [$this, "extractPopulation"]);
         return $this->createValidatedDistrict(
             $this->validator,
-            [
-                "name" => $name,
-                "area" => $area,
-                "population" => $population,
-            ]
+            $name,
+            $area,
+            $population,
         );
     }
 
