@@ -47,6 +47,6 @@ class DistrictOrdering
 
     private static function validate(int $order): bool
     {
-        return array_key_exists($order, self::VALID_ORDER_CHOICES);
+        return in_array($order, self::VALID_ORDER_CHOICES, true);
     }
 }
