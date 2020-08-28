@@ -51,7 +51,7 @@ class DistrictService
             },
             $this->cityRepository->list()
         );
-        $validator = new NewDistrictValidator($validCityIds);
+        $validator = new NewDistrictValidator(new DistrictValidator(), $validCityIds);
         $validationResult = $validator->validate($input);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());

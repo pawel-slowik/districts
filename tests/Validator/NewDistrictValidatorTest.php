@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Test\Validator;
 
+use Validator\DistrictValidator;
 use Validator\NewDistrictValidator;
 use PHPUnit\Framework\TestCase;
 
@@ -16,7 +17,7 @@ class NewDistrictValidatorTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->newDistrictValidator = new NewDistrictValidator([1, 3]);
+        $this->newDistrictValidator = new NewDistrictValidator(new DistrictValidator(), [1, 3]);
     }
 
     /**

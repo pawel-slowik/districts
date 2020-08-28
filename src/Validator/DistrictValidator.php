@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Validator;
 
-class DistrictValidator
+final class DistrictValidator
 {
     public function validate(array $data): ValidationResult
     {
@@ -21,7 +21,7 @@ class DistrictValidator
         return $result;
     }
 
-    protected function validateName(array $data): bool
+    private function validateName(array $data): bool
     {
         if (!array_key_exists("name", $data)) {
             return false;
@@ -35,7 +35,7 @@ class DistrictValidator
         return true;
     }
 
-    protected function validateArea(array $data): bool
+    private function validateArea(array $data): bool
     {
         if (!array_key_exists("area", $data)) {
             return false;
@@ -49,7 +49,7 @@ class DistrictValidator
         return true;
     }
 
-    protected function validatePopulation(array $data): bool
+    private function validatePopulation(array $data): bool
     {
         if (!array_key_exists("population", $data)) {
             return false;
