@@ -12,19 +12,6 @@ use DomainModel\DistrictOrdering;
 
 final class DistrictRepository
 {
-    private const ORDER_DQL_MAP = [
-        DistrictOrdering::FULL_NAME_ASC => "c.name ASC, d.name ASC",
-        DistrictOrdering::FULL_NAME_DESC => "c.name DESC, d.name DESC",
-        DistrictOrdering::CITY_NAME_ASC => "c.name ASC",
-        DistrictOrdering::CITY_NAME_DESC => "c.name DESC",
-        DistrictOrdering::DISTRICT_NAME_ASC => "d.name ASC",
-        DistrictOrdering::DISTRICT_NAME_DESC => "d.name DESC",
-        DistrictOrdering::AREA_ASC => "d.area ASC",
-        DistrictOrdering::AREA_DESC => "d.area DESC",
-        DistrictOrdering::POPULATION_ASC => "d.population ASC",
-        DistrictOrdering::POPULATION_DESC => "d.population DESC",
-    ];
-
     private $entityManager;
 
     public function __construct(EntityManager $entityManager)
@@ -85,7 +72,29 @@ final class DistrictRepository
 
     private function dqlOrderBy(DistrictOrdering $order): string
     {
-        return self::ORDER_DQL_MAP[$order->getOrder()];
+        $orderDqlMap = [
+            DistrictOrdering::FULL_NAME => [
+                DistrictOrdering::ASC => "c.name ASC, d.name ASC",
+                DistrictOrdering::DESC => "c.name DESC, d.name DESC",
+            ],
+            DistrictOrdering::CITY_NAME => [
+                DistrictOrdering::ASC => "c.name ASC",
+                DistrictOrdering::DESC => "c.name DESC",
+            ],
+            DistrictOrdering::DISTRICT_NAME => [
+                DistrictOrdering::ASC => "d.name ASC",
+                DistrictOrdering::DESC => "d.name DESC",
+            ],
+            DistrictOrdering::AREA => [
+                DistrictOrdering::ASC => "d.area ASC",
+                DistrictOrdering::DESC => "d.area DESC",
+            ],
+            DistrictOrdering::POPULATION => [
+                DistrictOrdering::ASC => "d.population ASC",
+                DistrictOrdering::DESC => "d.population DESC",
+            ],
+        ];
+        return $orderDqlMap[$order->getField()][$order->getDirection()];
     }
 
     private function dqlFilter(?DistrictFilter $filter): array

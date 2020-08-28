@@ -57,12 +57,12 @@ class DistrictRepositoryTest extends TestCase
         $this->assertCount(
             16,
             $this->districtRepository->list(
-                new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC)
+                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC)
             )
         );
         $this->assertNotEmpty(
             $this->districtRepository->list(
-                new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC),
+                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC),
                 new DistrictFilter(DistrictFilter::TYPE_NAME, "Lorem ipsum"),
             )
         );
@@ -90,7 +90,7 @@ class DistrictRepositoryTest extends TestCase
         $this->assertCount(
             14,
             $this->districtRepository->list(
-                new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC)
+                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC)
             )
         );
         $this->assertNull($this->districtRepository->get(1));
@@ -107,7 +107,7 @@ class DistrictRepositoryTest extends TestCase
         $this->assertCount(
             13,
             $this->districtRepository->list(
-                new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC)
+                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC)
             )
         );
         $this->assertNull($this->districtRepository->get(1));

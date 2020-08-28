@@ -20,54 +20,56 @@ class DistrictOrderingFactoryTest extends TestCase
     public function testCreate(
         ?string $inputColumn,
         ?string $inputDirection,
-        int $expectedOrder
+        int $expectedField,
+        int $expectedDirection
     ): void {
         $order = DistrictOrderingFactory::createFromRequestInput($inputColumn, $inputDirection);
         $this->assertInstanceOf(DistrictOrdering::class, $order);
-        $this->assertSame($expectedOrder, $order->getOrder());
+        $this->assertSame($expectedField, $order->getField());
+        $this->assertSame($expectedDirection, $order->getDirection());
     }
 
     public function createDataProvider(): array
     {
         return [
             [
-                "city", null, DistrictOrdering::FULL_NAME_ASC,
+                "city", null, DistrictOrdering::FULL_NAME, DistrictOrdering::ASC,
             ],
             [
-                null, "asc", DistrictOrdering::FULL_NAME_ASC,
+                null, "asc", DistrictOrdering::FULL_NAME, DistrictOrdering::ASC,
             ],
             [
-                "foo", "bar", DistrictOrdering::FULL_NAME_ASC,
+                "foo", "bar", DistrictOrdering::FULL_NAME, DistrictOrdering::ASC,
             ],
             [
-                "city", "foo", DistrictOrdering::FULL_NAME_ASC,
+                "city", "foo", DistrictOrdering::FULL_NAME, DistrictOrdering::ASC,
             ],
             [
-                "bar", "asc", DistrictOrdering::FULL_NAME_ASC,
+                "bar", "asc", DistrictOrdering::FULL_NAME, DistrictOrdering::ASC,
             ],
             [
-                "city", "asc", DistrictOrdering::CITY_NAME_ASC,
+                "city", "asc", DistrictOrdering::CITY_NAME, DistrictOrdering::ASC,
             ],
             [
-                "city", "desc", DistrictOrdering::CITY_NAME_DESC,
+                "city", "desc", DistrictOrdering::CITY_NAME, DistrictOrdering::DESC,
             ],
             [
-                "name", "asc", DistrictOrdering::DISTRICT_NAME_ASC,
+                "name", "asc", DistrictOrdering::DISTRICT_NAME, DistrictOrdering::ASC,
             ],
             [
-                "name", "desc", DistrictOrdering::DISTRICT_NAME_DESC,
+                "name", "desc", DistrictOrdering::DISTRICT_NAME, DistrictOrdering::DESC,
             ],
             [
-                "area", "asc", DistrictOrdering::AREA_ASC,
+                "area", "asc", DistrictOrdering::AREA, DistrictOrdering::ASC,
             ],
             [
-                "area", "desc", DistrictOrdering::AREA_DESC,
+                "area", "desc", DistrictOrdering::AREA, DistrictOrdering::DESC,
             ],
             [
-                "population", "asc", DistrictOrdering::POPULATION_ASC,
+                "population", "asc", DistrictOrdering::POPULATION, DistrictOrdering::ASC,
             ],
             [
-                "population", "desc", DistrictOrdering::POPULATION_DESC,
+                "population", "desc", DistrictOrdering::POPULATION, DistrictOrdering::DESC,
             ],
         ];
     }

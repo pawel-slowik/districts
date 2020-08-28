@@ -31,7 +31,7 @@ class DistrictRepositoryListTest extends TestCase
 
     public function testListStructure(): void
     {
-        $list = $this->districtRepository->list(new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC));
+        $list = $this->districtRepository->list(new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC));
         $this->assertCount(15, $list);
         $this->assertContainsOnlyInstancesOf(District::class, $list);
     }
@@ -56,11 +56,11 @@ class DistrictRepositoryListTest extends TestCase
     {
         return [
             [
-                new DistrictOrdering(DistrictOrdering::CITY_NAME_ASC),
+                new DistrictOrdering(DistrictOrdering::CITY_NAME, DistrictOrdering::ASC),
                 ["Bar", "Foo"],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::CITY_NAME_DESC),
+                new DistrictOrdering(DistrictOrdering::CITY_NAME, DistrictOrdering::DESC),
                 ["Foo", "Bar"],
             ],
         ];
@@ -86,35 +86,35 @@ class DistrictRepositoryListTest extends TestCase
     {
         return [
             [
-                new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC),
+                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC),
                 [14, 12, 15, 13, 4, 6, 2, 9, 1, 10, 3, 5, 8, 7, 11],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::FULL_NAME_DESC),
+                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::DESC),
                 [11, 7, 8, 5, 3, 10, 1, 9, 2, 6, 4, 13, 15, 12, 14],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::DISTRICT_NAME_ASC),
+                new DistrictOrdering(DistrictOrdering::DISTRICT_NAME, DistrictOrdering::ASC),
                 [4, 14, 6, 2, 9, 1, 10, 3, 5, 8, 7, 12, 15, 13, 11],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::DISTRICT_NAME_DESC),
+                new DistrictOrdering(DistrictOrdering::DISTRICT_NAME, DistrictOrdering::DESC),
                 [11, 13, 15, 12, 7, 8, 5, 3, 10, 1, 9, 2, 6, 14, 4],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::AREA_ASC),
+                new DistrictOrdering(DistrictOrdering::AREA, DistrictOrdering::ASC),
                 [3, 4, 6, 7, 1, 2, 8, 11, 12, 13, 14, 15, 5, 10, 9],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::AREA_DESC),
+                new DistrictOrdering(DistrictOrdering::AREA, DistrictOrdering::DESC),
                 [9, 10, 5, 15, 14, 13, 12, 11, 2, 8, 1, 7, 6, 4, 3],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::POPULATION_ASC),
+                new DistrictOrdering(DistrictOrdering::POPULATION, DistrictOrdering::ASC),
                 [10, 2, 3, 5, 6, 4, 11, 8, 9, 1, 12, 7, 13, 14, 15],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::POPULATION_DESC),
+                new DistrictOrdering(DistrictOrdering::POPULATION, DistrictOrdering::DESC),
                 [15, 14, 13, 7, 12, 1, 8, 9, 11, 4, 6, 2, 3, 5, 10],
             ],
         ];
@@ -130,7 +130,7 @@ class DistrictRepositoryListTest extends TestCase
             function ($district) {
                 return $district->getId();
             },
-            $this->districtRepository->list(new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC), $filter)
+            $this->districtRepository->list(new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC), $filter)
         );
         sort($actualIds);
         $this->assertSame($expectedIds, $actualIds);
