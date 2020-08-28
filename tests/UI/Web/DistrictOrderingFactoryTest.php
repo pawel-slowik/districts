@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Test\Service;
+namespace Test\UI\Web;
 
 use DomainModel\DistrictOrdering;
-use Service\DistrictOrderingFactory;
+use UI\Web\DistrictOrderingFactory;
 
 use PHPUnit\Framework\TestCase;
 

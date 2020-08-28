@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Service;
+namespace UI\Web;
 
 use DomainModel\DistrictOrdering;
 

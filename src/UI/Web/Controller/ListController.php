@@ -9,8 +9,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\Twig as View;
 
 use Service\DistrictService;
-use Service\DistrictFilterFactory;
-use Service\DistrictOrderingFactory;
+use UI\Web\DistrictFilterFactory;
+use UI\Web\DistrictOrderingFactory;
 
 final class ListController
 {
