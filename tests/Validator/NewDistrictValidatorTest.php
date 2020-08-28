@@ -40,7 +40,7 @@ class NewDistrictValidatorTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidNameDataProvider
+     * @dataProvider \Test\Validator\DistrictValidatorTest::invalidNameDataProvider
      */
     public function testInvalidName($name): void
     {
@@ -50,16 +50,8 @@ class NewDistrictValidatorTest extends TestCase
         $this->assertCount(1, $result->getErrors());
     }
 
-    public function invalidNameDataProvider(): array
-    {
-        return [
-            [null],
-            [""],
-        ];
-    }
-
     /**
-     * @dataProvider invalidAreaDataProvider
+     * @dataProvider \Test\Validator\DistrictValidatorTest::invalidAreaDataProvider
      */
     public function testinValidArea($area): void
     {
@@ -69,19 +61,8 @@ class NewDistrictValidatorTest extends TestCase
         $this->assertCount(1, $result->getErrors());
     }
 
-    public function invalidAreaDataProvider(): array
-    {
-        return [
-            [null],
-            [""],
-            [0],
-            [-1],
-            ["foo"],
-        ];
-    }
-
     /**
-     * @dataProvider invalidPopulationDataProvider
+     * @dataProvider \Test\Validator\DistrictValidatorTest::invalidPopulationDataProvider
      */
     public function testinValidPopulation($population): void
     {
@@ -89,18 +70,6 @@ class NewDistrictValidatorTest extends TestCase
         $this->assertFalse($result->isOk());
         $this->assertContains("population", $result->getErrors());
         $this->assertCount(1, $result->getErrors());
-    }
-
-    public function invalidPopulationDataProvider(): array
-    {
-        return [
-            [null],
-            [""],
-            [0],
-            [-1],
-            [0.1],
-            ["bar"],
-        ];
     }
 
     /**
