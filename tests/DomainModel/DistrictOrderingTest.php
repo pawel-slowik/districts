@@ -15,8 +15,8 @@ class DistrictOrderingTest extends TestCase
 {
     public function testGetters(): void
     {
-        $order = new DistrictOrdering(DistrictOrdering::CITY_ASC);
-        $this->assertSame(DistrictOrdering::CITY_ASC, $order->getOrder());
+        $order = new DistrictOrdering(DistrictOrdering::CITY_NAME_ASC);
+        $this->assertSame(DistrictOrdering::CITY_NAME_ASC, $order->getOrder());
     }
 
     /**
@@ -31,11 +31,11 @@ class DistrictOrderingTest extends TestCase
     public function validDataProvider(): array
     {
         return [
-            [DistrictOrdering::DEFAULT],
-            [DistrictOrdering::CITY_ASC],
-            [DistrictOrdering::CITY_DESC],
-            [DistrictOrdering::NAME_ASC],
-            [DistrictOrdering::NAME_DESC],
+            [DistrictOrdering::FULL_NAME_ASC],
+            [DistrictOrdering::CITY_NAME_ASC],
+            [DistrictOrdering::CITY_NAME_DESC],
+            [DistrictOrdering::DISTRICT_NAME_ASC],
+            [DistrictOrdering::DISTRICT_NAME_DESC],
             [DistrictOrdering::AREA_ASC],
             [DistrictOrdering::AREA_DESC],
             [DistrictOrdering::POPULATION_ASC],

@@ -13,11 +13,11 @@ use DomainModel\DistrictOrdering;
 final class DistrictRepository
 {
     private const ORDER_DQL_MAP = [
-        DistrictOrdering::DEFAULT => "c.name ASC, d.name ASC",
-        DistrictOrdering::CITY_ASC => "c.name ASC",
-        DistrictOrdering::CITY_DESC => "c.name DESC",
-        DistrictOrdering::NAME_ASC => "d.name ASC",
-        DistrictOrdering::NAME_DESC => "d.name DESC",
+        DistrictOrdering::FULL_NAME_ASC => "c.name ASC, d.name ASC",
+        DistrictOrdering::CITY_NAME_ASC => "c.name ASC",
+        DistrictOrdering::CITY_NAME_DESC => "c.name DESC",
+        DistrictOrdering::DISTRICT_NAME_ASC => "d.name ASC",
+        DistrictOrdering::DISTRICT_NAME_DESC => "d.name DESC",
         DistrictOrdering::AREA_ASC => "d.area ASC",
         DistrictOrdering::AREA_DESC => "d.area DESC",
         DistrictOrdering::POPULATION_ASC => "d.population ASC",

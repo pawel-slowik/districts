@@ -40,7 +40,7 @@ class DistrictServiceListTest extends TestCase
     public function testListStructure(): void
     {
         $list = $this->districtService->listDistricts(
-            new DistrictOrdering(DistrictOrdering::DEFAULT),
+            new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC),
             null,
         );
         $this->assertCount(15, $list);
@@ -67,11 +67,11 @@ class DistrictServiceListTest extends TestCase
     {
         return [
             [
-                new DistrictOrdering(DistrictOrdering::CITY_ASC),
+                new DistrictOrdering(DistrictOrdering::CITY_NAME_ASC),
                 ["Bar", "Foo"],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::CITY_DESC),
+                new DistrictOrdering(DistrictOrdering::CITY_NAME_DESC),
                 ["Foo", "Bar"],
             ],
         ];
@@ -97,15 +97,15 @@ class DistrictServiceListTest extends TestCase
     {
         return [
             [
-                new DistrictOrdering(DistrictOrdering::DEFAULT),
+                new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC),
                 [14, 12, 15, 13, 4, 6, 2, 9, 1, 10, 3, 5, 8, 7, 11],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::NAME_ASC),
+                new DistrictOrdering(DistrictOrdering::DISTRICT_NAME_ASC),
                 [4, 14, 6, 2, 9, 1, 10, 3, 5, 8, 7, 12, 15, 13, 11],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::NAME_DESC),
+                new DistrictOrdering(DistrictOrdering::DISTRICT_NAME_DESC),
                 [11, 13, 15, 12, 7, 8, 5, 3, 10, 1, 9, 2, 6, 14, 4],
             ],
             [
@@ -137,7 +137,7 @@ class DistrictServiceListTest extends TestCase
             function ($district) {
                 return $district->getId();
             },
-            $this->districtService->listDistricts(new DistrictOrdering(DistrictOrdering::DEFAULT), $filter)
+            $this->districtService->listDistricts(new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC), $filter)
         );
         sort($actualIds);
         $this->assertSame($expectedIds, $actualIds);

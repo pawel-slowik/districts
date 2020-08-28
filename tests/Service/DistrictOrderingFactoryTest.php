@@ -31,31 +31,31 @@ class DistrictOrderingFactoryTest extends TestCase
     {
         return [
             [
-                "city", null, DistrictOrdering::DEFAULT,
+                "city", null, DistrictOrdering::FULL_NAME_ASC,
             ],
             [
-                null, "asc", DistrictOrdering::DEFAULT,
+                null, "asc", DistrictOrdering::FULL_NAME_ASC,
             ],
             [
-                "foo", "bar", DistrictOrdering::DEFAULT,
+                "foo", "bar", DistrictOrdering::FULL_NAME_ASC,
             ],
             [
-                "city", "foo", DistrictOrdering::DEFAULT,
+                "city", "foo", DistrictOrdering::FULL_NAME_ASC,
             ],
             [
-                "bar", "asc", DistrictOrdering::DEFAULT,
+                "bar", "asc", DistrictOrdering::FULL_NAME_ASC,
             ],
             [
-                "city", "asc", DistrictOrdering::CITY_ASC,
+                "city", "asc", DistrictOrdering::CITY_NAME_ASC,
             ],
             [
-                "city", "desc", DistrictOrdering::CITY_DESC,
+                "city", "desc", DistrictOrdering::CITY_NAME_DESC,
             ],
             [
-                "name", "asc", DistrictOrdering::NAME_ASC,
+                "name", "asc", DistrictOrdering::DISTRICT_NAME_ASC,
             ],
             [
-                "name", "desc", DistrictOrdering::NAME_DESC,
+                "name", "desc", DistrictOrdering::DISTRICT_NAME_DESC,
             ],
             [
                 "area", "asc", DistrictOrdering::AREA_ASC,

@@ -62,7 +62,7 @@ class DistrictServiceTest extends TestCase
         $this->assertCount(
             14,
             $this->districtService->listDistricts(
-                new DistrictOrdering(DistrictOrdering::DEFAULT),
+                new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC),
                 null,
             )
         );
@@ -89,13 +89,13 @@ class DistrictServiceTest extends TestCase
         $this->assertCount(
             16,
             $this->districtService->listDistricts(
-                new DistrictOrdering(DistrictOrdering::DEFAULT),
+                new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC),
                 null,
             )
         );
         $this->assertNotEmpty(
             $this->districtService->listDistricts(
-                new DistrictOrdering(DistrictOrdering::DEFAULT),
+                new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC),
                 new DistrictFilter(DistrictFilter::TYPE_NAME, "Lorem ipsum"),
             )
         );
@@ -204,7 +204,7 @@ class DistrictServiceTest extends TestCase
     {
         $this->districtService->setDistrictsForCityName("Bar", [new District("Hola", 1, 2)]);
         $list = $this->districtService->listDistricts(
-            new DistrictOrdering(DistrictOrdering::DEFAULT),
+            new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC),
             new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
         );
         $this->assertCount(1, $list);
@@ -214,7 +214,7 @@ class DistrictServiceTest extends TestCase
     {
         $this->districtService->setDistrictsForCityName("Bar", []);
         $list = $this->districtService->listDistricts(
-            new DistrictOrdering(DistrictOrdering::DEFAULT),
+            new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC),
             new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
         );
         $this->assertEmpty($list);
@@ -224,7 +224,7 @@ class DistrictServiceTest extends TestCase
     {
         $this->districtService->setDistrictsForCityName("New City", [new District("Hola", 1, 2)]);
         $list = $this->districtService->listDistricts(
-            new DistrictOrdering(DistrictOrdering::DEFAULT),
+            new DistrictOrdering(DistrictOrdering::FULL_NAME_ASC),
             new DistrictFilter(DistrictFilter::TYPE_CITY, "New City"),
         );
         $this->assertCount(1, $list);
