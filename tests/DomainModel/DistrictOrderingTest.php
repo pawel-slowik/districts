@@ -32,6 +32,7 @@ class DistrictOrderingTest extends TestCase
     {
         return [
             [DistrictOrdering::FULL_NAME_ASC],
+            [DistrictOrdering::FULL_NAME_DESC],
             [DistrictOrdering::CITY_NAME_ASC],
             [DistrictOrdering::CITY_NAME_DESC],
             [DistrictOrdering::DISTRICT_NAME_ASC],
@@ -56,7 +57,8 @@ class DistrictOrderingTest extends TestCase
     {
         return [
             [-1],
-            [9],
+            [0],
+            [11],
         ];
     }
 }

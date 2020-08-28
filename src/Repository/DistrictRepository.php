@@ -14,6 +14,7 @@ final class DistrictRepository
 {
     private const ORDER_DQL_MAP = [
         DistrictOrdering::FULL_NAME_ASC => "c.name ASC, d.name ASC",
+        DistrictOrdering::FULL_NAME_DESC => "c.name DESC, d.name DESC",
         DistrictOrdering::CITY_NAME_ASC => "c.name ASC",
         DistrictOrdering::CITY_NAME_DESC => "c.name DESC",
         DistrictOrdering::DISTRICT_NAME_ASC => "d.name ASC",

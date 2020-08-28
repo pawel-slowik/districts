@@ -90,6 +90,10 @@ class DistrictRepositoryListTest extends TestCase
                 [14, 12, 15, 13, 4, 6, 2, 9, 1, 10, 3, 5, 8, 7, 11],
             ],
             [
+                new DistrictOrdering(DistrictOrdering::FULL_NAME_DESC),
+                [11, 7, 8, 5, 3, 10, 1, 9, 2, 6, 4, 13, 15, 12, 14],
+            ],
+            [
                 new DistrictOrdering(DistrictOrdering::DISTRICT_NAME_ASC),
                 [4, 14, 6, 2, 9, 1, 10, 3, 5, 8, 7, 12, 15, 13, 11],
             ],
