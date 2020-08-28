@@ -9,57 +9,57 @@ class DistrictValidator
     public function validate(array $data): ValidationResult
     {
         $result = new ValidationResult();
-        $this->validateName($data, $result);
-        $this->validateArea($data, $result);
-        $this->validatePopulation($data, $result);
+        if (!$this->validateName($data)) {
+            $result->addError("name");
+        }
+        if (!$this->validateArea($data)) {
+            $result->addError("area");
+        }
+        if (!$this->validatePopulation($data)) {
+            $result->addError("population");
+        }
         return $result;
     }
 
-    protected function validateName(array $data, ValidationResult $result): void
+    protected function validateName(array $data): bool
     {
         if (!array_key_exists("name", $data)) {
-            $result->addError("name");
-            return;
+            return false;
         }
         if (!is_string($data["name"])) {
-            $result->addError("name");
-            return;
+            return false;
         }
         if ($data["name"] === "") {
-            $result->addError("name");
-            return;
+            return false;
         }
+        return true;
     }
 
-    protected function validateArea(array $data, ValidationResult $result): void
+    protected function validateArea(array $data): bool
     {
         if (!array_key_exists("area", $data)) {
-            $result->addError("area");
-            return;
+            return false;
         }
         if (!is_int($data["area"]) && !is_float($data["area"])) {
-            $result->addError("area");
-            return;
+            return false;
         }
         if ($data["area"] <= 0) {
-            $result->addError("area");
-            return;
+            return false;
         }
+        return true;
     }
 
-    protected function validatePopulation(array $data, ValidationResult $result): void
+    protected function validatePopulation(array $data): bool
     {
         if (!array_key_exists("population", $data)) {
-            $result->addError("population");
-            return;
+            return false;
         }
         if (!is_int($data["population"])) {
-            $result->addError("population");
-            return;
+            return false;
         }
         if ($data["population"] <= 0) {
-            $result->addError("population");
-            return;
+            return false;
         }
+        return true;
     }
 }

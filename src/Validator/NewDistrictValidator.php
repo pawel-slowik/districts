@@ -16,19 +16,20 @@ class NewDistrictValidator extends DistrictValidator
     public function validate(array $data): ValidationResult
     {
         $result = parent::validate($data);
-        $this->validateCity($data, $result);
+        if (!$this->validateCity($data)) {
+            $result->addError("city");
+        }
         return $result;
     }
 
-    protected function validateCity(array $data, ValidationResult $result): void
+    protected function validateCity(array $data): bool
     {
         if (!array_key_exists("city", $data)) {
-            $result->addError("city");
-            return;
+            return false;
         }
         if (!in_array($data["city"], $this->validCityIds, true)) {
-            $result->addError("city");
-            return;
+            return false;
         }
+        return true;
     }
 }
