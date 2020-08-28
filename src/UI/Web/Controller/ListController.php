@@ -31,14 +31,13 @@ final class ListController
     {
         $orderColumn = $args["column"] ?? null;
         $orderDirection = $args["direction"] ?? null;
-        $order = DistrictOrderingFactory::createFromRequestInput($orderColumn, $orderDirection);
-
         $queryParams = $request->getQueryParams();
         $filterColumn = $queryParams["filterColumn"] ?? null;
         $filterValue = $queryParams["filterValue"] ?? null;
-        $filter = DistrictFilterFactory::createFromRequestInput($filterColumn, $filterValue);
-
-        $districts = $this->districtService->listDistricts($order, $filter);
+        $districts = $this->districtService->listDistricts(
+            DistrictOrderingFactory::createFromRequestInput($orderColumn, $orderDirection),
+            DistrictFilterFactory::createFromRequestInput($filterColumn, $filterValue),
+        );
         $templateData = [
             "title" => "List of districts",
             "districts" => $districts,
