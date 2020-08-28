@@ -27,11 +27,12 @@ class DistrictRepositoryListTest extends TestCase
             "tests/Repository/data/districts.sql",
         ]);
         $this->districtRepository = new DistrictRepository($entityManager);
+        $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
 
     public function testListStructure(): void
     {
-        $list = $this->districtRepository->list(new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC));
+        $list = $this->districtRepository->list($this->defaultOrder);
         $this->assertCount(15, $list);
         $this->assertContainsOnlyInstancesOf(District::class, $list);
     }
@@ -130,7 +131,7 @@ class DistrictRepositoryListTest extends TestCase
             function ($district) {
                 return $district->getId();
             },
-            $this->districtRepository->list(new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC), $filter)
+            $this->districtRepository->list($this->defaultOrder, $filter)
         );
         sort($actualIds);
         $this->assertSame($expectedIds, $actualIds);

@@ -35,12 +35,13 @@ class DistrictServiceListTest extends TestCase
             new DistrictRepository($entityManager),
             new CityRepository($entityManager)
         );
+        $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
 
     public function testListStructure(): void
     {
         $list = $this->districtService->listDistricts(
-            new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC),
+            $this->defaultOrder,
             null,
         );
         $this->assertCount(15, $list);
@@ -141,7 +142,7 @@ class DistrictServiceListTest extends TestCase
             function ($district) {
                 return $district->getId();
             },
-            $this->districtService->listDistricts(new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC), $filter)
+            $this->districtService->listDistricts($this->defaultOrder, $filter)
         );
         sort($actualIds);
         $this->assertSame($expectedIds, $actualIds);

@@ -31,6 +31,7 @@ class DistrictRepositoryTest extends TestCase
         ]);
         $this->districtRepository = new DistrictRepository($entityManager);
         $this->cityRepository = new CityRepository($entityManager);
+        $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
 
     public function testGet(): void
@@ -57,12 +58,12 @@ class DistrictRepositoryTest extends TestCase
         $this->assertCount(
             16,
             $this->districtRepository->list(
-                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC)
+                $this->defaultOrder,
             )
         );
         $this->assertNotEmpty(
             $this->districtRepository->list(
-                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC),
+                $this->defaultOrder,
                 new DistrictFilter(DistrictFilter::TYPE_NAME, "Lorem ipsum"),
             )
         );
@@ -90,7 +91,7 @@ class DistrictRepositoryTest extends TestCase
         $this->assertCount(
             14,
             $this->districtRepository->list(
-                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC)
+                $this->defaultOrder
             )
         );
         $this->assertNull($this->districtRepository->get(1));
@@ -107,7 +108,7 @@ class DistrictRepositoryTest extends TestCase
         $this->assertCount(
             13,
             $this->districtRepository->list(
-                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC)
+                $this->defaultOrder
             )
         );
         $this->assertNull($this->districtRepository->get(1));
