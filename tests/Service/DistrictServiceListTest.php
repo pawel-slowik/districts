@@ -40,10 +40,7 @@ class DistrictServiceListTest extends TestCase
 
     public function testListStructure(): void
     {
-        $list = $this->districtService->listDistricts(
-            $this->defaultOrder,
-            null,
-        );
+        $list = $this->districtService->listDistricts($this->defaultOrder, null);
         $this->assertCount(15, $list);
         $this->assertContainsOnlyInstancesOf(District::class, $list);
     }

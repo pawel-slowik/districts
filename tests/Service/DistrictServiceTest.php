@@ -62,10 +62,7 @@ class DistrictServiceTest extends TestCase
         $this->districtService->remove("1");
         $this->assertCount(
             14,
-            $this->districtService->listDistricts(
-                $this->defaultOrder,
-                null,
-            )
+            $this->districtService->listDistricts($this->defaultOrder, null)
         );
         $this->expectException(NotFoundException::class);
         $this->districtService->get("1");

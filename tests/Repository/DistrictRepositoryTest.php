@@ -90,9 +90,7 @@ class DistrictRepositoryTest extends TestCase
         $this->districtRepository->remove($district);
         $this->assertCount(
             14,
-            $this->districtRepository->list(
-                $this->defaultOrder
-            )
+            $this->districtRepository->list($this->defaultOrder)
         );
         $this->assertNull($this->districtRepository->get(1));
     }
@@ -107,9 +105,7 @@ class DistrictRepositoryTest extends TestCase
         );
         $this->assertCount(
             13,
-            $this->districtRepository->list(
-                $this->defaultOrder
-            )
+            $this->districtRepository->list($this->defaultOrder)
         );
         $this->assertNull($this->districtRepository->get(1));
         $this->assertNull($this->districtRepository->get(10));
