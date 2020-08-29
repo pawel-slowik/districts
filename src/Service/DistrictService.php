@@ -18,13 +18,17 @@ class DistrictService
 {
     private $districtRepository;
 
+    private $districtValidator;
+
     private $cityRepository;
 
     public function __construct(
         DistrictRepository $districtRepository,
+        DistrictValidator $districtValidator,
         CityRepository $cityRepository
     ) {
         $this->districtRepository = $districtRepository;
+        $this->districtValidator = $districtValidator;
         $this->cityRepository = $cityRepository;
     }
 
@@ -49,7 +53,7 @@ class DistrictService
             },
             $this->cityRepository->list()
         );
-        $validator = new NewDistrictValidator(new DistrictValidator(), $validCityIds);
+        $validator = new NewDistrictValidator($this->districtValidator, $validCityIds);
         $validationResult = $validator->validate($cityId, $name, $area, $population);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
@@ -69,8 +73,7 @@ class DistrictService
         $name = trim($name);
         $area = floatval($area);
         $population = intval($population);
-        $validator = new DistrictValidator();
-        $validationResult = $validator->validate($name, $area, $population);
+        $validationResult = $this->districtValidator->validate($name, $area, $population);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }

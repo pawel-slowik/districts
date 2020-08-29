@@ -7,6 +7,7 @@ namespace Test\Service;
 use DomainModel\Entity\District;
 
 use Service\DistrictService;
+use Validator\DistrictValidator;
 use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
 
@@ -33,6 +34,7 @@ class DistrictServiceListTest extends TestCase
         ]);
         $this->districtService = new DistrictService(
             new DistrictRepository($entityManager),
+            new DistrictValidator(),
             new CityRepository($entityManager)
         );
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
