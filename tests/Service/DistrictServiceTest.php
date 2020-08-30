@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Test\Service;
 
-use DomainModel\Entity\City;
 use DomainModel\Entity\District;
 use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
@@ -81,13 +80,6 @@ class DistrictServiceTest extends TestCase
     {
         $this->expectException(NotFoundException::class);
         $this->districtService->remove("999");
-    }
-
-    public function testListCities(): void
-    {
-        $cities = $this->districtService->listCities();
-        $this->assertContainsOnlyInstancesOf(City::class, $cities);
-        $this->assertNotEmpty($cities);
     }
 
     public function testAdd(): void

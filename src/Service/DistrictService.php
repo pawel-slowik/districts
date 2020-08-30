@@ -110,11 +110,6 @@ class DistrictService
         return $this->districtRepository->list($order, $filter);
     }
 
-    public function listCities(): array
-    {
-        return $this->cityRepository->list();
-    }
-
     private function prepareDistricts(iterable $districts, City $city): iterable
     {
         foreach ($districts as $district) {
