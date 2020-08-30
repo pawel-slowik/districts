@@ -7,7 +7,9 @@ namespace Test\Service;
 use DomainModel\Entity\District;
 
 use Service\DistrictService;
+use Service\CityIterator;
 use Validator\DistrictValidator;
+use Validator\NewDistrictValidator;
 use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
 
@@ -32,10 +34,15 @@ class DistrictServiceListTest extends TestCase
             "tests/Repository/data/cities.sql",
             "tests/Repository/data/districts.sql",
         ]);
+        $cityRepository = new CityRepository($entityManager);
         $this->districtService = new DistrictService(
             new DistrictRepository($entityManager),
             new DistrictValidator(),
-            new CityRepository($entityManager)
+            new NewDistrictValidator(
+                new DistrictValidator(),
+                new CityIterator($cityRepository),
+            ),
+            $cityRepository
         );
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }

@@ -10,9 +10,11 @@ use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
 
 use Service\DistrictService;
+use Service\CityIterator;
 use Service\NotFoundException;
 use Service\ValidationException;
 use Validator\DistrictValidator;
+use Validator\NewDistrictValidator;
 
 use Repository\CityRepository;
 use Repository\DistrictRepository;
@@ -35,10 +37,15 @@ class DistrictServiceTest extends TestCase
             "tests/Repository/data/cities.sql",
             "tests/Repository/data/districts.sql",
         ]);
+        $cityRepository = new CityRepository($entityManager);
         $this->districtService = new DistrictService(
             new DistrictRepository($entityManager),
             new DistrictValidator(),
-            new CityRepository($entityManager)
+            new NewDistrictValidator(
+                new DistrictValidator(),
+                new CityIterator($cityRepository),
+            ),
+            $cityRepository
         );
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
