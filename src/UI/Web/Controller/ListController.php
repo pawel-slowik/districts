@@ -34,7 +34,7 @@ final class ListController
         $queryParams = $request->getQueryParams();
         $filterColumn = $queryParams["filterColumn"] ?? null;
         $filterValue = $queryParams["filterValue"] ?? null;
-        $districts = $this->districtService->listDistricts(
+        $districts = $this->districtService->list(
             DistrictOrderingFactory::createFromRequestInput($orderColumn, $orderDirection),
             DistrictFilterFactory::createFromRequestInput($filterColumn, $filterValue),
         );

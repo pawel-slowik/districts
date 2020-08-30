@@ -70,7 +70,7 @@ class DistrictServiceTest extends TestCase
         $this->districtService->remove("1");
         $this->assertCount(
             14,
-            $this->districtService->listDistricts($this->defaultOrder, null)
+            $this->districtService->list($this->defaultOrder, null)
         );
         $this->expectException(NotFoundException::class);
         $this->districtService->get("1");
@@ -87,13 +87,13 @@ class DistrictServiceTest extends TestCase
         $this->districtService->add("Lorem ipsum", "12.3", "456", "1");
         $this->assertCount(
             16,
-            $this->districtService->listDistricts(
+            $this->districtService->list(
                 $this->defaultOrder,
                 null,
             )
         );
         $this->assertNotEmpty(
-            $this->districtService->listDistricts(
+            $this->districtService->list(
                 $this->defaultOrder,
                 new DistrictFilter(DistrictFilter::TYPE_NAME, "Lorem ipsum"),
             )
@@ -202,7 +202,7 @@ class DistrictServiceTest extends TestCase
     public function testSetDistrictsForCityName(): void
     {
         $this->districtService->setDistrictsForCityName("Bar", [new District("Hola", 1, 2)]);
-        $list = $this->districtService->listDistricts(
+        $list = $this->districtService->list(
             $this->defaultOrder,
             new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
         );
@@ -212,7 +212,7 @@ class DistrictServiceTest extends TestCase
     public function testSetEmptyDistrictsForCityName(): void
     {
         $this->districtService->setDistrictsForCityName("Bar", []);
-        $list = $this->districtService->listDistricts(
+        $list = $this->districtService->list(
             $this->defaultOrder,
             new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
         );
@@ -222,7 +222,7 @@ class DistrictServiceTest extends TestCase
     public function testSetDistrictsForNonexistentCityName(): void
     {
         $this->districtService->setDistrictsForCityName("New City", [new District("Hola", 1, 2)]);
-        $list = $this->districtService->listDistricts(
+        $list = $this->districtService->list(
             $this->defaultOrder,
             new DistrictFilter(DistrictFilter::TYPE_CITY, "New City"),
         );

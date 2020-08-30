@@ -49,7 +49,7 @@ class DistrictServiceListTest extends TestCase
 
     public function testListStructure(): void
     {
-        $list = $this->districtService->listDistricts($this->defaultOrder, null);
+        $list = $this->districtService->list($this->defaultOrder, null);
         $this->assertCount(15, $list);
         $this->assertContainsOnlyInstancesOf(District::class, $list);
     }
@@ -65,7 +65,7 @@ class DistrictServiceListTest extends TestCase
                 function ($district) {
                     return $district->getCity()->getName();
                 },
-                $this->districtService->listDistricts($order, null)
+                $this->districtService->list($order, null)
             )))
         );
     }
@@ -95,7 +95,7 @@ class DistrictServiceListTest extends TestCase
                 function ($district) {
                     return $district->getId();
                 },
-                $this->districtService->listDistricts($order, null)
+                $this->districtService->list($order, null)
             )
         );
     }
@@ -148,7 +148,7 @@ class DistrictServiceListTest extends TestCase
             function ($district) {
                 return $district->getId();
             },
-            $this->districtService->listDistricts($this->defaultOrder, $filter)
+            $this->districtService->list($this->defaultOrder, $filter)
         );
         sort($actualIds);
         $this->assertSame($expectedIds, $actualIds);

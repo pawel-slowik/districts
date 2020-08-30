@@ -105,7 +105,7 @@ class DistrictService
         $this->districtRepository->remove($this->get($id));
     }
 
-    public function listDistricts(DistrictOrdering $order, ?DistrictFilter $filter): array
+    public function list(DistrictOrdering $order, ?DistrictFilter $filter): array
     {
         return $this->districtRepository->list($order, $filter);
     }
