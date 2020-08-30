@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Service;
 
-use DomainModel\Entity\City;
 use DomainModel\Entity\District;
 use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
@@ -80,26 +79,6 @@ class DistrictService
         $this->districtRepository->update($district);
     }
 
-    public function setDistrictsForCityName(
-        string $cityName,
-        iterable $districts,
-        ?ProgressReporter $progressReporter = null
-    ): void {
-        $city = $this->cityRepository->findByName($cityName);
-        if ($city) {
-            $this->districtRepository->removeMultiple($city->listDistricts());
-        } else {
-            $city = new City($cityName);
-            $this->cityRepository->add($city);
-        }
-        foreach ($this->prepareDistricts($districts, $city) as $district) {
-            $this->districtRepository->add($district);
-            if ($progressReporter) {
-                $progressReporter->advance();
-            }
-        }
-    }
-
     public function remove(string $id): void
     {
         $this->districtRepository->remove($this->get($id));
@@ -108,14 +87,5 @@ class DistrictService
     public function list(DistrictOrdering $order, ?DistrictFilter $filter): array
     {
         return $this->districtRepository->list($order, $filter);
-    }
-
-    private function prepareDistricts(iterable $districts, City $city): iterable
-    {
-        foreach ($districts as $district) {
-            $city->addDistrict($district);
-            $district->setCity($city);
-            yield $district;
-        }
     }
 }

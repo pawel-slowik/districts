@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 
-use Service\DistrictService;
+use Service\Importer;
 
 use Scraper\HtmlFinder;
 use Scraper\GuzzleHtmlFetcher;
@@ -20,14 +20,14 @@ use Scraper\District\Krakow\Scraper as KrakowScraper;
 
 final class UpdateCommand extends Command
 {
-    private $districtService;
+    private $importer;
 
     private $scrapers;
 
-    public function __construct(DistrictService $districtService)
+    public function __construct(Importer $importer)
     {
         parent::__construct();
-        $this->districtService = $districtService;
+        $this->importer = $importer;
         $finder = new HtmlFinder();
         $fetcher = new GuzzleHtmlFetcher();
         $this->scrapers = [
@@ -60,7 +60,7 @@ final class UpdateCommand extends Command
         $output->writeln("processing city: " . $cityName);
         $progressBar = new ProgressBar($output);
         $progressBar->start();
-        $this->districtService->setDistrictsForCityName(
+        $this->importer->setDistrictsForCityName(
             $cityName,
             $districts,
             new ProgressBarProgressReporter($progressBar),

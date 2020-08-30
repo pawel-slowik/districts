@@ -9,14 +9,14 @@ use Symfony\Component\Console\Application;
 use UI\CLI\UpdateCommand;
 use Repository\CityRepository;
 use Repository\DistrictRepository;
-use Service\DistrictService;
+use Service\Importer;
 
 $entityManagerFactory = require "doctrine-bootstrap.php";
 $entityManager = $entityManagerFactory();
 
 $application = new Application();
 $application->add(new UpdateCommand(
-    new DistrictService(
+    new Importer(
         new DistrictRepository($entityManager),
         new CityRepository($entityManager),
     ),
