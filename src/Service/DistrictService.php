@@ -47,13 +47,7 @@ class DistrictService
         $name = trim($name);
         $area = floatval($area);
         $population = intval($population);
-        $validCityIds = array_map(
-            function ($city) {
-                return $city->getId();
-            },
-            $this->cityRepository->list()
-        );
-        $validator = new NewDistrictValidator($this->districtValidator, $validCityIds);
+        $validator = new NewDistrictValidator($this->districtValidator, new CityIterator($this->cityRepository));
         $validationResult = $validator->validate($cityId, $name, $area, $population);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());

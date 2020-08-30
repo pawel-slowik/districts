@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Test\Validator;
 
+use DomainModel\Entity\City;
+use Service\CityIterator;
 use Validator\DistrictValidator;
 use Validator\NewDistrictValidator;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,7 +20,18 @@ class NewDistrictValidatorTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->newDistrictValidator = new NewDistrictValidator(new DistrictValidator(), [1, 3]);
+        $cityIterator = $this->createMock(CityIterator::class);
+        $mockedCities = array_map([$this, "createCityMock"], [1, 3]);
+        $cityIterator
+            ->method("getIterator")
+            ->will(
+                $this->returnCallback(
+                    function () use ($mockedCities) {
+                        return new \ArrayIterator($mockedCities);
+                    }
+                )
+            );
+        $this->newDistrictValidator = new NewDistrictValidator(new DistrictValidator(), $cityIterator);
     }
 
     /**
@@ -91,5 +105,12 @@ class NewDistrictValidatorTest extends TestCase
             ["foo"],
             ["1"],
         ];
+    }
+
+    private function createCityMock(int $id): MockObject
+    {
+        $mock = $this->createMock(City::class);
+        $mock->method("getId")->willReturn($id);
+        return $mock;
     }
 }

@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace Validator;
 
+use Service\CityIterator;
+
 final class NewDistrictValidator
 {
-    private $validCityIds;
-
     private $districtValidator;
 
-    public function __construct(DistrictValidator $districtValidator, array $validCityIds)
+    private $cityIterator;
+
+    public function __construct(DistrictValidator $districtValidator, CityIterator $cityIterator)
     {
         $this->districtValidator = $districtValidator;
-        $this->validCityIds = $validCityIds;
+        $this->cityIterator = $cityIterator;
     }
 
     /**
@@ -36,9 +38,11 @@ final class NewDistrictValidator
      */
     private function validateCity($city): bool
     {
-        if (!in_array($city, $this->validCityIds, true)) {
-            return false;
+        foreach ($this->cityIterator as $existingCity) {
+            if ($existingCity->getId() === $city) {
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 }

@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManager;
 
 use DomainModel\Entity\City;
 
-final class CityRepository
+class CityRepository
 {
     private $entityManager;
 
