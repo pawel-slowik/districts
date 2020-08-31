@@ -43,8 +43,9 @@ class District
      */
     private $city;
 
-    public function __construct(string $name, float $area, int $population)
+    public function __construct(City $city, string $name, float $area, int $population)
     {
+        $this->city = $city;
         $this->name = $name;
         $this->area = $area;
         $this->population = $population;
@@ -70,7 +71,7 @@ class District
         return $this->population;
     }
 
-    public function getCity(): ?City
+    public function getCity(): City
     {
         return $this->city;
     }
@@ -88,10 +89,5 @@ class District
     public function setPopulation(int $population): void
     {
         $this->population = $population;
-    }
-
-    public function setCity(City $city): void
-    {
-        $this->city = $city;
     }
 }

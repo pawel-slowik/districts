@@ -48,12 +48,12 @@ class Importer
     {
         foreach ($districtDTOs as $districtDTO) {
             $district = new District(
+                $city,
                 $districtDTO->getName(),
                 $districtDTO->getArea(),
                 $districtDTO->getPopulation(),
             );
             $city->addDistrict($district);
-            $district->setCity($city);
             yield $district;
         }
     }

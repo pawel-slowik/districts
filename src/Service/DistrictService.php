@@ -55,11 +55,11 @@ class DistrictService
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }
         $district = new District(
+            $this->cityRepository->get($cityId),
             $name,
             $area,
             $population,
         );
-        $district->setCity($this->cityRepository->get($cityId));
         $this->districtRepository->add($district);
     }
 

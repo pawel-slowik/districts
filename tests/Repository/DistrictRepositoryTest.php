@@ -52,8 +52,7 @@ class DistrictRepositoryTest extends TestCase
 
     public function testAdd(): void
     {
-        $newDistrict = new District("Lorem ipsum", 12.3, 456);
-        $newDistrict->setCity($this->cityRepository->findByName("Foo"));
+        $newDistrict = new District($this->cityRepository->findByName("Foo"), "Lorem ipsum", 12.3, 456);
         $this->districtRepository->add($newDistrict);
         $this->assertCount(
             16,
@@ -75,13 +74,11 @@ class DistrictRepositoryTest extends TestCase
         $district->setName("update test");
         $district->setArea(111.22);
         $district->setPopulation(333);
-        $district->setCity($this->cityRepository->get(2));
         $this->districtRepository->update($district);
         $updatedDistrict = $this->districtRepository->get(1);
         $this->assertSame("update test", $updatedDistrict->getName());
         $this->assertSame(111.22, $updatedDistrict->getArea());
         $this->assertSame(333, $updatedDistrict->getPopulation());
-        $this->assertSame(2, $updatedDistrict->getCity()->getId());
     }
 
     public function testRemove(): void
