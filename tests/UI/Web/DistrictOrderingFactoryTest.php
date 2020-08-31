@@ -10,7 +10,7 @@ use UI\Web\DistrictOrderingFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Service\DistrictOrderingFactory
+ * @covers \UI\Web\DistrictOrderingFactory
  */
 class DistrictOrderingFactoryTest extends TestCase
 {
