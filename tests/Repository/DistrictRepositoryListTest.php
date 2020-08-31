@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
  */
 class DistrictRepositoryListTest extends TestCase
 {
-    protected $districtRepository;
+    private $districtRepository;
 
     protected function setUp(): void
     {
