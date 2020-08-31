@@ -6,10 +6,9 @@ namespace Scraper\District\Krakow;
 
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
-use Scraper\District\BuilderBase;
 use Scraper\District\DistrictDTO;
 
-final class Builder extends BuilderBase
+final class Builder
 {
     private $htmlFinder;
 
@@ -35,11 +34,7 @@ final class Builder extends BuilderBase
             "//td/b[contains(., 'Liczba ludno')]/../following-sibling::td",
             [$this, "extractPopulation"]
         );
-        return $this->createDistrictDTO(
-            $name,
-            $area,
-            $population,
-        );
+        return new DistrictDTO($name, $area, $population);
     }
 
     private function getSingleItem(string $html, string $xpath, callable $callback)
