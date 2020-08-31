@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Test\Scraper\District\Gdansk;
 
-use DomainModel\Entity\District;
 use Scraper\HtmlFetcher;
 use Scraper\HtmlFinder;
+use Scraper\District\DistrictDTO;
 use Scraper\District\Gdansk\Scraper;
 use Test\Scraper\HtmlFetcherMockBuilder;
 use PHPUnit\Framework\TestCase;
@@ -32,7 +32,7 @@ class ScraperTest extends TestCase
     public function testReturnsDistricts(): void
     {
         $districts = $this->scraper->listDistricts();
-        $this->assertContainsOnlyInstancesOf(District::class, $districts);
+        $this->assertContainsOnlyInstancesOf(DistrictDTO::class, $districts);
     }
 
     private function createHtmlFetcherMock(): HtmlFetcher

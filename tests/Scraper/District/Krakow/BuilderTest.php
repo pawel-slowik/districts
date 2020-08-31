@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Test\Scraper\District\Krakow;
 
-use DomainModel\Entity\District;
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
+use Scraper\District\DistrictDTO;
 use Scraper\District\Krakow\Builder;
 use Validator\DistrictValidator;
 use PHPUnit\Framework\TestCase;
@@ -34,7 +34,7 @@ class BuilderTest extends TestCase
     public function testReturnsDistrict(): void
     {
         $district = $this->builder->buildFromHtml($this->validHtml);
-        $this->assertInstanceOf(District::class, $district);
+        $this->assertInstanceOf(DistrictDTO::class, $district);
     }
 
     public function testName(): void

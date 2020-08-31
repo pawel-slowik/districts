@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Scraper\District\Krakow;
 
-use DomainModel\Entity\District;
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
 use Scraper\District\BuilderBase;
+use Scraper\District\DistrictDTO;
 use Validator\DistrictValidator;
 
 final class Builder extends BuilderBase
@@ -22,7 +22,7 @@ final class Builder extends BuilderBase
         $this->validator = $validator;
     }
 
-    public function buildFromHtml(string $html): District
+    public function buildFromHtml(string $html): DistrictDTO
     {
         $name = $this->getSingleItem(
             $html,
@@ -39,7 +39,7 @@ final class Builder extends BuilderBase
             "//td/b[contains(., 'Liczba ludno')]/../following-sibling::td",
             [$this, "extractPopulation"]
         );
-        return $this->createValidatedDistrict(
+        return $this->createValidatedDistrictDTO(
             $this->validator,
             $name,
             $area,

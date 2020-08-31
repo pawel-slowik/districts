@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Service;
 
 use DomainModel\Entity\City;
+use DomainModel\Entity\District;
 use Repository\DistrictRepository;
 
 use Repository\CityRepository;
@@ -23,9 +24,9 @@ class Importer
         $this->cityRepository = $cityRepository;
     }
 
-    public function setDistrictsForCityName(
+    public function import(
         string $cityName,
-        iterable $districts,
+        iterable $districtDTOs,
         ?ProgressReporter $progressReporter = null
     ): void {
         $city = $this->cityRepository->findByName($cityName);
@@ -35,7 +36,7 @@ class Importer
             $city = new City($cityName);
             $this->cityRepository->add($city);
         }
-        foreach ($this->prepareDistricts($districts, $city) as $district) {
+        foreach ($this->prepareDistricts($districtDTOs, $city) as $district) {
             $this->districtRepository->add($district);
             if ($progressReporter) {
                 $progressReporter->advance();
@@ -43,9 +44,14 @@ class Importer
         }
     }
 
-    private function prepareDistricts(iterable $districts, City $city): iterable
+    private function prepareDistricts(iterable $districtDTOs, City $city): iterable
     {
-        foreach ($districts as $district) {
+        foreach ($districtDTOs as $districtDTO) {
+            $district = new District(
+                $districtDTO->getName(),
+                $districtDTO->getArea(),
+                $districtDTO->getPopulation(),
+            );
             $city->addDistrict($district);
             $district->setCity($city);
             yield $district;

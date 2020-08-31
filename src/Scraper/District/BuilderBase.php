@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Scraper\District;
 
-use DomainModel\Entity\District;
 use Validator\DistrictValidator;
 use Scraper\RuntimeException;
 
@@ -16,12 +15,12 @@ abstract class BuilderBase
      * @param scalar $population
      */
     // phpcs:ignore PEAR.Commenting.FunctionComment.ParamNameNoMatch
-    protected function createValidatedDistrict(
+    protected function createValidatedDistrictDTO(
         DistrictValidator $validator,
         $name,
         $area,
         $population
-    ): District {
+    ): DistrictDTO {
         $result = $validator->validate($name, $area, $population);
         if (!$result->isOk()) {
             throw new RuntimeException(
@@ -31,6 +30,6 @@ abstract class BuilderBase
         /** @var string $name */
         /** @var float $area */
         /** @var int $population */
-        return new District($name, $area, $population);
+        return new DistrictDTO($name, $area, $population);
     }
 }

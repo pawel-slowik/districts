@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Scraper\District\Gdansk;
 
-use DomainModel\Entity\District;
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
 use Scraper\District\BuilderBase;
+use Scraper\District\DistrictDTO;
 use Validator\DistrictValidator;
 
 final class Builder extends BuilderBase
@@ -22,7 +22,7 @@ final class Builder extends BuilderBase
         $this->validator = $validator;
     }
 
-    public function buildFromHtml(string $html): District
+    public function buildFromHtml(string $html): DistrictDTO
     {
         // This is an HTML fragment instead of a valid document. Add a charset
         // declaration in order to decode the text properly.
@@ -41,7 +41,7 @@ final class Builder extends BuilderBase
         $name = $texts[0];
         $area = $this->findSingleItem($texts, [$this, "extractArea"]);
         $population = $this->findSingleItem($texts, [$this, "extractPopulation"]);
-        return $this->createValidatedDistrict(
+        return $this->createValidatedDistrictDTO(
             $this->validator,
             $name,
             $area,

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Test\Service;
 
-use DomainModel\Entity\District;
 use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
 
 use Service\Importer;
+use Scraper\District\DistrictDTO;
 use Repository\DistrictRepository;
 use Repository\CityRepository;
 
@@ -39,7 +39,7 @@ class ImporterTest extends TestCase
 
     public function testSetDistrictsForCityName(): void
     {
-        $this->importer->setDistrictsForCityName("Bar", [new District("Hola", 1, 2)]);
+        $this->importer->import("Bar", [new DistrictDTO("Hola", 1, 2)]);
         $list = $this->districtRepository->list(
             $this->defaultOrder,
             new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
@@ -49,7 +49,7 @@ class ImporterTest extends TestCase
 
     public function testSetEmptyDistrictsForCityName(): void
     {
-        $this->importer->setDistrictsForCityName("Bar", []);
+        $this->importer->import("Bar", []);
         $list = $this->districtRepository->list(
             $this->defaultOrder,
             new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
@@ -59,7 +59,7 @@ class ImporterTest extends TestCase
 
     public function testSetDistrictsForNonexistentCityName(): void
     {
-        $this->importer->setDistrictsForCityName("New City", [new District("Hola", 1, 2)]);
+        $this->importer->import("New City", [new DistrictDTO("Hola", 1, 2)]);
         $list = $this->districtRepository->list(
             $this->defaultOrder,
             new DistrictFilter(DistrictFilter::TYPE_CITY, "New City"),

@@ -60,7 +60,7 @@ final class UpdateCommand extends Command
         $output->writeln("processing city: " . $cityName);
         $progressBar = new ProgressBar($output);
         $progressBar->start();
-        $this->importer->setDistrictsForCityName(
+        $this->importer->import(
             $cityName,
             $districts,
             new ProgressBarProgressReporter($progressBar),
