@@ -8,6 +8,8 @@ use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
 
 use Service\Importer;
+use Service\ValidationException;
+use Validator\DistrictValidator;
 use Scraper\District\DistrictDTO;
 use Repository\DistrictRepository;
 use Repository\CityRepository;
@@ -35,7 +37,11 @@ class ImporterTest extends TestCase
             "tests/Repository/data/districts.sql",
         ]);
         $this->districtRepository = new DistrictRepository($entityManager);
-        $this->importer = new Importer($this->districtRepository, new CityRepository($entityManager));
+        $this->importer = new Importer(
+            new DistrictValidator(),
+            $this->districtRepository,
+            new CityRepository($entityManager),
+        );
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
 
@@ -67,5 +73,23 @@ class ImporterTest extends TestCase
             new DistrictFilter(DistrictFilter::TYPE_CITY, "New City"),
         );
         $this->assertCount(1, $list);
+    }
+
+    public function testExceptionOnInvalidName(): void
+    {
+        $this->expectException(ValidationException::class);
+        $this->importer->import("Bar", [new DistrictDTO("", 1, 2)]);
+    }
+
+    public function testExceptionOnInvalidArea(): void
+    {
+        $this->expectException(ValidationException::class);
+        $this->importer->import("Bar", [new DistrictDTO("Hola", 0, 2)]);
+    }
+
+    public function testExceptionOnInvalidPopulation(): void
+    {
+        $this->expectException(ValidationException::class);
+        $this->importer->import("Bar", [new DistrictDTO("Hola", 1, 0)]);
     }
 }

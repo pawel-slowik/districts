@@ -8,18 +8,14 @@ use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
 use Scraper\District\BuilderBase;
 use Scraper\District\DistrictDTO;
-use Validator\DistrictValidator;
 
 final class Builder extends BuilderBase
 {
     private $htmlFinder;
 
-    private $validator;
-
-    public function __construct(HtmlFinder $htmlFinder, DistrictValidator $validator)
+    public function __construct(HtmlFinder $htmlFinder)
     {
         $this->htmlFinder = $htmlFinder;
-        $this->validator = $validator;
     }
 
     public function buildFromHtml(string $html): DistrictDTO
@@ -41,8 +37,7 @@ final class Builder extends BuilderBase
         $name = $texts[0];
         $area = $this->findSingleItem($texts, [$this, "extractArea"]);
         $population = $this->findSingleItem($texts, [$this, "extractPopulation"]);
-        return $this->createValidatedDistrictDTO(
-            $this->validator,
+        return $this->createDistrictDTO(
             $name,
             $area,
             $population,

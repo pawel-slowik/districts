@@ -8,7 +8,6 @@ use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
 use Scraper\District\DistrictDTO;
 use Scraper\District\Gdansk\Builder;
-use Validator\DistrictValidator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,13 +19,10 @@ class BuilderTest extends TestCase
 
     private $validHtml;
 
-    private $invalidAreaHtml;
-
     protected function setUp(): void
     {
-        $this->builder = new Builder(new HtmlFinder(), new DistrictValidator());
+        $this->builder = new Builder(new HtmlFinder());
         $this->validHtml = file_get_contents(__DIR__ . "/dzielnice_mapa_alert.php?id=16");
-        $this->invalidAreaHtml = file_get_contents(__DIR__ . "/dzielnice_mapa_alert.php?id=16_invalid_area");
     }
 
     public function testReturnsDistrict(): void
@@ -57,11 +53,5 @@ class BuilderTest extends TestCase
     {
         $this->expectException(RuntimeException::class);
         $this->builder->buildFromHtml("");
-    }
-
-    public function testValidator(): void
-    {
-        $this->expectException(RuntimeException::class);
-        $this->builder->buildFromHtml($this->invalidAreaHtml);
     }
 }

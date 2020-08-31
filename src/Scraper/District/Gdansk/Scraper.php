@@ -8,7 +8,6 @@ use Scraper\District\Scraper as ScraperInterface;
 use Scraper\HtmlFetcher;
 use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
-use Validator\DistrictValidator;
 use Laminas\Uri\Uri;
 
 final class Scraper implements ScraperInterface
@@ -24,7 +23,7 @@ final class Scraper implements ScraperInterface
     {
         $this->htmlFetcher = $htmlFetcher;
         $this->htmlFinder = $htmlFinder;
-        $this->districtBuilder = new Builder($htmlFinder, new DistrictValidator());
+        $this->districtBuilder = new Builder($htmlFinder);
     }
 
     public function getCityName(): string

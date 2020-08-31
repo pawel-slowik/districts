@@ -8,7 +8,6 @@ use Scraper\HtmlFinder;
 use Scraper\RuntimeException;
 use Scraper\District\DistrictDTO;
 use Scraper\District\Krakow\Builder;
-use Validator\DistrictValidator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,15 +19,10 @@ class BuilderTest extends TestCase
 
     private $validHtml;
 
-    private $invalidPopulationHtml;
-
     protected function setUp(): void
     {
-        $this->builder = new Builder(new HtmlFinder(), new DistrictValidator());
+        $this->builder = new Builder(new HtmlFinder());
         $this->validHtml = file_get_contents(__DIR__ . "/DzlViewGlw.jsf?id=17&lay=normal&fo=0");
-        $this->invalidPopulationHtml = file_get_contents(
-            __DIR__ . "/DzlViewGlw.jsf?id=17&lay=normal&fo=0_invalid_population"
-        );
     }
 
     public function testReturnsDistrict(): void
@@ -59,11 +53,5 @@ class BuilderTest extends TestCase
     {
         $this->expectException(RuntimeException::class);
         $this->builder->buildFromHtml("");
-    }
-
-    public function testValidator(): void
-    {
-        $this->expectException(RuntimeException::class);
-        $this->builder->buildFromHtml($this->invalidPopulationHtml);
     }
 }

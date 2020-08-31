@@ -6,20 +6,24 @@ namespace Service;
 
 use DomainModel\Entity\City;
 use DomainModel\Entity\District;
+use Validator\DistrictValidator;
 use Repository\DistrictRepository;
-
 use Repository\CityRepository;
 
 class Importer
 {
+    private $districtValidator;
+
     private $districtRepository;
 
     private $cityRepository;
 
     public function __construct(
+        DistrictValidator $districtValidator,
         DistrictRepository $districtRepository,
         CityRepository $cityRepository
     ) {
+        $this->districtValidator = $districtValidator;
         $this->districtRepository = $districtRepository;
         $this->cityRepository = $cityRepository;
     }
@@ -47,6 +51,14 @@ class Importer
     private function prepareDistricts(iterable $districtDTOs, City $city): iterable
     {
         foreach ($districtDTOs as $districtDTO) {
+            $validationResult = $this->districtValidator->validate(
+                $districtDTO->getName(),
+                $districtDTO->getArea(),
+                $districtDTO->getPopulation(),
+            );
+            if (!$validationResult->isOk()) {
+                throw (new ValidationException())->withErrors($validationResult->getErrors());
+            }
             $district = new District(
                 $city,
                 $districtDTO->getName(),
