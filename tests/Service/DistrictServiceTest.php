@@ -28,6 +28,8 @@ class DistrictServiceTest extends TestCase
 {
     private $districtService;
 
+    private $defaultOrder;
+
     protected function setUp(): void
     {
         $entityManager = (require "doctrine-bootstrap.php")();

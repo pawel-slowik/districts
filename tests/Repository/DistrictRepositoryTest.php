@@ -21,6 +21,8 @@ class DistrictRepositoryTest extends TestCase
 
     private $cityRepository;
 
+    private $defaultOrder;
+
     protected function setUp(): void
     {
         $entityManager = (require "doctrine-bootstrap.php")();

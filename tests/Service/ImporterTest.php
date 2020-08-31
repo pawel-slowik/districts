@@ -24,6 +24,8 @@ class ImporterTest extends TestCase
 
     private $districtRepository;
 
+    private $defaultOrder;
+
     protected function setUp(): void
     {
         $entityManager = (require "doctrine-bootstrap.php")();
