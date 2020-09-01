@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Test\Command;
+namespace Test\UI\CLI;
 
 use UI\CLI\ScraperCityFilter;
 use Scraper\District\Scraper;
