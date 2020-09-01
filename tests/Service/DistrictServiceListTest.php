@@ -9,7 +9,6 @@ use DomainModel\Entity\District;
 use Service\DistrictService;
 use Service\CityIterator;
 use Validator\DistrictValidator;
-use Validator\NewDistrictValidator;
 use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
 
@@ -39,9 +38,7 @@ class DistrictServiceListTest extends TestCase
         $cityRepository = new CityRepository($entityManager);
         $this->districtService = new DistrictService(
             new DistrictRepository($entityManager),
-            new DistrictValidator(),
-            new NewDistrictValidator(
-                new DistrictValidator(),
+            new DistrictValidator(
                 new CityIterator($cityRepository),
             ),
             $cityRepository

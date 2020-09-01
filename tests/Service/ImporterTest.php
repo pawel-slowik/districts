@@ -8,6 +8,7 @@ use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
 
 use Service\Importer;
+use Service\CityIterator;
 use Service\ValidationException;
 use Validator\DistrictValidator;
 use Scraper\District\DistrictDTO;
@@ -37,10 +38,11 @@ class ImporterTest extends TestCase
             "tests/Repository/data/districts.sql",
         ]);
         $this->districtRepository = new DistrictRepository($entityManager);
+        $cityRepository = new CityRepository($entityManager);
         $this->importer = new Importer(
-            new DistrictValidator(),
+            new DistrictValidator(new CityIterator($cityRepository)),
             $this->districtRepository,
-            new CityRepository($entityManager),
+            $cityRepository,
         );
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }

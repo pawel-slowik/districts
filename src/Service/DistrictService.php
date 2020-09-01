@@ -9,7 +9,6 @@ use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
 use Repository\DistrictRepository;
 use Validator\DistrictValidator;
-use Validator\NewDistrictValidator;
 
 use Repository\CityRepository;
 
@@ -19,19 +18,15 @@ class DistrictService
 
     private $districtValidator;
 
-    private $newDistrictValidator;
-
     private $cityRepository;
 
     public function __construct(
         DistrictRepository $districtRepository,
         DistrictValidator $districtValidator,
-        NewDistrictValidator $newDistrictValidator,
         CityRepository $cityRepository
     ) {
         $this->districtRepository = $districtRepository;
         $this->districtValidator = $districtValidator;
-        $this->newDistrictValidator = $newDistrictValidator;
         $this->cityRepository = $cityRepository;
     }
 
@@ -50,7 +45,7 @@ class DistrictService
         $name = trim($name);
         $area = floatval($area);
         $population = intval($population);
-        $validationResult = $this->newDistrictValidator->validate($cityId, $name, $area, $population);
+        $validationResult = $this->districtValidator->validate($cityId, $name, $area, $population);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }
@@ -69,7 +64,12 @@ class DistrictService
         $name = trim($name);
         $area = floatval($area);
         $population = intval($population);
-        $validationResult = $this->districtValidator->validate($name, $area, $population);
+        $validationResult = $this->districtValidator->validate(
+            $district->getCity()->getId(),
+            $name,
+            $area,
+            $population,
+        );
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }

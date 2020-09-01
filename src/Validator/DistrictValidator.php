@@ -4,16 +4,29 @@ declare(strict_types=1);
 
 namespace Validator;
 
+use Service\CityIterator;
+
 final class DistrictValidator
 {
+    private $cityIterator;
+
+    public function __construct(CityIterator $cityIterator)
+    {
+        $this->cityIterator = $cityIterator;
+    }
+
     /**
+     * @param scalar $city
      * @param scalar $name
      * @param scalar $area
      * @param scalar $population
      */
-    public function validate($name, $area, $population): ValidationResult
+    public function validate($city, $name, $area, $population): ValidationResult
     {
         $result = new ValidationResult();
+        if (!$this->validateCity($city)) {
+            $result->addError("city");
+        }
         if (!$this->validateName($name)) {
             $result->addError("name");
         }
@@ -24,6 +37,19 @@ final class DistrictValidator
             $result->addError("population");
         }
         return $result;
+    }
+
+    /**
+     * @param scalar $city
+     */
+    private function validateCity($city): bool
+    {
+        foreach ($this->cityIterator as $existingCity) {
+            if ($existingCity->getId() === $city) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

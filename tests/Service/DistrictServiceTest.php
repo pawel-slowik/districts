@@ -13,7 +13,6 @@ use Service\CityIterator;
 use Service\NotFoundException;
 use Service\ValidationException;
 use Validator\DistrictValidator;
-use Validator\NewDistrictValidator;
 
 use Repository\CityRepository;
 use Repository\DistrictRepository;
@@ -41,9 +40,7 @@ class DistrictServiceTest extends TestCase
         $cityRepository = new CityRepository($entityManager);
         $this->districtService = new DistrictService(
             new DistrictRepository($entityManager),
-            new DistrictValidator(),
-            new NewDistrictValidator(
-                new DistrictValidator(),
+            new DistrictValidator(
                 new CityIterator($cityRepository),
             ),
             $cityRepository

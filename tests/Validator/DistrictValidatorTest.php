@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Test\Validator;
 
+use DomainModel\Entity\City;
+use Service\CityIterator;
 use Validator\DistrictValidator;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Validator\DistrictValidator
- * @covers \Validator\ValidationResult
  */
 class DistrictValidatorTest extends TestCase
 {
@@ -17,15 +19,26 @@ class DistrictValidatorTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->districtValidator = new DistrictValidator();
+        $cityIterator = $this->createMock(CityIterator::class);
+        $mockedCities = array_map([$this, "createCityMock"], [1, 3]);
+        $cityIterator
+            ->method("getIterator")
+            ->will(
+                $this->returnCallback(
+                    function () use ($mockedCities) {
+                        return new \ArrayIterator($mockedCities);
+                    }
+                )
+            );
+        $this->districtValidator = new DistrictValidator($cityIterator);
     }
 
     /**
      * @dataProvider validDataProvider
      */
-    public function testValid($name, $area, $population): void
+    public function testValid($city, $name, $area, $population): void
     {
-        $result = $this->districtValidator->validate($name, $area, $population);
+        $result = $this->districtValidator->validate($city, $name, $area, $population);
         $this->assertTrue($result->isOk());
         $this->assertEmpty($result->getErrors());
     }
@@ -33,9 +46,9 @@ class DistrictValidatorTest extends TestCase
     public function validDataProvider(): array
     {
         return [
-            ["test", 123, 456],
-            ["test", 123.4, 567],
-            ["test", 0.0001, 1],
+            [3, "test", 123, 456],
+            [3, "test", 123.4, 567],
+            [1, "test", 0.0001, 1],
         ];
     }
 
@@ -44,7 +57,7 @@ class DistrictValidatorTest extends TestCase
      */
     public function testInvalidName($name): void
     {
-        $result = $this->districtValidator->validate($name, 123, 456);
+        $result = $this->districtValidator->validate(1, $name, 123, 456);
         $this->assertFalse($result->isOk());
         $this->assertContains("name", $result->getErrors());
         $this->assertCount(1, $result->getErrors());
@@ -63,7 +76,7 @@ class DistrictValidatorTest extends TestCase
      */
     public function testinValidArea($area): void
     {
-        $result = $this->districtValidator->validate("test", $area, 456);
+        $result = $this->districtValidator->validate(1, "test", $area, 456);
         $this->assertFalse($result->isOk());
         $this->assertContains("area", $result->getErrors());
         $this->assertCount(1, $result->getErrors());
@@ -85,7 +98,7 @@ class DistrictValidatorTest extends TestCase
      */
     public function testinValidPopulation($population): void
     {
-        $result = $this->districtValidator->validate("test", 123, $population);
+        $result = $this->districtValidator->validate(1, "test", 123, $population);
         $this->assertFalse($result->isOk());
         $this->assertContains("population", $result->getErrors());
         $this->assertCount(1, $result->getErrors());
@@ -101,5 +114,33 @@ class DistrictValidatorTest extends TestCase
             [0.1],
             ["bar"],
         ];
+    }
+
+    /**
+     * @dataProvider invalidCityDataProvider
+     */
+    public function testinValidCity($city): void
+    {
+        $result = $this->districtValidator->validate($city, "test", 123, 456);
+        $this->assertFalse($result->isOk());
+        $this->assertContains("city", $result->getErrors());
+        $this->assertCount(1, $result->getErrors());
+    }
+
+    public function invalidCityDataProvider(): array
+    {
+        return [
+            [null],
+            [2],
+            ["foo"],
+            ["1"],
+        ];
+    }
+
+    private function createCityMock(int $id): MockObject
+    {
+        $mock = $this->createMock(City::class);
+        $mock->method("getId")->willReturn($id);
+        return $mock;
     }
 }

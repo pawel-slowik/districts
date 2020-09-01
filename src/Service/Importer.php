@@ -52,6 +52,7 @@ class Importer
     {
         foreach ($districtDTOs as $districtDTO) {
             $validationResult = $this->districtValidator->validate(
+                $city->getId(),
                 $districtDTO->getName(),
                 $districtDTO->getArea(),
                 $districtDTO->getPopulation(),

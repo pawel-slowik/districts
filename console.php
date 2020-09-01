@@ -11,16 +11,18 @@ use Validator\DistrictValidator;
 use Repository\CityRepository;
 use Repository\DistrictRepository;
 use Service\Importer;
+use Service\CityIterator;
 
 $entityManagerFactory = require "doctrine-bootstrap.php";
 $entityManager = $entityManagerFactory();
 
+$cityRepository = new CityRepository($entityManager);
 $application = new Application();
 $application->add(new UpdateCommand(
     new Importer(
-        new DistrictValidator(),
+        new DistrictValidator(new CityIterator($cityRepository)),
         new DistrictRepository($entityManager),
-        new CityRepository($entityManager),
+        $cityRepository,
     ),
 ));
 $application->run();
