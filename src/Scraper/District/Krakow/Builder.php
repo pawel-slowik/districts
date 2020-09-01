@@ -19,67 +19,49 @@ final class Builder
 
     public function buildFromHtml(string $html): DistrictDTO
     {
-        $name = $this->getSingleItem(
-            $html,
-            "//h3",
-            [$this, "extractName"]
-        );
-        $area = $this->getSingleItem(
-            $html,
-            "//td/b[.='Powierzchnia:']/../following-sibling::td",
-            [$this, "extractArea"]
-        );
-        $population = $this->getSingleItem(
-            $html,
-            "//td/b[contains(., 'Liczba ludno')]/../following-sibling::td",
-            [$this, "extractPopulation"]
-        );
+        $name = $this->getName($html);
+        $area = $this->getArea($html);
+        $population = $this->getPopulation($html);
         return new DistrictDTO($name, $area, $population);
     }
 
-    private function getSingleItem(string $html, string $xpath, callable $callback)
+    private function getName(string $html): string
     {
-        $nodes = $this->htmlFinder->findNodes($html, $xpath);
-        if (count($nodes) !== 1) {
-            throw new RuntimeException();
-        }
-        $value = $callback($nodes[0]->textContent);
-        if (is_null($value)) {
-            throw new RuntimeException();
-        }
-        return $value;
+        $xpath = "//h3";
+        $regexp = "/^[[:space:]]+Dzielnica[[:space:]]+[IVXLCDM]+[[:space:]]+(.*)[[:space:]]+$/uU";
+        return $this->getSingleMatch($html, $xpath, $regexp);
     }
 
-    private function extractName(string $text): ?string
+    private function getArea(string $html): float
     {
-        $text = trim($text);
-        $regexp = "/^Dzielnica[[:space:]]+[IVXLCDM]+[[:space:]]+(.*)$/u";
-        $matches = [];
-        if (!preg_match($regexp, $text, $matches)) {
-            return null;
-        }
-        return $matches[1];
-    }
-
-    private function extractArea(string $text): ?float
-    {
-        $text = trim($text);
+        $xpath = "//td/b[.='Powierzchnia:']/../following-sibling::td";
         $regexp = "/([0-9]+(,[0-9]+){0,1})[[:space:]]+ha/";
-        $matches = [];
-        if (!preg_match($regexp, $text, $matches)) {
-            return null;
-        }
-        $area = str_replace(",", ".", $matches[1]); // decimal point
+        $area = $this->getSingleMatch($html, $xpath, $regexp);
+        $area = str_replace(",", ".", $area); // decimal point
         $area = floatval($area);
         $area = $area / 100; // unit conversion: ha to square km
         return $area;
     }
 
-    private function extractPopulation(string $text): ?int
+    private function getPopulation(string $html): int
     {
-        if (!preg_match("/^[0-9]+$/", $text)) {
-            return null;
-        }
+        $xpath = "//td/b[contains(., 'Liczba ludno')]/../following-sibling::td";
+        $regexp = "/^([0-9]+)$/";
+        $text = $this->getSingleMatch($html, $xpath, $regexp);
         return intval($text);
+    }
+
+    private function getSingleMatch(string $html, string $xpath, string $regexp): string
+    {
+        $nodes = $this->htmlFinder->findNodes($html, $xpath);
+        if (count($nodes) !== 1) {
+            throw new RuntimeException();
+        }
+        $value = $nodes[0]->textContent;
+        $matches = [];
+        if (!preg_match($regexp, $value, $matches)) {
+            throw new RuntimeException();
+        }
+        return $matches[1];
     }
 }

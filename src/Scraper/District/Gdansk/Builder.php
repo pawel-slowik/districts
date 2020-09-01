@@ -34,48 +34,38 @@ final class Builder
             $nodes
         );
         $name = $texts[0];
-        $area = $this->findSingleItem($texts, [$this, "extractArea"]);
-        $population = $this->findSingleItem($texts, [$this, "extractPopulation"]);
+        $area = self::getArea($texts);
+        $population = self::getPopulation($texts);
         return new DistrictDTO($name, $area, $population);
     }
 
-    private function findSingleItem(array $texts, callable $callback)
-    {
-        $values = $this->filterNulls(array_map($callback, $texts));
-        if (count($values) !== 1) {
-            throw new RuntimeException();
-        }
-        return array_values($values)[0];
-    }
-
-    private function extractArea(string $text): ?float
+    private static function getArea(array $texts): float
     {
         $regexp = "/Powierzchnia:[[:space:]]+([0-9]+(,[0-9]+){0,1})[[:space:]]+km/";
-        $matches = [];
-        if (!preg_match($regexp, $text, $matches)) {
-            return null;
-        }
-        $area = str_replace(",", ".", $matches[1]); // decimal point
+        $match = self::getSingleMatch($texts, $regexp);
+        $area = str_replace(",", ".", $match); // decimal point
         return floatval($area);
     }
 
-    private function extractPopulation(string $text): ?int
+    private static function getPopulation(array $texts): int
     {
         $regexp = "/Liczba[[:space:]]ludno.+ci:[[:space:]]+([0-9]+)[[:space:]]/";
-        $matches = [];
-        if (!preg_match($regexp, $text, $matches)) {
-            return null;
-        }
-        return intval($matches[1]);
+        $match = self::getSingleMatch($texts, $regexp);
+        return intval($match);
     }
 
-    private function filterNulls(array $values): array
+    private static function getSingleMatch(array $texts, string $regexp): string
     {
-        return array_filter(
-            $values,
-            function ($value) {
-                return !is_null($value);
+        $allMatches = [];
+        foreach ($texts as $text) {
+            $currentMatches = [];
+            if (preg_match($regexp, $text, $currentMatches)) {
+                $allMatches[] = $currentMatches[1];
             }
-        );
+        }
+        if (count($allMatches) !== 1) {
+            throw new RuntimeException();
+        }
+        return $allMatches[0];
     }
 }
