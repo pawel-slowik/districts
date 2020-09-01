@@ -43,7 +43,7 @@ final class UpdateCommand extends Command
         );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             $cityFilter = new ScraperCityFilter($this->scrapers, $input->getArgument("city_names"));
@@ -53,6 +53,7 @@ final class UpdateCommand extends Command
         foreach ($cityFilter->filter($this->scrapers) as $scraper) {
             $this->updateCity($scraper->getCityName(), $scraper->listDistricts(), $output);
         }
+        return 0;
     }
 
     private function updateCity(string $cityName, iterable $districts, OutputInterface $output): void
