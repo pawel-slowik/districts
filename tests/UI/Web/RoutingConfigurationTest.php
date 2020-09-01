@@ -35,7 +35,7 @@ class RoutingConfigurationTest extends TestCase
     /**
      * @dataProvider namedDataProvider
      */
-    public function testNamed($name): void
+    public function testNamed(string $name): void
     {
         $app = RoutingConfiguration::apply($this->app);
         $routeCollector = $app->getRouteCollector();

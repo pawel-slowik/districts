@@ -15,7 +15,7 @@ class ListControllerTest extends BaseTestCase
     /**
      * @dataProvider listDataProvider
      */
-    public function testList($url): void
+    public function testList(string $url): void
     {
         $response = $this->runApp("GET", $url);
         $this->assertSame(StatusCode::STATUS_OK, $response->getStatusCode());
