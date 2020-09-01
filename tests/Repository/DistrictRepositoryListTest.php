@@ -16,8 +16,14 @@ use PHPUnit\Framework\TestCase;
  */
 class DistrictRepositoryListTest extends TestCase
 {
+    /**
+     * @var DistrictRepository
+     */
     private $districtRepository;
 
+    /**
+     * @var DistrictOrdering
+     */
     private $defaultOrder;
 
     protected function setUp(): void

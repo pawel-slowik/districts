@@ -13,8 +13,14 @@ use PHPUnit\Framework\TestCase;
  */
 class HtmlFinderTest extends TestCase
 {
+    /**
+     * @var HtmlFinder
+     */
     private $finder;
 
+    /**
+     * @var string
+     */
     private $validHtml;
 
     protected function setUp(): void

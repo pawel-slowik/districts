@@ -15,6 +15,9 @@ use PHPUnit\Framework\TestCase;
  */
 class DistrictValidatorTest extends TestCase
 {
+    /**
+     * @var DistrictValidator
+     */
     private $districtValidator;
 
     protected function setUp(): void

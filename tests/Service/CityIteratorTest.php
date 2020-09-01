@@ -16,8 +16,14 @@ use PHPUnit\Framework\TestCase;
  */
 class CityIteratorTest extends TestCase
 {
+    /**
+     * @var CityRepository|MockObject
+     */
     private $cityRepository;
 
+    /**
+     * @var CityIterator
+     */
     private $cityIterator;
 
     protected function setUp(): void

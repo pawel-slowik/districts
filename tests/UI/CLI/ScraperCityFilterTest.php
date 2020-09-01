@@ -7,6 +7,7 @@ namespace Test\Command;
 use UI\CLI\ScraperCityFilter;
 use Scraper\District\Scraper;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,10 +15,19 @@ use PHPUnit\Framework\TestCase;
  */
 class ScraperCityFilterTest extends TestCase
 {
+    /**
+     * @var MockObject|Scraper
+     */
     private $fooScraper;
 
+    /**
+     * @var MockObject|Scraper
+     */
     private $barScraper;
 
+    /**
+     * @var (MockObject|Scraper)[]
+     */
     private $scrapers;
 
     protected function setUp(): void

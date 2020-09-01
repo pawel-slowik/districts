@@ -23,10 +23,19 @@ use PHPUnit\Framework\TestCase;
  */
 class ImporterTest extends TestCase
 {
+    /**
+     * @var Importer
+     */
     private $importer;
 
+    /**
+     * @var DistrictRepository
+     */
     private $districtRepository;
 
+    /**
+     * @var DistrictOrdering
+     */
     private $defaultOrder;
 
     protected function setUp(): void

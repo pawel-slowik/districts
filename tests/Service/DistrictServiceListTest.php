@@ -23,8 +23,14 @@ use PHPUnit\Framework\TestCase;
  */
 class DistrictServiceListTest extends TestCase
 {
+    /**
+     * @var DistrictService
+     */
     private $districtService;
 
+    /**
+     * @var DistrictOrdering
+     */
     private $defaultOrder;
 
     protected function setUp(): void

@@ -14,6 +14,9 @@ use PHPUnit\Framework\TestCase;
  */
 class CityRepositoryTest extends TestCase
 {
+    /**
+     * @var CityRepository
+     */
     private $cityRepository;
 
     protected function setUp(): void

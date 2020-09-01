@@ -17,10 +17,19 @@ use PHPUnit\Framework\TestCase;
  */
 class DistrictRepositoryTest extends TestCase
 {
+    /**
+     * @var DistrictRepository
+     */
     private $districtRepository;
 
+    /**
+     * @var CityRepository
+     */
     private $cityRepository;
 
+    /**
+     * @var DistrictOrdering
+     */
     private $defaultOrder;
 
     protected function setUp(): void

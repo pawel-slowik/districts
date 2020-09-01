@@ -15,6 +15,9 @@ use PHPUnit\Framework\TestCase;
  */
 class RoutingConfigurationTest extends TestCase
 {
+    /**
+     * @var App
+     */
     private $app;
 
     protected function setUp(): void

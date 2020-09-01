@@ -15,8 +15,14 @@ use PHPUnit\Framework\TestCase;
  */
 class BuilderTest extends TestCase
 {
+    /**
+     * @var Builder
+     */
     private $builder;
 
+    /**
+     * @var string
+     */
     private $validHtml;
 
     protected function setUp(): void
