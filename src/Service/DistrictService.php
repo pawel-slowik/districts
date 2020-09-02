@@ -8,6 +8,7 @@ use DomainModel\Entity\District;
 use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
 use Repository\DistrictRepository;
+use Repository\NotFoundException as RepositoryNotFoundException;
 use Validator\DistrictValidator;
 
 use Repository\CityRepository;
@@ -32,11 +33,11 @@ class DistrictService
 
     public function get(string $id): District
     {
-        $district = $this->districtRepository->get(intval($id));
-        if (!$district) {
+        try {
+            return $this->districtRepository->get(intval($id));
+        } catch (RepositoryNotFoundException $exception) {
             throw new NotFoundException();
         }
-        return $district;
     }
 
     public function add(string $name, string $area, string $population, string $cityId): void

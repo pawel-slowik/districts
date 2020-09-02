@@ -9,6 +9,7 @@ use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
 use Repository\CityRepository;
 use Repository\DistrictRepository;
+use Repository\NotFoundException;
 
 use PHPUnit\Framework\TestCase;
 
@@ -57,8 +58,8 @@ class DistrictRepositoryTest extends TestCase
 
     public function testGetNonExistent(): void
     {
+        $this->expectException(NotFoundException::class);
         $district = $this->districtRepository->get(999);
-        $this->assertNull($district);
     }
 
     public function testAdd(): void
@@ -100,7 +101,8 @@ class DistrictRepositoryTest extends TestCase
             14,
             $this->districtRepository->list($this->defaultOrder)
         );
-        $this->assertNull($this->districtRepository->get(1));
+        $this->expectException(NotFoundException::class);
+        $this->districtRepository->get(1);
     }
 
     public function testRemoveMultiple(): void
@@ -115,7 +117,9 @@ class DistrictRepositoryTest extends TestCase
             13,
             $this->districtRepository->list($this->defaultOrder)
         );
-        $this->assertNull($this->districtRepository->get(1));
-        $this->assertNull($this->districtRepository->get(10));
+        $this->expectException(NotFoundException::class);
+        $this->districtRepository->get(1);
+        $this->expectException(NotFoundException::class);
+        $this->districtRepository->get(10);
     }
 }

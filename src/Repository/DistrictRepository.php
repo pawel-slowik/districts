@@ -19,10 +19,14 @@ final class DistrictRepository
         $this->entityManager = $entityManager;
     }
 
-    public function get(int $id): ?District
+    public function get(int $id): District
     {
         $ormRepository = $this->entityManager->getRepository(District::class);
-        return $ormRepository->find($id);
+        $district = $ormRepository->find($id);
+        if (!$district) {
+            throw new NotFoundException();
+        }
+        return $district;
     }
 
     public function remove(District $district): void
