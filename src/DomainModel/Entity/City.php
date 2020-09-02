@@ -50,11 +50,6 @@ class City
         return $this->name;
     }
 
-    public function addDistrict(District $district): void
-    {
-        $this->districts[] = $district;
-    }
-
     public function listDistricts(): iterable
     {
         return $this->districts;

@@ -66,7 +66,6 @@ class Importer
                 $districtDTO->getArea(),
                 $districtDTO->getPopulation(),
             );
-            $city->addDistrict($district);
             yield $district;
         }
     }
