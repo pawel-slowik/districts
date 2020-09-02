@@ -17,10 +17,10 @@ return function (App $app): void {
     $errorMiddleware = $app->addErrorMiddleware(false, true, true);
     $errorMiddleware->setErrorHandler(
         HttpNotFoundException::class,
-        HttpNotFoundHandler::class
+        new HttpNotFoundHandler(),
     );
     $errorMiddleware->setErrorHandler(
         HttpMethodNotAllowedException::class,
-        HttpMethodNotAllowedHandler::class
+        new HttpMethodNotAllowedHandler(),
     );
 };
