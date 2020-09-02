@@ -17,9 +17,13 @@ class CityRepository
         $this->entityManager = $entityManager;
     }
 
-    public function get(int $id): ?City
+    public function get(int $id): City
     {
-        return $this->entityManager->getRepository(City::class)->find($id);
+        $city = $this->entityManager->getRepository(City::class)->find($id);
+        if (!$city) {
+            throw new NotFoundException();
+        }
+        return $city;
     }
 
     public function findByName(string $name): ?City

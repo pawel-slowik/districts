@@ -6,6 +6,7 @@ namespace Test\Repository;
 
 use DomainModel\Entity\City;
 use Repository\CityRepository;
+use Repository\NotFoundException;
 
 use PHPUnit\Framework\TestCase;
 
@@ -36,8 +37,8 @@ class CityRepositoryTest extends TestCase
 
     public function testGetNonExistent(): void
     {
+        $this->expectException(NotFoundException::class);
         $city = $this->cityRepository->get(999);
-        $this->assertNull($city);
     }
 
     public function testFind(): void
