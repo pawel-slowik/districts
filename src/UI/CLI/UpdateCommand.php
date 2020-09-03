@@ -14,7 +14,7 @@ use Symfony\Component\Console\Helper\ProgressBar;
 use Service\Importer;
 
 use Scraper\HtmlFinder;
-use Scraper\GuzzleHtmlFetcher;
+use Scraper\HtmlFetcher;
 use Scraper\District\Gdansk\Scraper as GdanskScraper;
 use Scraper\District\Krakow\Scraper as KrakowScraper;
 
@@ -22,17 +22,19 @@ final class UpdateCommand extends Command
 {
     private $importer;
 
+    private $fetcher;
+
     private $scrapers;
 
-    public function __construct(Importer $importer)
+    public function __construct(Importer $importer, HtmlFetcher $fetcher)
     {
         parent::__construct();
         $this->importer = $importer;
+        $this->fetcher = $fetcher;
         $finder = new HtmlFinder();
-        $fetcher = new GuzzleHtmlFetcher();
         $this->scrapers = [
-            new GdanskScraper($fetcher, $finder),
-            new KrakowScraper($fetcher, $finder),
+            new GdanskScraper($this->fetcher, $finder),
+            new KrakowScraper($this->fetcher, $finder),
         ];
         $this->setName("update");
         $this->setDescription("Update the districts database with scraped data. Overwrites existing records.");

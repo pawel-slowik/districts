@@ -12,6 +12,7 @@ use Repository\CityRepository;
 use Repository\DistrictRepository;
 use Service\Importer;
 use Service\CityIterator;
+use Scraper\GuzzleHtmlFetcher;
 
 $entityManagerFactory = require "doctrine-bootstrap.php";
 $entityManager = $entityManagerFactory();
@@ -24,5 +25,6 @@ $application->add(new UpdateCommand(
         new DistrictRepository($entityManager),
         $cityRepository,
     ),
+    new GuzzleHtmlFetcher(),
 ));
 $application->run();
