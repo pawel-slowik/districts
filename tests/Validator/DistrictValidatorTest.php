@@ -39,9 +39,9 @@ class DistrictValidatorTest extends TestCase
     /**
      * @dataProvider validDataProvider
      */
-    public function testValid($city, $name, $area, $population): void
+    public function testValid($cityId, $name, $area, $population): void
     {
-        $result = $this->districtValidator->validate($city, $name, $area, $population);
+        $result = $this->districtValidator->validate($cityId, $name, $area, $population);
         $this->assertTrue($result->isOk());
         $this->assertEmpty($result->getErrors());
     }
@@ -122,9 +122,9 @@ class DistrictValidatorTest extends TestCase
     /**
      * @dataProvider invalidCityDataProvider
      */
-    public function testinValidCity($city): void
+    public function testinValidCity($cityId): void
     {
-        $result = $this->districtValidator->validate($city, "test", 123, 456);
+        $result = $this->districtValidator->validate($cityId, "test", 123, 456);
         $this->assertFalse($result->isOk());
         $this->assertContains("city", $result->getErrors());
         $this->assertCount(1, $result->getErrors());

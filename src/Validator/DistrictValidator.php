@@ -16,15 +16,15 @@ final class DistrictValidator
     }
 
     /**
-     * @param scalar $city
+     * @param scalar $cityId
      * @param scalar $name
      * @param scalar $area
      * @param scalar $population
      */
-    public function validate($city, $name, $area, $population): ValidationResult
+    public function validate($cityId, $name, $area, $population): ValidationResult
     {
         $result = new ValidationResult();
-        if (!$this->validateCity($city)) {
+        if (!$this->validateCity($cityId)) {
             $result->addError("city");
         }
         if (!$this->validateName($name)) {
@@ -40,12 +40,12 @@ final class DistrictValidator
     }
 
     /**
-     * @param scalar $city
+     * @param scalar $cityId
      */
-    private function validateCity($city): bool
+    private function validateCity($cityId): bool
     {
-        foreach ($this->cityIterator as $existingCity) {
-            if ($existingCity->getId() === $city) {
+        foreach ($this->cityIterator as $city) {
+            if ($city->getId() === $cityId) {
                 return true;
             }
         }
