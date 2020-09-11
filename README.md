@@ -44,3 +44,6 @@ Start the web interface:
 - flash messages
 - replace the validator with Valitron? zend-validator?
 - automatically generate forms with [zend-form and model annotations](https://docs.zendframework.com/zend-form/quick-start/#using-annotations)?
+- pagination
+- Docker
+- pretty HTML / CSS - use a CSS framework
