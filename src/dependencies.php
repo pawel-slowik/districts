@@ -15,7 +15,7 @@ return function (Container $container, App $app): void {
         // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
         Twig::class => function ($container) {
             return Twig::create(
-                "templates",
+                __DIR__ . "/../templates",
                 [
                     "cache" => "/tmp/twig_cache",
                     "auto_reload" => true,
@@ -30,7 +30,7 @@ return function (Container $container, App $app): void {
 
         // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
         EntityManager::class => function ($container) {
-            return (require "doctrine-bootstrap.php")();
+            return (require __DIR__ . "/../doctrine-bootstrap.php")();
         },
 
     ];
