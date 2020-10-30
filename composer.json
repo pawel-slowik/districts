@@ -13,7 +13,6 @@
         "ext-xml": "^7.3",
         "symfony/console": "^4.3",
         "ext-pdo_mysql": "^7.3",
-        "ext-pdo_sqlite": "^7.3",
         "ext-dom": "20031129",
         "slim/slim": "^4.3",
         "slim/twig-view": "^3.0",
@@ -31,7 +30,8 @@
         "squizlabs/php_codesniffer": "^3.5",
         "phpunit/phpunit": "^8.4",
         "phpstan/phpstan": "^0.12.8",
-        "phpstan/phpstan-doctrine": "^0.12.9"
+        "phpstan/phpstan-doctrine": "^0.12.9",
+        "ext-pdo_sqlite": "^7.3"
     },
     "autoload-dev": {
         "psr-4": {"Test\\": "./tests/"}
