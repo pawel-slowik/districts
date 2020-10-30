@@ -19,25 +19,23 @@ Install required components:
 
 	composer install
 
-Configure a developement database connection:
+Start the development containers:
 
-    export $(< env-dev)
+    docker-compose -f docker/docker-compose.yml up -d
 
 Create the database structure:
 
-    vendor/bin/doctrine orm:schema-tool:update --force
+    docker exec -it $(docker ps -q -f ancestor=districts-php) vendor/bin/doctrine orm:schema-tool:update --force
 
 ## Usage
 
 Run the scraper to populate the database:
 
-    ./console.php update --help
+    docker exec -it $(docker ps -q -f ancestor=districts-php) ./console.php update --help
 
-    ./console.php update
+    docker exec -it $(docker ps -q -f ancestor=districts-php) ./console.php update
 
-Start the web interface:
-
-    php -S localhost:8080 -t public public/index.php
+Open <http://127.0.0.1:8080> in your browser.
 
 ## TODO
 
@@ -45,5 +43,4 @@ Start the web interface:
 - replace the validator with Valitron? zend-validator?
 - automatically generate forms with [zend-form and model annotations](https://docs.zendframework.com/zend-form/quick-start/#using-annotations)?
 - pagination
-- Docker
 - pretty HTML / CSS - use a CSS framework

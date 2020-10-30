@@ -1,0 +1,35 @@
+version: "3.4"
+
+services:
+
+  nginx:
+    build: ./nginx
+    image: districts-nginx
+    depends_on:
+      - php-fpm
+    ports:
+      - "8080:80"
+
+  php-fpm:
+    build: ./php-fpm
+    image: districts-php
+    depends_on:
+      - sql
+    environment:
+      - DB_URL=mysql://dev_user:dev_password@sql/dev_db
+    volumes:
+      - ./..:/var/www/html
+
+  sql:
+    image: mariadb:10.5
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=1
+      - MYSQL_DATABASE=dev_db
+      - MYSQL_USER=dev_user
+      - MYSQL_PASSWORD=dev_password
+    volumes:
+      - mariadb-dev-sql-data:/var/lib/mysql
+
+volumes:
+  mariadb-dev-sql-data:
+    name: districts-mariadb-dev-sql-data
