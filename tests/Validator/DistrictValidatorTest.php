@@ -39,7 +39,7 @@ class DistrictValidatorTest extends TestCase
     /**
      * @dataProvider validDataProvider
      */
-    public function testValid($cityId, $name, $area, $population): void
+    public function testValid(int $cityId, string $name, float $area, int $population): void
     {
         $result = $this->districtValidator->validate($cityId, $name, $area, $population);
         $this->assertTrue($result->isOk());
@@ -58,7 +58,7 @@ class DistrictValidatorTest extends TestCase
     /**
      * @dataProvider invalidNameDataProvider
      */
-    public function testInvalidName($name): void
+    public function testInvalidName(string $name): void
     {
         $result = $this->districtValidator->validate(1, $name, 123, 456);
         $this->assertFalse($result->isOk());
@@ -69,7 +69,6 @@ class DistrictValidatorTest extends TestCase
     public function invalidNameDataProvider(): array
     {
         return [
-            [null],
             [""],
         ];
     }
@@ -77,7 +76,7 @@ class DistrictValidatorTest extends TestCase
     /**
      * @dataProvider invalidAreaDataProvider
      */
-    public function testinValidArea($area): void
+    public function testinValidArea(float $area): void
     {
         $result = $this->districtValidator->validate(1, "test", $area, 456);
         $this->assertFalse($result->isOk());
@@ -88,18 +87,15 @@ class DistrictValidatorTest extends TestCase
     public function invalidAreaDataProvider(): array
     {
         return [
-            [null],
-            [""],
             [0],
             [-1],
-            ["foo"],
         ];
     }
 
     /**
      * @dataProvider invalidPopulationDataProvider
      */
-    public function testinValidPopulation($population): void
+    public function testinValidPopulation(int $population): void
     {
         $result = $this->districtValidator->validate(1, "test", 123, $population);
         $this->assertFalse($result->isOk());
@@ -110,19 +106,15 @@ class DistrictValidatorTest extends TestCase
     public function invalidPopulationDataProvider(): array
     {
         return [
-            [null],
-            [""],
             [0],
             [-1],
-            [0.1],
-            ["bar"],
         ];
     }
 
     /**
      * @dataProvider invalidCityDataProvider
      */
-    public function testinValidCity($cityId): void
+    public function testinValidCity(int $cityId): void
     {
         $result = $this->districtValidator->validate($cityId, "test", 123, 456);
         $this->assertFalse($result->isOk());
@@ -133,10 +125,7 @@ class DistrictValidatorTest extends TestCase
     public function invalidCityDataProvider(): array
     {
         return [
-            [null],
             [2],
-            ["foo"],
-            ["1"],
         ];
     }
 
