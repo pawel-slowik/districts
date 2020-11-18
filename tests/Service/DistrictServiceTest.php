@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Test\Service;
 
+use Application\Command\AddDistrictCommand;
+use Application\Command\UpdateDistrictCommand;
+
 use DomainModel\Entity\District;
 use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
@@ -89,7 +92,7 @@ class DistrictServiceTest extends TestCase
 
     public function testAdd(): void
     {
-        $this->districtService->add("Lorem ipsum", "12.3", "456", "1");
+        $this->districtService->add(new AddDistrictCommand(1, "Lorem ipsum", 12.3, 456));
         $this->assertCount(
             16,
             $this->districtService->list(
@@ -108,51 +111,45 @@ class DistrictServiceTest extends TestCase
     /**
      * @dataProvider addInvalidDataProvider
      */
-    public function testAddInvalid($name, $area, $population, $cityId): void
+    public function testAddInvalid(AddDistrictCommand $command): void
     {
         $this->expectException(ValidationException::class);
-        $this->districtService->add($name, $area, $population, $cityId);
+        $this->districtService->add($command);
     }
 
     public function addInvalidDataProvider(): array
     {
         return [
-            "area_not_a_number" => [
-                "test",
-                "foo",
-                "2",
-                "1",
-            ],
             "area_less_than_zero" => [
-                "test",
-                "-1",
-                "2",
-                "1",
-            ],
-            "population_not_a_number" => [
-                "test",
-                "1",
-                "bar",
-                "1",
+                new AddDistrictCommand(
+                    1,
+                    "test",
+                    -1,
+                    2,
+                ),
             ],
             "population_less_than_zero" => [
-                "test",
-                "1",
-                "-1",
-                "1",
+                new AddDistrictCommand(
+                    1,
+                    "test",
+                    1,
+                    -1,
+                ),
             ],
             "nonexistent_city_id" => [
-                "test",
-                "1",
-                "1.5",
-                "999",
+                new AddDistrictCommand(
+                    999,
+                    "test",
+                    1,
+                    1,
+                ),
             ],
         ];
     }
 
     public function testUpdate(): void
     {
-        $this->districtService->update("1", "update test", "111.22", "333");
+        $this->districtService->update(new UpdateDistrictCommand(1, "update test", 111.22, 333));
         $updatedDistrict = $this->districtService->get("1");
         $this->assertSame("update test", $updatedDistrict->getName());
         $this->assertSame(111.22, $updatedDistrict->getArea());
@@ -162,38 +159,30 @@ class DistrictServiceTest extends TestCase
     /**
      * @dataProvider updateInvalidDataProvider
      */
-    public function testUpdateInvalid($id, $name, $area, $population): void
+    public function testUpdateInvalid(UpdateDistrictCommand $command): void
     {
         $this->expectException(ValidationException::class);
-        $this->districtService->update($id, $name, $area, $population);
+        $this->districtService->update($command);
     }
 
     public function updateInvalidDataProvider(): array
     {
         return [
-            "area_not_a_number" => [
-                "1",
-                "test",
-                "foo",
-                "2",
-            ],
             "area_less_than_zero" => [
-                "1",
-                "test",
-                "-1",
-                "2",
-            ],
-            "population_not_a_number" => [
-                "1",
-                "test",
-                "1",
-                "bar",
+                new UpdateDistrictCommand(
+                    1,
+                    "test",
+                    -1,
+                    2,
+                ),
             ],
             "population_less_than_zero" => [
-                "1",
-                "test",
-                "1",
-                "-1",
+                new UpdateDistrictCommand(
+                    1,
+                    "test",
+                    1,
+                    -1,
+                ),
             ],
         ];
     }
@@ -201,6 +190,6 @@ class DistrictServiceTest extends TestCase
     public function testUpdateNonexistent(): void
     {
         $this->expectException(NotFoundException::class);
-        $this->districtService->update("999", "test", "1", "2");
+        $this->districtService->update(new UpdateDistrictCommand(999, "test", 1, 2));
     }
 }

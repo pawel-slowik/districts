@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Service;
 
+use Application\Command\AddDistrictCommand;
+use Application\Command\UpdateDistrictCommand;
 use DomainModel\Entity\District;
 use DomainModel\DistrictFilter;
 use DomainModel\DistrictOrdering;
@@ -40,12 +42,12 @@ class DistrictService
         }
     }
 
-    public function add(string $name, string $area, string $population, string $cityId): void
+    public function add(AddDistrictCommand $command): void
     {
-        $cityId = intval($cityId);
-        $name = trim($name);
-        $area = floatval($area);
-        $population = intval($population);
+        $cityId = $command->getCityId();
+        $name = $command->getName();
+        $area = $command->getArea();
+        $population = $command->getPopulation();
         $validationResult = $this->districtValidator->validate($cityId, $name, $area, $population);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
@@ -59,12 +61,12 @@ class DistrictService
         $this->districtRepository->add($district);
     }
 
-    public function update(string $id, string $name, string $area, string $population): void
+    public function update(UpdateDistrictCommand $command): void
     {
-        $district = $this->get($id);
-        $name = trim($name);
-        $area = floatval($area);
-        $population = intval($population);
+        $district = $this->get(strval($command->getId()));
+        $name = $command->getName();
+        $area = $command->getArea();
+        $population = $command->getPopulation();
         $validationResult = $this->districtValidator->validate(
             $district->getCity()->getId(),
             $name,

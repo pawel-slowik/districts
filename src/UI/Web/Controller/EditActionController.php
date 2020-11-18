@@ -10,6 +10,7 @@ use Slim\Exception\HttpNotFoundException;
 use SlimSession\Helper as Session;
 
 use UI\Web\Redirector;
+use UI\Web\RequestParser;
 
 use Service\DistrictService;
 use Service\NotFoundException;
@@ -19,16 +20,20 @@ final class EditActionController
 {
     private $districtService;
 
+    private $requestParser;
+
     private $session;
 
     private $redirector;
 
     public function __construct(
         DistrictService $districtService,
+        RequestParser $requestParser,
         Session $session,
         Redirector $redirector
     ) {
         $this->districtService = $districtService;
+        $this->requestParser = $requestParser;
         $this->session = $session;
         $this->redirector = $redirector;
     }
@@ -37,12 +42,8 @@ final class EditActionController
     {
         $parsed = $request->getParsedBody();
         try {
-            $this->districtService->update(
-                $args["id"] ?? null,
-                $parsed["name"] ?? null,
-                $parsed["area"] ?? null,
-                $parsed["population"] ?? null
-            );
+            $command = $this->requestParser->parseUpdate($request, $args);
+            $this->districtService->update($command);
             // TODO: flash success message
             unset($this->session["form.edit.values"]);
             unset($this->session["form.edit.errors"]);
