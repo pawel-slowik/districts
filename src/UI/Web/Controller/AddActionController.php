@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use SlimSession\Helper as Session;
 
 use UI\Web\Redirector;
-use UI\Web\RequestParser;
+use UI\Web\AddDistrictCommandFactory;
 
 use Service\DistrictService;
 use Service\ValidationException;
@@ -18,7 +18,7 @@ final class AddActionController
 {
     private $districtService;
 
-    private $requestParser;
+    private $commandFactory;
 
     private $session;
 
@@ -26,12 +26,12 @@ final class AddActionController
 
     public function __construct(
         DistrictService $districtService,
-        RequestParser $requestParser,
+        AddDistrictCommandFactory $commandFactory,
         Session $session,
         Redirector $redirector
     ) {
         $this->districtService = $districtService;
-        $this->requestParser = $requestParser;
+        $this->commandFactory = $commandFactory;
         $this->session = $session;
         $this->redirector = $redirector;
     }
@@ -41,7 +41,7 @@ final class AddActionController
     {
         $parsed = $request->getParsedBody();
         try {
-            $command = $this->requestParser->parseAdd($request);
+            $command = $this->commandFactory->fromRequest($request);
             $this->districtService->add($command);
             // TODO: flash success message
             unset($this->session["form.add.values"]);

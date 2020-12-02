@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpNotFoundException;
 
 use UI\Web\Redirector;
-use UI\Web\RequestParser;
+use UI\Web\RemoveDistrictCommandFactory;
 
 use Service\DistrictService;
 use Service\NotFoundException;
@@ -18,24 +18,24 @@ final class RemoveActionController
 {
     private $districtService;
 
-    private $requestParser;
+    private $commandFactory;
 
     private $redirector;
 
     public function __construct(
         DistrictService $districtService,
-        RequestParser $requestParser,
+        RemoveDistrictCommandFactory $commandFactory,
         Redirector $redirector
     ) {
         $this->districtService = $districtService;
-        $this->requestParser = $requestParser;
+        $this->commandFactory = $commandFactory;
         $this->redirector = $redirector;
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         try {
-            $this->districtService->remove($this->requestParser->parseRemove($request, $args));
+            $this->districtService->remove($this->commandFactory->fromRequest($request, $args));
             // TODO: flash message
         } catch (NotFoundException $exception) {
             throw new HttpNotFoundException($request);
