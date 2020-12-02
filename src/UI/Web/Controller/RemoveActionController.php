@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpNotFoundException;
 
 use Districts\UI\Web\Redirector;
-use Districts\UI\Web\RemoveDistrictCommandFactory;
+use Districts\UI\Web\Factory\RemoveDistrictCommandFactory;
 
 use Districts\Service\DistrictService;
 use Districts\Service\NotFoundException;

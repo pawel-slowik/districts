@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\UI\Web;
+namespace Districts\Test\UI\Web\Factory;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Districts\UI\Web\UpdateDistrictCommandFactory;
-use Districts\Application\Command\UpdateDistrictCommand;
+use Districts\UI\Web\Factory\AddDistrictCommandFactory;
+use Districts\Application\Command\AddDistrictCommand;
 use Districts\Service\ValidationException;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
- * @covers \Districts\Application\Command\UpdateDistrictCommand
- * @covers \Districts\UI\Web\UpdateDistrictCommandFactory
+ * @covers \Districts\Application\Command\AddDistrictCommand
+ * @covers \Districts\UI\Web\Factory\AddDistrictCommandFactory
  */
-class UpdateDistrictCommandFactoryTest extends TestCase
+class AddDistrictCommandFactoryTest extends TestCase
 {
     /**
      * @var MockObject|Request
@@ -24,93 +24,87 @@ class UpdateDistrictCommandFactoryTest extends TestCase
     private $request;
 
     /**
-     * @var UpdateDistrictCommandFactory
+     * @var AddDistrictCommandFactory
      */
     private $commandFactory;
 
     protected function setUp(): void
     {
         $this->request = $this->createMock(Request::class);
-        $this->commandFactory = new UpdateDistrictCommandFactory();
+        $this->commandFactory = new AddDistrictCommandFactory();
     }
 
-    public function testValidUpdateRequest(): void
+    public function testValidAddRequest(): void
     {
         $this->request->method("getParsedBody")->willReturn(
             [
+                "city" => "1",
                 "name" => "foo",
                 "area" => "2.2",
                 "population" => "3",
             ]
         );
-        $command = $this->commandFactory->fromRequest($this->request, ["id" => "1"]);
-        $this->assertInstanceOf(UpdateDistrictCommand::class, $command);
-        $this->assertSame(1, $command->getId());
+        $command = $this->commandFactory->fromRequest($this->request);
+        $this->assertInstanceOf(AddDistrictCommand::class, $command);
+        $this->assertSame(1, $command->getCityId());
         $this->assertSame("foo", $command->getName());
         $this->assertSame(2.2, $command->getArea());
         $this->assertSame(3, $command->getPopulation());
     }
 
-    public function testTrimsNameInUpdateRequest(): void
+    public function testTrimsNameInAddRequest(): void
     {
         $this->request->method("getParsedBody")->willReturn(
             [
+                "city" => "1",
                 "name" => " foo ",
                 "area" => "2.2",
                 "population" => "3",
             ]
         );
-        $command = $this->commandFactory->fromRequest($this->request, ["id" => "1"]);
+        $command = $this->commandFactory->fromRequest($this->request);
         $this->assertSame("foo", $command->getName());
     }
 
     /**
-     * @dataProvider incompleteUpdateRequestDataProvider
+     * @dataProvider incompleteAddRequestDataProvider
      */
-    public function testIncompleteUpdateRequest(array $requestData, array $routeArgs): void
+    public function testIncompleteAddRequest(array $requestData): void
     {
         $this->request->method("getParsedBody")->willReturn($requestData);
         $this->expectException(ValidationException::class);
-        $this->commandFactory->fromRequest($this->request, $routeArgs);
+        $this->commandFactory->fromRequest($this->request);
     }
 
-    public function incompleteUpdateRequestDataProvider(): array
+    public function incompleteAddRequestDataProvider(): array
     {
         return [
-            "missing_id" => [
+            "missing_city" => [
                 [
                     "name" => "foo",
                     "area" => "2.2",
                     "population" => "3",
-                ],
-                [
                 ],
             ],
             "missing_name" => [
                 [
+                    "city" => "1",
                     "area" => "2.2",
                     "population" => "3",
-                ],
-                [
-                    "id" => "1",
                 ],
             ],
             "missing_area" => [
                 [
+                    "city" => "1",
                     "name" => "foo",
                     "population" => "3",
-                ],
-                [
-                    "id" => "1",
                 ],
             ],
             "missing_population" => [
                 [
+                    "city" => "1",
                     "name" => "foo",
                     "area" => "2.2",
-                ],
-                [
-                    "id" => "1",
                 ],
             ],
         ];
@@ -119,11 +113,11 @@ class UpdateDistrictCommandFactoryTest extends TestCase
     /**
      * @dataProvider unparseableRequestDataProvider
      */
-    public function testUnparseableUpdateRequest(?object $parsedBody): void
+    public function testUnparseableAddRequest(?object $parsedBody): void
     {
         $this->request->method("getParsedBody")->willReturn($parsedBody);
         $this->expectException(ValidationException::class);
-        $this->commandFactory->fromRequest($this->request, ["id" => "1"]);
+        $this->commandFactory->fromRequest($this->request);
     }
 
     public function unparseableRequestDataProvider(): array

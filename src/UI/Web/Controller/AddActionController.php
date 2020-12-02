@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use SlimSession\Helper as Session;
 
 use Districts\UI\Web\Redirector;
-use Districts\UI\Web\AddDistrictCommandFactory;
+use Districts\UI\Web\Factory\AddDistrictCommandFactory;
 
 use Districts\Service\DistrictService;
 use Districts\Service\ValidationException;

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\UI\Web;
+namespace Districts\Test\UI\Web\Factory;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Districts\UI\Web\RemoveDistrictCommandFactory;
+use Districts\UI\Web\Factory\RemoveDistrictCommandFactory;
 use Districts\Application\Command\RemoveDistrictCommand;
 use Districts\Service\ValidationException;
 
@@ -14,7 +14,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * @covers \Districts\Application\Command\RemoveDistrictCommand
- * @covers \Districts\UI\Web\RemoveDistrictCommandFactory
+ * @covers \Districts\UI\Web\Factory\RemoveDistrictCommandFactory
  */
 class RemoveDistrictCommandFactoryTest extends TestCase
 {

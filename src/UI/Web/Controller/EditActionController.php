@@ -10,7 +10,7 @@ use Slim\Exception\HttpNotFoundException;
 use SlimSession\Helper as Session;
 
 use Districts\UI\Web\Redirector;
-use Districts\UI\Web\UpdateDistrictCommandFactory;
+use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
 
 use Districts\Service\DistrictService;
 use Districts\Service\NotFoundException;

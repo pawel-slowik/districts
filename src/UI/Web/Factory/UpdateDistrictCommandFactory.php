@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\UI\Web;
+namespace Districts\UI\Web\Factory;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Districts\Application\Command\UpdateDistrictCommand;
