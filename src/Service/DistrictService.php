@@ -33,10 +33,10 @@ class DistrictService
         $this->cityRepository = $cityRepository;
     }
 
-    public function get(string $id): District
+    public function get(int $id): District
     {
         try {
-            return $this->districtRepository->get(intval($id));
+            return $this->districtRepository->get($id);
         } catch (RepositoryNotFoundException $exception) {
             throw new NotFoundException();
         }
@@ -63,7 +63,7 @@ class DistrictService
 
     public function update(UpdateDistrictCommand $command): void
     {
-        $district = $this->get(strval($command->getId()));
+        $district = $this->get($command->getId());
         $name = $command->getName();
         $area = $command->getArea();
         $population = $command->getPopulation();
@@ -84,7 +84,7 @@ class DistrictService
 
     public function remove(string $id): void
     {
-        $this->districtRepository->remove($this->get($id));
+        $this->districtRepository->remove($this->get(intval($id)));
     }
 
     public function list(DistrictOrdering $order, ?DistrictFilter $filter): array

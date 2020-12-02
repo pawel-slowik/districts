@@ -59,7 +59,7 @@ class DistrictServiceTest extends TestCase
 
     public function testGet(): void
     {
-        $district = $this->districtService->get("1");
+        $district = $this->districtService->get(1);
         $this->assertInstanceOf(District::class, $district);
         $this->assertSame("Plugh", $district->getName());
         $this->assertSame(floatval(10), $district->getArea());
@@ -70,7 +70,7 @@ class DistrictServiceTest extends TestCase
     public function testGetNonExistent(): void
     {
         $this->expectException(NotFoundException::class);
-        $this->districtService->get("999");
+        $this->districtService->get(999);
     }
 
     public function testRemove(): void
@@ -81,7 +81,7 @@ class DistrictServiceTest extends TestCase
             $this->districtService->list($this->defaultOrder, null)
         );
         $this->expectException(NotFoundException::class);
-        $this->districtService->get("1");
+        $this->districtService->get(1);
     }
 
     public function testRemoveNonExistent(): void
@@ -150,7 +150,7 @@ class DistrictServiceTest extends TestCase
     public function testUpdate(): void
     {
         $this->districtService->update(new UpdateDistrictCommand(1, "update test", 111.22, 333));
-        $updatedDistrict = $this->districtService->get("1");
+        $updatedDistrict = $this->districtService->get(1);
         $this->assertSame("update test", $updatedDistrict->getName());
         $this->assertSame(111.22, $updatedDistrict->getArea());
         $this->assertSame(333, $updatedDistrict->getPopulation());

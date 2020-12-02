@@ -29,7 +29,7 @@ final class RemoveFormController
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         try {
-            $district = $this->districtService->get($args["id"]);
+            $district = $this->districtService->get(intval($args["id"]));
         } catch (NotFoundException $exception) {
             throw new HttpNotFoundException($request);
         }

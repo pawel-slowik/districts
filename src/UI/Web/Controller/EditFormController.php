@@ -36,7 +36,7 @@ final class EditFormController
         $district = $this->session["form.edit.values"];
         if (!$district) {
             try {
-                $district = $this->districtService->get($args["id"]);
+                $district = $this->districtService->get(intval($args["id"]));
             } catch (NotFoundException $exception) {
                 throw new HttpNotFoundException($request);
             }
