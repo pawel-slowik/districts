@@ -85,6 +85,9 @@ class DistrictService
 
     public function remove(RemoveDistrictCommand $command): void
     {
+        if (!$command->isConfirmed()) {
+            return;
+        }
         $this->districtRepository->remove($this->get($command->getId()));
     }
 

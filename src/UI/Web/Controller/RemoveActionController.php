@@ -34,20 +34,12 @@ final class RemoveActionController
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        if ($this->isConfirmed($request)) {
-            try {
-                $this->districtService->remove($this->requestParser->parseRemove($request, $args));
-                // TODO: flash message
-            } catch (NotFoundException $exception) {
-                throw new HttpNotFoundException($request);
-            }
+        try {
+            $this->districtService->remove($this->requestParser->parseRemove($request, $args));
+            // TODO: flash message
+        } catch (NotFoundException $exception) {
+            throw new HttpNotFoundException($request);
         }
         return $this->redirector->redirect($request, $response, "list");
-    }
-
-    private function isConfirmed(Request $request): bool
-    {
-        $parsed = $request->getParsedBody();
-        return array_key_exists("confirm", $parsed);
     }
 }

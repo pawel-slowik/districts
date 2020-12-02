@@ -88,7 +88,6 @@ class RequestParser
         throw (new ValidationException())->withErrors($errors);
     }
 
-    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function parseRemove(Request $request, array $routeArgs): RemoveDistrictCommand
     {
         $errors = [];
@@ -97,8 +96,15 @@ class RequestParser
         } else {
             $errors[] = "id";
         }
-        if (isset($id)) {
-            return new RemoveDistrictCommand($id);
+        $parsedBody = $request->getParsedBody();
+        if (is_array($parsedBody)) {
+            $isConfirmed = array_key_exists("confirm", $parsedBody);
+        }
+        if (isset(
+            $id,
+            $isConfirmed,
+        )) {
+            return new RemoveDistrictCommand($id, $isConfirmed);
         }
 
         throw (new ValidationException())->withErrors($errors);

@@ -216,6 +216,16 @@ class RequestParserTest extends TestCase
         $this->requestParser->parseUpdate($this->request, ["id" => "1"]);
     }
 
+    /**
+     * @dataProvider unparseableRequestDataProvider
+     */
+    public function testUnparseableRemoveRequest(?object $parsedBody): void
+    {
+        $this->request->method("getParsedBody")->willReturn($parsedBody);
+        $this->expectException(ValidationException::class);
+        $this->requestParser->parseRemove($this->request, ["id" => "1"]);
+    }
+
     public function unparseableRequestDataProvider(): array
     {
         return [
@@ -226,10 +236,11 @@ class RequestParserTest extends TestCase
 
     public function testValidRemoveRequest(): void
     {
-        $this->request->method("getParsedBody")->willReturn([]);
+        $this->request->method("getParsedBody")->willReturn(["confirm" => ""]);
         $command = $this->requestParser->parseRemove($this->request, ["id" => "1"]);
         $this->assertInstanceOf(RemoveDistrictCommand::class, $command);
         $this->assertSame(1, $command->getId());
+        $this->assertTrue($command->isConfirmed());
     }
 
     public function testIncompleteRemoveRequest(): void

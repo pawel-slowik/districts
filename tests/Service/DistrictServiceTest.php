@@ -74,9 +74,9 @@ class DistrictServiceTest extends TestCase
         $this->districtService->get(999);
     }
 
-    public function testRemove(): void
+    public function testRemoveConfirmed(): void
     {
-        $this->districtService->remove(new RemoveDistrictCommand(1));
+        $this->districtService->remove(new RemoveDistrictCommand(1, true));
         $this->assertCount(
             14,
             $this->districtService->list($this->defaultOrder, null)
@@ -85,10 +85,21 @@ class DistrictServiceTest extends TestCase
         $this->districtService->get(1);
     }
 
+    public function testRemoveUnconfirmed(): void
+    {
+        $this->districtService->remove(new RemoveDistrictCommand(1, false));
+        $this->assertCount(
+            15,
+            $this->districtService->list($this->defaultOrder, null)
+        );
+        $district = $this->districtService->get(1);
+        $this->assertInstanceOf(District::class, $district);
+    }
+
     public function testRemoveNonExistent(): void
     {
         $this->expectException(NotFoundException::class);
-        $this->districtService->remove(new RemoveDistrictCommand(999));
+        $this->districtService->remove(new RemoveDistrictCommand(999, true));
     }
 
     public function testAdd(): void
