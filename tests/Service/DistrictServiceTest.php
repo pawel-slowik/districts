@@ -75,7 +75,7 @@ class DistrictServiceTest extends TestCase
 
     public function testRemove(): void
     {
-        $this->districtService->remove("1");
+        $this->districtService->remove(1);
         $this->assertCount(
             14,
             $this->districtService->list($this->defaultOrder, null)
@@ -87,7 +87,7 @@ class DistrictServiceTest extends TestCase
     public function testRemoveNonExistent(): void
     {
         $this->expectException(NotFoundException::class);
-        $this->districtService->remove("999");
+        $this->districtService->remove(999);
     }
 
     public function testAdd(): void

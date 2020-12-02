@@ -82,9 +82,9 @@ class DistrictService
         $this->districtRepository->update($district);
     }
 
-    public function remove(string $id): void
+    public function remove(int $id): void
     {
-        $this->districtRepository->remove($this->get(intval($id)));
+        $this->districtRepository->remove($this->get($id));
     }
 
     public function list(DistrictOrdering $order, ?DistrictFilter $filter): array

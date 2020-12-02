@@ -31,7 +31,7 @@ final class RemoveActionController
     {
         if ($this->isConfirmed($request)) {
             try {
-                $this->districtService->remove($args["id"]);
+                $this->districtService->remove(intval($args["id"]));
                 // TODO: flash message
             } catch (NotFoundException $exception) {
                 throw new HttpNotFoundException($request);
