@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Scraper;
+namespace Districts\Scraper;
 
 class RuntimeException extends \RuntimeException
 {

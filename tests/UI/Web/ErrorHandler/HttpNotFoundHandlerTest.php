@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Test\UI\Web\ErrorHandler;
+namespace Districts\Test\UI\Web\ErrorHandler;
 
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Psr\Http\Message\ResponseInterface;
 
-use UI\Web\ErrorHandler\HttpNotFoundHandler;
+use Districts\UI\Web\ErrorHandler\HttpNotFoundHandler;
 
 /**
- * @covers \UI\Web\ErrorHandler\HttpNotFoundHandler
+ * @covers \Districts\UI\Web\ErrorHandler\HttpNotFoundHandler
  */
 class HttpNotFoundHandlerTest extends BaseTestCase
 {

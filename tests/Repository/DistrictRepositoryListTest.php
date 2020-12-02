@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Test\Repository;
+namespace Districts\Test\Repository;
 
-use DomainModel\Entity\District;
-use DomainModel\DistrictFilter;
-use DomainModel\DistrictOrdering;
-use Repository\DistrictRepository;
+use Districts\DomainModel\Entity\District;
+use Districts\DomainModel\DistrictFilter;
+use Districts\DomainModel\DistrictOrdering;
+use Districts\Repository\DistrictRepository;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Repository\DistrictRepository
+ * @covers \Districts\Repository\DistrictRepository
  */
 class DistrictRepositoryListTest extends TestCase
 {

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace UI\Web\Controller;
+namespace Districts\UI\Web\Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use SlimSession\Helper as Session;
 
-use UI\Web\Redirector;
-use UI\Web\AddDistrictCommandFactory;
+use Districts\UI\Web\Redirector;
+use Districts\UI\Web\AddDistrictCommandFactory;
 
-use Service\DistrictService;
-use Service\ValidationException;
+use Districts\Service\DistrictService;
+use Districts\Service\ValidationException;
 
 final class AddActionController
 {

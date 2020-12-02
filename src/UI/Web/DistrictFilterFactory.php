@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace UI\Web;
+namespace Districts\UI\Web;
 
-use DomainModel\DistrictFilter;
+use Districts\DomainModel\DistrictFilter;
 
 class DistrictFilterFactory
 {

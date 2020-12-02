@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Repository;
+namespace Districts\Repository;
 
 use Doctrine\ORM\EntityManager;
 
-use DomainModel\Entity\City;
+use Districts\DomainModel\Entity\City;
 
 class CityRepository
 {

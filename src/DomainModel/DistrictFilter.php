@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DomainModel;
+namespace Districts\DomainModel;
 
 class DistrictFilter
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace UI\Web;
+namespace Districts\UI\Web;
 
 use Slim\App;
-use UI\Web\Controller\{
+use Districts\UI\Web\Controller\{
     HomeController,
     ListController,
     AddFormController,

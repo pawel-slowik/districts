@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Test\DomainModel;
+namespace Districts\Test\DomainModel;
 
-use DomainModel\DistrictOrdering;
+use Districts\DomainModel\DistrictOrdering;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DomainModel\DistrictOrdering
+ * @covers \Districts\DomainModel\DistrictOrdering
  */
 class DistrictOrderingTest extends TestCase
 {

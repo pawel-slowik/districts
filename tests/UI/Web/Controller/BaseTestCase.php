@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Test\UI\Web\Controller;
+namespace Districts\Test\UI\Web\Controller;
 
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -12,9 +12,9 @@ use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7\ServerRequest;
 use Nyholm\Psr7\Uri;
 use Slim\App;
-use UI\Web\RoutingConfiguration;
+use Districts\UI\Web\RoutingConfiguration;
 use PHPUnit\Framework\TestCase;
-use Test\Repository\FixtureTool;
+use Districts\Test\Repository\FixtureTool;
 use Doctrine\ORM\EntityManager;
 
 abstract class BaseTestCase extends TestCase

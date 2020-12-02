@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace UI\Web;
+namespace Districts\UI\Web;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Application\Command\AddDistrictCommand;
-use Service\ValidationException;
+use Districts\Application\Command\AddDistrictCommand;
+use Districts\Service\ValidationException;
 
 class AddDistrictCommandFactory
 {

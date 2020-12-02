@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Test\UI\Web;
+namespace Districts\Test\UI\Web;
 
-use DomainModel\DistrictOrdering;
-use UI\Web\DistrictOrderingFactory;
+use Districts\DomainModel\DistrictOrdering;
+use Districts\UI\Web\DistrictOrderingFactory;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \UI\Web\DistrictOrderingFactory
+ * @covers \Districts\UI\Web\DistrictOrderingFactory
  */
 class DistrictOrderingFactoryTest extends TestCase
 {

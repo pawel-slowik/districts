@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Test\Service;
+namespace Districts\Test\Service;
 
-use DomainModel\Entity\District;
+use Districts\DomainModel\Entity\District;
 
-use Service\DistrictService;
-use Service\CityIterator;
-use Validator\DistrictValidator;
-use DomainModel\DistrictFilter;
-use DomainModel\DistrictOrdering;
+use Districts\Service\DistrictService;
+use Districts\Service\CityIterator;
+use Districts\Validator\DistrictValidator;
+use Districts\DomainModel\DistrictFilter;
+use Districts\DomainModel\DistrictOrdering;
 
-use Repository\CityRepository;
-use Repository\DistrictRepository;
+use Districts\Repository\CityRepository;
+use Districts\Repository\DistrictRepository;
 
-use Test\Repository\FixtureTool;
+use Districts\Test\Repository\FixtureTool;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Service\DistrictService
+ * @covers \Districts\Service\DistrictService
  */
 class DistrictServiceListTest extends TestCase
 {

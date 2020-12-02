@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Test\Repository;
+namespace Districts\Test\Repository;
 
-use DomainModel\Entity\City;
-use Repository\CityRepository;
-use Repository\NotFoundException;
+use Districts\DomainModel\Entity\City;
+use Districts\Repository\CityRepository;
+use Districts\Repository\NotFoundException;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Repository\CityRepository
+ * @covers \Districts\Repository\CityRepository
  */
 class CityRepositoryTest extends TestCase
 {

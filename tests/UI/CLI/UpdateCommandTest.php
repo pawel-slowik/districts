@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Test\UI\CLI;
+namespace Districts\Test\UI\CLI;
 
-use UI\CLI\UpdateCommand;
-use Service\Importer;
-use Service\ProgressReporter;
-use Scraper\HtmlFetcher;
+use Districts\UI\CLI\UpdateCommand;
+use Districts\Service\Importer;
+use Districts\Service\ProgressReporter;
+use Districts\Scraper\HtmlFetcher;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
@@ -16,7 +16,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \UI\CLI\UpdateCommand
+ * @covers \Districts\UI\CLI\UpdateCommand
  */
 class UpdateCommandTest extends TestCase
 {

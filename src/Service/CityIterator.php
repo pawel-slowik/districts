@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Service;
+namespace Districts\Service;
 
-use DomainModel\Entity\City;
+use Districts\DomainModel\Entity\City;
 
-use Repository\CityRepository;
+use Districts\Repository\CityRepository;
 
 /**
  * @implements \IteratorAggregate<City>

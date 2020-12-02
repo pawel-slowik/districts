@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Scraper\District\Gdansk;
+namespace Districts\Scraper\District\Gdansk;
 
-use Scraper\District\Scraper as ScraperInterface;
-use Scraper\HtmlFetcher;
-use Scraper\HtmlFinder;
-use Scraper\RuntimeException;
+use Districts\Scraper\District\Scraper as ScraperInterface;
+use Districts\Scraper\HtmlFetcher;
+use Districts\Scraper\HtmlFinder;
+use Districts\Scraper\RuntimeException;
 use Laminas\Uri\Uri;
 
 final class Scraper implements ScraperInterface

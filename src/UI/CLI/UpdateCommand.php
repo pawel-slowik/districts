@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UI\CLI;
+namespace Districts\UI\CLI;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
@@ -11,12 +11,12 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 
-use Service\Importer;
+use Districts\Service\Importer;
 
-use Scraper\HtmlFinder;
-use Scraper\HtmlFetcher;
-use Scraper\District\Gdansk\Scraper as GdanskScraper;
-use Scraper\District\Krakow\Scraper as KrakowScraper;
+use Districts\Scraper\HtmlFinder;
+use Districts\Scraper\HtmlFetcher;
+use Districts\Scraper\District\Gdansk\Scraper as GdanskScraper;
+use Districts\Scraper\District\Krakow\Scraper as KrakowScraper;
 
 final class UpdateCommand extends Command
 {

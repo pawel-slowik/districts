@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Test\UI\Web\Controller;
+namespace Districts\Test\UI\Web\Controller;
 
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 
 /**
- * @covers \UI\Web\Controller\EditActionController
+ * @covers \Districts\UI\Web\Controller\EditActionController
  * @runTestsInSeparateProcesses
  */
 class EditActionControllerTest extends BaseTestCase

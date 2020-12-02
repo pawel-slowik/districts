@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Validator;
+namespace Districts\Validator;
 
-use Service\CityIterator;
+use Districts\Service\CityIterator;
 
 final class DistrictValidator
 {

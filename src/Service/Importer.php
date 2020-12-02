@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Service;
+namespace Districts\Service;
 
-use DomainModel\Entity\City;
-use DomainModel\Entity\District;
-use Validator\DistrictValidator;
-use Repository\DistrictRepository;
-use Repository\CityRepository;
+use Districts\DomainModel\Entity\City;
+use Districts\DomainModel\Entity\District;
+use Districts\Validator\DistrictValidator;
+use Districts\Repository\DistrictRepository;
+use Districts\Repository\CityRepository;
 
 class Importer
 {

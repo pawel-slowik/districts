@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Test\UI\Web;
+namespace Districts\Test\UI\Web;
 
 use DI\Container;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Slim\App;
-use UI\Web\RoutingConfiguration;
+use Districts\UI\Web\RoutingConfiguration;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \UI\Web\RoutingConfiguration
+ * @covers \Districts\UI\Web\RoutingConfiguration
  */
 class RoutingConfigurationTest extends TestCase
 {

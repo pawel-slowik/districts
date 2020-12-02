@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Scraper;
+namespace Districts\Scraper;
 
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use GuzzleHttp\Client as HttpClient;

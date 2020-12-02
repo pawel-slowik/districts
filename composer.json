@@ -23,7 +23,7 @@
         "fig/http-message-util": "^1.1"
     },
     "autoload": {
-        "psr-4": {"": "./src/"}
+        "psr-4": {"Districts\\": "./src/"}
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.15",
@@ -34,7 +34,7 @@
         "ext-pdo_sqlite": "^7.3"
     },
     "autoload-dev": {
-        "psr-4": {"Test\\": "./tests/"}
+        "psr-4": {"Districts\\Test\\": "./tests/"}
     },
     "scripts": {
         "cs": [

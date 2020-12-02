@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Test\Service;
+namespace Districts\Test\Service;
 
-use DomainModel\DistrictFilter;
-use DomainModel\DistrictOrdering;
+use Districts\DomainModel\DistrictFilter;
+use Districts\DomainModel\DistrictOrdering;
 
-use Service\Importer;
-use Service\CityIterator;
-use Service\ValidationException;
-use Validator\DistrictValidator;
-use Scraper\District\DistrictDTO;
-use Repository\DistrictRepository;
-use Repository\CityRepository;
+use Districts\Service\Importer;
+use Districts\Service\CityIterator;
+use Districts\Service\ValidationException;
+use Districts\Validator\DistrictValidator;
+use Districts\Scraper\District\DistrictDTO;
+use Districts\Repository\DistrictRepository;
+use Districts\Repository\CityRepository;
 
-use Test\Repository\FixtureTool;
+use Districts\Test\Repository\FixtureTool;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Service\Importer
+ * @covers \Districts\Service\Importer
  */
 class ImporterTest extends TestCase
 {

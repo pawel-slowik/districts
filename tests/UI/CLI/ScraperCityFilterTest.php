@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Test\UI\CLI;
+namespace Districts\Test\UI\CLI;
 
-use UI\CLI\ScraperCityFilter;
-use Scraper\District\Scraper;
+use Districts\UI\CLI\ScraperCityFilter;
+use Districts\Scraper\District\Scraper;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \UI\CLI\ScraperCityFilter
+ * @covers \Districts\UI\CLI\ScraperCityFilter
  */
 class ScraperCityFilterTest extends TestCase
 {

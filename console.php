@@ -6,13 +6,13 @@ declare(strict_types=1);
 require __DIR__ . "/vendor/autoload.php";
 
 use Symfony\Component\Console\Application;
-use UI\CLI\UpdateCommand;
-use Validator\DistrictValidator;
-use Repository\CityRepository;
-use Repository\DistrictRepository;
-use Service\Importer;
-use Service\CityIterator;
-use Scraper\GuzzleHtmlFetcher;
+use Districts\UI\CLI\UpdateCommand;
+use Districts\Validator\DistrictValidator;
+use Districts\Repository\CityRepository;
+use Districts\Repository\DistrictRepository;
+use Districts\Service\Importer;
+use Districts\Service\CityIterator;
+use Districts\Scraper\GuzzleHtmlFetcher;
 
 $entityManagerFactory = require "doctrine-bootstrap.php";
 $entityManager = $entityManagerFactory();

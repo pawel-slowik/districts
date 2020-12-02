@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Scraper\District\Krakow;
+namespace Districts\Scraper\District\Krakow;
 
-use Scraper\HtmlFinder;
-use Scraper\RuntimeException;
-use Scraper\District\DistrictDTO;
+use Districts\Scraper\HtmlFinder;
+use Districts\Scraper\RuntimeException;
+use Districts\Scraper\District\DistrictDTO;
 
 final class Builder
 {

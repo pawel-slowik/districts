@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Service;
+namespace Districts\Service;
 
-use Application\Command\AddDistrictCommand;
-use Application\Command\RemoveDistrictCommand;
-use Application\Command\UpdateDistrictCommand;
-use DomainModel\Entity\District;
-use DomainModel\DistrictFilter;
-use DomainModel\DistrictOrdering;
-use Repository\DistrictRepository;
-use Repository\NotFoundException as RepositoryNotFoundException;
-use Validator\DistrictValidator;
+use Districts\Application\Command\AddDistrictCommand;
+use Districts\Application\Command\RemoveDistrictCommand;
+use Districts\Application\Command\UpdateDistrictCommand;
+use Districts\DomainModel\Entity\District;
+use Districts\DomainModel\DistrictFilter;
+use Districts\DomainModel\DistrictOrdering;
+use Districts\Repository\DistrictRepository;
+use Districts\Repository\NotFoundException as RepositoryNotFoundException;
+use Districts\Validator\DistrictValidator;
 
-use Repository\CityRepository;
+use Districts\Repository\CityRepository;
 
 class DistrictService
 {

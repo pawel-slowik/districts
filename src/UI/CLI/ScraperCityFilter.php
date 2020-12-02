@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UI\CLI;
+namespace Districts\UI\CLI;
 
 class ScraperCityFilter
 {

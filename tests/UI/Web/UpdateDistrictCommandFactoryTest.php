@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Test\UI\Web;
+namespace Districts\Test\UI\Web;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
-use UI\Web\UpdateDistrictCommandFactory;
-use Application\Command\UpdateDistrictCommand;
-use Service\ValidationException;
+use Districts\UI\Web\UpdateDistrictCommandFactory;
+use Districts\Application\Command\UpdateDistrictCommand;
+use Districts\Service\ValidationException;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
- * @covers \Application\Command\UpdateDistrictCommand
- * @covers \UI\Web\UpdateDistrictCommandFactory
+ * @covers \Districts\Application\Command\UpdateDistrictCommand
+ * @covers \Districts\UI\Web\UpdateDistrictCommandFactory
  */
 class UpdateDistrictCommandFactoryTest extends TestCase
 {

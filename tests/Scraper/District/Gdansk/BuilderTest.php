@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Test\Scraper\District\Gdansk;
+namespace Districts\Test\Scraper\District\Gdansk;
 
-use Scraper\HtmlFinder;
-use Scraper\RuntimeException;
-use Scraper\District\DistrictDTO;
-use Scraper\District\Gdansk\Builder;
+use Districts\Scraper\HtmlFinder;
+use Districts\Scraper\RuntimeException;
+use Districts\Scraper\District\DistrictDTO;
+use Districts\Scraper\District\Gdansk\Builder;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Scraper\District\Gdansk\Builder
+ * @covers \Districts\Scraper\District\Gdansk\Builder
  */
 class BuilderTest extends TestCase
 {

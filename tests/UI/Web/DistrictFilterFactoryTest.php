@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Test\UI\Web;
+namespace Districts\Test\UI\Web;
 
-use DomainModel\DistrictFilter;
-use UI\Web\DistrictFilterFactory;
+use Districts\DomainModel\DistrictFilter;
+use Districts\UI\Web\DistrictFilterFactory;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \UI\Web\DistrictFilterFactory
+ * @covers \Districts\UI\Web\DistrictFilterFactory
  */
 class DistrictFilterFactoryTest extends TestCase
 {

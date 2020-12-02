@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace UI\Web\Controller;
+namespace Districts\UI\Web\Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-use UI\Web\Redirector;
+use Districts\UI\Web\Redirector;
 
 final class HomeController
 {

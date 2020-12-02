@@ -7,7 +7,7 @@ require __DIR__ . "/../vendor/autoload.php";
 use DI\Container;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Slim\App;
-use UI\Web\RoutingConfiguration;
+use Districts\UI\Web\RoutingConfiguration;
 
 $container = new Container();
 $app = new App(new Psr17Factory(), $container);

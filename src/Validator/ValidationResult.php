@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Validator;
+namespace Districts\Validator;
 
 class ValidationResult
 {

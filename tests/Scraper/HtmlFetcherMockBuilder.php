@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Test\Scraper;
+namespace Districts\Test\Scraper;
 
-use Scraper\HtmlFetcher;
+use Districts\Scraper\HtmlFetcher;
 use PHPUnit\Framework\MockObject\MockObject;
 
 class HtmlFetcherMockBuilder

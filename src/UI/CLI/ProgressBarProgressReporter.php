@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace UI\CLI;
+namespace Districts\UI\CLI;
 
-use Service\ProgressReporter;
+use Districts\Service\ProgressReporter;
 
 use Symfony\Component\Console\Helper\ProgressBar;
 

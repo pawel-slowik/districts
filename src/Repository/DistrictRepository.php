@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Repository;
+namespace Districts\Repository;
 
 use Doctrine\ORM\EntityManager;
 
-use DomainModel\Entity\District;
-use DomainModel\DistrictFilter;
-use DomainModel\DistrictOrdering;
+use Districts\DomainModel\Entity\District;
+use Districts\DomainModel\DistrictFilter;
+use Districts\DomainModel\DistrictOrdering;
 
 final class DistrictRepository
 {

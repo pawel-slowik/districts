@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace Test\Service;
+namespace Districts\Test\Service;
 
-use Application\Command\AddDistrictCommand;
-use Application\Command\RemoveDistrictCommand;
-use Application\Command\UpdateDistrictCommand;
+use Districts\Application\Command\AddDistrictCommand;
+use Districts\Application\Command\RemoveDistrictCommand;
+use Districts\Application\Command\UpdateDistrictCommand;
 
-use DomainModel\Entity\District;
-use DomainModel\DistrictFilter;
-use DomainModel\DistrictOrdering;
+use Districts\DomainModel\Entity\District;
+use Districts\DomainModel\DistrictFilter;
+use Districts\DomainModel\DistrictOrdering;
 
-use Service\DistrictService;
-use Service\CityIterator;
-use Service\NotFoundException;
-use Service\ValidationException;
-use Validator\DistrictValidator;
+use Districts\Service\DistrictService;
+use Districts\Service\CityIterator;
+use Districts\Service\NotFoundException;
+use Districts\Service\ValidationException;
+use Districts\Validator\DistrictValidator;
 
-use Repository\CityRepository;
-use Repository\DistrictRepository;
+use Districts\Repository\CityRepository;
+use Districts\Repository\DistrictRepository;
 
-use Test\Repository\FixtureTool;
+use Districts\Test\Repository\FixtureTool;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Service\DistrictService
+ * @covers \Districts\Service\DistrictService
  */
 class DistrictServiceTest extends TestCase
 {

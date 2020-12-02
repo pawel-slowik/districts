@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Test\Scraper;
+namespace Districts\Test\Scraper;
 
-use Scraper\HtmlFinder;
-use Scraper\RuntimeException;
+use Districts\Scraper\HtmlFinder;
+use Districts\Scraper\RuntimeException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Scraper\HtmlFinder
+ * @covers \Districts\Scraper\HtmlFinder
  */
 class HtmlFinderTest extends TestCase
 {

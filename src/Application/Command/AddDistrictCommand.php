@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Application\Command;
+namespace Districts\Application\Command;
 
 final class AddDistrictCommand
 {

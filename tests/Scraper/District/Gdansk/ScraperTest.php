@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Test\Scraper\District\Gdansk;
+namespace Districts\Test\Scraper\District\Gdansk;
 
-use Scraper\HtmlFetcher;
-use Scraper\HtmlFinder;
-use Scraper\District\DistrictDTO;
-use Scraper\District\Gdansk\Scraper;
-use Test\Scraper\HtmlFetcherMockBuilder;
+use Districts\Scraper\HtmlFetcher;
+use Districts\Scraper\HtmlFinder;
+use Districts\Scraper\District\DistrictDTO;
+use Districts\Scraper\District\Gdansk\Scraper;
+use Districts\Test\Scraper\HtmlFetcherMockBuilder;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Scraper\District\Gdansk\Scraper
+ * @covers \Districts\Scraper\District\Gdansk\Scraper
  */
 class ScraperTest extends TestCase
 {

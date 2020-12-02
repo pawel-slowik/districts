@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Service;
+namespace Districts\Service;
 
 class ValidationException extends \RuntimeException
 {

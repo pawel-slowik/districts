@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Scraper\District;
+namespace Districts\Scraper\District;
 
 interface Scraper
 {

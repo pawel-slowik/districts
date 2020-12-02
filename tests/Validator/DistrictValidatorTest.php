@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Test\Validator;
+namespace Districts\Test\Validator;
 
-use DomainModel\Entity\City;
-use Service\CityIterator;
-use Validator\DistrictValidator;
+use Districts\DomainModel\Entity\City;
+use Districts\Service\CityIterator;
+use Districts\Validator\DistrictValidator;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Validator\DistrictValidator
+ * @covers \Districts\Validator\DistrictValidator
  */
 class DistrictValidatorTest extends TestCase
 {

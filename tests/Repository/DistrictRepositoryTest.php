@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Test\Repository;
+namespace Districts\Test\Repository;
 
-use DomainModel\Entity\District;
-use DomainModel\DistrictFilter;
-use DomainModel\DistrictOrdering;
-use Repository\CityRepository;
-use Repository\DistrictRepository;
-use Repository\NotFoundException;
+use Districts\DomainModel\Entity\District;
+use Districts\DomainModel\DistrictFilter;
+use Districts\DomainModel\DistrictOrdering;
+use Districts\Repository\CityRepository;
+use Districts\Repository\DistrictRepository;
+use Districts\Repository\NotFoundException;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Repository\DistrictRepository
+ * @covers \Districts\Repository\DistrictRepository
  */
 class DistrictRepositoryTest extends TestCase
 {

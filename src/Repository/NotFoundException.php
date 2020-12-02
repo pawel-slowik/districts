@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Repository;
+namespace Districts\Repository;
 
 class NotFoundException extends \RuntimeException
 {

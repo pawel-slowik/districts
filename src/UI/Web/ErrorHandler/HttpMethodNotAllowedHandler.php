@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UI\Web\ErrorHandler;
+namespace Districts\UI\Web\ErrorHandler;
 
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Psr\Http\Message\ServerRequestInterface as Request;

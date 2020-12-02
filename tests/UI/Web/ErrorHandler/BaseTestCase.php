@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Test\UI\Web\ErrorHandler;
+namespace Districts\Test\UI\Web\ErrorHandler;
 
 use Psr\Http\Message\ServerRequestInterface;
 
