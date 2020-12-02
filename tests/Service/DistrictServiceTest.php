@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Test\Service;
 
 use Application\Command\AddDistrictCommand;
+use Application\Command\RemoveDistrictCommand;
 use Application\Command\UpdateDistrictCommand;
 
 use DomainModel\Entity\District;
@@ -75,7 +76,7 @@ class DistrictServiceTest extends TestCase
 
     public function testRemove(): void
     {
-        $this->districtService->remove(1);
+        $this->districtService->remove(new RemoveDistrictCommand(1));
         $this->assertCount(
             14,
             $this->districtService->list($this->defaultOrder, null)
@@ -87,7 +88,7 @@ class DistrictServiceTest extends TestCase
     public function testRemoveNonExistent(): void
     {
         $this->expectException(NotFoundException::class);
-        $this->districtService->remove(999);
+        $this->districtService->remove(new RemoveDistrictCommand(999));
     }
 
     public function testAdd(): void

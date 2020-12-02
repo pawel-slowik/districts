@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Service;
 
 use Application\Command\AddDistrictCommand;
+use Application\Command\RemoveDistrictCommand;
 use Application\Command\UpdateDistrictCommand;
 use DomainModel\Entity\District;
 use DomainModel\DistrictFilter;
@@ -82,9 +83,9 @@ class DistrictService
         $this->districtRepository->update($district);
     }
 
-    public function remove(int $id): void
+    public function remove(RemoveDistrictCommand $command): void
     {
-        $this->districtRepository->remove($this->get($id));
+        $this->districtRepository->remove($this->get($command->getId()));
     }
 
     public function list(DistrictOrdering $order, ?DistrictFilter $filter): array

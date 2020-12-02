@@ -7,6 +7,7 @@ namespace Test\UI\Web;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use UI\Web\RequestParser;
 use Application\Command\AddDistrictCommand;
+use Application\Command\RemoveDistrictCommand;
 use Application\Command\UpdateDistrictCommand;
 use Service\ValidationException;
 
@@ -15,6 +16,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * @covers \Application\Command\AddDistrictCommand
+ * @covers \Application\Command\RemoveDistrictCommand
  * @covers \Application\Command\UpdateDistrictCommand
  * @covers \UI\Web\RequestParser
  */
@@ -220,5 +222,20 @@ class RequestParserTest extends TestCase
             [null],
             [new \StdClass()],
         ];
+    }
+
+    public function testValidRemoveRequest(): void
+    {
+        $this->request->method("getParsedBody")->willReturn([]);
+        $command = $this->requestParser->parseRemove($this->request, ["id" => "1"]);
+        $this->assertInstanceOf(RemoveDistrictCommand::class, $command);
+        $this->assertSame(1, $command->getId());
+    }
+
+    public function testIncompleteRemoveRequest(): void
+    {
+        $this->request->method("getParsedBody")->willReturn([]);
+        $this->expectException(ValidationException::class);
+        $this->requestParser->parseRemove($this->request, []);
     }
 }

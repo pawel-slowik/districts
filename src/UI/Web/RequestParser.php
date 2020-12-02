@@ -6,6 +6,7 @@ namespace UI\Web;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Application\Command\AddDistrictCommand;
+use Application\Command\RemoveDistrictCommand;
 use Application\Command\UpdateDistrictCommand;
 use Service\ValidationException;
 
@@ -82,6 +83,22 @@ class RequestParser
             $population,
         )) {
             return new UpdateDistrictCommand($id, $name, $area, $population);
+        }
+
+        throw (new ValidationException())->withErrors($errors);
+    }
+
+    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
+    public function parseRemove(Request $request, array $routeArgs): RemoveDistrictCommand
+    {
+        $errors = [];
+        if (array_key_exists("id", $routeArgs)) {
+            $id = intval($routeArgs["id"]);
+        } else {
+            $errors[] = "id";
+        }
+        if (isset($id)) {
+            return new RemoveDistrictCommand($id);
         }
 
         throw (new ValidationException())->withErrors($errors);
