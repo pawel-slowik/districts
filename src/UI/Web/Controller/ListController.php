@@ -16,13 +16,21 @@ final class ListController
 {
     private $districtService;
 
+    private $filterFactory;
+
+    private $orderingFactory;
+
     private $view;
 
     public function __construct(
         DistrictService $districtService,
+        DistrictFilterFactory $filterFactory,
+        DistrictOrderingFactory $orderingFactory,
         View $view
     ) {
         $this->districtService = $districtService;
+        $this->filterFactory = $filterFactory;
+        $this->orderingFactory = $orderingFactory;
         $this->view = $view;
     }
 
@@ -35,8 +43,8 @@ final class ListController
         $filterColumn = $queryParams["filterColumn"] ?? null;
         $filterValue = $queryParams["filterValue"] ?? null;
         $districts = $this->districtService->list(
-            DistrictOrderingFactory::createFromRequestInput($orderColumn, $orderDirection),
-            DistrictFilterFactory::createFromRequestInput($filterColumn, $filterValue),
+            $this->orderingFactory->createFromRequestInput($orderColumn, $orderDirection),
+            $this->filterFactory->createFromRequestInput($filterColumn, $filterValue),
         );
         $templateData = [
             "title" => "List of districts",
