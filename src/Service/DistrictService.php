@@ -7,9 +7,8 @@ namespace Districts\Service;
 use Districts\Application\Command\AddDistrictCommand;
 use Districts\Application\Command\RemoveDistrictCommand;
 use Districts\Application\Command\UpdateDistrictCommand;
+use Districts\Application\Query\ListDistrictsQuery;
 use Districts\DomainModel\Entity\District;
-use Districts\DomainModel\DistrictFilter;
-use Districts\DomainModel\DistrictOrdering;
 use Districts\Repository\DistrictRepository;
 use Districts\Repository\NotFoundException as RepositoryNotFoundException;
 use Districts\Validator\DistrictValidator;
@@ -91,8 +90,8 @@ class DistrictService
         $this->districtRepository->remove($this->get($command->getId()));
     }
 
-    public function list(DistrictOrdering $order, ?DistrictFilter $filter): array
+    public function list(ListDistrictsQuery $query): array
     {
-        return $this->districtRepository->list($order, $filter);
+        return $this->districtRepository->list($query->getOrdering(), $query->getFilter());
     }
 }

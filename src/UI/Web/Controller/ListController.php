@@ -9,28 +9,23 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\Twig as View;
 
 use Districts\Service\DistrictService;
-use Districts\UI\Web\Factory\DistrictFilterFactory;
-use Districts\UI\Web\Factory\DistrictOrderingFactory;
+use Districts\UI\Web\Factory\ListDistrictsQueryFactory;
 
 final class ListController
 {
     private $districtService;
 
-    private $filterFactory;
-
-    private $orderingFactory;
+    private $queryFactory;
 
     private $view;
 
     public function __construct(
         DistrictService $districtService,
-        DistrictFilterFactory $filterFactory,
-        DistrictOrderingFactory $orderingFactory,
+        ListDistrictsQueryFactory $queryFactory,
         View $view
     ) {
         $this->districtService = $districtService;
-        $this->filterFactory = $filterFactory;
-        $this->orderingFactory = $orderingFactory;
+        $this->queryFactory = $queryFactory;
         $this->view = $view;
     }
 
@@ -42,10 +37,8 @@ final class ListController
         $queryParams = $request->getQueryParams();
         $filterColumn = $queryParams["filterColumn"] ?? null;
         $filterValue = $queryParams["filterValue"] ?? null;
-        $districts = $this->districtService->list(
-            $this->orderingFactory->createFromRequestInput($orderColumn, $orderDirection),
-            $this->filterFactory->createFromRequestInput($filterColumn, $filterValue),
-        );
+        $query = $this->queryFactory->fromRequest($request, $args);
+        $districts = $this->districtService->list($query);
         $templateData = [
             "title" => "List of districts",
             "districts" => $districts,

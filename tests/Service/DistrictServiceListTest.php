@@ -6,6 +6,7 @@ namespace Districts\Test\Service;
 
 use Districts\DomainModel\Entity\District;
 
+use Districts\Application\Query\ListDistrictsQuery;
 use Districts\Service\DistrictService;
 use Districts\Service\CityIterator;
 use Districts\Validator\DistrictValidator;
@@ -28,11 +29,6 @@ class DistrictServiceListTest extends TestCase
      */
     private $districtService;
 
-    /**
-     * @var DistrictOrdering
-     */
-    private $defaultOrder;
-
     protected function setUp(): void
     {
         $entityManager = (require "doctrine-bootstrap.php")();
@@ -49,12 +45,12 @@ class DistrictServiceListTest extends TestCase
             ),
             $cityRepository
         );
-        $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
 
     public function testListStructure(): void
     {
-        $list = $this->districtService->list($this->defaultOrder, null);
+        $defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
+        $list = $this->districtService->list(new ListDistrictsQuery($defaultOrder, null));
         $this->assertCount(15, $list);
         $this->assertContainsOnlyInstancesOf(District::class, $list);
     }
@@ -62,7 +58,7 @@ class DistrictServiceListTest extends TestCase
     /**
      * @dataProvider listOrderCityDataProvider
      */
-    public function testListOrderCity(DistrictOrdering $order, array $expectedCityNames): void
+    public function testListOrderCity(ListDistrictsQuery $query, array $expectedCityNames): void
     {
         $this->assertSame(
             $expectedCityNames,
@@ -70,7 +66,7 @@ class DistrictServiceListTest extends TestCase
                 function ($district) {
                     return $district->getCity()->getName();
                 },
-                $this->districtService->list($order, null)
+                $this->districtService->list($query)
             )))
         );
     }
@@ -79,11 +75,17 @@ class DistrictServiceListTest extends TestCase
     {
         return [
             [
-                new DistrictOrdering(DistrictOrdering::CITY_NAME, DistrictOrdering::ASC),
+                new ListDistrictsQuery(
+                    new DistrictOrdering(DistrictOrdering::CITY_NAME, DistrictOrdering::ASC),
+                    null,
+                ),
                 ["Bar", "Foo"],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::CITY_NAME, DistrictOrdering::DESC),
+                new ListDistrictsQuery(
+                    new DistrictOrdering(DistrictOrdering::CITY_NAME, DistrictOrdering::DESC),
+                    null,
+                ),
                 ["Foo", "Bar"],
             ],
         ];
@@ -92,7 +94,7 @@ class DistrictServiceListTest extends TestCase
     /**
      * @dataProvider listOrderDataProvider
      */
-    public function testListOrder(DistrictOrdering $order, array $expectedIds): void
+    public function testListOrder(ListDistrictsQuery $query, array $expectedIds): void
     {
         $this->assertSame(
             $expectedIds,
@@ -100,7 +102,7 @@ class DistrictServiceListTest extends TestCase
                 function ($district) {
                     return $district->getId();
                 },
-                $this->districtService->list($order, null)
+                $this->districtService->list($query)
             )
         );
     }
@@ -109,35 +111,59 @@ class DistrictServiceListTest extends TestCase
     {
         return [
             [
-                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC),
+                new ListDistrictsQuery(
+                    new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC),
+                    null,
+                ),
                 [14, 12, 15, 13, 4, 6, 2, 9, 1, 10, 3, 5, 8, 7, 11],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::DESC),
+                new ListDistrictsQuery(
+                    new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::DESC),
+                    null,
+                ),
                 [11, 7, 8, 5, 3, 10, 1, 9, 2, 6, 4, 13, 15, 12, 14],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::DISTRICT_NAME, DistrictOrdering::ASC),
+                new ListDistrictsQuery(
+                    new DistrictOrdering(DistrictOrdering::DISTRICT_NAME, DistrictOrdering::ASC),
+                    null,
+                ),
                 [4, 14, 6, 2, 9, 1, 10, 3, 5, 8, 7, 12, 15, 13, 11],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::DISTRICT_NAME, DistrictOrdering::DESC),
+                new ListDistrictsQuery(
+                    new DistrictOrdering(DistrictOrdering::DISTRICT_NAME, DistrictOrdering::DESC),
+                    null,
+                ),
                 [11, 13, 15, 12, 7, 8, 5, 3, 10, 1, 9, 2, 6, 14, 4],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::AREA, DistrictOrdering::ASC),
+                new ListDistrictsQuery(
+                    new DistrictOrdering(DistrictOrdering::AREA, DistrictOrdering::ASC),
+                    null,
+                ),
                 [3, 4, 6, 7, 1, 2, 8, 11, 12, 13, 14, 15, 5, 10, 9],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::AREA, DistrictOrdering::DESC),
+                new ListDistrictsQuery(
+                    new DistrictOrdering(DistrictOrdering::AREA, DistrictOrdering::DESC),
+                    null,
+                ),
                 [9, 10, 5, 15, 14, 13, 12, 11, 2, 8, 1, 7, 6, 4, 3],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::POPULATION, DistrictOrdering::ASC),
+                new ListDistrictsQuery(
+                    new DistrictOrdering(DistrictOrdering::POPULATION, DistrictOrdering::ASC),
+                    null,
+                ),
                 [10, 2, 3, 5, 6, 4, 11, 8, 9, 1, 12, 7, 13, 14, 15],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::POPULATION, DistrictOrdering::DESC),
+                new ListDistrictsQuery(
+                    new DistrictOrdering(DistrictOrdering::POPULATION, DistrictOrdering::DESC),
+                    null,
+                ),
                 [15, 14, 13, 7, 12, 1, 8, 9, 11, 4, 6, 2, 3, 5, 10],
             ],
         ];
@@ -146,14 +172,14 @@ class DistrictServiceListTest extends TestCase
     /**
      * @dataProvider listFilterDataProvider
      */
-    public function testListFilter(?DistrictFilter $filter, array $expectedIds): void
+    public function testListFilter(ListDistrictsQuery $query, array $expectedIds): void
     {
         sort($expectedIds);
         $actualIds = array_map(
             function ($district) {
                 return $district->getId();
             },
-            $this->districtService->list($this->defaultOrder, $filter)
+            $this->districtService->list($query)
         );
         sort($actualIds);
         $this->assertSame($expectedIds, $actualIds);
@@ -161,33 +187,55 @@ class DistrictServiceListTest extends TestCase
 
     public function listFilterDataProvider(): array
     {
+        $defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
         return [
             [
-                null,
+                new ListDistrictsQuery(
+                    $defaultOrder,
+                    null,
+                ),
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             ],
             [
-                new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
+                new ListDistrictsQuery(
+                    $defaultOrder,
+                    new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
+                ),
                 [12, 13, 14, 15],
             ],
             [
-                new DistrictFilter(DistrictFilter::TYPE_CITY, "o"),
+                new ListDistrictsQuery(
+                    $defaultOrder,
+                    new DistrictFilter(DistrictFilter::TYPE_CITY, "o"),
+                ),
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
             ],
             [
-                new DistrictFilter(DistrictFilter::TYPE_NAME, "Xyzzy"),
+                new ListDistrictsQuery(
+                    $defaultOrder,
+                    new DistrictFilter(DistrictFilter::TYPE_NAME, "Xyzzy"),
+                ),
                 [11],
             ],
             [
-                new DistrictFilter(DistrictFilter::TYPE_NAME, "bb"),
+                new ListDistrictsQuery(
+                    $defaultOrder,
+                    new DistrictFilter(DistrictFilter::TYPE_NAME, "bb"),
+                ),
                 [12, 13, 15],
             ],
             [
-                new DistrictFilter(DistrictFilter::TYPE_AREA, [100, 101]),
+                new ListDistrictsQuery(
+                    $defaultOrder,
+                    new DistrictFilter(DistrictFilter::TYPE_AREA, [100, 101]),
+                ),
                 [5, 10],
             ],
             [
-                new DistrictFilter(DistrictFilter::TYPE_POPULATION, [900, 1300]),
+                new ListDistrictsQuery(
+                    $defaultOrder,
+                    new DistrictFilter(DistrictFilter::TYPE_POPULATION, [900, 1300]),
+                ),
                 [2, 3, 5, 6, 10],
             ],
         ];

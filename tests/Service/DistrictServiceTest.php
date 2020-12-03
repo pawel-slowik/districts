@@ -7,6 +7,7 @@ namespace Districts\Test\Service;
 use Districts\Application\Command\AddDistrictCommand;
 use Districts\Application\Command\RemoveDistrictCommand;
 use Districts\Application\Command\UpdateDistrictCommand;
+use Districts\Application\Query\ListDistrictsQuery;
 
 use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\DistrictFilter;
@@ -79,7 +80,12 @@ class DistrictServiceTest extends TestCase
         $this->districtService->remove(new RemoveDistrictCommand(1, true));
         $this->assertCount(
             14,
-            $this->districtService->list($this->defaultOrder, null)
+            $this->districtService->list(
+                new ListDistrictsQuery(
+                    $this->defaultOrder,
+                    null,
+                )
+            )
         );
         $this->expectException(NotFoundException::class);
         $this->districtService->get(1);
@@ -90,7 +96,12 @@ class DistrictServiceTest extends TestCase
         $this->districtService->remove(new RemoveDistrictCommand(1, false));
         $this->assertCount(
             15,
-            $this->districtService->list($this->defaultOrder, null)
+            $this->districtService->list(
+                new ListDistrictsQuery(
+                    $this->defaultOrder,
+                    null,
+                )
+            )
         );
         $district = $this->districtService->get(1);
         $this->assertInstanceOf(District::class, $district);
@@ -108,14 +119,18 @@ class DistrictServiceTest extends TestCase
         $this->assertCount(
             16,
             $this->districtService->list(
-                $this->defaultOrder,
-                null,
+                new ListDistrictsQuery(
+                    $this->defaultOrder,
+                    null,
+                )
             )
         );
         $this->assertNotEmpty(
             $this->districtService->list(
-                $this->defaultOrder,
-                new DistrictFilter(DistrictFilter::TYPE_NAME, "Lorem ipsum"),
+                new ListDistrictsQuery(
+                    $this->defaultOrder,
+                    new DistrictFilter(DistrictFilter::TYPE_NAME, "Lorem ipsum"),
+                )
             )
         );
     }
