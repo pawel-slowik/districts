@@ -31,20 +31,16 @@ final class ListController
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $orderColumn = $args["column"] ?? null;
-        $orderDirection = $args["direction"] ?? null;
-        $queryParams = $request->getQueryParams();
-        $filterColumn = $queryParams["filterColumn"] ?? null;
-        $filterValue = $queryParams["filterValue"] ?? null;
         $query = $this->queryFactory->fromRequest($request, $args);
         $districts = $this->districtService->list($query);
+        $queryParams = $request->getQueryParams();
         $templateData = [
             "title" => "List of districts",
             "districts" => $districts,
-            "orderColumn" => $orderColumn,
-            "orderDirection" => $orderDirection,
-            "filterColumn" => $filterColumn,
-            "filterValue" => $filterValue,
+            "orderColumn" => $args["column"] ?? null,
+            "orderDirection" => $args["direction"] ?? null,
+            "filterColumn" => $queryParams["filterColumn"] ?? null,
+            "filterValue" => $queryParams["filterValue"] ?? null,
         ];
         return $this->view->render($response, "list.html", $templateData);
     }
