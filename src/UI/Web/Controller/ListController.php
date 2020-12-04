@@ -29,7 +29,6 @@ final class ListController
         $this->view = $view;
     }
 
-    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $orderColumn = $args["column"] ?? null;
