@@ -7,6 +7,7 @@ namespace Districts\Service;
 use Districts\Application\Command\AddDistrictCommand;
 use Districts\Application\Command\RemoveDistrictCommand;
 use Districts\Application\Command\UpdateDistrictCommand;
+use Districts\Application\Query\GetDistrictQuery;
 use Districts\Application\Query\ListDistrictsQuery;
 use Districts\DomainModel\Entity\District;
 use Districts\Repository\DistrictRepository;
@@ -33,15 +34,6 @@ class DistrictService
         $this->cityRepository = $cityRepository;
     }
 
-    public function get(int $id): District
-    {
-        try {
-            return $this->districtRepository->get($id);
-        } catch (RepositoryNotFoundException $exception) {
-            throw new NotFoundException();
-        }
-    }
-
     public function add(AddDistrictCommand $command): void
     {
         $cityId = $command->getCityId();
@@ -63,7 +55,7 @@ class DistrictService
 
     public function update(UpdateDistrictCommand $command): void
     {
-        $district = $this->get($command->getId());
+        $district = $this->getById($command->getId());
         $name = $command->getName();
         $area = $command->getArea();
         $population = $command->getPopulation();
@@ -87,11 +79,25 @@ class DistrictService
         if (!$command->isConfirmed()) {
             return;
         }
-        $this->districtRepository->remove($this->get($command->getId()));
+        $this->districtRepository->remove($this->getById($command->getId()));
     }
 
     public function list(ListDistrictsQuery $query): array
     {
         return $this->districtRepository->list($query->getOrdering(), $query->getFilter());
+    }
+
+    public function get(GetDistrictQuery $query): District
+    {
+        return $this->getById($query->getId());
+    }
+
+    private function getById(int $id): District
+    {
+        try {
+            return $this->districtRepository->get($id);
+        } catch (RepositoryNotFoundException $exception) {
+            throw new NotFoundException();
+        }
     }
 }
