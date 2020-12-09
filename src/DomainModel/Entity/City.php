@@ -50,7 +50,7 @@ class City
         float $area,
         int $population
     ): District {
-        $validationResult = $districtValidator->validate($this->id, $name, $area, $population);
+        $validationResult = $districtValidator->validate($name, $area, $population);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }
@@ -66,7 +66,7 @@ class City
         float $area,
         int $population
     ): District {
-        $validationResult = $districtValidator->validate($this->id, $name, $area, $population);
+        $validationResult = $districtValidator->validate($name, $area, $population);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }

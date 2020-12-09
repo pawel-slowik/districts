@@ -12,7 +12,6 @@ use Districts\Repository\CityRepository;
 use Districts\Repository\DistrictRepository;
 use Districts\Service\DistrictService;
 use Districts\Service\Importer;
-use Districts\Service\CityIterator;
 use Districts\Scraper\GuzzleHtmlFetcher;
 
 $entityManagerFactory = require "doctrine-bootstrap.php";
@@ -20,7 +19,7 @@ $entityManager = $entityManagerFactory();
 
 $cityRepository = new CityRepository($entityManager);
 $districtRepository = new DistrictRepository($entityManager);
-$districtValidator = new DistrictValidator(new CityIterator($cityRepository));
+$districtValidator = new DistrictValidator();
 $application = new Application();
 $application->add(new UpdateCommand(
     new Importer(

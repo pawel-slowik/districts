@@ -15,7 +15,6 @@ use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 
 use Districts\Service\DistrictService;
-use Districts\Service\CityIterator;
 use Districts\Service\NotFoundException;
 use Districts\Service\ValidationException;
 use Districts\Validator\DistrictValidator;
@@ -52,9 +51,7 @@ class DistrictServiceTest extends TestCase
         $cityRepository = new CityRepository($entityManager);
         $this->districtService = new DistrictService(
             new DistrictRepository($entityManager),
-            new DistrictValidator(
-                new CityIterator($cityRepository),
-            ),
+            new DistrictValidator(),
             $cityRepository
         );
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);

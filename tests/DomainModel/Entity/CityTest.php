@@ -95,13 +95,6 @@ class CityTest extends TestCase
     private function createTestCity(): City
     {
         $city = new City("test");
-
-        // HACK - the id is managed by Doctrine
-        $reflection = new \ReflectionClass($city);
-        $property = $reflection->getProperty("id");
-        $property->setAccessible(true);
-        $property->setValue($city, 0);
-
         return $city;
     }
 
