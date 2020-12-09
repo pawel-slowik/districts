@@ -6,7 +6,7 @@ namespace Districts\Validator;
 
 use Districts\Service\CityIterator;
 
-final class DistrictValidator
+class DistrictValidator
 {
     private $cityIterator;
 

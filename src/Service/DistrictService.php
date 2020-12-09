@@ -36,19 +36,16 @@ class DistrictService
 
     public function add(AddDistrictCommand $command): void
     {
-        $cityId = $command->getCityId();
-        $name = $command->getName();
-        $area = $command->getArea();
-        $population = $command->getPopulation();
-        $validationResult = $this->districtValidator->validate($cityId, $name, $area, $population);
-        if (!$validationResult->isOk()) {
-            throw (new ValidationException())->withErrors($validationResult->getErrors());
+        try {
+            $city = $this->cityRepository->get($command->getCityId());
+        } catch (RepositoryNotFoundException $exception) {
+            throw (new ValidationException())->withErrors(["city"]);
         }
-        $district = new District(
-            $this->cityRepository->get($cityId),
-            $name,
-            $area,
-            $population,
+        $district = $city->addDistrict(
+            $this->districtValidator,
+            $command->getName(),
+            $command->getArea(),
+            $command->getPopulation(),
         );
         $this->districtRepository->add($district);
     }
@@ -56,21 +53,14 @@ class DistrictService
     public function update(UpdateDistrictCommand $command): void
     {
         $district = $this->getById($command->getId());
-        $name = $command->getName();
-        $area = $command->getArea();
-        $population = $command->getPopulation();
-        $validationResult = $this->districtValidator->validate(
-            $district->getCity()->getId(),
-            $name,
-            $area,
-            $population,
+        $city = $district->getCity();
+        $district = $city->updateDistrict(
+            $this->districtValidator,
+            $command->getId(),
+            $command->getName(),
+            $command->getArea(),
+            $command->getPopulation(),
         );
-        if (!$validationResult->isOk()) {
-            throw (new ValidationException())->withErrors($validationResult->getErrors());
-        }
-        $district->setName($name);
-        $district->setArea($area);
-        $district->setPopulation($population);
         $this->districtRepository->update($district);
     }
 
