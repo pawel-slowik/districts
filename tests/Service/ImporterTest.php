@@ -7,6 +7,7 @@ namespace Districts\Test\Service;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 
+use Districts\Service\DistrictService;
 use Districts\Service\Importer;
 use Districts\Service\CityIterator;
 use Districts\Service\ValidationException;
@@ -48,8 +49,13 @@ class ImporterTest extends TestCase
         ]);
         $this->districtRepository = new DistrictRepository($entityManager);
         $cityRepository = new CityRepository($entityManager);
-        $this->importer = new Importer(
+        $districtService = new DistrictService(
+            $this->districtRepository,
             new DistrictValidator(new CityIterator($cityRepository)),
+            $cityRepository,
+        );
+        $this->importer = new Importer(
+            $districtService,
             $this->districtRepository,
             $cityRepository,
         );

@@ -4,26 +4,25 @@ declare(strict_types=1);
 
 namespace Districts\Service;
 
+use Districts\Application\Command\AddDistrictCommand;
 use Districts\DomainModel\Entity\City;
-use Districts\DomainModel\Entity\District;
-use Districts\Validator\DistrictValidator;
 use Districts\Repository\DistrictRepository;
 use Districts\Repository\CityRepository;
 
 class Importer
 {
-    private $districtValidator;
+    private $districtService;
 
     private $districtRepository;
 
     private $cityRepository;
 
     public function __construct(
-        DistrictValidator $districtValidator,
+        DistrictService $districtService,
         DistrictRepository $districtRepository,
         CityRepository $cityRepository
     ) {
-        $this->districtValidator = $districtValidator;
+        $this->districtService = $districtService;
         $this->districtRepository = $districtRepository;
         $this->cityRepository = $cityRepository;
     }
@@ -40,33 +39,17 @@ class Importer
             $city = new City($cityName);
             $this->cityRepository->add($city);
         }
-        foreach ($this->prepareDistricts($districtDTOs, $city) as $district) {
-            $this->districtRepository->add($district);
-            if ($progressReporter) {
-                $progressReporter->advance();
-            }
-        }
-    }
-
-    private function prepareDistricts(iterable $districtDTOs, City $city): iterable
-    {
         foreach ($districtDTOs as $districtDTO) {
-            $validationResult = $this->districtValidator->validate(
+            $command = new AddDistrictCommand(
                 $city->getId(),
                 $districtDTO->getName(),
                 $districtDTO->getArea(),
                 $districtDTO->getPopulation(),
             );
-            if (!$validationResult->isOk()) {
-                throw (new ValidationException())->withErrors($validationResult->getErrors());
+            $this->districtService->add($command);
+            if ($progressReporter) {
+                $progressReporter->advance();
             }
-            $district = new District(
-                $city,
-                $districtDTO->getName(),
-                $districtDTO->getArea(),
-                $districtDTO->getPopulation(),
-            );
-            yield $district;
         }
     }
 }
