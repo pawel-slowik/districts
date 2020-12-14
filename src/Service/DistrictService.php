@@ -41,7 +41,7 @@ class DistrictService
         } catch (RepositoryNotFoundException $exception) {
             throw (new ValidationException())->withErrors(["city"]);
         }
-        $district = $city->addDistrict(
+        $city->addDistrict(
             $this->districtValidator,
             $command->getName(),
             $command->getArea(),
@@ -54,7 +54,7 @@ class DistrictService
     {
         $district = $this->getById($command->getId());
         $city = $district->getCity();
-        $district = $city->updateDistrict(
+        $city->updateDistrict(
             $this->districtValidator,
             $command->getId(),
             $command->getName(),
