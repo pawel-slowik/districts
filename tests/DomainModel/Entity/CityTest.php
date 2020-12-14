@@ -95,7 +95,6 @@ class CityTest extends TestCase
     public function testRemoveThrowsExceptionOnUnknownDistrictId(): void
     {
         $city = $this->createTestCity();
-        $districtValidator = $this->createPassingValidatorMock();
         $this->expectException(NotFoundException::class);
         $city->removeDistrict(1);
     }
