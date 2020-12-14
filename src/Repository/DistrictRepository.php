@@ -29,14 +29,6 @@ final class DistrictRepository
         return $district;
     }
 
-    public function removeMultiple(iterable $districts): void
-    {
-        foreach ($districts as $district) {
-            $this->entityManager->remove($district);
-        }
-        $this->entityManager->flush();
-    }
-
     public function list(DistrictOrdering $order, ?DistrictFilter $filter = null): array
     {
         $dqlOrderBy = $this->dqlOrderBy($order);

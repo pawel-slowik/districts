@@ -83,6 +83,11 @@ class City
         $this->districts->removeElement($district);
     }
 
+    public function removeAllDistricts(): void
+    {
+        $this->districts->clear();
+    }
+
     public function getId(): int
     {
         return $this->id;

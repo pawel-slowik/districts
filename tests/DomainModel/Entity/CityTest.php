@@ -116,6 +116,22 @@ class CityTest extends TestCase
         $this->assertCount(0, $city->listDistricts());
     }
 
+    public function testRemoveAll(): void
+    {
+        $city = $this->createTestCity();
+        $districtValidator = $this->createPassingValidatorMock();
+        $district = $city->addDistrict($districtValidator, "test", 123.4, 5678);
+
+        // HACK - the id is managed by Doctrine
+        $reflection = new \ReflectionClass($district);
+        $property = $reflection->getProperty("id");
+        $property->setAccessible(true);
+        $property->setValue($district, 123456789);
+
+        $city->removeAllDistricts();
+        $this->assertCount(0, $city->listDistricts());
+    }
+
     private function createTestCity(): City
     {
         $city = new City("test");

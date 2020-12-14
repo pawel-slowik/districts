@@ -6,24 +6,19 @@ namespace Districts\Service;
 
 use Districts\Application\Command\AddDistrictCommand;
 use Districts\DomainModel\Entity\City;
-use Districts\Repository\DistrictRepository;
 use Districts\Repository\CityRepository;
 
 class Importer
 {
     private $districtService;
 
-    private $districtRepository;
-
     private $cityRepository;
 
     public function __construct(
         DistrictService $districtService,
-        DistrictRepository $districtRepository,
         CityRepository $cityRepository
     ) {
         $this->districtService = $districtService;
-        $this->districtRepository = $districtRepository;
         $this->cityRepository = $cityRepository;
     }
 
@@ -34,7 +29,8 @@ class Importer
     ): void {
         $city = $this->cityRepository->findByName($cityName);
         if ($city) {
-            $this->districtRepository->removeMultiple($city->listDistricts());
+            $city->removeAllDistricts();
+            $this->cityRepository->update($city);
         } else {
             $city = new City($cityName);
             $this->cityRepository->add($city);

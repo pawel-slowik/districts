@@ -28,7 +28,6 @@ $application->add(new UpdateCommand(
             $districtValidator,
             $cityRepository,
         ),
-        $districtRepository,
         $cityRepository,
     ),
     new GuzzleHtmlFetcher(),

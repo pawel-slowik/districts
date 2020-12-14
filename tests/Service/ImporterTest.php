@@ -55,7 +55,6 @@ class ImporterTest extends TestCase
         );
         $this->importer = new Importer(
             $districtService,
-            $this->districtRepository,
             $cityRepository,
         );
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
