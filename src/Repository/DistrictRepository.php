@@ -29,12 +29,6 @@ final class DistrictRepository
         return $district;
     }
 
-    public function remove(District $district): void
-    {
-        $this->entityManager->remove($district);
-        $this->entityManager->flush();
-    }
-
     public function removeMultiple(iterable $districts): void
     {
         foreach ($districts as $district) {

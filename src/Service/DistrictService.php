@@ -68,7 +68,9 @@ class DistrictService
         if (!$command->isConfirmed()) {
             return;
         }
-        $this->districtRepository->remove($this->getById($command->getId()));
+        $city = $this->getById($command->getId())->getCity();
+        $city->removeDistrict($command->getId());
+        $this->cityRepository->update($city);
     }
 
     public function list(ListDistrictsQuery $query): array

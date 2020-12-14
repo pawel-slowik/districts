@@ -61,18 +61,6 @@ class DistrictRepositoryTest extends TestCase
         $district = $this->districtRepository->get(999);
     }
 
-    public function testRemove(): void
-    {
-        $district = $this->districtRepository->get(1);
-        $this->districtRepository->remove($district);
-        $this->assertCount(
-            14,
-            $this->districtRepository->list($this->defaultOrder)
-        );
-        $this->expectException(NotFoundException::class);
-        $this->districtRepository->get(1);
-    }
-
     public function testRemoveMultiple(): void
     {
         $this->districtRepository->removeMultiple(

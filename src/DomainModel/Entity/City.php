@@ -34,7 +34,7 @@ class City
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="District", mappedBy="city", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="District", mappedBy="city", cascade={"persist"}, orphanRemoval=true)
      */
     private $districts;
 
@@ -75,6 +75,12 @@ class City
         $district->setArea($area);
         $district->setPopulation($population);
         return $district;
+    }
+
+    public function removeDistrict(int $districtId): void
+    {
+        $district = $this->getDistrictById($districtId);
+        $this->districts->removeElement($district);
     }
 
     public function getId(): int

@@ -92,6 +92,30 @@ class CityTest extends TestCase
         $this->assertSame(34, $city->listDistricts()[0]->getPopulation());
     }
 
+    public function testRemoveThrowsExceptionOnUnknownDistrictId(): void
+    {
+        $city = $this->createTestCity();
+        $districtValidator = $this->createPassingValidatorMock();
+        $this->expectException(NotFoundException::class);
+        $city->removeDistrict(1);
+    }
+
+    public function testSuccessfullRemove(): void
+    {
+        $city = $this->createTestCity();
+        $districtValidator = $this->createPassingValidatorMock();
+        $district = $city->addDistrict($districtValidator, "test", 123.4, 5678);
+
+        // HACK - the id is managed by Doctrine
+        $reflection = new \ReflectionClass($district);
+        $property = $reflection->getProperty("id");
+        $property->setAccessible(true);
+        $property->setValue($district, 123456789);
+
+        $city->removeDistrict(123456789);
+        $this->assertCount(0, $city->listDistricts());
+    }
+
     private function createTestCity(): City
     {
         $city = new City("test");
