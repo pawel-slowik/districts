@@ -34,7 +34,7 @@ class City
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="District", mappedBy="city")
+     * @ORM\OneToMany(targetEntity="District", mappedBy="city", cascade={"persist"})
      */
     private $districts;
 

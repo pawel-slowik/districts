@@ -5,10 +5,16 @@ declare(strict_types=1);
 namespace Districts\Test\Repository;
 
 use Districts\DomainModel\Entity\City;
+use Districts\DomainModel\DistrictFilter;
+use Districts\DomainModel\DistrictOrdering;
 use Districts\Repository\CityRepository;
+use Districts\Repository\DistrictRepository;
 use Districts\Repository\NotFoundException;
+use Districts\Validator\DistrictValidator;
+use Districts\Validator\ValidationResult;
 
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * @covers \Districts\Repository\CityRepository
@@ -20,12 +26,21 @@ class CityRepositoryTest extends TestCase
      */
     private $cityRepository;
 
+    /**
+     * @var DistrictRepository
+     */
+    private $districtRepository;
+
     protected function setUp(): void
     {
         $entityManager = (require "doctrine-bootstrap.php")();
         FixtureTool::reset($entityManager);
-        FixtureTool::load($entityManager, ["tests/Repository/data/cities.sql"]);
+        FixtureTool::load($entityManager, [
+            "tests/Repository/data/cities.sql",
+            "tests/Repository/data/districts.sql",
+        ]);
         $this->cityRepository = new CityRepository($entityManager);
+        $this->districtRepository = new DistrictRepository($entityManager);
     }
 
     public function testGet(): void
@@ -96,5 +111,48 @@ class CityRepositoryTest extends TestCase
         $this->cityRepository->add(new City("Baz"));
         $this->assertCount($countBefore + 1, $this->cityRepository->list());
         $this->assertNotNull($this->cityRepository->findByName("Baz"));
+    }
+
+    public function testUpdateWithNewDistrict(): void
+    {
+        $defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
+        $newDistrictFilter = new DistrictFilter(DistrictFilter::TYPE_NAME, "New District");
+        $city = $this->cityRepository->get(1);
+        $city->addDistrict($this->createPassingValidatorMock(), "New District", 123.4, 5678);
+        $this->cityRepository->update($city);
+
+        $allDistricts = $this->districtRepository->list($defaultOrder);
+        $this->assertCount(16, $allDistricts);
+
+        $newDistricts = $this->districtRepository->list($defaultOrder, $newDistrictFilter);
+        $this->assertCount(1, $newDistricts);
+        $this->assertSame(123.4, $newDistricts[0]->getArea());
+        $this->assertSame(5678, $newDistricts[0]->getPopulation());
+    }
+
+    public function testUpdateWithChangedDistrict(): void
+    {
+        $defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
+        $updatedDistrictFilter = new DistrictFilter(DistrictFilter::TYPE_NAME, "Updated District");
+        $city = $this->cityRepository->get(1);
+        $city->updateDistrict($this->createPassingValidatorMock(), 1, "Updated District", 123.4, 5678);
+        $this->cityRepository->update($city);
+
+        $allDistricts = $this->districtRepository->list($defaultOrder);
+        $this->assertCount(15, $allDistricts);
+
+        $updatedDistricts = $this->districtRepository->list($defaultOrder, $updatedDistrictFilter);
+        $this->assertCount(1, $updatedDistricts);
+        $this->assertSame(123.4, $updatedDistricts[0]->getArea());
+        $this->assertSame(5678, $updatedDistricts[0]->getPopulation());
+    }
+
+    private function createPassingValidatorMock(): MockObject
+    {
+        $validationResult = $this->createMock(ValidationResult::class);
+        $validationResult->method("isOk")->willReturn(true);
+        $validator = $this->createMock(DistrictValidator::class);
+        $validator->method("validate")->willReturn($validationResult);
+        return $validator;
     }
 }

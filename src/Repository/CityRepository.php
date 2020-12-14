@@ -41,4 +41,10 @@ class CityRepository
         $this->entityManager->persist($city);
         $this->entityManager->flush();
     }
+
+    public function update(City $city): void
+    {
+        $this->entityManager->persist($city);
+        $this->entityManager->flush();
+    }
 }

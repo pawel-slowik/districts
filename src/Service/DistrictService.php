@@ -47,7 +47,7 @@ class DistrictService
             $command->getArea(),
             $command->getPopulation(),
         );
-        $this->districtRepository->add($district);
+        $this->cityRepository->update($city);
     }
 
     public function update(UpdateDistrictCommand $command): void
@@ -61,7 +61,7 @@ class DistrictService
             $command->getArea(),
             $command->getPopulation(),
         );
-        $this->districtRepository->update($district);
+        $this->cityRepository->update($city);
     }
 
     public function remove(RemoveDistrictCommand $command): void

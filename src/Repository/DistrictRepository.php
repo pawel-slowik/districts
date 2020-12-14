@@ -43,18 +43,6 @@ final class DistrictRepository
         $this->entityManager->flush();
     }
 
-    public function add(District $district): void
-    {
-        $this->entityManager->persist($district);
-        $this->entityManager->flush();
-    }
-
-    public function update(District $district): void
-    {
-        $this->entityManager->persist($district);
-        $this->entityManager->flush();
-    }
-
     public function list(DistrictOrdering $order, ?DistrictFilter $filter = null): array
     {
         $dqlOrderBy = $this->dqlOrderBy($order);

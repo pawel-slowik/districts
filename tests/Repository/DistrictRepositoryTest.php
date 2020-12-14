@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Districts\Test\Repository;
 
 use Districts\DomainModel\Entity\District;
-use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 use Districts\Repository\CityRepository;
 use Districts\Repository\DistrictRepository;
@@ -60,37 +59,6 @@ class DistrictRepositoryTest extends TestCase
     {
         $this->expectException(NotFoundException::class);
         $district = $this->districtRepository->get(999);
-    }
-
-    public function testAdd(): void
-    {
-        $newDistrict = new District($this->cityRepository->findByName("Foo"), "Lorem ipsum", 12.3, 456);
-        $this->districtRepository->add($newDistrict);
-        $this->assertCount(
-            16,
-            $this->districtRepository->list(
-                $this->defaultOrder,
-            )
-        );
-        $this->assertNotEmpty(
-            $this->districtRepository->list(
-                $this->defaultOrder,
-                new DistrictFilter(DistrictFilter::TYPE_NAME, "Lorem ipsum"),
-            )
-        );
-    }
-
-    public function testUpdate(): void
-    {
-        $district = $this->districtRepository->get(1);
-        $district->setName("update test");
-        $district->setArea(111.22);
-        $district->setPopulation(333);
-        $this->districtRepository->update($district);
-        $updatedDistrict = $this->districtRepository->get(1);
-        $this->assertSame("update test", $updatedDistrict->getName());
-        $this->assertSame(111.22, $updatedDistrict->getArea());
-        $this->assertSame(333, $updatedDistrict->getPopulation());
     }
 
     public function testRemove(): void
