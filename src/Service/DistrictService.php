@@ -52,8 +52,7 @@ class DistrictService
 
     public function update(UpdateDistrictCommand $command): void
     {
-        $district = $this->getById($command->getId());
-        $city = $district->getCity();
+        $city = $this->getById($command->getId())->getCity();
         $city->updateDistrict(
             $this->districtValidator,
             $command->getId(),
