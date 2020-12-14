@@ -81,13 +81,8 @@ class DistrictService
 
     public function get(GetDistrictQuery $query): District
     {
-        return $this->getById($query->getId());
-    }
-
-    private function getById(int $id): District
-    {
         try {
-            return $this->districtRepository->get($id);
+            return $this->districtRepository->get($query->getId());
         } catch (RepositoryNotFoundException $exception) {
             throw new NotFoundException();
         }
