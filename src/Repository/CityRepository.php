@@ -28,16 +28,14 @@ class CityRepository
 
     public function getByDistrictId(int $districtId): City
     {
-        $cities = $this->entityManager->getRepository(City::class)->findAll();
-        foreach ($cities as $city) {
-            foreach ($city->listDistricts() as $district) {
-                if ($district->getId() === $districtId) {
-                    return $city;
-                }
-            }
+        $dql = "SELECT c FROM " . City::class . " c JOIN c.districts d WHERE d.id = :id";
+        $query = $this->entityManager->createQuery($dql);
+        $query->setParameter("id", $districtId);
+        $cities = $query->getResult();
+        if (!$cities) {
+            throw new NotFoundException();
         }
-
-        throw new NotFoundException();
+        return $cities[0];
     }
 
     public function findByName(string $name): ?City
