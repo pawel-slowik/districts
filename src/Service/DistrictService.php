@@ -9,6 +9,7 @@ use Districts\Application\Command\RemoveDistrictCommand;
 use Districts\Application\Command\UpdateDistrictCommand;
 use Districts\Application\Query\GetDistrictQuery;
 use Districts\Application\Query\ListDistrictsQuery;
+use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Entity\District;
 use Districts\Repository\DistrictRepository;
 use Districts\Repository\NotFoundException as RepositoryNotFoundException;
@@ -52,7 +53,7 @@ class DistrictService
 
     public function update(UpdateDistrictCommand $command): void
     {
-        $city = $this->getById($command->getId())->getCity();
+        $city = $this->getCityByDistrictId($command->getId());
         $city->updateDistrict(
             $this->districtValidator,
             $command->getId(),
@@ -68,7 +69,7 @@ class DistrictService
         if (!$command->isConfirmed()) {
             return;
         }
-        $city = $this->getById($command->getId())->getCity();
+        $city = $this->getCityByDistrictId($command->getId());
         $city->removeDistrict($command->getId());
         $this->cityRepository->update($city);
     }
@@ -87,6 +88,15 @@ class DistrictService
     {
         try {
             return $this->districtRepository->get($id);
+        } catch (RepositoryNotFoundException $exception) {
+            throw new NotFoundException();
+        }
+    }
+
+    private function getCityByDistrictId(int $districtId): City
+    {
+        try {
+            return $this->cityRepository->getByDistrictId($districtId);
         } catch (RepositoryNotFoundException $exception) {
             throw new NotFoundException();
         }

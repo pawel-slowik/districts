@@ -26,6 +26,20 @@ class CityRepository
         return $city;
     }
 
+    public function getByDistrictId(int $districtId): City
+    {
+        $cities = $this->entityManager->getRepository(City::class)->findAll();
+        foreach ($cities as $city) {
+            foreach ($city->listDistricts() as $district) {
+                if ($district->getId() === $districtId) {
+                    return $city;
+                }
+            }
+        }
+
+        throw new NotFoundException();
+    }
+
     public function findByName(string $name): ?City
     {
         return $this->entityManager->getRepository(City::class)->findOneBy(["name" => $name]);

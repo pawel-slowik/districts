@@ -56,6 +56,19 @@ class CityRepositoryTest extends TestCase
         $city = $this->cityRepository->get(999);
     }
 
+    public function testGetByDistrictId(): void
+    {
+        $city = $this->cityRepository->getByDistrictId(12);
+        $this->assertInstanceOf(City::class, $city);
+        $this->assertSame(2, $city->getId());
+    }
+
+    public function testByNonexistendDistrictId(): void
+    {
+        $this->expectException(NotFoundException::class);
+        $city = $this->cityRepository->getByDistrictId(999);
+    }
+
     public function testFind(): void
     {
         $city = $this->cityRepository->findByName("Foo");
