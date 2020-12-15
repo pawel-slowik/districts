@@ -7,7 +7,6 @@ require __DIR__ . "/vendor/autoload.php";
 
 use Symfony\Component\Console\Application;
 use Districts\UI\CLI\UpdateCommand;
-use Districts\Validator\DistrictValidator;
 use Districts\Repository\CityRepository;
 use Districts\Repository\DistrictRepository;
 use Districts\Service\DistrictService;
@@ -19,13 +18,11 @@ $entityManager = $entityManagerFactory();
 
 $cityRepository = new CityRepository($entityManager);
 $districtRepository = new DistrictRepository($entityManager);
-$districtValidator = new DistrictValidator();
 $application = new Application();
 $application->add(new UpdateCommand(
     new Importer(
         new DistrictService(
             $districtRepository,
-            $districtValidator,
             $cityRepository,
         ),
         $cityRepository,

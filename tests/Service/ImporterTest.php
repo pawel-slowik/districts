@@ -10,7 +10,6 @@ use Districts\DomainModel\DistrictOrdering;
 use Districts\Service\DistrictService;
 use Districts\Service\Importer;
 use Districts\Service\ValidationException;
-use Districts\Validator\DistrictValidator;
 use Districts\Scraper\District\DistrictDTO;
 use Districts\Repository\DistrictRepository;
 use Districts\Repository\CityRepository;
@@ -50,7 +49,6 @@ class ImporterTest extends TestCase
         $cityRepository = new CityRepository($entityManager);
         $districtService = new DistrictService(
             $this->districtRepository,
-            new DistrictValidator(),
             $cityRepository,
         );
         $this->importer = new Importer(

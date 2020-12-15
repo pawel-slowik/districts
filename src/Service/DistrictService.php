@@ -13,7 +13,6 @@ use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Entity\District;
 use Districts\Repository\DistrictRepository;
 use Districts\Repository\NotFoundException as RepositoryNotFoundException;
-use Districts\Validator\DistrictValidator;
 
 use Districts\Repository\CityRepository;
 
@@ -21,17 +20,13 @@ class DistrictService
 {
     private $districtRepository;
 
-    private $districtValidator;
-
     private $cityRepository;
 
     public function __construct(
         DistrictRepository $districtRepository,
-        DistrictValidator $districtValidator,
         CityRepository $cityRepository
     ) {
         $this->districtRepository = $districtRepository;
-        $this->districtValidator = $districtValidator;
         $this->cityRepository = $cityRepository;
     }
 
@@ -43,7 +38,6 @@ class DistrictService
             throw (new ValidationException())->withErrors(["city"]);
         }
         $city->addDistrict(
-            $this->districtValidator,
             $command->getName(),
             $command->getArea(),
             $command->getPopulation(),
@@ -55,7 +49,6 @@ class DistrictService
     {
         $city = $this->getCityByDistrictId($command->getId());
         $city->updateDistrict(
-            $this->districtValidator,
             $command->getId(),
             $command->getName(),
             $command->getArea(),

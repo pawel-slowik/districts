@@ -8,7 +8,6 @@ use Districts\DomainModel\Entity\District;
 
 use Districts\Application\Query\ListDistrictsQuery;
 use Districts\Service\DistrictService;
-use Districts\Validator\DistrictValidator;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 
@@ -39,7 +38,6 @@ class DistrictServiceListTest extends TestCase
         $cityRepository = new CityRepository($entityManager);
         $this->districtService = new DistrictService(
             new DistrictRepository($entityManager),
-            new DistrictValidator(),
             $cityRepository
         );
     }

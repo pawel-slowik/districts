@@ -10,11 +10,8 @@ use Districts\DomainModel\DistrictOrdering;
 use Districts\Repository\CityRepository;
 use Districts\Repository\DistrictRepository;
 use Districts\Repository\NotFoundException;
-use Districts\Validator\DistrictValidator;
-use Districts\Validator\ValidationResult;
 
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * @covers \Districts\Repository\CityRepository
@@ -131,7 +128,7 @@ class CityRepositoryTest extends TestCase
         $defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
         $newDistrictFilter = new DistrictFilter(DistrictFilter::TYPE_NAME, "New District");
         $city = $this->cityRepository->get(1);
-        $city->addDistrict($this->createPassingValidatorMock(), "New District", 123.4, 5678);
+        $city->addDistrict("New District", 123.4, 5678);
         $this->cityRepository->update($city);
 
         $allDistricts = $this->districtRepository->list($defaultOrder);
@@ -148,7 +145,7 @@ class CityRepositoryTest extends TestCase
         $defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
         $updatedDistrictFilter = new DistrictFilter(DistrictFilter::TYPE_NAME, "Updated District");
         $city = $this->cityRepository->get(1);
-        $city->updateDistrict($this->createPassingValidatorMock(), 1, "Updated District", 123.4, 5678);
+        $city->updateDistrict(1, "Updated District", 123.4, 5678);
         $this->cityRepository->update($city);
 
         $allDistricts = $this->districtRepository->list($defaultOrder);
@@ -158,14 +155,5 @@ class CityRepositoryTest extends TestCase
         $this->assertCount(1, $updatedDistricts);
         $this->assertSame(123.4, $updatedDistricts[0]->getArea());
         $this->assertSame(5678, $updatedDistricts[0]->getPopulation());
-    }
-
-    private function createPassingValidatorMock(): MockObject
-    {
-        $validationResult = $this->createMock(ValidationResult::class);
-        $validationResult->method("isOk")->willReturn(true);
-        $validator = $this->createMock(DistrictValidator::class);
-        $validator->method("validate")->willReturn($validationResult);
-        return $validator;
     }
 }

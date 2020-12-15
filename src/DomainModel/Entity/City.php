@@ -45,11 +45,11 @@ class City
     }
 
     public function addDistrict(
-        DistrictValidator $districtValidator,
         string $name,
         float $area,
         int $population
     ): District {
+        $districtValidator = new DistrictValidator();
         $validationResult = $districtValidator->validate($name, $area, $population);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
@@ -60,12 +60,12 @@ class City
     }
 
     public function updateDistrict(
-        DistrictValidator $districtValidator,
         int $districtId,
         string $name,
         float $area,
         int $population
     ): District {
+        $districtValidator = new DistrictValidator();
         $validationResult = $districtValidator->validate($name, $area, $population);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
