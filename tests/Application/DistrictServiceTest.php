@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Service;
+namespace Districts\Test\Application;
 
 use Districts\Application\Command\AddDistrictCommand;
 use Districts\Application\Command\RemoveDistrictCommand;
@@ -14,7 +14,7 @@ use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 
-use Districts\Service\DistrictService;
+use Districts\Application\DistrictService;
 use Districts\Service\NotFoundException;
 use Districts\Service\ValidationException;
 

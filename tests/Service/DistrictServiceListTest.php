@@ -7,7 +7,7 @@ namespace Districts\Test\Service;
 use Districts\DomainModel\Entity\District;
 
 use Districts\Application\Query\ListDistrictsQuery;
-use Districts\Service\DistrictService;
+use Districts\Application\DistrictService;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 

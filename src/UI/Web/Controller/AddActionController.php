@@ -11,7 +11,7 @@ use SlimSession\Helper as Session;
 use Districts\UI\Web\Redirector;
 use Districts\UI\Web\Factory\AddDistrictCommandFactory;
 
-use Districts\Service\DistrictService;
+use Districts\Application\DistrictService;
 use Districts\Service\ValidationException;
 
 final class AddActionController

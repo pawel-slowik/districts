@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Service;
+namespace Districts\Application;
 
 use Districts\Application\Command\AddDistrictCommand;
 use Districts\Application\Command\RemoveDistrictCommand;
@@ -35,7 +35,7 @@ class DistrictService
         try {
             $city = $this->cityRepository->get($command->getCityId());
         } catch (RepositoryNotFoundException $exception) {
-            throw (new ValidationException())->withErrors(["city"]);
+            throw (new \Districts\Service\ValidationException())->withErrors(["city"]);
         }
         $city->addDistrict(
             $command->getName(),
@@ -77,7 +77,7 @@ class DistrictService
         try {
             return $this->districtRepository->get($query->getId());
         } catch (RepositoryNotFoundException $exception) {
-            throw new NotFoundException();
+            throw new \Districts\Service\NotFoundException();
         }
     }
 
@@ -86,7 +86,7 @@ class DistrictService
         try {
             return $this->cityRepository->getByDistrictId($districtId);
         } catch (RepositoryNotFoundException $exception) {
-            throw new NotFoundException();
+            throw new \Districts\Service\NotFoundException();
         }
     }
 }

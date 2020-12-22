@@ -11,7 +11,7 @@ use Slim\Exception\HttpNotFoundException;
 use Districts\UI\Web\Redirector;
 use Districts\UI\Web\Factory\RemoveDistrictCommandFactory;
 
-use Districts\Service\DistrictService;
+use Districts\Application\DistrictService;
 use Districts\Service\NotFoundException;
 
 final class RemoveActionController

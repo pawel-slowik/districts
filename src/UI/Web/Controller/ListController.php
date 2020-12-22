@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\Twig as View;
 
-use Districts\Service\DistrictService;
+use Districts\Application\DistrictService;
 use Districts\UI\Web\Factory\ListDistrictsQueryFactory;
 
 final class ListController

@@ -11,7 +11,7 @@ use Slim\Views\Twig as View;
 use SlimSession\Helper as Session;
 
 use Districts\UI\Web\Factory\GetDistrictQueryFactory;
-use Districts\Service\DistrictService;
+use Districts\Application\DistrictService;
 use Districts\Service\NotFoundException;
 
 final class EditFormController

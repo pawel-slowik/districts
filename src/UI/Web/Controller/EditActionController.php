@@ -12,7 +12,7 @@ use SlimSession\Helper as Session;
 use Districts\UI\Web\Redirector;
 use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
 
-use Districts\Service\DistrictService;
+use Districts\Application\DistrictService;
 use Districts\Service\NotFoundException;
 use Districts\Service\ValidationException;
 
