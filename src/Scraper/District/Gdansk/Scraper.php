@@ -48,15 +48,24 @@ final class Scraper implements ScraperInterface
 
     private function extractDistrictUrls(string $html, string $baseUrl): iterable
     {
-        $xpath = "//svg/g/polygon[@id]";
+        $xpath = "//polygon[@id]";
         $nodes = $this->htmlFinder->findNodes($html, $xpath);
         if (count($nodes) < 1) {
             throw new RuntimeException();
         }
         foreach ($nodes as $node) {
-            $id = $node->getAttribute("id");
+            $id = $this->fixPolygonId($node->getAttribute("id"));
             $href = "subpages/dzielnice/html/dzielnice_mapa_alert.php?id={$id}";
             yield Uri::merge($baseUrl, $href)->toString();
         }
+    }
+
+    private function fixPolygonId(string $id): string
+    {
+        $match = [];
+        if (!preg_match("/^([0-9]+)/", $id, $match)) {
+            throw new RuntimeException();
+        }
+        return $match[1];
     }
 }
