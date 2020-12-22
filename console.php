@@ -14,12 +14,9 @@ use Districts\Scraper\GuzzleHtmlFetcher;
 $entityManagerFactory = require "doctrine-bootstrap.php";
 $entityManager = $entityManagerFactory();
 
-$cityRepository = new CityRepository($entityManager);
 $application = new Application();
 $application->add(new UpdateCommand(
-    new Importer(
-        $cityRepository,
-    ),
+    new Importer(new CityRepository($entityManager)),
     new GuzzleHtmlFetcher(),
 ));
 $application->run();
