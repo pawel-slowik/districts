@@ -45,10 +45,7 @@ class ImporterTest extends TestCase
             "tests/Repository/data/districts.sql",
         ]);
         $this->districtRepository = new DistrictRepository($entityManager);
-        $cityRepository = new CityRepository($entityManager);
-        $this->importer = new Importer(
-            $cityRepository,
-        );
+        $this->importer = new Importer(new CityRepository($entityManager));
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
 
