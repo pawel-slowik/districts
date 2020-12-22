@@ -17,7 +17,7 @@ use Districts\Test\Repository\FixtureTool;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Service\Importer
+ * @covers \Districts\Application\Importer
  */
 class ImporterTest extends TestCase
 {

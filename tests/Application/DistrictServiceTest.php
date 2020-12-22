@@ -25,7 +25,7 @@ use Districts\Test\Repository\FixtureTool;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Service\DistrictService
+ * @covers \Districts\Application\DistrictService
  */
 class DistrictServiceTest extends TestCase
 {
