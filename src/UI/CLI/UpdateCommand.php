@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 
-use Districts\Service\Importer;
+use Districts\Application\Importer;
 
 use Districts\Scraper\HtmlFinder;
 use Districts\Scraper\HtmlFetcher;

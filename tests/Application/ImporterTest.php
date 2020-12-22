@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Service;
+namespace Districts\Test\Application;
 
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 
-use Districts\Service\Importer;
+use Districts\Application\Importer;
 use Districts\Service\ValidationException;
 use Districts\Scraper\District\DistrictDTO;
 use Districts\Repository\DistrictRepository;

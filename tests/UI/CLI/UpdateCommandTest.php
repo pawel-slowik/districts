@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Districts\Test\UI\CLI;
 
 use Districts\UI\CLI\UpdateCommand;
-use Districts\Service\Importer;
+use Districts\Application\Importer;
 use Districts\Service\ProgressReporter;
 use Districts\Scraper\HtmlFetcher;
 use Symfony\Component\Console\Input\InputInterface;

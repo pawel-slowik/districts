@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Service;
+namespace Districts\Application;
 
 use Districts\DomainModel\Entity\City;
 use Districts\Repository\CityRepository;
@@ -20,7 +20,7 @@ class Importer
     public function import(
         string $cityName,
         iterable $districtDTOs,
-        ?ProgressReporter $progressReporter = null
+        ?\Districts\Service\ProgressReporter $progressReporter = null
     ): void {
         $city = $this->cityRepository->findByName($cityName);
         if ($city) {
