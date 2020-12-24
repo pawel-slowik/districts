@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Service;
+namespace Districts\Test\Application;
 
 use Districts\DomainModel\Entity\District;
 
