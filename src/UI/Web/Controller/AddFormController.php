@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\Twig as View;
 use SlimSession\Helper as Session;
 
-use Districts\Service\CityIterator;
+use Districts\Application\CityIterator;
 
 final class AddFormController
 {

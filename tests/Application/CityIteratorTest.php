@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Service;
+namespace Districts\Test\Application;
 
 use Districts\DomainModel\Entity\City;
-use Districts\Service\CityIterator;
+use Districts\Application\CityIterator;
 use Districts\Repository\CityRepository;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Service\CityIterator
+ * @covers \Districts\Application\CityIterator
  */
 class CityIteratorTest extends TestCase
 {
