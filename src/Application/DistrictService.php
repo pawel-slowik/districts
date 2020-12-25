@@ -14,6 +14,8 @@ use Districts\DomainModel\Entity\District;
 use Districts\Repository\CityRepository;
 use Districts\Repository\DistrictRepository;
 use Districts\Repository\NotFoundException as RepositoryNotFoundException;
+use Districts\Service\NotFoundException;
+use Districts\Service\ValidationException;
 
 class DistrictService
 {
@@ -34,7 +36,7 @@ class DistrictService
         try {
             $city = $this->cityRepository->get($command->getCityId());
         } catch (RepositoryNotFoundException $exception) {
-            throw (new \Districts\Service\ValidationException())->withErrors(["city"]);
+            throw (new ValidationException())->withErrors(["city"]);
         }
         $city->addDistrict(
             $command->getName(),
@@ -76,7 +78,7 @@ class DistrictService
         try {
             return $this->districtRepository->get($query->getId());
         } catch (RepositoryNotFoundException $exception) {
-            throw new \Districts\Service\NotFoundException();
+            throw new NotFoundException();
         }
     }
 
@@ -85,7 +87,7 @@ class DistrictService
         try {
             return $this->cityRepository->getByDistrictId($districtId);
         } catch (RepositoryNotFoundException $exception) {
-            throw new \Districts\Service\NotFoundException();
+            throw new NotFoundException();
         }
     }
 }
