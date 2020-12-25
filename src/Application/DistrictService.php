@@ -11,10 +11,9 @@ use Districts\Application\Query\GetDistrictQuery;
 use Districts\Application\Query\ListDistrictsQuery;
 use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Entity\District;
+use Districts\Repository\CityRepository;
 use Districts\Repository\DistrictRepository;
 use Districts\Repository\NotFoundException as RepositoryNotFoundException;
-
-use Districts\Repository\CityRepository;
 
 class DistrictService
 {
