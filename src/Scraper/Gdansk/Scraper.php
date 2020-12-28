@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Districts\Scraper\District\Gdansk;
+namespace Districts\Scraper\Gdansk;
 
-use Districts\Scraper\District\Scraper as ScraperInterface;
+use Districts\Scraper\Scraper as ScraperInterface;
 use Districts\Scraper\HtmlFetcher;
 use Districts\Scraper\HtmlFinder;
 use Districts\Scraper\RuntimeException;

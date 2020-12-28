@@ -6,12 +6,12 @@ namespace Districts\Test\Scraper\District\Krakow;
 
 use Districts\Scraper\HtmlFinder;
 use Districts\Scraper\RuntimeException;
-use Districts\Scraper\District\DistrictDTO;
-use Districts\Scraper\District\Krakow\Builder;
+use Districts\Scraper\DistrictDTO;
+use Districts\Scraper\Krakow\Builder;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Scraper\District\Krakow\Builder
+ * @covers \Districts\Scraper\Krakow\Builder
  */
 class BuilderTest extends TestCase
 {

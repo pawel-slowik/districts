@@ -9,7 +9,7 @@ use Districts\DomainModel\DistrictOrdering;
 
 use Districts\Application\Importer;
 use Districts\Service\ValidationException;
-use Districts\Scraper\District\DistrictDTO;
+use Districts\Scraper\DistrictDTO;
 use Districts\Repository\DistrictRepository;
 use Districts\Repository\CityRepository;
 

@@ -6,13 +6,13 @@ namespace Districts\Test\Scraper\District\Krakow;
 
 use Districts\Scraper\HtmlFinder;
 use Districts\Scraper\HtmlFetcher;
-use Districts\Scraper\District\DistrictDTO;
-use Districts\Scraper\District\Krakow\Scraper;
+use Districts\Scraper\DistrictDTO;
+use Districts\Scraper\Krakow\Scraper;
 use Districts\Test\Scraper\HtmlFetcherMockBuilder;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Scraper\District\Krakow\Scraper
+ * @covers \Districts\Scraper\Krakow\Scraper
  */
 class ScraperTest extends TestCase
 {

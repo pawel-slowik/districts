@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Scraper\District;
+namespace Districts\Scraper;
 
 class DistrictDTO
 {

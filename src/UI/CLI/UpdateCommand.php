@@ -15,8 +15,8 @@ use Districts\Application\Importer;
 
 use Districts\Scraper\HtmlFinder;
 use Districts\Scraper\HtmlFetcher;
-use Districts\Scraper\District\Gdansk\Scraper as GdanskScraper;
-use Districts\Scraper\District\Krakow\Scraper as KrakowScraper;
+use Districts\Scraper\Gdansk\Scraper as GdanskScraper;
+use Districts\Scraper\Krakow\Scraper as KrakowScraper;
 
 final class UpdateCommand extends Command
 {
