@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Districts\Scraper\Gdansk;
 
-use Districts\Scraper\Scraper as ScraperInterface;
+use Districts\Scraper\CityScraper as ScraperInterface;
 use Districts\Scraper\HtmlFetcher;
 use Districts\Scraper\HtmlFinder;
 use Districts\Scraper\RuntimeException;
 use Laminas\Uri\Uri;
 
-final class Scraper implements ScraperInterface
+final class CityScraper implements ScraperInterface
 {
     private $htmlFetcher;
 

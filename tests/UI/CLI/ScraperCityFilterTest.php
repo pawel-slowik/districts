@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Districts\Test\UI\CLI;
 
 use Districts\UI\CLI\ScraperCityFilter;
-use Districts\Scraper\Scraper;
+use Districts\Scraper\CityScraper;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -16,46 +16,46 @@ use PHPUnit\Framework\TestCase;
 class ScraperCityFilterTest extends TestCase
 {
     /**
-     * @var MockObject|Scraper
+     * @var CityScraper|MockObject
      */
-    private $fooScraper;
+    private $fooCityScraper;
 
     /**
-     * @var MockObject|Scraper
+     * @var CityScraper|MockObject
      */
-    private $barScraper;
+    private $barCityScraper;
 
     /**
-     * @var (MockObject|Scraper)[]
+     * @var (CityScraper|MockObject)[]
      */
-    private $scrapers;
+    private $cityScrapers;
 
     protected function setUp(): void
     {
-        $this->fooScraper = $this->createMock(Scraper::class);
-        $this->fooScraper->method("getCityName")->willReturn("foo");
+        $this->fooCityScraper = $this->createMock(CityScraper::class);
+        $this->fooCityScraper->method("getCityName")->willReturn("foo");
 
-        $this->barScraper = $this->createMock(Scraper::class);
-        $this->barScraper->method("getCityName")->willReturn("bar");
+        $this->barCityScraper = $this->createMock(CityScraper::class);
+        $this->barCityScraper->method("getCityName")->willReturn("bar");
 
-        $this->scrapers = [$this->fooScraper, $this->barScraper];
+        $this->cityScrapers = [$this->fooCityScraper, $this->barCityScraper];
     }
 
     public function testMatch(): void
     {
-        $filtered = (new ScraperCityFilter($this->scrapers, ["foo"]))->filter($this->scrapers);
-        $this->assertContains($this->fooScraper, $filtered);
+        $filtered = (new ScraperCityFilter($this->cityScrapers, ["foo"]))->filter($this->cityScrapers);
+        $this->assertContains($this->fooCityScraper, $filtered);
     }
 
     public function testNoMatch(): void
     {
-        $filtered = (new ScraperCityFilter($this->scrapers, ["foo"]))->filter($this->scrapers);
-        $this->assertNotContains($this->barScraper, $filtered);
+        $filtered = (new ScraperCityFilter($this->cityScrapers, ["foo"]))->filter($this->cityScrapers);
+        $this->assertNotContains($this->barCityScraper, $filtered);
     }
 
     public function testInvalid(): void
     {
         $this->expectException(\InvalidArgumentException::class);
-        $filter = new ScraperCityFilter($this->scrapers, ["foo", "baz"]);
+        $filter = new ScraperCityFilter($this->cityScrapers, ["foo", "baz"]);
     }
 }
