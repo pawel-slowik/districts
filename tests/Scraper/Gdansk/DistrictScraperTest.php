@@ -33,31 +33,31 @@ class DistrictScraperTest extends TestCase
 
     public function testReturnsDistrict(): void
     {
-        $district = $this->scraper->buildFromHtml($this->validHtml);
+        $district = $this->scraper->scrape($this->validHtml);
         $this->assertInstanceOf(DistrictDTO::class, $district);
     }
 
     public function testName(): void
     {
-        $district = $this->scraper->buildFromHtml($this->validHtml);
+        $district = $this->scraper->scrape($this->validHtml);
         $this->assertSame("Orunia-Św. Wojciech-Lipce", $district->getName());
     }
 
     public function testArea(): void
     {
-        $district = $this->scraper->buildFromHtml($this->validHtml);
+        $district = $this->scraper->scrape($this->validHtml);
         $this->assertSame(19.63, $district->getArea());
     }
 
     public function testPopulation(): void
     {
-        $district = $this->scraper->buildFromHtml($this->validHtml);
+        $district = $this->scraper->scrape($this->validHtml);
         $this->assertSame(14435, $district->getPopulation());
     }
 
     public function testException(): void
     {
         $this->expectException(RuntimeException::class);
-        $this->scraper->buildFromHtml("");
+        $this->scraper->scrape("");
     }
 }

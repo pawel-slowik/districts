@@ -17,7 +17,7 @@ final class DistrictScraper
         $this->htmlFinder = $htmlFinder;
     }
 
-    public function buildFromHtml(string $html): DistrictDTO
+    public function scrape(string $html): DistrictDTO
     {
         $name = $this->getName($html);
         $area = $this->getArea($html);

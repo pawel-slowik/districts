@@ -41,7 +41,7 @@ final class CityScraper implements ScraperInterface
     {
         foreach ($this->listDistrictUrls() as $url) {
             $districtHtml = $this->htmlFetcher->fetchHtml($url);
-            yield $this->districtScraper->buildFromHtml($districtHtml);
+            yield $this->districtScraper->scrape($districtHtml);
         }
     }
 

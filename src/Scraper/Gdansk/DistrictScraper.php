@@ -17,7 +17,7 @@ final class DistrictScraper
         $this->htmlFinder = $htmlFinder;
     }
 
-    public function buildFromHtml(string $html): DistrictDTO
+    public function scrape(string $html): DistrictDTO
     {
         // This is an HTML fragment instead of a valid document. Add a charset
         // declaration in order to decode the text properly.
