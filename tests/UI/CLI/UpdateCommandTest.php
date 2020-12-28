@@ -7,6 +7,7 @@ namespace Districts\Test\UI\CLI;
 use Districts\UI\CLI\UpdateCommand;
 use Districts\Application\Importer;
 use Districts\Service\ProgressReporter;
+use Districts\Scraper\CityDTO;
 use Districts\Scraper\HtmlFetcher;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -89,16 +90,16 @@ class UpdateCommandTest extends TestCase
             ->expects($this->once())
             ->method("import")
             ->with(
-                $this->equalTo("Gdańsk"),
-                $this->isInstanceOf(\Iterator::class),
+                $this->isInstanceOf(CityDTO::class),
                 $this->isInstanceOf(ProgressReporter::class),
             )
             ->will(
                 $this->returnCallback(
                     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-                    function (string $cityName, iterable $districts, ProgressReporter $progressReporter): void {
+                    function (CityDTO $cityDTO, ProgressReporter $progressReporter): void {
+                        $this->assertSame("Gdańsk", $cityDTO->getName());
                         // start the generator
-                        iterator_to_array($districts);
+                        iterator_to_array($cityDTO->listDistricts());
                     }
                 )
             );

@@ -13,6 +13,7 @@ use Symfony\Component\Console\Helper\ProgressBar;
 
 use Districts\Application\Importer;
 
+use Districts\Scraper\CityDTO;
 use Districts\Scraper\HtmlFinder;
 use Districts\Scraper\HtmlFetcher;
 use Districts\Scraper\Gdansk\CityScraper as GdanskScraper;
@@ -53,19 +54,18 @@ final class UpdateCommand extends Command
             throw new InvalidArgumentException($ex->getMessage(), $ex->getCode());
         }
         foreach ($cityFilter->filter($this->scrapers) as $scraper) {
-            $this->updateCity($scraper->getCityName(), $scraper->listDistricts(), $output);
+            $this->updateCity($scraper->scrape(), $output);
         }
         return 0;
     }
 
-    private function updateCity(string $cityName, iterable $districts, OutputInterface $output): void
+    private function updateCity(CityDTO $cityDTO, OutputInterface $output): void
     {
-        $output->writeln("processing city: " . $cityName);
+        $output->writeln("processing city: " . $cityDTO->getName());
         $progressBar = new ProgressBar($output);
         $progressBar->start();
         $this->importer->import(
-            $cityName,
-            $districts,
+            $cityDTO,
             new ProgressBarProgressReporter($progressBar),
         );
         $progressBar->finish();

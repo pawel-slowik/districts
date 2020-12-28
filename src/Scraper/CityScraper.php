@@ -8,5 +8,5 @@ interface CityScraper
 {
     public function getCityName(): string;
 
-    public function listDistricts(): iterable;
+    public function scrape(): CityDTO;
 }

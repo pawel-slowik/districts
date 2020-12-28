@@ -6,6 +6,7 @@ namespace Districts\Application;
 
 use Districts\DomainModel\Entity\City;
 use Districts\Repository\CityRepository;
+use Districts\Scraper\CityDTO;
 
 class Importer
 {
@@ -18,19 +19,18 @@ class Importer
     }
 
     public function import(
-        string $cityName,
-        iterable $districtDTOs,
+        CityDTO $cityDTO,
         ?\Districts\Service\ProgressReporter $progressReporter = null
     ): void {
-        $city = $this->cityRepository->findByName($cityName);
+        $city = $this->cityRepository->findByName($cityDTO->getName());
         if ($city) {
             $city->removeAllDistricts();
             $this->cityRepository->update($city);
         } else {
-            $city = new City($cityName);
+            $city = new City($cityDTO->getName());
             $this->cityRepository->add($city);
         }
-        foreach ($districtDTOs as $districtDTO) {
+        foreach ($cityDTO->listDistricts() as $districtDTO) {
             $city->addDistrict(
                 $districtDTO->getName(),
                 $districtDTO->getArea(),

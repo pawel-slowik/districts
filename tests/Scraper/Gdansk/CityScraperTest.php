@@ -28,14 +28,14 @@ class CityScraperTest extends TestCase
 
     public function testReturnsNonEmpty(): void
     {
-        $districts = $this->scraper->listDistricts();
-        $this->assertNotEmpty($districts);
+        $cityDTO = $this->scraper->scrape();
+        $this->assertNotEmpty($cityDTO->listDistricts());
     }
 
     public function testReturnsDistricts(): void
     {
-        $districts = $this->scraper->listDistricts();
-        $this->assertContainsOnlyInstancesOf(DistrictDTO::class, $districts);
+        $cityDTO = $this->scraper->scrape();
+        $this->assertContainsOnlyInstancesOf(DistrictDTO::class, $cityDTO->listDistricts());
     }
 
     private function createHtmlFetcherMock(): HtmlFetcher

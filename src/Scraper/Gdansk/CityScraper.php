@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Scraper\Gdansk;
 
+use Districts\Scraper\CityDTO;
 use Districts\Scraper\CityScraper as ScraperInterface;
 use Districts\Scraper\HtmlFetcher;
 use Districts\Scraper\HtmlFinder;
@@ -31,7 +32,12 @@ final class CityScraper implements ScraperInterface
         return "Gdańsk";
     }
 
-    public function listDistricts(): iterable
+    public function scrape(): CityDTO
+    {
+        return new CityDTO($this->getCityName(), $this->listDistricts());
+    }
+
+    private function listDistricts(): iterable
     {
         foreach ($this->listDistrictUrls() as $url) {
             $districtHtml = $this->htmlFetcher->fetchHtml($url);
