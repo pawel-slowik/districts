@@ -73,8 +73,8 @@ class UpdateCommandTest extends TestCase
             ->with($this->equalTo("city_names"))
             ->willReturn(["Gdańsk"]);
 
-        $listHtml = file_get_contents(__DIR__ . "/../../Scraper/District/Gdansk/dzielnice.html");
-        $entryHtml = file_get_contents(__DIR__ . "/../../Scraper/District/Gdansk/dzielnice_mapa_alert.php?id=16");
+        $listHtml = file_get_contents(__DIR__ . "/../../Scraper/Gdansk/dzielnice.html");
+        $entryHtml = file_get_contents(__DIR__ . "/../../Scraper/Gdansk/dzielnice_mapa_alert.php?id=16");
         $fetcherReturnValues = [$listHtml] + array_fill(1, 35, $entryHtml);
         $this->fetcher
             ->expects(
