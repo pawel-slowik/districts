@@ -8,7 +8,7 @@ require __DIR__ . "/vendor/autoload.php";
 use Symfony\Component\Console\Application;
 use Districts\UI\CLI\UpdateCommand;
 use Districts\Repository\CityRepository;
-use Districts\Service\Importer;
+use Districts\Application\Importer;
 use Districts\Scraper\GuzzleHtmlFetcher;
 
 $entityManagerFactory = require "doctrine-bootstrap.php";
