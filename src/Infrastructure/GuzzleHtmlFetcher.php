@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Districts\Scraper;
+namespace Districts\Infrastructure;
+
+use Districts\Scraper\HtmlFetcher;
+use Districts\Scraper\RuntimeException;
 
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use GuzzleHttp\Client as HttpClient;

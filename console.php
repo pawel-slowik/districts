@@ -9,7 +9,7 @@ use Symfony\Component\Console\Application;
 use Districts\UI\CLI\UpdateCommand;
 use Districts\Infrastructure\CityRepository;
 use Districts\Application\Importer;
-use Districts\Scraper\GuzzleHtmlFetcher;
+use Districts\Infrastructure\GuzzleHtmlFetcher;
 
 $entityManagerFactory = require "doctrine-bootstrap.php";
 $entityManager = $entityManagerFactory();
