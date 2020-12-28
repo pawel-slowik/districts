@@ -7,18 +7,18 @@ namespace Districts\Test\Scraper\Krakow;
 use Districts\Scraper\HtmlFinder;
 use Districts\Scraper\RuntimeException;
 use Districts\Scraper\DistrictDTO;
-use Districts\Scraper\Krakow\Builder;
+use Districts\Scraper\Krakow\DistrictScraper;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Scraper\Krakow\Builder
+ * @covers \Districts\Scraper\Krakow\DistrictScraper
  */
-class BuilderTest extends TestCase
+class DistrictScraperTest extends TestCase
 {
     /**
-     * @var Builder
+     * @var DistrictScraper
      */
-    private $builder;
+    private $scraper;
 
     /**
      * @var string
@@ -27,37 +27,37 @@ class BuilderTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->builder = new Builder(new HtmlFinder());
+        $this->scraper = new DistrictScraper(new HtmlFinder());
         $this->validHtml = file_get_contents(__DIR__ . "/DzlViewGlw.jsf?id=17&lay=normal&fo=0");
     }
 
     public function testReturnsDistrict(): void
     {
-        $district = $this->builder->buildFromHtml($this->validHtml);
+        $district = $this->scraper->buildFromHtml($this->validHtml);
         $this->assertInstanceOf(DistrictDTO::class, $district);
     }
 
     public function testName(): void
     {
-        $district = $this->builder->buildFromHtml($this->validHtml);
+        $district = $this->scraper->buildFromHtml($this->validHtml);
         $this->assertSame("Wzgórza Krzesławickie", $district->getName());
     }
 
     public function testArea(): void
     {
-        $district = $this->builder->buildFromHtml($this->validHtml);
+        $district = $this->scraper->buildFromHtml($this->validHtml);
         $this->assertSame(23.8155, $district->getArea());
     }
 
     public function testPopulation(): void
     {
-        $district = $this->builder->buildFromHtml($this->validHtml);
+        $district = $this->scraper->buildFromHtml($this->validHtml);
         $this->assertSame(20205, $district->getPopulation());
     }
 
     public function testException(): void
     {
         $this->expectException(RuntimeException::class);
-        $this->builder->buildFromHtml("");
+        $this->scraper->buildFromHtml("");
     }
 }

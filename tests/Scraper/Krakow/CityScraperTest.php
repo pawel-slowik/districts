@@ -41,8 +41,8 @@ class CityScraperTest extends TestCase
     private function createHtmlFetcherMock(): HtmlFetcher
     {
         // The mock returns the same content for all districts. This is OK
-        // because Scrapers don't have any knowledge about district properties
-        // (only Builders do).
+        // because CityScrapers don't have any knowledge about district
+        // properties (only DistrictScrapers do).
         $urlFilenameMap = [
             // phpcs:ignore Generic.Files.LineLength.TooLong
             "http://appimeri.um.krakow.pl/app-pub-dzl/pages/DzlViewAll.jsf?a=1&lay=normal&fo=0" => "DzlViewAll.jsf?a=1&lay=normal&fo=0",

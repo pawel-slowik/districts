@@ -8,7 +8,7 @@ use Districts\Scraper\HtmlFinder;
 use Districts\Scraper\RuntimeException;
 use Districts\Scraper\DistrictDTO;
 
-final class Builder
+final class DistrictScraper
 {
     private $htmlFinder;
 

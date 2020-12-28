@@ -18,13 +18,13 @@ final class CityScraper implements ScraperInterface
     private $htmlFinder;
 
     // not injectable
-    private $districtBuilder;
+    private $districtScraper;
 
     public function __construct(HtmlFetcher $htmlFetcher, HtmlFinder $htmlFinder)
     {
         $this->htmlFetcher = $htmlFetcher;
         $this->htmlFinder = $htmlFinder;
-        $this->districtBuilder = new Builder($htmlFinder);
+        $this->districtScraper = new DistrictScraper($htmlFinder);
     }
 
     public function getCityName(): string
@@ -41,7 +41,7 @@ final class CityScraper implements ScraperInterface
     {
         foreach ($this->listDistrictUrls() as $url) {
             $districtHtml = $this->htmlFetcher->fetchHtml($url);
-            yield $this->districtBuilder->buildFromHtml($districtHtml);
+            yield $this->districtScraper->buildFromHtml($districtHtml);
         }
     }
 
