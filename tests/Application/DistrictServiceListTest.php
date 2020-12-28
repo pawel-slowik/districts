@@ -11,10 +11,10 @@ use Districts\Application\DistrictService;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 
-use Districts\Repository\CityRepository;
-use Districts\Repository\DistrictRepository;
+use Districts\Infrastructure\CityRepository;
+use Districts\Infrastructure\DistrictRepository;
 
-use Districts\Test\Repository\FixtureTool;
+use Districts\Test\Infrastructure\FixtureTool;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -32,8 +32,8 @@ class DistrictServiceListTest extends TestCase
         $entityManager = (require "doctrine-bootstrap.php")();
         FixtureTool::reset($entityManager);
         FixtureTool::load($entityManager, [
-            "tests/Repository/data/cities.sql",
-            "tests/Repository/data/districts.sql",
+            "tests/Infrastructure/data/cities.sql",
+            "tests/Infrastructure/data/districts.sql",
         ]);
         $cityRepository = new CityRepository($entityManager);
         $this->districtService = new DistrictService(

@@ -14,7 +14,7 @@ use Nyholm\Psr7\Uri;
 use Slim\App;
 use Districts\UI\Web\RoutingConfiguration;
 use PHPUnit\Framework\TestCase;
-use Districts\Test\Repository\FixtureTool;
+use Districts\Test\Infrastructure\FixtureTool;
 use Doctrine\ORM\EntityManager;
 
 abstract class BaseTestCase extends TestCase
@@ -29,8 +29,8 @@ abstract class BaseTestCase extends TestCase
 
         FixtureTool::reset($entityManager);
         FixtureTool::load($entityManager, [
-            "tests/Repository/data/cities.sql",
-            "tests/Repository/data/districts.sql",
+            "tests/Infrastructure/data/cities.sql",
+            "tests/Infrastructure/data/districts.sql",
         ]);
 
         $request = $this->createRequest($requestMethod, $requestUri, $requestData);

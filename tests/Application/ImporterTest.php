@@ -11,10 +11,10 @@ use Districts\Application\Importer;
 use Districts\Service\ValidationException;
 use Districts\Scraper\CityDTO;
 use Districts\Scraper\DistrictDTO;
-use Districts\Repository\DistrictRepository;
-use Districts\Repository\CityRepository;
+use Districts\Infrastructure\DistrictRepository;
+use Districts\Infrastructure\CityRepository;
 
-use Districts\Test\Repository\FixtureTool;
+use Districts\Test\Infrastructure\FixtureTool;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -42,8 +42,8 @@ class ImporterTest extends TestCase
         $entityManager = (require "doctrine-bootstrap.php")();
         FixtureTool::reset($entityManager);
         FixtureTool::load($entityManager, [
-            "tests/Repository/data/cities.sql",
-            "tests/Repository/data/districts.sql",
+            "tests/Infrastructure/data/cities.sql",
+            "tests/Infrastructure/data/districts.sql",
         ]);
         $this->districtRepository = new DistrictRepository($entityManager);
         $this->importer = new Importer(new CityRepository($entityManager));

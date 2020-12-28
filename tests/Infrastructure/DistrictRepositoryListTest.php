@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Repository;
+namespace Districts\Test\Infrastructure;
 
 use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
-use Districts\Repository\DistrictRepository;
+use Districts\Infrastructure\DistrictRepository;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Repository\DistrictRepository
+ * @covers \Districts\Infrastructure\DistrictRepository
  */
 class DistrictRepositoryListTest extends TestCase
 {
@@ -31,8 +31,8 @@ class DistrictRepositoryListTest extends TestCase
         $entityManager = (require "doctrine-bootstrap.php")();
         FixtureTool::reset($entityManager);
         FixtureTool::load($entityManager, [
-            "tests/Repository/data/cities.sql",
-            "tests/Repository/data/districts.sql",
+            "tests/Infrastructure/data/cities.sql",
+            "tests/Infrastructure/data/districts.sql",
         ]);
         $this->districtRepository = new DistrictRepository($entityManager);
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);

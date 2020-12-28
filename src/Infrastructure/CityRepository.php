@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Repository;
+namespace Districts\Infrastructure;
 
 use Doctrine\ORM\EntityManager;
 
@@ -21,7 +21,7 @@ class CityRepository
     {
         $city = $this->entityManager->getRepository(City::class)->find($id);
         if (!$city) {
-            throw new NotFoundException();
+            throw new NotFoundInRepositoryException();
         }
         return $city;
     }
@@ -33,7 +33,7 @@ class CityRepository
         $query->setParameter("id", $districtId);
         $cities = $query->getResult();
         if (!$cities) {
-            throw new NotFoundException();
+            throw new NotFoundInRepositoryException();
         }
         return $cities[0];
     }

@@ -7,7 +7,7 @@ require __DIR__ . "/vendor/autoload.php";
 
 use Symfony\Component\Console\Application;
 use Districts\UI\CLI\UpdateCommand;
-use Districts\Repository\CityRepository;
+use Districts\Infrastructure\CityRepository;
 use Districts\Application\Importer;
 use Districts\Scraper\GuzzleHtmlFetcher;
 

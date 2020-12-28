@@ -6,7 +6,7 @@ namespace Districts\Test\Application;
 
 use Districts\DomainModel\Entity\City;
 use Districts\Application\CityIterator;
-use Districts\Repository\CityRepository;
+use Districts\Infrastructure\CityRepository;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

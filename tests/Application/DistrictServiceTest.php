@@ -18,10 +18,10 @@ use Districts\Application\DistrictService;
 use Districts\Service\NotFoundException;
 use Districts\Service\ValidationException;
 
-use Districts\Repository\CityRepository;
-use Districts\Repository\DistrictRepository;
+use Districts\Infrastructure\CityRepository;
+use Districts\Infrastructure\DistrictRepository;
 
-use Districts\Test\Repository\FixtureTool;
+use Districts\Test\Infrastructure\FixtureTool;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,8 +44,8 @@ class DistrictServiceTest extends TestCase
         $entityManager = (require "doctrine-bootstrap.php")();
         FixtureTool::reset($entityManager);
         FixtureTool::load($entityManager, [
-            "tests/Repository/data/cities.sql",
-            "tests/Repository/data/districts.sql",
+            "tests/Infrastructure/data/cities.sql",
+            "tests/Infrastructure/data/districts.sql",
         ]);
         $cityRepository = new CityRepository($entityManager);
         $this->districtService = new DistrictService(

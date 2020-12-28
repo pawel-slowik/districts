@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Repository;
+namespace Districts\Test\Infrastructure;
 
 use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\DistrictOrdering;
-use Districts\Repository\CityRepository;
-use Districts\Repository\DistrictRepository;
-use Districts\Repository\NotFoundException;
+use Districts\Infrastructure\CityRepository;
+use Districts\Infrastructure\DistrictRepository;
+use Districts\Infrastructure\NotFoundInRepositoryException;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Repository\DistrictRepository
+ * @covers \Districts\Infrastructure\DistrictRepository
  */
 class DistrictRepositoryTest extends TestCase
 {
@@ -37,8 +37,8 @@ class DistrictRepositoryTest extends TestCase
         $entityManager = (require "doctrine-bootstrap.php")();
         FixtureTool::reset($entityManager);
         FixtureTool::load($entityManager, [
-            "tests/Repository/data/cities.sql",
-            "tests/Repository/data/districts.sql",
+            "tests/Infrastructure/data/cities.sql",
+            "tests/Infrastructure/data/districts.sql",
         ]);
         $this->districtRepository = new DistrictRepository($entityManager);
         $this->cityRepository = new CityRepository($entityManager);
@@ -57,7 +57,7 @@ class DistrictRepositoryTest extends TestCase
 
     public function testGetNonExistent(): void
     {
-        $this->expectException(NotFoundException::class);
+        $this->expectException(NotFoundInRepositoryException::class);
         $district = $this->districtRepository->get(999);
     }
 }

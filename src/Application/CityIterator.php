@@ -6,7 +6,7 @@ namespace Districts\Application;
 
 use Districts\DomainModel\Entity\City;
 
-use Districts\Repository\CityRepository;
+use Districts\Infrastructure\CityRepository;
 
 /**
  * @implements \IteratorAggregate<City>
