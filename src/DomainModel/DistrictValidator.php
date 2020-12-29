@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Validator;
+namespace Districts\DomainModel;
 
 class DistrictValidator
 {

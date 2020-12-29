@@ -6,7 +6,7 @@ namespace Districts\DomainModel\Entity;
 
 use Districts\Service\NotFoundException;
 use Districts\Service\ValidationException;
-use Districts\Validator\DistrictValidator;
+use Districts\DomainModel\DistrictValidator;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
