@@ -23,19 +23,16 @@ final class UpdateCommand extends Command
 {
     private $importer;
 
-    private $fetcher;
-
     private $scrapers;
 
     public function __construct(Importer $importer, HtmlFetcher $fetcher)
     {
         parent::__construct();
         $this->importer = $importer;
-        $this->fetcher = $fetcher;
         $finder = new HtmlFinder();
         $this->scrapers = [
-            new GdanskScraper($this->fetcher, $finder),
-            new KrakowScraper($this->fetcher, $finder),
+            new GdanskScraper($fetcher, $finder),
+            new KrakowScraper($fetcher, $finder),
         ];
         $this->setName("update");
         $this->setDescription("Update the districts database with scraped data. Overwrites existing records.");
