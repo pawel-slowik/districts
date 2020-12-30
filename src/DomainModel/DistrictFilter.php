@@ -11,13 +11,6 @@ class DistrictFilter
     public const TYPE_AREA = 3;
     public const TYPE_POPULATION = 4;
 
-    private const VALIDATORS = [
-        self::TYPE_CITY => [self::class, "validateString"],
-        self::TYPE_NAME => [self::class, "validateString"],
-        self::TYPE_AREA => [self::class, "validateRange"],
-        self::TYPE_POPULATION => [self::class, "validateRange"],
-    ];
-
     private $type;
 
     private $value;
@@ -43,10 +36,19 @@ class DistrictFilter
 
     private static function validate(int $type, $value): bool
     {
-        if (!array_key_exists($type, self::VALIDATORS)) {
-            return false;
+        if ($type === self::TYPE_CITY) {
+            return self::validateString($value);
         }
-        return self::VALIDATORS[$type]($value);
+        if ($type === self::TYPE_NAME) {
+            return self::validateString($value);
+        }
+        if ($type === self::TYPE_AREA) {
+            return self::validateRange($value);
+        }
+        if ($type === self::TYPE_POPULATION) {
+            return self::validateRange($value);
+        }
+        return false;
     }
 
     private static function validateString($value): bool
