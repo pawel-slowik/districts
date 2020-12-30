@@ -6,7 +6,7 @@ namespace Districts\DomainModel;
 
 class ValidationResult
 {
-    protected $errors;
+    private $errors;
 
     public function __construct()
     {
