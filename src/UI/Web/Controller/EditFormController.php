@@ -12,7 +12,8 @@ use SlimSession\Helper as Session;
 
 use Districts\UI\Web\Factory\GetDistrictQueryFactory;
 use Districts\Application\DistrictService;
-use Districts\Service\NotFoundException;
+use Districts\Application\NotFoundException as ApplicationNotFoundException;
+use Districts\DomainModel\NotFoundException as DomainNotFoundException;
 
 final class EditFormController
 {
@@ -42,7 +43,7 @@ final class EditFormController
         if (!$district) {
             try {
                 $district = $this->districtService->get($this->queryFactory->fromRequest($request, $args));
-            } catch (NotFoundException $exception) {
+            } catch (DomainNotFoundException | ApplicationNotFoundException $exception) {
                 throw new HttpNotFoundException($request);
             }
         }

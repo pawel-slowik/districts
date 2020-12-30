@@ -17,7 +17,7 @@ use Districts\DomainModel\ValidationException as DomainValidationException;
 
 use Districts\Application\DistrictService;
 use Districts\Application\ValidationException as RequestValidationException;
-use Districts\Service\NotFoundException;
+use Districts\Application\NotFoundException;
 
 use Districts\Infrastructure\CityRepository;
 use Districts\Infrastructure\DistrictRepository;

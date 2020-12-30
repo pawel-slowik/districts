@@ -14,7 +14,6 @@ use Districts\DomainModel\Entity\District;
 use Districts\Infrastructure\CityRepository;
 use Districts\Infrastructure\DistrictRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
-use Districts\Service\NotFoundException;
 
 class DistrictService
 {

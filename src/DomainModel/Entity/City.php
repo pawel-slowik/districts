@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Entity;
 
-use Districts\Service\NotFoundException;
+use Districts\DomainModel\NotFoundException;
 use Districts\DomainModel\ValidationException;
 use Districts\DomainModel\DistrictValidator;
 

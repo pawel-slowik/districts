@@ -11,7 +11,8 @@ use Slim\Views\Twig as View;
 
 use Districts\UI\Web\Factory\GetDistrictQueryFactory;
 use Districts\Application\DistrictService;
-use Districts\Service\NotFoundException;
+use Districts\Application\NotFoundException as ApplicationNotFoundException;
+use Districts\DomainModel\NotFoundException as DomainNotFoundException;
 
 final class RemoveFormController
 {
@@ -35,7 +36,7 @@ final class RemoveFormController
     {
         try {
             $district = $this->districtService->get($this->queryFactory->fromRequest($request, $args));
-        } catch (NotFoundException $exception) {
+        } catch (DomainNotFoundException | ApplicationNotFoundException $exception) {
             throw new HttpNotFoundException($request);
         }
         $templateData = [

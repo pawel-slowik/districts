@@ -12,7 +12,8 @@ use Districts\UI\Web\Redirector;
 use Districts\UI\Web\Factory\RemoveDistrictCommandFactory;
 
 use Districts\Application\DistrictService;
-use Districts\Service\NotFoundException;
+use Districts\Application\NotFoundException as ApplicationNotFoundException;
+use Districts\DomainModel\NotFoundException as DomainNotFoundException;
 
 final class RemoveActionController
 {
@@ -37,7 +38,7 @@ final class RemoveActionController
         try {
             $this->districtService->remove($this->commandFactory->fromRequest($request, $args));
             // TODO: flash message
-        } catch (NotFoundException $exception) {
+        } catch (DomainNotFoundException | ApplicationNotFoundException $exception) {
             throw new HttpNotFoundException($request);
         }
         return $this->redirector->redirect($request, $response, "list");
