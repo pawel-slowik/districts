@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Districts\Test\Scraper\Krakow;
 
-use Districts\Scraper\HtmlFinder;
-use Districts\Scraper\RuntimeException;
-use Districts\Scraper\DistrictDTO;
-use Districts\Scraper\Krakow\DistrictScraper;
+use Districts\DomainModel\Scraper\HtmlFinder;
+use Districts\DomainModel\Scraper\RuntimeException;
+use Districts\DomainModel\Scraper\DistrictDTO;
+use Districts\DomainModel\Scraper\Krakow\DistrictScraper;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Scraper\Krakow\DistrictScraper
+ * @covers \Districts\DomainModel\Scraper\Krakow\DistrictScraper
  */
 class DistrictScraperTest extends TestCase
 {

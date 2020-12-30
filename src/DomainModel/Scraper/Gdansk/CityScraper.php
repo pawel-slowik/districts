@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Districts\Scraper\Gdansk;
+namespace Districts\DomainModel\Scraper\Gdansk;
 
-use Districts\Scraper\CityDTO;
-use Districts\Scraper\CityScraper as ScraperInterface;
-use Districts\Scraper\HtmlFetcher;
-use Districts\Scraper\HtmlFinder;
-use Districts\Scraper\RuntimeException;
+use Districts\DomainModel\Scraper\CityDTO;
+use Districts\DomainModel\Scraper\CityScraper as CityScraperInterface;
+use Districts\DomainModel\Scraper\HtmlFetcher;
+use Districts\DomainModel\Scraper\HtmlFinder;
+use Districts\DomainModel\Scraper\RuntimeException;
 use Laminas\Uri\Uri;
 
-final class CityScraper implements ScraperInterface
+final class CityScraper implements CityScraperInterface
 {
     private $htmlFetcher;
 

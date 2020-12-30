@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Scraper;
 
-use Districts\Scraper\HtmlFetcher;
+use Districts\DomainModel\Scraper\HtmlFetcher;
 use PHPUnit\Framework\MockObject\MockObject;
 
 class HtmlFetcherMockBuilder

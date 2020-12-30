@@ -6,7 +6,7 @@ namespace Districts\Application;
 
 use Districts\DomainModel\Entity\City;
 use Districts\Infrastructure\CityRepository;
-use Districts\Scraper\CityDTO;
+use Districts\DomainModel\Scraper\CityDTO;
 
 class Importer
 {

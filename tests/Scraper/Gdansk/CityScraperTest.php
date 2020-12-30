@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Districts\Test\Scraper\Gdansk;
 
-use Districts\Scraper\HtmlFetcher;
-use Districts\Scraper\HtmlFinder;
-use Districts\Scraper\DistrictDTO;
-use Districts\Scraper\Gdansk\CityScraper;
+use Districts\DomainModel\Scraper\HtmlFetcher;
+use Districts\DomainModel\Scraper\HtmlFinder;
+use Districts\DomainModel\Scraper\DistrictDTO;
+use Districts\DomainModel\Scraper\Gdansk\CityScraper;
 use Districts\Test\Scraper\HtmlFetcherMockBuilder;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Scraper\Gdansk\CityScraper
+ * @covers \Districts\DomainModel\Scraper\Gdansk\CityScraper
  */
 class CityScraperTest extends TestCase
 {

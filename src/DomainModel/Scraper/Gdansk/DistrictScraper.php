@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Districts\Scraper\Gdansk;
+namespace Districts\DomainModel\Scraper\Gdansk;
 
-use Districts\Scraper\HtmlFinder;
-use Districts\Scraper\RuntimeException;
-use Districts\Scraper\DistrictDTO;
+use Districts\DomainModel\Scraper\HtmlFinder;
+use Districts\DomainModel\Scraper\RuntimeException;
+use Districts\DomainModel\Scraper\DistrictDTO;
 
 final class DistrictScraper
 {

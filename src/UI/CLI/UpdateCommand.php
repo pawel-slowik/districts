@@ -13,11 +13,11 @@ use Symfony\Component\Console\Helper\ProgressBar;
 
 use Districts\Application\Importer;
 
-use Districts\Scraper\CityDTO;
-use Districts\Scraper\HtmlFinder;
-use Districts\Scraper\HtmlFetcher;
-use Districts\Scraper\Gdansk\CityScraper as GdanskScraper;
-use Districts\Scraper\Krakow\CityScraper as KrakowScraper;
+use Districts\DomainModel\Scraper\CityDTO;
+use Districts\DomainModel\Scraper\HtmlFinder;
+use Districts\DomainModel\Scraper\HtmlFetcher;
+use Districts\DomainModel\Scraper\Gdansk\CityScraper as GdanskScraper;
+use Districts\DomainModel\Scraper\Krakow\CityScraper as KrakowScraper;
 
 final class UpdateCommand extends Command
 {

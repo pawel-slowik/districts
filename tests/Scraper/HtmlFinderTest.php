@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Districts\Test\Scraper;
 
-use Districts\Scraper\HtmlFinder;
-use Districts\Scraper\RuntimeException;
+use Districts\DomainModel\Scraper\HtmlFinder;
+use Districts\DomainModel\Scraper\RuntimeException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Scraper\HtmlFinder
+ * @covers \Districts\DomainModel\Scraper\HtmlFinder
  */
 class HtmlFinderTest extends TestCase
 {
