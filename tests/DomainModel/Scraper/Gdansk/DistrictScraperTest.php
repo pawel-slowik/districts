@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Scraper\Gdansk;
+namespace Districts\Test\DomainModel\Scraper\Gdansk;
 
 use Districts\DomainModel\Scraper\HtmlFinder;
 use Districts\DomainModel\Scraper\RuntimeException;

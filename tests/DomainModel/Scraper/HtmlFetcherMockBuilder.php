@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Scraper;
+namespace Districts\Test\DomainModel\Scraper;
 
 use Districts\DomainModel\Scraper\HtmlFetcher;
 use PHPUnit\Framework\MockObject\MockObject;
