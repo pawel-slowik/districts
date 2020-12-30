@@ -13,8 +13,15 @@ class DistrictFilter
 
     private $type;
 
+    /**
+     * @var mixed
+     */
     private $value;
 
+    /**
+     * @param int   $type
+     * @param mixed $value
+     */
     public function __construct(int $type, $value)
     {
         if (!self::validate($type, $value)) {
@@ -29,11 +36,18 @@ class DistrictFilter
         return $this->type;
     }
 
+    /**
+     * @return mixed $value
+     */
     public function getValue()
     {
         return $this->value;
     }
 
+    /**
+     * @param int   $type
+     * @param mixed $value
+     */
     private static function validate(int $type, $value): bool
     {
         if ($type === self::TYPE_CITY) {
@@ -51,11 +65,17 @@ class DistrictFilter
         return false;
     }
 
+    /**
+     * @param mixed $value
+     */
     private static function validateString($value): bool
     {
         return is_string($value) && ($value !== "");
     }
 
+    /**
+     * @param mixed $value
+     */
     private static function validateRange($value): bool
     {
         return
