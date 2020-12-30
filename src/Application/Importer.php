@@ -20,7 +20,7 @@ class Importer
 
     public function import(
         CityDTO $cityDTO,
-        ?\Districts\Service\ProgressReporter $progressReporter = null
+        ?ProgressReporter $progressReporter = null
     ): void {
         $city = $this->cityRepository->findByName($cityDTO->getName());
         if ($city) {

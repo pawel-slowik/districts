@@ -6,7 +6,7 @@ namespace Districts\Test\UI\CLI;
 
 use Districts\UI\CLI\UpdateCommand;
 use Districts\Application\Importer;
-use Districts\Service\ProgressReporter;
+use Districts\Application\ProgressReporter;
 use Districts\DomainModel\Scraper\CityDTO;
 use Districts\DomainModel\Scraper\HtmlFetcher;
 use Symfony\Component\Console\Input\InputInterface;
