@@ -6,7 +6,7 @@ namespace Districts\UI\Web\Factory;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Districts\Application\Command\AddDistrictCommand;
-use Districts\Service\ValidationException;
+use Districts\Application\ValidationException;
 
 class AddDistrictCommandFactory
 {

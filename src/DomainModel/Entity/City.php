@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Districts\DomainModel\Entity;
 
 use Districts\Service\NotFoundException;
-use Districts\Service\ValidationException;
+use Districts\DomainModel\ValidationException;
 use Districts\DomainModel\DistrictValidator;
 
 use Doctrine\ORM\Mapping as ORM;

@@ -7,7 +7,7 @@ namespace Districts\Test\UI\Web\Factory;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Districts\UI\Web\Factory\GetDistrictQueryFactory;
 use Districts\Application\Query\GetDistrictQuery;
-use Districts\Service\ValidationException;
+use Districts\Application\ValidationException;
 
 use PHPUnit\Framework\TestCase;
 

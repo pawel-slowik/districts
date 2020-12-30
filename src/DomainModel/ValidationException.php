@@ -2,10 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Districts\Service;
+namespace Districts\DomainModel;
 
 class ValidationException extends \RuntimeException
 {
+    /**
+     * @var string[]
+     */
     private $errors;
 
     public function withErrors(array $errors): self

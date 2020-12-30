@@ -7,7 +7,7 @@ namespace Districts\Test\UI\Web\Factory;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Districts\UI\Web\Factory\RemoveDistrictCommandFactory;
 use Districts\Application\Command\RemoveDistrictCommand;
-use Districts\Service\ValidationException;
+use Districts\Application\ValidationException;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;

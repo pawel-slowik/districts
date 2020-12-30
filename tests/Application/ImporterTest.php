@@ -8,7 +8,7 @@ use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 
 use Districts\Application\Importer;
-use Districts\Service\ValidationException;
+use Districts\DomainModel\ValidationException;
 use Districts\DomainModel\Scraper\CityDTO;
 use Districts\DomainModel\Scraper\DistrictDTO;
 use Districts\Infrastructure\DistrictRepository;

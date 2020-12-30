@@ -7,7 +7,7 @@ namespace Districts\Test\DomainModel\Entity;
 use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Entity\District;
 use Districts\Service\NotFoundException;
-use Districts\Service\ValidationException;
+use Districts\DomainModel\ValidationException;
 
 use PHPUnit\Framework\TestCase;
 

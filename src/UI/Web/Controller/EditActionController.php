@@ -13,8 +13,9 @@ use Districts\UI\Web\Redirector;
 use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
 
 use Districts\Application\DistrictService;
+use Districts\Application\ValidationException as RequestValidationException;
+use Districts\DomainModel\ValidationException as DomainValidationException;
 use Districts\Service\NotFoundException;
-use Districts\Service\ValidationException;
 
 final class EditActionController
 {
@@ -50,7 +51,7 @@ final class EditActionController
             return $this->redirector->redirect($request, $response, "list");
         } catch (NotFoundException $notFoundException) {
             throw new HttpNotFoundException($request);
-        } catch (ValidationException $validationException) {
+        } catch (RequestValidationException | DomainValidationException $validationException) {
             // TODO: flash error message
             $this->session["form.edit.values"] = $parsed;
             $this->session["form.edit.errors"] = array_fill_keys($validationException->getErrors(), true);

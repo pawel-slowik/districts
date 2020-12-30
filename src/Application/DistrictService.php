@@ -15,7 +15,6 @@ use Districts\Infrastructure\CityRepository;
 use Districts\Infrastructure\DistrictRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 use Districts\Service\NotFoundException;
-use Districts\Service\ValidationException;
 
 class DistrictService
 {

@@ -13,10 +13,11 @@ use Districts\Application\Query\ListDistrictsQuery;
 use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
+use Districts\DomainModel\ValidationException as DomainValidationException;
 
 use Districts\Application\DistrictService;
+use Districts\Application\ValidationException as RequestValidationException;
 use Districts\Service\NotFoundException;
-use Districts\Service\ValidationException;
 
 use Districts\Infrastructure\CityRepository;
 use Districts\Infrastructure\DistrictRepository;
@@ -134,9 +135,9 @@ class DistrictServiceTest extends TestCase
     /**
      * @dataProvider addInvalidDataProvider
      */
-    public function testAddInvalid(AddDistrictCommand $command): void
+    public function testAddInvalid(AddDistrictCommand $command, string $expectedExceptionClass): void
     {
-        $this->expectException(ValidationException::class);
+        $this->expectException($expectedExceptionClass);
         $this->districtService->add($command);
     }
 
@@ -150,6 +151,7 @@ class DistrictServiceTest extends TestCase
                     -1,
                     2,
                 ),
+                DomainValidationException::class,
             ],
             "population_less_than_zero" => [
                 new AddDistrictCommand(
@@ -158,6 +160,7 @@ class DistrictServiceTest extends TestCase
                     1,
                     -1,
                 ),
+                DomainValidationException::class,
             ],
             "nonexistent_city_id" => [
                 new AddDistrictCommand(
@@ -166,6 +169,7 @@ class DistrictServiceTest extends TestCase
                     1,
                     1,
                 ),
+                RequestValidationException::class,
             ],
         ];
     }
@@ -184,7 +188,7 @@ class DistrictServiceTest extends TestCase
      */
     public function testUpdateInvalid(UpdateDistrictCommand $command): void
     {
-        $this->expectException(ValidationException::class);
+        $this->expectException(DomainValidationException::class);
         $this->districtService->update($command);
     }
 

@@ -7,7 +7,7 @@ namespace Districts\Test\UI\Web\Factory;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Districts\UI\Web\Factory\AddDistrictCommandFactory;
 use Districts\Application\Command\AddDistrictCommand;
-use Districts\Service\ValidationException;
+use Districts\Application\ValidationException;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;

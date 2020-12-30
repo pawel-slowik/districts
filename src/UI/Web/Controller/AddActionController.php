@@ -12,7 +12,8 @@ use Districts\UI\Web\Redirector;
 use Districts\UI\Web\Factory\AddDistrictCommandFactory;
 
 use Districts\Application\DistrictService;
-use Districts\Service\ValidationException;
+use Districts\Application\ValidationException as RequestValidationException;
+use Districts\DomainModel\ValidationException as DomainValidationException;
 
 final class AddActionController
 {
@@ -47,7 +48,7 @@ final class AddActionController
             unset($this->session["form.add.values"]);
             unset($this->session["form.add.errors"]);
             return $this->redirector->redirect($request, $response, "list");
-        } catch (ValidationException $exception) {
+        } catch (DomainValidationException | RequestValidationException $exception) {
             // TODO: flash error message
             $this->session["form.add.values"] = $parsed;
             $this->session["form.add.errors"] = array_fill_keys($exception->getErrors(), true);
