@@ -44,13 +44,13 @@ final class AddActionController
         try {
             $command = $this->commandFactory->fromRequest($request);
             $this->districtService->add($command);
-            // TODO: flash success message
+            $this->session["success.message"] = "District data saved successfully.";
             unset($this->session["form.add.values"]);
             unset($this->session["form.add.errors"]);
             return $this->redirector->redirect($request, $response, "list");
         } catch (DomainValidationException | RequestValidationException $exception) {
-            // TODO: flash error message
             $this->session["form.add.values"] = $parsed;
+            $this->session["form.add.error.message"] = "An error occured while saving district data.";
             $this->session["form.add.errors"] = array_fill_keys($exception->getErrors(), true);
             return $this->redirector->redirect($request, $response, "add");
         }

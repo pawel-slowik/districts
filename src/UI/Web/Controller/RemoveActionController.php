@@ -7,6 +7,7 @@ namespace Districts\UI\Web\Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpNotFoundException;
+use SlimSession\Helper as Session;
 
 use Districts\UI\Web\Redirector;
 use Districts\UI\Web\Factory\RemoveDistrictCommandFactory;
@@ -21,23 +22,29 @@ final class RemoveActionController
 
     private $commandFactory;
 
+    private $session;
+
     private $redirector;
 
     public function __construct(
         DistrictService $districtService,
         RemoveDistrictCommandFactory $commandFactory,
+        Session $session,
         Redirector $redirector
     ) {
         $this->districtService = $districtService;
         $this->commandFactory = $commandFactory;
+        $this->session = $session;
         $this->redirector = $redirector;
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         try {
-            $this->districtService->remove($this->commandFactory->fromRequest($request, $args));
-            // TODO: flash message
+            $removed = $this->districtService->remove($this->commandFactory->fromRequest($request, $args));
+            if ($removed) {
+                $this->session["success.message"] = "District data removed.";
+            }
         } catch (DomainNotFoundException | ApplicationNotFoundException $exception) {
             throw new HttpNotFoundException($request);
         }

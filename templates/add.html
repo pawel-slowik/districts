@@ -6,6 +6,10 @@
     <a href="{{ url_for('list') }}">list of districts</a>
 </p>
 
+{% if errorMessage %}
+<p class="error message">{{ errorMessage }}</p>
+{% endif %}
+
 <form action="" method="post" class="entity">
 
     <div>

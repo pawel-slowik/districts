@@ -39,6 +39,40 @@ form#filter {
     margin-bottom: 1em;
 }
 
+p.message
+{
+	width: 30em;
+	height: 2em;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 2em;
+}
+
+p.message.success
+{
+	background-color: lightgreen;
+	border: solid 2px green;
+}
+
+p.message.error
+{
+	background-color: pink;
+	border: solid 2px red;
+}
+
+p.message a.close
+{
+    text-decoration: none;
+    color: black;
+    float: right;
+    margin-right: 0.5em;
+}
+
+p#close_message:target
+{
+    display: none;
+}
+
 </style>
 
 </body>

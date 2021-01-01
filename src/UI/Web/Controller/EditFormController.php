@@ -51,7 +51,9 @@ final class EditFormController
             "title" => "Edit a district",
             "district" => $district,
             "errors" => $this->session["form.edit.errors"],
+            "errorMessage" => $this->session["form.edit.error.message"],
         ];
+        unset($this->session["form.edit.error.message"]);
         unset($this->session["form.edit.values"]);
         unset($this->session["form.edit.errors"]);
         return $this->view->render($response, "edit.html", $templateData);

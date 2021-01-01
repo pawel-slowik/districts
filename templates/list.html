@@ -13,6 +13,13 @@
 
 {% block content %}
 
+{% if successMessage %}
+<p class="success message" id="close_message">
+    {{ successMessage }}
+    <a class="close" href="#close_message" title="dismiss message">&#x2715;</a>
+</p>
+{% endif %}
+
 <p>
     <a href="{{ url_for('add') }}">add a district</a>
 </p>
