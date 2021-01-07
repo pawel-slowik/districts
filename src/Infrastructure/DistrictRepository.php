@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace Districts\Infrastructure;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
+use Districts\DomainModel\Pagination;
+use Districts\DomainModel\PagedResult;
 
 final class DistrictRepository
 {
@@ -29,8 +32,11 @@ final class DistrictRepository
         return $district;
     }
 
-    public function list(DistrictOrdering $order, ?DistrictFilter $filter = null): array
-    {
+    public function list(
+        DistrictOrdering $order,
+        ?DistrictFilter $filter = null,
+        ?Pagination $pagination = null
+    ): PagedResult {
         $dqlOrderBy = $this->dqlOrderBy($order);
         list($dqlWhere, $dqlParameters) = $this->dqlFilter($filter);
         $dql = "SELECT d, c FROM " . District::class . " d JOIN d.city c";
@@ -44,8 +50,19 @@ final class DistrictRepository
                 $query->setParameter($name, $value);
             }
         }
-        $districts = $query->getResult();
-        return $districts;
+        if ($pagination) {
+            $query->setFirstResult(($pagination->getPageNumber() - 1) * $pagination->getPageSize());
+            $query->setMaxResults($pagination->getPageSize());
+            $paginator = new Paginator($query);
+            $districts = iterator_to_array($paginator);
+            $recordsTotal = count($paginator);
+            $pageSize = $pagination->getPageSize();
+        } else {
+            $districts = $query->getResult();
+            $recordsTotal = count($districts);
+            $pageSize = ($recordsTotal === 0) ? 1 : $recordsTotal;
+        }
+        return new PagedResult($pageSize, $recordsTotal, $districts);
     }
 
     private function dqlOrderBy(DistrictOrdering $order): string

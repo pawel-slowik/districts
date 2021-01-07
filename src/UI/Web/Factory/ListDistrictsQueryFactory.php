@@ -13,12 +13,16 @@ class ListDistrictsQueryFactory
 
     private $filterFactory;
 
+    private $paginationFactory;
+
     public function __construct(
         DistrictOrderingFactory $orderingFactory,
-        DistrictFilterFactory $filterFactory
+        DistrictFilterFactory $filterFactory,
+        PaginationFactory $paginationFactory
     ) {
         $this->orderingFactory = $orderingFactory;
         $this->filterFactory = $filterFactory;
+        $this->paginationFactory = $paginationFactory;
     }
 
     public function fromRequest(Request $request, array $routeArgs): ListDistrictsQuery
@@ -28,9 +32,11 @@ class ListDistrictsQueryFactory
         $queryParams = $request->getQueryParams();
         $filterColumn = $queryParams["filterColumn"] ?? null;
         $filterValue = $queryParams["filterValue"] ?? null;
+        $pageNumber = $queryParams["page"] ?? null;
         return new ListDistrictsQuery(
             $this->orderingFactory->createFromRequestInput($orderColumn, $orderDirection),
             $this->filterFactory->createFromRequestInput($filterColumn, $filterValue),
+            $this->paginationFactory->createFromRequestInput($pageNumber),
         );
     }
 }

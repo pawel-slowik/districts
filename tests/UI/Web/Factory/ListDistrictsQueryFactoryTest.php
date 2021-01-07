@@ -8,6 +8,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Districts\UI\Web\Factory\ListDistrictsQueryFactory;
 use Districts\UI\Web\Factory\DistrictOrderingFactory;
 use Districts\UI\Web\Factory\DistrictFilterFactory;
+use Districts\UI\Web\Factory\PaginationFactory;
 use Districts\Application\Query\ListDistrictsQuery;
 
 use PHPUnit\Framework\TestCase;
@@ -28,6 +29,7 @@ class ListDistrictsQueryFactoryTest extends TestCase
         $this->queryFactory = new ListDistrictsQueryFactory(
             new DistrictOrderingFactory(),
             new DistrictFilterFactory(),
+            new PaginationFactory(),
         );
     }
 
@@ -47,6 +49,7 @@ class ListDistrictsQueryFactoryTest extends TestCase
         $this->assertInstanceOf(ListDistrictsQuery::class, $query);
         $this->assertNotNull($query->getOrdering());
         $this->assertNotNull($query->getFilter());
+        $this->assertNotNull($query->getPagination());
     }
 
     public function testEmptyQuery(): void
@@ -59,5 +62,6 @@ class ListDistrictsQueryFactoryTest extends TestCase
         $this->assertInstanceOf(ListDistrictsQuery::class, $query);
         $this->assertNotNull($query->getOrdering());
         $this->assertNull($query->getFilter());
+        $this->assertNotNull($query->getPagination());
     }
 }

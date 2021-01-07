@@ -81,6 +81,7 @@ class DistrictServiceTest extends TestCase
                 new ListDistrictsQuery(
                     $this->defaultOrder,
                     null,
+                    null,
                 )
             )
         );
@@ -96,6 +97,7 @@ class DistrictServiceTest extends TestCase
             $this->districtService->list(
                 new ListDistrictsQuery(
                     $this->defaultOrder,
+                    null,
                     null,
                 )
             )
@@ -119,6 +121,7 @@ class DistrictServiceTest extends TestCase
                 new ListDistrictsQuery(
                     $this->defaultOrder,
                     null,
+                    null,
                 )
             )
         );
@@ -127,6 +130,7 @@ class DistrictServiceTest extends TestCase
                 new ListDistrictsQuery(
                     $this->defaultOrder,
                     new DistrictFilter(DistrictFilter::TYPE_NAME, "Lorem ipsum"),
+                    null,
                 )
             )
         );

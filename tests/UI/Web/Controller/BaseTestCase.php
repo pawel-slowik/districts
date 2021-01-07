@@ -37,7 +37,7 @@ abstract class BaseTestCase extends TestCase
         return $app->handle($request);
     }
 
-    private function createApp(ContainerInterface $container): App
+    protected function createApp(ContainerInterface $container): App
     {
         $app = new App(new Psr17Factory(), $container);
 
@@ -52,7 +52,7 @@ abstract class BaseTestCase extends TestCase
         return $app;
     }
 
-    private function createRequest(string $method, string $uri, array $data): ServerRequestInterface
+    protected function createRequest(string $method, string $uri, array $data): ServerRequestInterface
     {
         $inputUri = new Uri($uri);
         $queryParams = [];

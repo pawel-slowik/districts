@@ -97,6 +97,19 @@
 
 </table>
 
+{% if pagination %}
+<p class="pagination">
+    pages:
+    {% for page_reference in pagination %}
+        {% if page_reference.url %}
+        <a href="{{ page_reference.url }}" {% if page_reference.isCurrent %}class="current"{% endif %}>{{ page_reference.text }}</a>
+        {% else %}
+            <span>{{ page_reference.text }}</span>
+        {% endif %}
+    {% endfor %}
+</p>
+{% endif %}
+
 <style type="text/css">
 
 table#districts {
@@ -130,6 +143,10 @@ table#districts td.remove {
 table#districts td.area,
 table#districts td.population {
     text-align: right;
+}
+
+p.pagination a.current {
+    font-weight: bold;
 }
     
 </style>

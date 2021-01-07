@@ -7,6 +7,7 @@ namespace Districts\Test\Infrastructure;
 use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
+use Districts\DomainModel\Pagination;
 use Districts\Infrastructure\DistrictRepository;
 
 use PHPUnit\Framework\TestCase;
@@ -56,7 +57,7 @@ class DistrictRepositoryListTest extends TestCase
                 function ($district) {
                     return $district->getCity()->getName();
                 },
-                $this->districtRepository->list($order)
+                iterator_to_array($this->districtRepository->list($order))
             )))
         );
     }
@@ -86,7 +87,7 @@ class DistrictRepositoryListTest extends TestCase
                 function ($district) {
                     return $district->getId();
                 },
-                $this->districtRepository->list($order)
+                iterator_to_array($this->districtRepository->list($order))
             )
         );
     }
@@ -139,7 +140,7 @@ class DistrictRepositoryListTest extends TestCase
             function ($district) {
                 return $district->getId();
             },
-            $this->districtRepository->list($this->defaultOrder, $filter)
+            iterator_to_array($this->districtRepository->list($this->defaultOrder, $filter))
         );
         sort($actualIds);
         $this->assertSame($expectedIds, $actualIds);
@@ -177,5 +178,17 @@ class DistrictRepositoryListTest extends TestCase
                 [2, 3, 5, 6, 10],
             ],
         ];
+    }
+
+    public function testCountSinglePage(): void
+    {
+        $list = $this->districtRepository->list($this->defaultOrder, null, new Pagination(1, 10));
+        $this->assertCount(10, $list);
+    }
+
+    public function testCountPageOutsideOfRange(): void
+    {
+        $list = $this->districtRepository->list($this->defaultOrder, null, new Pagination(999, 10));
+        $this->assertEmpty($list);
     }
 }
