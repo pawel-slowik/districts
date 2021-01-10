@@ -7,6 +7,7 @@ namespace Districts\UI\Web\Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Interfaces\RouteParserInterface;
+use Slim\Routing\RouteContext;
 use Slim\Views\Twig as View;
 use SlimSession\Helper as Session;
 
@@ -56,8 +57,8 @@ final class ListController
             "orderDirection" => $args["direction"] ?? null,
             "filterColumn" => $queryParams["filterColumn"] ?? null,
             "filterValue" => $queryParams["filterValue"] ?? null,
-            "pagination" => iterator_to_array($this->pageReferenceFactory->createPageReferences(
-                $this->routeParser->fullUrlFor($request->getUri(), "list", $args, $request->getQueryParams()),
+            "pagination" => iterator_to_array($this->createPagination(
+                $request,
                 $districts->getPageCount(),
                 is_null($query->getPagination()) ? 1 : $query->getPagination()->getPageNumber(),
             )),
@@ -65,5 +66,32 @@ final class ListController
         ];
         unset($this->session["success.message"]);
         return $this->view->render($response, "list.html", $templateData);
+    }
+
+    private function createPagination(Request $namedRouteRequest, int $pageCount, int $currentPageNumber): \Traversable
+    {
+        return $this->pageReferenceFactory->createPageReferences(
+            $this->createBaseUrlForPagination($namedRouteRequest),
+            $pageCount,
+            $currentPageNumber,
+        );
+    }
+
+    private function createBaseUrlForPagination(Request $namedRouteRequest): string
+    {
+        $routeContext = RouteContext::fromRequest($namedRouteRequest);
+        $route = $routeContext->getRoute();
+        if (is_null($route)) {
+            throw new \InvalidArgumentException();
+        }
+        if (is_null($route->getName())) {
+            throw new \InvalidArgumentException();
+        }
+        return $this->routeParser->fullUrlFor(
+            $namedRouteRequest->getUri(),
+            $route->getName(),
+            $route->getArguments(),
+            $namedRouteRequest->getQueryParams(),
+        );
     }
 }
