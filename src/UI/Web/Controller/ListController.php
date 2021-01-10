@@ -50,6 +50,8 @@ final class ListController
         $query = $this->queryFactory->fromRequest($request, $args);
         $districts = $this->districtService->list($query);
         $queryParams = $request->getQueryParams();
+        $pageCount = $districts->getPageCount();
+        $currentPageNumber = is_null($query->getPagination()) ? 1 : $query->getPagination()->getPageNumber();
         $templateData = [
             "title" => "List of districts",
             "districts" => $districts,
@@ -57,11 +59,13 @@ final class ListController
             "orderDirection" => $args["direction"] ?? null,
             "filterColumn" => $queryParams["filterColumn"] ?? null,
             "filterValue" => $queryParams["filterValue"] ?? null,
-            "pagination" => iterator_to_array($this->createPagination(
-                $request,
-                $districts->getPageCount(),
-                is_null($query->getPagination()) ? 1 : $query->getPagination()->getPageNumber(),
-            )),
+            "pagination" => iterator_to_array(
+                $this->createPagination(
+                    $request,
+                    $pageCount,
+                    $currentPageNumber,
+                )
+            ),
             "successMessage" => $this->session["success.message"],
         ];
         unset($this->session["success.message"]);
