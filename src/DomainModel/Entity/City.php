@@ -64,7 +64,7 @@ class City
         string $name,
         float $area,
         int $population
-    ): District {
+    ): void {
         $districtValidator = new DistrictValidator();
         $validationResult = $districtValidator->validate($name, $area, $population);
         if (!$validationResult->isOk()) {
@@ -74,7 +74,6 @@ class City
         $district->setName($name);
         $district->setArea($area);
         $district->setPopulation($population);
-        return $district;
     }
 
     public function removeDistrict(int $districtId): void
