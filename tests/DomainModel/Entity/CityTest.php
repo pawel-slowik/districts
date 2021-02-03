@@ -61,14 +61,7 @@ class CityTest extends TestCase
 
     public function testSuccessfullUpdate(): void
     {
-        $city = $this->createTestCity();
-        $district = $city->addDistrict("test", 123.4, 5678);
-
-        // HACK - the id is managed by Doctrine
-        $reflection = new \ReflectionClass($district);
-        $property = $reflection->getProperty("id");
-        $property->setAccessible(true);
-        $property->setValue($district, 123456789);
+        $city = $this->createTestCityWithDistrict();
 
         $city->updateDistrict(123456789, "updated name", 1.2, 34);
 
@@ -87,14 +80,7 @@ class CityTest extends TestCase
 
     public function testSuccessfullRemove(): void
     {
-        $city = $this->createTestCity();
-        $district = $city->addDistrict("test", 123.4, 5678);
-
-        // HACK - the id is managed by Doctrine
-        $reflection = new \ReflectionClass($district);
-        $property = $reflection->getProperty("id");
-        $property->setAccessible(true);
-        $property->setValue($district, 123456789);
+        $city = $this->createTestCityWithDistrict();
 
         $city->removeDistrict(123456789);
         $this->assertCount(0, $city->listDistricts());
@@ -111,6 +97,20 @@ class CityTest extends TestCase
     private function createTestCity(): City
     {
         $city = new City("test");
+        return $city;
+    }
+
+    private function createTestCityWithDistrict(): City
+    {
+        $city = $this->createTestCity();
+        $district = $city->addDistrict("test", 123.4, 5678);
+
+        // HACK - the id is managed by Doctrine
+        $reflection = new \ReflectionClass($district);
+        $property = $reflection->getProperty("id");
+        $property->setAccessible(true);
+        $property->setValue($district, 123456789);
+
         return $city;
     }
 }
