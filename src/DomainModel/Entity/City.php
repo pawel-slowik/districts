@@ -97,11 +97,6 @@ class City
         return $this->name;
     }
 
-    public function listDistricts(): iterable
-    {
-        return $this->districts;
-    }
-
     private function getDistrictById(int $districtId): District
     {
         foreach ($this->districts as $district) {
