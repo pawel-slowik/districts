@@ -42,7 +42,6 @@ final class EditActionController
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $parsed = $request->getParsedBody();
         try {
             $command = $this->commandFactory->fromRequest($request, $args);
             $this->districtService->update($command);
@@ -53,7 +52,7 @@ final class EditActionController
         } catch (ApplicationNotFoundException | DomainNotFoundException $notFoundException) {
             throw new HttpNotFoundException($request);
         } catch (RequestValidationException | DomainValidationException $validationException) {
-            $this->session["form.edit.values"] = $parsed;
+            $this->session["form.edit.values"] = $request->getParsedBody();
             $this->session["form.edit.error.message"] = "An error occured while saving district data.";
             $this->session["form.edit.errors"] = array_fill_keys($validationException->getErrors(), true);
             return $this->redirector->redirect($request, $response, "edit", ["id" => $args["id"]]);
