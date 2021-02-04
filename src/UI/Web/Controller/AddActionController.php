@@ -40,7 +40,6 @@ final class AddActionController
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $parsed = $request->getParsedBody();
         try {
             $command = $this->commandFactory->fromRequest($request);
             $this->districtService->add($command);
@@ -49,7 +48,7 @@ final class AddActionController
             unset($this->session["form.add.errors"]);
             return $this->redirector->redirect($request, $response, "list");
         } catch (DomainValidationException | RequestValidationException $exception) {
-            $this->session["form.add.values"] = $parsed;
+            $this->session["form.add.values"] = $request->getParsedBody();
             $this->session["form.add.error.message"] = "An error occured while saving district data.";
             $this->session["form.add.errors"] = array_fill_keys($exception->getErrors(), true);
             return $this->redirector->redirect($request, $response, "add");
