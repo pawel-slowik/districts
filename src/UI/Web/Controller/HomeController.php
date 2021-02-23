@@ -21,6 +21,6 @@ final class HomeController
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        return $this->redirector->redirect($request, $response, "list");
+        return $this->redirector->redirect($request, "list");
     }
 }

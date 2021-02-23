@@ -38,6 +38,7 @@ final class RemoveActionController
         $this->redirector = $redirector;
     }
 
+    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         try {
@@ -48,6 +49,6 @@ final class RemoveActionController
         } catch (DomainNotFoundException | ApplicationNotFoundException $exception) {
             throw new HttpNotFoundException($request);
         }
-        return $this->redirector->redirect($request, $response, "list");
+        return $this->redirector->redirect($request, "list");
     }
 }

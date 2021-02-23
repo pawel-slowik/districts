@@ -6,7 +6,8 @@ namespace Districts\UI\Web;
 
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ResponseInterface;
+use Nyholm\Psr7\Response;
 use Slim\Interfaces\RouteParserInterface;
 
 class Redirector
@@ -20,11 +21,10 @@ class Redirector
 
     public function redirect(
         Request $request,
-        Response $response,
         string $routeName,
         array $routeData = []
-    ): Response {
+    ): ResponseInterface {
         $url = $this->routeParser->fullUrlFor($request->getUri(), $routeName, $routeData);
-        return $response->withHeader("Location", $url)->withStatus(StatusCode::STATUS_FOUND);
+        return (new Response())->withHeader("Location", $url)->withStatus(StatusCode::STATUS_FOUND);
     }
 }
