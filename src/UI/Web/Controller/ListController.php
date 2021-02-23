@@ -6,14 +6,12 @@ namespace Districts\UI\Web\Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Interfaces\RouteParserInterface;
-use Slim\Routing\RouteContext;
 use Slim\Views\Twig as View;
 use SlimSession\Helper as Session;
 
 use Districts\Application\DistrictService;
 use Districts\UI\Web\Factory\ListDistrictsQueryFactory;
-use Districts\UI\Web\Factory\PageReferenceFactory;
+use Districts\UI\Web\Factory\RoutedPageReferenceFactory;
 
 final class ListController
 {
@@ -25,8 +23,6 @@ final class ListController
 
     private $view;
 
-    private $routeParser;
-
     private $pageReferenceFactory;
 
     public function __construct(
@@ -34,14 +30,12 @@ final class ListController
         ListDistrictsQueryFactory $queryFactory,
         Session $session,
         View $view,
-        RouteParserInterface $routeParser,
-        PageReferenceFactory $pageReferenceFactory
+        RoutedPageReferenceFactory $pageReferenceFactory
     ) {
         $this->districtService = $districtService;
         $this->queryFactory = $queryFactory;
         $this->session = $session;
         $this->view = $view;
-        $this->routeParser = $routeParser;
         $this->pageReferenceFactory = $pageReferenceFactory;
     }
 
@@ -60,7 +54,7 @@ final class ListController
             "filterColumn" => $queryParams["filterColumn"] ?? null,
             "filterValue" => $queryParams["filterValue"] ?? null,
             "pagination" => iterator_to_array(
-                $this->createPagination(
+                $this->pageReferenceFactory->createPageReferences(
                     $request,
                     $pageCount,
                     $currentPageNumber,
@@ -70,32 +64,5 @@ final class ListController
         ];
         unset($this->session["success.message"]);
         return $this->view->render($response, "list.html", $templateData);
-    }
-
-    private function createPagination(Request $namedRouteRequest, int $pageCount, int $currentPageNumber): \Traversable
-    {
-        return $this->pageReferenceFactory->createPageReferences(
-            $this->createBaseUrlForPagination($namedRouteRequest),
-            $pageCount,
-            $currentPageNumber,
-        );
-    }
-
-    private function createBaseUrlForPagination(Request $namedRouteRequest): string
-    {
-        $routeContext = RouteContext::fromRequest($namedRouteRequest);
-        $route = $routeContext->getRoute();
-        if (is_null($route)) {
-            throw new \InvalidArgumentException();
-        }
-        if (is_null($route->getName())) {
-            throw new \InvalidArgumentException();
-        }
-        return $this->routeParser->fullUrlFor(
-            $namedRouteRequest->getUri(),
-            $route->getName(),
-            $route->getArguments(),
-            $namedRouteRequest->getQueryParams(),
-        );
     }
 }
