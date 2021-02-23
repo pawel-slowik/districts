@@ -49,6 +49,6 @@ final class RemoveActionController
         } catch (DomainNotFoundException | ApplicationNotFoundException $exception) {
             throw new HttpNotFoundException($request);
         }
-        return $this->redirector->redirect($request, "list");
+        return $this->redirector->redirect($request->getUri(), "list");
     }
 }

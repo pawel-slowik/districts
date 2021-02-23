@@ -49,14 +49,14 @@ final class EditActionController
             $this->session["success.message"] = "District data saved successfully.";
             unset($this->session["form.edit.values"]);
             unset($this->session["form.edit.errors"]);
-            return $this->redirector->redirect($request, "list");
+            return $this->redirector->redirect($request->getUri(), "list");
         } catch (ApplicationNotFoundException | DomainNotFoundException $notFoundException) {
             throw new HttpNotFoundException($request);
         } catch (RequestValidationException | DomainValidationException $validationException) {
             $this->session["form.edit.values"] = $request->getParsedBody();
             $this->session["form.edit.error.message"] = "An error occured while saving district data.";
             $this->session["form.edit.errors"] = array_fill_keys($validationException->getErrors(), true);
-            return $this->redirector->redirect($request, "edit", ["id" => $args["id"]]);
+            return $this->redirector->redirect($request->getUri(), "edit", ["id" => $args["id"]]);
         }
     }
 }

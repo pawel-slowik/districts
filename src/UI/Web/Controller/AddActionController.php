@@ -46,12 +46,12 @@ final class AddActionController
             $this->session["success.message"] = "District data saved successfully.";
             unset($this->session["form.add.values"]);
             unset($this->session["form.add.errors"]);
-            return $this->redirector->redirect($request, "list");
+            return $this->redirector->redirect($request->getUri(), "list");
         } catch (DomainValidationException | RequestValidationException $exception) {
             $this->session["form.add.values"] = $request->getParsedBody();
             $this->session["form.add.error.message"] = "An error occured while saving district data.";
             $this->session["form.add.errors"] = array_fill_keys($exception->getErrors(), true);
-            return $this->redirector->redirect($request, "add");
+            return $this->redirector->redirect($request->getUri(), "add");
         }
     }
 }
