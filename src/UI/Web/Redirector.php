@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Districts\UI\Web;
 
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
+use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
-use Nyholm\Psr7\Response;
 use Slim\Interfaces\RouteParserInterface;
 
 class Redirector

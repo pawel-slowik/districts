@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Districts\UI\Web\ErrorHandler;
 
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface;
 use Nyholm\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Interfaces\ErrorHandlerInterface;
 
 class HttpNotFoundHandler implements ErrorHandlerInterface

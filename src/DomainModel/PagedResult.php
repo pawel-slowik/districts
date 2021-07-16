@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel;
 
-use ArrayIterator;
 use ArrayAccess;
+use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use Traversable;

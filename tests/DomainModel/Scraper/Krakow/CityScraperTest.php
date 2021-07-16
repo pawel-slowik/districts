@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\Test\DomainModel\Scraper\Krakow;
 
-use Districts\DomainModel\Scraper\HtmlFinder;
-use Districts\DomainModel\Scraper\HtmlFetcher;
 use Districts\DomainModel\Scraper\DistrictDTO;
+use Districts\DomainModel\Scraper\HtmlFetcher;
+use Districts\DomainModel\Scraper\HtmlFinder;
 use Districts\DomainModel\Scraper\Krakow\CityScraper;
 use Districts\Test\DomainModel\Scraper\HtmlFetcherMockBuilder;
 use PHPUnit\Framework\TestCase;

@@ -6,7 +6,6 @@ namespace Districts\Test\UI\Web\Factory;
 
 use Districts\DomainModel\DistrictOrdering;
 use Districts\UI\Web\Factory\DistrictOrderingFactory;
-
 use PHPUnit\Framework\TestCase;
 
 /**

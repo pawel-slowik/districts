@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\CLI;
 
-use Districts\UI\CLI\UpdateCommand;
 use Districts\Application\Importer;
 use Districts\Application\ProgressReporter;
 use Districts\DomainModel\Scraper\CityDTO;
 use Districts\DomainModel\Scraper\HtmlFetcher;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
-
+use Districts\UI\CLI\UpdateCommand;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * @covers \Districts\UI\CLI\UpdateCommand

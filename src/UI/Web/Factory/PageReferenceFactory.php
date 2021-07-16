@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web\Factory;
 
-use Laminas\Uri\Uri;
 use Districts\UI\Web\PageReference;
+use Laminas\Uri\Uri;
 
 class PageReferenceFactory
 {

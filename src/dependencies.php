@@ -7,11 +7,10 @@ use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\DistrictRepository;
 use Districts\Infrastructure\DoctrineCityRepository;
 use Districts\Infrastructure\DoctrineDistrictRepository;
-use Slim\App;
-use Slim\Views\Twig;
-use Slim\Interfaces\RouteParserInterface;
-
 use Doctrine\ORM\EntityManager;
+use Slim\App;
+use Slim\Interfaces\RouteParserInterface;
+use Slim\Views\Twig;
 
 return function (Container $container, App $app): void {
     $dependencies = [

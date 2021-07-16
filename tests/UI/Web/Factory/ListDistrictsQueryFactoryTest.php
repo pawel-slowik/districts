@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\Factory;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Districts\UI\Web\Factory\ListDistrictsQueryFactory;
-use Districts\UI\Web\Factory\DistrictOrderingFactory;
-use Districts\UI\Web\Factory\DistrictFilterFactory;
-use Districts\UI\Web\Factory\PaginationFactory;
 use Districts\Application\Query\ListDistrictsQuery;
-
+use Districts\UI\Web\Factory\DistrictFilterFactory;
+use Districts\UI\Web\Factory\DistrictOrderingFactory;
+use Districts\UI\Web\Factory\ListDistrictsQueryFactory;
+use Districts\UI\Web\Factory\PaginationFactory;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 /**
  * @covers \Districts\Application\Query\ListDistrictsQuery

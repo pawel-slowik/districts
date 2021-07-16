@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Districts\Test\DomainModel;
 
 use Districts\DomainModel\DistrictOrdering;
-
 use PHPUnit\Framework\TestCase;
 
 /**

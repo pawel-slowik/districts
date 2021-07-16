@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\Controller;
 
-use Psr\Http\Message\ResponseInterface;
 use DI\Container;
-use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Districts\Test\Infrastructure\FixtureTool;
 use Doctrine\ORM\EntityManager;
+use Fig\Http\Message\StatusCodeInterface as StatusCode;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * @covers \Districts\UI\Web\Controller\ListController

@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web\Controller;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Exception\HttpNotFoundException;
-use SlimSession\Helper as Session;
-
-use Districts\UI\Web\Redirector;
-use Districts\UI\Web\Factory\RemoveDistrictCommandFactory;
-
 use Districts\Application\DistrictService;
 use Districts\Application\NotFoundException as ApplicationNotFoundException;
 use Districts\DomainModel\NotFoundException as DomainNotFoundException;
+use Districts\UI\Web\Factory\RemoveDistrictCommandFactory;
+use Districts\UI\Web\Redirector;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpNotFoundException;
+use SlimSession\Helper as Session;
 
 final class RemoveActionController
 {

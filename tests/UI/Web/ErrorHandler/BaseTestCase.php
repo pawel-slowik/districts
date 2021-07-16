@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\ErrorHandler;
 
-use Psr\Http\Message\ServerRequestInterface;
-
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ServerRequestInterface;
 
 class BaseTestCase extends TestCase
 {

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Test\DomainModel;
 
-use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\DistrictValidator;
+use Districts\DomainModel\Entity\City;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

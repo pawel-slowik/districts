@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace Districts\Test\Application;
 
+use Districts\Application\Importer;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
-
-use Districts\Application\Importer;
-use Districts\DomainModel\ValidationException;
 use Districts\DomainModel\Scraper\CityDTO;
 use Districts\DomainModel\Scraper\DistrictDTO;
+use Districts\DomainModel\ValidationException;
 use Districts\Infrastructure\DoctrineCityRepository;
 use Districts\Infrastructure\DoctrineDistrictRepository;
-
 use Districts\Test\Infrastructure\FixtureTool;
 use PHPUnit\Framework\TestCase;
 

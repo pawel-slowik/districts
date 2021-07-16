@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Districts\Test\UI\Web;
 
 use DI\Container;
-use Nyholm\Psr7\Factory\Psr17Factory;
-use Slim\App;
 use Districts\UI\Web\RoutingConfiguration;
+use Nyholm\Psr7\Factory\Psr17Factory;
 use PHPUnit\Framework\TestCase;
+use Slim\App;
 
 /**
  * @covers \Districts\UI\Web\RoutingConfiguration

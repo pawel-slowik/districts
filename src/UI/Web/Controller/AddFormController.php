@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web\Controller;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
+use Districts\Application\CityIterator;
 use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig as View;
 use SlimSession\Helper as Session;
-
-use Districts\Application\CityIterator;
 
 final class AddFormController
 {

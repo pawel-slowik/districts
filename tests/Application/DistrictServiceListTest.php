@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace Districts\Test\Application;
 
-use Districts\DomainModel\Entity\District;
-
-use Districts\Application\Query\ListDistrictsQuery;
 use Districts\Application\DistrictService;
+use Districts\Application\Query\ListDistrictsQuery;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
-
+use Districts\DomainModel\Entity\District;
 use Districts\Infrastructure\DoctrineCityRepository;
 use Districts\Infrastructure\DoctrineDistrictRepository;
-
 use Districts\Test\Infrastructure\FixtureTool;
 use PHPUnit\Framework\TestCase;
 

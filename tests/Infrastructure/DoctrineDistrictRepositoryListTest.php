@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Districts\Test\Infrastructure;
 
-use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
+use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\Pagination;
 use Districts\Infrastructure\DoctrineDistrictRepository;
-
 use PHPUnit\Framework\TestCase;
 
 /**

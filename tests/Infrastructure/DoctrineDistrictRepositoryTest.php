@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Districts\Test\Infrastructure;
 
-use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\DistrictOrdering;
+use Districts\DomainModel\Entity\District;
 use Districts\Infrastructure\DoctrineDistrictRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
-
 use PHPUnit\Framework\TestCase;
 
 /**

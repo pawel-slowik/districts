@@ -4,20 +4,18 @@ declare(strict_types=1);
 
 namespace Districts\UI\CLI;
 
+use Districts\Application\Importer;
+use Districts\DomainModel\Scraper\CityDTO;
+use Districts\DomainModel\Scraper\Gdansk\CityScraper as GdanskScraper;
+use Districts\DomainModel\Scraper\HtmlFetcher;
+use Districts\DomainModel\Scraper\HtmlFinder;
+use Districts\DomainModel\Scraper\Krakow\CityScraper as KrakowScraper;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Helper\ProgressBar;
-
-use Districts\Application\Importer;
-
-use Districts\DomainModel\Scraper\CityDTO;
-use Districts\DomainModel\Scraper\HtmlFinder;
-use Districts\DomainModel\Scraper\HtmlFetcher;
-use Districts\DomainModel\Scraper\Gdansk\CityScraper as GdanskScraper;
-use Districts\DomainModel\Scraper\Krakow\CityScraper as KrakowScraper;
 
 final class UpdateCommand extends Command
 {

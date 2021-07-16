@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Districts\Infrastructure;
 
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Tools\Pagination\Paginator;
-
-use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\DistrictRepository;
-use Districts\DomainModel\Pagination;
+use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\PagedResult;
+use Districts\DomainModel\Pagination;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 final class DoctrineDistrictRepository implements DistrictRepository
 {

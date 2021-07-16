@@ -5,11 +5,11 @@ declare(strict_types=1);
 
 require __DIR__ . "/vendor/autoload.php";
 
-use Symfony\Component\Console\Application;
-use Districts\UI\CLI\UpdateCommand;
-use Districts\Infrastructure\DoctrineCityRepository;
 use Districts\Application\Importer;
+use Districts\Infrastructure\DoctrineCityRepository;
 use Districts\Infrastructure\GuzzleHtmlFetcher;
+use Districts\UI\CLI\UpdateCommand;
+use Symfony\Component\Console\Application;
 
 $entityManagerFactory = require "doctrine-bootstrap.php";
 $entityManager = $entityManagerFactory();

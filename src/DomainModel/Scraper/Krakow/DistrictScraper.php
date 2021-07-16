@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Scraper\Krakow;
 
+use Districts\DomainModel\Scraper\DistrictDTO;
 use Districts\DomainModel\Scraper\HtmlFinder;
 use Districts\DomainModel\Scraper\RuntimeException;
-use Districts\DomainModel\Scraper\DistrictDTO;
 
 final class DistrictScraper
 {

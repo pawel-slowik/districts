@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Districts\Test\DomainModel\Scraper\Krakow;
 
-use Districts\DomainModel\Scraper\HtmlFinder;
-use Districts\DomainModel\Scraper\RuntimeException;
 use Districts\DomainModel\Scraper\DistrictDTO;
+use Districts\DomainModel\Scraper\HtmlFinder;
 use Districts\DomainModel\Scraper\Krakow\DistrictScraper;
+use Districts\DomainModel\Scraper\RuntimeException;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -6,7 +6,6 @@ namespace Districts\Test\UI\Web\Factory;
 
 use Districts\DomainModel\DistrictFilter;
 use Districts\UI\Web\Factory\DistrictFilterFactory;
-
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web;
 
-use Slim\App;
 use Districts\UI\Web\Controller\{
+    AddActionController,
+    AddFormController,
+    EditActionController,
+    EditFormController,
     HomeController,
     ListController,
-    AddFormController,
-    AddActionController,
-    EditFormController,
-    EditActionController,
-    RemoveFormController,
     RemoveActionController,
+    RemoveFormController,
 };
+use Slim\App;
 
 class RoutingConfiguration
 {

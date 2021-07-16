@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\CLI;
 
-use Districts\UI\CLI\ScraperCityFilter;
 use Districts\DomainModel\Scraper\CityScraper;
-
+use Districts\UI\CLI\ScraperCityFilter;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

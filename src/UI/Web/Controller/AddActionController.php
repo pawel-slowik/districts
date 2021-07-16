@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web\Controller;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use SlimSession\Helper as Session;
-
-use Districts\UI\Web\Redirector;
-use Districts\UI\Web\Factory\AddDistrictCommandFactory;
-
 use Districts\Application\DistrictService;
 use Districts\Application\ValidationException as RequestValidationException;
 use Districts\DomainModel\ValidationException as DomainValidationException;
+use Districts\UI\Web\Factory\AddDistrictCommandFactory;
+use Districts\UI\Web\Redirector;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use SlimSession\Helper as Session;
 
 final class AddActionController
 {

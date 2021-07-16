@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web\Controller;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-
 use Districts\UI\Web\Redirector;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 final class HomeController
 {

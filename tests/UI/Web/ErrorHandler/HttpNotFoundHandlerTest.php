@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\ErrorHandler;
 
+use Districts\UI\Web\ErrorHandler\HttpNotFoundHandler;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Psr\Http\Message\ResponseInterface;
-
-use Districts\UI\Web\ErrorHandler\HttpNotFoundHandler;
 
 /**
  * @covers \Districts\UI\Web\ErrorHandler\HttpNotFoundHandler

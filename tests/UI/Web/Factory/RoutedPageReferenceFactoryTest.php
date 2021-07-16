@@ -4,20 +4,17 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\Factory;
 
+use Districts\UI\Web\Factory\PageReferenceFactory;
+use Districts\UI\Web\Factory\RoutedPageReferenceFactory;
+use Districts\UI\Web\PageReference;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
-
 use Slim\Interfaces\RouteInterface;
 use Slim\Interfaces\RouteParserInterface;
 use Slim\Routing\RouteContext;
 use Slim\Routing\RoutingResults;
-
-use Districts\UI\Web\PageReference;
-use Districts\UI\Web\Factory\PageReferenceFactory;
-use Districts\UI\Web\Factory\RoutedPageReferenceFactory;
-
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Districts\UI\Web\Factory\RoutedPageReferenceFactory

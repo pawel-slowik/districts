@@ -6,7 +6,6 @@ namespace Districts\Test\UI\Web\Factory;
 
 use Districts\DomainModel\Pagination;
 use Districts\UI\Web\Factory\PaginationFactory;
-
 use PHPUnit\Framework\TestCase;
 
 /**

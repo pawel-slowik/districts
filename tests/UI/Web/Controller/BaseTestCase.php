@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\Controller;
 
-use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use DI\Container;
+use Districts\Test\Infrastructure\FixtureTool;
+use Districts\UI\Web\RoutingConfiguration;
+use Doctrine\ORM\EntityManager;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7\ServerRequest;
 use Nyholm\Psr7\Uri;
-use Slim\App;
-use Districts\UI\Web\RoutingConfiguration;
 use PHPUnit\Framework\TestCase;
-use Districts\Test\Infrastructure\FixtureTool;
-use Doctrine\ORM\EntityManager;
+use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Slim\App;
 
 abstract class BaseTestCase extends TestCase
 {

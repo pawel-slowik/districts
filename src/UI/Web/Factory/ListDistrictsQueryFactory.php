@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web\Factory;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Districts\Application\Query\ListDistrictsQuery;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class ListDistrictsQueryFactory
 {

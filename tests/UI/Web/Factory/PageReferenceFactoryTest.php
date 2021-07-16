@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\Factory;
 
-use Districts\UI\Web\PageReference;
 use Districts\UI\Web\Factory\PageReferenceFactory;
-
+use Districts\UI\Web\PageReference;
 use PHPUnit\Framework\TestCase;
 
 /**

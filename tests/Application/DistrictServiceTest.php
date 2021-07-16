@@ -7,21 +7,17 @@ namespace Districts\Test\Application;
 use Districts\Application\Command\AddDistrictCommand;
 use Districts\Application\Command\RemoveDistrictCommand;
 use Districts\Application\Command\UpdateDistrictCommand;
+use Districts\Application\DistrictService;
+use Districts\Application\NotFoundException;
 use Districts\Application\Query\GetDistrictQuery;
 use Districts\Application\Query\ListDistrictsQuery;
-
-use Districts\DomainModel\Entity\District;
+use Districts\Application\ValidationException as RequestValidationException;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
+use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\ValidationException as DomainValidationException;
-
-use Districts\Application\DistrictService;
-use Districts\Application\ValidationException as RequestValidationException;
-use Districts\Application\NotFoundException;
-
 use Districts\Infrastructure\DoctrineCityRepository;
 use Districts\Infrastructure\DoctrineDistrictRepository;
-
 use Districts\Test\Infrastructure\FixtureTool;
 use PHPUnit\Framework\TestCase;
 

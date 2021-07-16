@@ -5,9 +5,9 @@ declare(strict_types=1);
 require __DIR__ . "/../vendor/autoload.php";
 
 use DI\Container;
+use Districts\UI\Web\RoutingConfiguration;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Slim\App;
-use Districts\UI\Web\RoutingConfiguration;
 
 $container = new Container();
 $app = new App(new Psr17Factory(), $container);

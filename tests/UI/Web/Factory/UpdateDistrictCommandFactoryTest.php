@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\Factory;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
 use Districts\Application\Command\UpdateDistrictCommand;
 use Districts\Application\ValidationException;
-
-use PHPUnit\Framework\TestCase;
+use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 /**
  * @covers \Districts\Application\Command\UpdateDistrictCommand

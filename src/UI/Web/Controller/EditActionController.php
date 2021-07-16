@@ -4,19 +4,17 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web\Controller;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Exception\HttpNotFoundException;
-use SlimSession\Helper as Session;
-
-use Districts\UI\Web\Redirector;
-use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
-
 use Districts\Application\DistrictService;
 use Districts\Application\NotFoundException as ApplicationNotFoundException;
 use Districts\Application\ValidationException as RequestValidationException;
 use Districts\DomainModel\NotFoundException as DomainNotFoundException;
 use Districts\DomainModel\ValidationException as DomainValidationException;
+use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
+use Districts\UI\Web\Redirector;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpNotFoundException;
+use SlimSession\Helper as Session;
 
 final class EditActionController
 {

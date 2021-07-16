@@ -6,7 +6,6 @@ namespace Districts\Infrastructure;
 
 use Districts\DomainModel\Scraper\HtmlFetcher;
 use Districts\DomainModel\Scraper\RuntimeException;
-
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use GuzzleHttp\Client as HttpClient;
 

@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Entity;
 
+use Districts\DomainModel\DistrictValidator;
 use Districts\DomainModel\NotFoundException;
 use Districts\DomainModel\ValidationException;
-use Districts\DomainModel\DistrictValidator;
-
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
