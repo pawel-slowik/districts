@@ -19,8 +19,8 @@ use Districts\Application\DistrictService;
 use Districts\Application\ValidationException as RequestValidationException;
 use Districts\Application\NotFoundException;
 
-use Districts\Infrastructure\DistrictRepository;
 use Districts\Infrastructure\DoctrineCityRepository;
+use Districts\Infrastructure\DoctrineDistrictRepository;
 
 use Districts\Test\Infrastructure\FixtureTool;
 use PHPUnit\Framework\TestCase;
@@ -50,7 +50,7 @@ class DistrictServiceTest extends TestCase
         ]);
         $cityRepository = new DoctrineCityRepository($entityManager);
         $this->districtService = new DistrictService(
-            new DistrictRepository($entityManager),
+            new DoctrineDistrictRepository($entityManager),
             $cityRepository
         );
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);

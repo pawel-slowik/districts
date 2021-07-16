@@ -10,10 +10,11 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
+use Districts\DomainModel\DistrictRepository;
 use Districts\DomainModel\Pagination;
 use Districts\DomainModel\PagedResult;
 
-final class DistrictRepository
+final class DoctrineDistrictRepository implements DistrictRepository
 {
     private $entityManager;
 

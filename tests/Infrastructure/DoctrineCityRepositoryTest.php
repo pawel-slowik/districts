@@ -7,8 +7,8 @@ namespace Districts\Test\Infrastructure;
 use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
-use Districts\Infrastructure\DistrictRepository;
 use Districts\Infrastructure\DoctrineCityRepository;
+use Districts\Infrastructure\DoctrineDistrictRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 
 use PHPUnit\Framework\TestCase;
@@ -24,7 +24,7 @@ class DoctrineCityRepositoryTest extends TestCase
     private $cityRepository;
 
     /**
-     * @var DistrictRepository
+     * @var DoctrineDistrictRepository
      */
     private $districtRepository;
 
@@ -37,7 +37,7 @@ class DoctrineCityRepositoryTest extends TestCase
             "tests/Infrastructure/data/districts.sql",
         ]);
         $this->cityRepository = new DoctrineCityRepository($entityManager);
-        $this->districtRepository = new DistrictRepository($entityManager);
+        $this->districtRepository = new DoctrineDistrictRepository($entityManager);
     }
 
     public function testGet(): void

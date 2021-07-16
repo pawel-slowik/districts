@@ -10,10 +10,10 @@ use Districts\Application\Command\UpdateDistrictCommand;
 use Districts\Application\Query\GetDistrictQuery;
 use Districts\Application\Query\ListDistrictsQuery;
 use Districts\DomainModel\CityRepository;
+use Districts\DomainModel\DistrictRepository;
 use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\PagedResult;
-use Districts\Infrastructure\DistrictRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 
 class DistrictService

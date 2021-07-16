@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 use DI\Container;
 use Districts\DomainModel\CityRepository;
+use Districts\DomainModel\DistrictRepository;
 use Districts\Infrastructure\DoctrineCityRepository;
+use Districts\Infrastructure\DoctrineDistrictRepository;
 use Slim\App;
 use Slim\Views\Twig;
 use Slim\Interfaces\RouteParserInterface;
@@ -37,6 +39,10 @@ return function (Container $container, App $app): void {
 
         CityRepository::class => function ($container) {
             return $container->get(DoctrineCityRepository::class);
+        },
+
+        DistrictRepository::class => function ($container) {
+            return $container->get(DoctrineDistrictRepository::class);
         },
 
     ];

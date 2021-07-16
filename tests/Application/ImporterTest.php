@@ -11,8 +11,8 @@ use Districts\Application\Importer;
 use Districts\DomainModel\ValidationException;
 use Districts\DomainModel\Scraper\CityDTO;
 use Districts\DomainModel\Scraper\DistrictDTO;
-use Districts\Infrastructure\DistrictRepository;
 use Districts\Infrastructure\DoctrineCityRepository;
+use Districts\Infrastructure\DoctrineDistrictRepository;
 
 use Districts\Test\Infrastructure\FixtureTool;
 use PHPUnit\Framework\TestCase;
@@ -28,7 +28,7 @@ class ImporterTest extends TestCase
     private $importer;
 
     /**
-     * @var DistrictRepository
+     * @var DoctrineDistrictRepository
      */
     private $districtRepository;
 
@@ -45,7 +45,7 @@ class ImporterTest extends TestCase
             "tests/Infrastructure/data/cities.sql",
             "tests/Infrastructure/data/districts.sql",
         ]);
-        $this->districtRepository = new DistrictRepository($entityManager);
+        $this->districtRepository = new DoctrineDistrictRepository($entityManager);
         $this->importer = new Importer(new DoctrineCityRepository($entityManager));
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }

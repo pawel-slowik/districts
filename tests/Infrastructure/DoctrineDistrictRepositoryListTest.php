@@ -8,17 +8,17 @@ use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\Pagination;
-use Districts\Infrastructure\DistrictRepository;
+use Districts\Infrastructure\DoctrineDistrictRepository;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Infrastructure\DistrictRepository
+ * @covers \Districts\Infrastructure\DoctrineDistrictRepository
  */
-class DistrictRepositoryListTest extends TestCase
+class DoctrineDistrictRepositoryListTest extends TestCase
 {
     /**
-     * @var DistrictRepository
+     * @var DoctrineDistrictRepository
      */
     private $districtRepository;
 
@@ -35,7 +35,7 @@ class DistrictRepositoryListTest extends TestCase
             "tests/Infrastructure/data/cities.sql",
             "tests/Infrastructure/data/districts.sql",
         ]);
-        $this->districtRepository = new DistrictRepository($entityManager);
+        $this->districtRepository = new DoctrineDistrictRepository($entityManager);
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
 

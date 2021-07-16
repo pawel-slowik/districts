@@ -11,8 +11,8 @@ use Districts\Application\DistrictService;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 
-use Districts\Infrastructure\DistrictRepository;
 use Districts\Infrastructure\DoctrineCityRepository;
+use Districts\Infrastructure\DoctrineDistrictRepository;
 
 use Districts\Test\Infrastructure\FixtureTool;
 use PHPUnit\Framework\TestCase;
@@ -37,7 +37,7 @@ class DistrictServiceListTest extends TestCase
         ]);
         $cityRepository = new DoctrineCityRepository($entityManager);
         $this->districtService = new DistrictService(
-            new DistrictRepository($entityManager),
+            new DoctrineDistrictRepository($entityManager),
             $cityRepository
         );
     }
