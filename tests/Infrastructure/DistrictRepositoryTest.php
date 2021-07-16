@@ -6,7 +6,6 @@ namespace Districts\Test\Infrastructure;
 
 use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\DistrictOrdering;
-use Districts\Infrastructure\CityRepository;
 use Districts\Infrastructure\DistrictRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 
@@ -23,11 +22,6 @@ class DistrictRepositoryTest extends TestCase
     private $districtRepository;
 
     /**
-     * @var CityRepository
-     */
-    private $cityRepository;
-
-    /**
      * @var DistrictOrdering
      */
     private $defaultOrder;
@@ -41,7 +35,6 @@ class DistrictRepositoryTest extends TestCase
             "tests/Infrastructure/data/districts.sql",
         ]);
         $this->districtRepository = new DistrictRepository($entityManager);
-        $this->cityRepository = new CityRepository($entityManager);
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
 
