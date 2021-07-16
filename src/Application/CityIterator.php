@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Application;
 
+use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\Entity\City;
-
-use Districts\Infrastructure\CityRepository;
 
 /**
  * @implements \IteratorAggregate<City>

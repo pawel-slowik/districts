@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use DI\Container;
+use Districts\DomainModel\CityRepository;
+use Districts\Infrastructure\DoctrineCityRepository;
 use Slim\App;
 use Slim\Views\Twig;
 use Slim\Interfaces\RouteParserInterface;
@@ -31,6 +33,10 @@ return function (Container $container, App $app): void {
         // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
         EntityManager::class => function ($container) {
             return (require __DIR__ . "/../doctrine-bootstrap.php")();
+        },
+
+        CityRepository::class => function ($container) {
+            return $container->get(DoctrineCityRepository::class);
         },
 
     ];

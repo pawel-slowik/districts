@@ -9,10 +9,10 @@ use Districts\Application\Command\RemoveDistrictCommand;
 use Districts\Application\Command\UpdateDistrictCommand;
 use Districts\Application\Query\GetDistrictQuery;
 use Districts\Application\Query\ListDistrictsQuery;
+use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\PagedResult;
-use Districts\Infrastructure\CityRepository;
 use Districts\Infrastructure\DistrictRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 

@@ -6,9 +6,10 @@ namespace Districts\Infrastructure;
 
 use Doctrine\ORM\EntityManager;
 
+use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\Entity\City;
 
-class CityRepository
+final class DoctrineCityRepository implements CityRepository
 {
     private $entityManager;
 

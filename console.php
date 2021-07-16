@@ -7,7 +7,7 @@ require __DIR__ . "/vendor/autoload.php";
 
 use Symfony\Component\Console\Application;
 use Districts\UI\CLI\UpdateCommand;
-use Districts\Infrastructure\CityRepository;
+use Districts\Infrastructure\DoctrineCityRepository;
 use Districts\Application\Importer;
 use Districts\Infrastructure\GuzzleHtmlFetcher;
 
@@ -16,7 +16,7 @@ $entityManager = $entityManagerFactory();
 
 $application = new Application();
 $application->add(new UpdateCommand(
-    new Importer(new CityRepository($entityManager)),
+    new Importer(new DoctrineCityRepository($entityManager)),
     new GuzzleHtmlFetcher(),
 ));
 $application->run();

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Application;
 
+use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\Entity\City;
-use Districts\Infrastructure\CityRepository;
 use Districts\DomainModel\Scraper\CityDTO;
 
 class Importer
