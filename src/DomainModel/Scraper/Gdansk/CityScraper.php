@@ -61,7 +61,7 @@ final class CityScraper implements CityScraperInterface
         }
         foreach ($nodes as $node) {
             $id = $this->fixPolygonId($node->getAttribute("id"));
-            $href = "subpages/dzielnice/html/dzielnice_mapa_alert.php?id={$id}";
+            $href = "subpages/dzielnice/html/4-dzielnice_mapa_alert.php?id={$id}";
             yield Uri::merge($baseUrl, $href)->toString();
         }
     }

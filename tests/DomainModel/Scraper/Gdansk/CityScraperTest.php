@@ -45,7 +45,7 @@ class CityScraperTest extends TestCase
         // properties (only DistrictScrapers do).
         $urlFilenameMap = ["https://www.gdansk.pl/dzielnice" => "dzielnice.html"];
         for ($i = 1; $i <= 35; $i++) {
-            $url = sprintf("https://www.gdansk.pl/subpages/dzielnice/html/dzielnice_mapa_alert.php?id=%d", $i);
+            $url = sprintf("https://www.gdansk.pl/subpages/dzielnice/html/4-dzielnice_mapa_alert.php?id=%d", $i);
             $urlFilenameMap[$url] = "dzielnice_mapa_alert.php?id=16";
         }
         return HtmlFetcherMockBuilder::buildFromUrlFilenameMap(

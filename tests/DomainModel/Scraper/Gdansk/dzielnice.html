@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
 <!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script src="https://www.googletagmanager.com/gtag/js?id=UA-20676704-1" integrity="sha384-Lat0m1Je8pE12mWs2Tgo8QiOS5fNl1jjjp3KG1U2QJr0ZpBrjzjhnEo7C4YL39V+" crossorigin="anonymous"></script> -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20676704-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -20,12 +21,45 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- Facebook Pixel Code -->
+
+<script>
+
+!function(f,b,e,v,n,t,s)
+
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+
+n.queue=[];t=b.createElement(e);t.async=!0;
+
+t.src=v;s=b.getElementsByTagName(e)[0];
+
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+
+'https://connect.facebook.net/en_US/fbevents.js');
+
+
+fbq('init', '237157798107395'); 
+
+fbq('track', 'PageView');
+
+</script>
+
+<noscript>
+<img height="1" width="1" src="https://www.facebook.com/tr?id=237157798107395&ev=PageView&noscript=1"/>
+</noscript>
+
+<!-- End Facebook Pixel Code -->
+
 <link type="image/x-icon" href="images/gdansk.ico" rel="shortcut icon" />
 <link type="image/x-icon" href="images/images1/gdansk.ico" rel="shortcut icon" />
 <base href="https://www.gdansk.pl" target="_parent" />
 <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Kanit:300,500,600,700" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit:300,500,600,700">
 
 <!-- jQuery -->
 <script src="/js/jquery-2.1.4.min.js"></script>
@@ -33,22 +67,20 @@
 
 <!--js-->
 <script src="/js/autofoto.js"></script>
-<script src="subpages/puls-miasta/js/enscroll-0.6.0.min.js"></script>
 <script src="/js/lazyload.js"></script>
 <script src="/js/google-search.js"></script>
 <script src="/js/title-to-blank.js"></script>
-<!--<script src="/js/flaga.js"></script>-->
+<!-- <script src="/js/flaga.js"></script> -->
 
 <script src="/assets/bootstrap-4.2.1/js/bootstrap.bundle.min.js"></script>
 <script src="/js/slick-slider.js"></script>
 
-<link href="assets/css/default/main.css?1606471281" property="stylesheet" rel="stylesheet" type="text/css" />
+<link href="assets/css/default/main.css?1617049182" property="stylesheet" rel="stylesheet" type="text/css" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-<link href="/js/jquery.images-compare/images-compare.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha384-Cs3dgUx6+jDxxuqHvVH8Onpyj2LF1gKZurLDlhqzuJmUqVYMJ0THTWpxK5Z086Zm" crossorigin="anonymous"></script><link href="/js/jquery.images-compare/images-compare.min.css" rel="stylesheet">
 <script src="/js/jquery.images-compare/jquery.images-compare.min.js"></script>
 
-    <link href="subpages/dzielnice/css/dzielnice4.css?1608575189" property="stylesheet" rel="stylesheet" type="text/css" />
+    <link href="subpages/dzielnice/css/dzielnice4.css?1616439021" property="stylesheet" rel="stylesheet" type="text/css" />
 <!-- (C)2000-2016 Gemius SA - gemiusTraffic / ver 11.1 / Dzielnice --> 
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
@@ -70,6 +102,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<main class="flex-fill">
 			<header>
 <!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script src="https://www.googletagmanager.com/gtag/js?id=UA-20676704-1" integrity="sha384-Lat0m1Je8pE12mWs2Tgo8QiOS5fNl1jjjp3KG1U2QJr0ZpBrjzjhnEo7C4YL39V+" crossorigin="anonymous"></script> -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20676704-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -85,11 +118,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div class="name-site">PORTAL MIASTA GDAŃSKA</div>
             </div>
             <div class="col d-none d-lg-block">
-                                <a href="https://www.gdansk.pl" target="_self"><img
-                        class="logo img-responsive img-center mx-auto d-block" src="../images/logo_www.png"
-                        alt="Logo www.gdansk.pl"/></a>
-                
-            </div>
+                                <a href="https://www.gdansk.pl" target="_self">
+                    <img class="logo img-responsive img-center mx-auto d-block"  src="../images/logo_www.svg" alt="Logo www.gdansk.pl"/>
+                </a>
+                            </div>
             <div class="col-auto">
                 <div class="row">
                     <div class="col language">
@@ -131,11 +163,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<i class="fas fa-bars"></i>
 			</button>
-			<a class="navbar-toggler navbar-brand mx-auto" href="/"><img src="/images/logo_www_menu.png" alt="Logo www.gdansk.pl"></a>
+			<a class="navbar-toggler navbar-brand mx-auto" href="/">
+				<img src="/images/logo_www_menu.png" alt="Logo www.gdansk.pl">
+			</a>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="w-100 d-flex navbar-nav mr-auto">
 					<li  >
-						<a class="nav-link"  href="/"><img src="../images/menu_home.png" alt="Strona główna"/><span class="sr-only">(current)</span></a>
+						<a class="nav-link"  href="/"><i class="fas fa-home"></i><span class="sr-only">(current)</span></a>
 					</li>
 					<li class="flex-fill  nav-item dropdown ">
 						<a class="nav-link" href="/wiadomosci">Wiadomości</a>
@@ -147,12 +181,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<li class="flex-fill  nav-item">
 						<a class="nav-link" href="/komunikacja">Komunikacja</a>
 					</li>
-					<!--class="nav-item<li ">
-						<a class="nav-link" href="/tv">TV</a>
-					</li>-->
 					<li class="flex-fill  nav-item">
 						<a class="nav-link" href="/tv">TV</a>
-					</li>
+					</li>				
 					<li class="flex-fill  nav-item">
 						<a class="nav-link" href="/fotogaleria">Foto</a>
 					</li>
@@ -162,11 +193,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<li class="flex-fill  nav-item">
 						<a class="nav-link" href="//mapa.gdansk.gda.pl/ipg/" target="_blank">Plan miasta</a>
 					</li>
-					<!-- <li class="flex-fill  nav-item">
-						<a class="nav-link" href="/badkowski">Rok Lecha Bądkowskiego</a>
-					</li> -->
-					<li class="flex-fill alarm nav-item ">
+					<li class="flex-fill  nav-item">
 						<a class="nav-link" href="/koronawirus">Koronawirus</a>
+					</li>
+					<li class="flex-fill alarm nav-item ">
+						<a class="nav-link" href="/szczepienia">Szczepienia</a>
 					</li>
 
 					<li class="flex-fill  nav-item dropdown position-static " >
@@ -181,6 +212,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <a class="dropdown-item" href="/czasnagdansk">Czas na Gdańsk</a>
             <a class="dropdown-item" href="/dzielnice">Dzielnice</a>
             <a class="dropdown-item" href="/edukacja">Edukacja</a>
+            <a class="dropdown-item" href="/uelfinalgdansk">Finał Ligi Europy 2021</a>
             <a class="dropdown-item" href="/fotogaleria">Fotogaleria</a>
 			<a class="dropdown-item" href="/gdansk-bez-barier">Gdańsk bez barier</a>
 			<a class="dropdown-item" href="/bezplastiku">Gdańsk bez plastiku</a>
@@ -188,6 +220,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <a class="dropdown-item" href="/gdanskpatriotyczny">Gdańsk patriotyczny</a>
             <a class="dropdown-item" href="/gdanskwliczbach">Gdańsk w liczbach</a>
             <a class="dropdown-item" href="/tu-sie-zyje">Gdańsk. Tu się żyje!</a>
+            <a class="dropdown-item" href="/gip">Gdański Informator Pomocowy</a>
             <a class="dropdown-item" href="/gdanszczanie">Gdańszczanie</a>
             <a class="dropdown-item" href="/historia">Historia</a>
             <a class="dropdown-item" href="/inwestycje-miejskie">Inwestycje miejskie</a>
@@ -209,20 +242,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <a class="dropdown-item" href="/ppp">Partnerstwo Publiczno-Prywatne</a>
             <a class="dropdown-item" href="/patroni">Patroni</a>
            	<a class="dropdown-item" href="/pit">PIT</a>
-			<a class="dropdown-item" href="/puls-miasta">Puls miasta</a>
-            <a class="dropdown-item" href="/raport-o-stanie-miasta-2019">Raport o stanie miasta 2019</a>
+			<a class="dropdown-item" href="/prezydent-adamowicz">Prezydent Adamowicz</a>
+            <a class="dropdown-item" href="/puls-miasta">Puls miasta</a>
+            <a class="dropdown-item" href="/raport-o-stanie-miasta-2020">Raport o stanie miasta 2020</a>
 			<a class="dropdown-item" href="/rodzina">Rodzina</a>
 			<a class="dropdown-item" href="/badkowski">Rok Lecha Bądkowskiego</a>
             <a class="dropdown-item" href="//www.rowerowygdansk.pl" target="_blank" title="Otwarcie w nowej karcie">Rowerowy Gdańsk</a>
 			<a class="dropdown-item" href="/segregacja/">Segregacja</a>
             <a class="dropdown-item" href="/seniorzy">Seniorzy</a>
 			<a class="dropdown-item" href="/sport">Sport i rekreacja</a>
-			<a class="dropdown-item" href="/stadionenerga">Stadion Energa Gdańsk</a>
+			<a class="dropdown-item" href="/stadiongdansk" target="_blank" title="Otwarcie w nowej karcie">Stadion Gdańsk</a>
 			<a class="dropdown-item" href="/strajkoswiaty">Strajk oświaty</a>
             <a class="dropdown-item" href="/strategia">Strategia</a>
             <a class="dropdown-item" href="/studium">Studium</a>
 			<a class="dropdown-item" href="/stulecie-praw-wyborczych-kobiet">Stulecie praw wyborczych kobiet</a>
             <a class="dropdown-item" href="/fahrenheit">Stypendyści Fahrenheita</a>
+            <a class="dropdown-item" href="/szczepienia">Szczepienia</a>
 			<a class="dropdown-item" href="/tunel">Tunel pod Martwą Wisłą</a>
             <a class="dropdown-item" href="/turystyka">Turystyka</a>
             <a class="dropdown-item" href="/tv">TV</a>
@@ -234,6 +269,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <a class="dropdown-item" href="/zdrowie">Zdrowie i pomoc rodzinie</a>
             <a class="dropdown-item" href="/zielony-gdansk">Zielony Gdańsk - Ekologia</a>
 			<a class="dropdown-item" href="/zurawie">Żurawie</a>
+
 						</div>
 					</li>
 				</ul>
@@ -313,16 +349,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                      </a>
                   </div>
                    <div id="headingTwo" class="mr-lg-1 mb-lg-0 mb-1">
-                     <a href="https://bip.gdansk.pl/jednostki-pomocnicze/lista-rad-dzielnic,a,108253" class="btn btn-primary w-100 w-lg-auto collapsed" target="_blank">
+                      <button class="btn btn-primary w-100 w-lg-auto collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Rady dzielnic
-                     </a>
+                     </button>
                   </div>
-                  <div id="headingThree" class="mr-lg-1 mb-lg-0 mb-1">
+                  <!--<div id="headingThree" class="mr-lg-1 mb-lg-0 mb-1">
                      <button class="btn btn-primary w-100 w-lg-auto collapsed" type="button" data-toggle="collapse"
                         data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Pełnomocnik ds. Rad Dzielnic
                      </button>
-                  </div>
+                  </div>-->
                   <div id="headingSix"  class="ml-auto">
                      <button class="btn btn-light w-100 w-lg-auto collapsed" type="button" data-toggle="collapse"
                         data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
@@ -349,9 +386,8 @@ function Maps() {
 	this.show = function(id)
 	{
 		$('#BoxAlertWindow').append('<div id="AlertWindow' + id +'"></div>');
-		$('#AlertWindow' + id).load('subpages/dzielnice/html/dzielnice_mapa_alert.php', 'id='+id, function(){$('#AlertWindow' + id).fadeIn(300);});
+		$('#AlertWindow' + id).load('subpages/dzielnice/html/4-dzielnice_mapa_alert.php', 'id='+id, function(){$('#AlertWindow' + id).fadeIn(300);});
 	}
-	
 	this.hidden = function(id)
 	{
 		$('#AlertWindow' + id).fadeOut(1,function(){$('#AlertWindow' + id).remove();});
@@ -362,42 +398,33 @@ $(function()
 {
 	var obj = [];
 	var district = {1:'letnica' ,2:'osowa', 3:'rudniki', 4:'wrzeszcz-dolny', 5:'wyspa-sobieszewska', 6:'przymorze-male', 7:'strzyza', 8:'brzezno', 9:'chelm', 10:'zabianka-wejhera-jelitkowo-tysiaclecia', 11:'przerobka', 12:'nowy-port', 13:'piecki-migowo', 14:'zaspa-rozstaje', 15:'oliwa', 16:'orunia', 17:'suchanino', 18:'srodmiescie',19:'siedlce', 20:'przymorze-wielkie', 21:'krakowiec-gorki-zachodnie', 22:'mlyniska', 23:'stogi', 24:'olszynka', 25:'wzgorze-mickiewicza', 26:'ujescisko-lostowice', 27:'jasien', 28:'bretowo', 29:'matarnia', 30:'kokoszki', 31:'aniolki', 32:'wrzeszcz-gorny', 33:'zaspa-mlyniec', 34:'7-dwor', 35:'orunia-gorna' };
-	
 	//pobranie wybranej nazwy dzielnicy
 	choose = /(?:http:\/\/www\.gdansk\.pl\/)([a-zA-Z-]+)$/.exec(top.location.href);
 	choose = '';
-	
-	
 	for(i = 0, c = $('svg polygon').length; i < c; i++)
 	{
-		
 		//akcja najechanie na polygon
 		$('polygon').eq(i).mouseover(function()
 		{
-			id = this.id;			
+			id = this.id;
 			obj[id] = new Maps();
 			obj[id].show(id);
 		});
-		
-		
 		//akcja wyjechanie z polygon
 		$('polygon').eq(i).mouseout(function()
 		{
-			id = this.id;			
+			id = this.id;
 			obj[id].hidden(id);
 		});
-		
-		
 		//akcja klikniecie
 		$('polygon').eq(i).click(function()
 		{
 			top.location.href = 'https://www.gdansk.pl/' + district[$(this).attr('id')];
-		});		
-		
+		});
 		//podswietlenie wybranej dzielnicy
 		if(district[$('polygon').eq(i).attr('id')] == choose)
 		{
-			$('polygon').eq(i).css({'fill':'#1664ae'});			
+			$('polygon').eq(i).css({'fill':'#1664ae'});
 		}
 	}
 });
@@ -409,7 +436,7 @@ $(function()
         style="enable-background:new 0 0 1021 580;" xml:space="preserve">
         <style type="text/css">
 	.st0{fill:#002D60;}
-	.st1{font-family:'RobotoCondensed-Regular';}
+	.st1{}
 	.st2{font-size:14px;}
 	.st3{font-size:13px;}
 	.st4{font-size:12px;}
@@ -1900,8 +1927,25 @@ $(function()
                            </div>
                         </div>
                      </div>
-
-                     <div class="card">
+<div class="card">
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                           data-parent="#accordionExample">
+                           <div class="card-body">
+                              <div class="row">
+                                 <div class="col-md-12">
+                                     <button class="btn btn-light w-lg-auto collapsed mb-3 btn-sm" type="button" data-toggle="collapse"
+                                       data-target="#collapseClose" aria-expanded="false" aria-controls="collapseClose">Zwiń <i class="fas fa-caret-up"></i>
+                                    </button>
+                                    <div class="title">
+                                       <span>Jednostki pomocnicze</span>
+                                    </div>
+                                    <ul><li><a href="https://gdansk.pl/jednostki-pomocnicze/lista-rad-dzielnic,a,108253" target="_parent"><span>Lista Rad Dzielnic 2019-2024</span></a></li><li><a href="https://gdansk.pl/link/142844/wybory-do-rad-jednostek-pomocniczych-dzielnic" target="_parent"><span>Wybory do Rad Jednostek Pomocniczych (Dzielnic)</span></a></li><li><a href="https://gdansk.pl/link/142845/jednostki-pomocnicze-2015-2019" target="_parent"><span>Jednostki pomocnicze 2015-2019</span></a></li><li><a href="https://gdansk.pl/link/142846/jednostki-pomocnicze-2011-2015" target="_parent"><span>Jednostki pomocnicze 2011-2015</span></a></li></ul>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--<div class="card">
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                            data-parent="#accordionExample">
                            <div class="card-body">
@@ -1921,7 +1965,7 @@ $(function()
                               </div>
                            </div>
                         </div>
-                     </div>
+                     </div>-->
                      <div class="card">
                         <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
                            <div class="card-body">
@@ -1958,26 +2002,27 @@ $(function()
 						<div class="row">
 							<div class="col-md-12 font-size-9">
 								
-<div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/ferie-zimowe-w-miescie-inne-niz-dotychczas-sprawdz-oferte-gdanskich-instytucji,a,186323" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="900x0/download/2020-12/162206.jpg" alt=" Ferie zimowe w mieście inne niż dotychczas. Sprawdź ofertę gdańskich instytucji"/></div></div><div class="col"><div class="caption2"><div class="title">Ferie zimowe w mieście inne niż dotychczas. Sprawdź ofertę gdańskich instytucji</div></div></div></div></div></a></div></div><div class="row"><div class="col"></div></div>
+<div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/budowa-nowej-trasy-tramwajowej-w-tzw-nowej-warszawskiej-co-dzieje-sie-na-placu-budowy,a,199985" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="900x0/download/2021-07/173164.jpg" alt=" Budowa tzw. Nowej Warszawskiej. Intensywne prace pomiędzy ul. Piotrkowską i Łódzką"/><div class="icon"><span class="fas fa-camera" aria-hidden="true"></span><span class="icon-name d-none d-lg-block">FOTO</span></div></div></div><div class="col"><div class="caption2"><div class="title">Budowa tzw. Nowej Warszawskiej. Intensywne prace pomiędzy ul. Piotrkowską i Łódzką</div></div></div></div></div></a></div></div><div class="row"><div class="col"></div></div>
 							</div>
 							<div class="col-md-12 font-size-2">
 								
-<div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/nauczyciel-pomorza-2020-pochodzi-z-malborka-wsrod-wyroznionych-nauczycielka-z-gdanska,a,186206" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/162138.jpg" alt=" Nauczyciel Pomorza 2020 pochodzi z Malborka. Wśród wyróżnionych nauczycielka z Gdańska"/></div></div><div class="col"><div class="caption2"><div class="title">Nauczyciel Pomorza 2020 pochodzi z Malborka. Wśród wyróżnionych nauczycielka z Gdańska</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/nowa-walowa-z-jezdnia-linia-tramwajowa-droga-rowerowa-osiem-ofert-w-przetargu-na-opracowanie-koncepcji-nowej-walowej,a,186197" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/162136.jpg" alt=" Jezdnia, linia tramwajowa, droga rowerowa. Osiem ofert w przetargu na koncepcję Nowej Wałowej"/></div></div><div class="col"><div class="caption2"><div class="title">Jezdnia, linia tramwajowa, droga rowerowa. Osiem ofert w przetargu na koncepcję Nowej Wałowej</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/autobusy-linii-175-189-n2-od-soboty-beda-zatrzymywac-sie-na-nowym-przystanku,a,185970" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/162145.jpg" alt=" Autobusy linii 175,189, N2 zatrzymują się na nowych przystankach"/></div></div><div class="col"><div class="caption2"><div class="title">Autobusy linii 175,189, N2 zatrzymują się na nowych przystankach</div></div></div></div></div></a></div></div><div class="row"><div class="col"></div><div class="col"></div><div class="col"></div></div>
+<div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/sobieszewo-atrakcyjniej-i-bardziej-zielono-przed-biblioteka-i-domem-kultury-dzieki-srodkom-bo,a,200110" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173230.jpg" alt=" Sobieszewo. Atrakcyjniej i bardziej zielono przed biblioteką i domem kultury. Dzięki środkom BO"/></div></div><div class="col"><div class="caption2"><div class="title">Sobieszewo. Atrakcyjniej i bardziej zielono przed biblioteką i domem kultury. Dzięki środkom BO</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/rudniki-remont-ul-poleze-coraz-blizej-wykonawca-prac-wybrany,a,200100" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173225.jpg" alt=" Rudniki. Remont ul. Połęże coraz bliżej. Wykonawca prac wybrany"/></div></div><div class="col"><div class="caption2"><div class="title">Rudniki. Remont ul. Połęże coraz bliżej. Wykonawca prac wybrany</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/konsul-honorowy-zastepca-prezydent-gdanska-oraz-radni-siedlec-uczcili-5-rocznice-zamachu-w-nicei,a,200187" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173316.jpg" alt=" 5. rocznica zamachu w Nicei - kwiaty na cmentarzu francuskim w Gdańsku i dźwięk dzwonów kościoła św. Katarzyny"/><div class="icon"><span class="fas fa-camera" aria-hidden="true"></span><span class="icon-name d-none d-lg-block">FOTO</span></div></div></div><div class="col"><div class="caption2"><div class="title">5. rocznica zamachu w Nicei - kwiaty na cmentarzu francuskim w Gdańsku i dźwięk dzwonów kościoła św. Katarzyny</div></div></div></div></div></a></div></div><div class="row"><div class="col"></div><div class="col"></div><div class="col"></div></div>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="row">
-							<div class="col-md-12 mb-3">
-								<div class="gallery_article_box" data-gallery-id="8645">
-									<iframe style="overflow-y: hidden;" src="https://www.gdansk.pl/fotogaleria-artykul/8645" width="750" height="550" scrolling="no" data-mce-fragment="1"></iframe>
+							<div class="col-md-12 mb-3 article" style="overflow:hidden">
+
+								<div class="gallery_article_box " data-gallery-id="8945">
+									<iframe style="border:0; width:100%" src="https://www.gdansk.pl/fotogaleria-artykul/8645" scrolling="no" data-mce-fragment="1"></iframe>
 								</div>
 	  						</div>
 							<div class="col-md-12 block news-5 inline mb-3">
 								<ul><li><a href="https://gdansk.pl/dzielnice/przewodnik-po-gdanskich-dzielnicach,a,133950" target="_parent"><span>Przewodnik po gdańskich dzielnicach</span></a></li><li><a href="https://gdansk.pl/link/81210/lista-rad-dzielnic" target="_parent"><span>Lista Rad Dzielnic</span></a></li><li><a href="https://gdansk.pl/link/39590/budzet-obywatelski" target="_parent"><span>Budżet Obywatelski</span></a></li><li><a href="https://gdansk.pl/link/135213/wybory-do-rad-jednostek-pomocniczych-dzielnic" target="_blank"><span>Wybory do Rad Dzielnic</span></a></li><li><a href="https://gdansk.pl/dzielnice/wybory-do-rad-dzielnic-materialy-do-pobrania,a,138294" target="_parent"><span>Wybory do Rad Dzielnic - materiały do pobrania</span></a></li></ul>
 							</div>
 							<div class="col-md-12 mb-3">
-								<div class="promocja">PROMOCJA<br /></div><div><a href="https://gdansk.pl/link/166439/dzialania-przeciw-koronawirusowi-w-gdansku" target="_parent"><img id="box--166439" onclick="dataLayer.push({'class': '166439'});" class="166439" style="width:100%" src="download/2020-03/145176.jpg" alt="Działania przeciw koronawirusowi w Gdańsku" /></a></div>
+								<div><a href="https://gdansk.pl/wiadomosci/muzeum-narodowe-w-gdansku-otwiera-kolejne-oddzialy-mozna-zwiedzac-juz-od-dzis,a,189367" target="_parent"><img id="box--189371" onclick="dataLayer.push({'class': '189371'});" class="189371" style="width:100%" src="download/2021-02/164349.jpg" alt="Muzeum Narodowe w Gdańsku otworzyło kolejne oddziały, które już można zwiedzać" /></a></div>
 							</div>
 							<div class="col-md-12 mb-3">
 								<div class="embed-responsive embed-responsive-16by9"><iframe src="https://player.vimeo.com/video/440304653?color=e20e0e&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
@@ -1988,26 +2033,26 @@ $(function()
 				<div class="row mb-3">
 					<div class="col-md-12 font-size-2">
 						
-<div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/niezwykla-szopka-z-piasku-odnoszaca-sie-do-aktualnych-wydarzen-juz-stoi-w-oliwie-zobacz-zdjecia,a,186149" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/162122.jpg" alt=" Niezwykła i aktualna w treści Szopka z Piasku już stoi w Oliwie ZOBACZ ZDJĘCIA"/><div class="icon"><span class="fas fa-camera" aria-hidden="true"></span><span class="icon-name d-none d-lg-block">FOTO</span></div></div></div><div class="col"><div class="caption2"><div class="title">Niezwykła i aktualna w treści Szopka z Piasku już stoi w Oliwie ZOBACZ ZDJĘCIA</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/dolne-miasto-39-mieszkan-tbs-trafilo-do-mieszkancow-klucze-od-prezydent-gdanska,a,186043" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/162091.jpg" alt=" Dolne Miasto. 39 mieszkań TBS trafiło do mieszkańców. Klucze od prezydent Gdańska"/><div class="icon"><span class="fas fa-camera" aria-hidden="true"></span><span class="icon-name d-none d-lg-block">FOTO</span></div></div></div><div class="col"><div class="caption2"><div class="title">Dolne Miasto. 39 mieszkań TBS trafiło do mieszkańców. Klucze od prezydent Gdańska</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/przymorze-wielkie-trwa-montaz-urzadzen-na-placu-zabaw-dedykowanym-doroslym,a,185854" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/161987.jpg" alt=" Przymorze Wielkie. Trwa montaż urządzeń na placu zabaw dla dorosłych &quot;Karuzelin&quot;"/></div></div><div class="col"><div class="caption2"><div class="title">Przymorze Wielkie. Trwa montaż urządzeń na placu zabaw dla dorosłych "Karuzelin"</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/xxxi-sesja-rady-miasta-budzet-na-2021-rok-uchwalony-przeglosowane-plany-zagospodarowania,a,186013" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/162079.png" alt=" XXXI sesja Rady Miasta. Budżet na 2021 rok uchwalony, przegłosowane plany zagospodarowania "/></div></div><div class="col"><div class="caption2"><div class="title">XXXI sesja Rady Miasta. Budżet na 2021 rok uchwalony, przegłosowane plany zagospodarowania </div></div></div></div></div></a></div></div><div class="row"><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div></div>
+<div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/pomorskie-centrum-inwestycyjne-tereny-przemyslowo-portowe-na-stogach,a,200093" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173220.jpg" alt=" Pomorskie Centrum Inwestycyjne. Tereny przemysłowo-portowe na Stogach "/></div></div><div class="col"><div class="caption2"><div class="title">Pomorskie Centrum Inwestycyjne. Tereny przemysłowo-portowe na Stogach </div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/vii-dwor-czas-wymienic-nawierzchnie-ulicy-michalowskiego-remont-od-srody,a,200087" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173219.jpg" alt=" VII Dwór. Czas wymienić nawierzchnię ulicy Michałowskiego. Remont od środy"/></div></div><div class="col"><div class="caption2"><div class="title">VII Dwór. Czas wymienić nawierzchnię ulicy Michałowskiego. Remont od środy</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/gdanski-dron-z-pulapu-100-metrow-prezentujemy-dzielnice-bretowo,a,200017" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173175.jpg" alt=" Gdański dron. Z pułapu 100 metrów prezentujemy dzielnicę Brętowo"/><div class="icon"><span class="far fa-play-circle" aria-hidden="true"></span><span class="icon-name d-none d-lg-block">WIDEO</span></div></div></div><div class="col"><div class="caption2"><div class="title">Gdański dron. Z pułapu 100 metrów prezentujemy dzielnicę Brętowo</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/siedlce-rada-dzielnicy-wspolnie-z-zastepca-prezydent-uczcza-5-rocznice-zamachu-w-nicei,a,200011" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173172.jpg" alt=" Siedlce. Radni, zastępca prezydent oraz Konsul Honorowy, uczczą 5. rocznicę zamachu w Nicei"/></div></div><div class="col"><div class="caption2"><div class="title">Siedlce. Radni, zastępca prezydent oraz Konsul Honorowy, uczczą 5. rocznicę zamachu w Nicei</div></div></div></div></div></a></div></div><div class="row"><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div></div>
 					</div>
 				<div class="row mb-3">
-					<div class="col-md-4 col-sm-4 block"><div class="promocja">PROMOCJA<br /></div><div><a href="https://gdansk.pl/link/185838/oddaj-osocze" target="_parent"><img id="box-b1-185838" onclick="dataLayer.push({'class': '185838'});" class="185838" style="width:100%" src="download/2020-12/161979.png" alt="Oddaj osocze" /></a></div></div>
-					<div class="col-md-4 col-sm-4 block"><div class="promocja">PROMOCJA<br /></div><div><a href="https://gdansk.pl/link/173477/zostan-turysta" target="_parent"><img id="box-b2-173477" onclick="dataLayer.push({'class': '173477'});" class="173477" style="width:100%" src="download/2020-06/151131.png" alt="Zostań turystą" /></a></div></div>
-					<div class="col-md-4 col-sm-4 block"><div class="promocja">PROMOCJA<br /></div><div><a href="https://gdansk.pl/link/125980/gdanskie-centrum-kontaktu" target="_blank"><img id="box-b3-125980" onclick="dataLayer.push({'class': '125980'});" class="125980" style="width:100%" src="download/2018-09/115144.jpg" alt="Gdańskie Centrum Kontaktu" /></a></div></div>
+					<div class="col-md-4 col-sm-4 block"><div><a href="https://gdansk.pl/link/183351/zalatw-sprawe" target="_parent"><img id="box-b1-183351" onclick="dataLayer.push({'class': '183351'});" class="183351" style="width:100%" src="download/2020-11/160010.jpg" alt="Załatw sprawę w urzędzie on-line" /></a></div></div>
+					<div class="col-md-4 col-sm-4 block"><div><a href="https://gdansk.pl/link/192721/gdansk-pomaga" target="_parent"><img id="box-b2-192721" onclick="dataLayer.push({'class': '192721'});" class="192721" style="width:100%" src="download/2021-05/168864.jpg" alt="Gdańsk pomaga. Potrzebujesz pomocy? Zadzwoń 500218337" /></a></div></div>
+					<div class="col-md-4 col-sm-4 block"><div><a href="https://gdansk.pl/link/187970/szczepienia" target="_parent"><img id="box-b3-187970" onclick="dataLayer.push({'class': '187970'});" class="187970" style="width:100%" src="download/2021-01/163241.jpg" alt="Szczepimy się" /></a></div></div>
 				</div>
 				<div class="row">
 					<div class="col-md-12 font-size-4">
 						
-<div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/xxxi-sesja-rady-miasta-budzet-na-2021-rok-uchwalony-przeglosowane-plany-zagospodarowania,a,186013" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/162079.png" alt=" XXXI sesja Rady Miasta. Budżet na 2021 rok uchwalony, przegłosowane plany zagospodarowania "/></div></div><div class="col"><div class="caption2"><div class="title">XXXI sesja Rady Miasta. Budżet na 2021 rok uchwalony, przegłosowane plany zagospodarowania </div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/plany-zagospodarowania-przestrzennego-w-gdansku-szesc-nowych-planow-miejscowych,a,185955" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/162053.jpg" alt=" Sześć nowych planów miejscowych w sześciu dzielnicach miasta"/></div></div><div class="col"><div class="caption2"><div class="title">Sześć nowych planów miejscowych w sześciu dzielnicach miasta</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/coraz-blizej-pkm-dla-gdanska-poludnie-pierwszy-przetarg-jeszcze-w-grudniu,a,185936" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/162043.jpg" alt=" Coraz bliżej PKM dla Gdańska Południe. Pierwszy przetarg jeszcze w grudniu"/></div></div><div class="col"><div class="caption2"><div class="title">Coraz bliżej PKM dla Gdańska Południe. Pierwszy przetarg jeszcze w grudniu</div></div></div></div></div></a></div></div><div class="row"><div class="col"></div><div class="col"></div><div class="col"></div></div>
+<div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/siedlce-rada-dzielnicy-wspolnie-z-zastepca-prezydent-uczcza-5-rocznice-zamachu-w-nicei,a,200011" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173172.jpg" alt=" Siedlce. Radni, zastępca prezydent oraz Konsul Honorowy, uczczą 5. rocznicę zamachu w Nicei"/></div></div><div class="col"><div class="caption2"><div class="title">Siedlce. Radni, zastępca prezydent oraz Konsul Honorowy, uczczą 5. rocznicę zamachu w Nicei</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/mobilny-dom-kultury-ruszyl-w-miasto-jakie-atrakcje-czekaja-zobacz-nasz-wtorkowy-wideoczat,a,199975" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173150.jpg" alt=" Mobilny Dom Kultury ruszył w miasto. Jakie atrakcje czekają? Zobacz rozmowę we wtorek"/></div></div><div class="col"><div class="caption2"><div class="title">Mobilny Dom Kultury ruszył w miasto. Jakie atrakcje czekają? Zobacz rozmowę we wtorek</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/zmiany-w-organizacji-ruchu-na-ul-zakopianskiej-we-wtorek-od-rana-na-co-najmniej-miesiac,a,199990" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173163.jpg" alt=" Zmiany w organizacji ruchu na ul. Zakopiańskiej - we wtorek od rana, na co najmniej miesiąc"/></div></div><div class="col"><div class="caption2"><div class="title">Zmiany w organizacji ruchu na ul. Zakopiańskiej - we wtorek od rana, na co najmniej miesiąc</div></div></div></div></div></a></div></div><div class="row"><div class="col"></div><div class="col"></div><div class="col"></div></div>
 					</div>
 					<div class="col-md-12">
 						
-<div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/srodmiescie-modernizacja-kameralnej-ul-elzbietanskiej-na-starym-miescie-dobiega-konca,a,185775" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/161931.jpg" alt=" Śródmieście. Modernizacja kameralnej ul. Elżbietańskiej na Starym Mieście dobiega końca"/></div></div><div class="col"><div class="caption2"><div class="title">Śródmieście. Modernizacja kameralnej ul. Elżbietańskiej na Starym Mieście dobiega końca</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/lemurek-nowym-mieszkancem-gdanskiego-zoo,a,185837" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/161978.jpg" alt=" Lemurek nowym mieszkańcem gdańskiego zoo "/></div></div><div class="col"><div class="caption2"><div class="title">Lemurek nowym mieszkańcem gdańskiego zoo </div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/wylozenie-projektow-planow-miejscowych-w-dwoch-dzielnicach-do-wgladu-do-14-stycznia,a,185881" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/162011.jpg" alt=" Wyłożenie projektów planów miejscowych w dwóch dzielnicach. Do wglądu do 14 stycznia"/></div></div><div class="col"><div class="caption2"><div class="title">Wyłożenie projektów planów miejscowych w dwóch dzielnicach. Do wglądu do 14 stycznia</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/kokoszki-trwa-rozbudowa-ul-kartuskiej-co-dzieje-sie-na-tym-placu-budowy,a,185702" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/161859.jpg" alt=" Kokoszki. Trwa rozbudowa ul. Kartuskiej. Co dzieje się na tym placu budowy?"/></div></div><div class="col"><div class="caption2"><div class="title">Kokoszki. Trwa rozbudowa ul. Kartuskiej. Co dzieje się na tym placu budowy?</div></div></div></div></div></a></div></div><div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/oliwa-jeszcze-bardziej-zielona-rada-dzielnicy-zainwestowala-w-nasadzenia-nowych-drzew,a,185685" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/161851.jpg" alt=" Oliwa jeszcze bardziej zielona. Rada Dzielnicy zainwestowała w nasadzenia nowych drzew"/><div class="icon"><span class="fas fa-camera" aria-hidden="true"></span><span class="icon-name d-none d-lg-block">FOTO</span></div></div></div><div class="col"><div class="caption2"><div class="title">Oliwa jeszcze bardziej zielona. Rada Dzielnicy zainwestowała w nasadzenia nowych drzew</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/hala-olivia-raport-z-kontroli,a,185675" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/161848.jpg" alt=" Zakończyła się kontrola przedstawicieli gdańskiego Urzędu Miasta w hali Olivia. Końcowy raport gotowy"/></div></div><div class="col"><div class="caption2"><div class="title">Zakończyła się kontrola przedstawicieli gdańskiego Urzędu Miasta w hali Olivia. Końcowy raport gotowy</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/wiecha-na-oranzerii-w-parku-oliwskim,a,185669" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/161847.jpg" alt=" Wiecha na oranżerii w Parku Oliwskim"/><div class="icon"><span class="fas fa-camera" aria-hidden="true"></span><span class="icon-name d-none d-lg-block">FOTO</span></div></div></div><div class="col"><div class="caption2"><div class="title">Wiecha na oranżerii w Parku Oliwskim</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/zamkniecie-skrzyzowania-ul-karlowicza-z-ul-zamenhofa-mapa,a,185625" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/161794.jpg" alt=" Zamknięcie skrzyżowania ul. Karłowicza z ul. Zamenhofa. MAPA"/></div></div><div class="col"><div class="caption2"><div class="title">Zamknięcie skrzyżowania ul. Karłowicza z ul. Zamenhofa. MAPA</div></div></div></div></div></a></div></div><div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/mural-z-wizerunkiem-heweliusza-prezent-na-425-lecie-dzialalnosci-pan-biblioteki-gdanskiej,a,185535" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/161758.png" alt=" Mural z wizerunkiem Heweliusza. &quot;Prezent&quot; na 425-lecie działalności PAN Biblioteki Gdańskiej "/></div></div><div class="col"><div class="caption2"><div class="title">Mural z wizerunkiem Heweliusza. "Prezent" na 425-lecie działalności PAN Biblioteki Gdańskiej </div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/dziadki-do-orzechow-z-jarmarku-bozonarodzeniowego-w-mundurach-xviii-wiecznych-gdanskich-zolnierzy,a,185593" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/161784.jpg" alt=" Jarmark Bożonarodzeniowy. Dziadki do orzechów w mundurach gdańskich żołnierzy z XVIII-wieku "/></div></div><div class="col"><div class="caption2"><div class="title">Jarmark Bożonarodzeniowy. Dziadki do orzechów w mundurach gdańskich żołnierzy z XVIII-wieku </div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/betlejemskie-swiatlo-pokoju-po-raz-kolejny-zawita-do-wojewodztwa-pomorskiego-w-gdansku-pojawi-sie-jutro,a,185605" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/161786.jpg" alt=" Betlejemskie Światło Pokoju w Polsce. W Gdańsku pojawi się 14 grudnia"/></div></div><div class="col"><div class="caption2"><div class="title">Betlejemskie Światło Pokoju w Polsce. W Gdańsku pojawi się 14 grudnia</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/rewitalizacja-dolnego-miasta-drugi-etap-odnowy-tej-czesci-gdanska-rozpoczety,a,184865" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2020-12/161291.jpg" alt=" Rewitalizacja Dolnego Miasta. Przy ul. Królikarnia powstanie Placówka Wsparcia Dziennego"/></div></div><div class="col"><div class="caption2"><div class="title">Rewitalizacja Dolnego Miasta. Przy ul. Królikarnia powstanie Placówka Wsparcia Dziennego</div></div></div></div></div></a></div></div><div class="row"><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div></div>
+<div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/zmiany-w-organizacji-ruchu-w-zwiazku-z-jarmarkiem-sw-dominika-od-poniedzialku,a,199931" target="_parent"><div class="thumb mb-3"><div class="row hot"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173119.jpg" alt=" Zmiany w organizacji ruchu w związku z Jarmarkiem św. Dominika. Od poniedziałku"/></div></div><div class="col"><div class="caption2"><div class="title">Zmiany w organizacji ruchu w związku z Jarmarkiem św. Dominika. Od poniedziałku</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/swibnienskie-lato-byly-gry-zabawy-animacje-koncerty-i-rywalizacja-strazakow,a,199905" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173102.jpg" alt=" Świbnieńskie Lato - były gry, zabawy, animacje, koncerty i rywalizacja strażaków"/><div class="icon"><span class="fas fa-camera" aria-hidden="true"></span><span class="icon-name d-none d-lg-block">FOTO</span></div></div></div><div class="col"><div class="caption2"><div class="title">Świbnieńskie Lato - były gry, zabawy, animacje, koncerty i rywalizacja strażaków</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/spojrzenie-na-gdansk-z-poganskiej-gory-upamietnia-tworczynie-teatru-latki-wideo-i-zdjecia,a,199899" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173100.jpg" alt=" Nowy widok z Pogańskiej Góry. Upamiętnienie twórczyń Teatru Łątek WIDEO I ZDJĘCIA"/></div></div><div class="col"><div class="caption2"><div class="title">Nowy widok z Pogańskiej Góry. Upamiętnienie twórczyń Teatru Łątek WIDEO I ZDJĘCIA</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/zaskarzenie-decyzji-sadu-administracyjnego-dotyczacej-planu-zagospodarowania-brzezna,a,199894" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173092.jpg" alt=" Zaskarżenie decyzji Sądu Administracyjnego dotyczącej planu zagospodarowania Brzeźna"/></div></div><div class="col"><div class="caption2"><div class="title">Zaskarżenie decyzji Sądu Administracyjnego dotyczącej planu zagospodarowania Brzeźna</div></div></div></div></div></a></div></div><div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/halo-tu-wyspa-kolejny-numer-gazetki-trafi-do-mieszkancow-wyspy-sobieszewskiej,a,199863" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173073.jpg" alt=" Halo, tu Wyspa! Kolejny numer gazetki trafi do mieszkańców Wyspy Sobieszewskiej"/></div></div><div class="col"><div class="caption2"><div class="title">Halo, tu Wyspa! Kolejny numer gazetki trafi do mieszkańców Wyspy Sobieszewskiej</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/czy-swiatowe-jamboree-skautowe-2027-odbedzie-sie-w-gdansku-dowiemy-sie-za-50-dni,a,199855" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173067.jpg" alt=" Czy Światowe Jamboree Skautowe 2027 odbędzie się w Gdańsku? Dowiemy się za 50 dni"/></div></div><div class="col"><div class="caption2"><div class="title">Czy Światowe Jamboree Skautowe 2027 odbędzie się w Gdańsku? Dowiemy się za 50 dni</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/dar-mlodziezy-zacumowal-przy-nabrzezu-westerplatte-ostatni-raz-byl-w-gdansku-10-lat-temu,a,199833" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/173022.jpg" alt=" Dar Młodzieży zacumował przy nabrzeżu Westerplatte"/></div></div><div class="col"><div class="caption2"><div class="title">Dar Młodzieży zacumował przy nabrzeżu Westerplatte</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/gratulacje-od-policji-dla-trzech-mlodych-gdanszczan-pomogli-nieprzytomnej-nastolatce,a,199798" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/172997.jpg" alt=" Gratulacje od policji dla trzech młodych gdańszczan. Pomogli nieprzytomnej nastolatce"/></div></div><div class="col"><div class="caption2"><div class="title">Gratulacje od policji dla trzech młodych gdańszczan. Pomogli nieprzytomnej nastolatce</div></div></div></div></div></a></div></div><div class="row"><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/kolejny-pumptrack-powstanie-w-gdansku-tym-razem-na-stogach-ze-srodkow-budzetu-obywatelskiego,a,199783" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/172990.jpg" alt=" Kolejny pumptrack powstanie w Gdańsku. Tym razem na Stogach, ze środków Budżetu Obywatelskiego"/></div></div><div class="col"><div class="caption2"><div class="title">Kolejny pumptrack powstanie w Gdańsku. Tym razem na Stogach, ze środków Budżetu Obywatelskiego</div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/nowa-warszawska-budowa-linii-tramwajowej,a,199628" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/172861.jpg" alt=" Budowa linii tramwajowej w Nowej Warszawskiej. Od dziś zmiany w ruchu. MAPA "/></div></div><div class="col"><div class="caption2"><div class="title">Budowa linii tramwajowej w Nowej Warszawskiej. Od dziś zmiany w ruchu. MAPA </div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/kokoszki-prace-w-ramach-rozbudowy-ul-kartuskiej-wchodza-w-decydujacy-etap-od-piatku-utrudnienia,a,199549" target="_parent"><div class="thumb mb-3"><div class="row hot"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/172815.jpg" alt=" Kokoszki. Rozbudowa ul. Kartuskiej wchodzi w decydujący etap. Od dzisiaj utrudnienia "/></div></div><div class="col"><div class="caption2"><div class="title">Kokoszki. Rozbudowa ul. Kartuskiej wchodzi w decydujący etap. Od dzisiaj utrudnienia </div></div></div></div></div></a></div><div class="col-12 col-md"><a href="https://gdansk.pl/wiadomosci/gdanski-dron-zobacz-oliwe-kolejna-dzielnice-sfilmowana-z-wysokosci-100-metrow,a,199662" target="_parent"><div class="thumb mb-3"><div class="row primary-color"><div class="col-5 col-md-12"><div class="maska"><div style="overflow:hidden; margin-top: 56.1%"></div><img class="img-fluid" src="/download/2021-07/172913.jpg" alt=" Gdański dron. Zobacz Oliwę - kolejną dzielnicę sfilmowaną z wysokości 100 metrów"/><div class="icon"><span class="far fa-play-circle" aria-hidden="true"></span><span class="icon-name d-none d-lg-block">WIDEO</span></div></div></div><div class="col"><div class="caption2"><div class="title">Gdański dron. Zobacz Oliwę - kolejną dzielnicę sfilmowaną z wysokości 100 metrów</div></div></div></div></div></a></div></div><div class="row"><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div></div>
 					</div>
 				</div>
 			</div>
 		</main>
-	<div id="footer" class=" container-fluid footer">
+	<div id="footer" class="container-fluid footer" style="z-index:1; position:relative">
 	<footer class="container">
 		<div class="row">
 			<div class=" col-md-3 col-sm-3">
@@ -2046,12 +2091,14 @@ $(function()
 <li><a href="/dzielnice">Dzielnice</a></li>
 <li><a href="/edukacja">Edukacja</a></li>
 <li><a href="/zielony-gdansk">Ekologia - Zielony Gdańsk</a></li>
+<li><a href="/uelfinalgdansk">Finał Ligi Europy 2021</a></li>
 <li><a href="/fotogaleria">Fotogaleria</a></li>
 <li><a href="/gdansk-bez-barier">Gdańsk bez barier</a></li>
 <li><a href="/gdanskpatriotyczny">Gdańsk patriotyczny</a></li>
 <li><a href="/budzet">Gdański Budżet</a></li>
 <li><a href="/gdanskwliczbach">Gdańsk w liczbach</a></li>
 <li><a href="/tu-sie-zyje">Gdańsk. Tu się żyje!</a></li>
+<li><a href="/gip">Gdański Informator Pomocowy</a></li>
 <li><a href="/gdanszczanie/">Gdańszczanie</a></li>
 <li><a href="/historia">Historia</a></li>
 <li><a href="/inwestycje-miejskie">Inwestycje miejskie</a></li>
@@ -2074,7 +2121,7 @@ $(function()
 <li><a href="/pit">PIT</a></li>
 <li><a href="/ppp">Partnerstwo Publiczno-Prywatne</a></li>
 <li><a href="/puls-miasta">Puls miasta</a></li>
-<li><a href="/raport-o-stanie-miasta-2019">Raport o stanie miasta 2019</a></li>
+<li><a href="/raport-o-stanie-miasta-2020">Raport o stanie miasta 2020</a></li>
 <li><a href="/rodzina">Rodzina</a></li>
 <li><a href="/badkowski">Rok Lecha Bądkowskiego</a></li>
 <li><a href="//www.rowerowygdansk.pl" target="_blank" title="Otwarcie w nowej karcie">Rowerowy Gdańsk</a></li>
@@ -2087,6 +2134,7 @@ $(function()
 <li><a href="/studium">Studium</a></li>
 <li><a href="/stulecie-praw-wyborczych-kobiet">Stulecie praw wyborczych kobiet</a></li>
 <li><a href="/fahrenheit">Stypendyści Fahrenheita</a></li>
+<li><a href="/szczepienia">Szczepienia</a></li>
 <li><a href="/tunel">Tunel pod Martwą Wisłą</a></li>
 <li><a href="/turystyka">Turystyka</a></li>
 <li><a href="/tv">TV</a></li>
