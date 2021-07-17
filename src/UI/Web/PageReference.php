@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web;
 
+use InvalidArgumentException;
+
 class PageReference
 {
     private $url;
@@ -19,7 +21,7 @@ class PageReference
     public function __construct(?string $url, string $text, bool $isCurrent, bool $isPrevious, bool $isNext)
     {
         if (!self::validate($url, $text, $isCurrent, $isPrevious, $isNext)) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
         $this->url = $url;
         $this->text = $text;

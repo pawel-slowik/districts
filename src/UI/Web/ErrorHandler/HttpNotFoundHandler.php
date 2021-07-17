@@ -9,13 +9,14 @@ use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Interfaces\ErrorHandlerInterface;
+use Throwable;
 
 class HttpNotFoundHandler implements ErrorHandlerInterface
 {
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(
         Request $request,
-        \Throwable $exception,
+        Throwable $exception,
         bool $displayErrorDetails,
         bool $logErrors,
         bool $logErrorDetails

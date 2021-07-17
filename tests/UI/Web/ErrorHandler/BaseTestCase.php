@@ -7,6 +7,7 @@ namespace Districts\Test\UI\Web\ErrorHandler;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
+use Throwable;
 
 class BaseTestCase extends TestCase
 {
@@ -16,13 +17,13 @@ class BaseTestCase extends TestCase
     protected $requestMock;
 
     /**
-     * @var MockObject|\Throwable
+     * @var MockObject|Throwable
      */
     protected $exceptionMock;
 
     protected function setUp(): void
     {
         $this->requestMock = $this->createMock(ServerRequestInterface::class);
-        $this->exceptionMock = $this->createMock(\Throwable::class);
+        $this->exceptionMock = $this->createMock(Throwable::class);
     }
 }

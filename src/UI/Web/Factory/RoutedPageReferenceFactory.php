@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web\Factory;
 
+use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Interfaces\RouteParserInterface;
 use Slim\Routing\RouteContext;
+use Traversable;
 
 class RoutedPageReferenceFactory
 {
@@ -26,7 +28,7 @@ class RoutedPageReferenceFactory
         ServerRequestInterface $namedRouteRequest,
         int $pageCount,
         int $currentPageNumber
-    ): \Traversable {
+    ): Traversable {
         return $this->pageReferenceFactory->createPageReferences(
             $this->createBaseUrlForPagination($namedRouteRequest),
             $pageCount,
@@ -39,10 +41,10 @@ class RoutedPageReferenceFactory
         $routeContext = RouteContext::fromRequest($namedRouteRequest);
         $route = $routeContext->getRoute();
         if (is_null($route)) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
         if (is_null($route->getName())) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
         return $this->routeParser->fullUrlFor(
             $namedRouteRequest->getUri(),

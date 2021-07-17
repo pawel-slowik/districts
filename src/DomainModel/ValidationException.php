@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel;
 
-class ValidationException extends \RuntimeException
+use RuntimeException;
+
+class ValidationException extends RuntimeException
 {
     /**
      * @var string[]

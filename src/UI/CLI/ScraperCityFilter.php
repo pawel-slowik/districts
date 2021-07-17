@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\UI\CLI;
 
+use InvalidArgumentException;
+
 class ScraperCityFilter
 {
     private $names;
@@ -13,7 +15,7 @@ class ScraperCityFilter
         $supportedNames = $this->getSupportedNames($scrapers);
         foreach ($names as $name) {
             if (!in_array($name, $supportedNames, true)) {
-                throw new \InvalidArgumentException("unsupported city name: {$name}");
+                throw new InvalidArgumentException("unsupported city name: {$name}");
             }
         }
         $this->names = $names;

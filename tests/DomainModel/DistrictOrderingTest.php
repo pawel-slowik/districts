@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Districts\Test\DomainModel;
 
 use Districts\DomainModel\DistrictOrdering;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -49,7 +50,7 @@ class DistrictOrderingTest extends TestCase
      */
     public function testInvalid(int $field, int $direction): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         new DistrictOrdering($field, $direction);
     }
 

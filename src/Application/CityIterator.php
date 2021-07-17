@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace Districts\Application;
 
+use ArrayIterator;
 use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\Entity\City;
+use IteratorAggregate;
+use Traversable;
 
 /**
- * @implements \IteratorAggregate<City>
+ * @implements IteratorAggregate<City>
  */
-class CityIterator implements \IteratorAggregate
+class CityIterator implements IteratorAggregate
 {
     private $cityRepository;
 
@@ -21,10 +24,10 @@ class CityIterator implements \IteratorAggregate
     }
 
     /**
-     * @return \Traversable<City>
+     * @return Traversable<City>
      */
-    public function getIterator(): \Traversable
+    public function getIterator(): Traversable
     {
-        return new \ArrayIterator($this->cityRepository->list());
+        return new ArrayIterator($this->cityRepository->list());
     }
 }

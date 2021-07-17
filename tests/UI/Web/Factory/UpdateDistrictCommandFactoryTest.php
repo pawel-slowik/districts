@@ -10,6 +10,7 @@ use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use StdClass;
 
 /**
  * @covers \Districts\Application\Command\UpdateDistrictCommand
@@ -129,7 +130,7 @@ class UpdateDistrictCommandFactoryTest extends TestCase
     {
         return [
             [null],
-            [new \StdClass()],
+            [new StdClass()],
         ];
     }
 }

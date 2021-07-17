@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel;
 
+use InvalidArgumentException;
+
 class DistrictFilter
 {
     public const TYPE_CITY = 1;
@@ -25,7 +27,7 @@ class DistrictFilter
     public function __construct(int $type, $value)
     {
         if (!self::validate($type, $value)) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
         $this->type = $type;
         $this->value = $value;

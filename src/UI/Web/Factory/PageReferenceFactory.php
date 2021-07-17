@@ -6,10 +6,11 @@ namespace Districts\UI\Web\Factory;
 
 use Districts\UI\Web\PageReference;
 use Laminas\Uri\Uri;
+use Traversable;
 
 class PageReferenceFactory
 {
-    public function createPageReferences(string $baseUrl, int $pageCount, int $currentPageNumber): \Traversable
+    public function createPageReferences(string $baseUrl, int $pageCount, int $currentPageNumber): Traversable
     {
         if ($pageCount <= 1) {
             return;

@@ -10,6 +10,7 @@ use Districts\DomainModel\Scraper\Gdansk\CityScraper as GdanskScraper;
 use Districts\DomainModel\Scraper\HtmlFetcher;
 use Districts\DomainModel\Scraper\HtmlFinder;
 use Districts\DomainModel\Scraper\Krakow\CityScraper as KrakowScraper;
+use InvalidArgumentException as FilterInvalidArgumentException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -45,7 +46,7 @@ final class UpdateCommand extends Command
     {
         try {
             $cityFilter = new ScraperCityFilter($this->scrapers, $input->getArgument("city_names"));
-        } catch (\InvalidArgumentException $ex) {
+        } catch (FilterInvalidArgumentException $ex) {
             throw new InvalidArgumentException($ex->getMessage(), $ex->getCode());
         }
         foreach ($cityFilter->filter($this->scrapers) as $scraper) {

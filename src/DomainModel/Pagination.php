@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel;
 
+use InvalidArgumentException;
+
 class Pagination
 {
     private $pageNumber;
@@ -13,7 +15,7 @@ class Pagination
     public function __construct(int $pageNumber, int $pageSize)
     {
         if (!self::validate($pageNumber, $pageSize)) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
         $this->pageNumber = $pageNumber;
         $this->pageSize = $pageSize;

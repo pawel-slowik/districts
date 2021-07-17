@@ -6,6 +6,7 @@ namespace Districts\Test\UI\CLI;
 
 use Districts\DomainModel\Scraper\CityScraper;
 use Districts\UI\CLI\ScraperCityFilter;
+use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -54,7 +55,7 @@ class ScraperCityFilterTest extends TestCase
 
     public function testInvalid(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $filter = new ScraperCityFilter($this->cityScrapers, ["foo", "baz"]);
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Districts\Test\DomainModel;
 
 use Districts\DomainModel\DistrictFilter;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -49,7 +50,7 @@ class DistrictFilterTest extends TestCase
      */
     public function testInvalid(int $type, $value): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         new DistrictFilter($type, $value);
     }
 

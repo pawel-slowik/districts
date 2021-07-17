@@ -6,6 +6,7 @@ namespace Districts\Test\DomainModel\Scraper;
 
 use Districts\DomainModel\Scraper\HtmlFinder;
 use Districts\DomainModel\Scraper\RuntimeException;
+use DOMNode;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -56,7 +57,7 @@ EOT;
     {
         $nodes = $this->finder->findNodes($this->validHtml, "/html/body");
         $this->assertIsArray($nodes);
-        $this->assertContainsOnlyInstancesOf(\DOMNode::class, $nodes);
+        $this->assertContainsOnlyInstancesOf(DOMNode::class, $nodes);
     }
 
     public function testFoundValue(): void

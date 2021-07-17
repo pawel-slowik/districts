@@ -7,6 +7,7 @@ namespace Districts\DomainModel;
 use ArrayAccess;
 use ArrayIterator;
 use Countable;
+use InvalidArgumentException;
 use IteratorAggregate;
 use Traversable;
 
@@ -21,7 +22,7 @@ class PagedResult implements ArrayAccess, Countable, IteratorAggregate
     public function __construct(int $pageSize, int $totalEntryCount, array $currentPageEntries)
     {
         if (!self::validate($pageSize, $totalEntryCount)) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
         $this->pageSize = $pageSize;
         $this->totalEntryCount = $totalEntryCount;

@@ -8,14 +8,17 @@
  * configuration based on https://github.com/koriym/Koriym.PhpSkeleton
  */
 
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
+
 $header = <<<'EOF'
 EOF;
 
-$finder = PhpCsFixer\Finder::create()
+$finder = Finder::create()
     ->exclude(['templates'])
     ->in(__DIR__);
 
-return \PhpCsFixer\Config::create()
+return Config::create()
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR2' => true,

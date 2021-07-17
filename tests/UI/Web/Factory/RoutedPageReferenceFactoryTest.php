@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\Factory;
 
+use ArrayIterator;
 use Districts\UI\Web\Factory\PageReferenceFactory;
 use Districts\UI\Web\Factory\RoutedPageReferenceFactory;
 use Districts\UI\Web\PageReference;
+use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
@@ -54,7 +56,7 @@ class RoutedPageReferenceFactoryTest extends TestCase
 
         $pageReferenceFactory = $this->createMock(PageReferenceFactory::class);
         $pageReferenceFactory->method("createPageReferences")->willReturn(
-            new \ArrayIterator(
+            new ArrayIterator(
                 [
                     $this->createMock(PageReference::class),
                     $this->createMock(PageReference::class),
@@ -76,13 +78,13 @@ class RoutedPageReferenceFactoryTest extends TestCase
 
     public function testExceptionOnUnroutedRequest(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->routedPageReferenceFactory->createPageReferences($this->unroutedRequest, 1, 1);
     }
 
     public function testExceptionOnUnnamedRoute(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->routedPageReferenceFactory->createPageReferences($this->unnamedRouteRequest, 1, 1);
     }
 

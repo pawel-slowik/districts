@@ -12,6 +12,7 @@ use Districts\DomainModel\PagedResult;
 use Districts\DomainModel\Pagination;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use InvalidArgumentException;
 
 final class DoctrineDistrictRepository implements DistrictRepository
 {
@@ -131,7 +132,7 @@ final class DoctrineDistrictRepository implements DistrictRepository
                 ];
         }
 
-        throw new \InvalidArgumentException();
+        throw new InvalidArgumentException();
     }
 
     private function dqlLike(string $string): string

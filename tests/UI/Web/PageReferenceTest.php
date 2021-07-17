@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Districts\Test\UI\Web;
 
 use Districts\UI\Web\PageReference;
+use Exception;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -27,7 +29,7 @@ class PageReferenceTest extends TestCase
         $exceptionThrown = false;
         try {
             new PageReference(null, "test", false, false, false);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $exceptionThrown = true;
         }
         $this->assertFalse($exceptionThrown);
@@ -41,7 +43,7 @@ class PageReferenceTest extends TestCase
         $exceptionThrown = false;
         try {
             new PageReference($validUrl, "test", false, false, false);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $exceptionThrown = true;
         }
         $this->assertFalse($exceptionThrown);
@@ -79,7 +81,7 @@ class PageReferenceTest extends TestCase
      */
     public function testExceptionOnInvalidUrl(string $invalidUrl): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         new PageReference($invalidUrl, "test", false, false, false);
     }
 
@@ -93,7 +95,7 @@ class PageReferenceTest extends TestCase
 
     public function testExceptionOnInvalidText(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         new PageReference("http://example.com", "", false, false, false);
     }
 
@@ -105,7 +107,7 @@ class PageReferenceTest extends TestCase
         $exceptionThrown = false;
         try {
             new PageReference("http://example.com", "test", $isCurrent, $isPrevious, $isNext);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $exceptionThrown = true;
         }
         $this->assertFalse($exceptionThrown);
@@ -126,7 +128,7 @@ class PageReferenceTest extends TestCase
      */
     public function testExceptionOnInvalidFlagCombinations(bool $isCurrent, bool $isPrevious, bool $isNext): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         new PageReference("http://example.com", "test", $isCurrent, $isPrevious, $isNext);
     }
 

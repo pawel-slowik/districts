@@ -10,6 +10,7 @@ use Districts\UI\Web\Factory\RemoveDistrictCommandFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use StdClass;
 
 /**
  * @covers \Districts\Application\Command\RemoveDistrictCommand
@@ -47,7 +48,7 @@ class RemoveDistrictCommandFactoryTest extends TestCase
     {
         return [
             [null],
-            [new \StdClass()],
+            [new StdClass()],
         ];
     }
 

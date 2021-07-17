@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Districts\Test\DomainModel;
 
 use Districts\DomainModel\PagedResult;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -66,13 +67,13 @@ class PagedResultTest extends TestCase
 
     public function testExceptionOnInvalidPageSize(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         new PagedResult(-1, 1, []);
     }
 
     public function testExceptionOnInvalidTotalCount(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         new PagedResult(1, -1, []);
     }
 }

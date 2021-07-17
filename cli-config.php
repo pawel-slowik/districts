@@ -6,7 +6,9 @@ declare(strict_types=1);
 
 require_once __DIR__ . "/vendor/autoload.php";
 
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
+
 $entityManagerFactory = require "doctrine-bootstrap.php";
 $entityManager = $entityManagerFactory();
 
-return \Doctrine\ORM\Tools\Console\ConsoleRunner::createHelperSet($entityManager);
+return ConsoleRunner::createHelperSet($entityManager);

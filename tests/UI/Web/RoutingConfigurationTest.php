@@ -8,6 +8,7 @@ use DI\Container;
 use Districts\UI\Web\RoutingConfiguration;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 use Slim\App;
 
 /**
@@ -42,7 +43,7 @@ class RoutingConfigurationTest extends TestCase
         try {
             $routeCollector->getNamedRoute($name);
             $exceptionThrown = false;
-        } catch (\RuntimeException $ex) {
+        } catch (RuntimeException $ex) {
             $exceptionThrown = true;
         }
         $this->assertFalse($exceptionThrown);

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Scraper;
 
-class RuntimeException extends \RuntimeException
+use RuntimeException as BaseRuntimeException;
+
+class RuntimeException extends BaseRuntimeException
 {
 }

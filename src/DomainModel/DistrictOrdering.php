@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel;
 
+use InvalidArgumentException;
+
 class DistrictOrdering
 {
     public const FULL_NAME = 1;
@@ -35,7 +37,7 @@ class DistrictOrdering
     public function __construct(int $field, int $direction)
     {
         if (!self::validate($field, $direction)) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
         $this->field = $field;
         $this->direction = $direction;
