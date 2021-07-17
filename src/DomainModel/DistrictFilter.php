@@ -9,8 +9,11 @@ use InvalidArgumentException;
 class DistrictFilter
 {
     public const TYPE_CITY = 1;
+
     public const TYPE_NAME = 2;
+
     public const TYPE_AREA = 3;
+
     public const TYPE_POPULATION = 4;
 
     private $type;

@@ -9,12 +9,17 @@ use InvalidArgumentException;
 class DistrictOrdering
 {
     public const FULL_NAME = 1;
+
     public const CITY_NAME = 2;
+
     public const DISTRICT_NAME = 3;
+
     public const AREA = 4;
+
     public const POPULATION = 5;
 
     public const ASC = 1;
+
     public const DESC = 2;
 
     private const VALID_FIELDS = [
