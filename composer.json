@@ -20,7 +20,8 @@
         "nyholm/psr7": "^1.2",
         "nyholm/psr7-server": "^0.4.1",
         "php-di/php-di": "^6.0",
-        "fig/http-message-util": "^1.1"
+        "fig/http-message-util": "^1.1",
+        "cache/array-adapter": "^1.1"
     },
     "autoload": {
         "psr-4": {"Districts\\": "./src/"}

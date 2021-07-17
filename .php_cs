@@ -59,7 +59,8 @@ return Config::create()
         'multiline_comment_opening_closing' => true,
         'multiline_whitespace_before_semicolons' => true,
         'native_function_casing' => true, // @Symfony
-        'new_with_braces' => true, // @Symfony
+        'new_with_braces' => false, // @Symfony, breaks on anonymous classes
+        'braces' => ['allow_single_line_anonymous_class_with_empty_body' => true],
         'no_alternative_syntax' => true,
         'no_binary_string' => true,
         'no_blank_lines_after_class_opening' => true, // @Symfony
@@ -140,7 +141,7 @@ return Config::create()
         'semicolon_after_instruction' => true, // @Symfony
         'set_type_to_cast' => true, // @Symfony:risky
         'short_scalar_cast' => true, // @Symfony:risky
-        'simplified_null_return' => true,
+        'simplified_null_return' => false,
         'single_blank_line_before_namespace' => true, // @Symfony
         'single_line_after_imports' => true,
         'space_after_semicolon' => true, // @Symfony
