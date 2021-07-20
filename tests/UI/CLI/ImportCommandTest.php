@@ -7,7 +7,10 @@ namespace Districts\Test\UI\CLI;
 use Districts\Application\Importer;
 use Districts\Application\ProgressReporter;
 use Districts\DomainModel\Scraper\CityDTO;
+use Districts\DomainModel\Scraper\Gdansk\CityScraper as GdanskScraper;
 use Districts\DomainModel\Scraper\HtmlFetcher;
+use Districts\DomainModel\Scraper\HtmlFinder;
+use Districts\DomainModel\Scraper\Krakow\CityScraper as KrakowScraper;
 use Districts\UI\CLI\ImportCommand;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -49,11 +52,20 @@ class ImportCommandTest extends TestCase
     {
         $this->importer = $this->createMock(Importer::class);
         $this->fetcher = $this->createMock(HtmlFetcher::class);
-        $this->command = new ImportCommand($this->importer, $this->fetcher);
         $this->input = $this->createMock(InputInterface::class);
         $this->output = $this->createMock(OutputInterface::class);
         // quiet to avoid the need to mock output helpers
         $this->output->method("getVerbosity")->willReturn(OutputInterface::VERBOSITY_QUIET);
+
+        $finder = new HtmlFinder();
+
+        $this->command = new ImportCommand(
+            $this->importer,
+            [
+                new GdanskScraper($this->fetcher, $finder),
+                new KrakowScraper($this->fetcher, $finder),
+            ]
+        );
     }
 
     public function testInvalidCityName(): void

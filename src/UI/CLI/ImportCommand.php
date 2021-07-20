@@ -6,10 +6,7 @@ namespace Districts\UI\CLI;
 
 use Districts\Application\Importer;
 use Districts\DomainModel\Scraper\CityDTO;
-use Districts\DomainModel\Scraper\Gdansk\CityScraper as GdanskScraper;
-use Districts\DomainModel\Scraper\HtmlFetcher;
-use Districts\DomainModel\Scraper\HtmlFinder;
-use Districts\DomainModel\Scraper\Krakow\CityScraper as KrakowScraper;
+use Districts\DomainModel\Scraper\CityScraper;
 use InvalidArgumentException as FilterInvalidArgumentException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
@@ -24,15 +21,15 @@ final class ImportCommand extends Command
 
     private $scrapers;
 
-    public function __construct(Importer $importer, HtmlFetcher $fetcher)
+    /**
+     * @param Importer      $importer
+     * @param CityScraper[] $scrapers
+     */
+    public function __construct(Importer $importer, array $scrapers)
     {
         parent::__construct();
         $this->importer = $importer;
-        $finder = new HtmlFinder();
-        $this->scrapers = [
-            new GdanskScraper($fetcher, $finder),
-            new KrakowScraper($fetcher, $finder),
-        ];
+        $this->scrapers = $scrapers;
         $this->setName("import");
         $this->setDescription("Scrape and save districts data. Overwrites existing records.");
         $this->addArgument(
