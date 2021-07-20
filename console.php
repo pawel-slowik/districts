@@ -12,11 +12,12 @@ use Districts\DomainModel\Scraper\Krakow\CityScraper as KrakowScraper;
 use Districts\Infrastructure\DoctrineCityRepository;
 use Districts\Infrastructure\GuzzleHtmlFetcher;
 use Districts\UI\CLI\ImportCommand;
+use GuzzleHttp\Client;
 use Symfony\Component\Console\Application;
 
 $entityManagerFactory = require "doctrine-bootstrap.php";
 $entityManager = $entityManagerFactory();
-$fetcher = new GuzzleHtmlFetcher();
+$fetcher = new GuzzleHtmlFetcher(new Client());
 $finder = new HtmlFinder();
 
 $application = new Application();
