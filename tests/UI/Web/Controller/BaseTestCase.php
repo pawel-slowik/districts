@@ -28,7 +28,7 @@ abstract class BaseTestCase extends TestCase
         $container->set(EntityManager::class, $entityManager);
 
         FixtureTool::reset($entityManager);
-        FixtureTool::load($entityManager, [
+        FixtureTool::loadFiles($entityManager, [
             "tests/Infrastructure/data/cities.sql",
             "tests/Infrastructure/data/districts.sql",
         ]);

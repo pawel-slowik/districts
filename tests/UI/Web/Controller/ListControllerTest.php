@@ -65,7 +65,7 @@ class ListControllerTest extends BaseTestCase
         $app = $this->createApp($container);
         $entityManager = $container->get(EntityManager::class);
         FixtureTool::reset($entityManager);
-        FixtureTool::load($entityManager, [
+        FixtureTool::loadFiles($entityManager, [
             "tests/Infrastructure/data/cities_and_districts_for_pagination_tests.sql",
         ]);
         $request = $this->createRequest($requestMethod, $requestUri, $requestData);

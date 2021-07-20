@@ -40,7 +40,7 @@ class DistrictServiceTest extends TestCase
     {
         $entityManager = (require "doctrine-bootstrap.php")();
         FixtureTool::reset($entityManager);
-        FixtureTool::load($entityManager, [
+        FixtureTool::loadFiles($entityManager, [
             "tests/Infrastructure/data/cities.sql",
             "tests/Infrastructure/data/districts.sql",
         ]);
