@@ -20,6 +20,17 @@ abstract class DoctrineDbTestCase extends TestCase
         FixtureTool::reset($this->entityManager);
     }
 
+    protected function loadDefaultDbContents(): void
+    {
+        FixtureTool::loadFiles(
+            $this->entityManager,
+            [
+                "tests/Infrastructure/data/cities.sql",
+                "tests/Infrastructure/data/districts.sql",
+            ]
+        );
+    }
+
     protected function assertDbTableContents(string $tableName, array $expectedContents): void
     {
         $statement = $this->entityManager->getConnection()->query("SELECT * FROM {$tableName}");

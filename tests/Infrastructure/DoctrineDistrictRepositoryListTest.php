@@ -28,10 +28,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        FixtureTool::loadFiles($this->entityManager, [
-            "tests/Infrastructure/data/cities.sql",
-            "tests/Infrastructure/data/districts.sql",
-        ]);
+        parent::loadDefaultDbContents();
         $this->districtRepository = new DoctrineDistrictRepository($this->entityManager);
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }

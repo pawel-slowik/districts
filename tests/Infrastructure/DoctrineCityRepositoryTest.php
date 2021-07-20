@@ -21,10 +21,7 @@ class DoctrineCityRepositoryTest extends DoctrineDbTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        FixtureTool::loadFiles($this->entityManager, [
-            "tests/Infrastructure/data/cities.sql",
-            "tests/Infrastructure/data/districts.sql",
-        ]);
+        parent::loadDefaultDbContents();
         $this->cityRepository = new DoctrineCityRepository($this->entityManager);
     }
 
