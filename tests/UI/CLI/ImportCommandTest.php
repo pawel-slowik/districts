@@ -8,7 +8,7 @@ use Districts\Application\Importer;
 use Districts\Application\ProgressReporter;
 use Districts\DomainModel\Scraper\CityDTO;
 use Districts\DomainModel\Scraper\HtmlFetcher;
-use Districts\UI\CLI\UpdateCommand;
+use Districts\UI\CLI\ImportCommand;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
@@ -16,9 +16,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @covers \Districts\UI\CLI\UpdateCommand
+ * @covers \Districts\UI\CLI\ImportCommand
  */
-class UpdateCommandTest extends TestCase
+class ImportCommandTest extends TestCase
 {
     /**
      * @var Importer|MockObject
@@ -31,7 +31,7 @@ class UpdateCommandTest extends TestCase
     private $fetcher;
 
     /**
-     * @var UpdateCommand
+     * @var ImportCommand
      */
     private $command;
 
@@ -49,7 +49,7 @@ class UpdateCommandTest extends TestCase
     {
         $this->importer = $this->createMock(Importer::class);
         $this->fetcher = $this->createMock(HtmlFetcher::class);
-        $this->command = new UpdateCommand($this->importer, $this->fetcher);
+        $this->command = new ImportCommand($this->importer, $this->fetcher);
         $this->input = $this->createMock(InputInterface::class);
         $this->output = $this->createMock(OutputInterface::class);
         // quiet to avoid the need to mock output helpers

@@ -18,7 +18,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class UpdateCommand extends Command
+final class ImportCommand extends Command
 {
     private $importer;
 
@@ -33,12 +33,12 @@ final class UpdateCommand extends Command
             new GdanskScraper($fetcher, $finder),
             new KrakowScraper($fetcher, $finder),
         ];
-        $this->setName("update");
-        $this->setDescription("Update the districts database with scraped data. Overwrites existing records.");
+        $this->setName("import");
+        $this->setDescription("Scrape and save districts data. Overwrites existing records.");
         $this->addArgument(
             "city_names",
             InputArgument::OPTIONAL | InputArgument::IS_ARRAY,
-            "List of city names to update (default: update all cities)"
+            "List of city names to import (default: all cities)"
         );
     }
 

@@ -30,9 +30,9 @@ Create the database structure:
 
 Run the scraper to populate the database:
 
-    docker exec -it $(docker ps -q -f ancestor=districts-php) ./console.php update --help
+    docker exec -it $(docker ps -q -f ancestor=districts-php) ./console.php import --help
 
-    docker exec -it $(docker ps -q -f ancestor=districts-php) ./console.php update
+    docker exec -it $(docker ps -q -f ancestor=districts-php) ./console.php import
 
 Open <http://127.0.0.1:8080> in your browser.
 

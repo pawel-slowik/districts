@@ -8,15 +8,17 @@ require __DIR__ . "/vendor/autoload.php";
 use Districts\Application\Importer;
 use Districts\Infrastructure\DoctrineCityRepository;
 use Districts\Infrastructure\GuzzleHtmlFetcher;
-use Districts\UI\CLI\UpdateCommand;
+use Districts\UI\CLI\ImportCommand;
 use Symfony\Component\Console\Application;
 
 $entityManagerFactory = require "doctrine-bootstrap.php";
 $entityManager = $entityManagerFactory();
 
 $application = new Application();
-$application->add(new UpdateCommand(
-    new Importer(new DoctrineCityRepository($entityManager)),
-    new GuzzleHtmlFetcher(),
-));
+$application->add(
+    new ImportCommand(
+        new Importer(new DoctrineCityRepository($entityManager)),
+        new GuzzleHtmlFetcher(),
+    )
+);
 $application->run();
