@@ -22,4 +22,9 @@ class FixtureTool
             $entityManager->getConnection()->exec(file_get_contents($sqlFilename));
         }
     }
+
+    public static function loadSql(EntityManager $entityManager, $sqlStatement): void
+    {
+        $entityManager->getConnection()->exec($sqlStatement);
+    }
 }

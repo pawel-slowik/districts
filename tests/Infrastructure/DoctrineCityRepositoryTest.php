@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Test\Infrastructure;
 
-use Districts\DomainModel\DistrictFilter;
-use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\Entity\City;
 use Districts\Infrastructure\DoctrineCityRepository;
-use Districts\Infrastructure\DoctrineDistrictRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 use PHPUnit\Framework\TestCase;
 
@@ -22,11 +19,6 @@ class DoctrineCityRepositoryTest extends TestCase
      */
     private $cityRepository;
 
-    /**
-     * @var DoctrineDistrictRepository
-     */
-    private $districtRepository;
-
     protected function setUp(): void
     {
         $entityManager = (require "doctrine-bootstrap.php")();
@@ -36,7 +28,6 @@ class DoctrineCityRepositoryTest extends TestCase
             "tests/Infrastructure/data/districts.sql",
         ]);
         $this->cityRepository = new DoctrineCityRepository($entityManager);
-        $this->districtRepository = new DoctrineDistrictRepository($entityManager);
     }
 
     public function testGet(): void
@@ -110,47 +101,5 @@ class DoctrineCityRepositoryTest extends TestCase
             "Za\xc5\xbc\xc3\xb3\xc5\x82\xc4\x87 g\xc4\x99\xc5\x9bl\xc4\x85 ja\xc5\xba\xc5\x84",
             $list[2]->getName()
         );
-    }
-
-    public function testAdd(): void
-    {
-        $countBefore = count($this->cityRepository->list());
-        $this->cityRepository->add(new City("Baz"));
-        $this->assertCount($countBefore + 1, $this->cityRepository->list());
-        $this->assertNotNull($this->cityRepository->findByName("Baz"));
-    }
-
-    public function testUpdateWithNewDistrict(): void
-    {
-        $defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
-        $newDistrictFilter = new DistrictFilter(DistrictFilter::TYPE_NAME, "New District");
-        $city = $this->cityRepository->get(1);
-        $city->addDistrict("New District", 123.4, 5678);
-        $this->cityRepository->update($city);
-
-        $allDistricts = $this->districtRepository->list($defaultOrder);
-        $this->assertCount(16, $allDistricts);
-
-        $newDistricts = $this->districtRepository->list($defaultOrder, $newDistrictFilter);
-        $this->assertCount(1, $newDistricts);
-        $this->assertSame(123.4, $newDistricts[0]->getArea());
-        $this->assertSame(5678, $newDistricts[0]->getPopulation());
-    }
-
-    public function testUpdateWithChangedDistrict(): void
-    {
-        $defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
-        $updatedDistrictFilter = new DistrictFilter(DistrictFilter::TYPE_NAME, "Updated District");
-        $city = $this->cityRepository->get(1);
-        $city->updateDistrict(1, "Updated District", 123.4, 5678);
-        $this->cityRepository->update($city);
-
-        $allDistricts = $this->districtRepository->list($defaultOrder);
-        $this->assertCount(15, $allDistricts);
-
-        $updatedDistricts = $this->districtRepository->list($defaultOrder, $updatedDistrictFilter);
-        $this->assertCount(1, $updatedDistricts);
-        $this->assertSame(123.4, $updatedDistricts[0]->getArea());
-        $this->assertSame(5678, $updatedDistricts[0]->getPopulation());
     }
 }
