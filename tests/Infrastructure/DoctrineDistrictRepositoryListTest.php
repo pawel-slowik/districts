@@ -9,12 +9,11 @@ use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\Pagination;
 use Districts\Infrastructure\DoctrineDistrictRepository;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Districts\Infrastructure\DoctrineDistrictRepository
  */
-class DoctrineDistrictRepositoryListTest extends TestCase
+class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 {
     /**
      * @var DoctrineDistrictRepository
@@ -28,13 +27,12 @@ class DoctrineDistrictRepositoryListTest extends TestCase
 
     protected function setUp(): void
     {
-        $entityManager = (require "doctrine-bootstrap.php")();
-        FixtureTool::reset($entityManager);
-        FixtureTool::loadFiles($entityManager, [
+        parent::setUp();
+        FixtureTool::loadFiles($this->entityManager, [
             "tests/Infrastructure/data/cities.sql",
             "tests/Infrastructure/data/districts.sql",
         ]);
-        $this->districtRepository = new DoctrineDistrictRepository($entityManager);
+        $this->districtRepository = new DoctrineDistrictRepository($this->entityManager);
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
 

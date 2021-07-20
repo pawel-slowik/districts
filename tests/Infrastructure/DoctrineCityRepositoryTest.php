@@ -7,12 +7,11 @@ namespace Districts\Test\Infrastructure;
 use Districts\DomainModel\Entity\City;
 use Districts\Infrastructure\DoctrineCityRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Districts\Infrastructure\DoctrineCityRepository
  */
-class DoctrineCityRepositoryTest extends TestCase
+class DoctrineCityRepositoryTest extends DoctrineDbTestCase
 {
     /**
      * @var DoctrineCityRepository
@@ -21,13 +20,12 @@ class DoctrineCityRepositoryTest extends TestCase
 
     protected function setUp(): void
     {
-        $entityManager = (require "doctrine-bootstrap.php")();
-        FixtureTool::reset($entityManager);
-        FixtureTool::loadFiles($entityManager, [
+        parent::setUp();
+        FixtureTool::loadFiles($this->entityManager, [
             "tests/Infrastructure/data/cities.sql",
             "tests/Infrastructure/data/districts.sql",
         ]);
-        $this->cityRepository = new DoctrineCityRepository($entityManager);
+        $this->cityRepository = new DoctrineCityRepository($this->entityManager);
     }
 
     public function testGet(): void

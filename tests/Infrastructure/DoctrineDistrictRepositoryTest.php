@@ -7,12 +7,11 @@ namespace Districts\Test\Infrastructure;
 use Districts\DomainModel\DistrictOrdering;
 use Districts\Infrastructure\DoctrineDistrictRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Districts\Infrastructure\DoctrineDistrictRepository
  */
-class DoctrineDistrictRepositoryTest extends TestCase
+class DoctrineDistrictRepositoryTest extends DoctrineDbTestCase
 {
     /**
      * @var DoctrineDistrictRepository
@@ -26,13 +25,12 @@ class DoctrineDistrictRepositoryTest extends TestCase
 
     protected function setUp(): void
     {
-        $entityManager = (require "doctrine-bootstrap.php")();
-        FixtureTool::reset($entityManager);
-        FixtureTool::loadFiles($entityManager, [
+        parent::setUp();
+        FixtureTool::loadFiles($this->entityManager, [
             "tests/Infrastructure/data/cities.sql",
             "tests/Infrastructure/data/districts.sql",
         ]);
-        $this->districtRepository = new DoctrineDistrictRepository($entityManager);
+        $this->districtRepository = new DoctrineDistrictRepository($this->entityManager);
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
 
