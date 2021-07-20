@@ -42,7 +42,6 @@ class DoctrineCityRepositoryTest extends TestCase
     public function testGet(): void
     {
         $city = $this->cityRepository->get(1);
-        $this->assertInstanceOf(City::class, $city);
         $this->assertSame("Foo", $city->getName());
     }
 
@@ -55,7 +54,6 @@ class DoctrineCityRepositoryTest extends TestCase
     public function testGetByDistrictId(): void
     {
         $city = $this->cityRepository->getByDistrictId(12);
-        $this->assertInstanceOf(City::class, $city);
         $this->assertSame(2, $city->getId());
     }
 
@@ -68,7 +66,7 @@ class DoctrineCityRepositoryTest extends TestCase
     public function testFind(): void
     {
         $city = $this->cityRepository->findByName("Foo");
-        $this->assertInstanceOf(City::class, $city);
+        $this->assertNotNull($city);
         $this->assertSame(1, $city->getId());
     }
 
@@ -77,7 +75,7 @@ class DoctrineCityRepositoryTest extends TestCase
         $city = $this->cityRepository->findByName(
             "Za\xc5\xbc\xc3\xb3\xc5\x82\xc4\x87 g\xc4\x99\xc5\x9bl\xc4\x85 ja\xc5\xba\xc5\x84"
         );
-        $this->assertInstanceOf(City::class, $city);
+        $this->assertNotNull($city);
         $this->assertSame(3, $city->getId());
     }
 

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Districts\Test\Infrastructure;
 
 use Districts\DomainModel\DistrictOrdering;
-use Districts\DomainModel\Entity\District;
 use Districts\Infrastructure\DoctrineDistrictRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +39,6 @@ class DoctrineDistrictRepositoryTest extends TestCase
     public function testGet(): void
     {
         $district = $this->districtRepository->get(1);
-        $this->assertInstanceOf(District::class, $district);
         $this->assertSame("Plugh", $district->getName());
         $this->assertSame(floatval(10), $district->getArea());
         $this->assertSame(5000, $district->getPopulation());

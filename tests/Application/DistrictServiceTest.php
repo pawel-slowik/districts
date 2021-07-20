@@ -55,7 +55,6 @@ class DistrictServiceTest extends TestCase
     public function testGet(): void
     {
         $district = $this->districtService->get(new GetDistrictQuery(1));
-        $this->assertInstanceOf(District::class, $district);
         $this->assertSame("Plugh", $district->getName());
         $this->assertSame(floatval(10), $district->getArea());
         $this->assertSame(5000, $district->getPopulation());
