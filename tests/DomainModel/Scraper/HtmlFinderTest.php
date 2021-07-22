@@ -14,20 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 class HtmlFinderTest extends TestCase
 {
-    /**
-     * @var HtmlFinder
-     */
-    private $finder;
-
-    /**
-     * @var string
-     */
-    private $validHtml;
-
-    protected function setUp(): void
-    {
-        $this->finder = new HtmlFinder();
-        $this->validHtml = <<<'EOT'
+    private const VALID_HTML = <<<'HTML'
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,7 +25,16 @@ class HtmlFinderTest extends TestCase
     test
   </body>
 </html>
-EOT;
+HTML;
+
+    /**
+     * @var HtmlFinder
+     */
+    private $finder;
+
+    protected function setUp(): void
+    {
+        $this->finder = new HtmlFinder();
     }
 
     public function testExceptionOnInvalidHtml(): void
@@ -49,20 +45,20 @@ EOT;
 
     public function testFoundCount(): void
     {
-        $nodes = $this->finder->findNodes($this->validHtml, "/html/body");
+        $nodes = $this->finder->findNodes(self::VALID_HTML, "/html/body");
         $this->assertCount(1, $nodes);
     }
 
     public function testFoundType(): void
     {
-        $nodes = $this->finder->findNodes($this->validHtml, "/html/body");
+        $nodes = $this->finder->findNodes(self::VALID_HTML, "/html/body");
         $this->assertIsArray($nodes);
         $this->assertContainsOnlyInstancesOf(DOMNode::class, $nodes);
     }
 
     public function testFoundValue(): void
     {
-        $nodes = $this->finder->findNodes($this->validHtml, "/html/body");
+        $nodes = $this->finder->findNodes(self::VALID_HTML, "/html/body");
         $this->assertSame("\n    test\n  ", $nodes[0]->textContent);
     }
 }
