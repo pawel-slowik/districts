@@ -16,15 +16,15 @@ class PagedResultTest extends TestCase
     public function testGetters(): void
     {
         $result = new PagedResult(100, 202, ["foo", "bar"]);
-        $this->assertSame($result->getPageSize(), 100);
-        $this->assertSame($result->getTotalEntryCount(), 202);
-        $this->assertSame($result->getCurrentPageEntries(), ["foo", "bar"]);
+        $this->assertSame(100, $result->getPageSize());
+        $this->assertSame(202, $result->getTotalEntryCount());
+        $this->assertSame(["foo", "bar"], $result->getCurrentPageEntries());
     }
 
     public function testPageCount(): void
     {
         $result = new PagedResult(100, 202, ["foo", "bar"]);
-        $this->assertSame($result->getPageCount(), 3);
+        $this->assertSame(3, $result->getPageCount());
     }
 
     public function testCount(): void
@@ -36,7 +36,7 @@ class PagedResultTest extends TestCase
     public function testIterator(): void
     {
         $result = new PagedResult(100, 202, ["foo", "bar"]);
-        $this->assertSame(iterator_to_array($result), ["foo", "bar"]);
+        $this->assertSame(["foo", "bar"], iterator_to_array($result));
     }
 
     public function testArrayAccessExists(): void
