@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Districts\Test\DomainModel;
 
 use Districts\DomainModel\DistrictValidator;
-use Districts\DomainModel\Entity\City;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -97,12 +95,5 @@ class DistrictValidatorTest extends TestCase
             [0],
             [-1],
         ];
-    }
-
-    private function createCityMock(int $id): MockObject
-    {
-        $mock = $this->createMock(City::class);
-        $mock->method("getId")->willReturn($id);
-        return $mock;
     }
 }
