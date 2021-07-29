@@ -8,7 +8,7 @@ use Districts\DomainModel\DistrictOrdering;
 
 class DistrictOrderingFactory
 {
-    public static function createFromRequestInput(?string $column, ?string $direction): DistrictOrdering
+    public function createFromRequestInput(?string $column, ?string $direction): DistrictOrdering
     {
         $rules = [
             ["city", "asc", DistrictOrdering::CITY_NAME, DistrictOrdering::ASC],

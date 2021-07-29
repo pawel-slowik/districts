@@ -27,7 +27,7 @@ class DistrictFilterFactory
         ],
     ];
 
-    public static function createFromRequestInput(?string $column, ?string $value): ?DistrictFilter
+    public function createFromRequestInput(?string $column, ?string $value): ?DistrictFilter
     {
         if (is_null($value) || (strval($value) === "")) {
             return null;
