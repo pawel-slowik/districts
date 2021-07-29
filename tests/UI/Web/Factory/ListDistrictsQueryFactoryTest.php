@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\Factory;
 
-use Districts\Application\Query\ListDistrictsQuery;
 use Districts\UI\Web\Factory\DistrictFilterFactory;
 use Districts\UI\Web\Factory\DistrictOrderingFactory;
 use Districts\UI\Web\Factory\ListDistrictsQueryFactory;
@@ -44,7 +43,6 @@ class ListDistrictsQueryFactoryTest extends TestCase
         $request = $this->createMock(Request::class);
         $request->method("getQueryParams")->willReturn($queryParams);
         $query = $this->queryFactory->fromRequest($request, $routeArgs);
-        $this->assertInstanceOf(ListDistrictsQuery::class, $query);
         $this->assertNotNull($query->getOrdering());
         $this->assertNotNull($query->getFilter());
         $this->assertNotNull($query->getPagination());
@@ -57,7 +55,6 @@ class ListDistrictsQueryFactoryTest extends TestCase
         $request = $this->createMock(Request::class);
         $request->method("getQueryParams")->willReturn($queryParams);
         $query = $this->queryFactory->fromRequest($request, $routeArgs);
-        $this->assertInstanceOf(ListDistrictsQuery::class, $query);
         $this->assertNotNull($query->getOrdering());
         $this->assertNull($query->getFilter());
         $this->assertNotNull($query->getPagination());
