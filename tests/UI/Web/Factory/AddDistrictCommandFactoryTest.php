@@ -13,7 +13,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use StdClass;
 
 /**
- * @covers \Districts\Application\Command\AddDistrictCommand
  * @covers \Districts\UI\Web\Factory\AddDistrictCommandFactory
  */
 class AddDistrictCommandFactoryTest extends TestCase

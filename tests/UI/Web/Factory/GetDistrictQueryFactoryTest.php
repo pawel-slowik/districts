@@ -11,7 +11,6 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 /**
- * @covers \Districts\Application\Query\GetDistrictQuery
  * @covers \Districts\UI\Web\Factory\GetDistrictQueryFactory
  */
 class GetDistrictQueryFactoryTest extends TestCase

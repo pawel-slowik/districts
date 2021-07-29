@@ -13,7 +13,6 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 /**
- * @covers \Districts\Application\Query\ListDistrictsQuery
  * @covers \Districts\UI\Web\Factory\ListDistrictsQueryFactory
  */
 class ListDistrictsQueryFactoryTest extends TestCase
