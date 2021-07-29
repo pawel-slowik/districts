@@ -14,6 +14,13 @@ use PHPUnit\Framework\TestCase;
  */
 class CityTest extends TestCase
 {
+    public function testName(): void
+    {
+        $city = new City("test");
+
+        $this->assertSame("test", $city->getName());
+    }
+
     public function testAddThrowsExceptionOnValidationFailure(): void
     {
         $city = new City("test");
