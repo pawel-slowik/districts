@@ -44,10 +44,9 @@ class DistrictServiceTest extends TestCase
             "tests/Infrastructure/data/cities.sql",
             "tests/Infrastructure/data/districts.sql",
         ]);
-        $cityRepository = new DoctrineCityRepository($entityManager);
         $this->districtService = new DistrictService(
             new DoctrineDistrictRepository($entityManager),
-            $cityRepository
+            new DoctrineCityRepository($entityManager)
         );
         $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
