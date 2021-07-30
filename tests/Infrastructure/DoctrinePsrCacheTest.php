@@ -44,7 +44,7 @@ class DoctrinePsrCacheTest extends TestCase
     {
         $this->psrCache
             ->method("get")
-            ->with($this->equalTo("123"))
+            ->with($this->identicalTo("123"))
             ->willReturn("456");
 
         $result = $this->doctrinePsrCache->fetch("123");
@@ -56,7 +56,7 @@ class DoctrinePsrCacheTest extends TestCase
     {
         $this->psrCache
             ->method("get")
-            ->with($this->equalTo("123"))
+            ->with($this->identicalTo("123"))
             ->will($this->returnArgument(1));
 
         $result = $this->doctrinePsrCache->fetch("123");
@@ -68,7 +68,7 @@ class DoctrinePsrCacheTest extends TestCase
     {
         $this->psrCache
             ->method("get")
-            ->with($this->equalTo("123"))
+            ->with($this->identicalTo("123"))
             ->will($this->throwException($this->invalidArgumentException));
 
         $result = $this->doctrinePsrCache->fetch("123");
@@ -80,7 +80,7 @@ class DoctrinePsrCacheTest extends TestCase
     {
         $this->psrCache
             ->method("has")
-            ->with($this->equalTo("123"))
+            ->with($this->identicalTo("123"))
             ->willReturn(true);
 
         $result = $this->doctrinePsrCache->contains("123");
@@ -92,7 +92,7 @@ class DoctrinePsrCacheTest extends TestCase
     {
         $this->psrCache
             ->method("has")
-            ->with($this->equalTo("123"))
+            ->with($this->identicalTo("123"))
             ->willReturn(false);
 
         $result = $this->doctrinePsrCache->contains("123");
@@ -104,7 +104,7 @@ class DoctrinePsrCacheTest extends TestCase
     {
         $this->psrCache
             ->method("has")
-            ->with($this->equalTo("123"))
+            ->with($this->identicalTo("123"))
             ->will($this->throwException($this->invalidArgumentException));
 
         $result = $this->doctrinePsrCache->contains("123");
@@ -116,7 +116,7 @@ class DoctrinePsrCacheTest extends TestCase
     {
         $this->psrCache
             ->method("set")
-            ->with($this->equalTo("123"))
+            ->with($this->identicalTo("123"))
             ->willReturn(true);
 
         $result = $this->doctrinePsrCache->save("123", "456");
@@ -139,7 +139,7 @@ class DoctrinePsrCacheTest extends TestCase
     {
         $this->psrCache
             ->method("delete")
-            ->with($this->equalTo("123"))
+            ->with($this->identicalTo("123"))
             ->willReturn(true);
 
         $result = $this->doctrinePsrCache->delete("123");

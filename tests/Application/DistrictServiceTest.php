@@ -63,7 +63,7 @@ class DistrictServiceTest extends TestCase
         $repositoryDistrict = $this->createStub(District::class);
         $this->districtRepository
             ->method("get")
-            ->with($this->equalTo(111))
+            ->with($this->identicalTo(111))
             ->willReturn($repositoryDistrict);
 
         $serviceDistrict = $this->districtService->get($query);
@@ -104,18 +104,18 @@ class DistrictServiceTest extends TestCase
 
         $this->cityRepository
             ->method("getByDistrictId")
-            ->with($this->equalTo(222))
+            ->with($this->identicalTo(222))
             ->willReturn($city);
 
         $city
             ->expects($this->once())
             ->method("removeDistrict")
-            ->with($this->equalTo(222));
+            ->with($this->identicalTo(222));
 
         $this->cityRepository
             ->expects($this->once())
             ->method("update")
-            ->with($this->equalTo($city));
+            ->with($this->identicalTo($city));
 
         $this->districtService->remove($command);
     }
@@ -164,22 +164,22 @@ class DistrictServiceTest extends TestCase
 
         $this->cityRepository
             ->method("get")
-            ->with($this->equalTo(333))
+            ->with($this->identicalTo(333))
             ->willReturn($city);
 
         $city
             ->expects($this->once())
             ->method("addDistrict")
             ->with(
-                $this->equalTo("Lorem ipsum"),
-                $this->equalTo(12.3),
-                $this->equalTo(456)
+                $this->identicalTo("Lorem ipsum"),
+                $this->identicalTo(12.3),
+                $this->identicalTo(456)
             );
 
         $this->cityRepository
             ->expects($this->once())
             ->method("update")
-            ->with($this->equalTo($city));
+            ->with($this->identicalTo($city));
 
         $this->districtService->add($command);
     }
@@ -213,23 +213,23 @@ class DistrictServiceTest extends TestCase
 
         $this->cityRepository
             ->method("getByDistrictId")
-            ->with($this->equalTo(4))
+            ->with($this->identicalTo(4))
             ->willReturn($city);
 
         $city
             ->expects($this->once())
             ->method("updateDistrict")
             ->with(
-                $this->equalTo(4),
-                $this->equalTo("update test"),
-                $this->equalTo(111.22),
-                $this->equalTo(333)
+                $this->identicalTo(4),
+                $this->identicalTo("update test"),
+                $this->identicalTo(111.22),
+                $this->identicalTo(333)
             );
 
         $this->cityRepository
             ->expects($this->once())
             ->method("update")
-            ->with($this->equalTo($city));
+            ->with($this->identicalTo($city));
 
         $this->districtService->update($command);
     }

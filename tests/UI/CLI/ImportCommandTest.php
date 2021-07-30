@@ -64,7 +64,7 @@ class ImportCommandTest extends TestCase
     {
         $this->input
             ->method("getArgument")
-            ->with($this->equalTo("city_names"))
+            ->with($this->identicalTo("city_names"))
             ->willReturn(["Foo"]);
 
         $this->scraper
@@ -79,7 +79,7 @@ class ImportCommandTest extends TestCase
     {
         $this->input
             ->method("getArgument")
-            ->with($this->equalTo("city_names"))
+            ->with($this->identicalTo("city_names"))
             ->willReturn([]);
 
         $this->importer

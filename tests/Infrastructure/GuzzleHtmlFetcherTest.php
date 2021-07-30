@@ -57,7 +57,7 @@ class GuzzleHtmlFetcherTest extends TestCase
 
         $this->response
             ->method("getHeader")
-            ->with($this->equalTo("content-type"))
+            ->with($this->identicalTo("content-type"))
             ->willReturn(["text/plain"]);
 
         $this->expectException(RuntimeException::class);
@@ -73,7 +73,7 @@ class GuzzleHtmlFetcherTest extends TestCase
 
         $this->response
             ->method("getHeader")
-            ->with($this->equalTo("content-type"))
+            ->with($this->identicalTo("content-type"))
             ->willReturn(["text/html; charset=utf-8"]);
 
         $this->response
