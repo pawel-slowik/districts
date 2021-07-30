@@ -7,6 +7,7 @@ namespace Districts\Test\Application;
 use Districts\Application\Command\AddDistrictCommand;
 use Districts\Application\Command\RemoveDistrictCommand;
 use Districts\Application\Command\UpdateDistrictCommand;
+use Districts\Application\CommandException;
 use Districts\Application\DistrictService;
 use Districts\Application\NotFoundException;
 use Districts\Application\Query\GetDistrictQuery;
@@ -83,9 +84,13 @@ class DistrictServiceTest extends TestCase
         $this->districtService->get(new GetDistrictQuery(1));
     }
 
-    public function testRemoveUnconfirmed(): void
+    public function testUnconfirmedRemoveDoesNotRemove(): void
     {
-        $this->districtService->remove(new RemoveDistrictCommand(1, false));
+        try {
+            $this->districtService->remove(new RemoveDistrictCommand(1, false));
+        } catch (CommandException $exception) {
+            // NOOP
+        }
         $this->assertCount(
             15,
             $this->districtService->list(
@@ -98,6 +103,12 @@ class DistrictServiceTest extends TestCase
         );
         $district = $this->districtService->get(new GetDistrictQuery(1));
         $this->assertInstanceOf(District::class, $district);
+    }
+
+    public function testUnconfirmedRemoveThrowsException(): void
+    {
+        $this->expectException(CommandException::class);
+        $this->districtService->remove(new RemoveDistrictCommand(1, false));
     }
 
     public function testRemoveNonExistent(): void

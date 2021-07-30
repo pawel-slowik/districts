@@ -57,15 +57,14 @@ class DistrictService
         $this->cityRepository->update($city);
     }
 
-    public function remove(RemoveDistrictCommand $command): bool
+    public function remove(RemoveDistrictCommand $command): void
     {
         if (!$command->isConfirmed()) {
-            return false;
+            throw new CommandException();
         }
         $city = $this->getCityByDistrictId($command->getId());
         $city->removeDistrict($command->getId());
         $this->cityRepository->update($city);
-        return true;
     }
 
     public function list(ListDistrictsQuery $query): PagedResult

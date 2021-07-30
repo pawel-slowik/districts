@@ -39,13 +39,14 @@ final class RemoveActionController
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        try {
-            $removed = $this->districtService->remove($this->commandFactory->fromRequest($request, $args));
-            if ($removed) {
+        $command = $this->commandFactory->fromRequest($request, $args);
+        if ($command->isConfirmed()) {
+            try {
+                $this->districtService->remove($command);
                 $this->session["success.message"] = "District data removed.";
+            } catch (DomainNotFoundException | ApplicationNotFoundException $exception) {
+                throw new HttpNotFoundException($request);
             }
-        } catch (DomainNotFoundException | ApplicationNotFoundException $exception) {
-            throw new HttpNotFoundException($request);
         }
         return $this->redirector->redirect($request->getUri(), "list");
     }
