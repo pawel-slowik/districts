@@ -11,11 +11,13 @@ use Districts\Application\CommandException;
 use Districts\Application\DistrictService;
 use Districts\Application\NotFoundException;
 use Districts\Application\Query\GetDistrictQuery;
+use Districts\Application\Query\ListDistrictsQuery;
 use Districts\Application\ValidationException as RequestValidationException;
 use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\DistrictRepository;
 use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Entity\District;
+use Districts\DomainModel\PagedResult;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
@@ -78,6 +80,18 @@ class DistrictServiceTest extends TestCase
         $this->expectException(NotFoundException::class);
 
         $this->districtService->get($this->createStub(GetDistrictQuery::class));
+    }
+
+    public function testList(): void
+    {
+        $result = $this->createStub(PagedResult::class);
+        $this->districtRepository
+            ->method("list")
+            ->willReturn($result);
+
+        $list = $this->districtService->list($this->createStub(ListDistrictsQuery::class));
+
+        $this->assertSame($result, $list);
     }
 
     public function testRemoveConfirmed(): void
