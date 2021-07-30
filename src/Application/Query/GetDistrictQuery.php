@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Application\Query;
 
-final class GetDistrictQuery
+class GetDistrictQuery
 {
     private $id;
 

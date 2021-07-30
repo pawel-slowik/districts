@@ -11,15 +11,14 @@ use Districts\Application\CommandException;
 use Districts\Application\DistrictService;
 use Districts\Application\NotFoundException;
 use Districts\Application\Query\GetDistrictQuery;
-use Districts\Application\Query\ListDistrictsQuery;
 use Districts\Application\ValidationException as RequestValidationException;
-use Districts\DomainModel\DistrictFilter;
-use Districts\DomainModel\DistrictOrdering;
+use Districts\DomainModel\CityRepository;
+use Districts\DomainModel\DistrictRepository;
+use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Entity\District;
-use Districts\DomainModel\ValidationException as DomainValidationException;
-use Districts\Infrastructure\DoctrineCityRepository;
-use Districts\Infrastructure\DoctrineDistrictRepository;
-use Districts\Test\Infrastructure\FixtureTool;
+use Districts\Infrastructure\NotFoundInRepositoryException;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -33,199 +32,208 @@ class DistrictServiceTest extends TestCase
     private $districtService;
 
     /**
-     * @var DistrictOrdering
+     * @var DistrictRepository|Stub
      */
-    private $defaultOrder;
+    private $districtRepository;
+
+    /**
+     * @var CityRepository|MockObject
+     */
+    private $cityRepository;
 
     protected function setUp(): void
     {
-        $entityManager = (require "doctrine-bootstrap.php")();
-        FixtureTool::reset($entityManager);
-        FixtureTool::loadFiles($entityManager, [
-            "tests/Infrastructure/data/cities.sql",
-            "tests/Infrastructure/data/districts.sql",
-        ]);
+        $this->districtRepository = $this->createStub(DistrictRepository::class);
+
+        $this->cityRepository = $this->createMock(CityRepository::class);
+
         $this->districtService = new DistrictService(
-            new DoctrineDistrictRepository($entityManager),
-            new DoctrineCityRepository($entityManager)
+            $this->districtRepository,
+            $this->cityRepository
         );
-        $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
 
     public function testGet(): void
     {
-        $district = $this->districtService->get(new GetDistrictQuery(1));
-        $this->assertSame("Plugh", $district->getName());
-        $this->assertSame(floatval(10), $district->getArea());
-        $this->assertSame(5000, $district->getPopulation());
-        $this->assertSame("Foo", $district->getCity()->getName());
+        $query = $this->createStub(GetDistrictQuery::class);
+        $query->method("getId")->willReturn(111);
+
+        $repositoryDistrict = $this->createStub(District::class);
+        $this->districtRepository
+            ->method("get")
+            ->with($this->equalTo(111))
+            ->willReturn($repositoryDistrict);
+
+        $serviceDistrict = $this->districtService->get($query);
+
+        $this->assertSame($repositoryDistrict, $serviceDistrict);
     }
 
     public function testGetNonExistent(): void
     {
+        $this->districtRepository
+            ->method("get")
+            ->will($this->throwException(new NotFoundInRepositoryException()));
+
         $this->expectException(NotFoundException::class);
-        $this->districtService->get(new GetDistrictQuery(999));
+
+        $this->districtService->get($this->createStub(GetDistrictQuery::class));
     }
 
     public function testRemoveConfirmed(): void
     {
-        $this->districtService->remove(new RemoveDistrictCommand(1, true));
-        $this->assertCount(
-            14,
-            $this->districtService->list(
-                new ListDistrictsQuery(
-                    $this->defaultOrder,
-                    null,
-                    null,
-                )
-            )
-        );
-        $this->expectException(NotFoundException::class);
-        $this->districtService->get(new GetDistrictQuery(1));
+        $command = $this->createStub(RemoveDistrictCommand::class);
+        $command->method("getId")->willReturn(222);
+        $command->method("isConfirmed")->willReturn(true);
+
+        $city = $this->createMock(City::class);
+
+        $this->cityRepository
+            ->method("getByDistrictId")
+            ->with($this->equalTo(222))
+            ->willReturn($city);
+
+        $city
+            ->expects($this->once())
+            ->method("removeDistrict")
+            ->with($this->equalTo(222));
+
+        $this->cityRepository
+            ->expects($this->once())
+            ->method("update")
+            ->with($this->equalTo($city));
+
+        $this->districtService->remove($command);
     }
 
-    public function testUnconfirmedRemoveDoesNotRemove(): void
+    public function testRemoveUnconfirmed(): void
     {
-        try {
-            $this->districtService->remove(new RemoveDistrictCommand(1, false));
-        } catch (CommandException $exception) {
-            // NOOP
-        }
-        $this->assertCount(
-            15,
-            $this->districtService->list(
-                new ListDistrictsQuery(
-                    $this->defaultOrder,
-                    null,
-                    null,
-                )
-            )
-        );
-        $district = $this->districtService->get(new GetDistrictQuery(1));
-        $this->assertInstanceOf(District::class, $district);
-    }
+        $command = $this->createStub(RemoveDistrictCommand::class);
+        $command->method("isConfirmed")->willReturn(false);
 
-    public function testUnconfirmedRemoveThrowsException(): void
-    {
+        $this->cityRepository
+            ->expects($this->never())
+            ->method("update");
+
         $this->expectException(CommandException::class);
-        $this->districtService->remove(new RemoveDistrictCommand(1, false));
+
+        $this->districtService->remove($command);
     }
 
     public function testRemoveNonExistent(): void
     {
+        $command = $this->createStub(RemoveDistrictCommand::class);
+        $command->method("isConfirmed")->willReturn(true);
+
+        $this->cityRepository
+            ->method("getByDistrictId")
+            ->will($this->throwException(new NotFoundInRepositoryException()));
+
+        $this->cityRepository
+            ->expects($this->never())
+            ->method("update");
+
         $this->expectException(NotFoundException::class);
-        $this->districtService->remove(new RemoveDistrictCommand(999, true));
+
+        $this->districtService->remove($command);
     }
 
     public function testAdd(): void
     {
-        $this->districtService->add(new AddDistrictCommand(1, "Lorem ipsum", 12.3, 456));
-        $this->assertCount(
-            16,
-            $this->districtService->list(
-                new ListDistrictsQuery(
-                    $this->defaultOrder,
-                    null,
-                    null,
-                )
-            )
-        );
-        $this->assertNotEmpty(
-            $this->districtService->list(
-                new ListDistrictsQuery(
-                    $this->defaultOrder,
-                    new DistrictFilter(DistrictFilter::TYPE_NAME, "Lorem ipsum"),
-                    null,
-                )
-            )
-        );
-    }
+        $command = $this->createStub(AddDistrictCommand::class);
+        $command->method("getCityId")->willReturn(333);
+        $command->method("getName")->willReturn("Lorem ipsum");
+        $command->method("getArea")->willReturn(12.3);
+        $command->method("getPopulation")->willReturn(456);
 
-    /**
-     * @dataProvider addInvalidDataProvider
-     */
-    public function testAddInvalid(AddDistrictCommand $command, string $expectedExceptionClass): void
-    {
-        $this->expectException($expectedExceptionClass);
+        $city = $this->createMock(City::class);
+
+        $this->cityRepository
+            ->method("get")
+            ->with($this->equalTo(333))
+            ->willReturn($city);
+
+        $city
+            ->expects($this->once())
+            ->method("addDistrict")
+            ->with(
+                $this->equalTo("Lorem ipsum"),
+                $this->equalTo(12.3),
+                $this->equalTo(456)
+            );
+
+        $this->cityRepository
+            ->expects($this->once())
+            ->method("update")
+            ->with($this->equalTo($city));
+
         $this->districtService->add($command);
     }
 
-    public function addInvalidDataProvider(): array
+    public function testAddInvalid(): void
     {
-        return [
-            "area_less_than_zero" => [
-                new AddDistrictCommand(
-                    1,
-                    "test",
-                    -1,
-                    2,
-                ),
-                DomainValidationException::class,
-            ],
-            "population_less_than_zero" => [
-                new AddDistrictCommand(
-                    1,
-                    "test",
-                    1,
-                    -1,
-                ),
-                DomainValidationException::class,
-            ],
-            "nonexistent_city_id" => [
-                new AddDistrictCommand(
-                    999,
-                    "test",
-                    1,
-                    1,
-                ),
-                RequestValidationException::class,
-            ],
-        ];
+        $command = $this->createStub(AddDistrictCommand::class);
+
+        $this->cityRepository
+            ->method("get")
+            ->will($this->throwException(new NotFoundInRepositoryException()));
+
+        $this->cityRepository
+            ->expects($this->never())
+            ->method("update");
+
+        $this->expectException(RequestValidationException::class);
+
+        $this->districtService->add($command);
     }
 
     public function testUpdate(): void
     {
-        $this->districtService->update(new UpdateDistrictCommand(1, "update test", 111.22, 333));
-        $updatedDistrict = $this->districtService->get(new GetDistrictQuery(1));
-        $this->assertSame("update test", $updatedDistrict->getName());
-        $this->assertSame(111.22, $updatedDistrict->getArea());
-        $this->assertSame(333, $updatedDistrict->getPopulation());
-    }
+        $command = $this->createStub(UpdateDistrictCommand::class);
+        $command->method("getId")->willReturn(4);
+        $command->method("getName")->willReturn("update test");
+        $command->method("getArea")->willReturn(111.22);
+        $command->method("getPopulation")->willReturn(333);
 
-    /**
-     * @dataProvider updateInvalidDataProvider
-     */
-    public function testUpdateInvalid(UpdateDistrictCommand $command): void
-    {
-        $this->expectException(DomainValidationException::class);
+        $city = $this->createMock(City::class);
+
+        $this->cityRepository
+            ->method("getByDistrictId")
+            ->with($this->equalTo(4))
+            ->willReturn($city);
+
+        $city
+            ->expects($this->once())
+            ->method("updateDistrict")
+            ->with(
+                $this->equalTo(4),
+                $this->equalTo("update test"),
+                $this->equalTo(111.22),
+                $this->equalTo(333)
+            );
+
+        $this->cityRepository
+            ->expects($this->once())
+            ->method("update")
+            ->with($this->equalTo($city));
+
         $this->districtService->update($command);
     }
 
-    public function updateInvalidDataProvider(): array
+    public function testUpdateNonExistent(): void
     {
-        return [
-            "area_less_than_zero" => [
-                new UpdateDistrictCommand(
-                    1,
-                    "test",
-                    -1,
-                    2,
-                ),
-            ],
-            "population_less_than_zero" => [
-                new UpdateDistrictCommand(
-                    1,
-                    "test",
-                    1,
-                    -1,
-                ),
-            ],
-        ];
-    }
+        $command = $this->createStub(UpdateDistrictCommand::class);
 
-    public function testUpdateNonexistent(): void
-    {
+        $this->cityRepository
+            ->method("getByDistrictId")
+            ->will($this->throwException(new NotFoundInRepositoryException()));
+
+        $this->cityRepository
+            ->expects($this->never())
+            ->method("update");
+
         $this->expectException(NotFoundException::class);
-        $this->districtService->update(new UpdateDistrictCommand(999, "test", 1, 2));
+
+        $this->districtService->update($command);
     }
 }

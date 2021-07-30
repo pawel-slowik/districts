@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Application\Command;
 
-final class RemoveDistrictCommand
+class RemoveDistrictCommand
 {
     private $id;
 
