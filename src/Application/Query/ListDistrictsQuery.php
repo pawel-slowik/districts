@@ -8,7 +8,7 @@ use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\Pagination;
 
-final class ListDistrictsQuery
+class ListDistrictsQuery
 {
     private $ordering;
 
