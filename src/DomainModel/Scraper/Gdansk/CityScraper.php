@@ -8,14 +8,14 @@ use Districts\DomainModel\Scraper\CityDTO;
 use Districts\DomainModel\Scraper\CityScraper as CityScraperInterface;
 use Districts\DomainModel\Scraper\HtmlFetcher;
 use Districts\DomainModel\Scraper\HtmlFinder;
-use Districts\DomainModel\Scraper\RuntimeException;
 use Laminas\Uri\Uri;
 
 final class CityScraper implements CityScraperInterface
 {
     private $htmlFetcher;
 
-    private $htmlFinder;
+    // not injectable
+    private $cityParser;
 
     // not injectable
     private $districtScraper;
@@ -23,7 +23,7 @@ final class CityScraper implements CityScraperInterface
     public function __construct(HtmlFetcher $htmlFetcher, HtmlFinder $htmlFinder)
     {
         $this->htmlFetcher = $htmlFetcher;
-        $this->htmlFinder = $htmlFinder;
+        $this->cityParser = new CityParser($htmlFinder);
         $this->districtScraper = new DistrictScraper($htmlFinder);
     }
 
@@ -49,29 +49,8 @@ final class CityScraper implements CityScraperInterface
     {
         $startUrl = "https://www.gdansk.pl/dzielnice";
         $startHtml = $this->htmlFetcher->fetchHtml($startUrl);
-        return $this->extractDistrictUrls($startHtml, $startUrl);
-    }
-
-    private function extractDistrictUrls(string $html, string $baseUrl): iterable
-    {
-        $xpath = "//polygon[@id]";
-        $nodes = $this->htmlFinder->findNodes($html, $xpath);
-        if (count($nodes) < 1) {
-            throw new RuntimeException();
+        foreach ($this->cityParser->extractDistrictUrls($startHtml) as $href) {
+            yield Uri::merge($startUrl, $href)->toString();
         }
-        foreach ($nodes as $node) {
-            $id = $this->fixPolygonId($node->getAttribute("id"));
-            $href = "subpages/dzielnice/html/4-dzielnice_mapa_alert.php?id={$id}";
-            yield Uri::merge($baseUrl, $href)->toString();
-        }
-    }
-
-    private function fixPolygonId(string $id): string
-    {
-        $match = [];
-        if (!preg_match("/^([0-9]+)/", $id, $match)) {
-            throw new RuntimeException();
-        }
-        return $match[1];
     }
 }

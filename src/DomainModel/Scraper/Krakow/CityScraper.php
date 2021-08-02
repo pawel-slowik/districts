@@ -8,14 +8,14 @@ use Districts\DomainModel\Scraper\CityDTO;
 use Districts\DomainModel\Scraper\CityScraper as CityScraperInterface;
 use Districts\DomainModel\Scraper\HtmlFetcher;
 use Districts\DomainModel\Scraper\HtmlFinder;
-use Districts\DomainModel\Scraper\RuntimeException;
 use Laminas\Uri\Uri;
 
 final class CityScraper implements CityScraperInterface
 {
     private $htmlFetcher;
 
-    private $htmlFinder;
+    // not injectable
+    private $cityParser;
 
     // not injectable
     private $districtScraper;
@@ -23,7 +23,7 @@ final class CityScraper implements CityScraperInterface
     public function __construct(HtmlFetcher $htmlFetcher, HtmlFinder $htmlFinder)
     {
         $this->htmlFetcher = $htmlFetcher;
-        $this->htmlFinder = $htmlFinder;
+        $this->cityParser = new CityParser($htmlFinder);
         $this->districtScraper = new DistrictScraper($htmlFinder);
     }
 
@@ -49,19 +49,8 @@ final class CityScraper implements CityScraperInterface
     {
         $startUrl = "http://appimeri.um.krakow.pl/app-pub-dzl/pages/DzlViewAll.jsf?a=1&lay=normal&fo=0";
         $startHtml = $this->htmlFetcher->fetchHtml($startUrl);
-        return $this->extractDistrictUrls($startHtml, $startUrl);
-    }
-
-    private function extractDistrictUrls(string $html, string $baseUrl): iterable
-    {
-        $xpath = "//map[@name='wyb']/area[@href]";
-        $nodes = $this->htmlFinder->findNodes($html, $xpath);
-        if (count($nodes) < 1) {
-            throw new RuntimeException();
-        }
-        foreach ($nodes as $node) {
-            $href = $node->getAttribute("href");
-            yield Uri::merge($baseUrl, $href)->toString();
+        foreach ($this->cityParser->extractDistrictUrls($startHtml) as $href) {
+            yield Uri::merge($startUrl, $href)->toString();
         }
     }
 }
