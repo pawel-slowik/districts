@@ -13,11 +13,10 @@ use Slim\Interfaces\RouteCollectorInterface;
 
 $container = new Container();
 
-$dependencies = require __DIR__ . "/../dependencies/common.php";
-$dependencies($container);
-
-$dependencies = require __DIR__ . "/../dependencies/web.php";
-$dependencies($container);
+foreach (["common", "web"] as $dependencyPart) {
+    $dependencies = require __DIR__ . "/../dependencies/{$dependencyPart}.php";
+    $dependencies($container);
+}
 
 $app = new App(
     $container->get(ResponseFactoryInterface::class),
