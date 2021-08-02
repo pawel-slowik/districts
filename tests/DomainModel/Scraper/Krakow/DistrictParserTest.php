@@ -6,19 +6,19 @@ namespace Districts\Test\DomainModel\Scraper\Krakow;
 
 use Districts\DomainModel\Scraper\DistrictDTO;
 use Districts\DomainModel\Scraper\HtmlFinder;
-use Districts\DomainModel\Scraper\Krakow\DistrictScraper;
+use Districts\DomainModel\Scraper\Krakow\DistrictParser;
 use Districts\DomainModel\Scraper\RuntimeException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\DomainModel\Scraper\Krakow\DistrictScraper
+ * @covers \Districts\DomainModel\Scraper\Krakow\DistrictParser
  */
-class DistrictScraperTest extends TestCase
+class DistrictParserTest extends TestCase
 {
     /**
-     * @var DistrictScraper
+     * @var DistrictParser
      */
-    private $scraper;
+    private $districtParser;
 
     /**
      * @var string
@@ -27,37 +27,37 @@ class DistrictScraperTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->scraper = new DistrictScraper(new HtmlFinder());
+        $this->districtParser = new DistrictParser(new HtmlFinder());
         $this->validHtml = file_get_contents(__DIR__ . "/DzlViewGlw.jsf?id=17&lay=normal&fo=0");
     }
 
     public function testReturnsDistrict(): void
     {
-        $district = $this->scraper->scrape($this->validHtml);
+        $district = $this->districtParser->parse($this->validHtml);
         $this->assertInstanceOf(DistrictDTO::class, $district);
     }
 
     public function testName(): void
     {
-        $district = $this->scraper->scrape($this->validHtml);
+        $district = $this->districtParser->parse($this->validHtml);
         $this->assertSame("Wzgórza Krzesławickie", $district->getName());
     }
 
     public function testArea(): void
     {
-        $district = $this->scraper->scrape($this->validHtml);
+        $district = $this->districtParser->parse($this->validHtml);
         $this->assertSame(23.8155, $district->getArea());
     }
 
     public function testPopulation(): void
     {
-        $district = $this->scraper->scrape($this->validHtml);
+        $district = $this->districtParser->parse($this->validHtml);
         $this->assertSame(20205, $district->getPopulation());
     }
 
     public function testException(): void
     {
         $this->expectException(RuntimeException::class);
-        $this->scraper->scrape("");
+        $this->districtParser->parse("");
     }
 }

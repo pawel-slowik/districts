@@ -8,7 +8,7 @@ use Districts\DomainModel\Scraper\DistrictDTO;
 use Districts\DomainModel\Scraper\HtmlFinder;
 use Districts\DomainModel\Scraper\RuntimeException;
 
-final class DistrictScraper
+final class DistrictParser
 {
     private $htmlFinder;
 
@@ -17,7 +17,7 @@ final class DistrictScraper
         $this->htmlFinder = $htmlFinder;
     }
 
-    public function scrape(string $html): DistrictDTO
+    public function parse(string $html): DistrictDTO
     {
         $name = $this->getName($html);
         $area = $this->getArea($html);

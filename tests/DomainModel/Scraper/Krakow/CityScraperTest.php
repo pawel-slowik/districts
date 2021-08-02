@@ -42,7 +42,7 @@ class CityScraperTest extends TestCase
     {
         // The mock returns the same content for all districts. This is OK
         // because CityScrapers don't have any knowledge about district
-        // properties (only DistrictScrapers do).
+        // properties (only DistrictParsers do).
         $urlFilenameMap = [
             // phpcs:ignore Generic.Files.LineLength.TooLong
             "http://appimeri.um.krakow.pl/app-pub-dzl/pages/DzlViewAll.jsf?a=1&lay=normal&fo=0" => "DzlViewAll.jsf?a=1&lay=normal&fo=0",

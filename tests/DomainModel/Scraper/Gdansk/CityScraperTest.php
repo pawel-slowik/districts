@@ -42,7 +42,7 @@ class CityScraperTest extends TestCase
     {
         // The mock returns the same content for all districts. This is OK
         // because CityScrapers don't have any knowledge about district
-        // properties (only DistrictScrapers do).
+        // properties (only DistrictParsers do).
         $urlFilenameMap = ["https://www.gdansk.pl/dzielnice" => "dzielnice.html"];
         for ($i = 1; $i <= 35; $i++) {
             $url = sprintf("https://www.gdansk.pl/subpages/dzielnice/html/4-dzielnice_mapa_alert.php?id=%d", $i);
