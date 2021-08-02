@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Districts\Test\DomainModel\Scraper\Gdansk;
 
 use Districts\DomainModel\Scraper\DistrictDTO;
+use Districts\DomainModel\Scraper\Gdansk\CityParser;
 use Districts\DomainModel\Scraper\Gdansk\CityScraper;
+use Districts\DomainModel\Scraper\Gdansk\DistrictParser;
 use Districts\DomainModel\Scraper\HtmlFetcher;
 use Districts\DomainModel\Scraper\HtmlFinder;
 use Districts\Test\DomainModel\Scraper\HtmlFetcherMockBuilder;
@@ -23,7 +25,11 @@ class CityScraperTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->scraper = new CityScraper($this->createHtmlFetcherMock(), new HtmlFinder());
+        $this->scraper = new CityScraper(
+            $this->createHtmlFetcherMock(),
+            new CityParser(new HtmlFinder()),
+            new DistrictParser(new HtmlFinder())
+        );
     }
 
     public function testReturnsNonEmpty(): void

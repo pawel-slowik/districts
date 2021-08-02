@@ -7,24 +7,24 @@ namespace Districts\DomainModel\Scraper\Krakow;
 use Districts\DomainModel\Scraper\CityDTO;
 use Districts\DomainModel\Scraper\CityScraper as CityScraperInterface;
 use Districts\DomainModel\Scraper\HtmlFetcher;
-use Districts\DomainModel\Scraper\HtmlFinder;
 use Laminas\Uri\Uri;
 
 final class CityScraper implements CityScraperInterface
 {
     private $htmlFetcher;
 
-    // not injectable
     private $cityParser;
 
-    // not injectable
     private $districtParser;
 
-    public function __construct(HtmlFetcher $htmlFetcher, HtmlFinder $htmlFinder)
-    {
+    public function __construct(
+        HtmlFetcher $htmlFetcher,
+        CityParser $cityParser,
+        DistrictParser $districtParser
+    ) {
         $this->htmlFetcher = $htmlFetcher;
-        $this->cityParser = new CityParser($htmlFinder);
-        $this->districtParser = new DistrictParser($htmlFinder);
+        $this->cityParser = $cityParser;
+        $this->districtParser = $districtParser;
     }
 
     public function getCityName(): string
