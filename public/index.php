@@ -6,17 +6,25 @@ require __DIR__ . "/../vendor/autoload.php";
 
 use DI\Container;
 use Districts\UI\Web\RoutingConfiguration;
-use Nyholm\Psr7\Factory\Psr17Factory;
+use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\App;
+use Slim\Interfaces\CallableResolverInterface;
+use Slim\Interfaces\RouteCollectorInterface;
 
 $container = new Container();
-$app = new App(new Psr17Factory(), $container);
 
 $dependencies = require __DIR__ . "/../dependencies/common.php";
 $dependencies($container);
 
 $dependencies = require __DIR__ . "/../dependencies/web.php";
-$dependencies($container, $app);
+$dependencies($container);
+
+$app = new App(
+    $container->get(ResponseFactoryInterface::class),
+    $container,
+    $container->get(CallableResolverInterface::class),
+    $container->get(RouteCollectorInterface::class)
+);
 
 $middleware = require __DIR__ . "/../src/middleware.php";
 $middleware($app);

@@ -3,12 +3,37 @@
 declare(strict_types=1);
 
 use DI\Container;
-use Slim\App;
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Slim\CallableResolver;
+use Slim\Interfaces\CallableResolverInterface;
+use Slim\Interfaces\RouteCollectorInterface;
 use Slim\Interfaces\RouteParserInterface;
+use Slim\Routing\RouteCollector;
 use Slim\Views\Twig;
 
-return function (Container $container, App $app): void {
+return function (Container $container): void {
     $dependencies = [
+
+        ResponseFactoryInterface::class => function ($container) {
+            return $container->get(Psr17Factory::class);
+        },
+
+        CallableResolverInterface::class => function ($container) {
+            return new CallableResolver($container);
+        },
+
+        RouteCollectorInterface::class => function ($container) {
+            return new RouteCollector(
+                $container->get(ResponseFactoryInterface::class),
+                $container->get(CallableResolverInterface::class),
+                $container
+            );
+        },
+
+        RouteParserInterface::class => function ($container) {
+            return $container->get(RouteCollectorInterface::class)->getRouteParser();
+        },
 
         // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
         Twig::class => function ($container) {
@@ -19,11 +44,6 @@ return function (Container $container, App $app): void {
                     "auto_reload" => true,
                 ]
             );
-        },
-
-        // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-        RouteParserInterface::class => function ($container) use ($app) {
-            return $app->getRouteCollector()->getRouteParser();
         },
 
     ];
