@@ -10,15 +10,15 @@ use Districts\Application\Importer;
 use Districts\DomainModel\Scraper\Gdansk\CityScraper as GdanskScraper;
 use Districts\DomainModel\Scraper\Krakow\CityScraper as KrakowScraper;
 use Districts\UI\CLI\ImportCommand;
-use Nyholm\Psr7\Factory\Psr17Factory;
-use Slim\App;
 use Symfony\Component\Console\Application;
 
 $container = new Container();
-$app = new App(new Psr17Factory(), $container);
 
-$dependencies = require __DIR__ . "/src/dependencies.php";
-$dependencies($container, $app);
+$dependencies = require __DIR__ . "/dependencies/common.php";
+$dependencies($container);
+
+$dependencies = require __DIR__ . "/dependencies/cli.php";
+$dependencies($container);
 
 $application = new Application();
 $application->add(
