@@ -5,9 +5,13 @@ declare(strict_types=1);
 use DI\Container;
 use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\DistrictRepository;
+use Districts\DomainModel\Scraper\HtmlFetcher;
 use Districts\Infrastructure\DoctrineCityRepository;
 use Districts\Infrastructure\DoctrineDistrictRepository;
+use Districts\Infrastructure\GuzzleHtmlFetcher;
 use Doctrine\ORM\EntityManager;
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use Slim\App;
 use Slim\Interfaces\RouteParserInterface;
 use Slim\Views\Twig;
@@ -42,6 +46,14 @@ return function (Container $container, App $app): void {
 
         DistrictRepository::class => function ($container) {
             return $container->get(DoctrineDistrictRepository::class);
+        },
+
+        HtmlFetcher::class => function ($container) {
+            return $container->get(GuzzleHtmlFetcher::class);
+        },
+
+        ClientInterface::class => function ($container) {
+            return $container->get(Client::class);
         },
 
     ];
