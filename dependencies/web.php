@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use DI\Container;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\CallableResolver;
@@ -12,43 +11,31 @@ use Slim\Interfaces\RouteParserInterface;
 use Slim\Routing\RouteCollector;
 use Slim\Views\Twig;
 
-return function (Container $container): void {
-    $dependencies = [
-
-        ResponseFactoryInterface::class => function ($container) {
-            return $container->get(Psr17Factory::class);
-        },
-
-        CallableResolverInterface::class => function ($container) {
-            return new CallableResolver($container);
-        },
-
-        RouteCollectorInterface::class => function ($container) {
-            return new RouteCollector(
-                $container->get(ResponseFactoryInterface::class),
-                $container->get(CallableResolverInterface::class),
-                $container
-            );
-        },
-
-        RouteParserInterface::class => function ($container) {
-            return $container->get(RouteCollectorInterface::class)->getRouteParser();
-        },
-
-        // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-        Twig::class => function ($container) {
-            return Twig::create(
-                __DIR__ . "/../templates",
-                [
-                    "cache" => "/tmp/twig_cache",
-                    "auto_reload" => true,
-                ]
-            );
-        },
-
-    ];
-
-    foreach ($dependencies as $dependency => $factory) {
-        $container->set($dependency, $factory);
-    }
-};
+return [
+    ResponseFactoryInterface::class => function ($container) {
+        return $container->get(Psr17Factory::class);
+    },
+    CallableResolverInterface::class => function ($container) {
+        return new CallableResolver($container);
+    },
+    RouteCollectorInterface::class => function ($container) {
+        return new RouteCollector(
+            $container->get(ResponseFactoryInterface::class),
+            $container->get(CallableResolverInterface::class),
+            $container
+        );
+    },
+    RouteParserInterface::class => function ($container) {
+        return $container->get(RouteCollectorInterface::class)->getRouteParser();
+    },
+    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
+    Twig::class => function ($container) {
+        return Twig::create(
+            __DIR__ . "/../templates",
+            [
+                "cache" => "/tmp/twig_cache",
+                "auto_reload" => true,
+            ]
+        );
+    },
+];

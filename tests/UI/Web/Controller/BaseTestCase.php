@@ -43,7 +43,9 @@ abstract class BaseTestCase extends TestCase
     {
         foreach (["common", "web"] as $dependencyPart) {
             $dependencies = require __DIR__ . "/../../../../dependencies/{$dependencyPart}.php";
-            $dependencies($container);
+            foreach ($dependencies as $dependency => $factory) {
+                $container->set($dependency, $factory);
+            }
         }
 
         $app = new App(
