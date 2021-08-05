@@ -57,15 +57,7 @@ class DistrictServiceTest extends TestCase
     {
         $this->districtRepository = $this->createStub(DistrictRepository::class);
 
-        $validationResult = $this->createStub(ValidationResult::class);
-        $validationResult
-            ->method("isOk")
-            ->willReturn(true);
-
         $this->districtValidator = $this->createStub(DistrictValidator::class);
-        $this->districtValidator
-            ->method("validate")
-            ->willReturn($validationResult);
 
         $this->cityRepository = $this->createMock(CityRepository::class);
 
@@ -181,6 +173,10 @@ class DistrictServiceTest extends TestCase
         $command->method("getArea")->willReturn(12.3);
         $command->method("getPopulation")->willReturn(456);
 
+        $this->districtValidator
+            ->method("validate")
+            ->willReturn($this->createValidationSuccessStub());
+
         $city = $this->createMock(City::class);
 
         $this->cityRepository
@@ -209,6 +205,10 @@ class DistrictServiceTest extends TestCase
     {
         $command = $this->createStub(AddDistrictCommand::class);
 
+        $this->districtValidator
+            ->method("validate")
+            ->willReturn($this->createValidationSuccessStub());
+
         $this->cityRepository
             ->method("get")
             ->will($this->throwException(new NotFoundInRepositoryException()));
@@ -222,6 +222,38 @@ class DistrictServiceTest extends TestCase
         $this->districtService->add($command);
     }
 
+    public function testAddInvalid(): void
+    {
+        $command = $this->createStub(AddDistrictCommand::class);
+
+        $this->districtValidator
+            ->method("validate")
+            ->willReturn($this->createValidationErrorStub());
+
+        $this->cityRepository
+            ->expects($this->never())
+            ->method("update");
+
+        $this->expectException(ValidationException::class);
+
+        $this->districtService->add($command);
+    }
+
+    public function testAddExceptionErrors(): void
+    {
+        $command = $this->createStub(AddDistrictCommand::class);
+
+        $this->districtValidator
+            ->method("validate")
+            ->willReturn($this->createValidationErrorStub());
+
+        try {
+            $this->districtService->add($command);
+        } catch (ValidationException $exception) {
+            $this->assertContains("foo", $exception->getErrors());
+        }
+    }
+
     public function testUpdate(): void
     {
         $command = $this->createStub(UpdateDistrictCommand::class);
@@ -229,6 +261,10 @@ class DistrictServiceTest extends TestCase
         $command->method("getName")->willReturn("update test");
         $command->method("getArea")->willReturn(111.22);
         $command->method("getPopulation")->willReturn(333);
+
+        $this->districtValidator
+            ->method("validate")
+            ->willReturn($this->createValidationSuccessStub());
 
         $city = $this->createMock(City::class);
 
@@ -259,6 +295,10 @@ class DistrictServiceTest extends TestCase
     {
         $command = $this->createStub(UpdateDistrictCommand::class);
 
+        $this->districtValidator
+            ->method("validate")
+            ->willReturn($this->createValidationSuccessStub());
+
         $this->cityRepository
             ->method("getByDistrictId")
             ->will($this->throwException(new NotFoundInRepositoryException()));
@@ -270,5 +310,60 @@ class DistrictServiceTest extends TestCase
         $this->expectException(NotFoundException::class);
 
         $this->districtService->update($command);
+    }
+
+    public function testUpdateInvalid(): void
+    {
+        $command = $this->createStub(UpdateDistrictCommand::class);
+
+        $this->districtValidator
+            ->method("validate")
+            ->willReturn($this->createValidationErrorStub());
+
+        $this->cityRepository
+            ->expects($this->never())
+            ->method("update");
+
+        $this->expectException(ValidationException::class);
+
+        $this->districtService->update($command);
+    }
+
+    public function testUpdateExceptionErrors(): void
+    {
+        $command = $this->createStub(UpdateDistrictCommand::class);
+
+        $this->districtValidator
+            ->method("validate")
+            ->willReturn($this->createValidationErrorStub());
+
+        try {
+            $this->districtService->update($command);
+        } catch (ValidationException $exception) {
+            $this->assertContains("foo", $exception->getErrors());
+        }
+    }
+
+    private function createValidationSuccessStub(): ValidationResult
+    {
+        $validationResult = $this->createStub(ValidationResult::class);
+        $validationResult
+            ->method("isOk")
+            ->willReturn(true);
+
+        return $validationResult;
+    }
+
+    private function createValidationErrorStub(): ValidationResult
+    {
+        $validationResult = $this->createStub(ValidationResult::class);
+        $validationResult
+            ->method("isOk")
+            ->willReturn(false);
+        $validationResult
+            ->method("getErrors")
+            ->willReturn(["foo"]);
+
+        return $validationResult;
     }
 }
