@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Entity;
 
+use Districts\DomainModel\VO\Area;
+use Districts\DomainModel\VO\Name;
+use Districts\DomainModel\VO\Population;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,17 +27,17 @@ class District
     private $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Embedded(class="\Districts\DomainModel\VO\Name", columnPrefix=false)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Embedded(class="\Districts\DomainModel\VO\Area", columnPrefix=false)
      */
     private $area;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Embedded(class="\Districts\DomainModel\VO\Population", columnPrefix=false)
      */
     private $population;
 
@@ -43,7 +46,7 @@ class District
      */
     private $city;
 
-    public function __construct(City $city, string $name, float $area, int $population)
+    public function __construct(City $city, Name $name, Area $area, Population $population)
     {
         $this->city = $city;
         $this->name = $name;
@@ -56,17 +59,17 @@ class District
         return $this->id;
     }
 
-    public function getName(): string
+    public function getName(): Name
     {
         return $this->name;
     }
 
-    public function getArea(): float
+    public function getArea(): Area
     {
         return $this->area;
     }
 
-    public function getPopulation(): int
+    public function getPopulation(): Population
     {
         return $this->population;
     }
@@ -76,17 +79,17 @@ class District
         return $this->city;
     }
 
-    public function setName(string $name): void
+    public function setName(Name $name): void
     {
         $this->name = $name;
     }
 
-    public function setArea(float $area): void
+    public function setArea(Area $area): void
     {
         $this->area = $area;
     }
 
-    public function setPopulation(int $population): void
+    public function setPopulation(Population $population): void
     {
         $this->population = $population;
     }

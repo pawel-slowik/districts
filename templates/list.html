@@ -78,7 +78,7 @@
                 {{ district.name }}
             </td>
             <td class="area">
-                {{ district.area|number_format(2) }}
+                {{ district.area.asFloat|number_format(2) }}
             </td>
             <td class="population">
                 {{ district.population }}

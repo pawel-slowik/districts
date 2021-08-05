@@ -9,15 +9,20 @@ use Districts\Application\Command\RemoveDistrictCommand;
 use Districts\Application\Command\UpdateDistrictCommand;
 use Districts\Application\CommandException;
 use Districts\Application\DistrictService;
+use Districts\Application\DistrictValidator;
 use Districts\Application\NotFoundException;
 use Districts\Application\Query\GetDistrictQuery;
 use Districts\Application\Query\ListDistrictsQuery;
 use Districts\Application\ValidationException as RequestValidationException;
+use Districts\Application\ValidationResult;
 use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\DistrictRepository;
 use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\PagedResult;
+use Districts\DomainModel\VO\Area;
+use Districts\DomainModel\VO\Name;
+use Districts\DomainModel\VO\Population;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
@@ -39,6 +44,11 @@ class DistrictServiceTest extends TestCase
     private $districtRepository;
 
     /**
+     * @var DistrictValidator|Stub
+     */
+    private $districtValidator;
+
+    /**
      * @var CityRepository|MockObject
      */
     private $cityRepository;
@@ -47,9 +57,20 @@ class DistrictServiceTest extends TestCase
     {
         $this->districtRepository = $this->createStub(DistrictRepository::class);
 
+        $validationResult = $this->createStub(ValidationResult::class);
+        $validationResult
+            ->method("isOk")
+            ->willReturn(true);
+
+        $this->districtValidator = $this->createStub(DistrictValidator::class);
+        $this->districtValidator
+            ->method("validate")
+            ->willReturn($validationResult);
+
         $this->cityRepository = $this->createMock(CityRepository::class);
 
         $this->districtService = new DistrictService(
+            $this->districtValidator,
             $this->districtRepository,
             $this->cityRepository
         );
@@ -171,9 +192,9 @@ class DistrictServiceTest extends TestCase
             ->expects($this->once())
             ->method("addDistrict")
             ->with(
-                $this->identicalTo("Lorem ipsum"),
-                $this->identicalTo(12.3),
-                $this->identicalTo(456)
+                $this->objectEquals(new Name("Lorem ipsum")),
+                $this->objectEquals(new Area(12.3)),
+                $this->objectEquals(new Population(456))
             );
 
         $this->cityRepository
@@ -221,9 +242,9 @@ class DistrictServiceTest extends TestCase
             ->method("updateDistrict")
             ->with(
                 $this->identicalTo(4),
-                $this->identicalTo("update test"),
-                $this->identicalTo(111.22),
-                $this->identicalTo(333)
+                $this->objectEquals(new Name("update test")),
+                $this->objectEquals(new Area(111.22)),
+                $this->objectEquals(new Population(333))
             );
 
         $this->cityRepository

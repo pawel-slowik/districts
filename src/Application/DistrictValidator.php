@@ -2,7 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Districts\DomainModel;
+namespace Districts\Application;
+
+use Districts\DomainModel\Exception\InvalidAreaException;
+use Districts\DomainModel\Exception\InvalidNameException;
+use Districts\DomainModel\Exception\InvalidPopulationException;
+use Districts\DomainModel\VO\Area;
+use Districts\DomainModel\VO\Name;
+use Districts\DomainModel\VO\Population;
 
 class DistrictValidator
 {
@@ -23,25 +30,31 @@ class DistrictValidator
 
     private function validateName(string $name): bool
     {
-        if ($name === "") {
+        try {
+            new Name($name);
+            return true;
+        } catch (InvalidNameException $exception) {
             return false;
         }
-        return true;
     }
 
     private function validateArea(float $area): bool
     {
-        if ($area <= 0) {
+        try {
+            new Area($area);
+            return true;
+        } catch (InvalidAreaException $exception) {
             return false;
         }
-        return true;
     }
 
     private function validatePopulation(int $population): bool
     {
-        if ($population <= 0) {
+        try {
+            new Population($population);
+            return true;
+        } catch (InvalidPopulationException $exception) {
             return false;
         }
-        return true;
     }
 }

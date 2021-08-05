@@ -6,6 +6,9 @@ namespace Districts\Test\DomainModel\Entity;
 
 use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Entity\District;
+use Districts\DomainModel\VO\Area;
+use Districts\DomainModel\VO\Name;
+use Districts\DomainModel\VO\Population;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
@@ -28,25 +31,25 @@ class DistrictTest extends TestCase
     {
         $this->city = $this->createStub(City::class);
 
-        $this->district = new District($this->city, "foo", 10.1, 202);
+        $this->district = new District($this->city, new Name("foo"), new Area(10.1), new Population(202));
     }
 
     public function testGetters(): void
     {
-        $this->assertSame("foo", $this->district->getName());
-        $this->assertSame(10.1, $this->district->getArea());
-        $this->assertSame(202, $this->district->getPopulation());
+        $this->assertObjectEquals(new Name("foo"), $this->district->getName());
+        $this->assertObjectEquals(new Area(10.1), $this->district->getArea());
+        $this->assertObjectEquals(new Population(202), $this->district->getPopulation());
         $this->assertSame($this->city, $this->district->getCity());
     }
 
     public function testSetters(): void
     {
-        $this->district->setName("bar");
-        $this->district->setArea(30.3);
-        $this->district->setPopulation(404);
+        $this->district->setName(new Name("bar"));
+        $this->district->setArea(new Area(30.3));
+        $this->district->setPopulation(new Population(404));
 
-        $this->assertSame("bar", $this->district->getName());
-        $this->assertSame(30.3, $this->district->getArea());
-        $this->assertSame(404, $this->district->getPopulation());
+        $this->assertObjectEquals(new Name("bar"), $this->district->getName());
+        $this->assertObjectEquals(new Area(30.3), $this->district->getArea());
+        $this->assertObjectEquals(new Population(404), $this->district->getPopulation());
     }
 }

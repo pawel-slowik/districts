@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Districts\Test\Infrastructure;
 
 use Districts\DomainModel\DistrictOrdering;
+use Districts\DomainModel\VO\Area;
+use Districts\DomainModel\VO\Name;
+use Districts\DomainModel\VO\Population;
 use Districts\Infrastructure\DoctrineDistrictRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 
@@ -34,9 +37,9 @@ class DoctrineDistrictRepositoryTest extends DoctrineDbTestCase
     public function testGet(): void
     {
         $district = $this->districtRepository->get(1);
-        $this->assertSame("Plugh", $district->getName());
-        $this->assertSame(floatval(10), $district->getArea());
-        $this->assertSame(5000, $district->getPopulation());
+        $this->assertObjectEquals(new Name("Plugh"), $district->getName());
+        $this->assertObjectEquals(new Area(10), $district->getArea());
+        $this->assertObjectEquals(new Population(5000), $district->getPopulation());
         $this->assertSame("Foo", $district->getCity()->getName());
     }
 

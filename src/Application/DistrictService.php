@@ -14,18 +14,25 @@ use Districts\DomainModel\DistrictRepository;
 use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\PagedResult;
+use Districts\DomainModel\VO\Area;
+use Districts\DomainModel\VO\Name;
+use Districts\DomainModel\VO\Population;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 
 class DistrictService
 {
+    private $districtValidator;
+
     private $districtRepository;
 
     private $cityRepository;
 
     public function __construct(
+        DistrictValidator $districtValidator,
         DistrictRepository $districtRepository,
         CityRepository $cityRepository
     ) {
+        $this->districtValidator = $districtValidator;
         $this->districtRepository = $districtRepository;
         $this->cityRepository = $cityRepository;
     }
@@ -37,10 +44,18 @@ class DistrictService
         } catch (NotFoundInRepositoryException $exception) {
             throw (new ValidationException())->withErrors(["city"]);
         }
-        $city->addDistrict(
+        $validationResult = $this->districtValidator->validate(
             $command->getName(),
             $command->getArea(),
             $command->getPopulation(),
+        );
+        if (!$validationResult->isOk()) {
+            throw (new ValidationException())->withErrors($validationResult->getErrors());
+        }
+        $city->addDistrict(
+            new Name($command->getName()),
+            new Area($command->getArea()),
+            new Population($command->getPopulation()),
         );
         $this->cityRepository->update($city);
     }
@@ -48,11 +63,19 @@ class DistrictService
     public function update(UpdateDistrictCommand $command): void
     {
         $city = $this->getCityByDistrictId($command->getId());
-        $city->updateDistrict(
-            $command->getId(),
+        $validationResult = $this->districtValidator->validate(
             $command->getName(),
             $command->getArea(),
             $command->getPopulation(),
+        );
+        if (!$validationResult->isOk()) {
+            throw (new ValidationException())->withErrors($validationResult->getErrors());
+        }
+        $city->updateDistrict(
+            $command->getId(),
+            new Name($command->getName()),
+            new Area($command->getArea()),
+            new Population($command->getPopulation()),
         );
         $this->cityRepository->update($city);
     }

@@ -7,6 +7,9 @@ namespace Districts\Application;
 use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Scraper\CityDTO;
+use Districts\DomainModel\VO\Area;
+use Districts\DomainModel\VO\Name;
+use Districts\DomainModel\VO\Population;
 
 class Importer
 {
@@ -32,9 +35,9 @@ class Importer
         }
         foreach ($cityDTO->listDistricts() as $districtDTO) {
             $city->addDistrict(
-                $districtDTO->getName(),
-                $districtDTO->getArea(),
-                $districtDTO->getPopulation(),
+                new Name($districtDTO->getName()),
+                new Area($districtDTO->getArea()),
+                new Population($districtDTO->getPopulation()),
             );
             if ($progressReporter) {
                 $progressReporter->advance();

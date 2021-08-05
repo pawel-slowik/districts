@@ -70,24 +70,24 @@ final class DoctrineDistrictRepository implements DistrictRepository
     {
         $orderDqlMap = [
             DistrictOrdering::FULL_NAME => [
-                DistrictOrdering::ASC => "c.name ASC, d.name ASC",
-                DistrictOrdering::DESC => "c.name DESC, d.name DESC",
+                DistrictOrdering::ASC => "c.name ASC, d.name.name ASC",
+                DistrictOrdering::DESC => "c.name DESC, d.name.name DESC",
             ],
             DistrictOrdering::CITY_NAME => [
                 DistrictOrdering::ASC => "c.name ASC",
                 DistrictOrdering::DESC => "c.name DESC",
             ],
             DistrictOrdering::DISTRICT_NAME => [
-                DistrictOrdering::ASC => "d.name ASC",
-                DistrictOrdering::DESC => "d.name DESC",
+                DistrictOrdering::ASC => "d.name.name ASC",
+                DistrictOrdering::DESC => "d.name.name DESC",
             ],
             DistrictOrdering::AREA => [
-                DistrictOrdering::ASC => "d.area ASC",
-                DistrictOrdering::DESC => "d.area DESC",
+                DistrictOrdering::ASC => "d.area.area ASC",
+                DistrictOrdering::DESC => "d.area.area DESC",
             ],
             DistrictOrdering::POPULATION => [
-                DistrictOrdering::ASC => "d.population ASC",
-                DistrictOrdering::DESC => "d.population DESC",
+                DistrictOrdering::ASC => "d.population.population ASC",
+                DistrictOrdering::DESC => "d.population.population DESC",
             ],
         ];
         return $orderDqlMap[$order->getField()][$order->getDirection()];
@@ -109,14 +109,14 @@ final class DoctrineDistrictRepository implements DistrictRepository
                 ];
             case DistrictFilter::TYPE_NAME:
                 return [
-                    " d.name LIKE :search",
+                    " d.name.name LIKE :search",
                     [
                         "search" => $this->dqlLike($filterValue),
                     ],
                 ];
             case DistrictFilter::TYPE_AREA:
                 return [
-                    " d.area >= :low AND d.area <= :high",
+                    " d.area.area >= :low AND d.area.area <= :high",
                     [
                         "low" => $filterValue[0],
                         "high" => $filterValue[1],
@@ -124,7 +124,7 @@ final class DoctrineDistrictRepository implements DistrictRepository
                 ];
             case DistrictFilter::TYPE_POPULATION:
                 return [
-                    " d.population >= :low AND d.population <= :high",
+                    " d.population.population >= :low AND d.population.population <= :high",
                     [
                         "low" => $filterValue[0],
                         "high" => $filterValue[1],

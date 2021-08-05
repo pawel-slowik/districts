@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Districts\Test\Infrastructure;
 
 use Districts\DomainModel\Entity\City;
+use Districts\DomainModel\VO\Area;
+use Districts\DomainModel\VO\Name;
+use Districts\DomainModel\VO\Population;
 use Districts\Infrastructure\DoctrineCityRepository;
 
 /**
@@ -48,7 +51,7 @@ SQL;
     public function testUpdateWithNewDistrict(): void
     {
         $city = $this->cityRepository->get(1);
-        $city->addDistrict("New District", 123.4, 5678);
+        $city->addDistrict(new Name("New District"), new Area(123.4), new Population(5678));
         $this->cityRepository->update($city);
 
         $this->assertDbTableContents(
@@ -73,7 +76,7 @@ SQL;
     public function testUpdateWithChangedDistrict(): void
     {
         $city = $this->cityRepository->get(1);
-        $city->updateDistrict(1, "Updated District", 123.4, 5678);
+        $city->updateDistrict(1, new Name("Updated District"), new Area(123.4), new Population(5678));
         $this->cityRepository->update($city);
 
         $this->assertDbTableContents(

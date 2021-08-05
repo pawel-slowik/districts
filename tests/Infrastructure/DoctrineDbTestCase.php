@@ -57,6 +57,10 @@ abstract class DoctrineDbTestCase extends TestCase
 
     private function sortTableContentsForComparision(array $tableContents): array
     {
+        foreach ($tableContents as $offset => $row) {
+            ksort($tableContents[$offset]);
+        }
+
         usort(
             $tableContents,
             function (array $a, array $b): int {

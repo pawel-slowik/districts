@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Entity;
 
-use Districts\DomainModel\DistrictValidator;
 use Districts\DomainModel\NotFoundException;
-use Districts\DomainModel\ValidationException;
+use Districts\DomainModel\VO\Area;
+use Districts\DomainModel\VO\Name;
+use Districts\DomainModel\VO\Population;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -44,15 +45,10 @@ class City
     }
 
     public function addDistrict(
-        string $name,
-        float $area,
-        int $population
+        Name $name,
+        Area $area,
+        Population $population
     ): District {
-        $districtValidator = new DistrictValidator();
-        $validationResult = $districtValidator->validate($name, $area, $population);
-        if (!$validationResult->isOk()) {
-            throw (new ValidationException())->withErrors($validationResult->getErrors());
-        }
         $district = new District($this, $name, $area, $population);
         $this->districts[] = $district;
         return $district;
@@ -60,15 +56,10 @@ class City
 
     public function updateDistrict(
         int $districtId,
-        string $name,
-        float $area,
-        int $population
+        Name $name,
+        Area $area,
+        Population $population
     ): void {
-        $districtValidator = new DistrictValidator();
-        $validationResult = $districtValidator->validate($name, $area, $population);
-        if (!$validationResult->isOk()) {
-            throw (new ValidationException())->withErrors($validationResult->getErrors());
-        }
         $district = $this->getDistrictById($districtId);
         $district->setName($name);
         $district->setArea($area);

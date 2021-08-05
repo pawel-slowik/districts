@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Districts\UI\Web\Controller;
 
 use Districts\Application\DistrictService;
-use Districts\Application\ValidationException as RequestValidationException;
-use Districts\DomainModel\ValidationException as DomainValidationException;
+use Districts\Application\ValidationException;
 use Districts\UI\Web\Factory\AddDistrictCommandFactory;
 use Districts\UI\Web\Redirector;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -45,7 +44,7 @@ final class AddActionController
             unset($this->session["form.add.values"]);
             unset($this->session["form.add.errors"]);
             return $this->redirector->redirect($request->getUri(), "list");
-        } catch (DomainValidationException | RequestValidationException $exception) {
+        } catch (ValidationException $exception) {
             $this->session["form.add.values"] = $request->getParsedBody();
             $this->session["form.add.error.message"] = "An error occured while saving district data.";
             $this->session["form.add.errors"] = array_fill_keys($exception->getErrors(), true);
