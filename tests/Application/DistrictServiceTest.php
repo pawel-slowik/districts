@@ -205,7 +205,7 @@ class DistrictServiceTest extends TestCase
         $this->districtService->add($command);
     }
 
-    public function testAddInvalid(): void
+    public function testAddForNonExistentCity(): void
     {
         $command = $this->createStub(AddDistrictCommand::class);
 
