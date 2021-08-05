@@ -13,7 +13,7 @@ use Districts\Application\DistrictValidator;
 use Districts\Application\NotFoundException;
 use Districts\Application\Query\GetDistrictQuery;
 use Districts\Application\Query\ListDistrictsQuery;
-use Districts\Application\ValidationException as RequestValidationException;
+use Districts\Application\ValidationException;
 use Districts\Application\ValidationResult;
 use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\DistrictRepository;
@@ -217,7 +217,7 @@ class DistrictServiceTest extends TestCase
             ->expects($this->never())
             ->method("update");
 
-        $this->expectException(RequestValidationException::class);
+        $this->expectException(ValidationException::class);
 
         $this->districtService->add($command);
     }
