@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Districts\Test\Application;
 
 use Districts\Application\Importer;
+use Districts\Application\ProgressReporter;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\Exception\InvalidAreaException;
@@ -78,6 +79,25 @@ class ImporterTest extends TestCase
             new DistrictFilter(DistrictFilter::TYPE_CITY, "New City"),
         );
         $this->assertCount(1, $list);
+    }
+
+    public function testProgressReport(): void
+    {
+        $progressReporter = $this->createMock(ProgressReporter::class);
+        $progressReporter
+            ->expects($this->exactly(2))
+            ->method("advance");
+
+        $this->importer->import(
+            new CityDTO(
+                "Foo",
+                [
+                    new DistrictDTO("Bar", 1, 2),
+                    new DistrictDTO("Baz", 3, 4),
+                ]
+            ),
+            $progressReporter
+        );
     }
 
     public function testExceptionOnInvalidName(): void
