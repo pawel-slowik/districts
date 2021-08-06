@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Districts\Test\DomainModel\Scraper\Krakow;
 
+use Districts\DomainModel\Exception\ParsingException;
 use Districts\DomainModel\Scraper\DistrictDTO;
 use Districts\DomainModel\Scraper\HtmlFinder;
 use Districts\DomainModel\Scraper\Krakow\DistrictParser;
-use Districts\DomainModel\Scraper\RuntimeException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -57,7 +57,7 @@ class DistrictParserTest extends TestCase
 
     public function testException(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(ParsingException::class);
         $this->districtParser->parse("");
     }
 }

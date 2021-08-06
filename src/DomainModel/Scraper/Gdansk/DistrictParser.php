@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Scraper\Gdansk;
 
+use Districts\DomainModel\Exception\ParsingException;
 use Districts\DomainModel\Scraper\DistrictDTO;
 use Districts\DomainModel\Scraper\HtmlFinder;
 use Districts\DomainModel\Scraper\RuntimeException;
@@ -23,9 +24,13 @@ final class DistrictParser
         // declaration in order to decode the text properly.
         $fixedHtml = "<html><head><meta charset=\"utf-8\"></head><body>{$html}</body></html>";
         $xpath = "//div[contains(@class, 'opis')]/div";
-        $nodes = $this->htmlFinder->findNodes($fixedHtml, $xpath);
+        try {
+            $nodes = $this->htmlFinder->findNodes($fixedHtml, $xpath);
+        } catch (RuntimeException $exception) {
+            throw new ParsingException();
+        }
         if (count($nodes) < 1) {
-            throw new RuntimeException();
+            throw new ParsingException();
         }
         $texts = array_map(
             function ($node) {
@@ -64,7 +69,7 @@ final class DistrictParser
             }
         }
         if (count($allMatches) !== 1) {
-            throw new RuntimeException();
+            throw new ParsingException();
         }
         return $allMatches[0];
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Scraper\Krakow;
 
+use Districts\DomainModel\Exception\ParsingException;
 use Districts\DomainModel\Scraper\DistrictDTO;
 use Districts\DomainModel\Scraper\HtmlFinder;
 use Districts\DomainModel\Scraper\RuntimeException;
@@ -53,14 +54,18 @@ final class DistrictParser
 
     private function getSingleMatch(string $html, string $xpath, string $regexp): string
     {
-        $nodes = $this->htmlFinder->findNodes($html, $xpath);
+        try {
+            $nodes = $this->htmlFinder->findNodes($html, $xpath);
+        } catch (RuntimeException $exception) {
+            throw new ParsingException();
+        }
         if (count($nodes) !== 1) {
-            throw new RuntimeException();
+            throw new ParsingException();
         }
         $value = $nodes[0]->textContent;
         $matches = [];
         if (!preg_match($regexp, $value, $matches)) {
-            throw new RuntimeException();
+            throw new ParsingException();
         }
         return $matches[1];
     }

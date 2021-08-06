@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\Test\DomainModel\Scraper\Krakow;
 
+use Districts\DomainModel\Exception\ParsingException;
 use Districts\DomainModel\Scraper\HtmlFinder;
 use Districts\DomainModel\Scraper\Krakow\CityParser;
-use Districts\DomainModel\Scraper\RuntimeException;
 use DOMElement;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -73,7 +73,7 @@ class CityParserTest extends TestCase
             ->method("findNodes")
             ->willReturn([]);
 
-        $this->expectException(RuntimeException::class);
+        $this->expectException(ParsingException::class);
 
         $urls = $this->parser->extractDistrictUrls("");
         // start the generator
