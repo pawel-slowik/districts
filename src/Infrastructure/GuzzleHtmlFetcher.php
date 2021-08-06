@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Infrastructure;
 
+use Districts\DomainModel\Exception\FetchingException;
 use Districts\DomainModel\Scraper\HtmlFetcher;
-use Districts\DomainModel\Scraper\RuntimeException;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use GuzzleHttp\ClientInterface;
 
@@ -22,11 +22,11 @@ class GuzzleHtmlFetcher implements HtmlFetcher
     {
         $response = $this->httpClient->request("GET", $url);
         if ($response->getStatusCode() !== StatusCode::STATUS_OK) {
-            throw new RuntimeException();
+            throw new FetchingException();
         }
         $contentType = $response->getHeader("content-type")[0];
         if (explode(";", $contentType)[0] !== "text/html") {
-            throw new RuntimeException();
+            throw new FetchingException();
         }
         return (string) $response->getBody();
     }

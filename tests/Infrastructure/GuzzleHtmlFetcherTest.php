@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Infrastructure;
 
-use Districts\DomainModel\Scraper\RuntimeException;
+use Districts\DomainModel\Exception\FetchingException;
 use Districts\Infrastructure\GuzzleHtmlFetcher;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use GuzzleHttp\ClientInterface;
@@ -44,7 +44,7 @@ class GuzzleHtmlFetcherTest extends TestCase
             ->method("getStatusCode")
             ->willReturn(StatusCode::STATUS_CREATED);
 
-        $this->expectException(RuntimeException::class);
+        $this->expectException(FetchingException::class);
 
         $this->guzzleHtmlFetcher->fetchHtml("");
     }
@@ -60,7 +60,7 @@ class GuzzleHtmlFetcherTest extends TestCase
             ->with($this->identicalTo("content-type"))
             ->willReturn(["text/plain"]);
 
-        $this->expectException(RuntimeException::class);
+        $this->expectException(FetchingException::class);
 
         $this->guzzleHtmlFetcher->fetchHtml("");
     }
