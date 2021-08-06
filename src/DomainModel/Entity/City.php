@@ -48,10 +48,9 @@ class City
         Name $name,
         Area $area,
         Population $population
-    ): District {
+    ): void {
         $district = new District($this, $name, $area, $population);
         $this->districts[] = $district;
-        return $district;
     }
 
     public function updateDistrict(
