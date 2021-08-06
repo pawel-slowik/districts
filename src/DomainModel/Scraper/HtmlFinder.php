@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Scraper;
 
+use Districts\DomainModel\Exception\InvalidHtmlException;
 use Districts\DomainModel\Exception\InvalidQueryException;
 use DOMDocument;
 use DOMXpath;
@@ -15,7 +16,7 @@ class HtmlFinder
         $document = new DOMDocument();
         // @ silence warnings for mismatched HTML tags etc.
         if (!@$document->loadHTML($html)) {
-            throw new RuntimeException();
+            throw new InvalidHtmlException();
         }
         $nodes = (new DOMXpath($document))->query($xpath);
         if ($nodes === false) {

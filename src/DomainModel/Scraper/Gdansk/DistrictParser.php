@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Scraper\Gdansk;
 
+use Districts\DomainModel\Exception\InvalidHtmlException;
 use Districts\DomainModel\Exception\ParsingException;
 use Districts\DomainModel\Scraper\DistrictDTO;
 use Districts\DomainModel\Scraper\HtmlFinder;
-use Districts\DomainModel\Scraper\RuntimeException;
 
 final class DistrictParser
 {
@@ -26,7 +26,7 @@ final class DistrictParser
         $xpath = "//div[contains(@class, 'opis')]/div";
         try {
             $nodes = $this->htmlFinder->findNodes($fixedHtml, $xpath);
-        } catch (RuntimeException $exception) {
+        } catch (InvalidHtmlException $exception) {
             throw new ParsingException();
         }
         if (count($nodes) < 1) {

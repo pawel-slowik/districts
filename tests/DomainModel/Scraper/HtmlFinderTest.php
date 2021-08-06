@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Test\DomainModel\Scraper;
 
+use Districts\DomainModel\Exception\InvalidHtmlException;
 use Districts\DomainModel\Scraper\HtmlFinder;
-use Districts\DomainModel\Scraper\RuntimeException;
 use DOMNode;
 use PHPUnit\Framework\TestCase;
 
@@ -39,7 +39,7 @@ HTML;
 
     public function testExceptionOnInvalidHtml(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(InvalidHtmlException::class);
         $this->finder->findNodes("", "/html/body");
     }
 
