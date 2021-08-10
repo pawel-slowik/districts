@@ -9,8 +9,7 @@ use Districts\DomainModel\Scraper\Gdansk\CityParser;
 use Districts\DomainModel\Scraper\Gdansk\CityScraper;
 use Districts\DomainModel\Scraper\Gdansk\DistrictParser;
 use Districts\DomainModel\Scraper\HtmlFetcher;
-use Districts\DomainModel\Scraper\HtmlFinder;
-use Districts\Test\DomainModel\Scraper\HtmlFetcherMockBuilder;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -23,45 +22,65 @@ class CityScraperTest extends TestCase
      */
     private $scraper;
 
+    /**
+     * @var HtmlFetcher|Stub
+     */
+    private $htmlFetcher;
+
+    /**
+     * @var CityParser|Stub
+     */
+    private $cityParser;
+
+    /**
+     * @var DistrictParser|Stub
+     */
+    private $districtParser;
+
     protected function setUp(): void
     {
+        $this->htmlFetcher = $this->createStub(HtmlFetcher::class);
+        $this->cityParser = $this->createStub(CityParser::class);
+        $this->districtParser = $this->createStub(DistrictParser::class);
+
         $this->scraper = new CityScraper(
-            $this->createHtmlFetcherMock(),
-            new CityParser(new HtmlFinder()),
-            new DistrictParser(new HtmlFinder())
+            $this->htmlFetcher,
+            $this->cityParser,
+            $this->districtParser
         );
     }
 
-    public function testReturnsNonEmpty(): void
+    public function testCityName(): void
     {
-        $cityDTO = $this->scraper->scrape();
-        $this->assertNotEmpty($cityDTO->listDistricts());
+        $this->assertSame("Gdańsk", $this->scraper->getCityName());
     }
 
-    public function testReturnsDistricts(): void
+    public function testScrapedCityName(): void
     {
         $cityDTO = $this->scraper->scrape();
+
+        $this->assertSame("Gdańsk", $cityDTO->getName());
+    }
+
+    public function testScrapedDistrictCount(): void
+    {
+        $this->cityParser
+            ->method("extractDistrictUrls")
+            ->willReturn(["1", "2", "3"]);
+
+        $cityDTO = $this->scraper->scrape();
+
+        $this->assertCount(3, $cityDTO->listDistricts());
+    }
+
+    public function testScrapedDistrictType(): void
+    {
+        $this->cityParser
+            ->method("extractDistrictUrls")
+            ->willReturn(["1", "2", "3"]);
+
+        $cityDTO = $this->scraper->scrape();
+
         $this->assertContainsOnlyInstancesOf(DistrictDTO::class, $cityDTO->listDistricts());
-    }
-
-    private function createHtmlFetcherMock(): HtmlFetcher
-    {
-        // The mock returns the same content for all districts. This is OK
-        // because CityScrapers don't have any knowledge about district
-        // properties (only DistrictParsers do).
-        $urlFilenameMap = ["https://www.gdansk.pl/dzielnice" => "dzielnice.html"];
-        for ($i = 1; $i <= 35; $i++) {
-            $url = sprintf("https://www.gdansk.pl/subpages/dzielnice/html/4-dzielnice_mapa_alert.php?id=%d", $i);
-            $urlFilenameMap[$url] = "dzielnice_mapa_alert.php?id=16";
-        }
-        return HtmlFetcherMockBuilder::buildFromUrlFilenameMap(
-            $this->createMock(HtmlFetcher::class),
-            array_map(
-                function ($filename) {
-                    return __DIR__ . "/" . $filename;
-                },
-                $urlFilenameMap,
-            ),
-        );
     }
 }
