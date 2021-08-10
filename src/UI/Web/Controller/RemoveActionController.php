@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Districts\UI\Web\Controller;
 
 use Districts\Application\DistrictService;
-use Districts\Application\NotFoundException as ApplicationNotFoundException;
-use Districts\DomainModel\Exception\NotFoundException as DomainNotFoundException;
+use Districts\Application\NotFoundException;
+use Districts\DomainModel\Exception\DistrictNotFoundException;
 use Districts\UI\Web\Factory\RemoveDistrictCommandFactory;
 use Districts\UI\Web\Redirector;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -44,7 +44,7 @@ final class RemoveActionController
             try {
                 $this->districtService->remove($command);
                 $this->session["success.message"] = "District data removed.";
-            } catch (DomainNotFoundException | ApplicationNotFoundException $exception) {
+            } catch (DistrictNotFoundException | NotFoundException $exception) {
                 throw new HttpNotFoundException($request);
             }
         }

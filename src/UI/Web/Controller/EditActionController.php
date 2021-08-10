@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Districts\UI\Web\Controller;
 
 use Districts\Application\DistrictService;
-use Districts\Application\NotFoundException as ApplicationNotFoundException;
+use Districts\Application\NotFoundException;
 use Districts\Application\ValidationException;
-use Districts\DomainModel\Exception\NotFoundException as DomainNotFoundException;
+use Districts\DomainModel\Exception\DistrictNotFoundException;
 use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
 use Districts\UI\Web\Redirector;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -47,7 +47,7 @@ final class EditActionController
             unset($this->session["form.edit.values"]);
             unset($this->session["form.edit.errors"]);
             return $this->redirector->redirect($request->getUri(), "list");
-        } catch (ApplicationNotFoundException | DomainNotFoundException $notFoundException) {
+        } catch (NotFoundException | DistrictNotFoundException $notFoundException) {
             throw new HttpNotFoundException($request);
         } catch (ValidationException $validationException) {
             $this->session["form.edit.values"] = $request->getParsedBody();
