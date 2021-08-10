@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web\Factory;
 
+use Districts\Application\Exception\ValidationException;
 use Districts\Application\Query\GetDistrictQuery;
-use Districts\Application\ValidationException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 class GetDistrictQueryFactory

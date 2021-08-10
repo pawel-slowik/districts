@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Districts\UI\Web\Factory;
 
 use Districts\Application\Command\UpdateDistrictCommand;
-use Districts\Application\ValidationException;
+use Districts\Application\Exception\ValidationException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 class UpdateDistrictCommandFactory

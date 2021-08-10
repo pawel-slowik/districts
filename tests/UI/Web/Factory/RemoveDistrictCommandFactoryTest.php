@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Districts\Test\UI\Web\Factory;
 
 use Districts\Application\Command\RemoveDistrictCommand;
-use Districts\Application\ValidationException;
+use Districts\Application\Exception\ValidationException;
 use Districts\UI\Web\Factory\RemoveDistrictCommandFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

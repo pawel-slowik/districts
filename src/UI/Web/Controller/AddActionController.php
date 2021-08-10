@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Districts\UI\Web\Controller;
 
 use Districts\Application\DistrictService;
-use Districts\Application\ValidationException;
+use Districts\Application\Exception\ValidationException;
 use Districts\UI\Web\Factory\AddDistrictCommandFactory;
 use Districts\UI\Web\Redirector;
 use Psr\Http\Message\ResponseInterface as Response;

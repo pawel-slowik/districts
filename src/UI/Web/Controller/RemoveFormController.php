@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Districts\UI\Web\Controller;
 
 use Districts\Application\DistrictService;
-use Districts\Application\NotFoundException;
+use Districts\Application\Exception\NotFoundException;
 use Districts\DomainModel\Exception\DistrictNotFoundException;
 use Districts\UI\Web\Factory\GetDistrictQueryFactory;
 use Psr\Http\Message\ResponseInterface as Response;

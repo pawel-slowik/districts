@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Districts\UI\Web\Controller;
 
 use Districts\Application\DistrictService;
-use Districts\Application\NotFoundException;
-use Districts\Application\ValidationException;
+use Districts\Application\Exception\NotFoundException;
+use Districts\Application\Exception\ValidationException;
 use Districts\DomainModel\Exception\DistrictNotFoundException;
 use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
 use Districts\UI\Web\Redirector;
