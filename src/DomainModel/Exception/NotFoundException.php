@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Exception;
 
-use RuntimeException;
+use DomainException;
 
-class NotFoundException extends RuntimeException
+class NotFoundException extends DomainException
 {
 }
