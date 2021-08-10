@@ -6,76 +6,111 @@ namespace Districts\Test\Application;
 
 use Districts\Application\Importer;
 use Districts\Application\ProgressReporter;
-use Districts\DomainModel\DistrictFilter;
-use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\Scraper\CityDTO;
 use Districts\DomainModel\Scraper\DistrictDTO;
 use Districts\Infrastructure\DoctrineCityRepository;
-use Districts\Infrastructure\DoctrineDistrictRepository;
+use Districts\Test\Infrastructure\DoctrineDbTestCase;
 use Districts\Test\Infrastructure\FixtureTool;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Districts\Application\Importer
  */
-class ImporterTest extends TestCase
+class ImporterTest extends DoctrineDbTestCase
 {
+    private const TESTCASE_SQL = <<<'SQL'
+BEGIN;
+INSERT INTO cities (id, name) VALUES (1, 'Bar');
+INSERT INTO districts (city_id, name, area, population) VALUES (1, 'Plugh', 10.0, 5000);
+COMMIT;
+SQL;
+
     /**
      * @var Importer
      */
     private $importer;
 
-    /**
-     * @var DoctrineDistrictRepository
-     */
-    private $districtRepository;
-
-    /**
-     * @var DistrictOrdering
-     */
-    private $defaultOrder;
-
     protected function setUp(): void
     {
-        $entityManager = (require "doctrine-bootstrap.php")();
-        FixtureTool::reset($entityManager);
-        FixtureTool::loadFiles($entityManager, [
-            "tests/Infrastructure/data/cities.sql",
-            "tests/Infrastructure/data/districts.sql",
-        ]);
-        $this->districtRepository = new DoctrineDistrictRepository($entityManager);
-        $this->importer = new Importer(new DoctrineCityRepository($entityManager));
-        $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
+        parent::setUp();
+        FixtureTool::loadSql($this->entityManager, self::TESTCASE_SQL);
+        $this->importer = new Importer(new DoctrineCityRepository($this->entityManager));
     }
 
     public function testSetDistrictsForCityName(): void
     {
         $this->importer->import(new CityDTO("Bar", [new DistrictDTO("Hola", 1, 2)]));
-        $list = $this->districtRepository->list(
-            $this->defaultOrder,
-            new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
+
+        $this->assertDbTableContents(
+            "cities",
+            [
+                [
+                    "name" => "Bar",
+                ],
+            ]
         );
-        $this->assertCount(1, $list);
+        $this->assertDbTableContents(
+            "districts",
+            [
+                [
+                    "name" => "Hola",
+                    "area" => "1.0",
+                    "population" => "2",
+                    "city_id" => "1",
+                ],
+            ]
+        );
     }
 
     public function testSetEmptyDistrictsForCityName(): void
     {
         $this->importer->import(new CityDTO("Bar", []));
-        $list = $this->districtRepository->list(
-            $this->defaultOrder,
-            new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
+
+        $this->assertDbTableContents(
+            "cities",
+            [
+                [
+                    "name" => "Bar",
+                ],
+            ]
         );
-        $this->assertEmpty($list);
+        $this->assertDbTableContents(
+            "districts",
+            []
+        );
     }
 
     public function testSetDistrictsForNonexistentCityName(): void
     {
         $this->importer->import(new CityDTO("New City", [new DistrictDTO("Hola", 1, 2)]));
-        $list = $this->districtRepository->list(
-            $this->defaultOrder,
-            new DistrictFilter(DistrictFilter::TYPE_CITY, "New City"),
+
+        $this->assertDbTableContents(
+            "cities",
+            [
+                [
+                    "name" => "Bar",
+                ],
+                [
+                    "name" => "New City",
+                ],
+            ]
         );
-        $this->assertCount(1, $list);
+        $this->assertDbTableContents(
+            "districts",
+            [
+                [
+                    "name" => "Plugh",
+                    "area" => "10.0",
+                    "population" => "5000",
+                    "city_id" => "1",
+                ],
+                [
+                    "name" => "Hola",
+                    "area" => "1.0",
+                    "population" => "2",
+                    "city_id" => "2",
+                ],
+            ]
+        );
     }
 
     public function testProgressReport(): void
