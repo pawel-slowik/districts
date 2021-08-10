@@ -8,9 +8,6 @@ use Districts\Application\Importer;
 use Districts\Application\ProgressReporter;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
-use Districts\DomainModel\Exception\InvalidAreaException;
-use Districts\DomainModel\Exception\InvalidNameException;
-use Districts\DomainModel\Exception\InvalidPopulationException;
 use Districts\DomainModel\Scraper\CityDTO;
 use Districts\DomainModel\Scraper\DistrictDTO;
 use Districts\Infrastructure\DoctrineCityRepository;
@@ -98,23 +95,5 @@ class ImporterTest extends TestCase
             ),
             $progressReporter
         );
-    }
-
-    public function testExceptionOnInvalidName(): void
-    {
-        $this->expectException(InvalidNameException::class);
-        $this->importer->import(new CityDTO("Bar", [new DistrictDTO("", 1, 2)]));
-    }
-
-    public function testExceptionOnInvalidArea(): void
-    {
-        $this->expectException(InvalidAreaException::class);
-        $this->importer->import(new CityDTO("Bar", [new DistrictDTO("Hola", 0, 2)]));
-    }
-
-    public function testExceptionOnInvalidPopulation(): void
-    {
-        $this->expectException(InvalidPopulationException::class);
-        $this->importer->import(new CityDTO("Bar", [new DistrictDTO("Hola", 1, 0)]));
     }
 }
