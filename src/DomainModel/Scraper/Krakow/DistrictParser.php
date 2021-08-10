@@ -9,7 +9,7 @@ use Districts\DomainModel\Exception\ParsingException;
 use Districts\DomainModel\Scraper\DistrictDTO;
 use Districts\DomainModel\Scraper\HtmlFinder;
 
-final class DistrictParser
+class DistrictParser
 {
     private $htmlFinder;
 
