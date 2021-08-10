@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Entity;
 
-use Districts\DomainModel\NotFoundException;
+use Districts\DomainModel\Exception\NotFoundException;
 use Districts\DomainModel\VO\Area;
 use Districts\DomainModel\VO\Name;
 use Districts\DomainModel\VO\Population;

@@ -6,7 +6,7 @@ namespace Districts\UI\Web\Controller;
 
 use Districts\Application\DistrictService;
 use Districts\Application\NotFoundException as ApplicationNotFoundException;
-use Districts\DomainModel\NotFoundException as DomainNotFoundException;
+use Districts\DomainModel\Exception\NotFoundException as DomainNotFoundException;
 use Districts\UI\Web\Factory\GetDistrictQueryFactory;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

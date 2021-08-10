@@ -7,7 +7,7 @@ namespace Districts\UI\Web\Controller;
 use Districts\Application\DistrictService;
 use Districts\Application\NotFoundException as ApplicationNotFoundException;
 use Districts\Application\ValidationException;
-use Districts\DomainModel\NotFoundException as DomainNotFoundException;
+use Districts\DomainModel\Exception\NotFoundException as DomainNotFoundException;
 use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
 use Districts\UI\Web\Redirector;
 use Psr\Http\Message\ResponseInterface as Response;

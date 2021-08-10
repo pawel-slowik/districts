@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\DomainModel;
+namespace Districts\DomainModel\Exception;
 
 use RuntimeException;
 
