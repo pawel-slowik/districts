@@ -20,6 +20,11 @@ abstract class DoctrineDbTestCase extends TestCase
         FixtureTool::reset($this->entityManager);
     }
 
+    protected function loadSql(string $sql): void
+    {
+        FixtureTool::loadSql($this->entityManager, $sql);
+    }
+
     protected function loadDefaultDbContents(): void
     {
         FixtureTool::loadFiles(

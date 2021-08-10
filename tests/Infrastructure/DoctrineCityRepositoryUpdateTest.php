@@ -30,7 +30,7 @@ SQL;
     protected function setUp(): void
     {
         parent::setUp();
-        FixtureTool::loadSql($this->entityManager, self::TESTCASE_SQL);
+        parent::loadSql(self::TESTCASE_SQL);
 
         $this->cityRepository = new DoctrineCityRepository($this->entityManager);
     }

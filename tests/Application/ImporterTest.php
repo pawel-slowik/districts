@@ -10,7 +10,6 @@ use Districts\DomainModel\Scraper\CityDTO;
 use Districts\DomainModel\Scraper\DistrictDTO;
 use Districts\Infrastructure\DoctrineCityRepository;
 use Districts\Test\Infrastructure\DoctrineDbTestCase;
-use Districts\Test\Infrastructure\FixtureTool;
 
 /**
  * @covers \Districts\Application\Importer
@@ -32,7 +31,7 @@ SQL;
     protected function setUp(): void
     {
         parent::setUp();
-        FixtureTool::loadSql($this->entityManager, self::TESTCASE_SQL);
+        parent::loadSql(self::TESTCASE_SQL);
         $this->importer = new Importer(new DoctrineCityRepository($this->entityManager));
     }
 
