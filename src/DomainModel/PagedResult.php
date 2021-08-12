@@ -24,16 +24,6 @@ class PagedResult
         $this->currentPageEntries = $currentPageEntries;
     }
 
-    public function getPageSize(): int
-    {
-        return $this->pageSize;
-    }
-
-    public function getTotalEntryCount(): int
-    {
-        return $this->totalEntryCount;
-    }
-
     public function getCurrentPageEntries(): array
     {
         return $this->currentPageEntries;

@@ -16,8 +16,6 @@ class PagedResultTest extends TestCase
     public function testGetters(): void
     {
         $result = new PagedResult(100, 202, ["foo", "bar"]);
-        $this->assertSame(100, $result->getPageSize());
-        $this->assertSame(202, $result->getTotalEntryCount());
         $this->assertSame(["foo", "bar"], $result->getCurrentPageEntries());
     }
 
