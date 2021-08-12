@@ -36,8 +36,8 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     public function testListStructure(): void
     {
         $list = $this->districtRepository->list($this->defaultOrder);
-        $this->assertCount(15, $list);
-        $this->assertContainsOnlyInstancesOf(District::class, $list);
+        $this->assertCount(15, $list->getCurrentPageEntries());
+        $this->assertContainsOnlyInstancesOf(District::class, $list->getCurrentPageEntries());
     }
 
     /**
@@ -51,7 +51,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
                 function ($district) {
                     return $district->getCity()->getName();
                 },
-                iterator_to_array($this->districtRepository->list($order))
+                $this->districtRepository->list($order)->getCurrentPageEntries()
             )))
         );
     }
@@ -81,7 +81,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
                 function ($district) {
                     return $district->getId();
                 },
-                iterator_to_array($this->districtRepository->list($order))
+                $this->districtRepository->list($order)->getCurrentPageEntries()
             )
         );
     }
@@ -134,7 +134,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
             function ($district) {
                 return $district->getId();
             },
-            iterator_to_array($this->districtRepository->list($this->defaultOrder, $filter))
+            $this->districtRepository->list($this->defaultOrder, $filter)->getCurrentPageEntries()
         );
         sort($actualIds);
         $this->assertSame($expectedIds, $actualIds);
@@ -177,12 +177,12 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     public function testCountSinglePage(): void
     {
         $list = $this->districtRepository->list($this->defaultOrder, null, new Pagination(1, 10));
-        $this->assertCount(10, $list);
+        $this->assertCount(10, $list->getCurrentPageEntries());
     }
 
     public function testCountPageOutsideOfRange(): void
     {
         $list = $this->districtRepository->list($this->defaultOrder, null, new Pagination(999, 10));
-        $this->assertEmpty($list);
+        $this->assertEmpty($list->getCurrentPageEntries());
     }
 }

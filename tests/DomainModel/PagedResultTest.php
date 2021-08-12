@@ -27,44 +27,6 @@ class PagedResultTest extends TestCase
         $this->assertSame(3, $result->getPageCount());
     }
 
-    public function testCount(): void
-    {
-        $result = new PagedResult(100, 202, ["foo", "bar"]);
-        $this->assertCount(2, $result);
-    }
-
-    public function testIterator(): void
-    {
-        $result = new PagedResult(100, 202, ["foo", "bar"]);
-        $this->assertSame(["foo", "bar"], iterator_to_array($result));
-    }
-
-    public function testArrayAccessExists(): void
-    {
-        $result = new PagedResult(100, 202, ["foo", 123 => "bar"]);
-        $this->assertTrue(isset($result[123]));
-    }
-
-    public function testArrayAccessGet(): void
-    {
-        $result = new PagedResult(100, 202, ["foo", 123 => "bar"]);
-        $this->assertSame("bar", $result[123]);
-    }
-
-    public function testArrayAccessSet(): void
-    {
-        $result = new PagedResult(100, 202, ["foo", 123 => "bar"]);
-        $result[123] = "hello";
-        $this->assertSame("hello", $result[123]);
-    }
-
-    public function testArrayAccessUnset(): void
-    {
-        $result = new PagedResult(100, 202, ["foo", 123 => "bar"]);
-        unset($result[123]);
-        $this->assertFalse(isset($result[123]));
-    }
-
     public function testExceptionOnInvalidPageSize(): void
     {
         $this->expectException(InvalidArgumentException::class);

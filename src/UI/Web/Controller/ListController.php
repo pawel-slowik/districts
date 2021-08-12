@@ -47,7 +47,7 @@ final class ListController
         $currentPageNumber = is_null($query->getPagination()) ? 1 : $query->getPagination()->getPageNumber();
         $templateData = [
             "title" => "List of districts",
-            "districts" => $districts,
+            "districts" => $districts->getCurrentPageEntries(),
             "orderColumn" => $args["column"] ?? null,
             "orderDirection" => $args["direction"] ?? null,
             "filterColumn" => $queryParams["filterColumn"] ?? null,
