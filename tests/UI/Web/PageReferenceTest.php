@@ -63,16 +63,15 @@ class PageReferenceTest extends TestCase
             ["https://host/path?query=foo&bar=baz"],
             ["http://host/path#fragment"],
             ["https://user:password@example.com/path?query=foo&bar=baz#fragment"],
-            // TODO: add support for relative URLs
-            // ["/"],
-            // ["path"],
-            // ["/path"],
-            // ["/path2/"],
-            // ["/path3/path4"],
-            // ["/path?query"],
-            // ["/path?query=foo&bar=baz"],
-            // ["/path#fragment"],
-            // ["/path?query=foo&bar=baz#fragment"],
+            ["/"],
+            ["path"],
+            ["/path"],
+            ["/path2/"],
+            ["/path3/path4"],
+            ["/path?query"],
+            ["/path?query=foo&bar=baz"],
+            ["/path#fragment"],
+            ["/path?query=foo&bar=baz#fragment"],
         ];
     }
 

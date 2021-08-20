@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Districts\UI\Web;
 
 use InvalidArgumentException;
+use Laminas\Uri\Exception\InvalidArgumentException as UriException;
+use Laminas\Uri\Uri;
 
 class PageReference
 {
@@ -65,28 +67,29 @@ class PageReference
 
     private static function validateUrl(?string $url): bool
     {
-        return is_null($url) || self::validateAbsoluteUrl($url) || self::validateRelativeUrl($url);
-    }
-
-    private static function validateAbsoluteUrl(string $url): bool
-    {
-        $checkedUrl = filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED);
-        if (is_string($checkedUrl)) {
-            $scheme = parse_url($checkedUrl, PHP_URL_SCHEME);
-            if (is_string($scheme)) {
-                if (in_array(strtolower($scheme), ["http", "https"], true)) {
-                    return true;
-                }
-            }
+        if (is_null($url)) {
+            return true;
         }
-        return false;
+        try {
+            $uri = new Uri($url);
+        } catch (UriException $exception) {
+            return false;
+        }
+        return self::validateAbsoluteUri($uri) || self::validateRelativeUri($uri);
     }
 
-    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-    private static function validateRelativeUrl(string $url): bool
+    private static function validateAbsoluteUri(Uri $uri): bool
     {
-        // TODO: add support for relative URLs
-        return false;
+        return $uri->isValid() && in_array($uri->getScheme(), ["http", "https"], true);
+    }
+
+    private static function validateRelativeUri(Uri $uri): bool
+    {
+        return $uri->isValidRelative()
+            && is_null($uri->getScheme())
+            && is_null($uri->getUserInfo())
+            && is_null($uri->getHost())
+            && is_null($uri->getPort());
     }
 
     private static function validateText(string $text): bool
