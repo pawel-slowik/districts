@@ -46,8 +46,7 @@ class RoutedPageReferenceFactory
         if (is_null($route->getName())) {
             throw new InvalidArgumentException();
         }
-        return $this->routeParser->fullUrlFor(
-            $namedRouteRequest->getUri(),
+        return $this->routeParser->urlFor(
             $route->getName(),
             $route->getArguments(),
             $namedRouteRequest->getQueryParams(),
