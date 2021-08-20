@@ -6,7 +6,7 @@ namespace Districts\UI\Web\Controller;
 
 use Districts\Application\DistrictService;
 use Districts\UI\Web\Factory\ListDistrictsQueryFactory;
-use Districts\UI\Web\ListView;
+use Districts\UI\Web\View\ListView;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use SlimSession\Helper as Session;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\UI\Web;
+namespace Districts\UI\Web\View;
 
 use Slim\Interfaces\RouteParserInterface;
 

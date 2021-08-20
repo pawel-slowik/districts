@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\UI\Web\Factory;
+namespace Districts\UI\Web\View;
 
 use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;

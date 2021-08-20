@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Districts\Test\UI\Web\Factory;
 
 use ArrayIterator;
-use Districts\UI\Web\Factory\PageReferenceFactory;
-use Districts\UI\Web\Factory\RoutedPageReferenceFactory;
-use Districts\UI\Web\PageReference;
+use Districts\UI\Web\View\PageReference;
+use Districts\UI\Web\View\PageReferenceFactory;
+use Districts\UI\Web\View\RoutedPageReferenceFactory;
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -19,7 +19,7 @@ use Slim\Routing\RouteContext;
 use Slim\Routing\RoutingResults;
 
 /**
- * @covers \Districts\UI\Web\Factory\RoutedPageReferenceFactory
+ * @covers \Districts\UI\Web\View\RoutedPageReferenceFactory
  */
 class RoutedPageReferenceFactoryTest extends TestCase
 {

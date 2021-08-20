@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web;
 
-use Districts\UI\Web\OrderingUrlGenerator;
+use Districts\UI\Web\View\OrderingUrlGenerator;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Slim\Interfaces\RouteParserInterface;
 
 /**
- * @covers \Districts\UI\Web\OrderingUrlGenerator
+ * @covers \Districts\UI\Web\View\OrderingUrlGenerator
  */
 class OrderingUrlGeneratorTest extends TestCase
 {

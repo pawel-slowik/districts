@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\UI\Web\Factory;
+namespace Districts\Test\UI\Web\View;
 
-use Districts\UI\Web\Factory\PageReferenceFactory;
-use Districts\UI\Web\PageReference;
+use Districts\UI\Web\View\PageReference;
+use Districts\UI\Web\View\PageReferenceFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\UI\Web\Factory\PageReferenceFactory
+ * @covers \Districts\UI\Web\View\PageReferenceFactory
  */
 class PageReferenceFactoryTest extends TestCase
 {

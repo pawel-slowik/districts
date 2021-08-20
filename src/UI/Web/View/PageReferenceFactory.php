@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Districts\UI\Web\Factory;
+namespace Districts\UI\Web\View;
 
-use Districts\UI\Web\PageReference;
 use Laminas\Uri\Uri;
 use Traversable;
 

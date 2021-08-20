@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\UI\Web;
+namespace Districts\UI\Web\View;
 
 use InvalidArgumentException;
 use Laminas\Uri\Exception\InvalidArgumentException as UriException;

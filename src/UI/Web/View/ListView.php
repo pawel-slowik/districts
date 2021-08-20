@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Districts\UI\Web;
+namespace Districts\UI\Web\View;
 
-use Districts\UI\Web\Factory\RoutedPageReferenceFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig as View;

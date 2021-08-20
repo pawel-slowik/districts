@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web;
 
-use Districts\UI\Web\Factory\RoutedPageReferenceFactory;
-use Districts\UI\Web\ListView;
-use Districts\UI\Web\OrderingUrlGenerator;
+use Districts\UI\Web\View\ListView;
+use Districts\UI\Web\View\OrderingUrlGenerator;
+use Districts\UI\Web\View\RoutedPageReferenceFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -15,7 +15,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig as TwigView;
 
 /**
- * @covers \Districts\UI\Web\ListView
+ * @covers \Districts\UI\Web\View\ListView
  */
 class ListViewTest extends TestCase
 {
