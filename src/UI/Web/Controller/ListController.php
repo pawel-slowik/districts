@@ -7,9 +7,9 @@ namespace Districts\UI\Web\Controller;
 use Districts\Application\DistrictService;
 use Districts\UI\Web\Factory\ListDistrictsQueryFactory;
 use Districts\UI\Web\Factory\RoutedPageReferenceFactory;
+use Districts\UI\Web\OrderingUrlGenerator;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Interfaces\RouteParserInterface;
 use Slim\Views\Twig as View;
 use SlimSession\Helper as Session;
 
@@ -25,7 +25,7 @@ final class ListController
 
     private $pageReferenceFactory;
 
-    private $routeParser;
+    private $orderingUrlGenerator;
 
     public function __construct(
         DistrictService $districtService,
@@ -33,14 +33,14 @@ final class ListController
         Session $session,
         View $view,
         RoutedPageReferenceFactory $pageReferenceFactory,
-        RouteParserInterface $routeParser
+        OrderingUrlGenerator $orderingUrlGenerator
     ) {
         $this->districtService = $districtService;
         $this->queryFactory = $queryFactory;
         $this->session = $session;
         $this->view = $view;
         $this->pageReferenceFactory = $pageReferenceFactory;
-        $this->routeParser = $routeParser;
+        $this->orderingUrlGenerator = $orderingUrlGenerator;
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response
@@ -81,46 +81,10 @@ final class ListController
             $columns,
             array_map(
                 function (string $column) use ($routeName, $args, $queryParams): string {
-                    return $this->createOrderingUrl($routeName, $column, $args, $queryParams);
+                    return $this->orderingUrlGenerator->createOrderingUrl($routeName, $column, $args, $queryParams);
                 },
                 $columns
             )
         );
-    }
-
-    private function createOrderingUrl(string $routeName, string $column, array $routeArgs, array $queryParams): string
-    {
-        return $this->routeParser->urlFor(
-            $routeName,
-            [
-                "column" => $column,
-                "direction" => $this->computeOrderingDirection($column, $routeArgs),
-            ],
-            $this->copyRelevantQueryParams($queryParams)
-        );
-    }
-
-    private function computeOrderingDirection(string $column, array $routeArgs): string
-    {
-        if (array_key_exists("column", $routeArgs)
-            && array_key_exists("direction", $routeArgs)
-            && ($routeArgs["column"] === $column)
-            && ($routeArgs["direction"] === "asc")
-        ) {
-            return "desc";
-        }
-        return "asc";
-    }
-
-    private function copyRelevantQueryParams(array $queryParams): array
-    {
-        $newQueryParams = [];
-        if (array_key_exists("filterColumn", $queryParams)) {
-            $newQueryParams["filterColumn"] = $queryParams["filterColumn"];
-        }
-        if (array_key_exists("filterValue", $queryParams)) {
-            $newQueryParams["filterValue"] = $queryParams["filterValue"];
-        }
-        return $newQueryParams;
     }
 }
