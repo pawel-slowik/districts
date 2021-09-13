@@ -39,4 +39,13 @@ class ListDistrictsQueryFactory
             $this->paginationFactory->createFromRequestInput($pageNumber),
         );
     }
+
+    public function fromDefaults(): ListDistrictsQuery
+    {
+        return new ListDistrictsQuery(
+            $this->orderingFactory->createFromRequestInput(null, null),
+            $this->filterFactory->createFromRequestInput(null, null),
+            $this->paginationFactory->createFromRequestInput(null),
+        );
+    }
 }

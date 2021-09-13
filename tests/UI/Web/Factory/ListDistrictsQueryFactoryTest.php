@@ -239,4 +239,11 @@ class ListDistrictsQueryFactoryTest extends TestCase
             ],
         ];
     }
+
+    public function testDefaults(): void
+    {
+        $this->queryFactory->fromDefaults();
+
+        $this->assertTrue(true);
+    }
 }

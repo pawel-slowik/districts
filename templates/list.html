@@ -13,7 +13,7 @@
     <a href="{{ url_for('add') }}">add a district</a>
 </p>
 
-<form action="" method="get" id="filter">
+<form action="{{ url_for('list') }}" method="get" id="filter">
 
     <label for="filterColumn">filter column:</label>
     <select name="filterColumn">
@@ -33,6 +33,13 @@
     </p>
 
 </form>
+
+{% if errorMessage %}
+<p class="error message" id="close_error_message">
+    {{ errorMessage }}
+    <a class="close" href="#close_error_message" title="dismiss message">&#x2715;</a>
+</p>
+{% endif %}
 
 <table id="districts">
 

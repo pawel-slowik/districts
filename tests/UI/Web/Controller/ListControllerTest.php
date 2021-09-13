@@ -56,6 +56,13 @@ class ListControllerTest extends BaseTestCase
         $this->assertSame(StatusCode::STATUS_METHOD_NOT_ALLOWED, $response->getStatusCode());
     }
 
+    public function testFilteringError(): void
+    {
+        $response = $this->runApp("GET", "/list?filterColumn=population&filterValue=2-1");
+        $this->assertSame(StatusCode::STATUS_OK, $response->getStatusCode());
+        $this->assertStringContainsStringIgnoringCase("invalid query parameters", (string) $response->getBody());
+    }
+
     protected function runAppWithPagedDataset(
         string $requestMethod,
         string $requestUri,
