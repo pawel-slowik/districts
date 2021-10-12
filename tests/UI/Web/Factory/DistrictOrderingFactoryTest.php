@@ -14,6 +14,16 @@ use PHPUnit\Framework\TestCase;
 class DistrictOrderingFactoryTest extends TestCase
 {
     /**
+     * @var DistrictOrderingFactory
+     */
+    private $districtOrderingFactory;
+
+    protected function setUp(): void
+    {
+        $this->districtOrderingFactory = new DistrictOrderingFactory();
+    }
+
+    /**
      * @dataProvider createDataProvider
      */
     public function testCreate(
@@ -22,7 +32,7 @@ class DistrictOrderingFactoryTest extends TestCase
         int $expectedField,
         int $expectedDirection
     ): void {
-        $order = DistrictOrderingFactory::createFromRequestInput($inputColumn, $inputDirection);
+        $order = $this->districtOrderingFactory->createFromRequestInput($inputColumn, $inputDirection);
         $this->assertInstanceOf(DistrictOrdering::class, $order);
         $this->assertSame($expectedField, $order->getField());
         $this->assertSame($expectedDirection, $order->getDirection());

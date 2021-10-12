@@ -14,11 +14,21 @@ use PHPUnit\Framework\TestCase;
 class DistrictFilterFactoryTest extends TestCase
 {
     /**
+     * @var DistrictFilterFactory
+     */
+    private $districtFilterFactory;
+
+    protected function setUp(): void
+    {
+        $this->districtFilterFactory = new DistrictFilterFactory();
+    }
+
+    /**
      * @dataProvider createNullDataProvider
      */
     public function testCreateNull(?string $column, ?string $value): void
     {
-        $filter = DistrictFilterFactory::createFromRequestInput($column, $value);
+        $filter = $this->districtFilterFactory->createFromRequestInput($column, $value);
         $this->assertNull($filter);
     }
 
@@ -53,7 +63,7 @@ class DistrictFilterFactoryTest extends TestCase
         int $expectedType,
         $expectedValue
     ): void {
-        $filter = DistrictFilterFactory::createFromRequestInput($inputColumn, $inputValue);
+        $filter = $this->districtFilterFactory->createFromRequestInput($inputColumn, $inputValue);
         $this->assertInstanceOf(DistrictFilter::class, $filter);
         $this->assertSame($expectedType, $filter->getType());
         $this->assertSame($expectedValue, $filter->getValue());
