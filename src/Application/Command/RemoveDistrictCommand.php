@@ -8,21 +8,13 @@ class RemoveDistrictCommand
 {
     private $id;
 
-    private $isConfirmed;
-
-    public function __construct(int $id, bool $isConfirmed)
+    public function __construct(int $id)
     {
         $this->id = $id;
-        $this->isConfirmed = $isConfirmed;
     }
 
     public function getId(): int
     {
         return $this->id;
-    }
-
-    public function isConfirmed(): bool
-    {
-        return $this->isConfirmed;
     }
 }

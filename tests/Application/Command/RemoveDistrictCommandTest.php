@@ -14,9 +14,8 @@ class RemoveDistrictCommandTest extends TestCase
 {
     public function testGetters(): void
     {
-        $command = new RemoveDistrictCommand(404, false);
+        $command = new RemoveDistrictCommand(404);
 
         $this->assertSame(404, $command->getId());
-        $this->assertFalse($command->isConfirmed());
     }
 }

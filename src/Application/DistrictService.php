@@ -7,7 +7,6 @@ namespace Districts\Application;
 use Districts\Application\Command\AddDistrictCommand;
 use Districts\Application\Command\RemoveDistrictCommand;
 use Districts\Application\Command\UpdateDistrictCommand;
-use Districts\Application\Exception\CommandException;
 use Districts\Application\Exception\NotFoundException;
 use Districts\Application\Exception\ValidationException;
 use Districts\Application\Query\GetDistrictQuery;
@@ -85,9 +84,6 @@ class DistrictService
 
     public function remove(RemoveDistrictCommand $command): void
     {
-        if (!$command->isConfirmed()) {
-            throw new CommandException();
-        }
         $city = $this->getCityByDistrictId($command->getId());
         $city->removeDistrict($command->getId());
         $this->cityRepository->update($city);

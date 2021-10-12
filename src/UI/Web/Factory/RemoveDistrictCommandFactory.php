@@ -10,6 +10,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class RemoveDistrictCommandFactory
 {
+    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function fromRequest(Request $request, array $routeArgs): RemoveDistrictCommand
     {
         $errors = [];
@@ -18,15 +19,9 @@ class RemoveDistrictCommandFactory
         } else {
             $errors[] = "id";
         }
-        $parsedBody = $request->getParsedBody();
-        if (is_array($parsedBody)) {
-            $isConfirmed = array_key_exists("confirm", $parsedBody);
-        }
-        if (isset(
-            $id,
-            $isConfirmed,
-        )) {
-            return new RemoveDistrictCommand($id, $isConfirmed);
+
+        if (isset($id)) {
+            return new RemoveDistrictCommand($id);
         }
 
         throw (new ValidationException())->withErrors($errors);

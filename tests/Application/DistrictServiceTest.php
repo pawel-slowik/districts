@@ -9,7 +9,6 @@ use Districts\Application\Command\RemoveDistrictCommand;
 use Districts\Application\Command\UpdateDistrictCommand;
 use Districts\Application\DistrictService;
 use Districts\Application\DistrictValidator;
-use Districts\Application\Exception\CommandException;
 use Districts\Application\Exception\NotFoundException;
 use Districts\Application\Exception\ValidationException;
 use Districts\Application\Query\GetDistrictQuery;
@@ -111,7 +110,6 @@ class DistrictServiceTest extends TestCase
     {
         $command = $this->createStub(RemoveDistrictCommand::class);
         $command->method("getId")->willReturn(222);
-        $command->method("isConfirmed")->willReturn(true);
 
         $city = $this->createMock(City::class);
 
@@ -133,24 +131,9 @@ class DistrictServiceTest extends TestCase
         $this->districtService->remove($command);
     }
 
-    public function testRemoveUnconfirmed(): void
-    {
-        $command = $this->createStub(RemoveDistrictCommand::class);
-        $command->method("isConfirmed")->willReturn(false);
-
-        $this->cityRepository
-            ->expects($this->never())
-            ->method("update");
-
-        $this->expectException(CommandException::class);
-
-        $this->districtService->remove($command);
-    }
-
     public function testRemoveNonExistent(): void
     {
         $command = $this->createStub(RemoveDistrictCommand::class);
-        $command->method("isConfirmed")->willReturn(true);
 
         $this->cityRepository
             ->method("getByDistrictId")
