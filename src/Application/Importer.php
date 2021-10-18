@@ -28,6 +28,7 @@ class Importer
         $city = $this->cityRepository->findByName($cityDTO->getName());
         if ($city) {
             $city->removeAllDistricts();
+            $this->cityRepository->update($city);
         } else {
             $city = new City($cityDTO->getName());
             $this->cityRepository->add($city);
