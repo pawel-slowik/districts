@@ -14,4 +14,8 @@ return [
     ClientInterface::class => function ($container) {
         return $container->get(Client::class);
     },
+    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
+    Client::class => function ($container) {
+        return new Client(["verify" => false]);
+    },
 ];

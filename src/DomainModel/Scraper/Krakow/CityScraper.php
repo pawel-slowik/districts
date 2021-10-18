@@ -47,7 +47,7 @@ final class CityScraper implements CityScraperInterface
 
     private function listDistrictUrls(): iterable
     {
-        $startUrl = "http://appimeri.um.krakow.pl/app-pub-dzl/pages/DzlViewAll.jsf?a=1&lay=normal&fo=0";
+        $startUrl = "https://appimeri.um.krakow.pl/app-pub-dzl/pages/DzlViewAll.jsf?a=1&lay=normal&fo=0";
         $startHtml = $this->htmlFetcher->fetchHtml($startUrl);
         foreach ($this->cityParser->extractDistrictUrls($startHtml) as $href) {
             yield Uri::merge($startUrl, $href)->toString();
