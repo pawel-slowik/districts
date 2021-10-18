@@ -35,6 +35,31 @@ SQL;
         $this->importer = new Importer(new DoctrineCityRepository($this->entityManager));
     }
 
+    public function testUpdateExistingDistrict(): void
+    {
+        $this->importer->import(new CityDTO("Bar", [new DistrictDTO("Plugh", 1, 2)]));
+
+        $this->assertDbTableContents(
+            "cities",
+            [
+                [
+                    "name" => "Bar",
+                ],
+            ]
+        );
+        $this->assertDbTableContents(
+            "districts",
+            [
+                [
+                    "name" => "Plugh",
+                    "area" => "1.0",
+                    "population" => "2",
+                    "city_id" => "1",
+                ],
+            ]
+        );
+    }
+
     public function testSetDistrictsForCityName(): void
     {
         $this->importer->import(new CityDTO("Bar", [new DistrictDTO("Hola", 1, 2)]));
