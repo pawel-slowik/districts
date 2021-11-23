@@ -10,9 +10,9 @@
         "guzzlehttp/guzzle": "^6.3",
         "laminas/laminas-uri": "^2.7",
         "doctrine/orm": "^2.6",
-        "ext-xml": "^7.3",
+        "ext-xml": "^7.4",
         "symfony/console": "^4.3",
-        "ext-pdo_mysql": "^7.3",
+        "ext-pdo_mysql": "^7.4",
         "ext-dom": "20031129",
         "slim/slim": "^4.3",
         "slim/twig-view": "^3.0",
@@ -32,7 +32,7 @@
         "phpunit/phpunit": "^9",
         "phpstan/phpstan": "^0.12.8",
         "phpstan/phpstan-doctrine": "^0.12.9",
-        "ext-pdo_sqlite": "^7.3"
+        "ext-pdo_sqlite": "^7.4"
     },
     "autoload-dev": {
         "psr-4": {"Districts\\Test\\": "./tests/"}

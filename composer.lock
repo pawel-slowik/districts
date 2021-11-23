@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fee3f38ed02fea66475d7be7dce4718b",
+    "content-hash": "47c17694a3d0079fab20b7ee97bdb499",
     "packages": [
         {
             "name": "bryanjhv/slim-session",
@@ -7025,12 +7025,12 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "ext-xml": "^7.3",
-        "ext-pdo_mysql": "^7.3",
+        "ext-xml": "^7.4",
+        "ext-pdo_mysql": "^7.4",
         "ext-dom": "20031129"
     },
     "platform-dev": {
-        "ext-pdo_sqlite": "^7.3"
+        "ext-pdo_sqlite": "^7.4"
     },
     "plugin-api-version": "2.1.0"
 }
