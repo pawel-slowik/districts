@@ -30,7 +30,7 @@ class CityParserTest extends TestCase
     {
         $this->htmlFinder = $this->createStub(HtmlFinder::class);
 
-        $this->parser = new CityParser($this->htmlFinder);
+        $this->cityParser = new CityParser($this->htmlFinder);
     }
 
     public function testReturnsCorrectNumberOfUrls(): void
@@ -45,7 +45,7 @@ class CityParserTest extends TestCase
             ->method("findNodes")
             ->willReturn(array_fill(0, 5, $node));
 
-        $urls = $this->parser->extractDistrictUrls("");
+        $urls = $this->cityParser->extractDistrictUrls("");
 
         $this->assertCount(5, $urls);
     }
@@ -62,7 +62,7 @@ class CityParserTest extends TestCase
             ->method("findNodes")
             ->willReturn(array_fill(0, 5, $node));
 
-        $urls = $this->parser->extractDistrictUrls("");
+        $urls = $this->cityParser->extractDistrictUrls("");
 
         $this->assertContainsOnly("string", $urls, true);
     }
@@ -75,7 +75,7 @@ class CityParserTest extends TestCase
 
         $this->expectException(ParsingException::class);
 
-        $urls = $this->parser->extractDistrictUrls("");
+        $urls = $this->cityParser->extractDistrictUrls("");
         // start the generator
         iterator_to_array($urls);
     }
@@ -93,7 +93,7 @@ class CityParserTest extends TestCase
 
         $this->expectException(ParsingException::class);
 
-        $urls = $this->parser->extractDistrictUrls("");
+        $urls = $this->cityParser->extractDistrictUrls("");
         // start the generator
         iterator_to_array($urls);
     }
