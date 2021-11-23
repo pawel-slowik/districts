@@ -6,7 +6,7 @@ namespace Districts\Application;
 
 class ValidationResult
 {
-    private $errors;
+    private array $errors;
 
     public function __construct()
     {

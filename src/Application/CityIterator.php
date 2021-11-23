@@ -15,7 +15,7 @@ use Traversable;
  */
 class CityIterator implements IteratorAggregate
 {
-    private $cityRepository;
+    private CityRepository $cityRepository;
 
     public function __construct(
         CityRepository $cityRepository

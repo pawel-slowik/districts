@@ -11,11 +11,11 @@ use Laminas\Uri\Uri;
 
 final class CityScraper implements CityScraperInterface
 {
-    private $htmlFetcher;
+    private HtmlFetcher $htmlFetcher;
 
-    private $cityParser;
+    private CityParser $cityParser;
 
-    private $districtParser;
+    private DistrictParser $districtParser;
 
     public function __construct(
         HtmlFetcher $htmlFetcher,

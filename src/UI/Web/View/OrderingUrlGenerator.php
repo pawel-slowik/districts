@@ -8,7 +8,7 @@ use Slim\Interfaces\RouteParserInterface;
 
 class OrderingUrlGenerator
 {
-    private $routeParser;
+    private RouteParserInterface $routeParser;
 
     public function __construct(RouteParserInterface $routeParser)
     {

@@ -10,7 +10,7 @@ use Psr\SimpleCache\InvalidArgumentException;
 
 final class DoctrinePsrCache implements Cache
 {
-    private $psrCache;
+    private CacheInterface $psrCache;
 
     public function __construct(CacheInterface $psrCache)
     {

@@ -6,7 +6,7 @@ namespace Districts\Application\Command;
 
 class RemoveDistrictCommand
 {
-    private $id;
+    private int $id;
 
     public function __construct(int $id)
     {

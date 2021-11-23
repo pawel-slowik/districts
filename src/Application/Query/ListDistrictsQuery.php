@@ -10,11 +10,11 @@ use Districts\DomainModel\Pagination;
 
 class ListDistrictsQuery
 {
-    private $ordering;
+    private DistrictOrdering $ordering;
 
-    private $filter;
+    private ?DistrictFilter $filter;
 
-    private $pagination;
+    private ?Pagination $pagination;
 
     public function __construct(DistrictOrdering $ordering, ?DistrictFilter $filter, ?Pagination $pagination)
     {

@@ -10,7 +10,7 @@ use Doctrine\ORM\EntityManager;
 
 final class DoctrineCityRepository implements CityRepository
 {
-    private $entityManager;
+    private EntityManager $entityManager;
 
     public function __construct(EntityManager $entityManager)
     {

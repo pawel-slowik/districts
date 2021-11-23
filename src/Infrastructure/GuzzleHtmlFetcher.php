@@ -11,7 +11,7 @@ use GuzzleHttp\ClientInterface;
 
 class GuzzleHtmlFetcher implements HtmlFetcher
 {
-    private $httpClient;
+    private ClientInterface $httpClient;
 
     public function __construct(ClientInterface $httpClient)
     {

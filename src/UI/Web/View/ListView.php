@@ -10,46 +10,34 @@ use Slim\Views\Twig as View;
 
 class ListView
 {
-    private $view;
+    private View $view;
 
-    private $pageReferenceFactory;
+    private RoutedPageReferenceFactory $pageReferenceFactory;
 
-    private $orderingUrlGenerator;
+    private OrderingUrlGenerator $orderingUrlGenerator;
 
-    /**
-     * @var int
-     */
-    private $paginationPageCount;
+    private int $paginationPageCount;
 
-    /**
-     * @var int
-     */
-    private $paginationCurrentPageNumber;
+    private int $paginationCurrentPageNumber;
 
-    /**
-     * @var ServerRequestInterface
-     */
-    private $paginationRequest;
+    private ServerRequestInterface $paginationRequest;
 
-    /**
-     * @var string
-     */
-    private $orderingRouteName;
+    private string $orderingRouteName;
 
     /**
      * @var string[]
      */
-    private $orderingColumns;
+    private array $orderingColumns;
 
     /**
      * @var string[]
      */
-    private $orderingRouteArgs;
+    private array $orderingRouteArgs;
 
     /**
      * @var string[]
      */
-    private $orderingQueryParams;
+    private array $orderingQueryParams;
 
     public function __construct(
         View $view,

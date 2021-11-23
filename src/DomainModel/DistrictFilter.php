@@ -16,7 +16,7 @@ class DistrictFilter
 
     public const TYPE_POPULATION = 4;
 
-    private $type;
+    private int $type;
 
     /**
      * @var mixed

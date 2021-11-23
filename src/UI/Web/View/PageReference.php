@@ -10,15 +10,15 @@ use Laminas\Uri\Uri;
 
 class PageReference
 {
-    private $url;
+    private ?string $url;
 
-    private $text;
+    private string $text;
 
-    private $isCurrent;
+    private bool $isCurrent;
 
-    private $isPrevious;
+    private bool $isPrevious;
 
-    private $isNext;
+    private bool $isNext;
 
     public function __construct(?string $url, string $text, bool $isCurrent, bool $isPrevious, bool $isNext)
     {

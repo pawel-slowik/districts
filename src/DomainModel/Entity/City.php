@@ -9,6 +9,7 @@ use Districts\DomainModel\VO\Area;
 use Districts\DomainModel\VO\Name;
 use Districts\DomainModel\VO\Population;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,17 +27,17 @@ class City
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\OneToMany(targetEntity="District", mappedBy="city", cascade={"persist"}, orphanRemoval=true)
      */
-    private $districts;
+    private Collection $districts;
 
     public function __construct(string $name)
     {

@@ -10,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 final class HomeController
 {
-    private $redirector;
+    private Redirector $redirector;
 
     public function __construct(Redirector $redirector)
     {

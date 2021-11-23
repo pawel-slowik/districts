@@ -16,13 +16,13 @@ use SlimSession\Helper as Session;
 
 final class RemoveActionController
 {
-    private $districtService;
+    private DistrictService $districtService;
 
-    private $commandFactory;
+    private RemoveDistrictCommandFactory $commandFactory;
 
-    private $session;
+    private Session $session;
 
-    private $redirector;
+    private Redirector $redirector;
 
     public function __construct(
         DistrictService $districtService,

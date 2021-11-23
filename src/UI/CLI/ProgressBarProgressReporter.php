@@ -9,7 +9,7 @@ use Symfony\Component\Console\Helper\ProgressBar;
 
 class ProgressBarProgressReporter implements ProgressReporter
 {
-    private $progressBar;
+    private ProgressBar $progressBar;
 
     public function __construct(ProgressBar $progressBar)
     {

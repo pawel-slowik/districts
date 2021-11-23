@@ -6,7 +6,7 @@ namespace Districts\Application\Query;
 
 class GetDistrictQuery
 {
-    private $id;
+    private int $id;
 
     public function __construct(int $id)
     {

@@ -16,13 +16,13 @@ use SlimSession\Helper as Session;
 
 final class EditFormController
 {
-    private $districtService;
+    private DistrictService $districtService;
 
-    private $queryFactory;
+    private GetDistrictQueryFactory $queryFactory;
 
-    private $session;
+    private Session $session;
 
-    private $view;
+    private View $view;
 
     public function __construct(
         DistrictService $districtService,

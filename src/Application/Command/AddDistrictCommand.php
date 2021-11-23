@@ -6,13 +6,13 @@ namespace Districts\Application\Command;
 
 class AddDistrictCommand
 {
-    private $cityId;
+    private int $cityId;
 
-    private $name;
+    private string $name;
 
-    private $area;
+    private float $area;
 
-    private $population;
+    private int $population;
 
     public function __construct(int $cityId, string $name, float $area, int $population)
     {

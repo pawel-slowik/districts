@@ -12,9 +12,9 @@ use Traversable;
 
 class RoutedPageReferenceFactory
 {
-    private $pageReferenceFactory;
+    private PageReferenceFactory $pageReferenceFactory;
 
-    private $routeParser;
+    private RouteParserInterface $routeParser;
 
     public function __construct(
         PageReferenceFactory $pageReferenceFactory,

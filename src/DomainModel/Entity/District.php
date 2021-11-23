@@ -24,27 +24,27 @@ class District
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Embedded(class="\Districts\DomainModel\VO\Name", columnPrefix=false)
      */
-    private $name;
+    private Name $name;
 
     /**
      * @ORM\Embedded(class="\Districts\DomainModel\VO\Area", columnPrefix=false)
      */
-    private $area;
+    private Area $area;
 
     /**
      * @ORM\Embedded(class="\Districts\DomainModel\VO\Population", columnPrefix=false)
      */
-    private $population;
+    private Population $population;
 
     /**
      * @ORM\ManyToOne(targetEntity="City", inversedBy="districts")
      */
-    private $city;
+    private City $city;
 
     public function __construct(City $city, Name $name, Area $area, Population $population)
     {

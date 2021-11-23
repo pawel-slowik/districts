@@ -13,7 +13,7 @@ use Districts\DomainModel\VO\Population;
 
 class Importer
 {
-    private $cityRepository;
+    private CityRepository $cityRepository;
 
     public function __construct(
         CityRepository $cityRepository

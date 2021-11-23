@@ -16,7 +16,7 @@ use InvalidArgumentException;
 
 final class DoctrineDistrictRepository implements DistrictRepository
 {
-    private $entityManager;
+    private EntityManager $entityManager;
 
     public function __construct(EntityManager $entityManager)
     {

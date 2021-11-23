@@ -17,9 +17,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class ImportCommand extends Command
 {
-    private $importer;
+    private Importer $importer;
 
-    private $scrapers;
+    private array $scrapers;
 
     /**
      * @param Importer      $importer

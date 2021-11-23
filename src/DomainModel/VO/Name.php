@@ -15,7 +15,7 @@ class Name
     /**
      * @ORM\Column(type="string")
      */
-    private $name;
+    private string $name;
 
     public function __construct(string $name)
     {

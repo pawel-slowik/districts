@@ -9,11 +9,11 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class ListDistrictsQueryFactory
 {
-    private $orderingFactory;
+    private DistrictOrderingFactory $orderingFactory;
 
-    private $filterFactory;
+    private DistrictFilterFactory $filterFactory;
 
-    private $paginationFactory;
+    private PaginationFactory $paginationFactory;
 
     public function __construct(
         DistrictOrderingFactory $orderingFactory,

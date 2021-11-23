@@ -35,9 +35,9 @@ class DistrictOrdering
         self::DESC,
     ];
 
-    private $field;
+    private int $field;
 
-    private $direction;
+    private int $direction;
 
     public function __construct(int $field, int $direction)
     {

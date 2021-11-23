@@ -8,7 +8,7 @@ use InvalidArgumentException;
 
 class ScraperCityFilter
 {
-    private $names;
+    private array $names;
 
     public function __construct(array $scrapers, array $names)
     {

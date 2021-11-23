@@ -8,9 +8,9 @@ use InvalidArgumentException;
 
 class Pagination
 {
-    private $pageNumber;
+    private int $pageNumber;
 
-    private $pageSize;
+    private int $pageSize;
 
     public function __construct(int $pageNumber, int $pageSize)
     {

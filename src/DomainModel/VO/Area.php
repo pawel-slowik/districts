@@ -15,7 +15,7 @@ class Area
     /**
      * @ORM\Column(type="float")
      */
-    private $area;
+    private float $area;
 
     public function __construct(float $area)
     {

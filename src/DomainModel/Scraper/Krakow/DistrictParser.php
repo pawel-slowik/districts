@@ -11,7 +11,7 @@ use Districts\DomainModel\Scraper\HtmlFinder;
 
 class DistrictParser
 {
-    private $htmlFinder;
+    private HtmlFinder $htmlFinder;
 
     public function __construct(HtmlFinder $htmlFinder)
     {

@@ -15,7 +15,7 @@ class Population
     /**
      * @ORM\Column(type="integer")
      */
-    private $population;
+    private int $population;
 
     public function __construct(int $population)
     {

@@ -17,13 +17,13 @@ use SlimSession\Helper as Session;
 
 final class EditActionController
 {
-    private $districtService;
+    private DistrictService $districtService;
 
-    private $commandFactory;
+    private UpdateDistrictCommandFactory $commandFactory;
 
-    private $session;
+    private Session $session;
 
-    private $redirector;
+    private Redirector $redirector;
 
     public function __construct(
         DistrictService $districtService,

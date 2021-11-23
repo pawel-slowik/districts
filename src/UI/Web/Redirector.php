@@ -12,7 +12,7 @@ use Slim\Interfaces\RouteParserInterface;
 
 class Redirector
 {
-    private $routeParser;
+    private RouteParserInterface $routeParser;
 
     public function __construct(RouteParserInterface $routeParser)
     {

@@ -8,11 +8,11 @@ use InvalidArgumentException;
 
 class PagedResult
 {
-    private $pageSize;
+    private int $pageSize;
 
-    private $totalEntryCount;
+    private int $totalEntryCount;
 
-    private $currentPageEntries;
+    private array $currentPageEntries;
 
     public function __construct(int $pageSize, int $totalEntryCount, array $currentPageEntries)
     {

@@ -12,11 +12,11 @@ use SlimSession\Helper as Session;
 
 final class AddFormController
 {
-    private $cityIterator;
+    private CityIterator $cityIterator;
 
-    private $session;
+    private Session $session;
 
-    private $view;
+    private View $view;
 
     public function __construct(
         CityIterator $cityIterator,

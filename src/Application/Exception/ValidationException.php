@@ -11,7 +11,7 @@ class ValidationException extends RuntimeException
     /**
      * @var string[]
      */
-    private $errors = [];
+    private array $errors = [];
 
     public function withErrors(array $errors): self
     {

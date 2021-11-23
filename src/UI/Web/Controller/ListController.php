@@ -14,13 +14,13 @@ use SlimSession\Helper as Session;
 
 final class ListController
 {
-    private $districtService;
+    private DistrictService $districtService;
 
-    private $queryFactory;
+    private ListDistrictsQueryFactory $queryFactory;
 
-    private $session;
+    private Session $session;
 
-    private $view;
+    private ListView $view;
 
     public function __construct(
         DistrictService $districtService,

@@ -10,7 +10,7 @@ use Districts\DomainModel\Scraper\HtmlFinder;
 
 class CityParser
 {
-    private $htmlFinder;
+    private HtmlFinder $htmlFinder;
 
     public function __construct(HtmlFinder $htmlFinder)
     {
