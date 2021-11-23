@@ -8,7 +8,6 @@ use Districts\Application\Query\ListDistrictsQuery;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\Pagination;
-use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,20 +15,11 @@ use PHPUnit\Framework\TestCase;
  */
 class ListDistrictsQueryTest extends TestCase
 {
-    /**
-     * @var DistrictOrdering|Stub
-     */
-    private $ordering;
+    private DistrictOrdering $ordering;
 
-    /**
-     * @var DistrictFilter|Stub
-     */
-    private $filter;
+    private DistrictFilter $filter;
 
-    /**
-     * @var Pagination|Stub
-     */
-    private $pagination;
+    private Pagination $pagination;
 
     protected function setUp(): void
     {

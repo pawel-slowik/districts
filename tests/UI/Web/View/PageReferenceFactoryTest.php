@@ -13,10 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class PageReferenceFactoryTest extends TestCase
 {
-    /**
-     * @var PageReferenceFactory
-     */
-    private $pageReferenceFactory;
+    private PageReferenceFactory $pageReferenceFactory;
 
     protected function setUp(): void
     {

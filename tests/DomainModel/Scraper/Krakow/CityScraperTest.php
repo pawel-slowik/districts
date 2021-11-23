@@ -17,25 +17,16 @@ use PHPUnit\Framework\TestCase;
  */
 class CityScraperTest extends TestCase
 {
-    /**
-     * @var CityScraper
-     */
-    private $scraper;
+    private CityScraper $scraper;
 
-    /**
-     * @var HtmlFetcher|Stub
-     */
-    private $htmlFetcher;
+    private HtmlFetcher $htmlFetcher;
 
     /**
      * @var CityParser|Stub
      */
     private $cityParser;
 
-    /**
-     * @var DistrictParser|Stub
-     */
-    private $districtParser;
+    private DistrictParser $districtParser;
 
     protected function setUp(): void
     {

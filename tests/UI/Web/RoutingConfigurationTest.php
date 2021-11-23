@@ -16,10 +16,7 @@ use Slim\App;
  */
 class RoutingConfigurationTest extends TestCase
 {
-    /**
-     * @var App
-     */
-    private $app;
+    private App $app;
 
     protected function setUp(): void
     {

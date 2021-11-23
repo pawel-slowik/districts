@@ -9,7 +9,6 @@ use Districts\UI\Web\View\PageReference;
 use Districts\UI\Web\View\PageReferenceFactory;
 use Districts\UI\Web\View\RoutedPageReferenceFactory;
 use InvalidArgumentException;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
@@ -23,25 +22,13 @@ use Slim\Routing\RoutingResults;
  */
 class RoutedPageReferenceFactoryTest extends TestCase
 {
-    /**
-     * @var RoutedPageReferenceFactory
-     */
-    private $routedPageReferenceFactory;
+    private RoutedPageReferenceFactory $routedPageReferenceFactory;
 
-    /**
-     * @var MockObject|ServerRequestInterface
-     */
-    private $validRequest;
+    private ServerRequestInterface $validRequest;
 
-    /**
-     * @var MockObject|ServerRequestInterface
-     */
-    private $unroutedRequest;
+    private ServerRequestInterface $unroutedRequest;
 
-    /**
-     * @var MockObject|ServerRequestInterface
-     */
-    private $unnamedRouteRequest;
+    private ServerRequestInterface $unnamedRouteRequest;
 
     protected function setUp(): void
     {

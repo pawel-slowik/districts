@@ -18,15 +18,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  */
 class ListDistrictsQueryFactoryTest extends TestCase
 {
-    /**
-     * @var ListDistrictsQueryFactory
-     */
-    private $queryFactory;
+    private ListDistrictsQueryFactory $queryFactory;
 
-    /**
-     * @var DistrictOrderingFactory|MockObject
-     */
-    private $districtOrderingFactory;
+    private DistrictOrderingFactory $districtOrderingFactory;
 
     /**
      * @var DistrictFilterFactory|MockObject

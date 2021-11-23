@@ -16,10 +16,7 @@ use Slim\Interfaces\RouteParserInterface;
  */
 class RedirectorTest extends TestCase
 {
-    /**
-     * @var Redirector
-     */
-    private $redirector;
+    private Redirector $redirector;
 
     /**
      * @var MockObject|RouteParserInterface
