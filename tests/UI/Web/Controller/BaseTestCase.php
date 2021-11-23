@@ -11,7 +11,6 @@ use Doctrine\ORM\EntityManager;
 use Nyholm\Psr7\ServerRequest;
 use Nyholm\Psr7\Uri;
 use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -39,7 +38,7 @@ abstract class BaseTestCase extends TestCase
         return $app->handle($request);
     }
 
-    protected function createApp(ContainerInterface $container): App
+    protected function createApp(Container $container): App
     {
         foreach (["common", "web"] as $dependencyPart) {
             $dependencies = require __DIR__ . "/../../../../dependencies/{$dependencyPart}.php";
