@@ -22,10 +22,7 @@ INSERT INTO districts (city_id, name, area, population) VALUES (1, 'Plugh', 10.0
 COMMIT;
 SQL;
 
-    /**
-     * @var DoctrineCityRepository
-     */
-    private $cityRepository;
+    private DoctrineCityRepository $cityRepository;
 
     protected function setUp(): void
     {

@@ -15,15 +15,9 @@ use Districts\Infrastructure\DoctrineDistrictRepository;
  */
 class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 {
-    /**
-     * @var DoctrineDistrictRepository
-     */
-    private $districtRepository;
+    private DoctrineDistrictRepository $districtRepository;
 
-    /**
-     * @var DistrictOrdering
-     */
-    private $defaultOrder;
+    private DistrictOrdering $defaultOrder;
 
     protected function setUp(): void
     {

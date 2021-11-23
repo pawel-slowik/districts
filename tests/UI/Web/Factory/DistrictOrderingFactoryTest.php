@@ -13,10 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class DistrictOrderingFactoryTest extends TestCase
 {
-    /**
-     * @var DistrictOrderingFactory
-     */
-    private $districtOrderingFactory;
+    private DistrictOrderingFactory $districtOrderingFactory;
 
     protected function setUp(): void
     {

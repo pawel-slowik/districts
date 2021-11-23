@@ -30,10 +30,7 @@ class ImportCommandTest extends TestCase
      */
     private $scraper;
 
-    /**
-     * @var ImportCommand
-     */
-    private $command;
+    private ImportCommand $command;
 
     /**
      * @var InputInterface|MockObject

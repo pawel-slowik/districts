@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 abstract class DoctrineDbTestCase extends TestCase
 {
-    /**
-     * @var EntityManager
-     */
-    protected $entityManager;
+    protected EntityManager $entityManager;
 
     protected function setUp(): void
     {

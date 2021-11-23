@@ -15,20 +15,14 @@ use Psr\SimpleCache\InvalidArgumentException;
  */
 class DoctrinePsrCacheTest extends TestCase
 {
-    /**
-     * @var DoctrinePsrCache
-     */
-    private $doctrinePsrCache;
+    private DoctrinePsrCache $doctrinePsrCache;
 
     /**
      * @var CacheInterface
      */
     private $psrCache;
 
-    /**
-     * @var InvalidArgumentException
-     */
-    private $invalidArgumentException;
+    private InvalidArgumentException $invalidArgumentException;
 
     protected function setUp(): void
     {

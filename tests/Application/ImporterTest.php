@@ -23,10 +23,7 @@ INSERT INTO districts (city_id, name, area, population) VALUES (1, 'Plugh', 10.0
 COMMIT;
 SQL;
 
-    /**
-     * @var Importer
-     */
-    private $importer;
+    private Importer $importer;
 
     protected function setUp(): void
     {

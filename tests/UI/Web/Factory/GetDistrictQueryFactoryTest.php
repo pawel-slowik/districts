@@ -15,10 +15,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  */
 class GetDistrictQueryFactoryTest extends TestCase
 {
-    /**
-     * @var GetDistrictQueryFactory
-     */
-    private $queryFactory;
+    private GetDistrictQueryFactory $queryFactory;
 
     protected function setUp(): void
     {

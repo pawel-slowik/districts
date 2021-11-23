@@ -16,10 +16,7 @@ use Psr\Http\Message\ResponseInterface;
  */
 class GuzzleHtmlFetcherTest extends TestCase
 {
-    /**
-     * @var GuzzleHtmlFetcher
-     */
-    private $guzzleHtmlFetcher;
+    private GuzzleHtmlFetcher $guzzleHtmlFetcher;
 
     /**
      * @var ResponseInterface

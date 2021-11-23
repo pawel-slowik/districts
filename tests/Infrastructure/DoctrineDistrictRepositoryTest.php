@@ -16,15 +16,9 @@ use Districts\Infrastructure\NotFoundInRepositoryException;
  */
 class DoctrineDistrictRepositoryTest extends DoctrineDbTestCase
 {
-    /**
-     * @var DoctrineDistrictRepository
-     */
-    private $districtRepository;
+    private DoctrineDistrictRepository $districtRepository;
 
-    /**
-     * @var DistrictOrdering
-     */
-    private $defaultOrder;
+    private DistrictOrdering $defaultOrder;
 
     protected function setUp(): void
     {

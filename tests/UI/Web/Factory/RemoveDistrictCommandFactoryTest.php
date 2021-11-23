@@ -14,10 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 class RemoveDistrictCommandFactoryTest extends TestCase
 {
-    /**
-     * @var RemoveDistrictCommandFactory
-     */
-    private $commandFactory;
+    private RemoveDistrictCommandFactory $commandFactory;
 
     protected function setUp(): void
     {

@@ -14,10 +14,7 @@ use Slim\Interfaces\RouteParserInterface;
  */
 class OrderingUrlGeneratorTest extends TestCase
 {
-    /**
-     * @var OrderingUrlGenerator
-     */
-    private $orderingUrlGenerator;
+    private OrderingUrlGenerator $orderingUrlGenerator;
 
     /**
      * @var RouteParserInterface|Stub

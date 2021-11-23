@@ -22,10 +22,7 @@ class AddDistrictCommandFactoryTest extends TestCase
      */
     private $request;
 
-    /**
-     * @var AddDistrictCommandFactory
-     */
-    private $commandFactory;
+    private AddDistrictCommandFactory $commandFactory;
 
     protected function setUp(): void
     {

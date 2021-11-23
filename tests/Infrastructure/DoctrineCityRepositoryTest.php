@@ -13,10 +13,7 @@ use Districts\Infrastructure\NotFoundInRepositoryException;
  */
 class DoctrineCityRepositoryTest extends DoctrineDbTestCase
 {
-    /**
-     * @var DoctrineCityRepository
-     */
-    private $cityRepository;
+    private DoctrineCityRepository $cityRepository;
 
     protected function setUp(): void
     {

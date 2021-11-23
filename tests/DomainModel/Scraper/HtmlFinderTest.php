@@ -27,10 +27,7 @@ class HtmlFinderTest extends TestCase
 </html>
 HTML;
 
-    /**
-     * @var HtmlFinder
-     */
-    private $finder;
+    private HtmlFinder $finder;
 
     protected function setUp(): void
     {

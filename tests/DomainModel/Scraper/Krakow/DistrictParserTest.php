@@ -15,15 +15,9 @@ use PHPUnit\Framework\TestCase;
  */
 class DistrictParserTest extends TestCase
 {
-    /**
-     * @var DistrictParser
-     */
-    private $districtParser;
+    private DistrictParser $districtParser;
 
-    /**
-     * @var string
-     */
-    private $validHtml;
+    private string $validHtml;
 
     protected function setUp(): void
     {

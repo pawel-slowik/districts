@@ -16,10 +16,7 @@ use PHPUnit\Framework\TestCase;
  */
 class CityParserTest extends TestCase
 {
-    /**
-     * @var CityParser
-     */
-    private $cityParser;
+    private CityParser $cityParser;
 
     /**
      * @var HtmlFinder|Stub

@@ -13,10 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class DistrictFilterFactoryTest extends TestCase
 {
-    /**
-     * @var DistrictFilterFactory
-     */
-    private $districtFilterFactory;
+    private DistrictFilterFactory $districtFilterFactory;
 
     protected function setUp(): void
     {

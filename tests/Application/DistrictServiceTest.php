@@ -32,10 +32,7 @@ use PHPUnit\Framework\TestCase;
  */
 class DistrictServiceTest extends TestCase
 {
-    /**
-     * @var DistrictService
-     */
-    private $districtService;
+    private DistrictService $districtService;
 
     /**
      * @var DistrictRepository|Stub

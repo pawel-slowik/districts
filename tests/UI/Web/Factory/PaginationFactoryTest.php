@@ -13,10 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class PaginationFactoryTest extends TestCase
 {
-    /**
-     * @var PaginationFactory
-     */
-    private $paginationFactory;
+    private PaginationFactory $paginationFactory;
 
     protected function setUp(): void
     {

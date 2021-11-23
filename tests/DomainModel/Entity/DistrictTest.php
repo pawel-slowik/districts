@@ -22,10 +22,7 @@ class DistrictTest extends TestCase
      */
     private $city;
 
-    /**
-     * @var District
-     */
-    private $district;
+    private District $district;
 
     protected function setUp(): void
     {

@@ -12,10 +12,7 @@ use PHPUnit\Framework\TestCase;
  */
 class DistrictValidatorTest extends TestCase
 {
-    /**
-     * @var DistrictValidator
-     */
-    private $districtValidator;
+    private DistrictValidator $districtValidator;
 
     protected function setUp(): void
     {

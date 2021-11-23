@@ -20,10 +20,7 @@ class CityIteratorTest extends TestCase
      */
     private $cityRepository;
 
-    /**
-     * @var CityIterator
-     */
-    private $cityIterator;
+    private CityIterator $cityIterator;
 
     protected function setUp(): void
     {
