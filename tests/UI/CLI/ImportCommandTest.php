@@ -26,7 +26,7 @@ class ImportCommandTest extends TestCase
     private $importer;
 
     /**
-     * @var MockObject|Scraper
+     * @var CityScraper|MockObject
      */
     private $scraper;
 
