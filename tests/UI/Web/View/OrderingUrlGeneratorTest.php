@@ -44,9 +44,9 @@ class OrderingUrlGeneratorTest extends TestCase
     /**
      * @dataProvider simpleDataProvider
      */
-    public function testSimple(...$args): void
+    public function testSimple(string $routeName, string $column, array $routeArgs, array $queryParams): void
     {
-        $url = $this->orderingUrlGenerator->createOrderingUrl(...$args);
+        $url = $this->orderingUrlGenerator->createOrderingUrl($routeName, $column, $routeArgs, $queryParams);
 
         $this->assertSame("/list/column1/asc", $url);
     }

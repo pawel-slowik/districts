@@ -23,7 +23,7 @@ class FixtureTool
         }
     }
 
-    public static function loadSql(EntityManager $entityManager, $sqlStatement): void
+    public static function loadSql(EntityManager $entityManager, string $sqlStatement): void
     {
         $entityManager->getConnection()->exec($sqlStatement);
     }
