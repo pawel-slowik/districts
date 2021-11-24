@@ -53,6 +53,8 @@ class DistrictFilterFactoryTest extends TestCase
 
     /**
      * @dataProvider createDataProvider
+     *
+     * @phpstan-param mixed $expectedValue
      */
     public function testCreate(
         ?string $inputColumn,

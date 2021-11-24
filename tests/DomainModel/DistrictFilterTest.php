@@ -22,6 +22,8 @@ class DistrictFilterTest extends TestCase
 
     /**
      * @dataProvider validDataProvider
+     *
+     * @phpstan-param mixed $value
      */
     public function testValid(int $type, $value): void
     {
@@ -47,6 +49,8 @@ class DistrictFilterTest extends TestCase
 
     /**
      * @dataProvider invalidDataProvider
+     *
+     * @phpstan-param mixed $value
      */
     public function testInvalid(int $type, $value): void
     {
