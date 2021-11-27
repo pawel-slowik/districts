@@ -31,6 +31,7 @@ final class DoctrineCityRepository implements CityRepository
         $dql = "SELECT c FROM " . City::class . " c JOIN c.districts d WHERE d.id = :id";
         $query = $this->entityManager->createQuery($dql);
         $query->setParameter("id", $districtId);
+        /** @var City[] $cities */
         $cities = $query->getResult();
         if (!$cities) {
             throw new NotFoundInRepositoryException();
