@@ -66,7 +66,7 @@ class ListControllerTest extends BaseTestCase
     protected function runAppWithPagedDataset(
         string $requestMethod,
         string $requestUri,
-        ?array $requestData = []
+        array $requestData = []
     ): ResponseInterface {
         $container = new Container();
         $app = $this->createApp($container);

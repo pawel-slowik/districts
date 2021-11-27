@@ -20,7 +20,7 @@ use Slim\Interfaces\RouteCollectorInterface;
 
 abstract class BaseTestCase extends TestCase
 {
-    protected function runApp(string $requestMethod, string $requestUri, ?array $requestData = []): ResponseInterface
+    protected function runApp(string $requestMethod, string $requestUri, array $requestData = []): ResponseInterface
     {
         $container = new Container();
         $app = $this->createApp($container);
