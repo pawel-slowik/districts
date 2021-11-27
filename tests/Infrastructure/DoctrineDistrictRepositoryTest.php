@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Districts\Test\Infrastructure;
 
-use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\VO\Area;
 use Districts\DomainModel\VO\Name;
 use Districts\DomainModel\VO\Population;
@@ -18,14 +17,11 @@ class DoctrineDistrictRepositoryTest extends DoctrineDbTestCase
 {
     private DoctrineDistrictRepository $districtRepository;
 
-    private DistrictOrdering $defaultOrder;
-
     protected function setUp(): void
     {
         parent::setUp();
         parent::loadDefaultDbContents();
         $this->districtRepository = new DoctrineDistrictRepository($this->entityManager);
-        $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
     }
 
     public function testGet(): void
