@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace Districts\Test\Infrastructure;
 
 use Districts\DomainModel\District;
-use Districts\DomainModel\DistrictFilter;
+use Districts\DomainModel\DistrictFilter\AreaFilter;
+use Districts\DomainModel\DistrictFilter\CityNameFilter;
+use Districts\DomainModel\DistrictFilter\Filter;
+use Districts\DomainModel\DistrictFilter\NameFilter;
+use Districts\DomainModel\DistrictFilter\PopulationFilter;
 use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\Pagination;
 use Districts\Infrastructure\DoctrineDistrictRepository;
@@ -121,7 +125,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     /**
      * @dataProvider listFilterDataProvider
      */
-    public function testListFilter(?DistrictFilter $filter, array $expectedIds): void
+    public function testListFilter(?Filter $filter, array $expectedIds): void
     {
         sort($expectedIds);
         $actualIds = array_map(
@@ -142,27 +146,27 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             ],
             [
-                new DistrictFilter(DistrictFilter::TYPE_CITY, "Bar"),
+                new CityNameFilter("Bar"),
                 [12, 13, 14, 15],
             ],
             [
-                new DistrictFilter(DistrictFilter::TYPE_CITY, "o"),
+                new CityNameFilter("o"),
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
             ],
             [
-                new DistrictFilter(DistrictFilter::TYPE_NAME, "Xyzzy"),
+                new NameFilter("Xyzzy"),
                 [11],
             ],
             [
-                new DistrictFilter(DistrictFilter::TYPE_NAME, "bb"),
+                new NameFilter("bb"),
                 [12, 13, 15],
             ],
             [
-                new DistrictFilter(DistrictFilter::TYPE_AREA, [100, 101]),
+                new AreaFilter(100, 101),
                 [5, 10],
             ],
             [
-                new DistrictFilter(DistrictFilter::TYPE_POPULATION, [900, 1300]),
+                new PopulationFilter(900, 1300),
                 [2, 3, 5, 6, 10],
             ],
         ];

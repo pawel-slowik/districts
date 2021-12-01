@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace Districts\Infrastructure;
 
 use Districts\DomainModel\District;
-use Districts\DomainModel\DistrictFilter;
+use Districts\DomainModel\DistrictFilter\AreaFilter;
+use Districts\DomainModel\DistrictFilter\CityNameFilter;
+use Districts\DomainModel\DistrictFilter\Filter;
+use Districts\DomainModel\DistrictFilter\NameFilter;
+use Districts\DomainModel\DistrictFilter\PopulationFilter;
 use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\DistrictRepository;
 use Districts\DomainModel\PaginatedResult;
@@ -35,7 +39,7 @@ final class DoctrineDistrictRepository implements DistrictRepository
 
     public function list(
         DistrictOrdering $order,
-        ?DistrictFilter $filter = null,
+        ?Filter $filter = null,
         ?Pagination $pagination = null
     ): PaginatedResult {
         $dqlOrderBy = $this->dqlOrderBy($order);
@@ -95,43 +99,48 @@ final class DoctrineDistrictRepository implements DistrictRepository
         return $orderDqlMap[$order->getField()][$order->getDirection()];
     }
 
-    private function dqlFilter(?DistrictFilter $filter): array
+    private function dqlFilter(?Filter $filter): array
     {
         if (!$filter) {
             return ["", []];
         }
-        $filterValue = $filter->getValue();
-        switch ($filter->getType()) {
-            case DistrictFilter::TYPE_CITY:
-                return [
-                    " c.name LIKE :search",
-                    [
-                        "search" => $this->dqlLike($filterValue),
-                    ],
-                ];
-            case DistrictFilter::TYPE_NAME:
-                return [
-                    " d.name.name LIKE :search",
-                    [
-                        "search" => $this->dqlLike($filterValue),
-                    ],
-                ];
-            case DistrictFilter::TYPE_AREA:
-                return [
-                    " d.area.area >= :low AND d.area.area <= :high",
-                    [
-                        "low" => $filterValue[0],
-                        "high" => $filterValue[1],
-                    ],
-                ];
-            case DistrictFilter::TYPE_POPULATION:
-                return [
-                    " d.population.population >= :low AND d.population.population <= :high",
-                    [
-                        "low" => $filterValue[0],
-                        "high" => $filterValue[1],
-                    ],
-                ];
+
+        if ($filter instanceof CityNameFilter) {
+            return [
+                " c.name LIKE :search",
+                [
+                    "search" => $this->dqlLike($filter->getCityName()),
+                ],
+            ];
+        }
+
+        if ($filter instanceof NameFilter) {
+            return [
+                " d.name.name LIKE :search",
+                [
+                    "search" => $this->dqlLike($filter->getName()),
+                ],
+            ];
+        }
+
+        if ($filter instanceof AreaFilter) {
+            return [
+                " d.area.area >= :low AND d.area.area <= :high",
+                [
+                    "low" => $filter->getBegin(),
+                    "high" => $filter->getEnd(),
+                ],
+            ];
+        }
+
+        if ($filter instanceof PopulationFilter) {
+            return [
+                " d.population.population >= :low AND d.population.population <= :high",
+                [
+                    "low" => $filter->getBegin(),
+                    "high" => $filter->getEnd(),
+                ],
+            ];
         }
 
         throw new InvalidArgumentException();

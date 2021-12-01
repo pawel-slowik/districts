@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\Factory;
 
-use Districts\DomainModel\DistrictFilter;
+use Districts\DomainModel\DistrictFilter\AreaFilter;
+use Districts\DomainModel\DistrictFilter\CityNameFilter;
+use Districts\DomainModel\DistrictFilter\NameFilter;
+use Districts\DomainModel\DistrictFilter\PopulationFilter;
 use Districts\UI\Web\Factory\DistrictFilterFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -53,40 +56,22 @@ class DistrictFilterFactoryTest extends TestCase
 
     /**
      * @dataProvider createDataProvider
-     *
-     * @phpstan-param mixed $expectedValue
      */
-    public function testCreate(
-        ?string $inputColumn,
-        ?string $inputValue,
-        int $expectedType,
-        $expectedValue
-    ): void {
+    public function testCreate(?string $inputColumn, ?string $inputValue, string $expectedClass): void
+    {
         $filter = $this->districtFilterFactory->createFromRequestInput($inputColumn, $inputValue);
-        $this->assertInstanceOf(DistrictFilter::class, $filter);
-        $this->assertSame($expectedType, $filter->getType());
-        $this->assertSame($expectedValue, $filter->getValue());
+        $this->assertInstanceOf($expectedClass, $filter);
     }
 
     public function createDataProvider(): array
     {
         return [
-            [
-                "city", "foo",
-                DistrictFilter::TYPE_CITY, "foo",
-            ],
-            [
-                "name", "bar",
-                DistrictFilter::TYPE_NAME, "bar",
-            ],
-            [
-                "area", "1-2",
-                DistrictFilter::TYPE_AREA, [1.0, 2.0],
-            ],
-            [
-                "population", "3-4",
-                DistrictFilter::TYPE_POPULATION, [3.0, 4.0],
-            ],
+            ["city", "foo", CityNameFilter::class],
+            ["name", "bar", NameFilter::class],
+            ["area", "1", AreaFilter::class],
+            ["area", "1-2", AreaFilter::class],
+            ["population", "3", PopulationFilter::class],
+            ["population", "3-4", PopulationFilter::class],
         ];
     }
 }
