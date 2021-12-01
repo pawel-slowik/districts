@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Test\DomainModel\Scraper\Gdansk;
 
-use Districts\DomainModel\Exception\ParsingException;
 use Districts\DomainModel\Scraper\DistrictDTO;
+use Districts\DomainModel\Scraper\Exception\ParsingException;
 use Districts\DomainModel\Scraper\Gdansk\DistrictParser;
 use Districts\DomainModel\Scraper\HtmlFinder;
 use PHPUnit\Framework\TestCase;

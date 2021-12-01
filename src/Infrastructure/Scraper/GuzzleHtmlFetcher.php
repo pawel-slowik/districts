@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Districts\Infrastructure;
+namespace Districts\Infrastructure\Scraper;
 
-use Districts\DomainModel\Exception\FetchingException;
+use Districts\DomainModel\Scraper\Exception\FetchingException;
 use Districts\DomainModel\Scraper\HtmlFetcher;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use GuzzleHttp\ClientInterface;

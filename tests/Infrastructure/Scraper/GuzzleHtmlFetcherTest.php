@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Infrastructure;
+namespace Districts\Test\Infrastructure\Scraper;
 
-use Districts\DomainModel\Exception\FetchingException;
-use Districts\Infrastructure\GuzzleHtmlFetcher;
+use Districts\DomainModel\Scraper\Exception\FetchingException;
+use Districts\Infrastructure\Scraper\GuzzleHtmlFetcher;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use GuzzleHttp\ClientInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * @covers \Districts\Infrastructure\GuzzleHtmlFetcher
+ * @covers \Districts\Infrastructure\Scraper\GuzzleHtmlFetcher
  */
 class GuzzleHtmlFetcherTest extends TestCase
 {

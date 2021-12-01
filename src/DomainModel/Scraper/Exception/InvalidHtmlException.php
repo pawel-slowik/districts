@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\DomainModel\Exception;
+namespace Districts\DomainModel\Scraper\Exception;
 
 use UnexpectedValueException;
 

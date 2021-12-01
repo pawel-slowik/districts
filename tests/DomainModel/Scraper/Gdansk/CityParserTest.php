@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\DomainModel\Scraper\Gdansk;
 
-use Districts\DomainModel\Exception\ParsingException;
+use Districts\DomainModel\Scraper\Exception\ParsingException;
 use Districts\DomainModel\Scraper\Gdansk\CityParser;
 use Districts\DomainModel\Scraper\HtmlFinder;
 use DOMElement;

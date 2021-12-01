@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Scraper;
 
-use Districts\DomainModel\Exception\InvalidHtmlException;
-use Districts\DomainModel\Exception\InvalidQueryException;
+use Districts\DomainModel\Scraper\Exception\InvalidHtmlException;
+use Districts\DomainModel\Scraper\Exception\InvalidQueryException;
 use DOMDocument;
 use DOMXpath;
 
