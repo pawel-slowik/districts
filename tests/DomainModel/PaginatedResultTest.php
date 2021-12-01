@@ -4,36 +4,36 @@ declare(strict_types=1);
 
 namespace Districts\Test\DomainModel;
 
-use Districts\DomainModel\PagedResult;
+use Districts\DomainModel\PaginatedResult;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\DomainModel\PagedResult
+ * @covers \Districts\DomainModel\PaginatedResult
  */
-class PagedResultTest extends TestCase
+class PaginatedResultTest extends TestCase
 {
     public function testGetters(): void
     {
-        $result = new PagedResult(100, 202, ["foo", "bar"]);
+        $result = new PaginatedResult(100, 202, ["foo", "bar"]);
         $this->assertSame(["foo", "bar"], $result->getCurrentPageEntries());
     }
 
     public function testPageCount(): void
     {
-        $result = new PagedResult(100, 202, ["foo", "bar"]);
+        $result = new PaginatedResult(100, 202, ["foo", "bar"]);
         $this->assertSame(3, $result->getPageCount());
     }
 
     public function testExceptionOnInvalidPageSize(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        new PagedResult(-1, 1, []);
+        new PaginatedResult(-1, 1, []);
     }
 
     public function testExceptionOnInvalidTotalCount(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        new PagedResult(1, -1, []);
+        new PaginatedResult(1, -1, []);
     }
 }

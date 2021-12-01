@@ -31,7 +31,7 @@ class ListControllerTest extends BaseTestCase
      */
     public function testListWithPaging(string $url): void
     {
-        $response = $this->runAppWithPagedDataset("GET", $url);
+        $response = $this->runAppWithPaginatedDataset("GET", $url);
         $this->assertSame(StatusCode::STATUS_OK, $response->getStatusCode());
         $this->assertNotEmpty((string) $response->getBody());
     }
@@ -63,7 +63,7 @@ class ListControllerTest extends BaseTestCase
         $this->assertStringContainsStringIgnoringCase("invalid query parameters", (string) $response->getBody());
     }
 
-    protected function runAppWithPagedDataset(
+    protected function runAppWithPaginatedDataset(
         string $requestMethod,
         string $requestUri,
         array $requestData = []

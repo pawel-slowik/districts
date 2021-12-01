@@ -14,5 +14,5 @@ interface DistrictRepository
         DistrictOrdering $order,
         ?DistrictFilter $filter = null,
         ?Pagination $pagination = null
-    ): PagedResult;
+    ): PaginatedResult;
 }

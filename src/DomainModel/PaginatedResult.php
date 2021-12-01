@@ -6,7 +6,7 @@ namespace Districts\DomainModel;
 
 use InvalidArgumentException;
 
-class PagedResult
+class PaginatedResult
 {
     private int $pageSize;
 

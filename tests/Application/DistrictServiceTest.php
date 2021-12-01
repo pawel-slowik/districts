@@ -18,7 +18,7 @@ use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\DistrictRepository;
 use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Entity\District;
-use Districts\DomainModel\PagedResult;
+use Districts\DomainModel\PaginatedResult;
 use Districts\DomainModel\VO\Area;
 use Districts\DomainModel\VO\Name;
 use Districts\DomainModel\VO\Population;
@@ -93,7 +93,7 @@ class DistrictServiceTest extends TestCase
 
     public function testList(): void
     {
-        $result = $this->createStub(PagedResult::class);
+        $result = $this->createStub(PaginatedResult::class);
         $this->districtRepository
             ->method("list")
             ->willReturn($result);

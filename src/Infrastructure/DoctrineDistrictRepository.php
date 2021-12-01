@@ -8,7 +8,7 @@ use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\DistrictRepository;
 use Districts\DomainModel\Entity\District;
-use Districts\DomainModel\PagedResult;
+use Districts\DomainModel\PaginatedResult;
 use Districts\DomainModel\Pagination;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -37,7 +37,7 @@ final class DoctrineDistrictRepository implements DistrictRepository
         DistrictOrdering $order,
         ?DistrictFilter $filter = null,
         ?Pagination $pagination = null
-    ): PagedResult {
+    ): PaginatedResult {
         $dqlOrderBy = $this->dqlOrderBy($order);
         list($dqlWhere, $dqlParameters) = $this->dqlFilter($filter);
         $dql = "SELECT d, c FROM " . District::class . " d JOIN d.city c";
@@ -65,7 +65,7 @@ final class DoctrineDistrictRepository implements DistrictRepository
             $recordsTotal = count($districts);
             $pageSize = ($recordsTotal === 0) ? 1 : $recordsTotal;
         }
-        return new PagedResult($pageSize, $recordsTotal, $districts);
+        return new PaginatedResult($pageSize, $recordsTotal, $districts);
     }
 
     private function dqlOrderBy(DistrictOrdering $order): string
