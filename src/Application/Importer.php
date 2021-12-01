@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Districts\Application;
 
+use Districts\DomainModel\Area;
 use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\Entity\City;
+use Districts\DomainModel\Name;
+use Districts\DomainModel\Population;
 use Districts\DomainModel\Scraper\CityDTO;
-use Districts\DomainModel\VO\Area;
-use Districts\DomainModel\VO\Name;
-use Districts\DomainModel\VO\Population;
 
 class Importer
 {

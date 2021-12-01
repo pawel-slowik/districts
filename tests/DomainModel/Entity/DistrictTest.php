@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Districts\Test\DomainModel\Entity;
 
+use Districts\DomainModel\Area;
 use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Entity\District;
-use Districts\DomainModel\VO\Area;
-use Districts\DomainModel\VO\Name;
-use Districts\DomainModel\VO\Population;
+use Districts\DomainModel\Name;
+use Districts\DomainModel\Population;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 

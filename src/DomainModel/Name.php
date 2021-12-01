@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\DomainModel\VO;
+namespace Districts\DomainModel;
 
 use Districts\DomainModel\Exception\InvalidNameException;
 use Doctrine\ORM\Mapping as ORM;

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Entity;
 
-use Districts\DomainModel\VO\Area;
-use Districts\DomainModel\VO\Name;
-use Districts\DomainModel\VO\Population;
+use Districts\DomainModel\Area;
+use Districts\DomainModel\Name;
+use Districts\DomainModel\Population;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,17 +27,17 @@ class District
     private int $id;
 
     /**
-     * @ORM\Embedded(class="\Districts\DomainModel\VO\Name", columnPrefix=false)
+     * @ORM\Embedded(class="\Districts\DomainModel\Name", columnPrefix=false)
      */
     private Name $name;
 
     /**
-     * @ORM\Embedded(class="\Districts\DomainModel\VO\Area", columnPrefix=false)
+     * @ORM\Embedded(class="\Districts\DomainModel\Area", columnPrefix=false)
      */
     private Area $area;
 
     /**
-     * @ORM\Embedded(class="\Districts\DomainModel\VO\Population", columnPrefix=false)
+     * @ORM\Embedded(class="\Districts\DomainModel\Population", columnPrefix=false)
      */
     private Population $population;
 

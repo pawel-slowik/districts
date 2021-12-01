@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel\Entity;
 
+use Districts\DomainModel\Area;
 use Districts\DomainModel\Exception\DistrictNotFoundException;
-use Districts\DomainModel\VO\Area;
-use Districts\DomainModel\VO\Name;
-use Districts\DomainModel\VO\Population;
+use Districts\DomainModel\Name;
+use Districts\DomainModel\Population;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

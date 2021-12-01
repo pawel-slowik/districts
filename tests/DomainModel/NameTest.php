@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\DomainModel\VO;
+namespace Districts\Test\DomainModel;
 
 use Districts\DomainModel\Exception\InvalidNameException;
-use Districts\DomainModel\VO\Name;
+use Districts\DomainModel\Name;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\DomainModel\VO\Name
+ * @covers \Districts\DomainModel\Name
  */
 class NameTest extends TestCase
 {

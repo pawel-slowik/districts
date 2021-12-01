@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\DomainModel\VO;
+namespace Districts\Test\DomainModel;
 
 use Districts\DomainModel\Exception\InvalidPopulationException;
-use Districts\DomainModel\VO\Population;
+use Districts\DomainModel\Population;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\DomainModel\VO\Population
+ * @covers \Districts\DomainModel\Population
  */
 class PopulationTest extends TestCase
 {

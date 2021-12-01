@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\Test\Infrastructure;
 
-use Districts\DomainModel\VO\Area;
-use Districts\DomainModel\VO\Name;
-use Districts\DomainModel\VO\Population;
+use Districts\DomainModel\Area;
+use Districts\DomainModel\Name;
+use Districts\DomainModel\Population;
 use Districts\Infrastructure\DoctrineDistrictRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\DomainModel\VO;
+namespace Districts\DomainModel;
 
 use Districts\DomainModel\Exception\InvalidPopulationException;
 use Doctrine\ORM\Mapping as ORM;

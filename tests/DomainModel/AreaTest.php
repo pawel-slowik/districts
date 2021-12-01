@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\DomainModel\VO;
+namespace Districts\Test\DomainModel;
 
+use Districts\DomainModel\Area;
 use Districts\DomainModel\Exception\InvalidAreaException;
-use Districts\DomainModel\VO\Area;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\DomainModel\VO\Area
+ * @covers \Districts\DomainModel\Area
  */
 class AreaTest extends TestCase
 {
