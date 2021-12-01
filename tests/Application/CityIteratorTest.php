@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Districts\Test\Application;
 
 use Districts\Application\CityIterator;
+use Districts\DomainModel\City;
 use Districts\DomainModel\CityRepository;
-use Districts\DomainModel\Entity\City;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

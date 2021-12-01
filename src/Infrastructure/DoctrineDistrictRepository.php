@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Districts\Infrastructure;
 
+use Districts\DomainModel\District;
 use Districts\DomainModel\DistrictFilter;
 use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\DistrictRepository;
-use Districts\DomainModel\Entity\District;
 use Districts\DomainModel\PaginatedResult;
 use Districts\DomainModel\Pagination;
 use Doctrine\ORM\EntityManager;

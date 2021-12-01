@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\DomainModel\Entity;
+namespace Districts\Test\DomainModel;
 
 use Districts\DomainModel\Area;
-use Districts\DomainModel\Entity\City;
+use Districts\DomainModel\City;
 use Districts\DomainModel\Exception\DistrictNotFoundException;
 use Districts\DomainModel\Name;
 use Districts\DomainModel\Population;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\DomainModel\Entity\City
+ * @covers \Districts\DomainModel\City
  */
 class CityTest extends TestCase
 {

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Districts\Application;
 
 use ArrayIterator;
+use Districts\DomainModel\City;
 use Districts\DomainModel\CityRepository;
-use Districts\DomainModel\Entity\City;
 use IteratorAggregate;
 use Traversable;
 

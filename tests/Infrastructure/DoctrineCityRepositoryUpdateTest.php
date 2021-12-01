@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Districts\Test\Infrastructure;
 
 use Districts\DomainModel\Area;
-use Districts\DomainModel\Entity\City;
+use Districts\DomainModel\City;
 use Districts\DomainModel\Name;
 use Districts\DomainModel\Population;
 use Districts\Infrastructure\DoctrineCityRepository;

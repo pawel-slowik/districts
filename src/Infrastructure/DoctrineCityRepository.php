@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Infrastructure;
 
+use Districts\DomainModel\City;
 use Districts\DomainModel\CityRepository;
-use Districts\DomainModel\Entity\City;
 use Doctrine\ORM\EntityManager;
 
 final class DoctrineCityRepository implements CityRepository

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Districts\Application;
 
 use Districts\DomainModel\Area;
+use Districts\DomainModel\City;
 use Districts\DomainModel\CityRepository;
-use Districts\DomainModel\Entity\City;
 use Districts\DomainModel\Name;
 use Districts\DomainModel\Population;
 use Districts\DomainModel\Scraper\CityDTO;

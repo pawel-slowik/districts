@@ -2,11 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Districts\DomainModel\Entity;
+namespace Districts\DomainModel;
 
-use Districts\DomainModel\Area;
-use Districts\DomainModel\Name;
-use Districts\DomainModel\Population;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

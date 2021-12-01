@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\DomainModel\Entity;
+namespace Districts\Test\DomainModel;
 
 use Districts\DomainModel\Area;
-use Districts\DomainModel\Entity\City;
-use Districts\DomainModel\Entity\District;
+use Districts\DomainModel\City;
+use Districts\DomainModel\District;
 use Districts\DomainModel\Name;
 use Districts\DomainModel\Population;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\DomainModel\Entity\District
+ * @covers \Districts\DomainModel\District
  */
 class DistrictTest extends TestCase
 {

@@ -2,12 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Districts\DomainModel\Entity;
+namespace Districts\DomainModel;
 
-use Districts\DomainModel\Area;
 use Districts\DomainModel\Exception\DistrictNotFoundException;
-use Districts\DomainModel\Name;
-use Districts\DomainModel\Population;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

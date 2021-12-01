@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Districts\DomainModel;
 
-use Districts\DomainModel\Entity\District;
-
 interface DistrictRepository
 {
     public function get(int $id): District;
