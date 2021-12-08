@@ -20,19 +20,19 @@ Install required components:
 
 Start the development containers:
 
-    docker-compose -f docker/docker-compose.yml up -d
+    docker-compose up -d
 
 Create the database structure:
 
-    docker-compose -f docker/docker-compose.yml run php-fpm vendor/bin/doctrine orm:schema-tool:update --force
+    docker-compose run php-fpm vendor/bin/doctrine orm:schema-tool:update --force
 
 ## Usage
 
 Run the scraper to populate the database:
 
-    docker-compose -f docker/docker-compose.yml run php-fpm ./console.php import --help
+    docker-compose run php-fpm ./console.php import --help
 
-    docker-compose -f docker/docker-compose.yml run php-fpm ./console.php import
+    docker-compose run php-fpm ./console.php import
 
 Open <http://127.0.0.1:8080> in your browser.
 
