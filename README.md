@@ -24,15 +24,15 @@ Start the development containers:
 
 Create the database structure:
 
-    docker exec -it $(docker ps -q -f ancestor=districts-php) vendor/bin/doctrine orm:schema-tool:update --force
+    docker-compose -f docker/docker-compose.yml run php-fpm vendor/bin/doctrine orm:schema-tool:update --force
 
 ## Usage
 
 Run the scraper to populate the database:
 
-    docker exec -it $(docker ps -q -f ancestor=districts-php) ./console.php import --help
+    docker-compose -f docker/docker-compose.yml run php-fpm ./console.php import --help
 
-    docker exec -it $(docker ps -q -f ancestor=districts-php) ./console.php import
+    docker-compose -f docker/docker-compose.yml run php-fpm ./console.php import
 
 Open <http://127.0.0.1:8080> in your browser.
 
