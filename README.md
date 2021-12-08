@@ -14,13 +14,13 @@ trying out tools, frameworks, patterns etc.
 
 ## Installation
 
+Build the development containers:
+
+    docker-compose build
+
 Install required components:
 
-	composer install
-
-Start the development containers:
-
-    docker-compose up -d
+    docker-compose run php-fpm composer install
 
 Create the database structure:
 
@@ -33,6 +33,10 @@ Run the scraper to populate the database:
     docker-compose run php-fpm ./console.php import --help
 
     docker-compose run php-fpm ./console.php import
+
+Start the development containers:
+
+    docker-compose up -d
 
 Open <http://127.0.0.1:8080> in your browser.
 
