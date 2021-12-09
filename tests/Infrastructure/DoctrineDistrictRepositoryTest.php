@@ -7,6 +7,7 @@ namespace Districts\Test\Infrastructure;
 use Districts\DomainModel\Area;
 use Districts\DomainModel\Name;
 use Districts\DomainModel\Population;
+use Districts\Infrastructure\DistrictFilter\FilterFactory;
 use Districts\Infrastructure\DoctrineDistrictRepository;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 
@@ -21,7 +22,10 @@ class DoctrineDistrictRepositoryTest extends DoctrineDbTestCase
     {
         parent::setUp();
         parent::loadDefaultDbContents();
-        $this->districtRepository = new DoctrineDistrictRepository($this->entityManager);
+        $this->districtRepository = new DoctrineDistrictRepository(
+            $this->entityManager,
+            $this->createStub(FilterFactory::class)
+        );
     }
 
     public function testGet(): void

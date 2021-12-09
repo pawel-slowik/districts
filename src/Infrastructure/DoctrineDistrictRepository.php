@@ -5,32 +5,25 @@ declare(strict_types=1);
 namespace Districts\Infrastructure;
 
 use Districts\DomainModel\District;
-use Districts\DomainModel\DistrictFilter\AreaFilter;
-use Districts\DomainModel\DistrictFilter\CityNameFilter;
 use Districts\DomainModel\DistrictFilter\Filter;
-use Districts\DomainModel\DistrictFilter\NameFilter;
-use Districts\DomainModel\DistrictFilter\PopulationFilter;
 use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\DistrictRepository;
 use Districts\DomainModel\PaginatedResult;
 use Districts\DomainModel\Pagination;
-use Districts\Infrastructure\DistrictFilter\AreaFilter as DqlAreaFilter;
-use Districts\Infrastructure\DistrictFilter\CityNameFilter as DqlCityNameFilter;
-use Districts\Infrastructure\DistrictFilter\Filter as DqlFilter;
-use Districts\Infrastructure\DistrictFilter\NameFilter as DqlNameFilter;
-use Districts\Infrastructure\DistrictFilter\NullFilter as DqlNullFilter;
-use Districts\Infrastructure\DistrictFilter\PopulationFilter as DqlPopulationFilter;
+use Districts\Infrastructure\DistrictFilter\FilterFactory;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Pagination\Paginator;
-use InvalidArgumentException;
 
 final class DoctrineDistrictRepository implements DistrictRepository
 {
     private EntityManager $entityManager;
 
-    public function __construct(EntityManager $entityManager)
+    private FilterFactory $filterFactory;
+
+    public function __construct(EntityManager $entityManager, FilterFactory $filterFactory)
     {
         $this->entityManager = $entityManager;
+        $this->filterFactory = $filterFactory;
     }
 
     public function get(int $id): District
@@ -49,7 +42,7 @@ final class DoctrineDistrictRepository implements DistrictRepository
         ?Pagination $pagination = null
     ): PaginatedResult {
         $dqlOrderBy = $this->dqlOrderBy($order);
-        $dqlFilter = $this->dqlFilter($filter);
+        $dqlFilter = $this->filterFactory->fromDomainFilter($filter);
         $dql = "SELECT d, c FROM " . District::class . " d JOIN d.city c";
         if ($dqlFilter->where() !== "") {
             $dql .= " WHERE " . $dqlFilter->where();
@@ -103,30 +96,5 @@ final class DoctrineDistrictRepository implements DistrictRepository
             ],
         ];
         return $orderDqlMap[$order->getField()][$order->getDirection()];
-    }
-
-    private function dqlFilter(?Filter $filter): DqlFilter
-    {
-        if (!$filter) {
-            return new DqlNullFilter();
-        }
-
-        if ($filter instanceof CityNameFilter) {
-            return new DqlCityNameFilter($filter);
-        }
-
-        if ($filter instanceof NameFilter) {
-            return new DqlNameFilter($filter);
-        }
-
-        if ($filter instanceof AreaFilter) {
-            return new DqlAreaFilter($filter);
-        }
-
-        if ($filter instanceof PopulationFilter) {
-            return new DqlPopulationFilter($filter);
-        }
-
-        throw new InvalidArgumentException();
     }
 }
