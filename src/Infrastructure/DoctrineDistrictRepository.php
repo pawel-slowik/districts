@@ -14,6 +14,12 @@ use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\DistrictRepository;
 use Districts\DomainModel\PaginatedResult;
 use Districts\DomainModel\Pagination;
+use Districts\Infrastructure\DistrictFilter\AreaFilter as DqlAreaFilter;
+use Districts\Infrastructure\DistrictFilter\CityNameFilter as DqlCityNameFilter;
+use Districts\Infrastructure\DistrictFilter\Filter as DqlFilter;
+use Districts\Infrastructure\DistrictFilter\NameFilter as DqlNameFilter;
+use Districts\Infrastructure\DistrictFilter\NullFilter as DqlNullFilter;
+use Districts\Infrastructure\DistrictFilter\PopulationFilter as DqlPopulationFilter;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use InvalidArgumentException;
@@ -43,15 +49,15 @@ final class DoctrineDistrictRepository implements DistrictRepository
         ?Pagination $pagination = null
     ): PaginatedResult {
         $dqlOrderBy = $this->dqlOrderBy($order);
-        list($dqlWhere, $dqlParameters) = $this->dqlFilter($filter);
+        $dqlFilter = $this->dqlFilter($filter);
         $dql = "SELECT d, c FROM " . District::class . " d JOIN d.city c";
-        if ($dqlWhere !== "") {
-            $dql .= " WHERE " . $dqlWhere;
+        if ($dqlFilter->where() !== "") {
+            $dql .= " WHERE " . $dqlFilter->where();
         }
         $dql .= " ORDER BY " . $dqlOrderBy;
         $query = $this->entityManager->createQuery($dql);
-        if ($dqlParameters) {
-            foreach ($dqlParameters as $name => $value) {
+        if ($dqlFilter->parameters()) {
+            foreach ($dqlFilter->parameters() as $name => $value) {
                 $query->setParameter($name, $value);
             }
         }
@@ -99,56 +105,28 @@ final class DoctrineDistrictRepository implements DistrictRepository
         return $orderDqlMap[$order->getField()][$order->getDirection()];
     }
 
-    private function dqlFilter(?Filter $filter): array
+    private function dqlFilter(?Filter $filter): DqlFilter
     {
         if (!$filter) {
-            return ["", []];
+            return new DqlNullFilter();
         }
 
         if ($filter instanceof CityNameFilter) {
-            return [
-                " c.name LIKE :search",
-                [
-                    "search" => $this->dqlLike($filter->getCityName()),
-                ],
-            ];
+            return new DqlCityNameFilter($filter);
         }
 
         if ($filter instanceof NameFilter) {
-            return [
-                " d.name.name LIKE :search",
-                [
-                    "search" => $this->dqlLike($filter->getName()),
-                ],
-            ];
+            return new DqlNameFilter($filter);
         }
 
         if ($filter instanceof AreaFilter) {
-            return [
-                " d.area.area >= :low AND d.area.area <= :high",
-                [
-                    "low" => $filter->getBegin(),
-                    "high" => $filter->getEnd(),
-                ],
-            ];
+            return new DqlAreaFilter($filter);
         }
 
         if ($filter instanceof PopulationFilter) {
-            return [
-                " d.population.population >= :low AND d.population.population <= :high",
-                [
-                    "low" => $filter->getBegin(),
-                    "high" => $filter->getEnd(),
-                ],
-            ];
+            return new DqlPopulationFilter($filter);
         }
 
         throw new InvalidArgumentException();
-    }
-
-    private function dqlLike(string $string): string
-    {
-        // Doctrine will handle SQL injections, we just need to escape the LIKE syntax
-        return "%" . addcslashes($string, "%_") . "%";
     }
 }
