@@ -10,7 +10,7 @@ use Districts\DomainModel\Exception\DistrictNotFoundException;
 use Districts\UI\Web\Factory\RemoveDistrictCommandFactory;
 use Districts\UI\Web\ReverseRouter;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
-use Nyholm\Psr7\Response as NyholmResponse;
+use Psr\Http\Message\ResponseFactoryInterface as ResponseFactory;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
@@ -26,16 +26,20 @@ final class RemoveActionController
 
     private ReverseRouter $reverseRouter;
 
+    private ResponseFactory $responseFactory;
+
     public function __construct(
         DistrictService $districtService,
         RemoveDistrictCommandFactory $commandFactory,
         Session $session,
-        ReverseRouter $reverseRouter
+        ReverseRouter $reverseRouter,
+        ResponseFactory $responseFactory
     ) {
         $this->districtService = $districtService;
         $this->commandFactory = $commandFactory;
         $this->session = $session;
         $this->reverseRouter = $reverseRouter;
+        $this->responseFactory = $responseFactory;
     }
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
@@ -49,6 +53,6 @@ final class RemoveActionController
             throw new HttpNotFoundException($request);
         }
         $url = $this->reverseRouter->urlFromRoute($request->getUri(), "list");
-        return (new NyholmResponse())->withHeader("Location", $url)->withStatus(StatusCode::STATUS_FOUND);
+        return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
     }
 }

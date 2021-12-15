@@ -11,7 +11,7 @@ use Districts\DomainModel\Exception\DistrictNotFoundException;
 use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
 use Districts\UI\Web\ReverseRouter;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
-use Nyholm\Psr7\Response as NyholmResponse;
+use Psr\Http\Message\ResponseFactoryInterface as ResponseFactory;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
@@ -27,16 +27,20 @@ final class EditActionController
 
     private ReverseRouter $reverseRouter;
 
+    private ResponseFactory $responseFactory;
+
     public function __construct(
         DistrictService $districtService,
         UpdateDistrictCommandFactory $commandFactory,
         Session $session,
-        ReverseRouter $reverseRouter
+        ReverseRouter $reverseRouter,
+        ResponseFactory $responseFactory
     ) {
         $this->districtService = $districtService;
         $this->commandFactory = $commandFactory;
         $this->session = $session;
         $this->reverseRouter = $reverseRouter;
+        $this->responseFactory = $responseFactory;
     }
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
@@ -49,7 +53,7 @@ final class EditActionController
             unset($this->session["form.edit.values"]);
             unset($this->session["form.edit.errors"]);
             $url = $this->reverseRouter->urlFromRoute($request->getUri(), "list");
-            return (new NyholmResponse())->withHeader("Location", $url)->withStatus(StatusCode::STATUS_FOUND);
+            return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
         } catch (NotFoundException | DistrictNotFoundException $notFoundException) {
             throw new HttpNotFoundException($request);
         } catch (ValidationException $validationException) {
@@ -57,7 +61,7 @@ final class EditActionController
             $this->session["form.edit.error.message"] = "An error occured while saving district data.";
             $this->session["form.edit.errors"] = array_fill_keys($validationException->getErrors(), true);
             $url = $this->reverseRouter->urlFromRoute($request->getUri(), "edit", ["id" => $args["id"]]);
-            return (new NyholmResponse())->withHeader("Location", $url)->withStatus(StatusCode::STATUS_FOUND);
+            return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
         }
     }
 }
