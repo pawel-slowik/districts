@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web;
 
-use Districts\UI\Web\Redirector;
-use Fig\Http\Message\StatusCodeInterface as StatusCode;
+use Districts\UI\Web\SlimReverseRouter;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UriInterface;
 use Slim\Interfaces\RouteParserInterface;
 
 /**
- * @covers \Districts\UI\Web\Redirector
+ * @covers \Districts\UI\Web\SlimReverseRouter
  */
-class RedirectorTest extends TestCase
+class SlimReverseRouterTest extends TestCase
 {
-    private Redirector $redirector;
+    private SlimReverseRouter $slimReverseRouter;
 
     /**
      * @var MockObject|RouteParserInterface
@@ -26,18 +25,17 @@ class RedirectorTest extends TestCase
     protected function setUp(): void
     {
         $this->routeParser = $this->createMock(RouteParserInterface::class);
-        $this->redirector = new Redirector($this->routeParser);
+        $this->slimReverseRouter = new SlimReverseRouter($this->routeParser);
     }
 
-    public function testRedirect(): void
+    public function testUrlFromRoute(): void
     {
         $this->routeParser
             ->method("fullUrlFor")
             ->willReturn("foo");
 
-        $response = $this->redirector->redirect($this->createMock(UriInterface::class), "", []);
+        $url = $this->slimReverseRouter->urlFromRoute($this->createMock(UriInterface::class), "", []);
 
-        $this->assertSame($response->getStatusCode(), StatusCode::STATUS_FOUND);
-        $this->assertSame($response->getHeader("location"), ["foo"]);
+        $this->assertSame("foo", $url);
     }
 }

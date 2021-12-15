@@ -7,7 +7,9 @@ namespace Districts\UI\Web\Controller;
 use Districts\Application\DistrictService;
 use Districts\Application\Exception\ValidationException;
 use Districts\UI\Web\Factory\AddDistrictCommandFactory;
-use Districts\UI\Web\Redirector;
+use Districts\UI\Web\ReverseRouter;
+use Fig\Http\Message\StatusCodeInterface as StatusCode;
+use Nyholm\Psr7\Response as NyholmResponse;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use SlimSession\Helper as Session;
@@ -20,18 +22,18 @@ final class AddActionController
 
     private Session $session;
 
-    private Redirector $redirector;
+    private ReverseRouter $reverseRouter;
 
     public function __construct(
         DistrictService $districtService,
         AddDistrictCommandFactory $commandFactory,
         Session $session,
-        Redirector $redirector
+        ReverseRouter $reverseRouter
     ) {
         $this->districtService = $districtService;
         $this->commandFactory = $commandFactory;
         $this->session = $session;
-        $this->redirector = $redirector;
+        $this->reverseRouter = $reverseRouter;
     }
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
@@ -43,12 +45,14 @@ final class AddActionController
             $this->session["success.message"] = "District data saved successfully.";
             unset($this->session["form.add.values"]);
             unset($this->session["form.add.errors"]);
-            return $this->redirector->redirect($request->getUri(), "list");
+            $url = $this->reverseRouter->urlFromRoute($request->getUri(), "list");
+            return (new NyholmResponse())->withHeader("Location", $url)->withStatus(StatusCode::STATUS_FOUND);
         } catch (ValidationException $exception) {
             $this->session["form.add.values"] = $request->getParsedBody();
             $this->session["form.add.error.message"] = "An error occured while saving district data.";
             $this->session["form.add.errors"] = array_fill_keys($exception->getErrors(), true);
-            return $this->redirector->redirect($request->getUri(), "add");
+            $url = $this->reverseRouter->urlFromRoute($request->getUri(), "add");
+            return (new NyholmResponse())->withHeader("Location", $url)->withStatus(StatusCode::STATUS_FOUND);
         }
     }
 }
