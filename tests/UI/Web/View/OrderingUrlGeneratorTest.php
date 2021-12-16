@@ -50,8 +50,11 @@ class OrderingUrlGeneratorTest extends TestCase
      */
     public function testSimple(string $routeName, string $column, array $routeArgs, array $queryParams): void
     {
-        $request = $this->createRequestMockWithAttributes($this->createRequestAttributes($routeName));
-        $url = $this->orderingUrlGenerator->createOrderingUrl($request, $column, $routeArgs, $queryParams);
+        $request = $this->createRequestMockWithAttributes(
+            $this->createRequestAttributes($routeName),
+            $queryParams
+        );
+        $url = $this->orderingUrlGenerator->createOrderingUrl($request, $column, $routeArgs);
 
         $this->assertSame("/list/column1/asc", $url);
     }
@@ -71,8 +74,7 @@ class OrderingUrlGeneratorTest extends TestCase
         $url = $this->orderingUrlGenerator->createOrderingUrl(
             $this->createRequestMockWithAttributes($this->createRequestAttributes("foo")),
             "column1",
-            ["column" => "column1", "direction" => "asc"],
-            []
+            ["column" => "column1", "direction" => "asc"]
         );
 
         $this->assertSame("/list/column1/desc", $url);
@@ -81,10 +83,12 @@ class OrderingUrlGeneratorTest extends TestCase
     public function testCopiesRelevantQueryParams(): void
     {
         $url = $this->orderingUrlGenerator->createOrderingUrl(
-            $this->createRequestMockWithAttributes($this->createRequestAttributes("foo")),
+            $this->createRequestMockWithAttributes(
+                $this->createRequestAttributes("foo"),
+                ["filterColumn" => "bar", "filterValue" => "baz"]
+            ),
             "column1",
-            [],
-            ["filterColumn" => "bar", "filterValue" => "baz"]
+            []
         );
 
         $this->assertStringContainsString("filterColumn=bar", $url);
@@ -94,10 +98,12 @@ class OrderingUrlGeneratorTest extends TestCase
     public function testSkipsIrreleventQueryParams(): void
     {
         $url = $this->orderingUrlGenerator->createOrderingUrl(
-            $this->createRequestMockWithAttributes($this->createRequestAttributes("foo")),
+            $this->createRequestMockWithAttributes(
+                $this->createRequestAttributes("foo"),
+                ["qux" => "bar"]
+            ),
             "column1",
-            [],
-            ["qux" => "bar"]
+            []
         );
 
         $this->assertStringNotContainsString("qux", $url);

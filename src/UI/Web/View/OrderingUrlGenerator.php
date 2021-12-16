@@ -21,8 +21,7 @@ class OrderingUrlGenerator
     public function createOrderingUrl(
         ServerRequestInterface $namedRouteRequest,
         string $column,
-        array $routeArgs,
-        array $queryParams
+        array $routeArgs
     ): string {
         return $this->routeParser->urlFor(
             $this->getRouteNameFromRequest($namedRouteRequest),
@@ -30,7 +29,7 @@ class OrderingUrlGenerator
                 "column" => $column,
                 "direction" => $this->computeOrderingDirection($column, $routeArgs),
             ],
-            $this->copyRelevantQueryParams($queryParams)
+            $this->copyRelevantQueryParams($namedRouteRequest->getQueryParams())
         );
     }
 

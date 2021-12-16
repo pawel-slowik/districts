@@ -26,7 +26,7 @@ trait NamedRequestTester
         ];
     }
 
-    private function createRequestMockWithAttributes(array $attributes): ServerRequestInterface
+    private function createRequestMockWithAttributes(array $attributes, array $queryParams = []): ServerRequestInterface
     {
         $request = $this->createMock(ServerRequestInterface::class);
         $request->method("getAttribute")->will(
@@ -34,7 +34,7 @@ trait NamedRequestTester
                 $this->convertRequestAttributesToMockArgMap($attributes),
             )
         );
-        $request->method("getQueryParams")->willReturn([]);
+        $request->method("getQueryParams")->willReturn($queryParams);
         $request->method("getUri")->willReturn($this->createMock(UriInterface::class));
         return $request;
     }
