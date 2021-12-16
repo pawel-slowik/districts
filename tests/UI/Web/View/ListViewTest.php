@@ -6,7 +6,7 @@ namespace Districts\Test\UI\Web;
 
 use Districts\UI\Web\View\ListView;
 use Districts\UI\Web\View\OrderingUrlGenerator;
-use Districts\UI\Web\View\RoutedPageReferenceFactory;
+use Districts\UI\Web\View\PageReferenceFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -25,19 +25,19 @@ class ListViewTest extends TestCase
      */
     private $twigView;
 
-    private RoutedPageReferenceFactory $routedPageReferenceFactory;
+    private PageReferenceFactory $pageReferenceFactory;
 
     private OrderingUrlGenerator $orderingUrlGenerator;
 
     protected function setUp(): void
     {
         $this->twigView = $this->createMock(TwigView::class);
-        $this->routedPageReferenceFactory = $this->createStub(RoutedPageReferenceFactory::class);
+        $this->pageReferenceFactory = $this->createStub(PageReferenceFactory::class);
         $this->orderingUrlGenerator = $this->createStub(OrderingUrlGenerator::class);
 
         $this->listView = new ListView(
             $this->twigView,
-            $this->routedPageReferenceFactory,
+            $this->pageReferenceFactory,
             $this->orderingUrlGenerator
         );
     }

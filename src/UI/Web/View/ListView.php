@@ -12,7 +12,7 @@ class ListView
 {
     private View $view;
 
-    private RoutedPageReferenceFactory $routedPageReferenceFactory;
+    private PageReferenceFactory $pageReferenceFactory;
 
     private OrderingUrlGenerator $orderingUrlGenerator;
 
@@ -41,11 +41,11 @@ class ListView
 
     public function __construct(
         View $view,
-        RoutedPageReferenceFactory $routedPageReferenceFactory,
+        PageReferenceFactory $pageReferenceFactory,
         OrderingUrlGenerator $orderingUrlGenerator
     ) {
         $this->view = $view;
-        $this->routedPageReferenceFactory = $routedPageReferenceFactory;
+        $this->pageReferenceFactory = $pageReferenceFactory;
         $this->orderingUrlGenerator = $orderingUrlGenerator;
     }
 
@@ -74,7 +74,7 @@ class ListView
         );
 
         $data["pagination"] = iterator_to_array(
-            $this->routedPageReferenceFactory->createPageReferences(
+            $this->pageReferenceFactory->createPageReferencesForNamedRouteRequest(
                 $this->paginationRequest,
                 $this->paginationPageCount,
                 $this->paginationCurrentPageNumber,

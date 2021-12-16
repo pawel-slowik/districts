@@ -4,13 +4,40 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web\View;
 
+use InvalidArgumentException;
 use Laminas\Uri\Uri;
+use Psr\Http\Message\ServerRequestInterface;
+use Slim\Interfaces\RouteParserInterface;
+use Slim\Routing\RouteContext;
 use Traversable;
 
 class PageReferenceFactory
 {
-    public function createPageReferences(string $baseUrl, int $pageCount, int $currentPageNumber): Traversable
+    private RouteParserInterface $routeParser;
+
+    public function __construct(RouteParserInterface $routeParser)
     {
+        $this->routeParser = $routeParser;
+    }
+
+    public function createPageReferencesForNamedRouteRequest(
+        ServerRequestInterface $namedRouteRequest,
+        int $pageCount,
+        int $currentPageNumber
+    ): Traversable {
+        $baseUrl = $this->baseUrlForNamedRouteRequest($namedRouteRequest);
+        return $this->createPageReferencesForUrl(
+            $baseUrl,
+            $pageCount,
+            $currentPageNumber,
+        );
+    }
+
+    public function createPageReferencesForUrl(
+        string $baseUrl,
+        int $pageCount,
+        int $currentPageNumber
+    ): Traversable {
         if ($pageCount <= 1) {
             return;
         }
@@ -36,6 +63,23 @@ class PageReferenceFactory
             false,
             false,
             true,
+        );
+    }
+
+    private function baseUrlForNamedRouteRequest(ServerRequestInterface $namedRouteRequest): string
+    {
+        $routeContext = RouteContext::fromRequest($namedRouteRequest);
+        $route = $routeContext->getRoute();
+        if (is_null($route)) {
+            throw new InvalidArgumentException();
+        }
+        if (is_null($route->getName())) {
+            throw new InvalidArgumentException();
+        }
+        return $this->routeParser->urlFor(
+            $route->getName(),
+            $route->getArguments(),
+            $namedRouteRequest->getQueryParams(),
         );
     }
 
