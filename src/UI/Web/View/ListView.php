@@ -49,15 +49,18 @@ class ListView
         $this->orderingUrlGenerator = $orderingUrlGenerator;
     }
 
-    public function configurePagination(int $pageCount, int $currentPageNumber, ServerRequestInterface $request): void
-    {
+    public function configure(
+        int $pageCount,
+        int $currentPageNumber,
+        ServerRequestInterface $request,
+        string $routeName,
+        array $columns,
+        array $routeArgs,
+        array $queryParams
+    ): void {
         $this->paginationPageCount = $pageCount;
         $this->paginationCurrentPageNumber = $currentPageNumber;
         $this->paginationRequest = $request;
-    }
-
-    public function configureOrdering(string $routeName, array $columns, array $routeArgs, array $queryParams): void
-    {
         $this->orderingRouteName = $routeName;
         $this->orderingColumns = $columns;
         $this->orderingRouteArgs = $routeArgs;

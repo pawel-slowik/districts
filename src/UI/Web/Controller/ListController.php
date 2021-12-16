@@ -52,8 +52,15 @@ final class ListController
             "area",
             "population",
         ];
-        $this->listView->configurePagination($pageCount, $currentPageNumber, $request);
-        $this->listView->configureOrdering("list", $orderingColumns, $args, $queryParams);
+        $this->listView->configure(
+            $pageCount,
+            $currentPageNumber,
+            $request,
+            "list",
+            $orderingColumns,
+            $args,
+            $queryParams
+        );
         $templateData = [
             "title" => "List of districts",
             "districts" => $districts->getCurrentPageEntries(),
