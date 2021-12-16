@@ -20,18 +20,18 @@ final class ListController
 
     private Session $session;
 
-    private ListView $view;
+    private ListView $listView;
 
     public function __construct(
         DistrictService $districtService,
         ListDistrictsQueryFactory $queryFactory,
         Session $session,
-        ListView $view
+        ListView $listView
     ) {
         $this->districtService = $districtService;
         $this->queryFactory = $queryFactory;
         $this->session = $session;
-        $this->view = $view;
+        $this->listView = $listView;
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response
@@ -52,8 +52,8 @@ final class ListController
             "area",
             "population",
         ];
-        $this->view->configurePagination($pageCount, $currentPageNumber, $request);
-        $this->view->configureOrdering("list", $orderingColumns, $args, $queryParams);
+        $this->listView->configurePagination($pageCount, $currentPageNumber, $request);
+        $this->listView->configureOrdering("list", $orderingColumns, $args, $queryParams);
         $templateData = [
             "title" => "List of districts",
             "districts" => $districts->getCurrentPageEntries(),
@@ -63,6 +63,6 @@ final class ListController
             "errorMessage" => $errorMessage ?? null,
         ];
         unset($this->session["success.message"]);
-        return $this->view->render($response, "list.html", $templateData);
+        return $this->listView->render($response, "list.html", $templateData);
     }
 }
