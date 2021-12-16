@@ -45,7 +45,7 @@ final class ListController
         $districts = $this->districtService->list($query);
         $queryParams = $request->getQueryParams();
         $pageCount = $districts->getPageCount();
-        $currentPageNumber = is_null($query->getPagination()) ? 1 : $query->getPagination()->getPageNumber();
+        $currentPageNumber = $districts->getCurrentPageNumber();
         $orderingColumns = [
             "city",
             "name",

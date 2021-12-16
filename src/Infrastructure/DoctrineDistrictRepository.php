@@ -62,13 +62,15 @@ final class DoctrineDistrictRepository implements DistrictRepository
             $districts = iterator_to_array($paginator);
             $recordsTotal = count($paginator);
             $pageSize = $pagination->getPageSize();
+            $pageNumber = $pagination->getPageNumber();
         } else {
             /** @var District[] $districts */
             $districts = $query->getResult();
             $recordsTotal = count($districts);
             $pageSize = ($recordsTotal === 0) ? 1 : $recordsTotal;
+            $pageNumber = 1;
         }
-        return new PaginatedResult($pageSize, $recordsTotal, $districts);
+        return new PaginatedResult($pageSize, $recordsTotal, $pageNumber, $districts);
     }
 
     private function dqlOrderBy(DistrictOrdering $order): string
