@@ -13,11 +13,11 @@ use Slim\Routing\RoutingResults;
 
 trait NamedRequestTester
 {
-    private function createRequestAttributes(?string $routeName): array
+    private function createRequestAttributes(?string $routeName, array $arguments = []): array
     {
         $route = $this->createMock(RouteInterface::class);
         $route->method("getName")->willReturn($routeName);
-        $route->method("getArguments")->willReturn([]);
+        $route->method("getArguments")->willReturn($arguments);
         return [
             RouteContext::ROUTE => $route,
             RouteContext::ROUTE_PARSER => $this->createMock(RouteParserInterface::class),

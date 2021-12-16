@@ -6,6 +6,7 @@ namespace Districts\UI\Web\View;
 
 use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Interfaces\RouteInterface;
 use Slim\Interfaces\RouteParserInterface;
 use Slim\Routing\RouteContext;
 
@@ -20,14 +21,16 @@ class OrderingUrlGenerator
 
     public function createOrderingUrl(
         ServerRequestInterface $namedRouteRequest,
-        string $column,
-        array $routeArgs
+        string $column
     ): string {
         return $this->routeParser->urlFor(
             $this->getRouteNameFromRequest($namedRouteRequest),
             [
                 "column" => $column,
-                "direction" => $this->computeOrderingDirection($column, $routeArgs),
+                "direction" => $this->computeOrderingDirection(
+                    $column,
+                    $this->getRouteArgumentsFromRequest($namedRouteRequest)
+                ),
             ],
             $this->copyRelevantQueryParams($namedRouteRequest->getQueryParams())
         );
@@ -35,15 +38,26 @@ class OrderingUrlGenerator
 
     private function getRouteNameFromRequest(ServerRequestInterface $namedRouteRequest): string
     {
-        $routeContext = RouteContext::fromRequest($namedRouteRequest);
-        $route = $routeContext->getRoute();
-        if (is_null($route)) {
-            throw new InvalidArgumentException();
-        }
+        $route = $this->getRouteFromRequest($namedRouteRequest);
         if (is_null($route->getName())) {
             throw new InvalidArgumentException();
         }
         return $route->getName();
+    }
+
+    private function getRouteArgumentsFromRequest(ServerRequestInterface $request): array
+    {
+        return $this->getRouteFromRequest($request)->getArguments();
+    }
+
+    private function getRouteFromRequest(ServerRequestInterface $routedRequest): RouteInterface
+    {
+        $routeContext = RouteContext::fromRequest($routedRequest);
+        $route = $routeContext->getRoute();
+        if (is_null($route)) {
+            throw new InvalidArgumentException();
+        }
+        return $route;
     }
 
     private function computeOrderingDirection(string $column, array $routeArgs): string

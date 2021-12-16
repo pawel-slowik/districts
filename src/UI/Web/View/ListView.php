@@ -28,11 +28,6 @@ class ListView
      */
     private array $orderingColumns;
 
-    /**
-     * @var string[]
-     */
-    private array $orderingRouteArgs;
-
     public function __construct(
         View $view,
         PageReferenceFactory $pageReferenceFactory,
@@ -46,22 +41,19 @@ class ListView
     public function configure(
         PaginatedResult $paginatedResult,
         ServerRequestInterface $request,
-        array $columns,
-        array $routeArgs
+        array $columns
     ): void {
         $this->paginationPageCount = $paginatedResult->getPageCount();
         $this->paginationCurrentPageNumber = $paginatedResult->getCurrentPageNumber();
         $this->request = $request;
         $this->orderingColumns = $columns;
-        $this->orderingRouteArgs = $routeArgs;
     }
 
     public function render(ResponseInterface $response, string $template, array $data = []): ResponseInterface
     {
         $data["orderingUrls"] = $this->createOrderingUrls(
             $this->request,
-            $this->orderingColumns,
-            $this->orderingRouteArgs
+            $this->orderingColumns
         );
 
         $data["pagination"] = iterator_to_array(
@@ -77,12 +69,11 @@ class ListView
 
     private function createOrderingUrls(
         ServerRequestInterface $request,
-        array $columns,
-        array $args
+        array $columns
     ): array {
         $urls = [];
         foreach ($columns as $column) {
-            $urls[$column] = $this->orderingUrlGenerator->createOrderingUrl($request, $column, $args);
+            $urls[$column] = $this->orderingUrlGenerator->createOrderingUrl($request, $column);
         }
         return $urls;
     }

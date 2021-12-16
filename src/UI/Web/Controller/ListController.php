@@ -53,8 +53,7 @@ final class ListController
         $this->listView->configure(
             $districts,
             $request,
-            $orderingColumns,
-            $args
+            $orderingColumns
         );
         $templateData = [
             "title" => "List of districts",

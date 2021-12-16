@@ -50,8 +50,8 @@ class OrderingUrlGeneratorTest extends TestCase
      */
     public function testSimple(string $column, array $routeArgs): void
     {
-        $request = $this->createRequestMockWithAttributes($this->createRequestAttributes("foo"));
-        $url = $this->orderingUrlGenerator->createOrderingUrl($request, $column, $routeArgs);
+        $request = $this->createRequestMockWithAttributes($this->createRequestAttributes("foo", $routeArgs));
+        $url = $this->orderingUrlGenerator->createOrderingUrl($request, $column);
 
         $this->assertSame("/list/column1/asc", $url);
     }
@@ -69,9 +69,13 @@ class OrderingUrlGeneratorTest extends TestCase
     public function testReversesDirection(): void
     {
         $url = $this->orderingUrlGenerator->createOrderingUrl(
-            $this->createRequestMockWithAttributes($this->createRequestAttributes("foo")),
-            "column1",
-            ["column" => "column1", "direction" => "asc"]
+            $this->createRequestMockWithAttributes(
+                $this->createRequestAttributes(
+                    "foo",
+                    ["column" => "column1", "direction" => "asc"]
+                )
+            ),
+            "column1"
         );
 
         $this->assertSame("/list/column1/desc", $url);
@@ -84,8 +88,7 @@ class OrderingUrlGeneratorTest extends TestCase
                 $this->createRequestAttributes("foo"),
                 ["filterColumn" => "bar", "filterValue" => "baz"]
             ),
-            "column1",
-            []
+            "column1"
         );
 
         $this->assertStringContainsString("filterColumn=bar", $url);
@@ -99,8 +102,7 @@ class OrderingUrlGeneratorTest extends TestCase
                 $this->createRequestAttributes("foo"),
                 ["qux" => "bar"]
             ),
-            "column1",
-            []
+            "column1"
         );
 
         $this->assertStringNotContainsString("qux", $url);
@@ -115,13 +117,13 @@ class OrderingUrlGeneratorTest extends TestCase
             )
         );
         $this->expectException(InvalidArgumentException::class);
-        $this->orderingUrlGenerator->createOrderingUrl($unroutedRequest, "column", [], []);
+        $this->orderingUrlGenerator->createOrderingUrl($unroutedRequest, "column");
     }
 
     public function testExceptionOnUnnamedRoute(): void
     {
         $unnamedRouteRequest = $this->createRequestMockWithAttributes($this->createRequestAttributes(null));
         $this->expectException(InvalidArgumentException::class);
-        $this->orderingUrlGenerator->createOrderingUrl($unnamedRouteRequest, "column", [], []);
+        $this->orderingUrlGenerator->createOrderingUrl($unnamedRouteRequest, "column");
     }
 }
