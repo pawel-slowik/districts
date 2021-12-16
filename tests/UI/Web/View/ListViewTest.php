@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\UI\Web;
+namespace Districts\Test\UI\Web\View;
 
 use Districts\UI\Web\View\ListView;
 use Districts\UI\Web\View\OrderingUrlGenerator;
