@@ -50,12 +50,11 @@ class ListViewTest extends TestCase
         $request
             ->method("getQueryParams")
             ->willReturn([]);
-        $this->listView->configure($paginatedResult, $request, [], []);
         $this->twigView
             ->expects($this->once())
             ->method("render");
 
-        $this->listView->render($this->createStub(ResponseInterface::class), "", []);
+        $this->listView->render($this->createStub(ResponseInterface::class), $paginatedResult, $request, [], "", []);
     }
 
     /**
@@ -68,7 +67,6 @@ class ListViewTest extends TestCase
         $request
             ->method("getQueryParams")
             ->willReturn([]);
-        $this->listView->configure($paginatedResult, $request, [""], []);
         $this->twigView
             ->expects($this->once())
             ->method("render")
@@ -82,7 +80,7 @@ class ListViewTest extends TestCase
                 )
             );
 
-        $this->listView->render($this->createStub(ResponseInterface::class), "", []);
+        $this->listView->render($this->createStub(ResponseInterface::class), $paginatedResult, $request, [""], "", []);
     }
 
     public function computedDataKeyProvider(): array

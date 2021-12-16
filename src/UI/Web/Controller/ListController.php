@@ -50,11 +50,6 @@ final class ListController
             "area",
             "population",
         ];
-        $this->listView->configure(
-            $districts,
-            $request,
-            $orderingColumns
-        );
         $templateData = [
             "title" => "List of districts",
             "districts" => $districts->getCurrentPageEntries(),
@@ -64,6 +59,13 @@ final class ListController
             "errorMessage" => $errorMessage ?? null,
         ];
         unset($this->session["success.message"]);
-        return $this->listView->render($response, "list.html", $templateData);
+        return $this->listView->render(
+            $response,
+            $districts,
+            $request,
+            $orderingColumns,
+            "list.html",
+            $templateData
+        );
     }
 }

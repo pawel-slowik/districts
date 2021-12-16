@@ -17,17 +17,6 @@ class ListView
 
     private OrderingUrlGenerator $orderingUrlGenerator;
 
-    private int $paginationPageCount;
-
-    private int $paginationCurrentPageNumber;
-
-    private ServerRequestInterface $request;
-
-    /**
-     * @var string[]
-     */
-    private array $orderingColumns;
-
     public function __construct(
         View $view,
         PageReferenceFactory $pageReferenceFactory,
@@ -38,29 +27,24 @@ class ListView
         $this->orderingUrlGenerator = $orderingUrlGenerator;
     }
 
-    public function configure(
+    public function render(
+        ResponseInterface $response,
         PaginatedResult $paginatedResult,
         ServerRequestInterface $request,
-        array $columns
-    ): void {
-        $this->paginationPageCount = $paginatedResult->getPageCount();
-        $this->paginationCurrentPageNumber = $paginatedResult->getCurrentPageNumber();
-        $this->request = $request;
-        $this->orderingColumns = $columns;
-    }
-
-    public function render(ResponseInterface $response, string $template, array $data = []): ResponseInterface
-    {
+        array $orderingColumns,
+        string $template,
+        array $data = []
+    ): ResponseInterface {
         $data["orderingUrls"] = $this->createOrderingUrls(
-            $this->request,
-            $this->orderingColumns
+            $request,
+            $orderingColumns
         );
 
         $data["pagination"] = iterator_to_array(
             $this->pageReferenceFactory->createPageReferencesForNamedRouteRequest(
-                $this->request,
-                $this->paginationPageCount,
-                $this->paginationCurrentPageNumber,
+                $request,
+                $paginatedResult->getPageCount(),
+                $paginatedResult->getCurrentPageNumber()
             )
         );
 
