@@ -48,12 +48,9 @@ class OrderingUrlGeneratorTest extends TestCase
     /**
      * @dataProvider simpleDataProvider
      */
-    public function testSimple(string $routeName, string $column, array $routeArgs, array $queryParams): void
+    public function testSimple(string $column, array $routeArgs): void
     {
-        $request = $this->createRequestMockWithAttributes(
-            $this->createRequestAttributes($routeName),
-            $queryParams
-        );
+        $request = $this->createRequestMockWithAttributes($this->createRequestAttributes("foo"));
         $url = $this->orderingUrlGenerator->createOrderingUrl($request, $column, $routeArgs);
 
         $this->assertSame("/list/column1/asc", $url);
@@ -62,10 +59,10 @@ class OrderingUrlGeneratorTest extends TestCase
     public function simpleDataProvider(): array
     {
         return [
-            ["foo", "column1", [], []],
-            ["foo", "column1", ["column" => "column1"], []],
-            ["foo", "column1", ["direction" => "asc"], []],
-            ["foo", "column1", ["column" => "column1", "direction" => "desc"], []],
+            ["column1", []],
+            ["column1", ["column" => "column1"]],
+            ["column1", ["direction" => "asc"]],
+            ["column1", ["column" => "column1", "direction" => "desc"]],
         ];
     }
 
