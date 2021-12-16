@@ -55,8 +55,7 @@ class ListView
         ServerRequestInterface $request,
         string $routeName,
         array $columns,
-        array $routeArgs,
-        array $queryParams
+        array $routeArgs
     ): void {
         $this->paginationPageCount = $pageCount;
         $this->paginationCurrentPageNumber = $currentPageNumber;
@@ -64,7 +63,7 @@ class ListView
         $this->orderingRouteName = $routeName;
         $this->orderingColumns = $columns;
         $this->orderingRouteArgs = $routeArgs;
-        $this->orderingQueryParams = $queryParams;
+        $this->orderingQueryParams = $request->getQueryParams();
     }
 
     public function render(ResponseInterface $response, string $template, array $data = []): ResponseInterface

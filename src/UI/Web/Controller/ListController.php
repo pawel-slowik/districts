@@ -58,8 +58,7 @@ final class ListController
             $request,
             "list",
             $orderingColumns,
-            $args,
-            $queryParams
+            $args
         );
         $templateData = [
             "title" => "List of districts",

@@ -44,7 +44,11 @@ class ListViewTest extends TestCase
 
     public function testRenders(): void
     {
-        $this->listView->configure(0, 0, $this->createStub(ServerRequestInterface::class), "", [], [], []);
+        $request = $this->createStub(ServerRequestInterface::class);
+        $request
+            ->method("getQueryParams")
+            ->willReturn([]);
+        $this->listView->configure(0, 0, $request, "", [], []);
         $this->twigView
             ->expects($this->once())
             ->method("render");
@@ -57,7 +61,11 @@ class ListViewTest extends TestCase
      */
     public function testSetsComputedDataKey(string $key): void
     {
-        $this->listView->configure(0, 0, $this->createStub(ServerRequestInterface::class), "", [""], [], []);
+        $request = $this->createStub(ServerRequestInterface::class);
+        $request
+            ->method("getQueryParams")
+            ->willReturn([]);
+        $this->listView->configure(0, 0, $request, "", [""], []);
         $this->twigView
             ->expects($this->once())
             ->method("render")
