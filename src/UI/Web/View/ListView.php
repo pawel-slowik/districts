@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web\View;
 
+use Districts\DomainModel\PaginatedResult;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig as View;
@@ -43,14 +44,13 @@ class ListView
     }
 
     public function configure(
-        int $pageCount,
-        int $currentPageNumber,
+        PaginatedResult $paginatedResult,
         ServerRequestInterface $request,
         array $columns,
         array $routeArgs
     ): void {
-        $this->paginationPageCount = $pageCount;
-        $this->paginationCurrentPageNumber = $currentPageNumber;
+        $this->paginationPageCount = $paginatedResult->getPageCount();
+        $this->paginationCurrentPageNumber = $paginatedResult->getCurrentPageNumber();
         $this->request = $request;
         $this->orderingColumns = $columns;
         $this->orderingRouteArgs = $routeArgs;

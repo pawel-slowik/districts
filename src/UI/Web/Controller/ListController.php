@@ -44,8 +44,6 @@ final class ListController
         }
         $districts = $this->districtService->list($query);
         $queryParams = $request->getQueryParams();
-        $pageCount = $districts->getPageCount();
-        $currentPageNumber = $districts->getCurrentPageNumber();
         $orderingColumns = [
             "city",
             "name",
@@ -53,8 +51,7 @@ final class ListController
             "population",
         ];
         $this->listView->configure(
-            $pageCount,
-            $currentPageNumber,
+            $districts,
             $request,
             $orderingColumns,
             $args

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\View;
 
+use Districts\DomainModel\PaginatedResult;
 use Districts\UI\Web\View\ListView;
 use Districts\UI\Web\View\OrderingUrlGenerator;
 use Districts\UI\Web\View\PageReferenceFactory;
@@ -44,11 +45,12 @@ class ListViewTest extends TestCase
 
     public function testRenders(): void
     {
+        $paginatedResult = $this->createStub(PaginatedResult::class);
         $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method("getQueryParams")
             ->willReturn([]);
-        $this->listView->configure(0, 0, $request, [], []);
+        $this->listView->configure($paginatedResult, $request, [], []);
         $this->twigView
             ->expects($this->once())
             ->method("render");
@@ -61,11 +63,12 @@ class ListViewTest extends TestCase
      */
     public function testSetsComputedDataKey(string $key): void
     {
+        $paginatedResult = $this->createStub(PaginatedResult::class);
         $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method("getQueryParams")
             ->willReturn([]);
-        $this->listView->configure(0, 0, $request, [""], []);
+        $this->listView->configure($paginatedResult, $request, [""], []);
         $this->twigView
             ->expects($this->once())
             ->method("render")
