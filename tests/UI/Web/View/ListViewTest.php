@@ -48,7 +48,7 @@ class ListViewTest extends TestCase
         $request
             ->method("getQueryParams")
             ->willReturn([]);
-        $this->listView->configure(0, 0, $request, "", [], []);
+        $this->listView->configure(0, 0, $request, [], []);
         $this->twigView
             ->expects($this->once())
             ->method("render");
@@ -65,7 +65,7 @@ class ListViewTest extends TestCase
         $request
             ->method("getQueryParams")
             ->willReturn([]);
-        $this->listView->configure(0, 0, $request, "", [""], []);
+        $this->listView->configure(0, 0, $request, [""], []);
         $this->twigView
             ->expects($this->once())
             ->method("render")

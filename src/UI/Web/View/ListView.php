@@ -20,9 +20,7 @@ class ListView
 
     private int $paginationCurrentPageNumber;
 
-    private ServerRequestInterface $paginationRequest;
-
-    private string $orderingRouteName;
+    private ServerRequestInterface $request;
 
     /**
      * @var string[]
@@ -53,14 +51,12 @@ class ListView
         int $pageCount,
         int $currentPageNumber,
         ServerRequestInterface $request,
-        string $routeName,
         array $columns,
         array $routeArgs
     ): void {
         $this->paginationPageCount = $pageCount;
         $this->paginationCurrentPageNumber = $currentPageNumber;
-        $this->paginationRequest = $request;
-        $this->orderingRouteName = $routeName;
+        $this->request = $request;
         $this->orderingColumns = $columns;
         $this->orderingRouteArgs = $routeArgs;
         $this->orderingQueryParams = $request->getQueryParams();
@@ -69,7 +65,7 @@ class ListView
     public function render(ResponseInterface $response, string $template, array $data = []): ResponseInterface
     {
         $data["orderingUrls"] = $this->createOrderingUrls(
-            $this->orderingRouteName,
+            $this->request,
             $this->orderingColumns,
             $this->orderingRouteArgs,
             $this->orderingQueryParams
@@ -77,7 +73,7 @@ class ListView
 
         $data["pagination"] = iterator_to_array(
             $this->pageReferenceFactory->createPageReferencesForNamedRouteRequest(
-                $this->paginationRequest,
+                $this->request,
                 $this->paginationPageCount,
                 $this->paginationCurrentPageNumber,
             )
@@ -86,11 +82,15 @@ class ListView
         return $this->view->render($response, $template, $data);
     }
 
-    private function createOrderingUrls(string $routeName, array $columns, array $args, array $queryParams): array
-    {
+    private function createOrderingUrls(
+        ServerRequestInterface $request,
+        array $columns,
+        array $args,
+        array $queryParams
+    ): array {
         $urls = [];
         foreach ($columns as $column) {
-            $urls[$column] = $this->orderingUrlGenerator->createOrderingUrl($routeName, $column, $args, $queryParams);
+            $urls[$column] = $this->orderingUrlGenerator->createOrderingUrl($request, $column, $args, $queryParams);
         }
         return $urls;
     }

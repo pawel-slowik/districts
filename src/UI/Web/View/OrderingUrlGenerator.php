@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web\View;
 
+use InvalidArgumentException;
+use Psr\Http\Message\ServerRequestInterface;
 use Slim\Interfaces\RouteParserInterface;
+use Slim\Routing\RouteContext;
 
 class OrderingUrlGenerator
 {
@@ -15,16 +18,33 @@ class OrderingUrlGenerator
         $this->routeParser = $routeParser;
     }
 
-    public function createOrderingUrl(string $routeName, string $column, array $routeArgs, array $queryParams): string
-    {
+    public function createOrderingUrl(
+        ServerRequestInterface $namedRouteRequest,
+        string $column,
+        array $routeArgs,
+        array $queryParams
+    ): string {
         return $this->routeParser->urlFor(
-            $routeName,
+            $this->getRouteNameFromRequest($namedRouteRequest),
             [
                 "column" => $column,
                 "direction" => $this->computeOrderingDirection($column, $routeArgs),
             ],
             $this->copyRelevantQueryParams($queryParams)
         );
+    }
+
+    private function getRouteNameFromRequest(ServerRequestInterface $namedRouteRequest): string
+    {
+        $routeContext = RouteContext::fromRequest($namedRouteRequest);
+        $route = $routeContext->getRoute();
+        if (is_null($route)) {
+            throw new InvalidArgumentException();
+        }
+        if (is_null($route->getName())) {
+            throw new InvalidArgumentException();
+        }
+        return $route->getName();
     }
 
     private function computeOrderingDirection(string $column, array $routeArgs): string

@@ -56,7 +56,6 @@ final class ListController
             $pageCount,
             $currentPageNumber,
             $request,
-            "list",
             $orderingColumns,
             $args
         );
