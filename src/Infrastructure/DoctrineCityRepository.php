@@ -44,6 +44,9 @@ final class DoctrineCityRepository implements CityRepository
         return $this->entityManager->getRepository(City::class)->findOneBy(["name" => $name]);
     }
 
+    /**
+     * @return City[]
+     */
     public function list(): array
     {
         return $this->entityManager->getRepository(City::class)->findAll();

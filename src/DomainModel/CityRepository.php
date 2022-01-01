@@ -12,6 +12,9 @@ interface CityRepository
 
     public function findByName(string $name): ?City;
 
+    /**
+     * @return City[]
+     */
     public function list(): array;
 
     public function add(City $city): void;
