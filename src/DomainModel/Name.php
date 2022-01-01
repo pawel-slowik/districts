@@ -7,14 +7,10 @@ namespace Districts\DomainModel;
 use Districts\DomainModel\Exception\InvalidNameException;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Embeddable
- */
+#[ORM\Embeddable]
 class Name
 {
-    /**
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: "string")]
     private string $name;
 
     public function __construct(string $name)

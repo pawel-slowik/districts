@@ -7,14 +7,10 @@ namespace Districts\DomainModel;
 use Districts\DomainModel\Exception\InvalidPopulationException;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Embeddable
- */
+#[ORM\Embeddable]
 class Population
 {
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column(type: "integer")]
     private int $population;
 
     public function __construct(int $population)

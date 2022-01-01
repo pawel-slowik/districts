@@ -6,41 +6,26 @@ namespace Districts\DomainModel;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(
- *   name="districts",
- *   uniqueConstraints={@ORM\Uniqueconstraint(columns={"city_id", "name"})},
- *   options={"collate"="utf8_polish_ci"}
- * )
- */
+#[ORM\Entity]
+#[ORM\Table(name: "districts", options: ["collate" => "utf8_polish_ci"])]
+#[ORM\UniqueConstraint(name: "districts_city_id_name", columns: ["city_id", "name"])]
 class District
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue
-     */
+    #[ORM\Id]
+    #[ORM\Column(type: "integer")]
+    #[ORM\GeneratedValue]
     private int $id;
 
-    /**
-     * @ORM\Embedded(class="\Districts\DomainModel\Name", columnPrefix=false)
-     */
+    #[ORM\Embedded(class: Name::class, columnPrefix: false)]
     private Name $name;
 
-    /**
-     * @ORM\Embedded(class="\Districts\DomainModel\Area", columnPrefix=false)
-     */
+    #[ORM\Embedded(class: Area::class, columnPrefix: false)]
     private Area $area;
 
-    /**
-     * @ORM\Embedded(class="\Districts\DomainModel\Population", columnPrefix=false)
-     */
+    #[ORM\Embedded(class: Population::class, columnPrefix: false)]
     private Population $population;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="City", inversedBy="districts")
-     */
+    #[ORM\ManyToOne(targetEntity: City::class, inversedBy: "districts")]
     private City $city;
 
     public function __construct(City $city, Name $name, Area $area, Population $population)

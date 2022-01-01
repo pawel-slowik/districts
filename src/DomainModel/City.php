@@ -9,31 +9,20 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(
- *   name="cities",
- *   uniqueConstraints={@ORM\Uniqueconstraint(columns={"name"})},
- *   options={"collate"="utf8_polish_ci"}
- * )
- */
+#[ORM\Entity]
+#[ORM\Table(name: "cities", options: ["collate" => "utf8_polish_ci"])]
+#[ORM\UniqueConstraint(name: "cities_name", columns: ["name"])]
 class City
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue
-     */
+    #[ORM\Id]
+    #[ORM\Column(type: "integer")]
+    #[ORM\GeneratedValue]
     private int $id;
 
-    /**
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: "string")]
     private string $name;
 
-    /**
-     * @ORM\OneToMany(targetEntity="District", mappedBy="city", cascade={"persist"}, orphanRemoval=true)
-     */
+    #[ORM\OneToMany(targetEntity: District::class, mappedBy: "city", cascade: ["persist"], orphanRemoval: true)]
     private Collection $districts;
 
     public function __construct(string $name)

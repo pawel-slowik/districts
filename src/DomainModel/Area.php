@@ -7,14 +7,10 @@ namespace Districts\DomainModel;
 use Districts\DomainModel\Exception\InvalidAreaException;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Embeddable
- */
+#[ORM\Embeddable]
 class Area
 {
-    /**
-     * @ORM\Column(type="float")
-     */
+    #[ORM\Column(type: "float")]
     private float $area;
 
     public function __construct(float $area)
