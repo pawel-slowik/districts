@@ -18,18 +18,13 @@ class DistrictFilterFactory
             return null;
         }
 
-        switch ($column) {
-            case "city":
-                return new CityNameFilter($value);
-            case "name":
-                return new NameFilter($value);
-            case "area":
-                return new AreaFilter(...array_map("floatval", self::stringToRange($value)));
-            case "population":
-                return new PopulationFilter(...array_map("intval", self::stringToRange($value)));
-        }
-
-        return null;
+        return match ($column) {
+            "city" => new CityNameFilter($value),
+            "name" => new NameFilter($value),
+            "area" => new AreaFilter(...array_map("floatval", self::stringToRange($value))),
+            "population" => new PopulationFilter(...array_map("intval", self::stringToRange($value))),
+            default => null,
+        };
     }
 
     private static function stringToRange(string $input): array
