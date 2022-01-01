@@ -8,14 +8,19 @@ use Districts\DomainModel\Scraper\Exception\InvalidHtmlException;
 use Districts\DomainModel\Scraper\Exception\InvalidQueryException;
 use DOMDocument;
 use DOMXpath;
+use ValueError;
 
 class HtmlFinder
 {
     public function findNodes(string $html, string $xpath): array
     {
         $document = new DOMDocument();
-        // @ silence warnings for mismatched HTML tags etc.
-        if (!@$document->loadHTML($html)) {
+        try {
+            // @ silence warnings for mismatched HTML tags etc.
+            if (!@$document->loadHTML($html)) {
+                throw new InvalidHtmlException();
+            }
+        } catch (ValueError $error) {
             throw new InvalidHtmlException();
         }
         $nodes = (new DOMXpath($document))->query($xpath);

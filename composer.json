@@ -10,15 +10,15 @@
         "guzzlehttp/guzzle": "^6.3",
         "laminas/laminas-uri": "^2.7",
         "doctrine/orm": "^2.6",
-        "ext-xml": "^7.4",
+        "ext-xml": "^8.0",
         "symfony/console": "^4.3",
-        "ext-pdo_mysql": "^7.4",
+        "ext-pdo_mysql": "^8.0",
         "ext-dom": "20031129",
         "slim/slim": "^4.3",
         "slim/twig-view": "^3.0",
         "bryanjhv/slim-session": "^4.0",
         "nyholm/psr7": "^1.2",
-        "nyholm/psr7-server": "^0.4.1",
+        "nyholm/psr7-server": "^1.0.1",
         "php-di/php-di": "^6.0",
         "fig/http-message-util": "^1.1",
         "cache/array-adapter": "^1.1"
@@ -32,7 +32,7 @@
         "phpunit/phpunit": "^9",
         "phpstan/phpstan": "^1",
         "phpstan/phpstan-doctrine": "^1",
-        "ext-pdo_sqlite": "^7.4",
+        "ext-pdo_sqlite": "^8.0",
         "phpstan/phpstan-phpunit": "^1.0"
     },
     "autoload-dev": {
