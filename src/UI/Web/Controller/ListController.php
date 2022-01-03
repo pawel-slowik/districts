@@ -14,24 +14,12 @@ use SlimSession\Helper as Session;
 
 final class ListController
 {
-    private DistrictService $districtService;
-
-    private ListDistrictsQueryFactory $queryFactory;
-
-    private Session $session;
-
-    private ListView $listView;
-
     public function __construct(
-        DistrictService $districtService,
-        ListDistrictsQueryFactory $queryFactory,
-        Session $session,
-        ListView $listView
+        private DistrictService $districtService,
+        private ListDistrictsQueryFactory $queryFactory,
+        private Session $session,
+        private ListView $listView,
     ) {
-        $this->districtService = $districtService;
-        $this->queryFactory = $queryFactory;
-        $this->session = $session;
-        $this->listView = $listView;
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response

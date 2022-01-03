@@ -12,14 +12,10 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 final class HomeController
 {
-    private ReverseRouter $reverseRouter;
-
-    private ResponseFactory $responseFactory;
-
-    public function __construct(ReverseRouter $reverseRouter, ResponseFactory $responseFactory)
-    {
-        $this->reverseRouter = $reverseRouter;
-        $this->responseFactory = $responseFactory;
+    public function __construct(
+        private ReverseRouter $reverseRouter,
+        private ResponseFactory $responseFactory,
+    ) {
     }
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter

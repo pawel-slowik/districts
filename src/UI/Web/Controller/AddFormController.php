@@ -12,20 +12,11 @@ use SlimSession\Helper as Session;
 
 final class AddFormController
 {
-    private CityIterator $cityIterator;
-
-    private Session $session;
-
-    private View $view;
-
     public function __construct(
-        CityIterator $cityIterator,
-        Session $session,
-        View $view
+        private CityIterator $cityIterator,
+        private Session $session,
+        private View $view,
     ) {
-        $this->cityIterator = $cityIterator;
-        $this->session = $session;
-        $this->view = $view;
     }
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter

@@ -16,24 +16,12 @@ use SlimSession\Helper as Session;
 
 final class EditFormController
 {
-    private DistrictService $districtService;
-
-    private GetDistrictQueryFactory $queryFactory;
-
-    private Session $session;
-
-    private View $view;
-
     public function __construct(
-        DistrictService $districtService,
-        GetDistrictQueryFactory $queryFactory,
-        Session $session,
-        View $view
+        private DistrictService $districtService,
+        private GetDistrictQueryFactory $queryFactory,
+        private Session $session,
+        private View $view,
     ) {
-        $this->districtService = $districtService;
-        $this->queryFactory = $queryFactory;
-        $this->session = $session;
-        $this->view = $view;
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response

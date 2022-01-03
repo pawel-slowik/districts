@@ -15,20 +15,11 @@ use Slim\Views\Twig as View;
 
 final class RemoveFormController
 {
-    private DistrictService $districtService;
-
-    private GetDistrictQueryFactory $queryFactory;
-
-    private View $view;
-
     public function __construct(
-        DistrictService $districtService,
-        GetDistrictQueryFactory $queryFactory,
-        View $view
+        private DistrictService $districtService,
+        private GetDistrictQueryFactory $queryFactory,
+        private View $view,
     ) {
-        $this->districtService = $districtService;
-        $this->queryFactory = $queryFactory;
-        $this->view = $view;
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response

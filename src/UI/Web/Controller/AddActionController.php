@@ -16,28 +16,13 @@ use SlimSession\Helper as Session;
 
 final class AddActionController
 {
-    private DistrictService $districtService;
-
-    private AddDistrictCommandFactory $commandFactory;
-
-    private Session $session;
-
-    private ReverseRouter $reverseRouter;
-
-    private ResponseFactory $responseFactory;
-
     public function __construct(
-        DistrictService $districtService,
-        AddDistrictCommandFactory $commandFactory,
-        Session $session,
-        ReverseRouter $reverseRouter,
-        ResponseFactory $responseFactory
+        private DistrictService $districtService,
+        private AddDistrictCommandFactory $commandFactory,
+        private Session $session,
+        private ReverseRouter $reverseRouter,
+        private ResponseFactory $responseFactory,
     ) {
-        $this->districtService = $districtService;
-        $this->commandFactory = $commandFactory;
-        $this->session = $session;
-        $this->reverseRouter = $reverseRouter;
-        $this->responseFactory = $responseFactory;
     }
 
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
