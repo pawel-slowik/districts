@@ -35,17 +35,13 @@ class DistrictOrdering
         self::DESC,
     ];
 
-    private int $field;
-
-    private int $direction;
-
-    public function __construct(int $field, int $direction)
-    {
+    public function __construct(
+        private int $field,
+        private int $direction,
+    ) {
         if (!self::validate($field, $direction)) {
             throw new InvalidArgumentException();
         }
-        $this->field = $field;
-        $this->direction = $direction;
     }
 
     public function getField(): int

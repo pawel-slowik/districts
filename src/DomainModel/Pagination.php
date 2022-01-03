@@ -8,17 +8,13 @@ use InvalidArgumentException;
 
 class Pagination
 {
-    private int $pageNumber;
-
-    private int $pageSize;
-
-    public function __construct(int $pageNumber, int $pageSize)
-    {
+    public function __construct(
+        private int $pageNumber,
+        private int $pageSize,
+    ) {
         if (!self::validate($pageNumber, $pageSize)) {
             throw new InvalidArgumentException();
         }
-        $this->pageNumber = $pageNumber;
-        $this->pageSize = $pageSize;
     }
 
     public function getPageNumber(): int

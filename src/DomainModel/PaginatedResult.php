@@ -8,23 +8,15 @@ use InvalidArgumentException;
 
 class PaginatedResult
 {
-    private int $pageSize;
-
-    private int $totalEntryCount;
-
-    private int $currentPageNumber;
-
-    private array $currentPageEntries;
-
-    public function __construct(int $pageSize, int $totalEntryCount, int $currentPageNumber, array $currentPageEntries)
-    {
+    public function __construct(
+        private int $pageSize,
+        private int $totalEntryCount,
+        private int $currentPageNumber,
+        private array $currentPageEntries,
+    ) {
         if (!self::validate($pageSize, $totalEntryCount, $currentPageNumber)) {
             throw new InvalidArgumentException();
         }
-        $this->pageSize = $pageSize;
-        $this->totalEntryCount = $totalEntryCount;
-        $this->currentPageNumber = $currentPageNumber;
-        $this->currentPageEntries = $currentPageEntries;
     }
 
     public function getCurrentPageEntries(): array
