@@ -8,17 +8,13 @@ use InvalidArgumentException;
 
 class PopulationFilter extends Filter
 {
-    private int $begin;
-
-    private int $end;
-
-    public function __construct(int $begin, int $end)
-    {
+    public function __construct(
+        private int $begin,
+        private int $end,
+    ) {
         if (!self::validate($begin, $end)) {
             throw new InvalidArgumentException();
         }
-        $this->begin = $begin;
-        $this->end = $end;
     }
 
     public function getBegin(): int

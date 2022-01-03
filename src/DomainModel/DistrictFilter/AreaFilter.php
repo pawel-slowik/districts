@@ -8,17 +8,13 @@ use InvalidArgumentException;
 
 class AreaFilter extends Filter
 {
-    private float $begin;
-
-    private float $end;
-
-    public function __construct(float $begin, float $end)
-    {
+    public function __construct(
+        private float $begin,
+        private float $end,
+    ) {
         if (!self::validate($begin, $end)) {
             throw new InvalidArgumentException();
         }
-        $this->begin = $begin;
-        $this->end = $end;
     }
 
     public function getBegin(): float

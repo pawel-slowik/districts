@@ -8,14 +8,12 @@ use InvalidArgumentException;
 
 class CityNameFilter extends Filter
 {
-    private string $cityName;
-
-    public function __construct(string $cityName)
-    {
+    public function __construct(
+        private string $cityName,
+    ) {
         if (!self::validate($cityName)) {
             throw new InvalidArgumentException();
         }
-        $this->cityName = $cityName;
     }
 
     public function getCityName(): string
