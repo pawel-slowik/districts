@@ -43,19 +43,20 @@ class ScraperCityFilterTest extends TestCase
 
     public function testMatch(): void
     {
-        $filtered = (new ScraperCityFilter($this->cityScrapers, ["foo"]))->filter($this->cityScrapers);
+        $filtered = (new ScraperCityFilter(["foo"]))->filter($this->cityScrapers);
         $this->assertContains($this->fooCityScraper, $filtered);
     }
 
     public function testNoMatch(): void
     {
-        $filtered = (new ScraperCityFilter($this->cityScrapers, ["foo"]))->filter($this->cityScrapers);
+        $filtered = (new ScraperCityFilter(["foo"]))->filter($this->cityScrapers);
         $this->assertNotContains($this->barCityScraper, $filtered);
     }
 
     public function testInvalid(): void
     {
+        $filter = new ScraperCityFilter(["foo", "baz"]);
         $this->expectException(InvalidArgumentException::class);
-        $filter = new ScraperCityFilter($this->cityScrapers, ["foo", "baz"]);
+        iterator_to_array($filter->filter($this->cityScrapers));
     }
 }

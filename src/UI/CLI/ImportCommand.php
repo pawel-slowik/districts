@@ -38,12 +38,12 @@ final class ImportCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
-            $cityFilter = new ScraperCityFilter($this->scrapers, $input->getArgument("city_names"));
+            $cityFilter = new ScraperCityFilter($input->getArgument("city_names"));
+            foreach ($cityFilter->filter($this->scrapers) as $scraper) {
+                $this->updateCity($scraper->scrape(), $output);
+            }
         } catch (FilterInvalidArgumentException $ex) {
             throw new InvalidArgumentException($ex->getMessage(), $ex->getCode());
-        }
-        foreach ($cityFilter->filter($this->scrapers) as $scraper) {
-            $this->updateCity($scraper->scrape(), $output);
         }
         return 0;
     }

@@ -10,19 +10,20 @@ class ScraperCityFilter
 {
     private array $names;
 
-    public function __construct(array $scrapers, array $names)
+    public function __construct(array $names)
+    {
+        $this->names = $names;
+    }
+
+    public function filter(array $scrapers): iterable
     {
         $supportedNames = $this->getSupportedNames($scrapers);
-        foreach ($names as $name) {
+        foreach ($this->names as $name) {
             if (!in_array($name, $supportedNames, true)) {
                 throw new InvalidArgumentException("unsupported city name: {$name}");
             }
         }
-        $this->names = $names;
-    }
 
-    public function filter(iterable $scrapers): iterable
-    {
         foreach ($scrapers as $scraper) {
             if ($this->matches($scraper->getCityName())) {
                 yield $scraper;
