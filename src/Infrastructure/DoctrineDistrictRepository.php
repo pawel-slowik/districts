@@ -16,14 +16,10 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 
 final class DoctrineDistrictRepository implements DistrictRepository
 {
-    private EntityManager $entityManager;
-
-    private FilterFactory $filterFactory;
-
-    public function __construct(EntityManager $entityManager, FilterFactory $filterFactory)
-    {
-        $this->entityManager = $entityManager;
-        $this->filterFactory = $filterFactory;
+    public function __construct(
+        private EntityManager $entityManager,
+        private FilterFactory $filterFactory,
+    ) {
     }
 
     public function get(int $id): District

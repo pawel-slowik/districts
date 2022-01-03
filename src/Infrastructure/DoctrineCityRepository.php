@@ -10,11 +10,9 @@ use Doctrine\ORM\EntityManager;
 
 final class DoctrineCityRepository implements CityRepository
 {
-    private EntityManager $entityManager;
-
-    public function __construct(EntityManager $entityManager)
-    {
-        $this->entityManager = $entityManager;
+    public function __construct(
+        private EntityManager $entityManager,
+    ) {
     }
 
     public function get(int $id): City

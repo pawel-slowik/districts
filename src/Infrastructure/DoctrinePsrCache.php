@@ -10,11 +10,9 @@ use Psr\SimpleCache\InvalidArgumentException;
 
 final class DoctrinePsrCache implements Cache
 {
-    private CacheInterface $psrCache;
-
-    public function __construct(CacheInterface $psrCache)
-    {
-        $this->psrCache = $psrCache;
+    public function __construct(
+        private CacheInterface $psrCache,
+    ) {
     }
 
     public function fetch($id)
