@@ -6,20 +6,12 @@ namespace Districts\Application\Command;
 
 class AddDistrictCommand
 {
-    private int $cityId;
-
-    private string $name;
-
-    private float $area;
-
-    private int $population;
-
-    public function __construct(int $cityId, string $name, float $area, int $population)
-    {
-        $this->cityId = $cityId;
-        $this->name = $name;
-        $this->area = $area;
-        $this->population = $population;
+    public function __construct(
+        private int $cityId,
+        private string $name,
+        private float $area,
+        private int $population,
+    ) {
     }
 
     public function getCityId(): int
