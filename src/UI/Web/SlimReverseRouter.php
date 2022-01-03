@@ -9,11 +9,9 @@ use Slim\Interfaces\RouteParserInterface;
 
 class SlimReverseRouter implements ReverseRouter
 {
-    private RouteParserInterface $routeParser;
-
-    public function __construct(RouteParserInterface $routeParser)
-    {
-        $this->routeParser = $routeParser;
+    public function __construct(
+        private RouteParserInterface $routeParser,
+    ) {
     }
 
     public function urlFromRoute(UriInterface $baseUri, string $routeName, array $routeData = []): string

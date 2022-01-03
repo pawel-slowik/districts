@@ -11,20 +11,11 @@ use Slim\Views\Twig as View;
 
 class ListView
 {
-    private View $view;
-
-    private PageReferenceFactory $pageReferenceFactory;
-
-    private OrderingUrlGenerator $orderingUrlGenerator;
-
     public function __construct(
-        View $view,
-        PageReferenceFactory $pageReferenceFactory,
-        OrderingUrlGenerator $orderingUrlGenerator
+        private View $view,
+        private PageReferenceFactory $pageReferenceFactory,
+        private OrderingUrlGenerator $orderingUrlGenerator,
     ) {
-        $this->view = $view;
-        $this->pageReferenceFactory = $pageReferenceFactory;
-        $this->orderingUrlGenerator = $orderingUrlGenerator;
     }
 
     public function render(

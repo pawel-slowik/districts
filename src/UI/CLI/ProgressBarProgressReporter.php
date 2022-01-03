@@ -9,11 +9,9 @@ use Symfony\Component\Console\Helper\ProgressBar;
 
 class ProgressBarProgressReporter implements ProgressReporter
 {
-    private ProgressBar $progressBar;
-
-    public function __construct(ProgressBar $progressBar)
-    {
-        $this->progressBar = $progressBar;
+    public function __construct(
+        private ProgressBar $progressBar,
+    ) {
     }
 
     public function advance(): void

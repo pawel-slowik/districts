@@ -9,20 +9,11 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class ListDistrictsQueryFactory
 {
-    private DistrictOrderingFactory $orderingFactory;
-
-    private DistrictFilterFactory $filterFactory;
-
-    private PaginationFactory $paginationFactory;
-
     public function __construct(
-        DistrictOrderingFactory $orderingFactory,
-        DistrictFilterFactory $filterFactory,
-        PaginationFactory $paginationFactory
+        private DistrictOrderingFactory $orderingFactory,
+        private DistrictFilterFactory $filterFactory,
+        private PaginationFactory $paginationFactory,
     ) {
-        $this->orderingFactory = $orderingFactory;
-        $this->filterFactory = $filterFactory;
-        $this->paginationFactory = $paginationFactory;
     }
 
     public function fromRequest(Request $request, array $routeArgs): ListDistrictsQuery

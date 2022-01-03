@@ -12,11 +12,9 @@ use Slim\Routing\RouteContext;
 
 class OrderingUrlGenerator
 {
-    private RouteParserInterface $routeParser;
-
-    public function __construct(RouteParserInterface $routeParser)
-    {
-        $this->routeParser = $routeParser;
+    public function __construct(
+        private RouteParserInterface $routeParser,
+    ) {
     }
 
     public function createOrderingUrl(

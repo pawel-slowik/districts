@@ -17,19 +17,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class ImportCommand extends Command
 {
-    private Importer $importer;
-
-    private array $scrapers;
-
     /**
      * @param Importer      $importer
      * @param CityScraper[] $scrapers
      */
-    public function __construct(Importer $importer, array $scrapers)
-    {
+    public function __construct(
+        private Importer $importer,
+        private array $scrapers,
+    ) {
         parent::__construct();
-        $this->importer = $importer;
-        $this->scrapers = $scrapers;
         $this->setName("import");
         $this->setDescription("Scrape and save districts data. Overwrites existing records.");
         $this->addArgument(

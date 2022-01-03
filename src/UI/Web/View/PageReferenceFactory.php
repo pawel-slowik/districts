@@ -13,11 +13,9 @@ use Traversable;
 
 class PageReferenceFactory
 {
-    private RouteParserInterface $routeParser;
-
-    public function __construct(RouteParserInterface $routeParser)
-    {
-        $this->routeParser = $routeParser;
+    public function __construct(
+        private RouteParserInterface $routeParser,
+    ) {
     }
 
     public function createPageReferencesForNamedRouteRequest(

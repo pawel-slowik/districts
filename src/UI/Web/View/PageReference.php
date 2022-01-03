@@ -10,26 +10,16 @@ use Laminas\Uri\Uri;
 
 class PageReference
 {
-    private ?string $url;
-
-    private string $text;
-
-    private bool $isCurrent;
-
-    private bool $isPrevious;
-
-    private bool $isNext;
-
-    public function __construct(?string $url, string $text, bool $isCurrent, bool $isPrevious, bool $isNext)
-    {
+    public function __construct(
+        private ?string $url,
+        private string $text,
+        private bool $isCurrent,
+        private bool $isPrevious,
+        private bool $isNext,
+    ) {
         if (!self::validate($url, $text, $isCurrent, $isPrevious, $isNext)) {
             throw new InvalidArgumentException();
         }
-        $this->url = $url;
-        $this->text = $text;
-        $this->isCurrent = $isCurrent;
-        $this->isPrevious = $isPrevious;
-        $this->isNext = $isNext;
     }
 
     public function getUrl(): ?string
