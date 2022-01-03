@@ -6,17 +6,11 @@ namespace Districts\DomainModel\Scraper;
 
 class DistrictDTO
 {
-    private string $name;
-
-    private float $area;
-
-    private int $population;
-
-    public function __construct(string $name, float $area, int $population)
-    {
-        $this->name = $name;
-        $this->area = $area;
-        $this->population = $population;
+    public function __construct(
+        private string $name,
+        private float $area,
+        private int $population,
+    ) {
     }
 
     public function getName(): string

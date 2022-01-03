@@ -6,14 +6,10 @@ namespace Districts\DomainModel\Scraper;
 
 class CityDTO
 {
-    private string $name;
-
-    private iterable $districts;
-
-    public function __construct(string $name, iterable $districts)
-    {
-        $this->name = $name;
-        $this->districts = $districts;
+    public function __construct(
+        private string $name,
+        private iterable $districts,
+    ) {
     }
 
     public function getName(): string
