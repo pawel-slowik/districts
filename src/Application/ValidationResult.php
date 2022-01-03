@@ -6,12 +6,7 @@ namespace Districts\Application;
 
 class ValidationResult
 {
-    private array $errors;
-
-    public function __construct()
-    {
-        $this->errors = [];
-    }
+    private array $errors = [];
 
     public function isOk(): bool
     {
