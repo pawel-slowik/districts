@@ -10,11 +10,9 @@ use Districts\DomainModel\Scraper\HtmlFinder;
 
 class CityParser
 {
-    private HtmlFinder $htmlFinder;
-
-    public function __construct(HtmlFinder $htmlFinder)
-    {
-        $this->htmlFinder = $htmlFinder;
+    public function __construct(
+        private HtmlFinder $htmlFinder,
+    ) {
     }
 
     public function extractDistrictUrls(string $html): iterable

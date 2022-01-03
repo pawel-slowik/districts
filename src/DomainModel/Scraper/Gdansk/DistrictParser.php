@@ -11,11 +11,9 @@ use Districts\DomainModel\Scraper\HtmlFinder;
 
 class DistrictParser
 {
-    private HtmlFinder $htmlFinder;
-
-    public function __construct(HtmlFinder $htmlFinder)
-    {
-        $this->htmlFinder = $htmlFinder;
+    public function __construct(
+        private HtmlFinder $htmlFinder,
+    ) {
     }
 
     public function parse(string $html): DistrictDTO

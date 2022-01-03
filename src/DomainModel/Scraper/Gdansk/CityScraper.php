@@ -11,20 +11,11 @@ use Laminas\Uri\Uri;
 
 final class CityScraper implements CityScraperInterface
 {
-    private HtmlFetcher $htmlFetcher;
-
-    private CityParser $cityParser;
-
-    private DistrictParser $districtParser;
-
     public function __construct(
-        HtmlFetcher $htmlFetcher,
-        CityParser $cityParser,
-        DistrictParser $districtParser
+        private HtmlFetcher $htmlFetcher,
+        private CityParser $cityParser,
+        private DistrictParser $districtParser,
     ) {
-        $this->htmlFetcher = $htmlFetcher;
-        $this->cityParser = $cityParser;
-        $this->districtParser = $districtParser;
     }
 
     public function getCityName(): string
