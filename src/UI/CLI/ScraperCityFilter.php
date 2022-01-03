@@ -8,11 +8,9 @@ use InvalidArgumentException;
 
 class ScraperCityFilter
 {
-    private array $names;
-
-    public function __construct(array $names)
-    {
-        $this->names = $names;
+    public function __construct(
+        private array $names,
+    ) {
     }
 
     public function filter(array $scrapers): iterable
