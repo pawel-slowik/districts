@@ -13,12 +13,9 @@ use Districts\DomainModel\Scraper\CityDTO;
 
 class Importer
 {
-    private CityRepository $cityRepository;
-
     public function __construct(
-        CityRepository $cityRepository
+        private CityRepository $cityRepository,
     ) {
-        $this->cityRepository = $cityRepository;
     }
 
     public function import(

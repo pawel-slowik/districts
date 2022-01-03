@@ -23,20 +23,11 @@ use Districts\Infrastructure\NotFoundInRepositoryException;
 
 class DistrictService
 {
-    private DistrictValidator $districtValidator;
-
-    private DistrictRepository $districtRepository;
-
-    private CityRepository $cityRepository;
-
     public function __construct(
-        DistrictValidator $districtValidator,
-        DistrictRepository $districtRepository,
-        CityRepository $cityRepository
+        private DistrictValidator $districtValidator,
+        private DistrictRepository $districtRepository,
+        private CityRepository $cityRepository,
     ) {
-        $this->districtValidator = $districtValidator;
-        $this->districtRepository = $districtRepository;
-        $this->cityRepository = $cityRepository;
     }
 
     public function add(AddDistrictCommand $command): void
