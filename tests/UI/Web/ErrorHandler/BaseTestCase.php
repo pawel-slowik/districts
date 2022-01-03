@@ -4,22 +4,15 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\ErrorHandler;
 
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 
 class BaseTestCase extends TestCase
 {
-    /**
-     * @var MockObject|ServerRequestInterface
-     */
-    protected $requestMock;
+    protected ServerRequestInterface $requestMock;
 
-    /**
-     * @var MockObject|Throwable
-     */
-    protected $exceptionMock;
+    protected Throwable $exceptionMock;
 
     protected function setUp(): void
     {

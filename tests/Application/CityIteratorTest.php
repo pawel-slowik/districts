@@ -7,7 +7,6 @@ namespace Districts\Test\Application;
 use Districts\Application\CityIterator;
 use Districts\DomainModel\City;
 use Districts\DomainModel\CityRepository;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,10 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 class CityIteratorTest extends TestCase
 {
-    /**
-     * @var CityRepository|MockObject
-     */
-    private $cityRepository;
+    private CityRepository $cityRepository;
 
     private CityIterator $cityIterator;
 
@@ -31,7 +27,7 @@ class CityIteratorTest extends TestCase
     public function testIterator(): void
     {
         $mockedCities = array_map(
-            function (int $id): MockObject {
+            function (int $id): City {
                 $mock = $this->createMock(City::class);
                 $mock->method("getId")->willReturn($id);
                 return $mock;

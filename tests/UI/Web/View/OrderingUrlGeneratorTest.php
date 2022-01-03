@@ -6,7 +6,6 @@ namespace Districts\Test\UI\Web\View;
 
 use Districts\UI\Web\View\OrderingUrlGenerator;
 use InvalidArgumentException;
-use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Slim\Interfaces\RouteParserInterface;
 use Slim\Routing\RouteContext;
@@ -20,10 +19,7 @@ class OrderingUrlGeneratorTest extends TestCase
 
     private OrderingUrlGenerator $orderingUrlGenerator;
 
-    /**
-     * @var RouteParserInterface|Stub
-     */
-    private $routeParser;
+    private RouteParserInterface $routeParser;
 
     protected function setUp(): void
     {

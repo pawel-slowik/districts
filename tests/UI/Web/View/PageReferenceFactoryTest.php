@@ -7,7 +7,6 @@ namespace Districts\Test\UI\Web\View;
 use Districts\UI\Web\View\PageReference;
 use Districts\UI\Web\View\PageReferenceFactory;
 use InvalidArgumentException;
-use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Slim\Interfaces\RouteParserInterface;
 use Slim\Routing\RouteContext;
@@ -21,10 +20,7 @@ class PageReferenceFactoryTest extends TestCase
 
     private PageReferenceFactory $pageReferenceFactory;
 
-    /**
-     * @var RouteParserInterface|Stub
-     */
-    private $routeParser;
+    private RouteParserInterface $routeParser;
 
     protected function setUp(): void
     {

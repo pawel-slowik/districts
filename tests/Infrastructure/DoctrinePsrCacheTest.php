@@ -17,10 +17,7 @@ class DoctrinePsrCacheTest extends TestCase
 {
     private DoctrinePsrCache $doctrinePsrCache;
 
-    /**
-     * @var CacheInterface
-     */
-    private $psrCache;
+    private CacheInterface $psrCache;
 
     private InvalidArgumentException $invalidArgumentException;
 

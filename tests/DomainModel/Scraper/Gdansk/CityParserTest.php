@@ -8,7 +8,6 @@ use Districts\DomainModel\Scraper\Exception\ParsingException;
 use Districts\DomainModel\Scraper\Gdansk\CityParser;
 use Districts\DomainModel\Scraper\HtmlFinder;
 use DOMElement;
-use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -18,10 +17,7 @@ class CityParserTest extends TestCase
 {
     private CityParser $cityParser;
 
-    /**
-     * @var HtmlFinder|Stub
-     */
-    private $htmlFinder;
+    private HtmlFinder $htmlFinder;
 
     protected function setUp(): void
     {

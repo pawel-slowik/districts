@@ -9,7 +9,6 @@ use Districts\DomainModel\Scraper\Gdansk\CityParser;
 use Districts\DomainModel\Scraper\Gdansk\CityScraper;
 use Districts\DomainModel\Scraper\Gdansk\DistrictParser;
 use Districts\DomainModel\Scraper\HtmlFetcher;
-use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -21,10 +20,7 @@ class CityScraperTest extends TestCase
 
     private HtmlFetcher $htmlFetcher;
 
-    /**
-     * @var CityParser|Stub
-     */
-    private $cityParser;
+    private CityParser $cityParser;
 
     private DistrictParser $districtParser;
 

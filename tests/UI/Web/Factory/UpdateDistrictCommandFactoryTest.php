@@ -7,7 +7,6 @@ namespace Districts\Test\UI\Web\Factory;
 use Districts\Application\Command\UpdateDistrictCommand;
 use Districts\Application\Exception\ValidationException;
 use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use StdClass;
@@ -17,10 +16,7 @@ use StdClass;
  */
 class UpdateDistrictCommandFactoryTest extends TestCase
 {
-    /**
-     * @var MockObject|Request
-     */
-    private $request;
+    private Request $request;
 
     private UpdateDistrictCommandFactory $commandFactory;
 

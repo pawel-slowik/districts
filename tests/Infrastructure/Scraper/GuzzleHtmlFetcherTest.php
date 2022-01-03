@@ -18,10 +18,7 @@ class GuzzleHtmlFetcherTest extends TestCase
 {
     private GuzzleHtmlFetcher $guzzleHtmlFetcher;
 
-    /**
-     * @var ResponseInterface
-     */
-    private $response;
+    private ResponseInterface $response;
 
     protected function setUp(): void
     {

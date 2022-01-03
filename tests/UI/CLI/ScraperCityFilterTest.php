@@ -7,7 +7,6 @@ namespace Districts\Test\UI\CLI;
 use Districts\DomainModel\Scraper\CityScraper;
 use Districts\UI\CLI\ScraperCityFilter;
 use InvalidArgumentException;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,20 +14,14 @@ use PHPUnit\Framework\TestCase;
  */
 class ScraperCityFilterTest extends TestCase
 {
-    /**
-     * @var CityScraper|MockObject
-     */
-    private $fooCityScraper;
+    private CityScraper $fooCityScraper;
+
+    private CityScraper $barCityScraper;
 
     /**
-     * @var CityScraper|MockObject
+     * @var CityScraper[]
      */
-    private $barCityScraper;
-
-    /**
-     * @var (CityScraper|MockObject)[]
-     */
-    private $cityScrapers;
+    private array $cityScrapers;
 
     protected function setUp(): void
     {

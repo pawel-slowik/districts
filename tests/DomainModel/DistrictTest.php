@@ -9,7 +9,6 @@ use Districts\DomainModel\City;
 use Districts\DomainModel\District;
 use Districts\DomainModel\Name;
 use Districts\DomainModel\Population;
-use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,10 +16,7 @@ use PHPUnit\Framework\TestCase;
  */
 class DistrictTest extends TestCase
 {
-    /**
-     * @var City|Stub
-     */
-    private $city;
+    private City $city;
 
     private District $district;
 
