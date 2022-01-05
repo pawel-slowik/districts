@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Districts\Test\UI\Web;
 
 use Districts\UI\Web\SlimReverseRouter;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UriInterface;
 use Slim\Interfaces\RouteParserInterface;
@@ -16,6 +17,7 @@ class SlimReverseRouterTest extends TestCase
 {
     private SlimReverseRouter $slimReverseRouter;
 
+    /** @var RouteParserInterface&MockObject */
     private RouteParserInterface $routeParser;
 
     protected function setUp(): void

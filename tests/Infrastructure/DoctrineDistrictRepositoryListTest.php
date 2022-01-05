@@ -20,6 +20,7 @@ use Districts\Infrastructure\DistrictFilter\NameFilter as DqlNameFilter;
 use Districts\Infrastructure\DistrictFilter\NullFilter as DqlNullFilter;
 use Districts\Infrastructure\DistrictFilter\PopulationFilter as DqlPopulationFilter;
 use Districts\Infrastructure\DoctrineDistrictRepository;
+use PHPUnit\Framework\MockObject\Stub;
 
 /**
  * @covers \Districts\Infrastructure\DoctrineDistrictRepository
@@ -28,6 +29,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 {
     private DoctrineDistrictRepository $districtRepository;
 
+    /** @var FilterFactory&Stub */
     private FilterFactory $filterFactory;
 
     private DistrictOrdering $defaultOrder;

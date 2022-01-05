@@ -8,6 +8,7 @@ use Districts\DomainModel\Scraper\Exception\FetchingException;
 use Districts\Infrastructure\Scraper\GuzzleHtmlFetcher;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use GuzzleHttp\ClientInterface;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
@@ -18,6 +19,7 @@ class GuzzleHtmlFetcherTest extends TestCase
 {
     private GuzzleHtmlFetcher $guzzleHtmlFetcher;
 
+    /** @var ResponseInterface&Stub */
     private ResponseInterface $response;
 
     protected function setUp(): void

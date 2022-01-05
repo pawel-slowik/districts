@@ -9,6 +9,7 @@ use Districts\Application\ProgressReporter;
 use Districts\DomainModel\Scraper\CityDTO;
 use Districts\DomainModel\Scraper\CityScraper;
 use Districts\UI\CLI\ImportCommand;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputInterface;
@@ -19,14 +20,18 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ImportCommandTest extends TestCase
 {
+    /** @var Importer&MockObject */
     private Importer $importer;
 
+    /** @var CityScraper&MockObject */
     private CityScraper $scraper;
 
     private ImportCommand $command;
 
+    /** @var InputInterface&MockObject */
     private InputInterface $input;
 
+    /** @var OutputInterface&MockObject */
     private OutputInterface $output;
 
     protected function setUp(): void

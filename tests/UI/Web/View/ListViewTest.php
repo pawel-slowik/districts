@@ -8,6 +8,8 @@ use Districts\DomainModel\PaginatedResult;
 use Districts\UI\Web\View\ListView;
 use Districts\UI\Web\View\OrderingUrlGenerator;
 use Districts\UI\Web\View\PageReferenceFactory;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -20,10 +22,13 @@ class ListViewTest extends TestCase
 {
     private ListView $listView;
 
+    /** @var TwigView&MockObject */
     private TwigView $twigView;
 
+    /** @var PageReferenceFactory&Stub */
     private PageReferenceFactory $pageReferenceFactory;
 
+    /** @var OrderingUrlGenerator&Stub */
     private OrderingUrlGenerator $orderingUrlGenerator;
 
     protected function setUp(): void

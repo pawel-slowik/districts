@@ -23,6 +23,8 @@ use Districts\DomainModel\Name;
 use Districts\DomainModel\PaginatedResult;
 use Districts\DomainModel\Population;
 use Districts\Infrastructure\NotFoundInRepositoryException;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -32,10 +34,13 @@ class DistrictServiceTest extends TestCase
 {
     private DistrictService $districtService;
 
+    /** @var DistrictRepository&Stub */
     private DistrictRepository $districtRepository;
 
+    /** @var DistrictValidator&Stub */
     private DistrictValidator $districtValidator;
 
+    /** @var CityRepository&MockObject */
     private CityRepository $cityRepository;
 
     protected function setUp(): void

@@ -6,6 +6,7 @@ namespace Districts\Test\Infrastructure;
 
 use Districts\Infrastructure\DoctrinePsrCache;
 use Exception;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
@@ -17,6 +18,7 @@ class DoctrinePsrCacheTest extends TestCase
 {
     private DoctrinePsrCache $doctrinePsrCache;
 
+    /** @var CacheInterface&Stub */
     private CacheInterface $psrCache;
 
     private InvalidArgumentException $invalidArgumentException;

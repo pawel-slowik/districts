@@ -8,6 +8,8 @@ use Districts\UI\Web\Factory\DistrictFilterFactory;
 use Districts\UI\Web\Factory\DistrictOrderingFactory;
 use Districts\UI\Web\Factory\ListDistrictsQueryFactory;
 use Districts\UI\Web\Factory\PaginationFactory;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -18,12 +20,16 @@ class ListDistrictsQueryFactoryTest extends TestCase
 {
     private ListDistrictsQueryFactory $queryFactory;
 
+    /** @var DistrictOrderingFactory&MockObject */
     private DistrictOrderingFactory $districtOrderingFactory;
 
+    /** @var DistrictFilterFactory&MockObject */
     private DistrictFilterFactory $districtFilterFactory;
 
+    /** @var PaginationFactory&MockObject */
     private PaginationFactory $paginationFactory;
 
+    /** @var Request&Stub */
     private Request $request;
 
     protected function setUp(): void
