@@ -70,6 +70,7 @@ class ListControllerTest extends BaseTestCase
     ): ResponseInterface {
         $container = new Container();
         $app = $this->createApp($container);
+        /** @var EntityManager */
         $entityManager = $container->get(EntityManager::class);
         FixtureTool::reset($entityManager);
         FixtureTool::loadFiles($entityManager, [
