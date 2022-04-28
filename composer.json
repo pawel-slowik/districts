@@ -7,7 +7,7 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "^6.3",
+        "guzzlehttp/guzzle": "^7.4",
         "laminas/laminas-uri": "^2.7",
         "doctrine/orm": "^2.9",
         "ext-xml": "^8.0",
