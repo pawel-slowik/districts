@@ -6,11 +6,11 @@ namespace Districts\UI\Web\Controller;
 
 use Districts\Application\DistrictService;
 use Districts\UI\Web\Factory\ListDistrictsQueryFactory;
+use Districts\UI\Web\Session;
 use Districts\UI\Web\View\ListView;
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use SlimSession\Helper as Session;
 
 final class ListController
 {
@@ -43,10 +43,9 @@ final class ListController
             "districts" => $districts->getCurrentPageEntries(),
             "filterColumn" => $queryParams["filterColumn"] ?? null,
             "filterValue" => $queryParams["filterValue"] ?? null,
-            "successMessage" => $this->session->get("success.message"),
+            "successMessage" => $this->session->getAndDelete("success.message"),
             "errorMessage" => $errorMessage ?? null,
         ];
-        $this->session->delete("success.message");
         return $this->listView->render(
             $response,
             $districts,

@@ -9,12 +9,12 @@ use Districts\Application\Exception\NotFoundException;
 use Districts\DomainModel\Exception\DistrictNotFoundException;
 use Districts\UI\Web\Factory\RemoveDistrictCommandFactory;
 use Districts\UI\Web\ReverseRouter;
+use Districts\UI\Web\Session;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Psr\Http\Message\ResponseFactoryInterface as ResponseFactory;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
-use SlimSession\Helper as Session;
 
 final class RemoveActionController
 {

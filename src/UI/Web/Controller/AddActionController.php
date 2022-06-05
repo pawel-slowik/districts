@@ -8,11 +8,11 @@ use Districts\Application\DistrictService;
 use Districts\Application\Exception\ValidationException;
 use Districts\UI\Web\Factory\AddDistrictCommandFactory;
 use Districts\UI\Web\ReverseRouter;
+use Districts\UI\Web\Session;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Psr\Http\Message\ResponseFactoryInterface as ResponseFactory;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use SlimSession\Helper as Session;
 
 final class AddActionController
 {
