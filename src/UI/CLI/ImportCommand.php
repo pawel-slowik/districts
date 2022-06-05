@@ -37,8 +37,10 @@ final class ImportCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        /** @var string[] $cityNames */
+        $cityNames = $input->getArgument("city_names");
         try {
-            $cityFilter = new ScraperCityFilter($input->getArgument("city_names"));
+            $cityFilter = new ScraperCityFilter($cityNames);
             foreach ($cityFilter->filter($this->scrapers) as $scraper) {
                 $this->updateCity($scraper->scrape(), $output);
             }
