@@ -26,13 +26,13 @@ final class AddFormController
         $templateData = [
             "title" => "Add a district",
             "cities" => $cities,
-            "district" => $this->session["form.add.values"],
-            "errors" => $this->session["form.add.errors"],
-            "errorMessage" => $this->session["form.add.error.message"],
+            "district" => $this->session->get("form.add.values"),
+            "errors" => $this->session->get("form.add.errors"),
+            "errorMessage" => $this->session->get("form.add.error.message"),
         ];
-        unset($this->session["form.add.error.message"]);
-        unset($this->session["form.add.values"]);
-        unset($this->session["form.add.errors"]);
+        $this->session->delete("form.add.error.message");
+        $this->session->delete("form.add.values");
+        $this->session->delete("form.add.errors");
         return $this->view->render($response, "add.html", $templateData);
     }
 }

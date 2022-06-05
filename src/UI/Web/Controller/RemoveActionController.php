@@ -33,7 +33,7 @@ final class RemoveActionController
         $command = $this->commandFactory->fromRoute($args);
         try {
             $this->districtService->remove($command);
-            $this->session["success.message"] = "District data removed.";
+            $this->session->set("success.message", "District data removed.");
         } catch (DistrictNotFoundException | NotFoundException $exception) {
             throw new HttpNotFoundException($request);
         }

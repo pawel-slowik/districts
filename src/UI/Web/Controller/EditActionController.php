@@ -34,17 +34,17 @@ final class EditActionController
         try {
             $command = $this->commandFactory->fromRequest($request, $args);
             $this->districtService->update($command);
-            $this->session["success.message"] = "District data saved successfully.";
-            unset($this->session["form.edit.values"]);
-            unset($this->session["form.edit.errors"]);
+            $this->session->set("success.message", "District data saved successfully.");
+            $this->session->delete("form.edit.values");
+            $this->session->delete("form.edit.errors");
             $url = $this->reverseRouter->urlFromRoute($request->getUri(), "list");
             return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
         } catch (NotFoundException | DistrictNotFoundException $notFoundException) {
             throw new HttpNotFoundException($request);
         } catch (ValidationException $validationException) {
-            $this->session["form.edit.values"] = $request->getParsedBody();
-            $this->session["form.edit.error.message"] = "An error occured while saving district data.";
-            $this->session["form.edit.errors"] = array_fill_keys($validationException->getErrors(), true);
+            $this->session->set("form.edit.values", $request->getParsedBody());
+            $this->session->set("form.edit.error.message", "An error occured while saving district data.");
+            $this->session->set("form.edit.errors", array_fill_keys($validationException->getErrors(), true));
             $url = $this->reverseRouter->urlFromRoute($request->getUri(), "edit", ["id" => $args["id"]]);
             return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
         }

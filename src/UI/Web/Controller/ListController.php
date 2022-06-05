@@ -43,10 +43,10 @@ final class ListController
             "districts" => $districts->getCurrentPageEntries(),
             "filterColumn" => $queryParams["filterColumn"] ?? null,
             "filterValue" => $queryParams["filterValue"] ?? null,
-            "successMessage" => $this->session["success.message"],
+            "successMessage" => $this->session->get("success.message"),
             "errorMessage" => $errorMessage ?? null,
         ];
-        unset($this->session["success.message"]);
+        $this->session->delete("success.message");
         return $this->listView->render(
             $response,
             $districts,
