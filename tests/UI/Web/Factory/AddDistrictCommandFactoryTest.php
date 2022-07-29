@@ -40,10 +40,10 @@ class AddDistrictCommandFactoryTest extends TestCase
         );
         $command = $this->commandFactory->fromRequest($this->request);
         $this->assertInstanceOf(AddDistrictCommand::class, $command);
-        $this->assertSame(1, $command->getCityId());
-        $this->assertSame("foo", $command->getName());
-        $this->assertSame(2.2, $command->getArea());
-        $this->assertSame(3, $command->getPopulation());
+        $this->assertSame(1, $command->cityId);
+        $this->assertSame("foo", $command->name);
+        $this->assertSame(2.2, $command->area);
+        $this->assertSame(3, $command->population);
     }
 
     public function testTrimsNameInAddRequest(): void
@@ -57,7 +57,7 @@ class AddDistrictCommandFactoryTest extends TestCase
             ]
         );
         $command = $this->commandFactory->fromRequest($this->request);
-        $this->assertSame("foo", $command->getName());
+        $this->assertSame("foo", $command->name);
     }
 
     /**

@@ -33,50 +33,50 @@ class DistrictService
     public function add(AddDistrictCommand $command): void
     {
         try {
-            $city = $this->cityRepository->get($command->getCityId());
+            $city = $this->cityRepository->get($command->cityId);
         } catch (NotFoundInRepositoryException $exception) {
             throw (new ValidationException())->withErrors(["city"]);
         }
         $validationResult = $this->districtValidator->validate(
-            $command->getName(),
-            $command->getArea(),
-            $command->getPopulation(),
+            $command->name,
+            $command->area,
+            $command->population,
         );
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }
         $city->addDistrict(
-            new Name($command->getName()),
-            new Area($command->getArea()),
-            new Population($command->getPopulation()),
+            new Name($command->name),
+            new Area($command->area),
+            new Population($command->population),
         );
         $this->cityRepository->update($city);
     }
 
     public function update(UpdateDistrictCommand $command): void
     {
-        $city = $this->getCityByDistrictId($command->getId());
+        $city = $this->getCityByDistrictId($command->id);
         $validationResult = $this->districtValidator->validate(
-            $command->getName(),
-            $command->getArea(),
-            $command->getPopulation(),
+            $command->name,
+            $command->area,
+            $command->population,
         );
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }
         $city->updateDistrict(
-            $command->getId(),
-            new Name($command->getName()),
-            new Area($command->getArea()),
-            new Population($command->getPopulation()),
+            $command->id,
+            new Name($command->name),
+            new Area($command->area),
+            new Population($command->population),
         );
         $this->cityRepository->update($city);
     }
 
     public function remove(RemoveDistrictCommand $command): void
     {
-        $city = $this->getCityByDistrictId($command->getId());
-        $city->removeDistrict($command->getId());
+        $city = $this->getCityByDistrictId($command->id);
+        $city->removeDistrict($command->id);
         $this->cityRepository->update($city);
     }
 

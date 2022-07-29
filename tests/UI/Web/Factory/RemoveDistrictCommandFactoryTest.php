@@ -25,7 +25,7 @@ class RemoveDistrictCommandFactoryTest extends TestCase
     {
         $command = $this->commandFactory->fromRoute(["id" => "1"]);
         $this->assertInstanceOf(RemoveDistrictCommand::class, $command);
-        $this->assertSame(1, $command->getId());
+        $this->assertSame(1, $command->id);
     }
 
     public function testIncompleteRemoveRequest(): void

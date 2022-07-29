@@ -99,8 +99,7 @@ class DistrictServiceTest extends TestCase
 
     public function testRemoveConfirmed(): void
     {
-        $command = $this->createStub(RemoveDistrictCommand::class);
-        $command->method("getId")->willReturn(222);
+        $command = new RemoveDistrictCommand(id: 222);
 
         $city = $this->createMock(City::class);
 
@@ -124,7 +123,7 @@ class DistrictServiceTest extends TestCase
 
     public function testRemoveNonExistent(): void
     {
-        $command = $this->createStub(RemoveDistrictCommand::class);
+        $command = new RemoveDistrictCommand(id: 1);
 
         $this->cityRepository
             ->method("getByDistrictId")
@@ -141,11 +140,12 @@ class DistrictServiceTest extends TestCase
 
     public function testAdd(): void
     {
-        $command = $this->createStub(AddDistrictCommand::class);
-        $command->method("getCityId")->willReturn(333);
-        $command->method("getName")->willReturn("Lorem ipsum");
-        $command->method("getArea")->willReturn(12.3);
-        $command->method("getPopulation")->willReturn(456);
+        $command = new AddDistrictCommand(
+            cityId: 333,
+            name: "Lorem ipsum",
+            area: 12.3,
+            population: 456,
+        );
 
         $this->districtValidator
             ->method("validate")
@@ -177,7 +177,7 @@ class DistrictServiceTest extends TestCase
 
     public function testAddForNonExistentCity(): void
     {
-        $command = $this->createStub(AddDistrictCommand::class);
+        $command = new AddDistrictCommand(cityId: 1, name: "", area: 1, population: 1);
 
         $this->districtValidator
             ->method("validate")
@@ -198,7 +198,7 @@ class DistrictServiceTest extends TestCase
 
     public function testAddInvalid(): void
     {
-        $command = $this->createStub(AddDistrictCommand::class);
+        $command = new AddDistrictCommand(cityId: 1, name: "", area: 1, population: 1);
 
         $this->districtValidator
             ->method("validate")
@@ -215,7 +215,7 @@ class DistrictServiceTest extends TestCase
 
     public function testAddExceptionErrors(): void
     {
-        $command = $this->createStub(AddDistrictCommand::class);
+        $command = new AddDistrictCommand(cityId: 1, name: "", area: 1, population: 1);
 
         $this->districtValidator
             ->method("validate")
@@ -230,11 +230,12 @@ class DistrictServiceTest extends TestCase
 
     public function testUpdate(): void
     {
-        $command = $this->createStub(UpdateDistrictCommand::class);
-        $command->method("getId")->willReturn(4);
-        $command->method("getName")->willReturn("update test");
-        $command->method("getArea")->willReturn(111.22);
-        $command->method("getPopulation")->willReturn(333);
+        $command = new UpdateDistrictCommand(
+            id: 4,
+            name: "update test",
+            area: 111.22,
+            population: 333,
+        );
 
         $this->districtValidator
             ->method("validate")
@@ -267,7 +268,7 @@ class DistrictServiceTest extends TestCase
 
     public function testUpdateNonExistent(): void
     {
-        $command = $this->createStub(UpdateDistrictCommand::class);
+        $command = new UpdateDistrictCommand(id: 1, name: "", area: 1, population: 1);
 
         $this->districtValidator
             ->method("validate")
@@ -288,7 +289,7 @@ class DistrictServiceTest extends TestCase
 
     public function testUpdateInvalid(): void
     {
-        $command = $this->createStub(UpdateDistrictCommand::class);
+        $command = new UpdateDistrictCommand(id: 1, name: "", area: 1, population: 1);
 
         $this->districtValidator
             ->method("validate")
@@ -305,7 +306,7 @@ class DistrictServiceTest extends TestCase
 
     public function testUpdateExceptionErrors(): void
     {
-        $command = $this->createStub(UpdateDistrictCommand::class);
+        $command = new UpdateDistrictCommand(id: 1, name: "", area: 1, population: 1);
 
         $this->districtValidator
             ->method("validate")
