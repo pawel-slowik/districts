@@ -55,16 +55,16 @@ SQL;
             "districts",
             [
                 [
-                    "city_id" => "1",
+                    "city_id" => 1,
                     "name" => "Plugh",
-                    "area" => "10.0",
-                    "population" => "5000",
+                    "area" => 10.0,
+                    "population" => 5000,
                 ],
                 [
-                    "city_id" => "1",
+                    "city_id" => 1,
                     "name" => "New District",
-                    "area" => "123.4",
-                    "population" => "5678",
+                    "area" => 123.4,
+                    "population" => 5678,
                 ],
             ],
         );
@@ -80,10 +80,10 @@ SQL;
             "districts",
             [
                 [
-                    "city_id" => "1",
+                    "city_id" => 1,
                     "name" => "Updated District",
-                    "area" => "123.4",
-                    "population" => "5678",
+                    "area" => 123.4,
+                    "population" => 5678,
                 ],
             ],
         );

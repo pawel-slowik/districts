@@ -49,9 +49,9 @@ SQL;
             [
                 [
                     "name" => "Plugh",
-                    "area" => "1.0",
-                    "population" => "2",
-                    "city_id" => "1",
+                    "area" => 1.0,
+                    "population" => 2,
+                    "city_id" => 1,
                 ],
             ]
         );
@@ -74,9 +74,9 @@ SQL;
             [
                 [
                     "name" => "Hola",
-                    "area" => "1.0",
-                    "population" => "2",
-                    "city_id" => "1",
+                    "area" => 1.0,
+                    "population" => 2,
+                    "city_id" => 1,
                 ],
             ]
         );
@@ -120,15 +120,15 @@ SQL;
             [
                 [
                     "name" => "Plugh",
-                    "area" => "10.0",
-                    "population" => "5000",
-                    "city_id" => "1",
+                    "area" => 10.0,
+                    "population" => 5000,
+                    "city_id" => 1,
                 ],
                 [
                     "name" => "Hola",
-                    "area" => "1.0",
-                    "population" => "2",
-                    "city_id" => "2",
+                    "area" => 1.0,
+                    "population" => 2,
+                    "city_id" => 2,
                 ],
             ]
         );
