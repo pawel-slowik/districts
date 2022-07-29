@@ -18,9 +18,12 @@ use Districts\DomainModel\Area;
 use Districts\DomainModel\City;
 use Districts\DomainModel\CityRepository;
 use Districts\DomainModel\District;
+use Districts\DomainModel\DistrictFilter\Filter;
+use Districts\DomainModel\DistrictOrdering;
 use Districts\DomainModel\DistrictRepository;
 use Districts\DomainModel\Name;
 use Districts\DomainModel\PaginatedResult;
+use Districts\DomainModel\Pagination;
 use Districts\DomainModel\Population;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -60,8 +63,7 @@ class DistrictServiceTest extends TestCase
 
     public function testGet(): void
     {
-        $query = $this->createStub(GetDistrictQuery::class);
-        $query->method("getId")->willReturn(111);
+        $query = new GetDistrictQuery(id: 111);
 
         $repositoryDistrict = $this->createStub(District::class);
         $this->districtRepository
@@ -82,7 +84,7 @@ class DistrictServiceTest extends TestCase
 
         $this->expectException(NotFoundException::class);
 
-        $this->districtService->get($this->createStub(GetDistrictQuery::class));
+        $this->districtService->get(new GetDistrictQuery(id: 1));
     }
 
     public function testList(): void
@@ -92,7 +94,13 @@ class DistrictServiceTest extends TestCase
             ->method("list")
             ->willReturn($result);
 
-        $list = $this->districtService->list($this->createStub(ListDistrictsQuery::class));
+        $query = new ListDistrictsQuery(
+            ordering: $this->createStub(DistrictOrdering::class),
+            filter: $this->createStub(Filter::class),
+            pagination: $this->createStub(Pagination::class),
+        );
+
+        $list = $this->districtService->list($query);
 
         $this->assertSame($result, $list);
     }

@@ -82,13 +82,13 @@ class DistrictService
 
     public function list(ListDistrictsQuery $query): PaginatedResult
     {
-        return $this->districtRepository->list($query->getOrdering(), $query->getFilter(), $query->getPagination());
+        return $this->districtRepository->list($query->ordering, $query->filter, $query->pagination);
     }
 
     public function get(GetDistrictQuery $query): District
     {
         try {
-            return $this->districtRepository->get($query->getId());
+            return $this->districtRepository->get($query->id);
         } catch (NotFoundInRepositoryException $exception) {
             throw new NotFoundException();
         }

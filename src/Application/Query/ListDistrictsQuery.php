@@ -11,24 +11,9 @@ use Districts\DomainModel\Pagination;
 class ListDistrictsQuery
 {
     public function __construct(
-        private DistrictOrdering $ordering,
-        private ?Filter $filter,
-        private ?Pagination $pagination,
+        public readonly DistrictOrdering $ordering,
+        public readonly ?Filter $filter,
+        public readonly ?Pagination $pagination,
     ) {
-    }
-
-    public function getOrdering(): DistrictOrdering
-    {
-        return $this->ordering;
-    }
-
-    public function getFilter(): ?Filter
-    {
-        return $this->filter;
-    }
-
-    public function getPagination(): ?Pagination
-    {
-        return $this->pagination;
     }
 }

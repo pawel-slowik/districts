@@ -27,7 +27,7 @@ class GetDistrictQueryFactoryTest extends TestCase
         $request = $this->createMock(Request::class);
         $query = $this->queryFactory->fromRequest($request, ["id" => "1"]);
         $this->assertInstanceOf(GetDistrictQuery::class, $query);
-        $this->assertSame(1, $query->getId());
+        $this->assertSame(1, $query->id);
     }
 
     public function testEmptyQuery(): void
