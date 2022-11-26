@@ -17,6 +17,7 @@ class CityParser
 
     public function extractDistrictUrls(string $html): iterable
     {
+        // phpcs:ignore Generic.Files.LineLength.TooLong
         $xpath = "//a[contains(@class, 'nav-link') and .='DZIELNICE']/following::ul/li/a[@class='nav-link' and starts-with(., 'Dzielnica ')]";
         try {
             $nodes = $this->htmlFinder->findNodes($html, $xpath);
