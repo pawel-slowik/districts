@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Infrastructure\DistrictFilter;
 
-use Districts\DomainModel\DistrictFilter\PopulationFilter as DomainPopulationFilter;
+use Districts\Domain\DistrictFilter\PopulationFilter as DomainPopulationFilter;
 
 class PopulationFilter extends Filter
 {

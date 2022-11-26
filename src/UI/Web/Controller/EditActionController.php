@@ -7,7 +7,7 @@ namespace Districts\UI\Web\Controller;
 use Districts\Application\DistrictService;
 use Districts\Application\Exception\NotFoundException;
 use Districts\Application\Exception\ValidationException;
-use Districts\DomainModel\Exception\DistrictNotFoundException;
+use Districts\Domain\Exception\DistrictNotFoundException;
 use Districts\UI\Web\Factory\UpdateDistrictCommandFactory;
 use Districts\UI\Web\ReverseRouter;
 use Districts\UI\Web\Session;

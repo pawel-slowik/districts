@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Infrastructure\DistrictFilter;
 
-use Districts\DomainModel\DistrictFilter\NameFilter as DomainNameFilter;
+use Districts\Domain\DistrictFilter\NameFilter as DomainNameFilter;
 use Districts\Infrastructure\DistrictFilter\NameFilter;
 use PHPUnit\Framework\TestCase;
 

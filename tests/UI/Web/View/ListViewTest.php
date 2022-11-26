@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\View;
 
-use Districts\DomainModel\PaginatedResult;
+use Districts\Domain\PaginatedResult;
 use Districts\UI\Web\View\ListView;
 use Districts\UI\Web\View\OrderingUrlGenerator;
 use Districts\UI\Web\View\PageReferenceFactory;

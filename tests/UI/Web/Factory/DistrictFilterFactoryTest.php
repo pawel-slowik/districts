@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\Web\Factory;
 
-use Districts\DomainModel\DistrictFilter\AreaFilter;
-use Districts\DomainModel\DistrictFilter\CityNameFilter;
-use Districts\DomainModel\DistrictFilter\NameFilter;
-use Districts\DomainModel\DistrictFilter\PopulationFilter;
+use Districts\Domain\DistrictFilter\AreaFilter;
+use Districts\Domain\DistrictFilter\CityNameFilter;
+use Districts\Domain\DistrictFilter\NameFilter;
+use Districts\Domain\DistrictFilter\PopulationFilter;
 use Districts\UI\Web\Factory\DistrictFilterFactory;
 use PHPUnit\Framework\TestCase;
 

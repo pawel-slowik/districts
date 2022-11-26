@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Districts\UI\CLI;
 
 use Districts\Application\Importer;
-use Districts\DomainModel\Scraper\CityDTO;
-use Districts\DomainModel\Scraper\CityScraper;
+use Districts\Domain\Scraper\CityDTO;
+use Districts\Domain\Scraper\CityScraper;
 use InvalidArgumentException as FilterInvalidArgumentException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;

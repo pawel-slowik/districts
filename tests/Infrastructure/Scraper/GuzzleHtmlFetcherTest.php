@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Infrastructure\Scraper;
 
-use Districts\DomainModel\Scraper\Exception\FetchingException;
+use Districts\Domain\Scraper\Exception\FetchingException;
 use Districts\Infrastructure\Scraper\GuzzleHtmlFetcher;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use GuzzleHttp\ClientInterface;

@@ -6,8 +6,8 @@ namespace Districts\Test\Application;
 
 use Districts\Application\Importer;
 use Districts\Application\ProgressReporter;
-use Districts\DomainModel\Scraper\CityDTO;
-use Districts\DomainModel\Scraper\DistrictDTO;
+use Districts\Domain\Scraper\CityDTO;
+use Districts\Domain\Scraper\DistrictDTO;
 use Districts\Infrastructure\DoctrineCityRepository;
 use Districts\Test\Infrastructure\DoctrineDbTestCase;
 

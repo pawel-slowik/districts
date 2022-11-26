@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\Application\Query;
 
-use Districts\DomainModel\DistrictFilter\Filter;
-use Districts\DomainModel\DistrictOrdering;
-use Districts\DomainModel\Pagination;
+use Districts\Domain\DistrictFilter\Filter;
+use Districts\Domain\DistrictOrdering;
+use Districts\Domain\Pagination;
 
 class ListDistrictsQuery
 {

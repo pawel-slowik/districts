@@ -11,14 +11,14 @@ use Districts\Application\Exception\NotFoundException;
 use Districts\Application\Exception\ValidationException;
 use Districts\Application\Query\GetDistrictQuery;
 use Districts\Application\Query\ListDistrictsQuery;
-use Districts\DomainModel\Area;
-use Districts\DomainModel\City;
-use Districts\DomainModel\CityRepository;
-use Districts\DomainModel\District;
-use Districts\DomainModel\DistrictRepository;
-use Districts\DomainModel\Name;
-use Districts\DomainModel\PaginatedResult;
-use Districts\DomainModel\Population;
+use Districts\Domain\Area;
+use Districts\Domain\City;
+use Districts\Domain\CityRepository;
+use Districts\Domain\District;
+use Districts\Domain\DistrictRepository;
+use Districts\Domain\Name;
+use Districts\Domain\PaginatedResult;
+use Districts\Domain\Population;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 
 class DistrictService

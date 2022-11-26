@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\CLI;
 
-use Districts\DomainModel\Scraper\CityScraper;
+use Districts\Domain\Scraper\CityScraper;
 use Districts\UI\CLI\ScraperCityFilter;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;

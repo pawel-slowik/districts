@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Infrastructure\DistrictFilter;
 
-use Districts\DomainModel\DistrictFilter\CityNameFilter as DomainCityNameFilter;
+use Districts\Domain\DistrictFilter\CityNameFilter as DomainCityNameFilter;
 
 class CityNameFilter extends Filter
 {

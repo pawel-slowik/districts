@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\UI\Web\Factory;
 
-use Districts\DomainModel\Pagination;
+use Districts\Domain\Pagination;
 
 class PaginationFactory
 {

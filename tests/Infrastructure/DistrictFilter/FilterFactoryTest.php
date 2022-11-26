@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Districts\Test\Infrastructure\DistrictFilter;
 
-use Districts\DomainModel\DistrictFilter\AreaFilter as DomainAreaFilter;
-use Districts\DomainModel\DistrictFilter\CityNameFilter as DomainCityNameFilter;
-use Districts\DomainModel\DistrictFilter\Filter as DomainFilter;
-use Districts\DomainModel\DistrictFilter\NameFilter as DomainNameFilter;
-use Districts\DomainModel\DistrictFilter\PopulationFilter as DomainPopulationFilter;
+use Districts\Domain\DistrictFilter\AreaFilter as DomainAreaFilter;
+use Districts\Domain\DistrictFilter\CityNameFilter as DomainCityNameFilter;
+use Districts\Domain\DistrictFilter\Filter as DomainFilter;
+use Districts\Domain\DistrictFilter\NameFilter as DomainNameFilter;
+use Districts\Domain\DistrictFilter\PopulationFilter as DomainPopulationFilter;
 use Districts\Infrastructure\DistrictFilter\AreaFilter as DqlAreaFilter;
 use Districts\Infrastructure\DistrictFilter\CityNameFilter as DqlCityNameFilter;
 use Districts\Infrastructure\DistrictFilter\FilterFactory;
