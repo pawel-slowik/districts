@@ -41,7 +41,7 @@
     "scripts": {
         "cs": [
             "vendor/bin/php-cs-fixer fix -v --dry-run",
-            "vendor/bin/phpcs --standard=phpcs.xml src dependencies tests"
+            "vendor/bin/phpcs -s --standard=phpcs.xml src dependencies tests"
         ],
         "cs-fix": [
             "vendor/bin/php-cs-fixer fix -v",
