@@ -26,26 +26,28 @@ class DistrictParser
 
     private function getName(string $html): string
     {
-        $xpath = "//h3";
-        $regexp = "/^[[:space:]]+Dzielnica[[:space:]]+[IVXLCDM]+[[:space:]]+(.*)[[:space:]]+$/uU";
+        $xpath = "//h1[@class='bip' and starts-with(., 'Dzielnica ')]";
+        $regexp = "/^[[:space:]]*Dzielnica[[:space:]]+[IVXLCDM]+[[:space:]]+(.*)[[:space:]]*$/uU";
         return $this->getSingleMatch($html, $xpath, $regexp);
     }
 
     private function getArea(string $html): float
     {
-        $xpath = "//td/b[.='Powierzchnia:']/../following-sibling::td";
+        $xpath = "//p[contains(., 'Powierzchnia dzielnicy:')]/strong";
         $regexp = "/([0-9]+(,[0-9]+){0,1})[[:space:]]+ha/";
+
         $area = $this->getSingleMatch($html, $xpath, $regexp);
         $area = str_replace(",", ".", $area); // decimal point
         $area = floatval($area);
         $area = $area / 100; // unit conversion: ha to square km
+
         return $area;
     }
 
     private function getPopulation(string $html): int
     {
-        $xpath = "//td/b[contains(., 'Liczba ludno')]/../following-sibling::td";
-        $regexp = "/^([0-9]+)$/";
+        $xpath = "//p[contains(., 'Liczba mieszka')]/strong";
+        $regexp = "/^[[:space:]]*([0-9]+)[[:space:]]*$/";
         $text = $this->getSingleMatch($html, $xpath, $regexp);
         return intval($text);
     }

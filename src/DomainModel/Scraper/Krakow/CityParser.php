@@ -17,7 +17,7 @@ class CityParser
 
     public function extractDistrictUrls(string $html): iterable
     {
-        $xpath = "//map[@name='wyb']/area[@href]";
+        $xpath = "//a[contains(@class, 'nav-link') and .='DZIELNICE']/following::ul/li/a[@class='nav-link' and starts-with(., 'Dzielnica ')]";
         try {
             $nodes = $this->htmlFinder->findNodes($html, $xpath);
         } catch (InvalidHtmlException $exception) {

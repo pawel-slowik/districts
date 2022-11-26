@@ -22,7 +22,7 @@ class DistrictParserTest extends TestCase
     protected function setUp(): void
     {
         $this->districtParser = new DistrictParser(new HtmlFinder());
-        $this->validHtml = file_get_contents(__DIR__ . "/DzlViewGlw.jsf?id=17&lay=normal&fo=0");
+        $this->validHtml = file_get_contents(__DIR__ . "/dzielnica_xvii.html");
     }
 
     public function testReturnsDistrict(): void
@@ -46,7 +46,7 @@ class DistrictParserTest extends TestCase
     public function testPopulation(): void
     {
         $district = $this->districtParser->parse($this->validHtml);
-        $this->assertSame(20205, $district->getPopulation());
+        $this->assertSame(20057, $district->getPopulation());
     }
 
     public function testException(): void
