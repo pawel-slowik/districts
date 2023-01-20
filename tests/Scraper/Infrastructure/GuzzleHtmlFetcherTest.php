@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Infrastructure\Scraper;
+namespace Districts\Test\Scraper\Infrastructure;
 
-use Districts\Infrastructure\Scraper\GuzzleHtmlFetcher;
 use Districts\Scraper\Domain\Exception\FetchingException;
+use Districts\Scraper\Infrastructure\GuzzleHtmlFetcher;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use GuzzleHttp\ClientInterface;
 use PHPUnit\Framework\MockObject\Stub;
@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * @covers \Districts\Infrastructure\Scraper\GuzzleHtmlFetcher
+ * @covers \Districts\Scraper\Infrastructure\GuzzleHtmlFetcher
  */
 class GuzzleHtmlFetcherTest extends TestCase
 {

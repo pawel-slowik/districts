@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Infrastructure\Scraper;
+namespace Districts\Scraper\Infrastructure;
 
 use Districts\Scraper\Domain\Exception\FetchingException;
 use Districts\Scraper\Domain\HtmlFetcher;
