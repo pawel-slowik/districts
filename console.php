@@ -6,7 +6,7 @@ declare(strict_types=1);
 require __DIR__ . "/vendor/autoload.php";
 
 use DI\Container;
-use Districts\Application\Importer;
+use Districts\Scraper\Application\Importer;
 use Districts\Scraper\Domain\Gdansk\CityScraper as GdanskScraper;
 use Districts\Scraper\Domain\Krakow\CityScraper as KrakowScraper;
 use Districts\UI\CLI\ImportCommand;

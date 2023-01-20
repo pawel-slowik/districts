@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Test\UI\CLI;
 
-use Districts\Application\Importer;
-use Districts\Application\ProgressReporter;
+use Districts\Scraper\Application\Importer;
+use Districts\Scraper\Application\ProgressReporter;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\CityScraper;
 use Districts\UI\CLI\ImportCommand;

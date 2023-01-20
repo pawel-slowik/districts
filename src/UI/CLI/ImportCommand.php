@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\UI\CLI;
 
-use Districts\Application\Importer;
+use Districts\Scraper\Application\Importer;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\CityScraper;
 use InvalidArgumentException as FilterInvalidArgumentException;

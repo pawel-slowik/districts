@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Application;
+namespace Districts\Test\Scraper\Application;
 
-use Districts\Application\Importer;
-use Districts\Application\ProgressReporter;
 use Districts\Infrastructure\DoctrineCityRepository;
+use Districts\Scraper\Application\Importer;
+use Districts\Scraper\Application\ProgressReporter;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\DistrictDTO;
 use Districts\Test\Infrastructure\DoctrineDbTestCase;
 
 /**
- * @covers \Districts\Application\Importer
+ * @covers \Districts\Scraper\Application\Importer
  */
 class ImporterTest extends DoctrineDbTestCase
 {

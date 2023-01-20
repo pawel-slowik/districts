@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\UI\CLI;
 
-use Districts\Application\ProgressReporter;
+use Districts\Scraper\Application\ProgressReporter;
 use Symfony\Component\Console\Helper\ProgressBar;
 
 class ProgressBarProgressReporter implements ProgressReporter

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Application;
+namespace Districts\Scraper\Application;
 
 interface ProgressReporter
 {
