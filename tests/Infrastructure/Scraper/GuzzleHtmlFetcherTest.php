@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Test\Infrastructure\Scraper;
 
-use Districts\Domain\Scraper\Exception\FetchingException;
 use Districts\Infrastructure\Scraper\GuzzleHtmlFetcher;
+use Districts\Scraper\Domain\Exception\FetchingException;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use GuzzleHttp\ClientInterface;
 use PHPUnit\Framework\MockObject\Stub;

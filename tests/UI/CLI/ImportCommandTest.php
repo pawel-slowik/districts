@@ -6,8 +6,8 @@ namespace Districts\Test\UI\CLI;
 
 use Districts\Application\Importer;
 use Districts\Application\ProgressReporter;
-use Districts\Domain\Scraper\CityDTO;
-use Districts\Domain\Scraper\CityScraper;
+use Districts\Scraper\Domain\CityDTO;
+use Districts\Scraper\Domain\CityScraper;
 use Districts\UI\CLI\ImportCommand;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

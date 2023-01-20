@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Domain\Scraper\Gdansk;
+namespace Districts\Test\Scraper\Domain\Gdansk;
 
-use Districts\Domain\Scraper\DistrictDTO;
-use Districts\Domain\Scraper\Gdansk\CityParser;
-use Districts\Domain\Scraper\Gdansk\CityScraper;
-use Districts\Domain\Scraper\Gdansk\DistrictParser;
-use Districts\Domain\Scraper\HtmlFetcher;
+use Districts\Scraper\Domain\DistrictDTO;
+use Districts\Scraper\Domain\Gdansk\CityParser;
+use Districts\Scraper\Domain\Gdansk\CityScraper;
+use Districts\Scraper\Domain\Gdansk\DistrictParser;
+use Districts\Scraper\Domain\HtmlFetcher;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Domain\Scraper\Gdansk\CityScraper
+ * @covers \Districts\Scraper\Domain\Gdansk\CityScraper
  */
 class CityScraperTest extends TestCase
 {

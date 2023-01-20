@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Districts\Domain\Scraper\Krakow;
+namespace Districts\Scraper\Domain\Krakow;
 
-use Districts\Domain\Scraper\DistrictDTO;
-use Districts\Domain\Scraper\Exception\InvalidHtmlException;
-use Districts\Domain\Scraper\Exception\ParsingException;
-use Districts\Domain\Scraper\HtmlFinder;
+use Districts\Scraper\Domain\DistrictDTO;
+use Districts\Scraper\Domain\Exception\InvalidHtmlException;
+use Districts\Scraper\Domain\Exception\ParsingException;
+use Districts\Scraper\Domain\HtmlFinder;
 
 class DistrictParser
 {

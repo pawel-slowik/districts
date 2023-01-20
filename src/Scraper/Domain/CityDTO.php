@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Domain\Scraper;
+namespace Districts\Scraper\Domain;
 
 class CityDTO
 {

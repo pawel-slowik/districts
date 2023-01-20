@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Districts\Domain\Scraper\HtmlFetcher;
 use Districts\Infrastructure\Scraper\GuzzleHtmlFetcher;
+use Districts\Scraper\Domain\HtmlFetcher;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 

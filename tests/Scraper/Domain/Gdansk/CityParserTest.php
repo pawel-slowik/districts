@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Domain\Scraper\Krakow;
+namespace Districts\Test\Scraper\Domain\Gdansk;
 
-use Districts\Domain\Scraper\Exception\ParsingException;
-use Districts\Domain\Scraper\HtmlFinder;
-use Districts\Domain\Scraper\Krakow\CityParser;
+use Districts\Scraper\Domain\Exception\ParsingException;
+use Districts\Scraper\Domain\Gdansk\CityParser;
+use Districts\Scraper\Domain\HtmlFinder;
 use DOMElement;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Domain\Scraper\Krakow\CityParser
+ * @covers \Districts\Scraper\Domain\Gdansk\CityParser
  */
 class CityParserTest extends TestCase
 {
@@ -33,8 +33,8 @@ class CityParserTest extends TestCase
         $node = $this->createStub(DOMElement::class);
         $node
             ->method("getAttribute")
-            ->with($this->identicalTo("href"))
-            ->willReturn("foo");
+            ->with($this->identicalTo("id"))
+            ->willReturn("0");
 
         $this->htmlFinder
             ->method("findNodes")
@@ -50,8 +50,8 @@ class CityParserTest extends TestCase
         $node = $this->createStub(DOMElement::class);
         $node
             ->method("getAttribute")
-            ->with($this->identicalTo("href"))
-            ->willReturn("foo");
+            ->with($this->identicalTo("id"))
+            ->willReturn("0");
 
         $this->htmlFinder
             ->method("findNodes")
@@ -67,6 +67,24 @@ class CityParserTest extends TestCase
         $this->htmlFinder
             ->method("findNodes")
             ->willReturn([]);
+
+        $this->expectException(ParsingException::class);
+
+        $urls = $this->cityParser->extractDistrictUrls("");
+        // start the generator
+        iterator_to_array($urls);
+    }
+
+    public function testThrowsExceptionOnInvalidId(): void
+    {
+        $node = $this->createStub(DOMElement::class);
+        $node
+            ->method("getAttribute")
+            ->willReturn("foo");
+
+        $this->htmlFinder
+            ->method("findNodes")
+            ->willReturn([$node]);
 
         $this->expectException(ParsingException::class);
 

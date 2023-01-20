@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Domain\Scraper\Krakow;
+namespace Districts\Test\Scraper\Domain\Krakow;
 
-use Districts\Domain\Scraper\DistrictDTO;
-use Districts\Domain\Scraper\Exception\ParsingException;
-use Districts\Domain\Scraper\HtmlFinder;
-use Districts\Domain\Scraper\Krakow\DistrictParser;
+use Districts\Scraper\Domain\DistrictDTO;
+use Districts\Scraper\Domain\Exception\ParsingException;
+use Districts\Scraper\Domain\HtmlFinder;
+use Districts\Scraper\Domain\Krakow\DistrictParser;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Domain\Scraper\Krakow\DistrictParser
+ * @covers \Districts\Scraper\Domain\Krakow\DistrictParser
  */
 class DistrictParserTest extends TestCase
 {

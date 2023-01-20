@@ -7,8 +7,8 @@ require __DIR__ . "/vendor/autoload.php";
 
 use DI\Container;
 use Districts\Application\Importer;
-use Districts\Domain\Scraper\Gdansk\CityScraper as GdanskScraper;
-use Districts\Domain\Scraper\Krakow\CityScraper as KrakowScraper;
+use Districts\Scraper\Domain\Gdansk\CityScraper as GdanskScraper;
+use Districts\Scraper\Domain\Krakow\CityScraper as KrakowScraper;
 use Districts\UI\CLI\ImportCommand;
 use Symfony\Component\Console\Application;
 

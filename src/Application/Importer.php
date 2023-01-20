@@ -9,7 +9,7 @@ use Districts\Domain\City;
 use Districts\Domain\CityRepository;
 use Districts\Domain\Name;
 use Districts\Domain\Population;
-use Districts\Domain\Scraper\CityDTO;
+use Districts\Scraper\Domain\CityDTO;
 
 class Importer
 {

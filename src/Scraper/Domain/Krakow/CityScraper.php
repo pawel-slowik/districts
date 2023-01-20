@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Districts\Domain\Scraper\Gdansk;
+namespace Districts\Scraper\Domain\Krakow;
 
-use Districts\Domain\Scraper\CityDTO;
-use Districts\Domain\Scraper\CityScraper as CityScraperInterface;
-use Districts\Domain\Scraper\HtmlFetcher;
+use Districts\Scraper\Domain\CityDTO;
+use Districts\Scraper\Domain\CityScraper as CityScraperInterface;
+use Districts\Scraper\Domain\HtmlFetcher;
 use Laminas\Uri\Uri;
 
 final class CityScraper implements CityScraperInterface
@@ -20,7 +20,7 @@ final class CityScraper implements CityScraperInterface
 
     public function getCityName(): string
     {
-        return "Gdańsk";
+        return "Kraków";
     }
 
     public function scrape(): CityDTO
@@ -38,7 +38,7 @@ final class CityScraper implements CityScraperInterface
 
     private function listDistrictUrls(): iterable
     {
-        $startUrl = "https://www.gdansk.pl/dzielnice";
+        $startUrl = "https://www.bip.krakow.pl/?bip_id=1&mmi=453";
         $startHtml = $this->htmlFetcher->fetchHtml($startUrl);
         foreach ($this->cityParser->extractDistrictUrls($startHtml) as $href) {
             yield Uri::merge($startUrl, $href)->toString();

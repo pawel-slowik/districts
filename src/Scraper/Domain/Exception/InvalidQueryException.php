@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Domain\Scraper\Exception;
+namespace Districts\Scraper\Domain\Exception;
 
 use DomainException;
 

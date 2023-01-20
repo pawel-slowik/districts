@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Districts\Domain\Scraper;
+namespace Districts\Scraper\Domain;
 
-use Districts\Domain\Scraper\Exception\InvalidHtmlException;
-use Districts\Domain\Scraper\Exception\InvalidQueryException;
+use Districts\Scraper\Domain\Exception\InvalidHtmlException;
+use Districts\Scraper\Domain\Exception\InvalidQueryException;
 use DOMDocument;
 use DOMXpath;
 use ValueError;

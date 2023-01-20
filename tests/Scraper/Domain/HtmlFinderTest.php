@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Domain\Scraper;
+namespace Districts\Test\Scraper\Domain;
 
-use Districts\Domain\Scraper\Exception\InvalidHtmlException;
-use Districts\Domain\Scraper\HtmlFinder;
+use Districts\Scraper\Domain\Exception\InvalidHtmlException;
+use Districts\Scraper\Domain\HtmlFinder;
 use DOMNode;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Domain\Scraper\HtmlFinder
+ * @covers \Districts\Scraper\Domain\HtmlFinder
  */
 class HtmlFinderTest extends TestCase
 {
