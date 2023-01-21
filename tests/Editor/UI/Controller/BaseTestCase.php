@@ -6,7 +6,7 @@ namespace Districts\Test\Editor\UI\Controller;
 
 use DI\Container;
 use Districts\Editor\UI\RoutingConfiguration;
-use Districts\Test\Editor\Infrastructure\FixtureTool;
+use Districts\Test\FixtureTool;
 use Doctrine\ORM\EntityManager;
 use Nyholm\Psr7\ServerRequest;
 use Nyholm\Psr7\Uri;

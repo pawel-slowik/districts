@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Districts\Test\Editor\UI\Controller;
 
 use DI\Container;
-use Districts\Test\Editor\Infrastructure\FixtureTool;
+use Districts\Test\FixtureTool;
 use Doctrine\ORM\EntityManager;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Psr\Http\Message\ResponseInterface;

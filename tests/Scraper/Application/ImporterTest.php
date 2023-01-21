@@ -9,7 +9,7 @@ use Districts\Scraper\Application\Importer;
 use Districts\Scraper\Application\ProgressReporter;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\DistrictDTO;
-use Districts\Test\Editor\Infrastructure\DoctrineDbTestCase;
+use Districts\Test\DoctrineDbTestCase;
 
 /**
  * @covers \Districts\Scraper\Application\Importer

@@ -9,6 +9,7 @@ use Districts\Editor\Domain\City;
 use Districts\Editor\Domain\Name;
 use Districts\Editor\Domain\Population;
 use Districts\Editor\Infrastructure\DoctrineCityRepository;
+use Districts\Test\DoctrineDbTestCase;
 
 /**
  * @covers \Districts\Editor\Infrastructure\DoctrineCityRepository

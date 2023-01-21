@@ -7,6 +7,7 @@ namespace Districts\Test\Editor\Infrastructure;
 use Districts\Editor\Domain\City;
 use Districts\Editor\Infrastructure\DoctrineCityRepository;
 use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
+use Districts\Test\DoctrineDbTestCase;
 
 /**
  * @covers \Districts\Editor\Infrastructure\DoctrineCityRepository

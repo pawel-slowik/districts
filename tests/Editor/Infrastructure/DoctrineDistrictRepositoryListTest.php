@@ -20,6 +20,7 @@ use Districts\Editor\Infrastructure\DistrictFilter\NameFilter as DqlNameFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\NullFilter as DqlNullFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\PopulationFilter as DqlPopulationFilter;
 use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
+use Districts\Test\DoctrineDbTestCase;
 use PHPUnit\Framework\MockObject\Stub;
 
 /**

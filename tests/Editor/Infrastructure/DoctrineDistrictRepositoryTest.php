@@ -10,6 +10,7 @@ use Districts\Editor\Domain\Population;
 use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
 use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
+use Districts\Test\DoctrineDbTestCase;
 
 /**
  * @covers \Districts\Editor\Infrastructure\DoctrineDistrictRepository
