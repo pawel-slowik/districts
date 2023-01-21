@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\UI\CLI;
+namespace Districts\Test\Scraper\UI;
 
 use Districts\Scraper\Application\Importer;
 use Districts\Scraper\Application\ProgressReporter;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\CityScraper;
-use Districts\UI\CLI\ImportCommand;
+use Districts\Scraper\UI\ImportCommand;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
@@ -16,7 +16,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @covers \Districts\UI\CLI\ImportCommand
+ * @covers \Districts\Scraper\UI\ImportCommand
  */
 class ImportCommandTest extends TestCase
 {

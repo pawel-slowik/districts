@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\UI\CLI;
+namespace Districts\Scraper\UI;
 
 use Districts\Scraper\Application\ProgressReporter;
 use Symfony\Component\Console\Helper\ProgressBar;

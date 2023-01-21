@@ -9,7 +9,7 @@ use DI\Container;
 use Districts\Scraper\Application\Importer;
 use Districts\Scraper\Domain\Gdansk\CityScraper as GdanskScraper;
 use Districts\Scraper\Domain\Krakow\CityScraper as KrakowScraper;
-use Districts\UI\CLI\ImportCommand;
+use Districts\Scraper\UI\ImportCommand;
 use Symfony\Component\Console\Application;
 
 $container = new Container();

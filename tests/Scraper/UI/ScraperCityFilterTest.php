@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\UI\CLI;
+namespace Districts\Test\Scraper\UI;
 
 use Districts\Scraper\Domain\CityScraper;
-use Districts\UI\CLI\ScraperCityFilter;
+use Districts\Scraper\UI\ScraperCityFilter;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\UI\CLI\ScraperCityFilter
+ * @covers \Districts\Scraper\UI\ScraperCityFilter
  */
 class ScraperCityFilterTest extends TestCase
 {
