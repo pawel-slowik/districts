@@ -52,7 +52,7 @@ final class ImportCommand extends Command
 
     private function updateCity(CityDTO $cityDTO, OutputInterface $output): void
     {
-        $output->writeln("processing city: " . $cityDTO->getName());
+        $output->writeln("processing city: " . $cityDTO->name);
         $progressBar = new ProgressBar($output);
         $progressBar->start();
         $this->importer->import(

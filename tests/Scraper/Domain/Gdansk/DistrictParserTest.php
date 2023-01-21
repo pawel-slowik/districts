@@ -34,19 +34,19 @@ class DistrictParserTest extends TestCase
     public function testName(): void
     {
         $district = $this->districtParser->parse($this->validHtml);
-        $this->assertSame("Orunia-Św. Wojciech-Lipce", $district->getName());
+        $this->assertSame("Orunia-Św. Wojciech-Lipce", $district->name);
     }
 
     public function testArea(): void
     {
         $district = $this->districtParser->parse($this->validHtml);
-        $this->assertSame(19.63, $district->getArea());
+        $this->assertSame(19.63, $district->area);
     }
 
     public function testPopulation(): void
     {
         $district = $this->districtParser->parse($this->validHtml);
-        $this->assertSame(14435, $district->getPopulation());
+        $this->assertSame(14435, $district->population);
     }
 
     public function testException(): void

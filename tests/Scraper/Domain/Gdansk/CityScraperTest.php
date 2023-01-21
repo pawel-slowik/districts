@@ -50,7 +50,7 @@ class CityScraperTest extends TestCase
     {
         $cityDTO = $this->scraper->scrape();
 
-        $this->assertSame("Gdańsk", $cityDTO->getName());
+        $this->assertSame("Gdańsk", $cityDTO->name);
     }
 
     public function testScrapedDistrictCount(): void
@@ -61,7 +61,7 @@ class CityScraperTest extends TestCase
 
         $cityDTO = $this->scraper->scrape();
 
-        $this->assertCount(3, $cityDTO->listDistricts());
+        $this->assertCount(3, $cityDTO->districts);
     }
 
     public function testScrapedDistrictType(): void
@@ -72,6 +72,6 @@ class CityScraperTest extends TestCase
 
         $cityDTO = $this->scraper->scrape();
 
-        $this->assertContainsOnlyInstancesOf(DistrictDTO::class, $cityDTO->listDistricts());
+        $this->assertContainsOnlyInstancesOf(DistrictDTO::class, $cityDTO->districts);
     }
 }

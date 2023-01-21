@@ -71,6 +71,10 @@ class ImportCommandTest extends TestCase
             ->with($this->identicalTo("city_names"))
             ->willReturn([]);
 
+        $this->scraper
+            ->method("scrape")
+            ->willReturn(new CityDTO("Plugh", []));
+
         $this->importer
             ->expects($this->once())
             ->method("import")

@@ -22,19 +22,19 @@ class Importer
         CityDTO $cityDTO,
         ?ProgressReporter $progressReporter = null
     ): void {
-        $city = $this->cityRepository->findByName($cityDTO->getName());
+        $city = $this->cityRepository->findByName($cityDTO->name);
         if ($city) {
             $city->removeAllDistricts();
             $this->cityRepository->update($city);
         } else {
-            $city = new City($cityDTO->getName());
+            $city = new City($cityDTO->name);
             $this->cityRepository->add($city);
         }
-        foreach ($cityDTO->listDistricts() as $districtDTO) {
+        foreach ($cityDTO->districts as $districtDTO) {
             $city->addDistrict(
-                new Name($districtDTO->getName()),
-                new Area($districtDTO->getArea()),
-                new Population($districtDTO->getPopulation()),
+                new Name($districtDTO->name),
+                new Area($districtDTO->area),
+                new Population($districtDTO->population),
             );
             if ($progressReporter) {
                 $progressReporter->advance();
