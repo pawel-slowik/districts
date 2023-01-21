@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Infrastructure\DistrictFilter;
+namespace Districts\Test\Editor\Infrastructure\DistrictFilter;
 
 use Districts\Domain\DistrictFilter\CityNameFilter as DomainCityNameFilter;
-use Districts\Infrastructure\DistrictFilter\CityNameFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\CityNameFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Infrastructure\DistrictFilter\CityNameFilter
- * @covers \Districts\Infrastructure\DistrictFilter\Filter
+ * @covers \Districts\Editor\Infrastructure\DistrictFilter\CityNameFilter
+ * @covers \Districts\Editor\Infrastructure\DistrictFilter\Filter
  */
 class CityNameFilterTest extends TestCase
 {

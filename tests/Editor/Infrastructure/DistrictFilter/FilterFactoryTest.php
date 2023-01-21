@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Infrastructure\DistrictFilter;
+namespace Districts\Test\Editor\Infrastructure\DistrictFilter;
 
 use Districts\Domain\DistrictFilter\AreaFilter as DomainAreaFilter;
 use Districts\Domain\DistrictFilter\CityNameFilter as DomainCityNameFilter;
 use Districts\Domain\DistrictFilter\Filter as DomainFilter;
 use Districts\Domain\DistrictFilter\NameFilter as DomainNameFilter;
 use Districts\Domain\DistrictFilter\PopulationFilter as DomainPopulationFilter;
-use Districts\Infrastructure\DistrictFilter\AreaFilter as DqlAreaFilter;
-use Districts\Infrastructure\DistrictFilter\CityNameFilter as DqlCityNameFilter;
-use Districts\Infrastructure\DistrictFilter\FilterFactory;
-use Districts\Infrastructure\DistrictFilter\NameFilter as DqlNameFilter;
-use Districts\Infrastructure\DistrictFilter\NullFilter as DqlNullFilter;
-use Districts\Infrastructure\DistrictFilter\PopulationFilter as DqlPopulationFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\AreaFilter as DqlAreaFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\CityNameFilter as DqlCityNameFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
+use Districts\Editor\Infrastructure\DistrictFilter\NameFilter as DqlNameFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\NullFilter as DqlNullFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\PopulationFilter as DqlPopulationFilter;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Infrastructure\DistrictFilter\FilterFactory
+ * @covers \Districts\Editor\Infrastructure\DistrictFilter\FilterFactory
  */
 class FilterFactoryTest extends TestCase
 {

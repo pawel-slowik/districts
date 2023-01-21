@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Infrastructure;
+namespace Districts\Test\Editor\Infrastructure;
 
 use Districts\Domain\District;
 use Districts\Domain\DistrictFilter\AreaFilter;
@@ -12,18 +12,18 @@ use Districts\Domain\DistrictFilter\NameFilter;
 use Districts\Domain\DistrictFilter\PopulationFilter;
 use Districts\Domain\DistrictOrdering;
 use Districts\Domain\Pagination;
-use Districts\Infrastructure\DistrictFilter\AreaFilter as DqlAreaFilter;
-use Districts\Infrastructure\DistrictFilter\CityNameFilter as DqlCityNameFilter;
-use Districts\Infrastructure\DistrictFilter\Filter as DqlFilter;
-use Districts\Infrastructure\DistrictFilter\FilterFactory;
-use Districts\Infrastructure\DistrictFilter\NameFilter as DqlNameFilter;
-use Districts\Infrastructure\DistrictFilter\NullFilter as DqlNullFilter;
-use Districts\Infrastructure\DistrictFilter\PopulationFilter as DqlPopulationFilter;
-use Districts\Infrastructure\DoctrineDistrictRepository;
+use Districts\Editor\Infrastructure\DistrictFilter\AreaFilter as DqlAreaFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\CityNameFilter as DqlCityNameFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\Filter as DqlFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
+use Districts\Editor\Infrastructure\DistrictFilter\NameFilter as DqlNameFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\NullFilter as DqlNullFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\PopulationFilter as DqlPopulationFilter;
+use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use PHPUnit\Framework\MockObject\Stub;
 
 /**
- * @covers \Districts\Infrastructure\DoctrineDistrictRepository
+ * @covers \Districts\Editor\Infrastructure\DoctrineDistrictRepository
  */
 class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 {

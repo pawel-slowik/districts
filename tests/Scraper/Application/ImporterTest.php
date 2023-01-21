@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Districts\Test\Scraper\Application;
 
-use Districts\Infrastructure\DoctrineCityRepository;
+use Districts\Editor\Infrastructure\DoctrineCityRepository;
 use Districts\Scraper\Application\Importer;
 use Districts\Scraper\Application\ProgressReporter;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\DistrictDTO;
-use Districts\Test\Infrastructure\DoctrineDbTestCase;
+use Districts\Test\Editor\Infrastructure\DoctrineDbTestCase;
 
 /**
  * @covers \Districts\Scraper\Application\Importer

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Infrastructure;
+namespace Districts\Test\Editor\Infrastructure;
 
-use Districts\Infrastructure\DoctrinePsrCache;
+use Districts\Editor\Infrastructure\DoctrinePsrCache;
 use Exception;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -12,7 +12,7 @@ use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
 
 /**
- * @covers \Districts\Infrastructure\DoctrinePsrCache
+ * @covers \Districts\Editor\Infrastructure\DoctrinePsrCache
  */
 class DoctrinePsrCacheTest extends TestCase
 {

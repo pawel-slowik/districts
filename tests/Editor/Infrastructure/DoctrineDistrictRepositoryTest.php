@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Infrastructure;
+namespace Districts\Test\Editor\Infrastructure;
 
 use Districts\Domain\Area;
 use Districts\Domain\Name;
 use Districts\Domain\Population;
-use Districts\Infrastructure\DistrictFilter\FilterFactory;
-use Districts\Infrastructure\DoctrineDistrictRepository;
-use Districts\Infrastructure\NotFoundInRepositoryException;
+use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
+use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
+use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 
 /**
- * @covers \Districts\Infrastructure\DoctrineDistrictRepository
+ * @covers \Districts\Editor\Infrastructure\DoctrineDistrictRepository
  */
 class DoctrineDistrictRepositoryTest extends DoctrineDbTestCase
 {

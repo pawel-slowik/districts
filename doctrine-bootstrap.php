@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Cache\Adapter\PHPArray\ArrayCachePool;
-use Districts\Infrastructure\DoctrinePsrCache;
+use Districts\Editor\Infrastructure\DoctrinePsrCache;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\ORM\Tools\Setup;

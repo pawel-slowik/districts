@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Infrastructure;
+namespace Districts\Test\Editor\Infrastructure;
 
 use Districts\Domain\City;
-use Districts\Infrastructure\DoctrineCityRepository;
-use Districts\Infrastructure\NotFoundInRepositoryException;
+use Districts\Editor\Infrastructure\DoctrineCityRepository;
+use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 
 /**
- * @covers \Districts\Infrastructure\DoctrineCityRepository
+ * @covers \Districts\Editor\Infrastructure\DoctrineCityRepository
  */
 class DoctrineCityRepositoryTest extends DoctrineDbTestCase
 {

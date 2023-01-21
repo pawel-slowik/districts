@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Infrastructure;
+namespace Districts\Editor\Infrastructure;
 
 use Districts\Domain\City;
 use Districts\Domain\CityRepository;

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Infrastructure\DistrictFilter;
+namespace Districts\Test\Editor\Infrastructure\DistrictFilter;
 
 use Districts\Domain\DistrictFilter\AreaFilter as DomainAreaFilter;
-use Districts\Infrastructure\DistrictFilter\AreaFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\AreaFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Infrastructure\DistrictFilter\AreaFilter
+ * @covers \Districts\Editor\Infrastructure\DistrictFilter\AreaFilter
  */
 class AreaFilterTest extends TestCase
 {

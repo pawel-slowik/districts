@@ -25,7 +25,7 @@ use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\Application\Query\GetDistrictQuery;
 use Districts\Editor\Application\Query\ListDistrictsQuery;
 use Districts\Editor\Application\ValidationResult;
-use Districts\Infrastructure\NotFoundInRepositoryException;
+use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;

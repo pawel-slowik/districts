@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Infrastructure\DistrictFilter;
+namespace Districts\Test\Editor\Infrastructure\DistrictFilter;
 
 use Districts\Domain\DistrictFilter\PopulationFilter as DomainPopulationFilter;
-use Districts\Infrastructure\DistrictFilter\PopulationFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\PopulationFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Infrastructure\DistrictFilter\PopulationFilter
+ * @covers \Districts\Editor\Infrastructure\DistrictFilter\PopulationFilter
  */
 class PopulationFilterTest extends TestCase
 {

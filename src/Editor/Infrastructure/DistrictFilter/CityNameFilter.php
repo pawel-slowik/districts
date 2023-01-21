@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Infrastructure\DistrictFilter;
+namespace Districts\Editor\Infrastructure\DistrictFilter;
 
 use Districts\Domain\DistrictFilter\CityNameFilter as DomainCityNameFilter;
 

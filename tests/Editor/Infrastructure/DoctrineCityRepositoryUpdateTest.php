@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Infrastructure;
+namespace Districts\Test\Editor\Infrastructure;
 
 use Districts\Domain\Area;
 use Districts\Domain\City;
 use Districts\Domain\Name;
 use Districts\Domain\Population;
-use Districts\Infrastructure\DoctrineCityRepository;
+use Districts\Editor\Infrastructure\DoctrineCityRepository;
 
 /**
- * @covers \Districts\Infrastructure\DoctrineCityRepository
+ * @covers \Districts\Editor\Infrastructure\DoctrineCityRepository
  */
 class DoctrineCityRepositoryUpdateTest extends DoctrineDbTestCase
 {

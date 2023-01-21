@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Infrastructure;
+namespace Districts\Editor\Infrastructure;
 
 use Doctrine\Common\Cache\Cache;
 use Psr\SimpleCache\CacheInterface;

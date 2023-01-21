@@ -6,7 +6,7 @@ namespace Districts\Test\Editor\UI\Controller;
 
 use DI\Container;
 use Districts\Editor\UI\RoutingConfiguration;
-use Districts\Test\Infrastructure\FixtureTool;
+use Districts\Test\Editor\Infrastructure\FixtureTool;
 use Doctrine\ORM\EntityManager;
 use Nyholm\Psr7\ServerRequest;
 use Nyholm\Psr7\Uri;
@@ -30,8 +30,8 @@ abstract class BaseTestCase extends TestCase
 
         FixtureTool::reset($entityManager);
         FixtureTool::loadFiles($entityManager, [
-            "tests/Infrastructure/data/cities.sql",
-            "tests/Infrastructure/data/districts.sql",
+            "tests/Editor/Infrastructure/data/cities.sql",
+            "tests/Editor/Infrastructure/data/districts.sql",
         ]);
 
         $request = $this->createRequest($requestMethod, $requestUri, $requestData);

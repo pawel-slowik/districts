@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use Districts\Domain\CityRepository;
 use Districts\Domain\DistrictRepository;
-use Districts\Infrastructure\DoctrineCityRepository;
-use Districts\Infrastructure\DoctrineDistrictRepository;
+use Districts\Editor\Infrastructure\DoctrineCityRepository;
+use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Doctrine\ORM\EntityManager;
 
 return [

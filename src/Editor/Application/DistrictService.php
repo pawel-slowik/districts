@@ -19,7 +19,7 @@ use Districts\Editor\Application\Exception\NotFoundException;
 use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\Application\Query\GetDistrictQuery;
 use Districts\Editor\Application\Query\ListDistrictsQuery;
-use Districts\Infrastructure\NotFoundInRepositoryException;
+use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 
 class DistrictService
 {

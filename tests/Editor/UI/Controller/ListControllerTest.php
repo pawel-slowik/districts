@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Districts\Test\Editor\UI\Controller;
 
 use DI\Container;
-use Districts\Test\Infrastructure\FixtureTool;
+use Districts\Test\Editor\Infrastructure\FixtureTool;
 use Doctrine\ORM\EntityManager;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Psr\Http\Message\ResponseInterface;
@@ -74,7 +74,7 @@ class ListControllerTest extends BaseTestCase
         $entityManager = $container->get(EntityManager::class);
         FixtureTool::reset($entityManager);
         FixtureTool::loadFiles($entityManager, [
-            "tests/Infrastructure/data/cities_and_districts_for_pagination_tests.sql",
+            "tests/Editor/Infrastructure/data/cities_and_districts_for_pagination_tests.sql",
         ]);
         $request = $this->createRequest($requestMethod, $requestUri, $requestData);
         return $app->handle($request);

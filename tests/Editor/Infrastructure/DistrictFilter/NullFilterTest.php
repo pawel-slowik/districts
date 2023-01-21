@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Infrastructure\DistrictFilter;
+namespace Districts\Test\Editor\Infrastructure\DistrictFilter;
 
-use Districts\Infrastructure\DistrictFilter\NullFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\NullFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Infrastructure\DistrictFilter\NullFilter
+ * @covers \Districts\Editor\Infrastructure\DistrictFilter\NullFilter
  */
 class NullFilterTest extends TestCase
 {
