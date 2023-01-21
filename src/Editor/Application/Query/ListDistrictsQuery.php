@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Application\Query;
+namespace Districts\Editor\Application\Query;
 
 use Districts\Domain\DistrictFilter\Filter;
 use Districts\Domain\DistrictOrdering;

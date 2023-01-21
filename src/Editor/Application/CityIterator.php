@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Application;
+namespace Districts\Editor\Application;
 
 use ArrayIterator;
 use Districts\Domain\City;

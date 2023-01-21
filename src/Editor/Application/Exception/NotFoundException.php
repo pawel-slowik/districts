@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Application\Exception;
+namespace Districts\Editor\Application\Exception;
 
 use RuntimeException;
 

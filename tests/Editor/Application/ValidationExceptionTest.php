@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Application;
+namespace Districts\Test\Editor\Application;
 
-use Districts\Application\Exception\ValidationException;
+use Districts\Editor\Application\Exception\ValidationException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Application\Exception\ValidationException
+ * @covers \Districts\Editor\Application\Exception\ValidationException
  */
 class ValidationExceptionTest extends TestCase
 {

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI\Controller;
 
-use Districts\Application\DistrictService;
-use Districts\Application\Exception\NotFoundException;
 use Districts\Domain\Exception\DistrictNotFoundException;
+use Districts\Editor\Application\DistrictService;
+use Districts\Editor\Application\Exception\NotFoundException;
 use Districts\Editor\UI\Factory\RemoveDistrictCommandFactory;
 use Districts\Editor\UI\ReverseRouter;
 use Districts\Editor\UI\Session;

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Test\Editor\UI\Factory;
 
-use Districts\Application\Command\RemoveDistrictCommand;
-use Districts\Application\Exception\ValidationException;
+use Districts\Editor\Application\Command\RemoveDistrictCommand;
+use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\UI\Factory\RemoveDistrictCommandFactory;
 use PHPUnit\Framework\TestCase;
 

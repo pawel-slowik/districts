@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Test\Editor\UI\Factory;
 
-use Districts\Application\Exception\ValidationException;
-use Districts\Application\Query\GetDistrictQuery;
+use Districts\Editor\Application\Exception\ValidationException;
+use Districts\Editor\Application\Query\GetDistrictQuery;
 use Districts\Editor\UI\Factory\GetDistrictQueryFactory;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;

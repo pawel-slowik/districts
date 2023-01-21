@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Test\Editor\UI\Factory;
 
-use Districts\Application\Command\UpdateDistrictCommand;
-use Districts\Application\Exception\ValidationException;
+use Districts\Editor\Application\Command\UpdateDistrictCommand;
+use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\UI\Factory\UpdateDistrictCommandFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

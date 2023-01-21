@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI\Controller;
 
-use Districts\Application\DistrictService;
-use Districts\Application\Exception\ValidationException;
+use Districts\Editor\Application\DistrictService;
+use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\UI\Factory\AddDistrictCommandFactory;
 use Districts\Editor\UI\ReverseRouter;
 use Districts\Editor\UI\Session;

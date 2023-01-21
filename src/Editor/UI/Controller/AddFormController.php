@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI\Controller;
 
-use Districts\Application\CityIterator;
+use Districts\Editor\Application\CityIterator;
 use Districts\Editor\UI\Session;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

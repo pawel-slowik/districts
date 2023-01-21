@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI\Controller;
 
-use Districts\Application\DistrictService;
+use Districts\Editor\Application\DistrictService;
 use Districts\Editor\UI\Factory\ListDistrictsQueryFactory;
 use Districts\Editor\UI\Session;
 use Districts\Editor\UI\View\ListView;

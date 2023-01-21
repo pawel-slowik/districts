@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI\Factory;
 
-use Districts\Application\Query\ListDistrictsQuery;
+use Districts\Editor\Application\Query\ListDistrictsQuery;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 class ListDistrictsQueryFactory

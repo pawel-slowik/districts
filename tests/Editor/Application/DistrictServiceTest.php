@@ -2,18 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Application;
+namespace Districts\Test\Editor\Application;
 
-use Districts\Application\Command\AddDistrictCommand;
-use Districts\Application\Command\RemoveDistrictCommand;
-use Districts\Application\Command\UpdateDistrictCommand;
-use Districts\Application\DistrictService;
-use Districts\Application\DistrictValidator;
-use Districts\Application\Exception\NotFoundException;
-use Districts\Application\Exception\ValidationException;
-use Districts\Application\Query\GetDistrictQuery;
-use Districts\Application\Query\ListDistrictsQuery;
-use Districts\Application\ValidationResult;
 use Districts\Domain\Area;
 use Districts\Domain\City;
 use Districts\Domain\CityRepository;
@@ -25,13 +15,23 @@ use Districts\Domain\Name;
 use Districts\Domain\PaginatedResult;
 use Districts\Domain\Pagination;
 use Districts\Domain\Population;
+use Districts\Editor\Application\Command\AddDistrictCommand;
+use Districts\Editor\Application\Command\RemoveDistrictCommand;
+use Districts\Editor\Application\Command\UpdateDistrictCommand;
+use Districts\Editor\Application\DistrictService;
+use Districts\Editor\Application\DistrictValidator;
+use Districts\Editor\Application\Exception\NotFoundException;
+use Districts\Editor\Application\Exception\ValidationException;
+use Districts\Editor\Application\Query\GetDistrictQuery;
+use Districts\Editor\Application\Query\ListDistrictsQuery;
+use Districts\Editor\Application\ValidationResult;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Application\DistrictService
+ * @covers \Districts\Editor\Application\DistrictService
  */
 class DistrictServiceTest extends TestCase
 {

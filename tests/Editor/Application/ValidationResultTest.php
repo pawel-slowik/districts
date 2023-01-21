@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Application;
+namespace Districts\Test\Editor\Application;
 
-use Districts\Application\ValidationResult;
+use Districts\Editor\Application\ValidationResult;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Application\ValidationResult
+ * @covers \Districts\Editor\Application\ValidationResult
  */
 class ValidationResultTest extends TestCase
 {

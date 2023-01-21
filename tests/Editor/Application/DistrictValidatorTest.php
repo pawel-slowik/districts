@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Application;
+namespace Districts\Test\Editor\Application;
 
-use Districts\Application\DistrictValidator;
+use Districts\Editor\Application\DistrictValidator;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Districts\Application\DistrictValidator
+ * @covers \Districts\Editor\Application\DistrictValidator
  */
 class DistrictValidatorTest extends TestCase
 {

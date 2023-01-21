@@ -2,15 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Districts\Application;
+namespace Districts\Editor\Application;
 
-use Districts\Application\Command\AddDistrictCommand;
-use Districts\Application\Command\RemoveDistrictCommand;
-use Districts\Application\Command\UpdateDistrictCommand;
-use Districts\Application\Exception\NotFoundException;
-use Districts\Application\Exception\ValidationException;
-use Districts\Application\Query\GetDistrictQuery;
-use Districts\Application\Query\ListDistrictsQuery;
 use Districts\Domain\Area;
 use Districts\Domain\City;
 use Districts\Domain\CityRepository;
@@ -19,6 +12,13 @@ use Districts\Domain\DistrictRepository;
 use Districts\Domain\Name;
 use Districts\Domain\PaginatedResult;
 use Districts\Domain\Population;
+use Districts\Editor\Application\Command\AddDistrictCommand;
+use Districts\Editor\Application\Command\RemoveDistrictCommand;
+use Districts\Editor\Application\Command\UpdateDistrictCommand;
+use Districts\Editor\Application\Exception\NotFoundException;
+use Districts\Editor\Application\Exception\ValidationException;
+use Districts\Editor\Application\Query\GetDistrictQuery;
+use Districts\Editor\Application\Query\ListDistrictsQuery;
 use Districts\Infrastructure\NotFoundInRepositoryException;
 
 class DistrictService
