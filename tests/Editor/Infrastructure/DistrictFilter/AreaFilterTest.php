@@ -15,7 +15,7 @@ class AreaFilterTest extends TestCase
 {
     public function testWhere(): void
     {
-        $domainFilter = $this->createStub(DomainAreaFilter::class);
+        $domainFilter = new DomainAreaFilter(1, 2);
 
         $filter = new AreaFilter($domainFilter);
 
@@ -24,9 +24,7 @@ class AreaFilterTest extends TestCase
 
     public function testParameters(): void
     {
-        $domainFilter = $this->createStub(DomainAreaFilter::class);
-        $domainFilter->method("getBegin")->willReturn(1.1);
-        $domainFilter->method("getEnd")->willReturn(2.2);
+        $domainFilter = new DomainAreaFilter(1.1, 2.2);
 
         $filter = new AreaFilter($domainFilter);
 

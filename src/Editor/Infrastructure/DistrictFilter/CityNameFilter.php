@@ -12,7 +12,7 @@ class CityNameFilter extends Filter
 
     public function __construct(DomainCityNameFilter $domainFilter)
     {
-        $this->cityName = $domainFilter->getCityName();
+        $this->cityName = $domainFilter->cityName;
     }
 
     public function where(): string

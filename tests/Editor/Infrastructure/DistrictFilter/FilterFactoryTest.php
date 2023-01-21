@@ -44,10 +44,10 @@ class FilterFactoryTest extends TestCase
     {
         return [
             [null, DqlNullFilter::class],
-            [$this->createStub(DomainAreaFilter::class), DqlAreaFilter::class],
-            [$this->createStub(DomainCityNameFilter::class), DqlCityNameFilter::class],
-            [$this->createStub(DomainNameFilter::class), DqlNameFilter::class],
-            [$this->createStub(DomainPopulationFilter::class), DqlPopulationFilter::class],
+            [new DomainAreaFilter(1, 2), DqlAreaFilter::class],
+            [new DomainCityNameFilter("foo"), DqlCityNameFilter::class],
+            [new DomainNameFilter("bar"), DqlNameFilter::class],
+            [new DomainPopulationFilter(3, 4), DqlPopulationFilter::class],
         ];
     }
 

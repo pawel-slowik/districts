@@ -13,11 +13,11 @@ use PHPUnit\Framework\TestCase;
  */
 class PopulationFilterTest extends TestCase
 {
-    public function testGetters(): void
+    public function testProperties(): void
     {
         $filter = new PopulationFilter(1, 2);
-        $this->assertSame(1, $filter->getBegin());
-        $this->assertSame(2, $filter->getEnd());
+        $this->assertSame(1, $filter->begin);
+        $this->assertSame(2, $filter->end);
     }
 
     /**

@@ -13,11 +13,11 @@ use PHPUnit\Framework\TestCase;
  */
 class AreaFilterTest extends TestCase
 {
-    public function testGetters(): void
+    public function testProperties(): void
     {
         $filter = new AreaFilter((float) 1, (float) 2);
-        $this->assertSame((float) 1, $filter->getBegin());
-        $this->assertSame((float) 2, $filter->getEnd());
+        $this->assertSame((float) 1, $filter->begin);
+        $this->assertSame((float) 2, $filter->end);
     }
 
     /**

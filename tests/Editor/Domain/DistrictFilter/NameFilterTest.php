@@ -13,10 +13,10 @@ use PHPUnit\Framework\TestCase;
  */
 class NameFilterTest extends TestCase
 {
-    public function testGetters(): void
+    public function testProperties(): void
     {
         $filter = new NameFilter("test");
-        $this->assertSame("test", $filter->getName());
+        $this->assertSame("test", $filter->name);
     }
 
     public function testInvalid(): void

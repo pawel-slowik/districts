@@ -9,22 +9,12 @@ use InvalidArgumentException;
 class AreaFilter extends Filter
 {
     public function __construct(
-        private float $begin,
-        private float $end,
+        public readonly float $begin,
+        public readonly float $end,
     ) {
         if (!self::validate($begin, $end)) {
             throw new InvalidArgumentException();
         }
-    }
-
-    public function getBegin(): float
-    {
-        return $this->begin;
-    }
-
-    public function getEnd(): float
-    {
-        return $this->end;
     }
 
     private static function validate(float $begin, float $end): bool

@@ -9,22 +9,12 @@ use InvalidArgumentException;
 class PopulationFilter extends Filter
 {
     public function __construct(
-        private int $begin,
-        private int $end,
+        public readonly int $begin,
+        public readonly int $end,
     ) {
         if (!self::validate($begin, $end)) {
             throw new InvalidArgumentException();
         }
-    }
-
-    public function getBegin(): int
-    {
-        return $this->begin;
-    }
-
-    public function getEnd(): int
-    {
-        return $this->end;
     }
 
     private static function validate(int $begin, int $end): bool

@@ -12,7 +12,7 @@ class NameFilter extends Filter
 
     public function __construct(DomainNameFilter $domainFilter)
     {
-        $this->name = $domainFilter->getName();
+        $this->name = $domainFilter->name;
     }
 
     public function where(): string

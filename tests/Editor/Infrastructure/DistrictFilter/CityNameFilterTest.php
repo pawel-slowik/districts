@@ -16,7 +16,7 @@ class CityNameFilterTest extends TestCase
 {
     public function testWhere(): void
     {
-        $domainFilter = $this->createStub(DomainCityNameFilter::class);
+        $domainFilter = new DomainCityNameFilter("hola");
 
         $filter = new CityNameFilter($domainFilter);
 
@@ -25,8 +25,7 @@ class CityNameFilterTest extends TestCase
 
     public function testParameters(): void
     {
-        $domainFilter = $this->createStub(DomainCityNameFilter::class);
-        $domainFilter->method("getCityName")->willReturn("foo");
+        $domainFilter = new DomainCityNameFilter("foo");
 
         $filter = new CityNameFilter($domainFilter);
 
@@ -35,8 +34,7 @@ class CityNameFilterTest extends TestCase
 
     public function testEscapeLike(): void
     {
-        $domainFilter = $this->createStub(DomainCityNameFilter::class);
-        $domainFilter->method("getCityName")->willReturn("%");
+        $domainFilter = new DomainCityNameFilter("%");
 
         $filter = new CityNameFilter($domainFilter);
 

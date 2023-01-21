@@ -15,7 +15,7 @@ class PopulationFilterTest extends TestCase
 {
     public function testWhere(): void
     {
-        $domainFilter = $this->createStub(DomainPopulationFilter::class);
+        $domainFilter = new DomainPopulationFilter(1, 2);
 
         $filter = new PopulationFilter($domainFilter);
 
@@ -24,9 +24,7 @@ class PopulationFilterTest extends TestCase
 
     public function testParameters(): void
     {
-        $domainFilter = $this->createStub(DomainPopulationFilter::class);
-        $domainFilter->method("getBegin")->willReturn(3);
-        $domainFilter->method("getEnd")->willReturn(4);
+        $domainFilter = new DomainPopulationFilter(3, 4);
 
         $filter = new PopulationFilter($domainFilter);
 

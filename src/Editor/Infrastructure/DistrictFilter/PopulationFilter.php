@@ -14,8 +14,8 @@ class PopulationFilter extends Filter
 
     public function __construct(DomainPopulationFilter $domainFilter)
     {
-        $this->low = $domainFilter->getBegin();
-        $this->high = $domainFilter->getEnd();
+        $this->low = $domainFilter->begin;
+        $this->high = $domainFilter->end;
     }
 
     public function where(): string
