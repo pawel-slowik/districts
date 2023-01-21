@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Editor\UI\Factory;
 
-use Districts\Domain\DistrictOrdering;
+use Districts\Editor\Domain\DistrictOrdering;
 use Districts\Editor\UI\Factory\DistrictOrderingFactory;
 use PHPUnit\Framework\TestCase;
 

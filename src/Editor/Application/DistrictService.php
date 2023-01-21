@@ -4,14 +4,6 @@ declare(strict_types=1);
 
 namespace Districts\Editor\Application;
 
-use Districts\Domain\Area;
-use Districts\Domain\City;
-use Districts\Domain\CityRepository;
-use Districts\Domain\District;
-use Districts\Domain\DistrictRepository;
-use Districts\Domain\Name;
-use Districts\Domain\PaginatedResult;
-use Districts\Domain\Population;
 use Districts\Editor\Application\Command\AddDistrictCommand;
 use Districts\Editor\Application\Command\RemoveDistrictCommand;
 use Districts\Editor\Application\Command\UpdateDistrictCommand;
@@ -19,6 +11,14 @@ use Districts\Editor\Application\Exception\NotFoundException;
 use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\Application\Query\GetDistrictQuery;
 use Districts\Editor\Application\Query\ListDistrictsQuery;
+use Districts\Editor\Domain\Area;
+use Districts\Editor\Domain\City;
+use Districts\Editor\Domain\CityRepository;
+use Districts\Editor\Domain\District;
+use Districts\Editor\Domain\DistrictRepository;
+use Districts\Editor\Domain\Name;
+use Districts\Editor\Domain\PaginatedResult;
+use Districts\Editor\Domain\Population;
 use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 
 class DistrictService

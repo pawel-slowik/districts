@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI\Controller;
 
-use Districts\Domain\Exception\DistrictNotFoundException;
 use Districts\Editor\Application\DistrictService;
 use Districts\Editor\Application\Exception\NotFoundException;
+use Districts\Editor\Domain\Exception\DistrictNotFoundException;
 use Districts\Editor\UI\Factory\GetDistrictQueryFactory;
 use Districts\Editor\UI\Session;
 use Psr\Http\Message\ResponseInterface as Response;

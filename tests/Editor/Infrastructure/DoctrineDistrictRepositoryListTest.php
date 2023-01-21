@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Districts\Test\Editor\Infrastructure;
 
-use Districts\Domain\District;
-use Districts\Domain\DistrictFilter\AreaFilter;
-use Districts\Domain\DistrictFilter\CityNameFilter;
-use Districts\Domain\DistrictFilter\Filter;
-use Districts\Domain\DistrictFilter\NameFilter;
-use Districts\Domain\DistrictFilter\PopulationFilter;
-use Districts\Domain\DistrictOrdering;
-use Districts\Domain\Pagination;
+use Districts\Editor\Domain\District;
+use Districts\Editor\Domain\DistrictFilter\AreaFilter;
+use Districts\Editor\Domain\DistrictFilter\CityNameFilter;
+use Districts\Editor\Domain\DistrictFilter\Filter;
+use Districts\Editor\Domain\DistrictFilter\NameFilter;
+use Districts\Editor\Domain\DistrictFilter\PopulationFilter;
+use Districts\Editor\Domain\DistrictOrdering;
+use Districts\Editor\Domain\Pagination;
 use Districts\Editor\Infrastructure\DistrictFilter\AreaFilter as DqlAreaFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\CityNameFilter as DqlCityNameFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\Filter as DqlFilter;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Editor\Infrastructure;
 
-use Districts\Domain\City;
+use Districts\Editor\Domain\City;
 use Districts\Editor\Infrastructure\DoctrineCityRepository;
 use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 

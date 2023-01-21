@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Editor\Infrastructure\DistrictFilter;
 
-use Districts\Domain\DistrictFilter\AreaFilter as DomainAreaFilter;
+use Districts\Editor\Domain\DistrictFilter\AreaFilter as DomainAreaFilter;
 
 class AreaFilter extends Filter
 {

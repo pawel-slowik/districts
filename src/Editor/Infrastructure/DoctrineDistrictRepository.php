@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Districts\Editor\Infrastructure;
 
-use Districts\Domain\District;
-use Districts\Domain\DistrictFilter\Filter;
-use Districts\Domain\DistrictOrdering;
-use Districts\Domain\DistrictRepository;
-use Districts\Domain\PaginatedResult;
-use Districts\Domain\Pagination;
+use Districts\Editor\Domain\District;
+use Districts\Editor\Domain\DistrictFilter\Filter;
+use Districts\Editor\Domain\DistrictOrdering;
+use Districts\Editor\Domain\DistrictRepository;
+use Districts\Editor\Domain\PaginatedResult;
+use Districts\Editor\Domain\Pagination;
 use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Pagination\Paginator;

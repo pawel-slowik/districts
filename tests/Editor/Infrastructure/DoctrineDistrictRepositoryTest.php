@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\Test\Editor\Infrastructure;
 
-use Districts\Domain\Area;
-use Districts\Domain\Name;
-use Districts\Domain\Population;
+use Districts\Editor\Domain\Area;
+use Districts\Editor\Domain\Name;
+use Districts\Editor\Domain\Population;
 use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
 use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Districts\Editor\Infrastructure\NotFoundInRepositoryException;

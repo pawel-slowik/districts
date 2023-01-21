@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Districts\Editor\Application;
 
-use Districts\Domain\Area;
-use Districts\Domain\Exception\InvalidAreaException;
-use Districts\Domain\Exception\InvalidNameException;
-use Districts\Domain\Exception\InvalidPopulationException;
-use Districts\Domain\Name;
-use Districts\Domain\Population;
+use Districts\Editor\Domain\Area;
+use Districts\Editor\Domain\Exception\InvalidAreaException;
+use Districts\Editor\Domain\Exception\InvalidNameException;
+use Districts\Editor\Domain\Exception\InvalidPopulationException;
+use Districts\Editor\Domain\Name;
+use Districts\Editor\Domain\Population;
 
 class DistrictValidator
 {

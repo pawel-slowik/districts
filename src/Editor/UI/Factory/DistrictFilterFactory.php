@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI\Factory;
 
-use Districts\Domain\DistrictFilter\AreaFilter;
-use Districts\Domain\DistrictFilter\CityNameFilter;
-use Districts\Domain\DistrictFilter\Filter;
-use Districts\Domain\DistrictFilter\NameFilter;
-use Districts\Domain\DistrictFilter\PopulationFilter;
+use Districts\Editor\Domain\DistrictFilter\AreaFilter;
+use Districts\Editor\Domain\DistrictFilter\CityNameFilter;
+use Districts\Editor\Domain\DistrictFilter\Filter;
+use Districts\Editor\Domain\DistrictFilter\NameFilter;
+use Districts\Editor\Domain\DistrictFilter\PopulationFilter;
 
 class DistrictFilterFactory
 {

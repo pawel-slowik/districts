@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Editor\UI\Factory;
 
-use Districts\Domain\Pagination;
+use Districts\Editor\Domain\Pagination;
 use Districts\Editor\UI\Factory\PaginationFactory;
 use PHPUnit\Framework\TestCase;
 

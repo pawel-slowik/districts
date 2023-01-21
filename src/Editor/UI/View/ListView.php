@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI\View;
 
-use Districts\Domain\PaginatedResult;
+use Districts\Editor\Domain\PaginatedResult;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig as View;
