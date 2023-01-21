@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Districts\UI\Web\ReverseRouter;
-use Districts\UI\Web\SlimReverseRouter;
+use Districts\Editor\UI\ReverseRouter;
+use Districts\Editor\UI\SlimReverseRouter;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\CallableResolver;

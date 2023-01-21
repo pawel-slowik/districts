@@ -5,7 +5,7 @@ declare(strict_types=1);
 require __DIR__ . "/../vendor/autoload.php";
 
 use DI\Container;
-use Districts\UI\Web\RoutingConfiguration;
+use Districts\Editor\UI\RoutingConfiguration;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\App;
 use Slim\Interfaces\CallableResolverInterface;

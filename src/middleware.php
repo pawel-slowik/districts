@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Districts\UI\Web\ErrorHandler\HttpMethodNotAllowedHandler;
-use Districts\UI\Web\ErrorHandler\HttpNotFoundHandler;
+use Districts\Editor\UI\ErrorHandler\HttpMethodNotAllowedHandler;
+use Districts\Editor\UI\ErrorHandler\HttpNotFoundHandler;
 use Slim\App;
 use Slim\Exception\HttpMethodNotAllowedException;
 use Slim\Exception\HttpNotFoundException;
