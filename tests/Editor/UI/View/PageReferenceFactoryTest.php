@@ -71,7 +71,7 @@ class PageReferenceFactoryTest extends TestCase
         $this->assertTrue($last->isNext());
     }
 
-    public function flagsProvider(): array
+    public static function flagsProvider(): array
     {
         return [
             ["https://example.com/", 10, 1],

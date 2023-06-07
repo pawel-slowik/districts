@@ -36,7 +36,7 @@ class ListControllerTest extends BaseTestCase
         $this->assertNotEmpty((string) $response->getBody());
     }
 
-    public function listDataProvider(): array
+    public static function listDataProvider(): array
     {
         return [
             ["/list"],

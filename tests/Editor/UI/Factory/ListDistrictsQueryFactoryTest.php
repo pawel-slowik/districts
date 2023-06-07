@@ -65,7 +65,7 @@ class ListDistrictsQueryFactoryTest extends TestCase
         $query = $this->queryFactory->fromRequest($this->request, $routeArgs);
     }
 
-    public function orderingParametersDataProvider(): array
+    public static function orderingParametersDataProvider(): array
     {
         return [
             [
@@ -135,7 +135,7 @@ class ListDistrictsQueryFactoryTest extends TestCase
         $query = $this->queryFactory->fromRequest($this->request, []);
     }
 
-    public function filterParametersDataProvider(): array
+    public static function filterParametersDataProvider(): array
     {
         return [
             [
@@ -201,7 +201,7 @@ class ListDistrictsQueryFactoryTest extends TestCase
         $query = $this->queryFactory->fromRequest($this->request, []);
     }
 
-    public function paginationParametersDataProvider(): array
+    public static function paginationParametersDataProvider(): array
     {
         return [
             [

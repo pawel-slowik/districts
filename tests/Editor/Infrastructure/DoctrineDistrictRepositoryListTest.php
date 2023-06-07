@@ -70,7 +70,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
         );
     }
 
-    public function listOrderCityDataProvider(): array
+    public static function listOrderCityDataProvider(): array
     {
         return [
             [
@@ -100,7 +100,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
         );
     }
 
-    public function listOrderDataProvider(): array
+    public static function listOrderDataProvider(): array
     {
         return [
             [
@@ -159,7 +159,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
         $this->assertSame($expectedIds, $actualIds);
     }
 
-    public function listFilterDataProvider(): array
+    public static function listFilterDataProvider(): array
     {
         return [
             [

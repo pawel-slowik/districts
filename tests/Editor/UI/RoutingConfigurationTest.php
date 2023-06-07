@@ -46,7 +46,7 @@ class RoutingConfigurationTest extends TestCase
         $this->assertFalse($exceptionThrown);
     }
 
-    public function namedDataProvider(): array
+    public static function namedDataProvider(): array
     {
         return [
             ["list"],

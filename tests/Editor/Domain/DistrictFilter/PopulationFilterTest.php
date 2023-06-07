@@ -29,7 +29,7 @@ class PopulationFilterTest extends TestCase
         new PopulationFilter($begin, $end);
     }
 
-    public function invalidDataProvider(): array
+    public static function invalidDataProvider(): array
     {
         return [
             "negative begin" => [-1, 2],

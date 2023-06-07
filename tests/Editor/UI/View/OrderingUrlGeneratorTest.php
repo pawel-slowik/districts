@@ -52,7 +52,7 @@ class OrderingUrlGeneratorTest extends TestCase
         $this->assertSame("/list/column1/asc", $url);
     }
 
-    public function simpleDataProvider(): array
+    public static function simpleDataProvider(): array
     {
         return [
             ["column1", []],

@@ -49,7 +49,7 @@ class PageReferenceTest extends TestCase
         $this->assertFalse($exceptionThrown);
     }
 
-    public function validUrlProvider(): array
+    public static function validUrlProvider(): array
     {
         return [
             ["https://host"],
@@ -84,7 +84,7 @@ class PageReferenceTest extends TestCase
         new PageReference($invalidUrl, "test", false, false, false);
     }
 
-    public function invalidUrlProvider(): array
+    public static function invalidUrlProvider(): array
     {
         return [
             [""],
@@ -112,7 +112,7 @@ class PageReferenceTest extends TestCase
         $this->assertFalse($exceptionThrown);
     }
 
-    public function validFlagsProvider(): array
+    public static function validFlagsProvider(): array
     {
         return [
             [false, false, false],
@@ -131,7 +131,7 @@ class PageReferenceTest extends TestCase
         new PageReference("http://example.com", "test", $isCurrent, $isPrevious, $isNext);
     }
 
-    public function invalidFlagsProvider(): array
+    public static function invalidFlagsProvider(): array
     {
         return [
             [false, true, true],

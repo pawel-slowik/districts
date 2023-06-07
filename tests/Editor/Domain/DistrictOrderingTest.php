@@ -29,7 +29,7 @@ class DistrictOrderingTest extends TestCase
         $this->assertInstanceOf(DistrictOrdering::class, $order);
     }
 
-    public function validDataProvider(): array
+    public static function validDataProvider(): array
     {
         return [
             [DistrictOrdering::FULL_NAME, DistrictOrdering::ASC],
@@ -54,7 +54,7 @@ class DistrictOrderingTest extends TestCase
         new DistrictOrdering($field, $direction);
     }
 
-    public function invalidDataProvider(): array
+    public static function invalidDataProvider(): array
     {
         return [
             "both invalid and negative" => [

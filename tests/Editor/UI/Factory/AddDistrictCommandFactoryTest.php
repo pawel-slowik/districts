@@ -70,7 +70,7 @@ class AddDistrictCommandFactoryTest extends TestCase
         $this->commandFactory->fromRequest($this->request);
     }
 
-    public function incompleteAddRequestDataProvider(): array
+    public static function incompleteAddRequestDataProvider(): array
     {
         return [
             "missing_city" => [
@@ -114,7 +114,7 @@ class AddDistrictCommandFactoryTest extends TestCase
         $this->commandFactory->fromRequest($this->request);
     }
 
-    public function unparseableRequestDataProvider(): array
+    public static function unparseableRequestDataProvider(): array
     {
         return [
             [null],

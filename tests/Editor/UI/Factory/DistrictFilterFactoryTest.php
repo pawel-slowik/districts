@@ -32,7 +32,7 @@ class DistrictFilterFactoryTest extends TestCase
         $this->assertNull($filter);
     }
 
-    public function createNullDataProvider(): array
+    public static function createNullDataProvider(): array
     {
         return [
             "null value" => [
@@ -63,7 +63,7 @@ class DistrictFilterFactoryTest extends TestCase
         $this->assertInstanceOf($expectedClass, $filter);
     }
 
-    public function createDataProvider(): array
+    public static function createDataProvider(): array
     {
         return [
             ["city", "foo", CityNameFilter::class],

@@ -29,7 +29,7 @@ class AreaFilterTest extends TestCase
         $this->assertInstanceOf(AreaFilter::class, $filter);
     }
 
-    public function validDataProvider(): array
+    public static function validDataProvider(): array
     {
         return [
             [1, 2],
@@ -48,7 +48,7 @@ class AreaFilterTest extends TestCase
         new AreaFilter($begin, $end);
     }
 
-    public function invalidDataProvider(): array
+    public static function invalidDataProvider(): array
     {
         return [
             "negative begin" => [-1, 2],

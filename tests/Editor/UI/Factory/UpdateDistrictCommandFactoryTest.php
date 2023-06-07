@@ -68,7 +68,7 @@ class UpdateDistrictCommandFactoryTest extends TestCase
         $this->commandFactory->fromRequest($this->request, $routeArgs);
     }
 
-    public function incompleteUpdateRequestDataProvider(): array
+    public static function incompleteUpdateRequestDataProvider(): array
     {
         return [
             "missing_id" => [
@@ -120,7 +120,7 @@ class UpdateDistrictCommandFactoryTest extends TestCase
         $this->commandFactory->fromRequest($this->request, ["id" => "1"]);
     }
 
-    public function unparseableRequestDataProvider(): array
+    public static function unparseableRequestDataProvider(): array
     {
         return [
             [null],

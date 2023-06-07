@@ -84,7 +84,7 @@ class ListViewTest extends TestCase
         $this->listView->render($this->createStub(ResponseInterface::class), $paginatedResult, $request, [""], "", []);
     }
 
-    public function computedDataKeyProvider(): array
+    public static function computedDataKeyProvider(): array
     {
         return [
             ["orderingUrls"],
