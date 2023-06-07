@@ -7,6 +7,7 @@ namespace Districts\Scraper\Domain\Gdansk;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\CityScraper as CityScraperInterface;
 use Districts\Scraper\Domain\HtmlFetcher;
+use Iterator;
 use Laminas\Uri\Uri;
 
 final class CityScraper implements CityScraperInterface
@@ -25,10 +26,10 @@ final class CityScraper implements CityScraperInterface
 
     public function scrape(): CityDTO
     {
-        return new CityDTO($this->getCityName(), $this->listDistricts());
+        return new CityDTO($this->getCityName(), iterator_to_array($this->listDistricts()));
     }
 
-    private function listDistricts(): iterable
+    private function listDistricts(): Iterator
     {
         foreach ($this->listDistrictUrls() as $url) {
             $districtHtml = $this->htmlFetcher->fetchHtml($url);

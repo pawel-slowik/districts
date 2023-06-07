@@ -8,7 +8,7 @@ class CityDTO
 {
     public function __construct(
         public readonly string $name,
-        public readonly iterable $districts,
+        public readonly array $districts,
     ) {
     }
 }
