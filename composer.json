@@ -11,7 +11,7 @@
         "laminas/laminas-uri": "^2.7",
         "doctrine/orm": "^2.9",
         "ext-xml": "^8.0",
-        "symfony/console": "^4.3",
+        "symfony/console": "^5.4",
         "ext-pdo_mysql": "^8.0",
         "ext-dom": "20031129",
         "slim/slim": "^4.3",
@@ -41,11 +41,11 @@
     "scripts": {
         "cs": [
             "vendor/bin/php-cs-fixer fix -v --dry-run",
-            "vendor/bin/phpcs -s --standard=phpcs.xml src dependencies tests"
+            "vendor/bin/phpcs -s --standard=phpcs.xml src dependencies tests console.php"
         ],
         "cs-fix": [
             "vendor/bin/php-cs-fixer fix -v",
-            "vendor/bin/phpcbf src dependencies tests"
+            "vendor/bin/phpcbf src dependencies tests console.php"
         ],
         "test": [
             "vendor/bin/phpunit"
