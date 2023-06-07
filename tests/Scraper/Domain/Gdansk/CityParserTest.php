@@ -42,7 +42,7 @@ class CityParserTest extends TestCase
 
         $urls = $this->cityParser->extractDistrictUrls("");
 
-        $this->assertCount(5, $urls);
+        $this->assertCount(5, iterator_to_array($urls));
     }
 
     public function testReturnsStrings(): void

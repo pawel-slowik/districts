@@ -37,13 +37,13 @@ class PageReferenceFactoryTest extends TestCase
     public function testSinglePage(): void
     {
         $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl("https://example.com/", 1, 1);
-        $this->assertCount(0, $pageReferences);
+        $this->assertCount(0, iterator_to_array($pageReferences));
     }
 
     public function testNumberOfReferences(): void
     {
         $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl("https://example.com/", 100, 1);
-        $this->assertCount(102, $pageReferences);
+        $this->assertCount(102, iterator_to_array($pageReferences));
     }
 
     /**
