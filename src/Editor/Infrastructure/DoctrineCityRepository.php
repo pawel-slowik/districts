@@ -24,19 +24,6 @@ final class DoctrineCityRepository implements CityRepository
         return $city;
     }
 
-    public function getByDistrictId(int $districtId): City
-    {
-        $dql = "SELECT c FROM " . City::class . " c JOIN c.districts d WHERE d.id = :id";
-        $query = $this->entityManager->createQuery($dql);
-        $query->setParameter("id", $districtId);
-        /** @var City[] $cities */
-        $cities = $query->getResult();
-        if (!$cities) {
-            throw new NotFoundInRepositoryException();
-        }
-        return $cities[0];
-    }
-
     public function findByName(string $name): ?City
     {
         return $this->entityManager->getRepository(City::class)->findOneBy(["name" => $name]);

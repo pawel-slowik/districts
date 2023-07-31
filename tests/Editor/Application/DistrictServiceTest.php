@@ -110,11 +110,14 @@ class DistrictServiceTest extends TestCase
         $command = new RemoveDistrictCommand(id: 222);
 
         $city = $this->createMock(City::class);
-
-        $this->cityRepository
-            ->method("getByDistrictId")
-            ->with($this->identicalTo(222))
+        $district = $this->createStub(District::class);
+        $district
+            ->method("getCity")
             ->willReturn($city);
+        $this->districtRepository
+            ->method("get")
+            ->with($this->identicalTo(222))
+            ->willReturn($district);
 
         $city
             ->expects($this->once())
@@ -133,8 +136,8 @@ class DistrictServiceTest extends TestCase
     {
         $command = new RemoveDistrictCommand(id: 1);
 
-        $this->cityRepository
-            ->method("getByDistrictId")
+        $this->districtRepository
+            ->method("get")
             ->will($this->throwException(new NotFoundInRepositoryException()));
 
         $this->cityRepository
@@ -250,11 +253,14 @@ class DistrictServiceTest extends TestCase
             ->willReturn($this->createValidationSuccessStub());
 
         $city = $this->createMock(City::class);
-
-        $this->cityRepository
-            ->method("getByDistrictId")
-            ->with($this->identicalTo(4))
+        $district = $this->createStub(District::class);
+        $district
+            ->method("getCity")
             ->willReturn($city);
+        $this->districtRepository
+            ->method("get")
+            ->with($this->identicalTo(4))
+            ->willReturn($district);
 
         $city
             ->expects($this->once())
@@ -282,8 +288,8 @@ class DistrictServiceTest extends TestCase
             ->method("validate")
             ->willReturn($this->createValidationSuccessStub());
 
-        $this->cityRepository
-            ->method("getByDistrictId")
+        $this->districtRepository
+            ->method("get")
             ->will($this->throwException(new NotFoundInRepositoryException()));
 
         $this->cityRepository

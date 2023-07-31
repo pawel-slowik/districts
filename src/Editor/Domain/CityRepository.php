@@ -8,8 +8,6 @@ interface CityRepository
 {
     public function get(int $id): City;
 
-    public function getByDistrictId(int $districtId): City;
-
     public function findByName(string $name): ?City;
 
     /**

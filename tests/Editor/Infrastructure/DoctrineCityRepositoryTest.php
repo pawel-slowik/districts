@@ -35,18 +35,6 @@ class DoctrineCityRepositoryTest extends DoctrineDbTestCase
         $city = $this->cityRepository->get(999);
     }
 
-    public function testGetByDistrictId(): void
-    {
-        $city = $this->cityRepository->getByDistrictId(12);
-        $this->assertSame(2, $city->getId());
-    }
-
-    public function testByNonexistendDistrictId(): void
-    {
-        $this->expectException(NotFoundInRepositoryException::class);
-        $city = $this->cityRepository->getByDistrictId(999);
-    }
-
     public function testFind(): void
     {
         $city = $this->cityRepository->findByName("Foo");

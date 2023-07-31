@@ -97,9 +97,10 @@ class DistrictService
     private function getCityByDistrictId(int $districtId): City
     {
         try {
-            return $this->cityRepository->getByDistrictId($districtId);
+            $district = $this->districtRepository->get($districtId);
         } catch (NotFoundInRepositoryException $exception) {
             throw new NotFoundException();
         }
+        return $district->getCity();
     }
 }
