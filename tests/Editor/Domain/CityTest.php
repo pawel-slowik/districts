@@ -65,6 +65,16 @@ class CityTest extends TestCase
         $city->addDistrict(new Name("test"), new Area(234.5), new Population(6789));
     }
 
+    public function testRemove(): void
+    {
+        $city = new City("test");
+        $city->addDistrict(new Name("test"), new Area(123.4), new Population(5678));
+
+        $city->removeDistrict(new Name("test"));
+
+        $this->assertFalse($city->hasDistrictWithName(new Name("test")));
+    }
+
     public function testRemoveThrowsExceptionOnUnknownDistrictName(): void
     {
         $city = new City("test");
