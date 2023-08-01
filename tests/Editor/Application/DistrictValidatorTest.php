@@ -7,7 +7,11 @@ namespace Districts\Test\Editor\Application;
 use Districts\Editor\Application\Command\AddDistrictCommand;
 use Districts\Editor\Application\Command\UpdateDistrictCommand;
 use Districts\Editor\Application\DistrictValidator;
+use Districts\Editor\Domain\City;
 use Districts\Editor\Domain\CityRepository;
+use Districts\Editor\Domain\District;
+use Districts\Editor\Domain\DistrictRepository;
+use Districts\Editor\Domain\Name;
 use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use PHPUnit\Framework\TestCase;
 
@@ -20,15 +24,35 @@ class DistrictValidatorTest extends TestCase
 
     private CityRepository $cityRepository;
 
+    private DistrictRepository $districtRepository;
+
     protected function setUp(): void
     {
         $this->cityRepository = $this->createStub(CityRepository::class);
-        $this->districtValidator = new DistrictValidator($this->cityRepository);
+        $this->districtRepository = $this->createStub(DistrictRepository::class);
+        $this->districtValidator = new DistrictValidator($this->cityRepository, $this->districtRepository);
     }
 
     public function testAddInvalidName(): void
     {
         $result = $this->districtValidator->validateAdd(new AddDistrictCommand(1, "", 1, 1));
+
+        $this->assertFalse($result->isOk());
+        $this->assertEqualsCanonicalizing(["name"], $result->getErrors());
+    }
+
+    public function testAddDuplicatedName(): void
+    {
+        $city = $this->createStub(City::class);
+        $city
+            ->method("hasDistrictWithName")
+            ->willReturn(true);
+        $this->cityRepository
+            ->method("get")
+            ->with($this->identicalTo(1))
+            ->willReturn($city);
+
+        $result = $this->districtValidator->validateAdd(new AddDistrictCommand(1, "valid name", 1, 1));
 
         $this->assertFalse($result->isOk());
         $this->assertEqualsCanonicalizing(["name"], $result->getErrors());
@@ -76,6 +100,50 @@ class DistrictValidatorTest extends TestCase
 
         $this->assertFalse($result->isOk());
         $this->assertEqualsCanonicalizing(["name"], $result->getErrors());
+    }
+
+    public function testUpdateDuplicatedName(): void
+    {
+        $district = $this->createMock(District::class);
+        $this->districtRepository
+            ->method("get")
+            ->with($this->identicalTo(1))
+            ->willReturn($district);
+        $city = $this->createStub(City::class);
+        $city
+            ->method("hasDistrictWithName")
+            ->willReturn(true);
+        $district
+            ->method("getCity")
+            ->willReturn($city);
+
+        $result = $this->districtValidator->validateUpdate(new UpdateDistrictCommand(1, "valid name", 1, 1));
+
+        $this->assertFalse($result->isOk());
+        $this->assertEqualsCanonicalizing(["name"], $result->getErrors());
+    }
+
+    public function testUpdateAllowsUnchangedName(): void
+    {
+        $district = $this->createMock(District::class);
+        $district
+            ->method("getName")
+            ->willReturn(new Name("unchanged name"));
+        $this->districtRepository
+            ->method("get")
+            ->with($this->identicalTo(1))
+            ->willReturn($district);
+        $city = $this->createStub(City::class);
+        $city
+            ->method("hasDistrictWithName")
+            ->willReturn(true);
+        $district
+            ->method("getCity")
+            ->willReturn($city);
+
+        $result = $this->districtValidator->validateUpdate(new UpdateDistrictCommand(1, "unchanged name", 1, 1));
+
+        $this->assertTrue($result->isOk());
     }
 
     public function testUpdateInvalidArea(): void

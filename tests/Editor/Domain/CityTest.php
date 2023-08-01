@@ -73,4 +73,20 @@ class CityTest extends TestCase
 
         $city->removeDistrict(1);
     }
+
+    public function testHasDistrictWithName(): void
+    {
+        $city = new City("test");
+        $city->addDistrict(new Name("foo"), new Area(123.4), new Population(5678));
+
+        $this->assertTrue($city->hasDistrictWithName(new Name("foo")));
+    }
+
+    public function testDoesNotHaveDistrictWithName(): void
+    {
+        $city = new City("test");
+        $city->addDistrict(new Name("foo"), new Area(123.4), new Population(5678));
+
+        $this->assertFalse($city->hasDistrictWithName(new Name("bar")));
+    }
 }

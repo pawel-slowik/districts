@@ -8,6 +8,7 @@ use Districts\Editor\Application\Command\AddDistrictCommand;
 use Districts\Editor\Application\Command\UpdateDistrictCommand;
 use Districts\Editor\Domain\Area;
 use Districts\Editor\Domain\CityRepository;
+use Districts\Editor\Domain\DistrictRepository;
 use Districts\Editor\Domain\Exception\InvalidAreaException;
 use Districts\Editor\Domain\Exception\InvalidNameException;
 use Districts\Editor\Domain\Exception\InvalidPopulationException;
@@ -19,23 +20,53 @@ class DistrictValidator
 {
     public function __construct(
         private CityRepository $cityRepository,
+        private DistrictRepository $districtRepository,
     ) {
     }
 
     public function validateAdd(AddDistrictCommand $command): ValidationResult
     {
         $result = $this->validate($command);
+
         try {
-            $this->cityRepository->get($command->cityId);
+            $city = $this->cityRepository->get($command->cityId);
         } catch (NotFoundInRepositoryException $exception) {
             $result->addError("city");
         }
+
+        // phpcs:ignore PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace
+        if (
+            isset($city)
+            && $this->validateName($command->name)
+            && $city->hasDistrictWithName(new Name($command->name))
+        ) {
+            $result->addError("name");
+        }
+
         return $result;
     }
 
     public function validateUpdate(UpdateDistrictCommand $command): ValidationResult
     {
-        return $this->validate($command);
+        $result = $this->validate($command);
+
+        try {
+            $district = $this->districtRepository->get($command->id);
+        } catch (NotFoundInRepositoryException $exception) {
+            // pass
+        }
+
+        // phpcs:ignore PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace
+        if (
+            isset($district)
+            && $this->validateName($command->name)
+            && !$district->getName()->equals(new Name($command->name))
+            && $district->getCity()->hasDistrictWithName(new Name($command->name))
+        ) {
+            $result->addError("name");
+        }
+
+        return $result;
     }
 
     private function validate(AddDistrictCommand | UpdateDistrictCommand $command): ValidationResult

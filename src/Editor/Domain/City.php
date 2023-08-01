@@ -87,6 +87,16 @@ class City
         return $this->name;
     }
 
+    public function hasDistrictWithName(Name $name): bool
+    {
+        foreach ($this->districts as $district) {
+            if ($district->getName()->equals($name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private function getDistrictById(int $districtId): District
     {
         foreach ($this->districts as $district) {
