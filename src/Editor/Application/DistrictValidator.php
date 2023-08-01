@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Editor\Application;
 
+use Districts\Editor\Application\Command\AddDistrictCommand;
+use Districts\Editor\Application\Command\UpdateDistrictCommand;
 use Districts\Editor\Domain\Area;
 use Districts\Editor\Domain\Exception\InvalidAreaException;
 use Districts\Editor\Domain\Exception\InvalidNameException;
@@ -13,16 +15,16 @@ use Districts\Editor\Domain\Population;
 
 class DistrictValidator
 {
-    public function validate(string $name, float $area, int $population): ValidationResult
+    public function validate(AddDistrictCommand | UpdateDistrictCommand $command): ValidationResult
     {
         $result = new ValidationResult();
-        if (!$this->validateName($name)) {
+        if (!$this->validateName($command->name)) {
             $result->addError("name");
         }
-        if (!$this->validateArea($area)) {
+        if (!$this->validateArea($command->area)) {
             $result->addError("area");
         }
-        if (!$this->validatePopulation($population)) {
+        if (!$this->validatePopulation($command->population)) {
             $result->addError("population");
         }
         return $result;

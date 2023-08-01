@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Editor\Application;
 
+use Districts\Editor\Application\Command\AddDistrictCommand;
 use Districts\Editor\Application\DistrictValidator;
 use PHPUnit\Framework\TestCase;
 
@@ -21,7 +22,7 @@ class DistrictValidatorTest extends TestCase
 
     public function testInvalidName(): void
     {
-        $result = $this->districtValidator->validate("", 1, 1);
+        $result = $this->districtValidator->validate(new AddDistrictCommand(1, "", 1, 1));
 
         $this->assertFalse($result->isOk());
         $this->assertEqualsCanonicalizing(["name"], $result->getErrors());
@@ -29,7 +30,7 @@ class DistrictValidatorTest extends TestCase
 
     public function testInvalidArea(): void
     {
-        $result = $this->districtValidator->validate("Foo", 0, 1);
+        $result = $this->districtValidator->validate(new AddDistrictCommand(1, "Foo", 0, 1));
 
         $this->assertFalse($result->isOk());
         $this->assertEqualsCanonicalizing(["area"], $result->getErrors());
@@ -37,7 +38,7 @@ class DistrictValidatorTest extends TestCase
 
     public function testInvalidPopulation(): void
     {
-        $result = $this->districtValidator->validate("Foo", 1, 0);
+        $result = $this->districtValidator->validate(new AddDistrictCommand(1, "Foo", 1, 0));
 
         $this->assertFalse($result->isOk());
         $this->assertEqualsCanonicalizing(["population"], $result->getErrors());
@@ -45,7 +46,7 @@ class DistrictValidatorTest extends TestCase
 
     public function testMultipleErrors(): void
     {
-        $result = $this->districtValidator->validate("", 0, 0);
+        $result = $this->districtValidator->validate(new AddDistrictCommand(1, "", 0, 0));
 
         $this->assertFalse($result->isOk());
         $this->assertEqualsCanonicalizing(["name", "area", "population"], $result->getErrors());

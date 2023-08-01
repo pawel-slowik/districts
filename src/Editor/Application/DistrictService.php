@@ -37,11 +37,7 @@ class DistrictService
         } catch (NotFoundInRepositoryException $exception) {
             throw (new ValidationException())->withErrors(["city"]);
         }
-        $validationResult = $this->districtValidator->validate(
-            $command->name,
-            $command->area,
-            $command->population,
-        );
+        $validationResult = $this->districtValidator->validate($command);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }
@@ -61,11 +57,7 @@ class DistrictService
             throw new NotFoundException();
         }
         $city = $district->getCity();
-        $validationResult = $this->districtValidator->validate(
-            $command->name,
-            $command->area,
-            $command->population,
-        );
+        $validationResult = $this->districtValidator->validate($command);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }
