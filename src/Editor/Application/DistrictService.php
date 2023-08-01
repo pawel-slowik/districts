@@ -12,7 +12,6 @@ use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\Application\Query\GetDistrictQuery;
 use Districts\Editor\Application\Query\ListDistrictsQuery;
 use Districts\Editor\Domain\Area;
-use Districts\Editor\Domain\City;
 use Districts\Editor\Domain\CityRepository;
 use Districts\Editor\Domain\District;
 use Districts\Editor\Domain\DistrictRepository;
@@ -68,8 +67,13 @@ class DistrictService
 
     public function remove(RemoveDistrictCommand $command): void
     {
-        $city = $this->getCityByDistrictId($command->id);
-        $city->removeDistrict($command->id);
+        try {
+            $district = $this->districtRepository->get($command->id);
+        } catch (NotFoundInRepositoryException $exception) {
+            throw new NotFoundException();
+        }
+        $city = $district->getCity();
+        $city->removeDistrict($district->getName());
         $this->cityRepository->update($city);
     }
 
@@ -85,15 +89,5 @@ class DistrictService
         } catch (NotFoundInRepositoryException $exception) {
             throw new NotFoundException();
         }
-    }
-
-    private function getCityByDistrictId(int $districtId): City
-    {
-        try {
-            $district = $this->districtRepository->get($districtId);
-        } catch (NotFoundInRepositoryException $exception) {
-            throw new NotFoundException();
-        }
-        return $district->getCity();
     }
 }

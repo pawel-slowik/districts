@@ -66,9 +66,9 @@ class City
         $district->setPopulation($updatedPopulation);
     }
 
-    public function removeDistrict(int $districtId): void
+    public function removeDistrict(Name $name): void
     {
-        $district = $this->getDistrictById($districtId);
+        $district = $this->getDistrictByName($name);
         $this->districts->removeElement($district);
     }
 
@@ -95,17 +95,6 @@ class City
             }
         }
         return false;
-    }
-
-    private function getDistrictById(int $districtId): District
-    {
-        foreach ($this->districts as $district) {
-            if ($district->getId() === $districtId) {
-                return $district;
-            }
-        }
-
-        throw new DistrictNotFoundException();
     }
 
     private function getDistrictByName(Name $name): District

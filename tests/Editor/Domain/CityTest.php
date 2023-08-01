@@ -65,13 +65,14 @@ class CityTest extends TestCase
         $city->addDistrict(new Name("test"), new Area(234.5), new Population(6789));
     }
 
-    public function testRemoveThrowsExceptionOnUnknownDistrictId(): void
+    public function testRemoveThrowsExceptionOnUnknownDistrictName(): void
     {
         $city = new City("test");
+        $city->addDistrict(new Name("test"), new Area(123.4), new Population(5678));
 
         $this->expectException(DistrictNotFoundException::class);
 
-        $city->removeDistrict(1);
+        $city->removeDistrict(new Name("not test"));
     }
 
     public function testHasDistrictWithName(): void

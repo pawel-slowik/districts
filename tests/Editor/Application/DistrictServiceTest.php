@@ -114,6 +114,9 @@ class DistrictServiceTest extends TestCase
         $district
             ->method("getCity")
             ->willReturn($city);
+        $district
+            ->method("getName")
+            ->willReturn(new Name("name to be removed"));
         $this->districtRepository
             ->method("get")
             ->with($this->identicalTo(222))
@@ -122,7 +125,7 @@ class DistrictServiceTest extends TestCase
         $city
             ->expects($this->once())
             ->method("removeDistrict")
-            ->with($this->identicalTo(222));
+            ->with($this->objectEquals(new Name("name to be removed")));
 
         $this->cityRepository
             ->expects($this->once())
