@@ -26,7 +26,7 @@ class DoctrinePsrCacheTest extends TestCase
     protected function setUp(): void
     {
         // phpcs:ignore Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore
-        $this->invalidArgumentException = new class extends Exception implements InvalidArgumentException { };
+        $this->invalidArgumentException = new class () extends Exception implements InvalidArgumentException { };
 
         $this->psrCache = $this->createStub(CacheInterface::class);
 

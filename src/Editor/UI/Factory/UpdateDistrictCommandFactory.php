@@ -36,12 +36,14 @@ class UpdateDistrictCommandFactory
                 $errors[] = "population";
             }
         }
-        if (isset(
-            $id,
-            $name,
-            $area,
-            $population,
-        )) {
+        if (
+            isset(
+                $id,
+                $name,
+                $area,
+                $population,
+            )
+        ) {
             return new UpdateDistrictCommand($id, $name, $area, $population);
         }
 

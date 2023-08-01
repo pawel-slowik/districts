@@ -60,7 +60,8 @@ class OrderingUrlGenerator
 
     private function computeOrderingDirection(string $column, array $routeArgs): string
     {
-        if (array_key_exists("column", $routeArgs)
+        if (
+            array_key_exists("column", $routeArgs)
             && array_key_exists("direction", $routeArgs)
             && ($routeArgs["column"] === $column)
             && ($routeArgs["direction"] === "asc")

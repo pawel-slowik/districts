@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI;
 
-use Districts\Editor\UI\Controller\{
-    AddActionController,
-    AddFormController,
-    EditActionController,
-    EditFormController,
-    HomeController,
-    ListController,
-    RemoveActionController,
-    RemoveFormController,
-};
+use Districts\Editor\UI\Controller\AddActionController;
+use Districts\Editor\UI\Controller\AddFormController;
+use Districts\Editor\UI\Controller\EditActionController;
+use Districts\Editor\UI\Controller\EditFormController;
+use Districts\Editor\UI\Controller\HomeController;
+use Districts\Editor\UI\Controller\ListController;
+use Districts\Editor\UI\Controller\RemoveActionController;
+use Districts\Editor\UI\Controller\RemoveFormController;
 use Slim\App;
 
 class RoutingConfiguration

@@ -34,7 +34,6 @@ class DistrictValidator
             $result->addError("city");
         }
 
-        // phpcs:ignore PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace
         if (
             isset($city)
             && $this->validateName($command->name)
@@ -56,7 +55,6 @@ class DistrictValidator
             // pass
         }
 
-        // phpcs:ignore PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace
         if (
             isset($district)
             && $this->validateName($command->name)
