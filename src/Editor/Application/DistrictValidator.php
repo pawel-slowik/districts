@@ -7,15 +7,38 @@ namespace Districts\Editor\Application;
 use Districts\Editor\Application\Command\AddDistrictCommand;
 use Districts\Editor\Application\Command\UpdateDistrictCommand;
 use Districts\Editor\Domain\Area;
+use Districts\Editor\Domain\CityRepository;
 use Districts\Editor\Domain\Exception\InvalidAreaException;
 use Districts\Editor\Domain\Exception\InvalidNameException;
 use Districts\Editor\Domain\Exception\InvalidPopulationException;
 use Districts\Editor\Domain\Name;
 use Districts\Editor\Domain\Population;
+use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 
 class DistrictValidator
 {
-    public function validate(AddDistrictCommand | UpdateDistrictCommand $command): ValidationResult
+    public function __construct(
+        private CityRepository $cityRepository,
+    ) {
+    }
+
+    public function validateAdd(AddDistrictCommand $command): ValidationResult
+    {
+        $result = $this->validate($command);
+        try {
+            $this->cityRepository->get($command->cityId);
+        } catch (NotFoundInRepositoryException $exception) {
+            $result->addError("city");
+        }
+        return $result;
+    }
+
+    public function validateUpdate(UpdateDistrictCommand $command): ValidationResult
+    {
+        return $this->validate($command);
+    }
+
+    private function validate(AddDistrictCommand | UpdateDistrictCommand $command): ValidationResult
     {
         $result = new ValidationResult();
         if (!$this->validateName($command->name)) {

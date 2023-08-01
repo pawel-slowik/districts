@@ -32,15 +32,11 @@ class DistrictService
 
     public function add(AddDistrictCommand $command): void
     {
-        try {
-            $city = $this->cityRepository->get($command->cityId);
-        } catch (NotFoundInRepositoryException $exception) {
-            throw (new ValidationException())->withErrors(["city"]);
-        }
-        $validationResult = $this->districtValidator->validate($command);
+        $validationResult = $this->districtValidator->validateAdd($command);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }
+        $city = $this->cityRepository->get($command->cityId);
         $city->addDistrict(
             new Name($command->name),
             new Area($command->area),
@@ -57,7 +53,7 @@ class DistrictService
             throw new NotFoundException();
         }
         $city = $district->getCity();
-        $validationResult = $this->districtValidator->validate($command);
+        $validationResult = $this->districtValidator->validateUpdate($command);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }

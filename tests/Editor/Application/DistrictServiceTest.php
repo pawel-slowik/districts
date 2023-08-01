@@ -159,7 +159,7 @@ class DistrictServiceTest extends TestCase
         );
 
         $this->districtValidator
-            ->method("validate")
+            ->method("validateAdd")
             ->willReturn($this->createValidationSuccessStub());
 
         $city = $this->createMock(City::class);
@@ -186,33 +186,12 @@ class DistrictServiceTest extends TestCase
         $this->districtService->add($command);
     }
 
-    public function testAddForNonExistentCity(): void
-    {
-        $command = new AddDistrictCommand(cityId: 1, name: "", area: 1, population: 1);
-
-        $this->districtValidator
-            ->method("validate")
-            ->willReturn($this->createValidationSuccessStub());
-
-        $this->cityRepository
-            ->method("get")
-            ->will($this->throwException(new NotFoundInRepositoryException()));
-
-        $this->cityRepository
-            ->expects($this->never())
-            ->method("update");
-
-        $this->expectException(ValidationException::class);
-
-        $this->districtService->add($command);
-    }
-
     public function testAddInvalid(): void
     {
         $command = new AddDistrictCommand(cityId: 1, name: "", area: 1, population: 1);
 
         $this->districtValidator
-            ->method("validate")
+            ->method("validateAdd")
             ->willReturn($this->createValidationErrorStub());
 
         $this->cityRepository
@@ -229,7 +208,7 @@ class DistrictServiceTest extends TestCase
         $command = new AddDistrictCommand(cityId: 1, name: "", area: 1, population: 1);
 
         $this->districtValidator
-            ->method("validate")
+            ->method("validateAdd")
             ->willReturn($this->createValidationErrorStub());
 
         try {
@@ -249,7 +228,7 @@ class DistrictServiceTest extends TestCase
         );
 
         $this->districtValidator
-            ->method("validate")
+            ->method("validateUpdate")
             ->willReturn($this->createValidationSuccessStub());
 
         $city = $this->createMock(City::class);
@@ -288,7 +267,7 @@ class DistrictServiceTest extends TestCase
         $command = new UpdateDistrictCommand(id: 1, name: "", area: 1, population: 1);
 
         $this->districtValidator
-            ->method("validate")
+            ->method("validateUpdate")
             ->willReturn($this->createValidationSuccessStub());
 
         $this->districtRepository
@@ -309,7 +288,7 @@ class DistrictServiceTest extends TestCase
         $command = new UpdateDistrictCommand(id: 1, name: "", area: 1, population: 1);
 
         $this->districtValidator
-            ->method("validate")
+            ->method("validateUpdate")
             ->willReturn($this->createValidationErrorStub());
 
         $this->cityRepository
@@ -326,7 +305,7 @@ class DistrictServiceTest extends TestCase
         $command = new UpdateDistrictCommand(id: 1, name: "", area: 1, population: 1);
 
         $this->districtValidator
-            ->method("validate")
+            ->method("validateUpdate")
             ->willReturn($this->createValidationErrorStub());
 
         try {
