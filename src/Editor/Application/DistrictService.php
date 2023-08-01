@@ -55,7 +55,12 @@ class DistrictService
 
     public function update(UpdateDistrictCommand $command): void
     {
-        $city = $this->getCityByDistrictId($command->id);
+        try {
+            $district = $this->districtRepository->get($command->id);
+        } catch (NotFoundInRepositoryException $exception) {
+            throw new NotFoundException();
+        }
+        $city = $district->getCity();
         $validationResult = $this->districtValidator->validate(
             $command->name,
             $command->area,
@@ -65,7 +70,7 @@ class DistrictService
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }
         $city->updateDistrict(
-            $command->id,
+            $district->getName(),
             new Name($command->name),
             new Area($command->area),
             new Population($command->population),

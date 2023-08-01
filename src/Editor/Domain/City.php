@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Districts\Editor\Domain;
 
 use Districts\Editor\Domain\Exception\DistrictNotFoundException;
+use Districts\Editor\Domain\Exception\DuplicateDistrictNameException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -37,20 +38,32 @@ class City
         Area $area,
         Population $population
     ): void {
+        foreach ($this->districts as $district) {
+            if ($district->getName()->equals($name)) {
+                throw new DuplicateDistrictNameException();
+            }
+        }
         $district = new District($this, $name, $area, $population);
         $this->districts[] = $district;
     }
 
     public function updateDistrict(
-        int $districtId,
-        Name $name,
-        Area $area,
-        Population $population
+        Name $currentName,
+        Name $updatedName,
+        Area $updatedArea,
+        Population $updatedPopulation,
     ): void {
-        $district = $this->getDistrictById($districtId);
-        $district->setName($name);
-        $district->setArea($area);
-        $district->setPopulation($population);
+        if (!$updatedName->equals($currentName)) {
+            foreach ($this->districts as $district) {
+                if ($district->getName()->equals($updatedName)) {
+                    throw new DuplicateDistrictNameException();
+                }
+            }
+        }
+        $district = $this->getDistrictByName($currentName);
+        $district->setName($updatedName);
+        $district->setArea($updatedArea);
+        $district->setPopulation($updatedPopulation);
     }
 
     public function removeDistrict(int $districtId): void
@@ -78,6 +91,17 @@ class City
     {
         foreach ($this->districts as $district) {
             if ($district->getId() === $districtId) {
+                return $district;
+            }
+        }
+
+        throw new DistrictNotFoundException();
+    }
+
+    private function getDistrictByName(Name $name): District
+    {
+        foreach ($this->districts as $district) {
+            if ($district->getName()->equals($name)) {
                 return $district;
             }
         }

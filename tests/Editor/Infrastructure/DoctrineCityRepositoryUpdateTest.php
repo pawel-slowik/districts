@@ -74,7 +74,7 @@ SQL;
     public function testUpdateWithChangedDistrict(): void
     {
         $city = $this->cityRepository->get(1);
-        $city->updateDistrict(1, new Name("Updated District"), new Area(123.4), new Population(5678));
+        $city->updateDistrict(new Name("Plugh"), new Name("Updated District"), new Area(123.4), new Population(5678));
         $this->cityRepository->update($city);
 
         $this->assertDbTableContents(
