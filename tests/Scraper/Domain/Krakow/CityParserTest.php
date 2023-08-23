@@ -33,8 +33,7 @@ class CityParserTest extends TestCase
         $node = $this->createStub(DOMElement::class);
         $node
             ->method("getAttribute")
-            ->with($this->identicalTo("href"))
-            ->willReturn("foo");
+            ->willReturnMap([["href", "foo"]]);
 
         $this->htmlFinder
             ->method("findNodes")
@@ -50,8 +49,7 @@ class CityParserTest extends TestCase
         $node = $this->createStub(DOMElement::class);
         $node
             ->method("getAttribute")
-            ->with($this->identicalTo("href"))
-            ->willReturn("foo");
+            ->willReturnMap([["href", "foo"]]);
 
         $this->htmlFinder
             ->method("findNodes")

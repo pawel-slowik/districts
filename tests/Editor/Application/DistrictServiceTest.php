@@ -68,8 +68,7 @@ class DistrictServiceTest extends TestCase
         $repositoryDistrict = $this->createStub(District::class);
         $this->districtRepository
             ->method("get")
-            ->with($this->identicalTo(111))
-            ->willReturn($repositoryDistrict);
+            ->willReturnMap([[111, $repositoryDistrict]]);
 
         $serviceDistrict = $this->districtService->get($query);
 
@@ -119,8 +118,7 @@ class DistrictServiceTest extends TestCase
             ->willReturn(new Name("name to be removed"));
         $this->districtRepository
             ->method("get")
-            ->with($this->identicalTo(222))
-            ->willReturn($district);
+            ->willReturnMap([[222, $district]]);
 
         $city
             ->expects($this->once())
@@ -169,8 +167,7 @@ class DistrictServiceTest extends TestCase
 
         $this->cityRepository
             ->method("get")
-            ->with($this->identicalTo(333))
-            ->willReturn($city);
+            ->willReturnMap([[333, $city]]);
 
         $city
             ->expects($this->once())
@@ -244,8 +241,7 @@ class DistrictServiceTest extends TestCase
             ->willReturn(new Name("previous name"));
         $this->districtRepository
             ->method("get")
-            ->with($this->identicalTo(4))
-            ->willReturn($district);
+            ->willReturnMap([[4, $district]]);
 
         $city
             ->expects($this->once())

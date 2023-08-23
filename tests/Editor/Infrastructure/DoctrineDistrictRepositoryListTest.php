@@ -145,8 +145,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     {
         $this->filterFactory
             ->method("fromDomainFilter")
-            ->with($this->identicalTo($filter))
-            ->willReturn($dqlFilter);
+            ->willReturnMap([[$filter, $dqlFilter]]);
 
         sort($expectedIds);
         $actualIds = array_map(
