@@ -13,6 +13,7 @@ use Districts\Editor\Domain\District;
 use Districts\Editor\Domain\DistrictRepository;
 use Districts\Editor\Domain\Name;
 use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,8 +23,10 @@ class DistrictValidatorTest extends TestCase
 {
     private DistrictValidator $districtValidator;
 
+    /** @var CityRepository&Stub */
     private CityRepository $cityRepository;
 
+    /** @var DistrictRepository&Stub */
     private DistrictRepository $districtRepository;
 
     protected function setUp(): void
@@ -49,8 +52,7 @@ class DistrictValidatorTest extends TestCase
             ->willReturn(true);
         $this->cityRepository
             ->method("get")
-            ->with($this->identicalTo(1))
-            ->willReturn($city);
+            ->willReturnMap([[1, $city]]);
 
         $result = $this->districtValidator->validateAdd(new AddDistrictCommand(1, "valid name", 1, 1));
 
@@ -107,8 +109,7 @@ class DistrictValidatorTest extends TestCase
         $district = $this->createMock(District::class);
         $this->districtRepository
             ->method("get")
-            ->with($this->identicalTo(1))
-            ->willReturn($district);
+            ->willReturnMap([[1, $district]]);
         $city = $this->createStub(City::class);
         $city
             ->method("hasDistrictWithName")
@@ -131,8 +132,7 @@ class DistrictValidatorTest extends TestCase
             ->willReturn(new Name("unchanged name"));
         $this->districtRepository
             ->method("get")
-            ->with($this->identicalTo(1))
-            ->willReturn($district);
+            ->willReturnMap([[1, $district]]);
         $city = $this->createStub(City::class);
         $city
             ->method("hasDistrictWithName")
