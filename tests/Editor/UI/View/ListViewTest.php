@@ -75,9 +75,7 @@ class ListViewTest extends TestCase
                 $this->anything(),
                 $this->anything(),
                 $this->callback(
-                    function (array $data) use ($key): bool {
-                        return array_key_exists($key, $data);
-                    }
+                    fn (array $data): bool => array_key_exists($key, $data)
                 )
             );
 

@@ -65,9 +65,7 @@ abstract class DoctrineDbTestCase extends TestCase
 
         usort(
             $tableContents,
-            function (array $a, array $b): int {
-                return strcmp(serialize($a), serialize($b));
-            }
+            fn (array $a, array $b): int => strcmp(serialize($a), serialize($b))
         );
 
         return $tableContents;
