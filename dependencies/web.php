@@ -14,12 +14,8 @@ use Slim\Routing\RouteCollector;
 use Slim\Views\Twig;
 
 return [
-    ResponseFactoryInterface::class => function ($container) {
-        return $container->get(Psr17Factory::class);
-    },
-    CallableResolverInterface::class => function ($container) {
-        return new CallableResolver($container);
-    },
+    ResponseFactoryInterface::class => fn ($container) => $container->get(Psr17Factory::class),
+    CallableResolverInterface::class => fn ($container) => new CallableResolver($container),
     RouteCollectorInterface::class => function ($container) {
         return new RouteCollector(
             $container->get(ResponseFactoryInterface::class),
@@ -27,9 +23,7 @@ return [
             $container
         );
     },
-    RouteParserInterface::class => function ($container) {
-        return $container->get(RouteCollectorInterface::class)->getRouteParser();
-    },
+    RouteParserInterface::class => fn ($container) => $container->get(RouteCollectorInterface::class)->getRouteParser(),
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     Twig::class => function ($container) {
         return Twig::create(
@@ -40,7 +34,5 @@ return [
             ]
         );
     },
-    ReverseRouter::class => function ($container) {
-        return $container->get(SlimReverseRouter::class);
-    },
+    ReverseRouter::class => fn ($container) => $container->get(SlimReverseRouter::class),
 ];

@@ -10,13 +10,7 @@ use Doctrine\ORM\EntityManager;
 
 return [
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-    EntityManager::class => function ($container) {
-        return (require __DIR__ . "/../doctrine-bootstrap.php")();
-    },
-    CityRepository::class => function ($container) {
-        return $container->get(DoctrineCityRepository::class);
-    },
-    DistrictRepository::class => function ($container) {
-        return $container->get(DoctrineDistrictRepository::class);
-    },
+    EntityManager::class => fn ($container) => (require __DIR__ . "/../doctrine-bootstrap.php")(),
+    CityRepository::class => fn ($container) => $container->get(DoctrineCityRepository::class),
+    DistrictRepository::class => fn ($container) => $container->get(DoctrineDistrictRepository::class),
 ];

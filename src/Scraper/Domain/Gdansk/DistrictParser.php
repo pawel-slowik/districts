@@ -31,9 +31,7 @@ class DistrictParser
             throw new ParsingException();
         }
         $texts = array_map(
-            function ($node) {
-                return $node->textContent;
-            },
+            fn ($node) => $node->textContent,
             $nodes
         );
         $name = $texts[0];
