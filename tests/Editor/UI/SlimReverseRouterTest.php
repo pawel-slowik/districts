@@ -17,7 +17,7 @@ class SlimReverseRouterTest extends TestCase
 {
     private SlimReverseRouter $slimReverseRouter;
 
-    /** @var RouteParserInterface&MockObject */
+    /** @var MockObject&RouteParserInterface */
     private RouteParserInterface $routeParser;
 
     protected function setUp(): void

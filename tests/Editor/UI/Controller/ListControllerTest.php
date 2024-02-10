@@ -12,6 +12,7 @@ use Psr\Http\Message\ResponseInterface;
 
 /**
  * @covers \Districts\Editor\UI\Controller\ListController
+ *
  * @runTestsInSeparateProcesses
  */
 class ListControllerTest extends BaseTestCase

@@ -8,6 +8,7 @@ use Fig\Http\Message\StatusCodeInterface as StatusCode;
 
 /**
  * @covers \Districts\Editor\UI\Controller\AddFormController
+ *
  * @runTestsInSeparateProcesses
  */
 class AddFormControllerTest extends BaseTestCase

@@ -31,7 +31,7 @@ class ImportCommandTest extends TestCase
     /** @var InputInterface&MockObject */
     private InputInterface $input;
 
-    /** @var OutputInterface&MockObject */
+    /** @var MockObject&OutputInterface */
     private OutputInterface $output;
 
     protected function setUp(): void

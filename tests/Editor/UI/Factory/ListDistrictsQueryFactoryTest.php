@@ -26,7 +26,7 @@ class ListDistrictsQueryFactoryTest extends TestCase
     /** @var DistrictFilterFactory&MockObject */
     private DistrictFilterFactory $districtFilterFactory;
 
-    /** @var PaginationFactory&MockObject */
+    /** @var MockObject&PaginationFactory */
     private PaginationFactory $paginationFactory;
 
     /** @var Request&Stub */

@@ -22,7 +22,7 @@ class ListViewTest extends TestCase
 {
     private ListView $listView;
 
-    /** @var TwigView&MockObject */
+    /** @var MockObject&TwigView */
     private TwigView $twigView;
 
     /** @var PageReferenceFactory&Stub */

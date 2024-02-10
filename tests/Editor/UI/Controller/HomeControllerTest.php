@@ -8,6 +8,7 @@ use Fig\Http\Message\StatusCodeInterface as StatusCode;
 
 /**
  * @covers \Districts\Editor\UI\Controller\HomeController
+ *
  * @runTestsInSeparateProcesses
  */
 class HomeControllerTest extends BaseTestCase

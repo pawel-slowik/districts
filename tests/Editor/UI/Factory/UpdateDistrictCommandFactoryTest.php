@@ -17,7 +17,7 @@ use StdClass;
  */
 class UpdateDistrictCommandFactoryTest extends TestCase
 {
-    /** @var Request&MockObject */
+    /** @var MockObject&Request */
     private Request $request;
 
     private UpdateDistrictCommandFactory $commandFactory;
