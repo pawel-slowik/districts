@@ -19,12 +19,12 @@ class FixtureTool
     public static function loadFiles(EntityManager $entityManager, iterable $sqlFilenames): void
     {
         foreach ($sqlFilenames as $sqlFilename) {
-            $entityManager->getConnection()->exec(file_get_contents($sqlFilename));
+            $entityManager->getConnection()->executeStatement(file_get_contents($sqlFilename));
         }
     }
 
     public static function loadSql(EntityManager $entityManager, string $sqlStatement): void
     {
-        $entityManager->getConnection()->exec($sqlStatement);
+        $entityManager->getConnection()->executeStatement($sqlStatement);
     }
 }

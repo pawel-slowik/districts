@@ -35,8 +35,7 @@ abstract class DoctrineDbTestCase extends TestCase
 
     protected function assertDbTableContents(string $tableName, array $expectedContents): void
     {
-        $statement = $this->entityManager->getConnection()->query("SELECT * FROM {$tableName}");
-        $result = $statement->fetchAllAssociative();
+        $result = $this->entityManager->getConnection()->fetchAllAssociative("SELECT * FROM {$tableName}");
 
         $this->assertSame(
             $this->sortTableContentsForComparision($expectedContents),
