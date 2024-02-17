@@ -27,7 +27,7 @@ class DistrictParser
     private function getName(string $html): string
     {
         $xpath = "//h1[@class='bip' and starts-with(., 'Dzielnica ')]";
-        $regexp = "/^[[:space:]]*Dzielnica[[:space:]]+[IVXLCDM]+[[:space:]]+(.*)[[:space:]]*$/uU";
+        $regexp = "/^[[:space:]]*Dzielnica[[:space:]]+[IVXLCDM]+[[:space:]]+(.*)[[:space:]]+\\(.*$/uU";
         return $this->getSingleMatch($html, $xpath, $regexp);
     }
 
