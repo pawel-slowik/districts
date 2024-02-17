@@ -21,8 +21,8 @@
         "php-di/php-di": "^7.0",
         "slim/slim": "^4.3",
         "slim/twig-view": "^3.0",
-        "symfony/cache": "^5.4",
-        "symfony/console": "^5.4"
+        "symfony/cache": "^6.4",
+        "symfony/console": "^6.4"
     },
     "autoload": {
         "psr-4": {"Districts\\": "./src/"}
