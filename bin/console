@@ -3,7 +3,7 @@
 
 declare(strict_types=1);
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . "/../vendor/autoload.php";
 
 use DI\Container;
 use Districts\Scraper\Application\Importer;
@@ -15,7 +15,7 @@ use Symfony\Component\Console\Application;
 $container = new Container();
 
 foreach (["common", "cli"] as $dependencyPart) {
-    $dependencies = require __DIR__ . "/dependencies/{$dependencyPart}.php";
+    $dependencies = require __DIR__ . "/../dependencies/{$dependencyPart}.php";
     foreach ($dependencies as $dependency => $factory) {
         $container->set($dependency, $factory);
     }

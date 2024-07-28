@@ -42,11 +42,11 @@
     "scripts": {
         "cs": [
             "vendor/bin/php-cs-fixer fix -v --dry-run --diff",
-            "vendor/bin/phpcs -s --standard=phpcs.xml src dependencies tests console.php"
+            "vendor/bin/phpcs -s --standard=phpcs.xml src dependencies tests bin"
         ],
         "cs-fix": [
             "vendor/bin/php-cs-fixer fix -v",
-            "vendor/bin/phpcbf src dependencies tests console.php"
+            "vendor/bin/phpcbf src dependencies tests bin"
         ],
         "test": [
             "vendor/bin/phpunit"

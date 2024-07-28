@@ -30,9 +30,9 @@ Create the database structure:
 
 Run the scraper to populate the database:
 
-    docker-compose run php-fpm ./console.php import --help
+    docker-compose run php-fpm bin/console import --help
 
-    docker-compose run php-fpm ./console.php import
+    docker-compose run php-fpm bin/console import
 
 Start the development containers:
 
