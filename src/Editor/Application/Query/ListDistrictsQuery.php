@@ -8,12 +8,12 @@ use Districts\Editor\Domain\DistrictFilter\Filter;
 use Districts\Editor\Domain\DistrictOrdering;
 use Districts\Editor\Domain\Pagination;
 
-class ListDistrictsQuery
+readonly class ListDistrictsQuery
 {
     public function __construct(
-        public readonly DistrictOrdering $ordering,
-        public readonly ?Filter $filter,
-        public readonly ?Pagination $pagination,
+        public DistrictOrdering $ordering,
+        public ?Filter $filter,
+        public ?Pagination $pagination,
     ) {
     }
 }

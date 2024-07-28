@@ -58,6 +58,9 @@ class CityScraperTest extends TestCase
         $this->cityParser
             ->method("extractDistrictUrls")
             ->willReturn(["1", "2", "3"]);
+        $this->districtParser
+            ->method("parse")
+            ->willReturn(new DistrictDTO(name: "", area: 0, population: 0));
 
         $cityDTO = $this->scraper->scrape();
 
@@ -69,6 +72,9 @@ class CityScraperTest extends TestCase
         $this->cityParser
             ->method("extractDistrictUrls")
             ->willReturn(["1", "2", "3"]);
+        $this->districtParser
+            ->method("parse")
+            ->willReturn(new DistrictDTO(name: "", area: 0, population: 0));
 
         $cityDTO = $this->scraper->scrape();
 

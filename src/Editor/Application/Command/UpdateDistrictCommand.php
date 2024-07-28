@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Districts\Editor\Application\Command;
 
-class UpdateDistrictCommand
+readonly class UpdateDistrictCommand
 {
     public function __construct(
-        public readonly int $id,
-        public readonly string $name,
-        public readonly float $area,
-        public readonly int $population,
+        public int $id,
+        public string $name,
+        public float $area,
+        public int $population,
     ) {
     }
 }
