@@ -7,9 +7,10 @@
         }
     ],
     "require": {
+        "php": "^8.2",
         "ext-dom": "20031129",
-        "ext-pdo_mysql": "^8.0",
-        "ext-xml": "^8.0",
+        "ext-pdo_mysql": "^8.2",
+        "ext-xml": "^8.2",
         "bryanjhv/slim-session": "^4.0",
         "doctrine/dbal": "^4.0",
         "doctrine/orm": "^3.0",
