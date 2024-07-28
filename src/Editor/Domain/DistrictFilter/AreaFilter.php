@@ -6,11 +6,11 @@ namespace Districts\Editor\Domain\DistrictFilter;
 
 use InvalidArgumentException;
 
-class AreaFilter extends Filter
+readonly class AreaFilter extends Filter
 {
     public function __construct(
-        public readonly float $begin,
-        public readonly float $end,
+        public float $begin,
+        public float $end,
     ) {
         if (!self::validate($begin, $end)) {
             throw new InvalidArgumentException();

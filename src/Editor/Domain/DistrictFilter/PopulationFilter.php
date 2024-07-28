@@ -6,11 +6,11 @@ namespace Districts\Editor\Domain\DistrictFilter;
 
 use InvalidArgumentException;
 
-class PopulationFilter extends Filter
+readonly class PopulationFilter extends Filter
 {
     public function __construct(
-        public readonly int $begin,
-        public readonly int $end,
+        public int $begin,
+        public int $end,
     ) {
         if (!self::validate($begin, $end)) {
             throw new InvalidArgumentException();

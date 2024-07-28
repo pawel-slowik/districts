@@ -6,10 +6,10 @@ namespace Districts\Editor\Domain\DistrictFilter;
 
 use InvalidArgumentException;
 
-class NameFilter extends Filter
+readonly class NameFilter extends Filter
 {
     public function __construct(
-        public readonly string $name,
+        public string $name,
     ) {
         if (!self::validate($name)) {
             throw new InvalidArgumentException();
