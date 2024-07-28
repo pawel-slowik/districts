@@ -24,7 +24,7 @@ Install required components:
 
 Create the database structure:
 
-    docker-compose run php-fpm vendor/bin/doctrine orm:schema-tool:update --force
+    docker-compose run php-fpm bin/doctrine orm:schema-tool:update --force
 
 ## Usage
 
