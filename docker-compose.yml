@@ -20,6 +20,14 @@ services:
     volumes:
       - .:/var/www/html
 
+  phpstan:
+    profiles:
+      - dev-task # not really a service, don't start by default
+    build: ./docker/phpstan
+    image: districts-phpstan
+    volumes:
+      - .:/app
+
   sql:
     image: mariadb:10.5
     environment:
