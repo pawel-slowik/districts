@@ -8,6 +8,7 @@ use Districts\Scraper\Domain\DistrictDTO;
 use Districts\Scraper\Domain\Exception\ParsingException;
 use Districts\Scraper\Domain\Gdansk\DistrictParser;
 use Districts\Scraper\Domain\HtmlFinder;
+use LogicException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,7 +23,8 @@ class DistrictParserTest extends TestCase
     protected function setUp(): void
     {
         $this->districtParser = new DistrictParser(new HtmlFinder());
-        $this->validHtml = file_get_contents(__DIR__ . "/dzielnice_mapa_alert.php?id=16");
+        $validHtml = file_get_contents(__DIR__ . "/dzielnice_mapa_alert.php?id=16") or throw new LogicException();
+        $this->validHtml = $validHtml;
     }
 
     public function testReturnsDistrict(): void

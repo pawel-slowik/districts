@@ -6,6 +6,7 @@ namespace Districts\Test\Integration;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
+use LogicException;
 
 class FixtureTool
 {
@@ -19,8 +20,17 @@ class FixtureTool
     public static function loadFiles(EntityManager $entityManager, iterable $sqlFilenames): void
     {
         foreach ($sqlFilenames as $sqlFilename) {
-            $entityManager->getConnection()->executeStatement(file_get_contents($sqlFilename));
+            self::loadFile($entityManager, $sqlFilename);
         }
+    }
+
+    public static function loadFile(EntityManager $entityManager, string $sqlFilename): void
+    {
+        $sqlStatements = file_get_contents($sqlFilename);
+        if ($sqlStatements === false) {
+            throw new LogicException();
+        }
+        $entityManager->getConnection()->executeStatement($sqlStatements);
     }
 
     public static function loadSql(EntityManager $entityManager, string $sqlStatement): void
