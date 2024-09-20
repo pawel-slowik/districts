@@ -17,3 +17,5 @@ RUN echo memory_limit=-1 > /usr/local/etc/php/conf.d/disable_memory_limit.ini
 WORKDIR /app
 
 ENTRYPOINT ["phpstan"]
+
+CMD ["analyse"]

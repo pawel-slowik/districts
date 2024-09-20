@@ -1,4 +1,11 @@
 parameters:
+    level: 9
+    paths:
+        - src
+        - tests
+        - dependencies
+        - bin/console
+        - bin/doctrine
     inferPrivatePropertyTypeFromConstructor: true
     ignoreErrors:
         - identifier: missingType.iterableValue

@@ -40,6 +40,12 @@ Start the development containers:
 
 Open <http://127.0.0.1:8080> in your browser.
 
+## Development
+
+Run static analysis with:
+
+    docker-compose run phpstan
+
 ## TODO
 
 - replace the validator with Valitron? zend-validator?
