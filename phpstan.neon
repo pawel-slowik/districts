@@ -9,6 +9,8 @@ parameters:
     inferPrivatePropertyTypeFromConstructor: true
     ignoreErrors:
         - identifier: missingType.iterableValue
+    stubFiles:
+        - stubs/Container.php
 
 includes:
     - /phpstan/vendor/phpstan/phpstan-doctrine/extension.neon
