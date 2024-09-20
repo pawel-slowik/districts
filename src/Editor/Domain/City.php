@@ -23,7 +23,7 @@ class City
     #[ORM\Column(type: "string")]
     private string $name;
 
-    /** @var Collection<District> */
+    /** @var Collection<int|string, District> */
     #[ORM\OneToMany(targetEntity: District::class, mappedBy: "city", cascade: ["persist"], orphanRemoval: true)]
     private Collection $districts;
 
