@@ -42,9 +42,17 @@ Open <http://127.0.0.1:8080> in your browser.
 
 ## Development
 
+Run tests with:
+
+    docker-compose run php-fpm composer test
+
 Run static analysis with:
 
     docker-compose run phpstan
+
+Run coding style checks with:
+
+    docker-compose run php-fpm composer cs
 
 ## TODO
 
