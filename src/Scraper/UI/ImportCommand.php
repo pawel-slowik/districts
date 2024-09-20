@@ -18,7 +18,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 final class ImportCommand extends Command
 {
     /**
-     * @param Importer      $importer
      * @param CityScraper[] $scrapers
      */
     public function __construct(

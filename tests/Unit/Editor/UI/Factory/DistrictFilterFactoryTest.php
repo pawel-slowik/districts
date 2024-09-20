@@ -55,6 +55,8 @@ class DistrictFilterFactoryTest extends TestCase
     }
 
     /**
+     * @param class-string $expectedClass
+     *
      * @dataProvider createDataProvider
      */
     public function testCreate(?string $inputColumn, ?string $inputValue, string $expectedClass): void

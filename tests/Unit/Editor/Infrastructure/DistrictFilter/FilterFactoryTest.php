@@ -31,6 +31,8 @@ class FilterFactoryTest extends TestCase
     }
 
     /**
+     * @param class-string $expectedDqlFilterClass
+     *
      * @dataProvider typesDataProvider
      */
     public function testTypes(?DomainFilter $domainFilter, string $expectedDqlFilterClass): void
