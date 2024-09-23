@@ -55,6 +55,8 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     }
 
     /**
+     * @param string[] $expectedCityNames
+     *
      * @dataProvider listOrderCityDataProvider
      */
     public function testListOrderCity(DistrictOrdering $order, array $expectedCityNames): void
@@ -68,6 +70,9 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
         );
     }
 
+    /**
+     * @return array<array{0: DistrictOrdering, 1: string[]}>
+     */
     public static function listOrderCityDataProvider(): array
     {
         return [
@@ -83,6 +88,8 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     }
 
     /**
+     * @param int[] $expectedIds
+     *
      * @dataProvider listOrderDataProvider
      */
     public function testListOrder(DistrictOrdering $order, array $expectedIds): void
@@ -96,6 +103,9 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
         );
     }
 
+    /**
+     * @return array<array{0: DistrictOrdering, 1: int[]}>
+     */
     public static function listOrderDataProvider(): array
     {
         return [
@@ -135,6 +145,8 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     }
 
     /**
+     * @param int[] $expectedIds
+     *
      * @dataProvider listFilterDataProvider
      */
     public function testListFilter(?Filter $filter, DqlFilter $dqlFilter, array $expectedIds): void
@@ -152,6 +164,9 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
         $this->assertSame($expectedIds, $actualIds);
     }
 
+    /**
+     * @return array<array{0: ?Filter, 1: DqlFilter, 2: int[]}>
+     */
     public static function listFilterDataProvider(): array
     {
         return [

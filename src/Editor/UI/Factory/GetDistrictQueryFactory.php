@@ -10,6 +10,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class GetDistrictQueryFactory
 {
+    /**
+     * @param array<string, string> $routeArgs
+     */
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function fromRequest(Request $request, array $routeArgs): GetDistrictQuery
     {

@@ -10,6 +10,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class UpdateDistrictCommandFactory
 {
+    /**
+     * @param array<string, string> $routeArgs
+     */
     public function fromRequest(Request $request, array $routeArgs): UpdateDistrictCommand
     {
         $errors = [];

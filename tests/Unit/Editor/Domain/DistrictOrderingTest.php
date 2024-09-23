@@ -29,6 +29,9 @@ class DistrictOrderingTest extends TestCase
         $this->assertInstanceOf(DistrictOrdering::class, $order);
     }
 
+    /**
+     * @return array<array{0: int, 1: int}>
+     */
     public static function validDataProvider(): array
     {
         return [
@@ -54,6 +57,9 @@ class DistrictOrderingTest extends TestCase
         new DistrictOrdering($field, $direction);
     }
 
+    /**
+     * @return array<string, array{0: int, 1: int}>
+     */
     public static function invalidDataProvider(): array
     {
         return [

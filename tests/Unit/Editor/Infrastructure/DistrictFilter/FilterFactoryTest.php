@@ -42,6 +42,9 @@ class FilterFactoryTest extends TestCase
         $this->assertInstanceOf($expectedDqlFilterClass, $dqlFilter);
     }
 
+    /**
+     * @return array<array{0: ?DomainFilter, 1: class-string}>
+     */
     public static function typesDataProvider(): array
     {
         return [

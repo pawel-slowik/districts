@@ -13,6 +13,11 @@ use Slim\Routing\RoutingResults;
 
 trait NamedRequestTester
 {
+    /**
+     * @param array<string, string> $arguments
+     *
+     * @return array<string, mixed>
+     */
     private function createRequestAttributes(?string $routeName, array $arguments = []): array
     {
         $route = $this->createMock(RouteInterface::class);
@@ -26,6 +31,10 @@ trait NamedRequestTester
         ];
     }
 
+    /**
+     * @param array<string, mixed> $attributes
+     * @param array<string, string> $queryParams
+     */
     private function createRequestMockWithAttributes(array $attributes, array $queryParams = []): ServerRequestInterface
     {
         $request = $this->createMock(ServerRequestInterface::class);
@@ -39,6 +48,11 @@ trait NamedRequestTester
         return $request;
     }
 
+    /**
+     * @param array<string, mixed> $attributes
+     *
+     * @return array<array{string, null, mixed}>
+     */
     private function convertRequestAttributesToMockArgMap(array $attributes): array
     {
         $map = [];

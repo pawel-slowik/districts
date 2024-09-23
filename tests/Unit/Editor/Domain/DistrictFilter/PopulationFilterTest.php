@@ -29,6 +29,9 @@ class PopulationFilterTest extends TestCase
         new PopulationFilter($begin, $end);
     }
 
+    /**
+     * @return array<string, array{0: int, 1: int}>
+     */
     public static function invalidDataProvider(): array
     {
         return [

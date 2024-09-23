@@ -42,6 +42,8 @@ class OrderingUrlGeneratorTest extends TestCase
     }
 
     /**
+     * @param array<string, string> $routeArgs
+     *
      * @dataProvider simpleDataProvider
      */
     public function testSimple(string $column, array $routeArgs): void
@@ -52,6 +54,9 @@ class OrderingUrlGeneratorTest extends TestCase
         $this->assertSame("/list/column1/asc", $url);
     }
 
+    /**
+     * @return array<array{0: string, 1: array<string, string>}>
+     */
     public static function simpleDataProvider(): array
     {
         return [

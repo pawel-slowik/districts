@@ -9,6 +9,9 @@ use Districts\Editor\Application\Exception\ValidationException;
 
 class RemoveDistrictCommandFactory
 {
+    /**
+     * @param array<string, string> $routeArgs
+     */
     public function fromRoute(array $routeArgs): RemoveDistrictCommand
     {
         $errors = [];

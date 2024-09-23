@@ -18,6 +18,9 @@ class PageReferenceFactory
     ) {
     }
 
+    /**
+     * @return Traversable<PageReference>
+     */
     public function createPageReferencesForNamedRouteRequest(
         ServerRequestInterface $namedRouteRequest,
         int $pageCount,
@@ -31,6 +34,9 @@ class PageReferenceFactory
         );
     }
 
+    /**
+     * @return Traversable<PageReference>
+     */
     public function createPageReferencesForUrl(
         string $baseUrl,
         int $pageCount,

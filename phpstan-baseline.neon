@@ -1,0 +1,46 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Districts\\\\Editor\\\\UI\\\\Controller\\\\AddActionController\\:\\:__construct\\(\\) has parameter \\$session with no value type specified in iterable type Districts\\\\Editor\\\\UI\\\\Session\\.$#"
+			count: 1
+			path: src/Editor/UI/Controller/AddActionController.php
+
+		-
+			message: "#^Method Districts\\\\Editor\\\\UI\\\\Controller\\\\AddFormController\\:\\:__construct\\(\\) has parameter \\$session with no value type specified in iterable type Districts\\\\Editor\\\\UI\\\\Session\\.$#"
+			count: 1
+			path: src/Editor/UI/Controller/AddFormController.php
+
+		-
+			message: "#^Method Districts\\\\Editor\\\\UI\\\\Controller\\\\EditActionController\\:\\:__construct\\(\\) has parameter \\$session with no value type specified in iterable type Districts\\\\Editor\\\\UI\\\\Session\\.$#"
+			count: 1
+			path: src/Editor/UI/Controller/EditActionController.php
+
+		-
+			message: "#^Method Districts\\\\Editor\\\\UI\\\\Controller\\\\EditFormController\\:\\:__construct\\(\\) has parameter \\$session with no value type specified in iterable type Districts\\\\Editor\\\\UI\\\\Session\\.$#"
+			count: 1
+			path: src/Editor/UI/Controller/EditFormController.php
+
+		-
+			message: "#^Method Districts\\\\Editor\\\\UI\\\\Controller\\\\ListController\\:\\:__construct\\(\\) has parameter \\$session with no value type specified in iterable type Districts\\\\Editor\\\\UI\\\\Session\\.$#"
+			count: 1
+			path: src/Editor/UI/Controller/ListController.php
+
+		-
+			message: "#^Method Districts\\\\Editor\\\\UI\\\\Controller\\\\RemoveActionController\\:\\:__construct\\(\\) has parameter \\$session with no value type specified in iterable type Districts\\\\Editor\\\\UI\\\\Session\\.$#"
+			count: 1
+			path: src/Editor/UI/Controller/RemoveActionController.php
+
+		-
+			message: "#^Call to an undefined method DOMNode\\:\\:getAttribute\\(\\)\\.$#"
+			count: 1
+			path: src/Scraper/Domain/Gdansk/CityParser.php
+
+		-
+			message: "#^Call to an undefined method DOMNode\\:\\:getAttribute\\(\\)\\.$#"
+			count: 1
+			path: src/Scraper/Domain/Krakow/CityParser.php
+
+		-
+			message: "#^Property Districts\\\\Test\\\\Unit\\\\Editor\\\\UI\\\\SessionTest\\:\\:\\$session type has no value type specified in iterable type Districts\\\\Editor\\\\UI\\\\Session\\.$#"
+			count: 1
+			path: tests/Unit/Editor/UI/SessionTest.php

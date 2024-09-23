@@ -33,6 +33,9 @@ abstract class DoctrineDbTestCase extends TestCase
         );
     }
 
+    /**
+     * @param array<array<string, mixed>> $expectedContents
+     */
     protected function assertDbTableContents(string $tableName, array $expectedContents): void
     {
         $result = $this->entityManager->getConnection()->fetchAllAssociative("SELECT * FROM {$tableName}");
@@ -43,6 +46,11 @@ abstract class DoctrineDbTestCase extends TestCase
         );
     }
 
+    /**
+     * @param array<array<string, mixed>> $tableContents
+     *
+     * @return array<array<string, mixed>>
+     */
     private function removeIdsFromTableContents(array $tableContents): array
     {
         return array_map(
@@ -56,6 +64,11 @@ abstract class DoctrineDbTestCase extends TestCase
         );
     }
 
+    /**
+     * @param array<array<string, mixed>> $tableContents
+     *
+     * @return array<array<string, mixed>>
+     */
     private function sortTableContentsForComparision(array $tableContents): array
     {
         foreach ($tableContents as $offset => $row) {

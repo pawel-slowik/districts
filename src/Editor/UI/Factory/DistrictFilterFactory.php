@@ -27,6 +27,9 @@ class DistrictFilterFactory
         };
     }
 
+    /**
+     * @return string[]
+     */
     private static function stringToRange(string $input): array
     {
         $range = explode("-", $input, 2);

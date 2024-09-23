@@ -10,6 +10,9 @@ interface DistrictRepository
 {
     public function get(int $id): District;
 
+    /**
+     * @return PaginatedResult<District>
+     */
     public function list(
         DistrictOrdering $order,
         ?Filter $filter = null,

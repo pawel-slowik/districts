@@ -7,11 +7,15 @@ namespace Districts\Scraper\Domain;
 use Districts\Scraper\Domain\Exception\InvalidHtmlException;
 use Districts\Scraper\Domain\Exception\InvalidQueryException;
 use DOMDocument;
+use DOMNode;
 use DOMXpath;
 use ValueError;
 
 class HtmlFinder
 {
+    /**
+     * @return DOMNode[]
+     */
     public function findNodes(string $html, string $xpath): array
     {
         $document = new DOMDocument();

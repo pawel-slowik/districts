@@ -43,6 +43,9 @@ class OrderingUrlGenerator
         return $route->getName();
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function getRouteArgumentsFromRequest(ServerRequestInterface $request): array
     {
         return $this->getRouteFromRequest($request)->getArguments();
@@ -58,6 +61,9 @@ class OrderingUrlGenerator
         return $route;
     }
 
+    /**
+     * @param array<string, string> $routeArgs
+     */
     private function computeOrderingDirection(string $column, array $routeArgs): string
     {
         if (
@@ -71,6 +77,11 @@ class OrderingUrlGenerator
         return "asc";
     }
 
+    /**
+     * @param array<string, string> $queryParams
+     *
+     * @return array<string, string>
+     */
     private function copyRelevantQueryParams(array $queryParams): array
     {
         $newQueryParams = [];

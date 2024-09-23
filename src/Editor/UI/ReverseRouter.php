@@ -8,5 +8,8 @@ use Psr\Http\Message\UriInterface;
 
 interface ReverseRouter
 {
+    /**
+     * @param array<string, string> $routeData
+     */
     public function urlFromRoute(UriInterface $baseUri, string $routeName, array $routeData = []): string;
 }

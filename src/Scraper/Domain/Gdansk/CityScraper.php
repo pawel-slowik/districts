@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Districts\Scraper\Domain\Gdansk;
 
 use Districts\Scraper\Domain\CityDTO;
+use Districts\Scraper\Domain\DistrictDTO;
 use Districts\Scraper\Domain\CityScraper as CityScraperInterface;
 use Districts\Scraper\Domain\HtmlFetcher;
 use Iterator;
@@ -29,6 +30,9 @@ final class CityScraper implements CityScraperInterface
         return new CityDTO($this->getCityName(), iterator_to_array($this->listDistricts()));
     }
 
+    /**
+     * @return Iterator<DistrictDTO>
+     */
     private function listDistricts(): Iterator
     {
         foreach ($this->listDistrictUrls() as $url) {
@@ -37,6 +41,9 @@ final class CityScraper implements CityScraperInterface
         }
     }
 
+    /**
+     * @return iterable<string>
+     */
     private function listDistrictUrls(): iterable
     {
         $startUrl = "https://www.gdansk.pl/dzielnice";

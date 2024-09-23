@@ -77,6 +77,9 @@ class DistrictService
         $this->cityRepository->update($city);
     }
 
+    /**
+     * @return PaginatedResult<District>
+     */
     public function list(ListDistrictsQuery $query): PaginatedResult
     {
         return $this->districtRepository->list($query->ordering, $query->filter, $query->pagination);

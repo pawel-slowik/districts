@@ -6,8 +6,14 @@ namespace Districts\Editor\Domain;
 
 use InvalidArgumentException;
 
+/**
+ * @template T
+ */
 class PaginatedResult
 {
+    /**
+     * @param T[] $currentPageEntries
+     */
     public function __construct(
         private int $pageSize,
         private int $totalEntryCount,
@@ -19,6 +25,9 @@ class PaginatedResult
         }
     }
 
+    /**
+     * @return T[]
+     */
     public function getCurrentPageEntries(): array
     {
         return $this->currentPageEntries;

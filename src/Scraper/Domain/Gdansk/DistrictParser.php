@@ -40,6 +40,9 @@ class DistrictParser
         return new DistrictDTO($name, $area, $population);
     }
 
+    /**
+     * @param string[] $texts
+     */
     private static function getArea(array $texts): float
     {
         $regexp = "/Powierzchnia:[[:space:]]+([0-9]+(,[0-9]+){0,1})[[:space:]]+km/";
@@ -48,6 +51,9 @@ class DistrictParser
         return floatval($area);
     }
 
+    /**
+     * @param string[] $texts
+     */
     private static function getPopulation(array $texts): int
     {
         $regexp = "/Liczba[[:space:]]ludno.+ci:[[:space:]]+([0-9]+)[[:space:]]/";
@@ -55,6 +61,9 @@ class DistrictParser
         return intval($match);
     }
 
+    /**
+     * @param string[] $texts
+     */
     private static function getSingleMatch(array $texts, string $regexp): string
     {
         $allMatches = [];

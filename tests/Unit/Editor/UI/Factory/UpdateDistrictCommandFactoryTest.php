@@ -59,6 +59,9 @@ class UpdateDistrictCommandFactoryTest extends TestCase
     }
 
     /**
+     * @param array<string, string> $requestData
+     * @param array<string, string> $routeArgs
+     *
      * @dataProvider incompleteUpdateRequestDataProvider
      */
     public function testIncompleteUpdateRequest(array $requestData, array $routeArgs): void
@@ -68,6 +71,9 @@ class UpdateDistrictCommandFactoryTest extends TestCase
         $this->commandFactory->fromRequest($this->request, $routeArgs);
     }
 
+    /**
+     * @return array<string, array{0: array<string, string>, 1: array<string, string>}>
+     */
     public static function incompleteUpdateRequestDataProvider(): array
     {
         return [
@@ -120,6 +126,9 @@ class UpdateDistrictCommandFactoryTest extends TestCase
         $this->commandFactory->fromRequest($this->request, ["id" => "1"]);
     }
 
+    /**
+     * @return array<array{0: null|object}>
+     */
     public static function unparseableRequestDataProvider(): array
     {
         return [

@@ -37,6 +37,9 @@ class ListControllerTest extends BaseTestCase
         $this->assertNotEmpty((string) $response->getBody());
     }
 
+    /**
+     * @return array<array{0: string}>
+     */
     public static function listDataProvider(): array
     {
         return [
@@ -64,6 +67,9 @@ class ListControllerTest extends BaseTestCase
         $this->assertStringContainsStringIgnoringCase("invalid query parameters", (string) $response->getBody());
     }
 
+    /**
+     * @param array<string, string> $requestData
+     */
     protected function runAppWithPaginatedDataset(
         string $requestMethod,
         string $requestUri,

@@ -6,6 +6,9 @@ namespace Districts\Editor\Application;
 
 class ValidationResult
 {
+    /**
+     * @var string[]
+     */
     private array $errors = [];
 
     public function isOk(): bool
@@ -18,6 +21,9 @@ class ValidationResult
         $this->errors[] = $error;
     }
 
+    /**
+     * @return string[]
+     */
     public function getErrors(): array
     {
         return $this->errors;

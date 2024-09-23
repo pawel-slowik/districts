@@ -37,6 +37,9 @@ class PaginationFactoryTest extends TestCase
         $this->assertSame(1, $pagination->getPageNumber());
     }
 
+    /**
+     * @return array<string, array{0: null|string}>
+     */
     public static function invalidDataProvider(): array
     {
         return [

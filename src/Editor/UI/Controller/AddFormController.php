@@ -19,6 +19,9 @@ final class AddFormController
     ) {
     }
 
+    /**
+     * @param array<string, string> $args
+     */
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args): Response
     {

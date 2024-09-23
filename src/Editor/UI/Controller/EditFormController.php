@@ -23,6 +23,9 @@ final class EditFormController
     ) {
     }
 
+    /**
+     * @param array<string, string> $args
+     */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $district = $this->session->getAndDelete("form.edit.values");

@@ -17,6 +17,9 @@ class FixtureTool
         $schemaTool->createSchema($entityManager->getMetadataFactory()->getAllMetadata());
     }
 
+    /**
+     * @param iterable<string> $sqlFilenames
+     */
     public static function loadFiles(EntityManager $entityManager, iterable $sqlFilenames): void
     {
         foreach ($sqlFilenames as $sqlFilename) {

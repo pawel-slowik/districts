@@ -8,6 +8,9 @@ abstract class Filter
 {
     abstract public function where(): string;
 
+    /**
+     * @return array<string, scalar>
+     */
     abstract public function parameters(): array;
 
     protected function dqlLike(string $string): string

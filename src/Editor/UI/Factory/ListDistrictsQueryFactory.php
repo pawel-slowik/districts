@@ -16,6 +16,9 @@ class ListDistrictsQueryFactory
     ) {
     }
 
+    /**
+     * @param array<string, string> $routeArgs
+     */
     public function fromRequest(Request $request, array $routeArgs): ListDistrictsQuery
     {
         $orderColumn = $routeArgs["column"] ?? null;

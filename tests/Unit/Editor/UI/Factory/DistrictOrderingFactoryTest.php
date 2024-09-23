@@ -35,6 +35,9 @@ class DistrictOrderingFactoryTest extends TestCase
         $this->assertSame($expectedDirection, $order->getDirection());
     }
 
+    /**
+     * @return array<array{0: ?string, 1: ?string, 2: int, 3: int}>
+     */
     public static function createDataProvider(): array
     {
         return [

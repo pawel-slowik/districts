@@ -15,6 +15,9 @@ class CityParser
     ) {
     }
 
+    /**
+     * @return iterable<string>
+     */
     public function extractDistrictUrls(string $html): iterable
     {
         $xpath = "//polygon[@id]";

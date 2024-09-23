@@ -29,6 +29,9 @@ class AreaFilterTest extends TestCase
         $this->assertInstanceOf(AreaFilter::class, $filter);
     }
 
+    /**
+     * @return array<array{0: float, 1: float}>
+     */
     public static function validDataProvider(): array
     {
         return [
@@ -48,6 +51,9 @@ class AreaFilterTest extends TestCase
         new AreaFilter($begin, $end);
     }
 
+    /**
+     * @return array<string, array{0: float, 1: float}>
+     */
     public static function invalidDataProvider(): array
     {
         return [

@@ -47,6 +47,8 @@ class ListDistrictsQueryFactoryTest extends TestCase
     }
 
     /**
+     * @param array<string, string> $routeArgs
+     *
      * @dataProvider orderingParametersDataProvider
      */
     public function testPassingOrderingParameters(
@@ -65,6 +67,9 @@ class ListDistrictsQueryFactoryTest extends TestCase
         $query = $this->queryFactory->fromRequest($this->request, $routeArgs);
     }
 
+    /**
+     * @return array<array{0: array<int|string, string>, 1: ?string, 2: ?string}>
+     */
     public static function orderingParametersDataProvider(): array
     {
         return [
@@ -115,6 +120,8 @@ class ListDistrictsQueryFactoryTest extends TestCase
     }
 
     /**
+     * @param array<string, string> $queryParams
+     *
      * @dataProvider filterParametersDataProvider
      */
     public function testPassingFilterParameters(
@@ -135,6 +142,9 @@ class ListDistrictsQueryFactoryTest extends TestCase
         $query = $this->queryFactory->fromRequest($this->request, []);
     }
 
+    /**
+     * @return array<array{0: array<int|string, string>, 1: ?string, 2: ?string}>
+     */
     public static function filterParametersDataProvider(): array
     {
         return [
@@ -185,6 +195,8 @@ class ListDistrictsQueryFactoryTest extends TestCase
     }
 
     /**
+     * @param array<string, string> $queryParams
+     *
      * @dataProvider paginationParametersDataProvider
      */
     public function testPassingPaginationParameters(array $queryParams, ?string $expectedPage): void
@@ -201,6 +213,9 @@ class ListDistrictsQueryFactoryTest extends TestCase
         $query = $this->queryFactory->fromRequest($this->request, []);
     }
 
+    /**
+     * @return array<array{0: array<int|string, string>, 1: ?string}>
+     */
     public static function paginationParametersDataProvider(): array
     {
         return [

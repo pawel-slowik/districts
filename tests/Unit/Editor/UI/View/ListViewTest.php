@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Unit\Editor\UI\View;
 
+use Districts\Editor\Domain\District;
 use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\UI\View\ListView;
 use Districts\Editor\UI\View\OrderingUrlGenerator;
@@ -20,6 +21,7 @@ use Slim\Views\Twig as TwigView;
  */
 class ListViewTest extends TestCase
 {
+    /** @var ListView<District> */
     private ListView $listView;
 
     /** @var MockObject&TwigView */
@@ -82,6 +84,9 @@ class ListViewTest extends TestCase
         $this->listView->render($this->createStub(ResponseInterface::class), $paginatedResult, $request, [""], "", []);
     }
 
+    /**
+     * @return array<array{0: string}>
+     */
     public static function computedDataKeyProvider(): array
     {
         return [

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Districts\Editor\UI\Controller;
 
 use Districts\Editor\Application\DistrictService;
+use Districts\Editor\Domain\District;
 use Districts\Editor\UI\Factory\ListDistrictsQueryFactory;
 use Districts\Editor\UI\Session;
 use Districts\Editor\UI\View\ListView;
@@ -14,6 +15,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 final class ListController
 {
+    /**
+     * @param ListView<District> $listView
+     */
     public function __construct(
         private DistrictService $districtService,
         private ListDistrictsQueryFactory $queryFactory,
@@ -22,6 +26,9 @@ final class ListController
     ) {
     }
 
+    /**
+     * @param array<string, string> $args
+     */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         try {

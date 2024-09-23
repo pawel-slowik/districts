@@ -20,6 +20,9 @@ use Slim\Interfaces\RouteCollectorInterface;
 
 abstract class BaseTestCase extends TestCase
 {
+    /**
+     * @param array<string, string> $requestData
+     */
     protected function runApp(string $requestMethod, string $requestUri, array $requestData = []): ResponseInterface
     {
         $container = new Container();
@@ -63,6 +66,9 @@ abstract class BaseTestCase extends TestCase
         return $app;
     }
 
+    /**
+     * @param array<string, string> $data
+     */
     protected function createRequest(string $method, string $uri, array $data): ServerRequestInterface
     {
         $inputUri = new Uri($uri);

@@ -49,6 +49,9 @@ class PageReferenceTest extends TestCase
         $this->assertFalse($exceptionThrown);
     }
 
+    /**
+     * @return array<array{0: string}>
+     */
     public static function validUrlProvider(): array
     {
         return [
@@ -84,6 +87,9 @@ class PageReferenceTest extends TestCase
         new PageReference($invalidUrl, "test", false, false, false);
     }
 
+    /**
+     * @return array<array{0: string}>
+     */
     public static function invalidUrlProvider(): array
     {
         return [
@@ -112,6 +118,9 @@ class PageReferenceTest extends TestCase
         $this->assertFalse($exceptionThrown);
     }
 
+    /**
+     * @return array<array{0: bool, 1: bool, 2: bool}>
+     */
     public static function validFlagsProvider(): array
     {
         return [
@@ -131,6 +140,9 @@ class PageReferenceTest extends TestCase
         new PageReference("http://example.com", "test", $isCurrent, $isPrevious, $isNext);
     }
 
+    /**
+     * @return array<array{0: bool, 1: bool, 2: bool}>
+     */
     public static function invalidFlagsProvider(): array
     {
         return [

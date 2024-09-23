@@ -9,6 +9,9 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig as View;
 
+/**
+ * @template T
+ */
 class ListView
 {
     public function __construct(
@@ -18,6 +21,11 @@ class ListView
     ) {
     }
 
+    /**
+     * @param PaginatedResult<T> $paginatedResult
+     * @param string[] $orderingColumns
+     * @param array<string, mixed> $data
+     */
     public function render(
         ResponseInterface $response,
         PaginatedResult $paginatedResult,
@@ -42,6 +50,11 @@ class ListView
         return $this->view->render($response, $template, $data);
     }
 
+    /**
+     * @param string[] $columns
+     *
+     * @return array<string, string>
+     */
     private function createOrderingUrls(
         ServerRequestInterface $request,
         array $columns

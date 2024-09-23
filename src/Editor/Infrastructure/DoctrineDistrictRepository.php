@@ -32,6 +32,9 @@ final class DoctrineDistrictRepository implements DistrictRepository
         return $district;
     }
 
+    /**
+     * @return PaginatedResult<District>
+     */
     public function list(
         DistrictOrdering $order,
         ?Filter $filter = null,
