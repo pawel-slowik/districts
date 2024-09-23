@@ -30,7 +30,7 @@ class CityParser
             throw new ParsingException();
         }
         foreach ($nodes as $node) {
-            $id = $this->fixPolygonId($node->getAttribute("id"));
+            $id = $this->fixPolygonId($this->htmlFinder->getAttribute($node, "id"));
             yield "subpages/dzielnice/html/4-dzielnice_mapa_alert.php?id={$id}";
         }
     }

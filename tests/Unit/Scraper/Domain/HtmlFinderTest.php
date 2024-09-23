@@ -58,4 +58,10 @@ HTML;
         $nodes = $this->finder->findNodes(self::VALID_HTML, "/html/body");
         $this->assertSame("\n    test\n  ", $nodes[0]->textContent);
     }
+
+    public function testAttribute(): void
+    {
+        $nodes = $this->finder->findNodes(self::VALID_HTML, "/html/head/meta");
+        $this->assertSame("utf-8", $this->finder->getAttribute($nodes[0], "charset"));
+    }
 }

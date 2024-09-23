@@ -7,7 +7,7 @@ namespace Districts\Test\Unit\Scraper\Domain\Gdansk;
 use Districts\Scraper\Domain\Exception\ParsingException;
 use Districts\Scraper\Domain\Gdansk\CityParser;
 use Districts\Scraper\Domain\HtmlFinder;
-use DOMElement;
+use DOMNode;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
@@ -30,14 +30,14 @@ class CityParserTest extends TestCase
 
     public function testReturnsCorrectNumberOfUrls(): void
     {
-        $node = $this->createStub(DOMElement::class);
-        $node
-            ->method("getAttribute")
-            ->willReturnMap([["id", "0"]]);
+        $node = $this->createStub(DOMNode::class);
 
         $this->htmlFinder
             ->method("findNodes")
             ->willReturn(array_fill(0, 5, $node));
+        $this->htmlFinder
+            ->method("getAttribute")
+            ->willReturnMap([[$node, "id", "0"]]);
 
         $urls = $this->cityParser->extractDistrictUrls("");
 
@@ -46,14 +46,14 @@ class CityParserTest extends TestCase
 
     public function testReturnsStrings(): void
     {
-        $node = $this->createStub(DOMElement::class);
-        $node
-            ->method("getAttribute")
-            ->willReturnMap([["id", "0"]]);
+        $node = $this->createStub(DOMNode::class);
 
         $this->htmlFinder
             ->method("findNodes")
             ->willReturn(array_fill(0, 5, $node));
+        $this->htmlFinder
+            ->method("getAttribute")
+            ->willReturnMap([[$node, "id", "0"]]);
 
         $urls = $this->cityParser->extractDistrictUrls("");
 
@@ -75,14 +75,14 @@ class CityParserTest extends TestCase
 
     public function testThrowsExceptionOnInvalidId(): void
     {
-        $node = $this->createStub(DOMElement::class);
-        $node
-            ->method("getAttribute")
-            ->willReturn("foo");
+        $node = $this->createStub(DOMNode::class);
 
         $this->htmlFinder
             ->method("findNodes")
             ->willReturn([$node]);
+        $this->htmlFinder
+            ->method("getAttribute")
+            ->willReturn("foo");
 
         $this->expectException(ParsingException::class);
 

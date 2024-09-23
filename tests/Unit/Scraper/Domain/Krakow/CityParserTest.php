@@ -7,7 +7,7 @@ namespace Districts\Test\Unit\Scraper\Domain\Krakow;
 use Districts\Scraper\Domain\Exception\ParsingException;
 use Districts\Scraper\Domain\HtmlFinder;
 use Districts\Scraper\Domain\Krakow\CityParser;
-use DOMElement;
+use DOMNode;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
@@ -30,10 +30,7 @@ class CityParserTest extends TestCase
 
     public function testReturnsCorrectNumberOfUrls(): void
     {
-        $node = $this->createStub(DOMElement::class);
-        $node
-            ->method("getAttribute")
-            ->willReturnMap([["href", "foo"]]);
+        $node = $this->createStub(DOMNode::class);
 
         $this->htmlFinder
             ->method("findNodes")
@@ -46,10 +43,7 @@ class CityParserTest extends TestCase
 
     public function testReturnsStrings(): void
     {
-        $node = $this->createStub(DOMElement::class);
-        $node
-            ->method("getAttribute")
-            ->willReturnMap([["href", "foo"]]);
+        $node = $this->createStub(DOMNode::class);
 
         $this->htmlFinder
             ->method("findNodes")

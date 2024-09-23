@@ -31,7 +31,7 @@ class CityParser
             throw new ParsingException();
         }
         foreach ($nodes as $node) {
-            yield $node->getAttribute("href");
+            yield $this->htmlFinder->getAttribute($node, "href");
         }
     }
 }

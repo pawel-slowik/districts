@@ -33,4 +33,25 @@ class HtmlFinder
         }
         return iterator_to_array($nodes);
     }
+
+    public function getAttribute(DOMNode $node, string $attribute): string
+    {
+        if ($node->attributes === null) {
+            throw new InvalidHtmlException();
+        }
+        for ($i = 0; $i < $node->attributes->length; $i++) {
+            $attributeNode = $node->attributes->item($i);
+            if ($attributeNode === null) {
+                throw new InvalidHtmlException();
+            }
+            if ($attributeNode->nodeName === $attribute) {
+                if ($attributeNode->nodeValue === null) {
+                    continue;
+                }
+                return $attributeNode->nodeValue;
+            }
+        }
+
+        throw new InvalidHtmlException();
+    }
 }
