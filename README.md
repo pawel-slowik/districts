@@ -16,27 +16,27 @@ trying out tools, frameworks, patterns etc.
 
 Build the development containers:
 
-    docker-compose build
+    docker compose build
 
 Install required components:
 
-    docker-compose run php-fpm composer install
+    docker compose run php-fpm composer install
 
 Create the database structure:
 
-    docker-compose run php-fpm bin/doctrine orm:schema-tool:update --force
+    docker compose run php-fpm bin/doctrine orm:schema-tool:update --force
 
 ## Usage
 
 Run the scraper to populate the database:
 
-    docker-compose run php-fpm bin/console import --help
+    docker compose run php-fpm bin/console import --help
 
-    docker-compose run php-fpm bin/console import
+    docker compose run php-fpm bin/console import
 
 Start the development containers:
 
-    docker-compose up -d
+    docker compose up -d
 
 Open <http://127.0.0.1:8080> in your browser.
 
@@ -44,15 +44,15 @@ Open <http://127.0.0.1:8080> in your browser.
 
 Run tests with:
 
-    docker-compose run php-fpm composer test
+    docker compose run php-fpm composer test
 
 Run static analysis with:
 
-    docker-compose run phpstan
+    docker compose run phpstan
 
 Run coding style checks with:
 
-    docker-compose run php-fpm composer cs
+    docker compose run php-fpm composer cs
 
 ## TODO
 
