@@ -6,26 +6,83 @@ namespace Districts\Test\Unit\Editor\UI;
 
 use Districts\Editor\UI\Session;
 use PHPUnit\Framework\TestCase;
+use SlimSession\Helper;
 
 /**
  * @covers \Districts\Editor\UI\Session
  */
 class SessionTest extends TestCase
 {
-    private Session $session;
-
-    protected function setUp(): void
+    public function testSet(): void
     {
-        $this->session = new Session();
+        $helper = $this->createMock(Helper::class);
+        $session = new Session($helper);
+
+        $helper
+            ->expects($this->once())
+            ->method("set")
+            ->with("keY", "vaLuE");
+
+        $session->set("keY", "vaLuE");
     }
 
-    public function testGetAndDelete(): void
+    public function testDelete(): void
     {
-        $this->session->set("foo", "bar");
-        $value = $this->session->getAndDelete("foo");
-        $existsAfter = $this->session->exists("foo");
+        $helper = $this->createMock(Helper::class);
+        $session = new Session($helper);
 
-        $this->assertSame("bar", $value);
-        $this->assertFalse($existsAfter);
+        $helper
+            ->expects($this->once())
+            ->method("delete")
+            ->with("__key_to_DELETE");
+
+        $session->delete("__key_to_DELETE");
+    }
+
+    public function testGetAndDeleteBothGetsAndDeletes(): void
+    {
+        $helper = $this->createMock(Helper::class);
+        $session = new Session($helper);
+
+        $helper
+            ->expects($this->once())
+            ->method("get")
+            ->with("flash.message");
+        $helper
+            ->expects($this->once())
+            ->method("delete")
+            ->with("flash.message");
+
+        $session->getAndDelete("flash.message");
+    }
+
+    public function testGetAndDeleteGetsBeforeDeleting(): void
+    {
+        $helper = $this->createStub(Helper::class);
+        $session = new Session($helper);
+
+        $callOrder = [];
+        $helper
+            ->method("get")
+            ->willReturnCallback(
+                // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
+                function (string $key, mixed $value) use (&$callOrder): mixed {
+                    $callOrder[] = "get";
+                    return "";
+                }
+            );
+        $helper
+            ->method("delete")
+            ->willReturnCallback(
+                // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
+                function (string $key) use (&$callOrder, &$helper): Helper {
+                    $callOrder[] = "delete";
+                    return $helper;
+                }
+            );
+
+        $session->getAndDelete("flash.message");
+
+        $this->assertSame(["get", "delete"], $callOrder);
     }
 }
