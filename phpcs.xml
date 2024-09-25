@@ -2,6 +2,15 @@
 <ruleset name="PHP_CodeSniffer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/squizlabs/php_codesniffer/phpcs.xsd">
     <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+
+    <file>bin</file>
+    <file>dependencies</file>
+    <file>src</file>
+    <file>tests</file>
+
+    <!-- s = show sniff codes -->
+    <arg value="s"/>
+
     <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
     <rule ref="Generic.Strings.UnnecessaryStringConcat"/>
     <rule ref="PSR12"/>
