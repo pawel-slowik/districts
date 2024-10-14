@@ -2,15 +2,15 @@ FROM php:8.3-cli-alpine
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/
 
-COPY composer.json composer.lock /phpstan/
+COPY composer.json composer.lock /opt/phpstan/
 
-WORKDIR /phpstan
+WORKDIR /opt/phpstan
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN composer install
 
-ENV PATH="/phpstan/vendor/bin:$PATH"
+ENV PATH="/opt/phpstan/vendor/bin:$PATH"
 
 RUN echo memory_limit=-1 > /usr/local/etc/php/conf.d/disable_memory_limit.ini
 

@@ -6,9 +6,9 @@ In order to modify the PHPStan installation:
 Examples:
 
     # add another PHPStan extension
-    docker compose run --user $(id -u) --volume "$(pwd)/docker/phpstan:/phpstan" --workdir=/phpstan --entrypoint=composer phpstan require --dev --no-install phpstan/phpstan-symfony:^1.4
+    docker compose run --user $(id -u) --volume "$(pwd)/docker/phpstan:/opt/phpstan" --workdir=/opt/phpstan --entrypoint=composer phpstan require --dev --no-install phpstan/phpstan-symfony:^1.4
 
     # update PHPStan and extensions
-    docker compose run --user $(id -u) --volume "$(pwd)/docker/phpstan:/phpstan" --workdir=/phpstan --entrypoint=composer phpstan update --no-install
+    docker compose run --user $(id -u) --volume "$(pwd)/docker/phpstan:/opt/phpstan" --workdir=/opt/phpstan --entrypoint=composer phpstan update --no-install
 
     docker compose build phpstan

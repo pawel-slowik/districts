@@ -11,5 +11,5 @@ parameters:
         - stubs/Container.php
 
 includes:
-    - /phpstan/vendor/phpstan/phpstan-doctrine/extension.neon
-    - /phpstan/vendor/phpstan/phpstan-phpunit/extension.neon
+    - /opt/phpstan/vendor/phpstan/phpstan-doctrine/extension.neon
+    - /opt/phpstan/vendor/phpstan/phpstan-phpunit/extension.neon
