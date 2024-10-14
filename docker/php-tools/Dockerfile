@@ -2,7 +2,7 @@ FROM php:8.3-cli-alpine
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/
 
-COPY composer.json composer.lock /opt/phpstan/
+COPY phpstan/composer.json phpstan/composer.lock /opt/phpstan/
 
 WORKDIR /opt/phpstan
 

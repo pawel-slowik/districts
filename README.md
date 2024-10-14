@@ -46,9 +46,9 @@ Run tests with:
 
     docker compose run php-fpm composer test
 
-Run static analysis with:
+Run static analysis and coding style checks with:
 
-    docker compose run phpstan
+    docker compose run php-tools
 
 Run coding style checks with:
 

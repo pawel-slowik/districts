@@ -20,11 +20,11 @@ services:
     volumes:
       - .:/var/www/html
 
-  phpstan:
+  php-tools:
     profiles:
       - dev-task # not really a service, don't start by default
-    build: ./docker/phpstan
-    image: districts-phpstan
+    build: ./docker/php-tools
+    image: districts-php-tools
     volumes:
       - .:/app
 
