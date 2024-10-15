@@ -6,8 +6,6 @@ COPY phpstan/composer.json phpstan/composer.lock /opt/phpstan/
 
 WORKDIR /opt/phpstan
 
-ENV COMPOSER_ALLOW_SUPERUSER=1
-
 RUN composer install
 
 ENV PATH="/opt/phpstan/vendor/bin:$PATH"
