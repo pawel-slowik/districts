@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="PHP_CodeSniffer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/squizlabs/php_codesniffer/phpcs.xsd">
-    <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
 
     <file>bin</file>
     <file>dependencies</file>
@@ -14,6 +13,7 @@
     <config name="installed_paths" value="../../slevomat/coding-standard"/>
 
     <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+    <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
     <rule ref="Generic.Strings.UnnecessaryStringConcat"/>
     <rule ref="PSR12"/>
     <rule ref="PEAR.Commenting.FunctionComment">
