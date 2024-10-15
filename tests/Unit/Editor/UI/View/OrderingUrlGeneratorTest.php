@@ -28,7 +28,7 @@ class OrderingUrlGeneratorTest extends TestCase
             ->method("urlFor")
             ->willReturnCallback(
                 // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-                function (string $routeName, array $routeArgs, array $queryParams): string {
+                static function (string $routeName, array $routeArgs, array $queryParams): string {
                     $url = "/list/{$routeArgs['column']}/{$routeArgs['direction']}";
                     if (count($queryParams) > 0) {
                         $queryString = http_build_query($queryParams);

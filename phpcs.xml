@@ -37,5 +37,6 @@
             </property>
         </properties>
     </rule>
+    <rule ref="SlevomatCodingStandard.Functions.StaticClosure"/>
     <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses"/>
 </ruleset>

@@ -69,7 +69,7 @@ class DoctrineCityRepositoryTest extends DoctrineDbTestCase
         $list = $this->cityRepository->list();
         usort(
             $list,
-            fn ($a, $b) => $a->getId() - $b->getId()
+            static fn ($a, $b) => $a->getId() - $b->getId()
         );
         $this->assertSame(1, $list[0]->getId());
         $this->assertSame("Foo", $list[0]->getName());

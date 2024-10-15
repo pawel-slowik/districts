@@ -31,7 +31,7 @@ class DistrictParser
             throw new ParsingException();
         }
         $texts = array_map(
-            fn ($node) => $node->textContent,
+            static fn ($node) => $node->textContent,
             $nodes
         );
         $name = $texts[0];

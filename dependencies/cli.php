@@ -8,8 +8,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 
 return [
-    HtmlFetcher::class => fn ($container) => $container->get(GuzzleHtmlFetcher::class),
-    ClientInterface::class => fn ($container) => $container->get(Client::class),
+    HtmlFetcher::class => static fn ($container) => $container->get(GuzzleHtmlFetcher::class),
+    ClientInterface::class => static fn ($container) => $container->get(Client::class),
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-    Client::class => fn ($container) => new Client(["verify" => false]),
+    Client::class => static fn ($container) => new Client(["verify" => false]),
 ];

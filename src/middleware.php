@@ -11,7 +11,7 @@ use Slim\Middleware\Session;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
-return function (App $app): void {
+return static function (App $app): void {
     $app->add(new Session());
     $app->add(TwigMiddleware::createFromContainer($app, Twig::class));
     $errorMiddleware = $app->addErrorMiddleware(false, true, true);

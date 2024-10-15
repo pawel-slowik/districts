@@ -66,7 +66,7 @@ class SessionTest extends TestCase
             ->method("get")
             ->willReturnCallback(
                 // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-                function (string $key, mixed $value) use (&$callOrder): mixed {
+                static function (string $key, mixed $value) use (&$callOrder): mixed {
                     $callOrder[] = "get";
                     return "";
                 }
@@ -75,7 +75,7 @@ class SessionTest extends TestCase
             ->method("delete")
             ->willReturnCallback(
                 // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-                function (string $key) use (&$callOrder, &$helper): Helper {
+                static function (string $key) use (&$callOrder, &$helper): Helper {
                     $callOrder[] = "delete";
                     return $helper;
                 }

@@ -64,7 +64,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
         $this->assertSame(
             $expectedCityNames,
             array_values(array_unique(array_map(
-                fn ($district) => $district->getCity()->getName(),
+                static fn ($district) => $district->getCity()->getName(),
                 $this->districtRepository->list($order)->getCurrentPageEntries()
             )))
         );
@@ -97,7 +97,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
         $this->assertSame(
             $expectedIds,
             array_map(
-                fn ($district) => $district->getId(),
+                static fn ($district) => $district->getId(),
                 $this->districtRepository->list($order)->getCurrentPageEntries()
             )
         );
@@ -157,7 +157,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 
         sort($expectedIds);
         $actualIds = array_map(
-            fn ($district) => $district->getId(),
+            static fn ($district) => $district->getId(),
             $this->districtRepository->list($this->defaultOrder, $filter)->getCurrentPageEntries()
         );
         sort($actualIds);

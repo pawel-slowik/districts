@@ -51,7 +51,7 @@ class ScraperCityFilter
     private function getSupportedNames(array $scrapers): array
     {
         return array_map(
-            fn ($scraper) => $scraper->getCityName(),
+            static fn ($scraper) => $scraper->getCityName(),
             $scrapers
         );
     }

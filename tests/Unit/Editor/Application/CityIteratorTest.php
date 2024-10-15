@@ -47,7 +47,7 @@ class CityIteratorTest extends TestCase
         $this->assertContainsOnlyInstancesOf(City::class, $iteratorValues);
 
         $iteratorIds = array_map(
-            fn (City $city): int => $city->getId(),
+            static fn (City $city): int => $city->getId(),
             $iteratorValues,
         );
         $this->assertEqualsCanonicalizing([1, 2, 3], $iteratorIds);

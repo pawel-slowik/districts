@@ -54,7 +54,7 @@ abstract class DoctrineDbTestCase extends TestCase
     private function removeIdsFromTableContents(array $tableContents): array
     {
         return array_map(
-            function (array $row): array {
+            static function (array $row): array {
                 if (array_key_exists("id", $row)) {
                     unset($row["id"]);
                 }
@@ -77,7 +77,7 @@ abstract class DoctrineDbTestCase extends TestCase
 
         usort(
             $tableContents,
-            fn (array $a, array $b): int => strcmp(serialize($a), serialize($b))
+            static fn (array $a, array $b): int => strcmp(serialize($a), serialize($b))
         );
 
         return $tableContents;
