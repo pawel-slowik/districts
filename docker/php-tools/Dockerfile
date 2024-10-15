@@ -14,8 +14,16 @@ ENV PATH="/opt/phpstan/vendor/bin:$PATH"
 
 RUN echo memory_limit=-1 > /usr/local/etc/php/conf.d/disable_memory_limit.ini
 
+COPY php-cs-fixer/composer.json php-cs-fixer/composer.lock /opt/php-cs-fixer/
+
+WORKDIR /opt/php-cs-fixer
+
+RUN composer install
+
+ENV PATH="/opt/php-cs-fixer/vendor/bin:$PATH"
+
 WORKDIR /app
 
-ENTRYPOINT ["phpstan"]
+ENTRYPOINT ["sh"]
 
-CMD ["analyse"]
+CMD ["-c", "result=0; trap result=1 ERR; phpstan -V; phpstan analyse; php-cs-fixer fix -v --dry-run --diff; exit $result"]
