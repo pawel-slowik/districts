@@ -11,9 +11,6 @@
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 
-$header = <<<'EOF'
-EOF;
-
 $finder = Finder::create()
     ->exclude(['templates'])
     ->in(__DIR__);
