@@ -62,7 +62,7 @@ class PageReference
         }
         try {
             $uri = new Uri($url);
-        } catch (UriException $exception) {
+        } catch (UriException) {
             return false;
         }
         return self::validateAbsoluteUri($uri) || self::validateRelativeUri($uri);

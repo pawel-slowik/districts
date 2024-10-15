@@ -29,7 +29,7 @@ class PageReferenceTest extends TestCase
         $exceptionThrown = false;
         try {
             new PageReference(null, "test", false, false, false);
-        } catch (Exception $exception) {
+        } catch (Exception) {
             $exceptionThrown = true;
         }
         $this->assertFalse($exceptionThrown);
@@ -43,7 +43,7 @@ class PageReferenceTest extends TestCase
         $exceptionThrown = false;
         try {
             new PageReference($validUrl, "test", false, false, false);
-        } catch (Exception $exception) {
+        } catch (Exception) {
             $exceptionThrown = true;
         }
         $this->assertFalse($exceptionThrown);
@@ -112,7 +112,7 @@ class PageReferenceTest extends TestCase
         $exceptionThrown = false;
         try {
             new PageReference("http://example.com", "test", $isCurrent, $isPrevious, $isNext);
-        } catch (Exception $exception) {
+        } catch (Exception) {
             $exceptionThrown = true;
         }
         $this->assertFalse($exceptionThrown);

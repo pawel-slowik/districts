@@ -40,7 +40,7 @@ class RoutingConfigurationTest extends TestCase
         try {
             $routeCollector->getNamedRoute($name);
             $exceptionThrown = false;
-        } catch (RuntimeException $ex) {
+        } catch (RuntimeException) {
             $exceptionThrown = true;
         }
         $this->assertFalse($exceptionThrown);

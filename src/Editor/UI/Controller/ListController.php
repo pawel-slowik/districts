@@ -33,7 +33,7 @@ final class ListController
     {
         try {
             $query = $this->queryFactory->fromRequest($request, $args);
-        } catch (InvalidArgumentException $exception) {
+        } catch (InvalidArgumentException) {
             $query = $this->queryFactory->fromDefaults();
             $errorMessage = "Invalid query parameters";
         }

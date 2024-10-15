@@ -32,7 +32,7 @@ final class EditFormController
         if (!$district) {
             try {
                 $district = $this->districtService->get($this->queryFactory->fromRequest($request, $args));
-            } catch (NotFoundException $exception) {
+            } catch (NotFoundException) {
                 throw new HttpNotFoundException($request);
             }
         }

@@ -48,7 +48,7 @@ class DistrictService
     {
         try {
             $district = $this->districtRepository->get($command->id);
-        } catch (NotFoundInRepositoryException $exception) {
+        } catch (NotFoundInRepositoryException) {
             throw new NotFoundException();
         }
         $city = $district->getCity();
@@ -69,7 +69,7 @@ class DistrictService
     {
         try {
             $district = $this->districtRepository->get($command->id);
-        } catch (NotFoundInRepositoryException $exception) {
+        } catch (NotFoundInRepositoryException) {
             throw new NotFoundException();
         }
         $city = $district->getCity();
@@ -89,7 +89,7 @@ class DistrictService
     {
         try {
             return $this->districtRepository->get($query->id);
-        } catch (NotFoundInRepositoryException $exception) {
+        } catch (NotFoundInRepositoryException) {
             throw new NotFoundException();
         }
     }

@@ -24,7 +24,7 @@ class DistrictParser
         $xpath = "//div[contains(@class, 'opis')]/div";
         try {
             $nodes = $this->htmlFinder->findNodes($fixedHtml, $xpath);
-        } catch (InvalidHtmlException $exception) {
+        } catch (InvalidHtmlException) {
             throw new ParsingException();
         }
         if (count($nodes) < 1) {

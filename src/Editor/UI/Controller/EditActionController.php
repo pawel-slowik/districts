@@ -41,7 +41,7 @@ final class EditActionController
             $this->session->delete("form.edit.errors");
             $url = $this->reverseRouter->urlFromRoute($request->getUri(), "list");
             return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
-        } catch (NotFoundException $notFoundException) {
+        } catch (NotFoundException) {
             throw new HttpNotFoundException($request);
         } catch (ValidationException $validationException) {
             $this->session->set("form.edit.values", $request->getParsedBody());

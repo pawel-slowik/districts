@@ -56,7 +56,7 @@ class DistrictParser
     {
         try {
             $nodes = $this->htmlFinder->findNodes($html, $xpath);
-        } catch (InvalidHtmlException $exception) {
+        } catch (InvalidHtmlException) {
             throw new ParsingException();
         }
         if (count($nodes) !== 1) {

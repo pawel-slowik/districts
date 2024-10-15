@@ -36,7 +36,7 @@ final class RemoveActionController
         try {
             $this->districtService->remove($command);
             $this->session->set("success.message", "District data removed.");
-        } catch (NotFoundException $exception) {
+        } catch (NotFoundException) {
             throw new HttpNotFoundException($request);
         }
         $url = $this->reverseRouter->urlFromRoute($request->getUri(), "list");

@@ -24,7 +24,7 @@ class CityParser
         $xpath = "//a[contains(@class, 'nav-link') and .='DZIELNICE']/following::ul/li/a[@class='nav-link' and starts-with(., 'Dzielnica ')]";
         try {
             $nodes = $this->htmlFinder->findNodes($html, $xpath);
-        } catch (InvalidHtmlException $exception) {
+        } catch (InvalidHtmlException) {
             throw new ParsingException();
         }
         if (count($nodes) < 1) {

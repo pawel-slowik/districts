@@ -30,7 +30,7 @@ class DistrictValidator
 
         try {
             $city = $this->cityRepository->get($command->cityId);
-        } catch (NotFoundInRepositoryException $exception) {
+        } catch (NotFoundInRepositoryException) {
             $result->addError("city");
         }
 
@@ -51,7 +51,7 @@ class DistrictValidator
 
         try {
             $district = $this->districtRepository->get($command->id);
-        } catch (NotFoundInRepositoryException $exception) {
+        } catch (NotFoundInRepositoryException) {
             // pass
         }
 
@@ -87,7 +87,7 @@ class DistrictValidator
         try {
             new Name($name);
             return true;
-        } catch (InvalidNameException $exception) {
+        } catch (InvalidNameException) {
             return false;
         }
     }
@@ -97,7 +97,7 @@ class DistrictValidator
         try {
             new Area($area);
             return true;
-        } catch (InvalidAreaException $exception) {
+        } catch (InvalidAreaException) {
             return false;
         }
     }
@@ -107,7 +107,7 @@ class DistrictValidator
         try {
             new Population($population);
             return true;
-        } catch (InvalidPopulationException $exception) {
+        } catch (InvalidPopulationException) {
             return false;
         }
     }

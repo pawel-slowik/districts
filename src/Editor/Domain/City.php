@@ -92,7 +92,7 @@ class City
         try {
             $this->getDistrictByName($name);
             return true;
-        } catch (DistrictNotFoundException $exception) {
+        } catch (DistrictNotFoundException) {
             return false;
         }
     }
