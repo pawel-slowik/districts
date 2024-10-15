@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Districts\Scraper\Domain\Krakow;
 
 use Districts\Scraper\Domain\CityDTO;
-use Districts\Scraper\Domain\DistrictDTO;
 use Districts\Scraper\Domain\CityScraper as CityScraperInterface;
+use Districts\Scraper\Domain\DistrictDTO;
 use Districts\Scraper\Domain\HtmlFetcher;
 use Iterator;
 use Laminas\Uri\Uri;

@@ -37,4 +37,5 @@
             </property>
         </properties>
     </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses"/>
 </ruleset>
