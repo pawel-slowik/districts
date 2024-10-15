@@ -50,10 +50,6 @@ Run static analysis and coding style checks with:
 
     docker compose run php-tools
 
-Run coding style checks with:
-
-    docker compose run php-fpm composer cs
-
 ## TODO
 
 - replace the validator with Valitron? zend-validator?

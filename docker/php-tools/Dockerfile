@@ -13,8 +13,13 @@ WORKDIR /opt/php-cs-fixer
 RUN composer install
 ENV PATH="/opt/php-cs-fixer/vendor/bin:$PATH"
 
+COPY php_codesniffer/composer.json php_codesniffer/composer.lock /opt/php_codesniffer/
+WORKDIR /opt/php_codesniffer
+RUN composer install
+ENV PATH="/opt/php_codesniffer/vendor/bin:$PATH"
+
 WORKDIR /app
 
 ENTRYPOINT ["sh"]
 
-CMD ["-c", "result=0; trap result=1 ERR; phpstan -V; phpstan analyse; php-cs-fixer fix -v --dry-run --diff; exit $result"]
+CMD ["-c", "result=0; trap result=1 ERR; phpstan -V; phpstan analyse; php-cs-fixer fix -v --dry-run --diff; phpcs --version; phpcs; exit $result"]
