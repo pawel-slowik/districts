@@ -11,6 +11,8 @@
     <!-- s = show sniff codes -->
     <arg value="s"/>
 
+    <config name="installed_paths" value="../../slevomat/coding-standard"/>
+
     <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
     <rule ref="Generic.Strings.UnnecessaryStringConcat"/>
     <rule ref="PSR12"/>
@@ -22,5 +24,16 @@
         <exclude name="PEAR.Commenting.FunctionComment.MissingParamTag"/>
         <exclude name="PEAR.Commenting.FunctionComment.Missing"/>
         <exclude name="PEAR.Commenting.FunctionComment.ParamNameNoMatch"/>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition"/>
+    <rule ref="SlevomatCodingStandard.ControlStructures.DisallowYodaComparison"/>
+    <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
+        <properties>
+            <property name="rootNamespaces" type="array">
+                <element key="src" value="Districts"/>
+                <element key="tests" value="Districts\Test"/>
+            </property>
+        </properties>
     </rule>
 </ruleset>
