@@ -19,6 +19,8 @@ services:
       - DB_URL=mysql://dev_user:dev_password@sql/dev_db
     volumes:
       - .:/var/www/html
+    extra_hosts:
+      host.docker.internal: host-gateway
 
   php-tools:
     profiles:
