@@ -34,6 +34,6 @@ class GetDistrictQueryFactoryTest extends TestCase
     {
         $request = $this->createMock(Request::class);
         $this->expectException(ValidationException::class);
-        $query = $this->queryFactory->fromRequest($request, []);
+        $this->queryFactory->fromRequest($request, []);
     }
 }

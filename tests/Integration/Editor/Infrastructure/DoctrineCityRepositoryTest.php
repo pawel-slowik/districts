@@ -32,7 +32,7 @@ class DoctrineCityRepositoryTest extends DoctrineDbTestCase
     public function testGetNonExistent(): void
     {
         $this->expectException(NotFoundInRepositoryException::class);
-        $city = $this->cityRepository->get(999);
+        $this->cityRepository->get(999);
     }
 
     public function testFind(): void

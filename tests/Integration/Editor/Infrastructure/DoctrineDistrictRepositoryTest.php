@@ -41,6 +41,6 @@ class DoctrineDistrictRepositoryTest extends DoctrineDbTestCase
     public function testGetNonExistent(): void
     {
         $this->expectException(NotFoundInRepositoryException::class);
-        $district = $this->districtRepository->get(999);
+        $this->districtRepository->get(999);
     }
 }

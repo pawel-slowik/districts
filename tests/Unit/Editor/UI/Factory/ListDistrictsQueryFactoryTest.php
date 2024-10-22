@@ -64,7 +64,7 @@ class ListDistrictsQueryFactoryTest extends TestCase
                 $this->identicalTo($expectedDirection)
             );
 
-        $query = $this->queryFactory->fromRequest($this->request, $routeArgs);
+        $this->queryFactory->fromRequest($this->request, $routeArgs);
     }
 
     /**
@@ -139,7 +139,7 @@ class ListDistrictsQueryFactoryTest extends TestCase
                 $this->identicalTo($expectedValue)
             );
 
-        $query = $this->queryFactory->fromRequest($this->request, []);
+        $this->queryFactory->fromRequest($this->request, []);
     }
 
     /**
@@ -210,7 +210,7 @@ class ListDistrictsQueryFactoryTest extends TestCase
                 $this->identicalTo($expectedPage)
             );
 
-        $query = $this->queryFactory->fromRequest($this->request, []);
+        $this->queryFactory->fromRequest($this->request, []);
     }
 
     /**
