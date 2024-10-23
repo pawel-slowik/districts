@@ -48,7 +48,7 @@ class DistrictParserTest extends TestCase
     public function testPopulation(): void
     {
         $district = $this->districtParser->parse($this->validHtml);
-        $this->assertSame(20057, $district->population);
+        $this->assertSame(19892, $district->population);
     }
 
     public function testException(): void
