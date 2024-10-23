@@ -20,8 +20,7 @@ class HtmlFinder
     {
         $document = new DOMDocument();
         try {
-            // @ silence warnings for mismatched HTML tags etc.
-            if (!@$document->loadHTML($html)) {
+            if (!$document->loadHTML($html, LIBXML_NOWARNING | LIBXML_NOERROR)) {
                 throw new InvalidHtmlException();
             }
         } catch (ValueError) {
