@@ -89,10 +89,9 @@ class PageReference
 
     private static function validateFlags(bool $isCurrent, bool $isPrevious, bool $isNext): bool
     {
-        return
-            (!$isCurrent && !$isPrevious && !$isNext)
-            || (!$isCurrent && !$isPrevious && $isNext)
-            || (!$isCurrent && $isPrevious && !$isNext)
-            || ($isCurrent && !$isPrevious && !$isNext);
+        if ($isCurrent) {
+            return !$isPrevious && !$isNext;
+        }
+        return !($isPrevious && $isNext);
     }
 }
