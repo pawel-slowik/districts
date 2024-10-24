@@ -8,6 +8,7 @@ use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\CityScraper as CityScraperInterface;
 use Districts\Scraper\Domain\DistrictDTO;
 use Districts\Scraper\Domain\HtmlFetcher;
+use Districts\Scraper\Domain\ProgressReporter;
 use Iterator;
 use Laminas\Uri\Uri;
 
@@ -25,26 +26,36 @@ final class CityScraper implements CityScraperInterface
         return "Gdańsk";
     }
 
-    public function scrape(): CityDTO
+    public function scrape(?ProgressReporter $progressReporter = null): CityDTO
     {
-        return new CityDTO($this->getCityName(), iterator_to_array($this->listDistricts()));
+        $districtUrls = iterator_to_array($this->scrapeDistrictUrls());
+        if ($progressReporter) {
+            $progressReporter->setTotal(count($districtUrls));
+        }
+        $districts = $this->scrapeDistricts($districtUrls, $progressReporter);
+        return new CityDTO($this->getCityName(), iterator_to_array($districts));
     }
 
     /**
+     * @param string[] $districtUrls
+     *
      * @return Iterator<DistrictDTO>
      */
-    private function listDistricts(): Iterator
+    private function scrapeDistricts(array $districtUrls, ?ProgressReporter $progressReporter): Iterator
     {
-        foreach ($this->listDistrictUrls() as $url) {
+        foreach ($districtUrls as $url) {
             $districtHtml = $this->htmlFetcher->fetchHtml($url);
             yield $this->districtParser->parse($districtHtml);
+            if ($progressReporter) {
+                $progressReporter->advance();
+            }
         }
     }
 
     /**
      * @return iterable<string>
      */
-    private function listDistrictUrls(): iterable
+    private function scrapeDistrictUrls(): iterable
     {
         $startUrl = "https://www.gdansk.pl/dzielnice";
         $startHtml = $this->htmlFetcher->fetchHtml($startUrl);

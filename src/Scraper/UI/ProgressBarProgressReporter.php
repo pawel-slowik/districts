@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Scraper\UI;
 
-use Districts\Scraper\Application\ProgressReporter;
+use Districts\Scraper\Domain\ProgressReporter;
 use Symfony\Component\Console\Helper\ProgressBar;
 
 class ProgressBarProgressReporter implements ProgressReporter
@@ -12,6 +12,11 @@ class ProgressBarProgressReporter implements ProgressReporter
     public function __construct(
         private ProgressBar $progressBar,
     ) {
+    }
+
+    public function setTotal(int $total): void
+    {
+        $this->progressBar->setMaxSteps($total);
     }
 
     public function advance(): void

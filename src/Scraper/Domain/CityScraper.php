@@ -8,5 +8,5 @@ interface CityScraper
 {
     public function getCityName(): string;
 
-    public function scrape(): CityDTO;
+    public function scrape(?ProgressReporter $progressReporter = null): CityDTO;
 }

@@ -41,7 +41,9 @@ final class ImportCommand extends Command
         try {
             $cityFilter = new ScraperCityFilter($cityNames);
             foreach ($cityFilter->filter($this->scrapers) as $scraper) {
-                $this->updateCity($scraper->scrape(), $output);
+                $output->writeln("processing city: " . $scraper->getCityName());
+                $cityDTO = self::scrapeCity($scraper, $output);
+                $this->importer->import($cityDTO);
             }
         } catch (FilterInvalidArgumentException $ex) {
             throw new InvalidArgumentException($ex->getMessage(), $ex->getCode());
@@ -49,16 +51,14 @@ final class ImportCommand extends Command
         return 0;
     }
 
-    private function updateCity(CityDTO $cityDTO, OutputInterface $output): void
+    private static function scrapeCity(CityScraper $scraper, OutputInterface $output): CityDTO
     {
-        $output->writeln("processing city: " . $cityDTO->name);
         $progressBar = new ProgressBar($output);
+        $progressReporter = new ProgressBarProgressReporter($progressBar);
         $progressBar->start();
-        $this->importer->import(
-            $cityDTO,
-            new ProgressBarProgressReporter($progressBar),
-        );
+        $cityDTO = $scraper->scrape($progressReporter);
         $progressBar->finish();
         $output->writeln("");
+        return $cityDTO;
     }
 }

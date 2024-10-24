@@ -9,6 +9,7 @@ use Districts\Scraper\Domain\HtmlFetcher;
 use Districts\Scraper\Domain\Krakow\CityParser;
 use Districts\Scraper\Domain\Krakow\CityScraper;
 use Districts\Scraper\Domain\Krakow\DistrictParser;
+use Districts\Scraper\Domain\ProgressReporter;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
@@ -79,5 +80,26 @@ class CityScraperTest extends TestCase
         $cityDTO = $this->scraper->scrape();
 
         $this->assertContainsOnlyInstancesOf(DistrictDTO::class, $cityDTO->districts);
+    }
+
+    public function testProgressReport(): void
+    {
+        $this->cityParser
+            ->method("extractDistrictUrls")
+            ->willReturn(["a", "b"]);
+        $this->districtParser
+            ->method("parse")
+            ->willReturn(new DistrictDTO(name: "", area: 0, population: 0));
+
+        $progressReporter = $this->createMock(ProgressReporter::class);
+        $progressReporter
+            ->expects($this->once())
+            ->method("setTotal")
+            ->with(2);
+        $progressReporter
+            ->expects($this->exactly(2))
+            ->method("advance");
+
+        $this->scraper->scrape($progressReporter);
     }
 }

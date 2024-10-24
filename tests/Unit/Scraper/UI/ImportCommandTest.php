@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Districts\Test\Unit\Scraper\UI;
 
 use Districts\Scraper\Application\Importer;
-use Districts\Scraper\Application\ProgressReporter;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\CityScraper;
 use Districts\Scraper\UI\ImportCommand;
@@ -80,7 +79,6 @@ class ImportCommandTest extends TestCase
             ->method("import")
             ->with(
                 $this->isInstanceOf(CityDTO::class),
-                $this->isInstanceOf(ProgressReporter::class),
             );
 
         $this->command->run($this->input, $this->output);

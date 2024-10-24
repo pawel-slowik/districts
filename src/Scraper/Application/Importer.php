@@ -18,10 +18,8 @@ class Importer
     ) {
     }
 
-    public function import(
-        CityDTO $cityDTO,
-        ?ProgressReporter $progressReporter = null
-    ): void {
+    public function import(CityDTO $cityDTO): void
+    {
         $city = $this->cityRepository->findByName($cityDTO->name);
         if ($city) {
             $city->removeAllDistricts();
@@ -36,9 +34,6 @@ class Importer
                 new Area($districtDTO->area),
                 new Population($districtDTO->population),
             );
-            if ($progressReporter) {
-                $progressReporter->advance();
-            }
         }
         $this->cityRepository->update($city);
     }

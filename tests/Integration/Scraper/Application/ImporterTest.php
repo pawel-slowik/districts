@@ -6,7 +6,6 @@ namespace Districts\Test\Integration\Scraper\Application;
 
 use Districts\Editor\Infrastructure\DoctrineCityRepository;
 use Districts\Scraper\Application\Importer;
-use Districts\Scraper\Application\ProgressReporter;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\DistrictDTO;
 use Districts\Test\Integration\DoctrineDbTestCase;
@@ -131,25 +130,6 @@ SQL;
                     "city_id" => 2,
                 ],
             ]
-        );
-    }
-
-    public function testProgressReport(): void
-    {
-        $progressReporter = $this->createMock(ProgressReporter::class);
-        $progressReporter
-            ->expects($this->exactly(2))
-            ->method("advance");
-
-        $this->importer->import(
-            new CityDTO(
-                "Foo",
-                [
-                    new DistrictDTO("Bar", 1, 2),
-                    new DistrictDTO("Baz", 3, 4),
-                ]
-            ),
-            $progressReporter
         );
     }
 }
