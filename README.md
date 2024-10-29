@@ -40,6 +40,9 @@ Start the development containers:
 
 Open <http://127.0.0.1:8080> in your browser.
 
+You can set the `HTTP_PORT` environment variable to a different port number if
+the default conflicts with some other service.
+
 ## Development
 
 Run tests with:
