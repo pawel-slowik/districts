@@ -7,7 +7,6 @@ namespace Districts\Test\Unit\Editor\UI;
 use Districts\Editor\UI\SlimReverseRouter;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\UriInterface;
 use Slim\Interfaces\RouteParserInterface;
 
 /**
@@ -29,10 +28,10 @@ class SlimReverseRouterTest extends TestCase
     public function testUrlFromRoute(): void
     {
         $this->routeParser
-            ->method("fullUrlFor")
+            ->method("relativeUrlFor")
             ->willReturn("foo");
 
-        $url = $this->slimReverseRouter->urlFromRoute($this->createMock(UriInterface::class), "", []);
+        $url = $this->slimReverseRouter->urlFromRoute("", []);
 
         $this->assertSame("foo", $url);
     }

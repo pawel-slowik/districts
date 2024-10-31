@@ -39,7 +39,7 @@ final class EditActionController
             $this->session->set("success.message", "District data saved successfully.");
             $this->session->delete("form.edit.values");
             $this->session->delete("form.edit.errors");
-            $url = $this->reverseRouter->urlFromRoute($request->getUri(), "list");
+            $url = $this->reverseRouter->urlFromRoute("list");
             return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
         } catch (NotFoundException) {
             throw new HttpNotFoundException($request);
@@ -47,7 +47,7 @@ final class EditActionController
             $this->session->set("form.edit.values", $request->getParsedBody());
             $this->session->set("form.edit.error.message", "An error occured while saving district data.");
             $this->session->set("form.edit.errors", array_fill_keys($validationException->getErrors(), true));
-            $url = $this->reverseRouter->urlFromRoute($request->getUri(), "edit", ["id" => $args["id"]]);
+            $url = $this->reverseRouter->urlFromRoute("edit", ["id" => $args["id"]]);
             return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
         }
     }

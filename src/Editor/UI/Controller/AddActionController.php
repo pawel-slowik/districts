@@ -37,13 +37,13 @@ final class AddActionController
             $this->session->set("success.message", "District data saved successfully.");
             $this->session->delete("form.add.values");
             $this->session->delete("form.add.errors");
-            $url = $this->reverseRouter->urlFromRoute($request->getUri(), "list");
+            $url = $this->reverseRouter->urlFromRoute("list");
             return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
         } catch (ValidationException $exception) {
             $this->session->set("form.add.values", $request->getParsedBody());
             $this->session->set("form.add.error.message", "An error occured while saving district data.");
             $this->session->set("form.add.errors", array_fill_keys($exception->getErrors(), true));
-            $url = $this->reverseRouter->urlFromRoute($request->getUri(), "add");
+            $url = $this->reverseRouter->urlFromRoute("add");
             return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
         }
     }

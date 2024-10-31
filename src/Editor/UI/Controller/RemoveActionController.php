@@ -39,7 +39,7 @@ final class RemoveActionController
         } catch (NotFoundException) {
             throw new HttpNotFoundException($request);
         }
-        $url = $this->reverseRouter->urlFromRoute($request->getUri(), "list");
+        $url = $this->reverseRouter->urlFromRoute("list");
         return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
     }
 }

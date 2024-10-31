@@ -24,7 +24,7 @@ final class HomeController
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $url = $this->reverseRouter->urlFromRoute($request->getUri(), "list");
+        $url = $this->reverseRouter->urlFromRoute("list");
         return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
     }
 }
