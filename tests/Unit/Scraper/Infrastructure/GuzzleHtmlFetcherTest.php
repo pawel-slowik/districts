@@ -11,6 +11,7 @@ use GuzzleHttp\ClientInterface;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * @covers \Districts\Scraper\Infrastructure\GuzzleHtmlFetcher
@@ -70,9 +71,14 @@ class GuzzleHtmlFetcherTest extends TestCase
             ->method("getHeader")
             ->willReturnMap([["content-type", ["text/html; charset=utf-8"]]]);
 
+        $body = $this->createStub(StreamInterface::class);
+        $body
+            ->method("__toString")
+            ->willReturn("test");
+
         $this->response
             ->method("getBody")
-            ->willReturn("test");
+            ->willReturn($body);
 
         $result = $this->guzzleHtmlFetcher->fetchHtml("");
 
