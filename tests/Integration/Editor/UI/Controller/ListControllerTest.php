@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Districts\Test\Integration\Editor\UI\Controller;
 
-use DI\Container;
 use Districts\Test\Integration\FixtureTool;
 use Doctrine\ORM\EntityManager;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
@@ -75,7 +74,7 @@ class ListControllerTest extends BaseTestCase
         string $requestUri,
         array $requestData = []
     ): ResponseInterface {
-        $container = new Container();
+        $container = $this->createContainer();
         $app = $this->createApp($container);
         /** @var EntityManager */
         $entityManager = $container->get(EntityManager::class);

@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManager;
 use Nyholm\Psr7\ServerRequest;
 use Nyholm\Psr7\Uri;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -25,12 +26,11 @@ abstract class BaseTestCase extends TestCase
      */
     protected function runApp(string $requestMethod, string $requestUri, array $requestData = []): ResponseInterface
     {
-        $container = new Container();
+        $container = $this->createContainer();
         $app = $this->createApp($container);
 
-        $entityManager = (require __DIR__ . "/../../../../../doctrine-bootstrap.php")();
-        $container->set(EntityManager::class, $entityManager);
-
+        /** @var EntityManager */
+        $entityManager = $container->get(EntityManager::class);
         FixtureTool::reset($entityManager);
         FixtureTool::loadFiles($entityManager, [
             "tests/Integration/Editor/Infrastructure/data/cities.sql",
@@ -41,15 +41,11 @@ abstract class BaseTestCase extends TestCase
         return $app->handle($request);
     }
 
-    protected function createApp(Container $container): App
+    /**
+     * @return App<ContainerInterface>
+     */
+    protected function createApp(ContainerInterface $container): App
     {
-        foreach (["common", "web"] as $dependencyPart) {
-            $dependencies = require __DIR__ . "/../../../../../dependencies/{$dependencyPart}.php";
-            foreach ($dependencies as $dependency => $factory) {
-                $container->set($dependency, $factory);
-            }
-        }
-
         /** @var ResponseFactoryInterface */
         $responseFactory = $container->get(ResponseFactoryInterface::class);
         /** @var CallableResolverInterface */
@@ -64,6 +60,19 @@ abstract class BaseTestCase extends TestCase
         $app = RoutingConfiguration::apply($app);
 
         return $app;
+    }
+
+    protected function createContainer(): ContainerInterface
+    {
+        $container = new Container();
+        foreach (["common", "web"] as $dependencyPart) {
+            $dependencies = require __DIR__ . "/../../../../../dependencies/{$dependencyPart}.php";
+            foreach ($dependencies as $dependency => $factory) {
+                $container->set($dependency, $factory);
+            }
+        }
+
+        return $container;
     }
 
     /**

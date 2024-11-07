@@ -12,10 +12,16 @@ use Districts\Editor\UI\Controller\HomeController;
 use Districts\Editor\UI\Controller\ListController;
 use Districts\Editor\UI\Controller\RemoveActionController;
 use Districts\Editor\UI\Controller\RemoveFormController;
+use Psr\Container\ContainerInterface;
 use Slim\App;
 
 class RoutingConfiguration
 {
+    /**
+     * @param App<ContainerInterface> $app
+     *
+     * @return App<ContainerInterface>
+     */
     public static function apply(App $app): App
     {
         $app->get("/", HomeController::class);

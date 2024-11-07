@@ -8,6 +8,7 @@ use DI\Container;
 use Districts\Editor\UI\RoutingConfiguration;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 use RuntimeException;
 use Slim\App;
 
@@ -16,11 +17,16 @@ use Slim\App;
  */
 class RoutingConfigurationTest extends TestCase
 {
+    /**
+     * @var App<ContainerInterface>
+     */
     private App $app;
 
     protected function setUp(): void
     {
-        $this->app = new App(new Psr17Factory(), new Container());
+        /** @var ContainerInterface */
+        $container = new Container();
+        $this->app = new App(new Psr17Factory(), $container);
     }
 
     public function testApply(): void
