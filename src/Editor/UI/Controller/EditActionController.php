@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Districts\Editor\UI\Controller;
 
 use Districts\Editor\Application\DistrictService;
-use Districts\Editor\Application\Exception\NotFoundException;
 use Districts\Editor\Application\Exception\ValidationException;
+use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\UI\Factory\UpdateDistrictCommandFactory;
 use Districts\Editor\UI\ReverseRouter;
 use Districts\Editor\UI\Session;
@@ -41,7 +41,7 @@ final class EditActionController
             $this->session->delete("form.edit.errors");
             $url = $this->reverseRouter->urlFromRoute("list");
             return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
-        } catch (NotFoundException) {
+        } catch (NotFoundInRepositoryException) {
             throw new HttpNotFoundException($request);
         } catch (ValidationException $validationException) {
             $this->session->set("form.edit.values", $request->getParsedBody());

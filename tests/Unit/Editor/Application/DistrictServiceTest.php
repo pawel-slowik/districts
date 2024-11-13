@@ -9,7 +9,6 @@ use Districts\Editor\Application\Command\RemoveDistrictCommand;
 use Districts\Editor\Application\Command\UpdateDistrictCommand;
 use Districts\Editor\Application\DistrictService;
 use Districts\Editor\Application\DistrictValidator;
-use Districts\Editor\Application\Exception\NotFoundException;
 use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\Application\Query\GetDistrictQuery;
 use Districts\Editor\Application\Query\ListDistrictsQuery;
@@ -25,7 +24,6 @@ use Districts\Editor\Domain\Name;
 use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\Domain\Pagination;
 use Districts\Editor\Domain\Population;
-use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -75,17 +73,6 @@ class DistrictServiceTest extends TestCase
         $this->assertSame($repositoryDistrict, $serviceDistrict);
     }
 
-    public function testGetNonExistent(): void
-    {
-        $this->districtRepository
-            ->method("get")
-            ->will($this->throwException(new NotFoundInRepositoryException()));
-
-        $this->expectException(NotFoundException::class);
-
-        $this->districtService->get(new GetDistrictQuery(id: 1));
-    }
-
     public function testList(): void
     {
         $result = $this->createStub(PaginatedResult::class);
@@ -130,23 +117,6 @@ class DistrictServiceTest extends TestCase
             ->expects($this->once())
             ->method("update")
             ->with($this->identicalTo($city));
-
-        $this->districtService->remove($command);
-    }
-
-    public function testRemoveNonExistent(): void
-    {
-        $command = new RemoveDistrictCommand(id: 1);
-
-        $this->districtRepository
-            ->method("get")
-            ->will($this->throwException(new NotFoundInRepositoryException()));
-
-        $this->cityRepository
-            ->expects($this->never())
-            ->method("update");
-
-        $this->expectException(NotFoundException::class);
 
         $this->districtService->remove($command);
     }
@@ -258,27 +228,6 @@ class DistrictServiceTest extends TestCase
             ->expects($this->once())
             ->method("update")
             ->with($this->identicalTo($city));
-
-        $this->districtService->update($command);
-    }
-
-    public function testUpdateNonExistent(): void
-    {
-        $command = new UpdateDistrictCommand(id: 1, name: "", area: 1, population: 1);
-
-        $this->districtValidator
-            ->method("validateUpdate")
-            ->willReturn($this->createValidationSuccessStub());
-
-        $this->districtRepository
-            ->method("get")
-            ->will($this->throwException(new NotFoundInRepositoryException()));
-
-        $this->cityRepository
-            ->expects($this->never())
-            ->method("update");
-
-        $this->expectException(NotFoundException::class);
 
         $this->districtService->update($command);
     }

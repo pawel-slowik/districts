@@ -7,7 +7,6 @@ namespace Districts\Editor\Application;
 use Districts\Editor\Application\Command\AddDistrictCommand;
 use Districts\Editor\Application\Command\RemoveDistrictCommand;
 use Districts\Editor\Application\Command\UpdateDistrictCommand;
-use Districts\Editor\Application\Exception\NotFoundException;
 use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\Application\Query\GetDistrictQuery;
 use Districts\Editor\Application\Query\ListDistrictsQuery;
@@ -18,7 +17,6 @@ use Districts\Editor\Domain\DistrictRepository;
 use Districts\Editor\Domain\Name;
 use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\Domain\Population;
-use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 
 class DistrictService
 {
@@ -46,11 +44,7 @@ class DistrictService
 
     public function update(UpdateDistrictCommand $command): void
     {
-        try {
-            $district = $this->districtRepository->get($command->id);
-        } catch (NotFoundInRepositoryException) {
-            throw new NotFoundException();
-        }
+        $district = $this->districtRepository->get($command->id);
         $city = $district->getCity();
         $validationResult = $this->districtValidator->validateUpdate($command);
         if (!$validationResult->isOk()) {
@@ -67,11 +61,7 @@ class DistrictService
 
     public function remove(RemoveDistrictCommand $command): void
     {
-        try {
-            $district = $this->districtRepository->get($command->id);
-        } catch (NotFoundInRepositoryException) {
-            throw new NotFoundException();
-        }
+        $district = $this->districtRepository->get($command->id);
         $city = $district->getCity();
         $city->removeDistrict($district->getName());
         $this->cityRepository->update($city);
@@ -87,10 +77,6 @@ class DistrictService
 
     public function get(GetDistrictQuery $query): District
     {
-        try {
-            return $this->districtRepository->get($query->id);
-        } catch (NotFoundInRepositoryException) {
-            throw new NotFoundException();
-        }
+        return $this->districtRepository->get($query->id);
     }
 }

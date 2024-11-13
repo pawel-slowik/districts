@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Districts\Editor\UI\Controller;
 
 use Districts\Editor\Application\DistrictService;
-use Districts\Editor\Application\Exception\NotFoundException;
+use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\UI\Factory\RemoveDistrictCommandFactory;
 use Districts\Editor\UI\ReverseRouter;
 use Districts\Editor\UI\Session;
@@ -36,7 +36,7 @@ final class RemoveActionController
         try {
             $this->districtService->remove($command);
             $this->session->set("success.message", "District data removed.");
-        } catch (NotFoundException) {
+        } catch (NotFoundInRepositoryException) {
             throw new HttpNotFoundException($request);
         }
         $url = $this->reverseRouter->urlFromRoute("list");

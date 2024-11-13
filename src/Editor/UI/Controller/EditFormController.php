@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Districts\Editor\UI\Controller;
 
 use Districts\Editor\Application\DistrictService;
-use Districts\Editor\Application\Exception\NotFoundException;
+use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\UI\Factory\GetDistrictQueryFactory;
 use Districts\Editor\UI\Session;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -32,7 +32,7 @@ final class EditFormController
         if (!$district) {
             try {
                 $district = $this->districtService->get($this->queryFactory->fromRequest($request, $args));
-            } catch (NotFoundException) {
+            } catch (NotFoundInRepositoryException) {
                 throw new HttpNotFoundException($request);
             }
         }

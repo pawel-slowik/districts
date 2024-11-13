@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Districts\Editor\UI\Controller;
 
 use Districts\Editor\Application\DistrictService;
-use Districts\Editor\Application\Exception\NotFoundException;
+use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\UI\Factory\GetDistrictQueryFactory;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -28,7 +28,7 @@ final class RemoveFormController
     {
         try {
             $district = $this->districtService->get($this->queryFactory->fromRequest($request, $args));
-        } catch (NotFoundException) {
+        } catch (NotFoundInRepositoryException) {
             throw new HttpNotFoundException($request);
         }
         $templateData = [
