@@ -44,12 +44,12 @@ class DistrictService
 
     public function update(UpdateDistrictCommand $command): void
     {
-        $district = $this->districtRepository->get($command->id);
-        $city = $district->getCity();
         $validationResult = $this->districtValidator->validateUpdate($command);
         if (!$validationResult->isOk()) {
             throw (new ValidationException())->withErrors($validationResult->getErrors());
         }
+        $district = $this->districtRepository->get($command->id);
+        $city = $district->getCity();
         $city->updateDistrict(
             $district->getName(),
             new Name($command->name),
