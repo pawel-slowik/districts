@@ -63,7 +63,7 @@ abstract class BaseTestCase extends TestCase
 
     protected function createContainer(): ContainerInterface
     {
-        return DependencyContainerFactory::create(["common", "web"]);
+        return DependencyContainerFactory::create(["common", "editor"]);
     }
 
     /**

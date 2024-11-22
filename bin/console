@@ -9,7 +9,7 @@ use Districts\DependencyContainerFactory;
 use Districts\Scraper\UI\ImportCommand;
 use Symfony\Component\Console\Application;
 
-$container = DependencyContainerFactory::create(["common", "cli"]);
+$container = DependencyContainerFactory::create(["common", "scraper"]);
 
 $application = new Application();
 /** @var ImportCommand $importCommand */

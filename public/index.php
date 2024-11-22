@@ -12,7 +12,7 @@ use Slim\App;
 use Slim\Interfaces\CallableResolverInterface;
 use Slim\Interfaces\RouteCollectorInterface;
 
-$container = DependencyContainerFactory::create(["common", "web"]);
+$container = DependencyContainerFactory::create(["common", "editor"]);
 
 $app = new App(
     $container->get(ResponseFactoryInterface::class),
