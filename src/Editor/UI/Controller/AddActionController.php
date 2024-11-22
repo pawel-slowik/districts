@@ -7,12 +7,12 @@ namespace Districts\Editor\UI\Controller;
 use Districts\Editor\Application\DistrictService;
 use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\UI\Factory\AddDistrictCommandFactory;
-use Districts\Editor\UI\ReverseRouter;
 use Districts\Editor\UI\Session;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Psr\Http\Message\ResponseFactoryInterface as ResponseFactory;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Interfaces\RouteParserInterface;
 
 final class AddActionController
 {
@@ -20,7 +20,7 @@ final class AddActionController
         private DistrictService $districtService,
         private AddDistrictCommandFactory $commandFactory,
         private Session $session,
-        private ReverseRouter $reverseRouter,
+        private RouteParserInterface $routeParser,
         private ResponseFactory $responseFactory,
     ) {
     }
@@ -37,13 +37,13 @@ final class AddActionController
             $this->session->set("success.message", "District data saved successfully.");
             $this->session->delete("form.add.values");
             $this->session->delete("form.add.errors");
-            $url = $this->reverseRouter->urlFromRoute("list");
+            $url = $this->routeParser->relativeUrlFor("list");
             return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
         } catch (ValidationException $exception) {
             $this->session->set("form.add.values", $request->getParsedBody());
             $this->session->set("form.add.error.message", "An error occured while saving district data.");
             $this->session->set("form.add.errors", array_fill_keys($exception->getErrors(), true));
-            $url = $this->reverseRouter->urlFromRoute("add");
+            $url = $this->routeParser->relativeUrlFor("add");
             return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
         }
     }

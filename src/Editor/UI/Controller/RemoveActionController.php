@@ -7,13 +7,13 @@ namespace Districts\Editor\UI\Controller;
 use Districts\Editor\Application\DistrictService;
 use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\UI\Factory\RemoveDistrictCommandFactory;
-use Districts\Editor\UI\ReverseRouter;
 use Districts\Editor\UI\Session;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Psr\Http\Message\ResponseFactoryInterface as ResponseFactory;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
+use Slim\Interfaces\RouteParserInterface;
 
 final class RemoveActionController
 {
@@ -21,7 +21,7 @@ final class RemoveActionController
         private DistrictService $districtService,
         private RemoveDistrictCommandFactory $commandFactory,
         private Session $session,
-        private ReverseRouter $reverseRouter,
+        private RouteParserInterface $routeParser,
         private ResponseFactory $responseFactory,
     ) {
     }
@@ -39,7 +39,7 @@ final class RemoveActionController
         } catch (NotFoundInRepositoryException) {
             throw new HttpNotFoundException($request);
         }
-        $url = $this->reverseRouter->urlFromRoute("list");
+        $url = $this->routeParser->relativeUrlFor("list");
         return $this->responseFactory->createResponse(StatusCode::STATUS_FOUND)->withHeader("Location", $url);
     }
 }
