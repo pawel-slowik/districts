@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Districts\Test\Integration\Editor\UI\Controller;
 
 use DI\Container;
+use Districts\Editor\UI\Middleware;
 use Districts\Editor\UI\RoutingConfiguration;
 use Districts\Test\Integration\FixtureTool;
 use Doctrine\ORM\EntityManager;
@@ -54,9 +55,7 @@ abstract class BaseTestCase extends TestCase
         $routeCollector = $container->get(RouteCollectorInterface::class);
         $app = new App($responseFactory, $container, $callableResolver, $routeCollector);
 
-        $middleware = require __DIR__ . "/../../../../../src/middleware.php";
-        $middleware($app);
-
+        Middleware::setUp($app);
         $app = RoutingConfiguration::apply($app);
 
         return $app;

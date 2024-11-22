@@ -5,6 +5,7 @@ declare(strict_types=1);
 require __DIR__ . "/../vendor/autoload.php";
 
 use DI\Container;
+use Districts\Editor\UI\Middleware;
 use Districts\Editor\UI\RoutingConfiguration;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\App;
@@ -27,9 +28,7 @@ $app = new App(
     $container->get(RouteCollectorInterface::class)
 );
 
-$middleware = require __DIR__ . "/../src/middleware.php";
-$middleware($app);
-
+Middleware::setUp($app);
 $app = RoutingConfiguration::apply($app);
 
 $app->run();
