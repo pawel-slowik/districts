@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts;
 
-use DI\Container;
+use DI\ContainerBuilder;
 use Psr\Container\ContainerInterface;
 
 class DependencyContainerFactory
@@ -14,15 +14,10 @@ class DependencyContainerFactory
      */
     public static function create(array $modules): ContainerInterface
     {
-        $container = new Container();
-
+        $builder = new ContainerBuilder();
         foreach ($modules as $dependencyPart) {
-            $dependencies = require __DIR__ . "/../dependencies/{$dependencyPart}.php";
-            foreach ($dependencies as $dependency => $factory) {
-                $container->set($dependency, $factory);
-            }
+            $builder->addDefinitions(__DIR__ . "/../dependencies/{$dependencyPart}.php");
         }
-
-        return $container;
+        return $builder->build();
     }
 }
