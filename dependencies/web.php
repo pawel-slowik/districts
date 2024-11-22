@@ -11,8 +11,10 @@ use Slim\Interfaces\RouteParserInterface;
 use Slim\Routing\RouteCollector;
 use Slim\Views\Twig;
 
+use function DI\get;
+
 return [
-    ResponseFactoryInterface::class => static fn ($container) => $container->get(Psr17Factory::class),
+    ResponseFactoryInterface::class => get(Psr17Factory::class),
     CallableResolverInterface::class => static fn ($container) => new CallableResolver($container),
     RouteCollectorInterface::class => static function ($container) {
         return new RouteCollector(

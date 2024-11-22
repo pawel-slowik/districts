@@ -9,9 +9,11 @@ use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Districts\Infrastructure\Doctrine\EntityManagerFactory;
 use Doctrine\ORM\EntityManager;
 
+use function DI\get;
+
 return [
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     EntityManager::class => static fn ($container) => EntityManagerFactory::create(__DIR__ . '/..'),
-    CityRepository::class => static fn ($container) => $container->get(DoctrineCityRepository::class),
-    DistrictRepository::class => static fn ($container) => $container->get(DoctrineDistrictRepository::class),
+    CityRepository::class => get(DoctrineCityRepository::class),
+    DistrictRepository::class => get(DoctrineDistrictRepository::class),
 ];
