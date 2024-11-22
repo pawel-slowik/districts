@@ -7,8 +7,6 @@ parameters:
         - bin/console
         - bin/doctrine
     inferPrivatePropertyTypeFromConstructor: true
-    stubFiles:
-        - stubs/Container.php
 
 includes:
     - /opt/phpstan/vendor/phpstan/phpstan-doctrine/extension.neon

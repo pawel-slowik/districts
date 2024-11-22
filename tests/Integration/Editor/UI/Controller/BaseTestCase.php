@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Integration\Editor\UI\Controller;
 
-use DI\Container;
+use Districts\DependencyContainerFactory;
 use Districts\Editor\UI\Middleware;
 use Districts\Editor\UI\RoutingConfiguration;
 use Districts\Test\Integration\FixtureTool;
@@ -63,15 +63,7 @@ abstract class BaseTestCase extends TestCase
 
     protected function createContainer(): ContainerInterface
     {
-        $container = new Container();
-        foreach (["common", "web"] as $dependencyPart) {
-            $dependencies = require __DIR__ . "/../../../../../dependencies/{$dependencyPart}.php";
-            foreach ($dependencies as $dependency => $factory) {
-                $container->set($dependency, $factory);
-            }
-        }
-
-        return $container;
+        return DependencyContainerFactory::create(["common", "web"]);
     }
 
     /**

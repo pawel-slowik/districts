@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require __DIR__ . "/../vendor/autoload.php";
 
-use DI\Container;
+use Districts\DependencyContainerFactory;
 use Districts\Editor\UI\Middleware;
 use Districts\Editor\UI\RoutingConfiguration;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -12,14 +12,7 @@ use Slim\App;
 use Slim\Interfaces\CallableResolverInterface;
 use Slim\Interfaces\RouteCollectorInterface;
 
-$container = new Container();
-
-foreach (["common", "web"] as $dependencyPart) {
-    $dependencies = require __DIR__ . "/../dependencies/{$dependencyPart}.php";
-    foreach ($dependencies as $dependency => $factory) {
-        $container->set($dependency, $factory);
-    }
-}
+$container = DependencyContainerFactory::create(["common", "web"]);
 
 $app = new App(
     $container->get(ResponseFactoryInterface::class),

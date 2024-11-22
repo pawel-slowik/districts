@@ -5,19 +5,14 @@ declare(strict_types=1);
 
 require __DIR__ . "/../vendor/autoload.php";
 
-use DI\Container;
+use Districts\DependencyContainerFactory;
 use Districts\Scraper\UI\ImportCommand;
 use Symfony\Component\Console\Application;
 
-$container = new Container();
-
-foreach (["common", "cli"] as $dependencyPart) {
-    $dependencies = require __DIR__ . "/../dependencies/{$dependencyPart}.php";
-    foreach ($dependencies as $dependency => $factory) {
-        $container->set($dependency, $factory);
-    }
-}
+$container = DependencyContainerFactory::create(["common", "cli"]);
 
 $application = new Application();
-$application->add($container->get(ImportCommand::class));
+/** @var ImportCommand $importCommand */
+$importCommand = $container->get(ImportCommand::class);
+$application->add($importCommand);
 $application->run();
