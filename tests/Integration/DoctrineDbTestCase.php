@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Integration;
 
+use Districts\Infrastructure\Doctrine\EntityManagerFactory;
 use Doctrine\ORM\EntityManager;
 use PHPUnit\Framework\TestCase;
 
@@ -13,7 +14,7 @@ abstract class DoctrineDbTestCase extends TestCase
 
     protected function setUp(): void
     {
-        $this->entityManager = (require "doctrine-bootstrap.php")();
+        $this->entityManager = EntityManagerFactory::create(__DIR__ . '/../..');
         FixtureTool::reset($this->entityManager);
     }
 
