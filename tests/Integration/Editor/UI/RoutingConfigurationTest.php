@@ -31,8 +31,8 @@ class RoutingConfigurationTest extends TestCase
 
     public function testApply(): void
     {
-        $app = RoutingConfiguration::apply($this->app);
-        $routeCollector = $app->getRouteCollector();
+        RoutingConfiguration::apply($this->app);
+        $routeCollector = $this->app->getRouteCollector();
         $this->assertNotEmpty($routeCollector->getRoutes());
     }
 
@@ -41,8 +41,8 @@ class RoutingConfigurationTest extends TestCase
      */
     public function testNamed(string $name): void
     {
-        $app = RoutingConfiguration::apply($this->app);
-        $routeCollector = $app->getRouteCollector();
+        RoutingConfiguration::apply($this->app);
+        $routeCollector = $this->app->getRouteCollector();
         try {
             $routeCollector->getNamedRoute($name);
             $exceptionThrown = false;

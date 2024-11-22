@@ -56,7 +56,7 @@ abstract class BaseTestCase extends TestCase
         $app = new App($responseFactory, $container, $callableResolver, $routeCollector);
 
         Middleware::setUp($app);
-        $app = RoutingConfiguration::apply($app);
+        RoutingConfiguration::apply($app);
 
         return $app;
     }

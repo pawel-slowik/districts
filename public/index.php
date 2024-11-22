@@ -29,6 +29,6 @@ $app = new App(
 );
 
 Middleware::setUp($app);
-$app = RoutingConfiguration::apply($app);
+RoutingConfiguration::apply($app);
 
 $app->run();

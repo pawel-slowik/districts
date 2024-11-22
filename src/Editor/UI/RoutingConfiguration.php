@@ -19,10 +19,8 @@ class RoutingConfiguration
 {
     /**
      * @param App<ContainerInterface> $app
-     *
-     * @return App<ContainerInterface>
      */
-    public static function apply(App $app): App
+    public static function apply(App $app): void
     {
         $app->get("/", HomeController::class);
         $app->get("/list[/order/{column}/{direction}]", ListController::class)->setName("list");
@@ -32,6 +30,5 @@ class RoutingConfiguration
         $app->post("/edit/{id}", EditActionController::class);
         $app->get("/remove/{id}", RemoveFormController::class)->setName("remove");
         $app->post("/remove/{id}", RemoveActionController::class);
-        return $app;
     }
 }
