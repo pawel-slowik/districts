@@ -9,6 +9,6 @@ use Districts\Infrastructure\Doctrine\EntityManagerFactory;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
 
-$entityManager = EntityManagerFactory::create(__DIR__ . '/..');
+$entityManager = EntityManagerFactory::create(__DIR__ . '/../src');
 
 ConsoleRunner::run(new SingleManagerProvider($entityManager));

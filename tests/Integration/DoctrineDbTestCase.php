@@ -14,7 +14,7 @@ abstract class DoctrineDbTestCase extends TestCase
 
     protected function setUp(): void
     {
-        $this->entityManager = EntityManagerFactory::create(__DIR__ . '/../..');
+        $this->entityManager = EntityManagerFactory::create(__DIR__ . '/../../src');
         FixtureTool::reset($this->entityManager);
     }
 

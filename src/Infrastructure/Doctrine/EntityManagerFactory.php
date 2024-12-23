@@ -12,10 +12,10 @@ use Doctrine\ORM\ORMSetup;
 
 class EntityManagerFactory
 {
-    public static function create(string $rootPath): EntityManager
+    public static function create(string $entitySourcePath): EntityManager
     {
         $metadataConfig = ORMSetup::createConfiguration(true);
-        $metadataConfig->setMetadataDriverImpl(new AttributeDriver([$rootPath . '/src']));
+        $metadataConfig->setMetadataDriverImpl(new AttributeDriver([$entitySourcePath]));
         $driverMap = [
             'sqlite' => 'pdo_sqlite',
             'mysql' => 'pdo_mysql',

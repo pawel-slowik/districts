@@ -13,7 +13,7 @@ use function DI\get;
 
 return [
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-    EntityManager::class => static fn ($container) => EntityManagerFactory::create(__DIR__ . '/..'),
+    EntityManager::class => static fn ($container) => EntityManagerFactory::create(__DIR__ . '/../src'),
     CityRepository::class => get(DoctrineCityRepository::class),
     DistrictRepository::class => get(DoctrineDistrictRepository::class),
 ];
