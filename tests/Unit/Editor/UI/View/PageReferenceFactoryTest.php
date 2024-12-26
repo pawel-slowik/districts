@@ -6,26 +6,18 @@ namespace Districts\Test\Unit\Editor\UI\View;
 
 use Districts\Editor\UI\View\PageReference;
 use Districts\Editor\UI\View\PageReferenceFactory;
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Slim\Interfaces\RouteParserInterface;
-use Slim\Routing\RouteContext;
 
 /**
  * @covers \Districts\Editor\UI\View\PageReferenceFactory
  */
 class PageReferenceFactoryTest extends TestCase
 {
-    use NamedRequestTester;
-
     private PageReferenceFactory $pageReferenceFactory;
-
-    private RouteParserInterface $routeParser;
 
     protected function setUp(): void
     {
-        $this->routeParser = $this->createStub(RouteParserInterface::class);
-        $this->pageReferenceFactory = new PageReferenceFactory($this->routeParser);
+        $this->pageReferenceFactory = new PageReferenceFactory();
     }
 
     public function testType(): void
@@ -136,33 +128,5 @@ class PageReferenceFactoryTest extends TestCase
         }
 
         $this->assertSame(10, $currentOffset);
-    }
-
-    public function testValidRequest(): void
-    {
-        $validRequest = $this->createRequestMockWithAttributes($this->createRequestAttributes("test"));
-        $pageReferences = $this->pageReferenceFactory->createPageReferencesForNamedRouteRequest($validRequest, 2, 2);
-        $materializedPageReferences = iterator_to_array($pageReferences);
-        $this->assertContainsOnlyInstancesOf(PageReference::class, $materializedPageReferences);
-        $this->assertCount(4, $materializedPageReferences);
-    }
-
-    public function testExceptionOnUnroutedRequest(): void
-    {
-        $unroutedRequest = $this->createRequestMockWithAttributes(
-            array_merge(
-                $this->createRequestAttributes("test"),
-                [RouteContext::ROUTE => null],
-            )
-        );
-        $this->expectException(InvalidArgumentException::class);
-        $this->pageReferenceFactory->createPageReferencesForNamedRouteRequest($unroutedRequest, 1, 1);
-    }
-
-    public function testExceptionOnUnnamedRoute(): void
-    {
-        $unnamedRouteRequest = $this->createRequestMockWithAttributes($this->createRequestAttributes(null));
-        $this->expectException(InvalidArgumentException::class);
-        $this->pageReferenceFactory->createPageReferencesForNamedRouteRequest($unnamedRouteRequest, 1, 1);
     }
 }

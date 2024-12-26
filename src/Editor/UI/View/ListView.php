@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Districts\Editor\UI\View;
 
 use Districts\Editor\Domain\PaginatedResult;
+use Laminas\Uri\Uri;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig as View;
@@ -39,9 +40,14 @@ class ListView
             $orderingColumns
         );
 
+        $requestUrl = $request->getUri();
+        $relativeUrl = (new Uri())
+            ->setPath($requestUrl->getPath())
+            ->setQuery($requestUrl->getQuery()); // query parameters must be preserved for filtering
+
         $data["pagination"] = iterator_to_array(
-            $this->pageReferenceFactory->createPageReferencesForNamedRouteRequest(
-                $request,
+            $this->pageReferenceFactory->createPageReferencesForUrl(
+                $relativeUrl->toString(),
                 $paginatedResult->getPageCount(),
                 $paginatedResult->getCurrentPageNumber()
             )

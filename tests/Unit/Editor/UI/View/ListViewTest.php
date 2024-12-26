@@ -14,6 +14,7 @@ use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UriInterface;
 use Slim\Views\Twig as TwigView;
 
 /**
@@ -50,9 +51,14 @@ class ListViewTest extends TestCase
     {
         $paginatedResult = $this->createStub(PaginatedResult::class);
         $request = $this->createStub(ServerRequestInterface::class);
+        $requestUri = $this->createStub(UriInterface::class);
+        $requestUri
+            ->method("getPath")
+            ->willReturn("/");
         $request
-            ->method("getQueryParams")
-            ->willReturn([]);
+            ->method("getUri")
+            ->willReturn($requestUri);
+
         $this->twigView
             ->expects($this->once())
             ->method("render");
@@ -67,9 +73,14 @@ class ListViewTest extends TestCase
     {
         $paginatedResult = $this->createStub(PaginatedResult::class);
         $request = $this->createStub(ServerRequestInterface::class);
+        $requestUri = $this->createStub(UriInterface::class);
+        $requestUri
+            ->method("getPath")
+            ->willReturn("/");
         $request
-            ->method("getQueryParams")
-            ->willReturn([]);
+            ->method("getUri")
+            ->willReturn($requestUri);
+
         $this->twigView
             ->expects($this->once())
             ->method("render")
