@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI\View;
 
-use Laminas\Uri\Uri;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UriFactoryInterface;
 
 class OrderingUrlGenerator
 {
+    public function __construct(
+        private UriFactoryInterface $uriFactory,
+    ) {
+    }
+
     public function createOrderingUrl(ServerRequestInterface $request, string $column): string
     {
         $queryParams = $request->getQueryParams();
@@ -20,10 +25,10 @@ class OrderingUrlGenerator
             $orderingQueryParams,
             $this->copyRelevantQueryParams($queryParams),
         );
-        $uri = (new Uri())
-            ->setPath($request->getUri()->getPath())
-            ->setQuery($updatedQueryParams);
-        return $uri->toString();
+        $uri = $this->uriFactory->createUri()
+            ->withPath($request->getUri()->getPath())
+            ->withQuery(http_build_query($updatedQueryParams));
+        return (string) $uri;
     }
 
     /**

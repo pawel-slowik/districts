@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\UriFactoryInterface;
 use Slim\CallableResolver;
 use Slim\Interfaces\CallableResolverInterface;
 use Slim\Interfaces\RouteCollectorInterface;
@@ -15,6 +16,7 @@ use function DI\get;
 
 return [
     ResponseFactoryInterface::class => get(Psr17Factory::class),
+    UriFactoryInterface::class => get(Psr17Factory::class),
     CallableResolverInterface::class => static fn ($container) => new CallableResolver($container),
     RouteCollectorInterface::class => static function ($container) {
         return new RouteCollector(

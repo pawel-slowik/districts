@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Districts\Test\Unit\Editor\UI\View;
 
 use Districts\Editor\UI\View\OrderingUrlGenerator;
+use Nyholm\Psr7\Uri;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
 /**
@@ -16,9 +18,13 @@ class OrderingUrlGeneratorTest extends TestCase
 {
     private OrderingUrlGenerator $orderingUrlGenerator;
 
+    private UriFactoryInterface $uriFactory;
+
     protected function setUp(): void
     {
-        $this->orderingUrlGenerator = new OrderingUrlGenerator();
+        $this->uriFactory = $this->createStub(UriFactoryInterface::class);
+        $this->uriFactory->method("createUri")->willReturn(new Uri());
+        $this->orderingUrlGenerator = new OrderingUrlGenerator($this->uriFactory);
     }
 
     /**
