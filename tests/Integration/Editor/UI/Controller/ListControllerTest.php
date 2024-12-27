@@ -43,13 +43,13 @@ class ListControllerTest extends BaseTestCase
     {
         return [
             ["/list"],
-            ["/list/order/name/asc"],
+            ["/list?orderColumn=name&orderDirection=asc"],
             ["/list?filterColumn=name&filterValue=ow"],
-            ["/list/order/name/asc?filterColumn=city&filterValue=gda"],
-            ["/list/order/name/asc?filterColumn=name&filterValue=ow"],
-            ["/list/order/name/asc?filterColumn=area&filterValue=1-100"],
-            ["/list/order/name/asc?filterColumn=population&filterValue=1000"],
-            ["/list/order/name/asc?filterColumn=foo&filterValue=bar"],
+            ["/list?orderColumn=name&orderDirection=asc&filterColumn=city&filterValue=gda"],
+            ["/list?orderColumn=name&orderDirection=asc&filterColumn=name&filterValue=ow"],
+            ["/list?orderColumn=name&orderDirection=asc&filterColumn=area&filterValue=1-100"],
+            ["/list?orderColumn=name&orderDirection=asc&filterColumn=population&filterValue=1000"],
+            ["/list?orderColumn=name&orderDirection=asc&filterColumn=foo&filterValue=bar"],
         ];
     }
 

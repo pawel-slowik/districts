@@ -4,73 +4,38 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI\View;
 
-use InvalidArgumentException;
+use Laminas\Uri\Uri;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Interfaces\RouteInterface;
-use Slim\Interfaces\RouteParserInterface;
-use Slim\Routing\RouteContext;
 
 class OrderingUrlGenerator
 {
-    public function __construct(
-        private RouteParserInterface $routeParser,
-    ) {
-    }
-
-    public function createOrderingUrl(
-        ServerRequestInterface $namedRouteRequest,
-        string $column
-    ): string {
-        return $this->routeParser->urlFor(
-            $this->getRouteNameFromRequest($namedRouteRequest),
-            [
-                "column" => $column,
-                "direction" => $this->computeOrderingDirection(
-                    $column,
-                    $this->getRouteArgumentsFromRequest($namedRouteRequest)
-                ),
-            ],
-            $this->copyRelevantQueryParams($namedRouteRequest->getQueryParams())
+    public function createOrderingUrl(ServerRequestInterface $request, string $column): string
+    {
+        $queryParams = $request->getQueryParams();
+        $orderingQueryParams = [
+            "orderColumn" => $column,
+            "orderDirection" => $this->computeOrderingDirection($column, $queryParams),
+        ];
+        $updatedQueryParams = array_merge(
+            $orderingQueryParams,
+            $this->copyRelevantQueryParams($queryParams),
         );
-    }
-
-    private function getRouteNameFromRequest(ServerRequestInterface $namedRouteRequest): string
-    {
-        $route = $this->getRouteFromRequest($namedRouteRequest);
-        if (is_null($route->getName())) {
-            throw new InvalidArgumentException();
-        }
-        return $route->getName();
+        $uri = (new Uri())
+            ->setPath($request->getUri()->getPath())
+            ->setQuery($updatedQueryParams);
+        return $uri->toString();
     }
 
     /**
-     * @return array<string, string>
+     * @param array<string, string> $queryParams
      */
-    private function getRouteArgumentsFromRequest(ServerRequestInterface $request): array
-    {
-        return $this->getRouteFromRequest($request)->getArguments();
-    }
-
-    private function getRouteFromRequest(ServerRequestInterface $routedRequest): RouteInterface
-    {
-        $routeContext = RouteContext::fromRequest($routedRequest);
-        $route = $routeContext->getRoute();
-        if (is_null($route)) {
-            throw new InvalidArgumentException();
-        }
-        return $route;
-    }
-
-    /**
-     * @param array<string, string> $routeArgs
-     */
-    private function computeOrderingDirection(string $column, array $routeArgs): string
+    private function computeOrderingDirection(string $column, array $queryParams): string
     {
         if (
-            array_key_exists("column", $routeArgs)
-            && array_key_exists("direction", $routeArgs)
-            && ($routeArgs["column"] === $column)
-            && ($routeArgs["direction"] === "asc")
+            array_key_exists("orderColumn", $queryParams)
+            && array_key_exists("orderDirection", $queryParams)
+            && ($queryParams["orderColumn"] === $column)
+            && ($queryParams["orderDirection"] === "asc")
         ) {
             return "desc";
         }

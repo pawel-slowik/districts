@@ -5,53 +5,34 @@ declare(strict_types=1);
 namespace Districts\Test\Unit\Editor\UI\View;
 
 use Districts\Editor\UI\View\OrderingUrlGenerator;
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Slim\Interfaces\RouteParserInterface;
-use Slim\Routing\RouteContext;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UriInterface;
 
 /**
  * @covers \Districts\Editor\UI\View\OrderingUrlGenerator
  */
 class OrderingUrlGeneratorTest extends TestCase
 {
-    use NamedRequestTester;
-
     private OrderingUrlGenerator $orderingUrlGenerator;
-
-    private RouteParserInterface $routeParser;
 
     protected function setUp(): void
     {
-        $this->routeParser = $this->createStub(RouteParserInterface::class);
-        $this->routeParser
-            ->method("urlFor")
-            ->willReturnCallback(
-                // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-                static function (string $routeName, array $routeArgs, array $queryParams): string {
-                    $url = "/list/{$routeArgs['column']}/{$routeArgs['direction']}";
-                    if (count($queryParams) > 0) {
-                        $queryString = http_build_query($queryParams);
-                        $url .= ("?" . $queryString);
-                    }
-                    return $url;
-                }
-            );
-
-        $this->orderingUrlGenerator = new OrderingUrlGenerator($this->routeParser);
+        $this->orderingUrlGenerator = new OrderingUrlGenerator();
     }
 
     /**
-     * @param array<string, string> $routeArgs
+     * @param array<string, string> $queryParams
      *
      * @dataProvider simpleDataProvider
      */
-    public function testSimple(string $column, array $routeArgs): void
+    public function testSimple(string $column, array $queryParams): void
     {
-        $request = $this->createRequestMockWithAttributes($this->createRequestAttributes("foo", $routeArgs));
+        $request = $this->createRequestStubForList($queryParams);
+
         $url = $this->orderingUrlGenerator->createOrderingUrl($request, $column);
 
-        $this->assertSame("/list/column1/asc", $url);
+        $this->assertSame("/list?orderColumn=column1&orderDirection=asc", $url);
     }
 
     /**
@@ -61,36 +42,26 @@ class OrderingUrlGeneratorTest extends TestCase
     {
         return [
             ["column1", []],
-            ["column1", ["column" => "column1"]],
-            ["column1", ["direction" => "asc"]],
-            ["column1", ["column" => "column1", "direction" => "desc"]],
+            ["column1", ["orderColumn" => "column1"]],
+            ["column1", ["orderDirection" => "asc"]],
+            ["column1", ["orderColumn" => "column1", "orderDirection" => "desc"]],
         ];
     }
 
     public function testReversesDirection(): void
     {
-        $url = $this->orderingUrlGenerator->createOrderingUrl(
-            $this->createRequestMockWithAttributes(
-                $this->createRequestAttributes(
-                    "foo",
-                    ["column" => "column1", "direction" => "asc"]
-                )
-            ),
-            "column1"
-        );
+        $request = $this->createRequestStubForList(["orderColumn" => "column1", "orderDirection" => "asc"]);
 
-        $this->assertSame("/list/column1/desc", $url);
+        $url = $this->orderingUrlGenerator->createOrderingUrl($request, "column1");
+
+        $this->assertSame("/list?orderColumn=column1&orderDirection=desc", $url);
     }
 
     public function testCopiesRelevantQueryParams(): void
     {
-        $url = $this->orderingUrlGenerator->createOrderingUrl(
-            $this->createRequestMockWithAttributes(
-                $this->createRequestAttributes("foo"),
-                ["filterColumn" => "bar", "filterValue" => "baz"]
-            ),
-            "column1"
-        );
+        $request = $this->createRequestStubForList(["filterColumn" => "bar", "filterValue" => "baz"]);
+
+        $url = $this->orderingUrlGenerator->createOrderingUrl($request, "column1");
 
         $this->assertStringContainsString("filterColumn=bar", $url);
         $this->assertStringContainsString("filterValue=baz", $url);
@@ -98,33 +69,23 @@ class OrderingUrlGeneratorTest extends TestCase
 
     public function testSkipsIrreleventQueryParams(): void
     {
-        $url = $this->orderingUrlGenerator->createOrderingUrl(
-            $this->createRequestMockWithAttributes(
-                $this->createRequestAttributes("foo"),
-                ["qux" => "bar"]
-            ),
-            "column1"
-        );
+        $request = $this->createRequestStubForList(["qux" => "bar"]);
+
+        $url = $this->orderingUrlGenerator->createOrderingUrl($request, "column1");
 
         $this->assertStringNotContainsString("qux", $url);
     }
 
-    public function testExceptionOnUnroutedRequest(): void
+    /**
+     * @param array<string, string> $queryParams
+     */
+    private function createRequestStubForList(array $queryParams): ServerRequestInterface
     {
-        $unroutedRequest = $this->createRequestMockWithAttributes(
-            array_merge(
-                $this->createRequestAttributes("test"),
-                [RouteContext::ROUTE => null],
-            )
-        );
-        $this->expectException(InvalidArgumentException::class);
-        $this->orderingUrlGenerator->createOrderingUrl($unroutedRequest, "column");
-    }
-
-    public function testExceptionOnUnnamedRoute(): void
-    {
-        $unnamedRouteRequest = $this->createRequestMockWithAttributes($this->createRequestAttributes(null));
-        $this->expectException(InvalidArgumentException::class);
-        $this->orderingUrlGenerator->createOrderingUrl($unnamedRouteRequest, "column");
+        $request = $this->createMock(ServerRequestInterface::class);
+        $uri = $this->createMock(UriInterface::class);
+        $uri->method("getPath")->willReturn("/list");
+        $request->method("getUri")->willReturn($uri);
+        $request->method("getQueryParams")->willReturn($queryParams);
+        return $request;
     }
 }

@@ -47,15 +47,17 @@ class ListDistrictsQueryFactoryTest extends TestCase
     }
 
     /**
-     * @param array<string, string> $routeArgs
+     * @param array<string, string> $queryParams
      *
      * @dataProvider orderingParametersDataProvider
      */
     public function testPassingOrderingParameters(
-        array $routeArgs,
+        array $queryParams,
         ?string $expectedColumn,
         ?string $expectedDirection
     ): void {
+        $this->request->method("getQueryParams")->willReturn($queryParams);
+
         $this->districtOrderingFactory
             ->expects($this->once())
             ->method("createFromRequestInput")
@@ -64,7 +66,7 @@ class ListDistrictsQueryFactoryTest extends TestCase
                 $this->identicalTo($expectedDirection)
             );
 
-        $this->queryFactory->fromRequest($this->request, $routeArgs);
+        $this->queryFactory->fromRequest($this->request);
     }
 
     /**
@@ -75,22 +77,22 @@ class ListDistrictsQueryFactoryTest extends TestCase
         return [
             [
                 [
-                    "column" => "foo",
-                    "direction" => "bar",
+                    "orderColumn" => "foo",
+                    "orderDirection" => "bar",
                 ],
                 "foo",
                 "bar",
             ],
             [
                 [
-                    "column" => "foo",
+                    "orderColumn" => "foo",
                 ],
                 "foo",
                 null,
             ],
             [
                 [
-                    "direction" => "bar",
+                    "orderDirection" => "bar",
                 ],
                 null,
                 "bar",
@@ -139,7 +141,7 @@ class ListDistrictsQueryFactoryTest extends TestCase
                 $this->identicalTo($expectedValue)
             );
 
-        $this->queryFactory->fromRequest($this->request, []);
+        $this->queryFactory->fromRequest($this->request);
     }
 
     /**
@@ -210,7 +212,7 @@ class ListDistrictsQueryFactoryTest extends TestCase
                 $this->identicalTo($expectedPage)
             );
 
-        $this->queryFactory->fromRequest($this->request, []);
+        $this->queryFactory->fromRequest($this->request);
     }
 
     /**

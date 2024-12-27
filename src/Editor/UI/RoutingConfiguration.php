@@ -23,7 +23,7 @@ class RoutingConfiguration
     public static function apply(App $app): void
     {
         $app->get("/", HomeController::class);
-        $app->get("/list[/order/{column}/{direction}]", ListController::class)->setName("list");
+        $app->get("/list", ListController::class)->setName("list");
         $app->get("/add", AddFormController::class)->setName("add");
         $app->post("/add", AddActionController::class);
         $app->get("/edit/{id}", EditFormController::class)->setName("edit");

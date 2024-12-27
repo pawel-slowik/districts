@@ -16,14 +16,11 @@ class ListDistrictsQueryFactory
     ) {
     }
 
-    /**
-     * @param array<string, string> $routeArgs
-     */
-    public function fromRequest(Request $request, array $routeArgs): ListDistrictsQuery
+    public function fromRequest(Request $request): ListDistrictsQuery
     {
-        $orderColumn = $routeArgs["column"] ?? null;
-        $orderDirection = $routeArgs["direction"] ?? null;
         $queryParams = $request->getQueryParams();
+        $orderColumn = $queryParams["orderColumn"] ?? null;
+        $orderDirection = $queryParams["orderDirection"] ?? null;
         $filterColumn = $queryParams["filterColumn"] ?? null;
         $filterValue = $queryParams["filterValue"] ?? null;
         $pageNumber = $queryParams["page"] ?? null;

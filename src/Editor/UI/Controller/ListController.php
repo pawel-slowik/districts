@@ -29,10 +29,11 @@ final class ListController
     /**
      * @param array<string, string> $args
      */
+    // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         try {
-            $query = $this->queryFactory->fromRequest($request, $args);
+            $query = $this->queryFactory->fromRequest($request);
         } catch (InvalidArgumentException) {
             $query = $this->queryFactory->fromDefaults();
             $errorMessage = "Invalid query parameters";
