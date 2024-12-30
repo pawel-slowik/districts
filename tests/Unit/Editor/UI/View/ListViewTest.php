@@ -9,11 +9,13 @@ use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\UI\View\ListView;
 use Districts\Editor\UI\View\OrderingUrlGenerator;
 use Districts\Editor\UI\View\PageReferenceFactory;
+use Nyholm\Psr7\Uri;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 use Slim\Views\Twig as TwigView;
 
@@ -34,16 +36,22 @@ class ListViewTest extends TestCase
     /** @var OrderingUrlGenerator&Stub */
     private OrderingUrlGenerator $orderingUrlGenerator;
 
+    /** @var Stub&UriFactoryInterface */
+    private UriFactoryInterface $uriFactory;
+
     protected function setUp(): void
     {
         $this->twigView = $this->createMock(TwigView::class);
         $this->pageReferenceFactory = $this->createStub(PageReferenceFactory::class);
         $this->orderingUrlGenerator = $this->createStub(OrderingUrlGenerator::class);
+        $this->uriFactory = $this->createStub(UriFactoryInterface::class);
+        $this->uriFactory->method("createUri")->willReturn(new Uri());
 
         $this->listView = new ListView(
             $this->twigView,
             $this->pageReferenceFactory,
-            $this->orderingUrlGenerator
+            $this->orderingUrlGenerator,
+            $this->uriFactory,
         );
     }
 
