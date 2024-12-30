@@ -17,11 +17,11 @@ class PageReferenceTest extends TestCase
     public function testGetters(): void
     {
         $pageReference = new PageReference("http://example.com", "test", false, true, false);
-        $this->assertSame("http://example.com", $pageReference->getUrl());
-        $this->assertSame("test", $pageReference->getText());
-        $this->assertFalse($pageReference->isCurrent());
-        $this->assertTrue($pageReference->isPrevious());
-        $this->assertFalse($pageReference->isNext());
+        $this->assertSame("http://example.com", $pageReference->url);
+        $this->assertSame("test", $pageReference->text);
+        $this->assertFalse($pageReference->isCurrent);
+        $this->assertTrue($pageReference->isPrevious);
+        $this->assertFalse($pageReference->isNext);
     }
 
     public function testAcceptsNullAsUrl(): void

@@ -8,43 +8,18 @@ use InvalidArgumentException;
 use Laminas\Uri\Exception\InvalidArgumentException as UriException;
 use Laminas\Uri\Uri;
 
-class PageReference
+readonly class PageReference
 {
     public function __construct(
-        private ?string $url,
-        private string $text,
-        private bool $isCurrent,
-        private bool $isPrevious,
-        private bool $isNext,
+        public ?string $url,
+        public string $text,
+        public bool $isCurrent,
+        public bool $isPrevious,
+        public bool $isNext,
     ) {
         if (!self::validate($url, $text, $isCurrent, $isPrevious, $isNext)) {
             throw new InvalidArgumentException();
         }
-    }
-
-    public function getUrl(): ?string
-    {
-        return $this->url;
-    }
-
-    public function getText(): string
-    {
-        return $this->text;
-    }
-
-    public function isCurrent(): bool
-    {
-        return $this->isCurrent;
-    }
-
-    public function isPrevious(): bool
-    {
-        return $this->isPrevious;
-    }
-
-    public function isNext(): bool
-    {
-        return $this->isNext;
     }
 
     private static function validate(?string $url, string $text, bool $isCurrent, bool $isPrevious, bool $isNext): bool

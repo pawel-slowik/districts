@@ -51,7 +51,7 @@ class PageReferenceFactoryTest extends TestCase
         $materializedPageReferences = iterator_to_array($pageReferences);
         $current = [];
         foreach ($materializedPageReferences as $pageReference) {
-            if ($pageReference->isCurrent()) {
+            if ($pageReference->isCurrent) {
                 $current[] = $pageReference;
             }
         }
@@ -59,8 +59,8 @@ class PageReferenceFactoryTest extends TestCase
         $last = $materializedPageReferences[array_key_last($materializedPageReferences)];
 
         $this->assertCount(1, $current);
-        $this->assertTrue($first->isPrevious());
-        $this->assertTrue($last->isNext());
+        $this->assertTrue($first->isPrevious);
+        $this->assertTrue($last->isNext);
     }
 
     /**
@@ -79,8 +79,8 @@ class PageReferenceFactoryTest extends TestCase
     {
         $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl("https://example.com/", 3, 1);
         foreach ($pageReferences as $pageReference) {
-            if ($pageReference->isPrevious()) {
-                $this->assertNull($pageReference->getUrl());
+            if ($pageReference->isPrevious) {
+                $this->assertNull($pageReference->url);
             }
         }
     }
@@ -89,8 +89,8 @@ class PageReferenceFactoryTest extends TestCase
     {
         $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl("https://example.com/", 3, 3);
         foreach ($pageReferences as $pageReference) {
-            if ($pageReference->isNext()) {
-                $this->assertNull($pageReference->getUrl());
+            if ($pageReference->isNext) {
+                $this->assertNull($pageReference->url);
             }
         }
     }
@@ -100,7 +100,7 @@ class PageReferenceFactoryTest extends TestCase
         $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl("https://example.com/", 3, 2);
         $urls = [];
         foreach ($pageReferences as $pageReference) {
-            $urls[] = $pageReference->getUrl();
+            $urls[] = $pageReference->url;
         }
 
         $this->assertSame(
@@ -120,7 +120,7 @@ class PageReferenceFactoryTest extends TestCase
         $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl("https://example.com/", 20, 10);
         $currentOffset = null;
         foreach ($pageReferences as $offset => $pageReference) {
-            if ($pageReference->isCurrent()) {
+            if ($pageReference->isCurrent) {
                 $currentOffset = $offset;
 
                 break;
