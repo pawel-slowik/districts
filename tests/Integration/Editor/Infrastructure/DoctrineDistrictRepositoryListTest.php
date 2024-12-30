@@ -11,6 +11,8 @@ use Districts\Editor\Domain\DistrictFilter\Filter;
 use Districts\Editor\Domain\DistrictFilter\NameFilter;
 use Districts\Editor\Domain\DistrictFilter\PopulationFilter;
 use Districts\Editor\Domain\DistrictOrdering;
+use Districts\Editor\Domain\DistrictOrderingField;
+use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\Domain\Pagination;
 use Districts\Editor\Infrastructure\DistrictFilter\AreaFilter as DqlAreaFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\CityNameFilter as DqlCityNameFilter;
@@ -44,7 +46,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
             $this->entityManager,
             $this->filterFactory
         );
-        $this->defaultOrder = new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC);
+        $this->defaultOrder = new DistrictOrdering(DistrictOrderingField::FullName, OrderingDirection::Asc);
     }
 
     public function testListStructure(): void
@@ -77,11 +79,11 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     {
         return [
             [
-                new DistrictOrdering(DistrictOrdering::CITY_NAME, DistrictOrdering::ASC),
+                new DistrictOrdering(DistrictOrderingField::CityName, OrderingDirection::Asc),
                 ["Bar", "Foo"],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::CITY_NAME, DistrictOrdering::DESC),
+                new DistrictOrdering(DistrictOrderingField::CityName, OrderingDirection::Desc),
                 ["Foo", "Bar"],
             ],
         ];
@@ -110,35 +112,35 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     {
         return [
             [
-                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::ASC),
+                new DistrictOrdering(DistrictOrderingField::FullName, OrderingDirection::Asc),
                 [14, 12, 15, 13, 4, 6, 2, 9, 1, 10, 3, 5, 8, 7, 11],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::FULL_NAME, DistrictOrdering::DESC),
+                new DistrictOrdering(DistrictOrderingField::FullName, OrderingDirection::Desc),
                 [11, 7, 8, 5, 3, 10, 1, 9, 2, 6, 4, 13, 15, 12, 14],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::DISTRICT_NAME, DistrictOrdering::ASC),
+                new DistrictOrdering(DistrictOrderingField::DistrictName, OrderingDirection::Asc),
                 [4, 14, 6, 2, 9, 1, 10, 3, 5, 8, 7, 12, 15, 13, 11],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::DISTRICT_NAME, DistrictOrdering::DESC),
+                new DistrictOrdering(DistrictOrderingField::DistrictName, OrderingDirection::Desc),
                 [11, 13, 15, 12, 7, 8, 5, 3, 10, 1, 9, 2, 6, 14, 4],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::AREA, DistrictOrdering::ASC),
+                new DistrictOrdering(DistrictOrderingField::Area, OrderingDirection::Asc),
                 [3, 4, 6, 7, 1, 2, 8, 11, 12, 13, 14, 15, 5, 10, 9],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::AREA, DistrictOrdering::DESC),
+                new DistrictOrdering(DistrictOrderingField::Area, OrderingDirection::Desc),
                 [9, 10, 5, 15, 14, 13, 12, 11, 2, 8, 1, 7, 6, 4, 3],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::POPULATION, DistrictOrdering::ASC),
+                new DistrictOrdering(DistrictOrderingField::Population, OrderingDirection::Asc),
                 [10, 2, 3, 5, 6, 4, 11, 8, 9, 1, 12, 7, 13, 14, 15],
             ],
             [
-                new DistrictOrdering(DistrictOrdering::POPULATION, DistrictOrdering::DESC),
+                new DistrictOrdering(DistrictOrderingField::Population, OrderingDirection::Desc),
                 [15, 14, 13, 7, 12, 1, 8, 9, 11, 4, 6, 2, 3, 5, 10],
             ],
         ];

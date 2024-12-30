@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Districts\Test\Unit\Editor\UI\Factory;
 
 use Districts\Editor\Domain\DistrictOrdering;
+use Districts\Editor\Domain\DistrictOrderingField;
+use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\UI\Factory\DistrictOrderingFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -26,8 +28,8 @@ class DistrictOrderingFactoryTest extends TestCase
     public function testCreate(
         ?string $inputColumn,
         ?string $inputDirection,
-        int $expectedField,
-        int $expectedDirection
+        DistrictOrderingField $expectedField,
+        OrderingDirection $expectedDirection,
     ): void {
         $order = $this->districtOrderingFactory->createFromRequestInput($inputColumn, $inputDirection);
         $this->assertInstanceOf(DistrictOrdering::class, $order);
@@ -36,49 +38,49 @@ class DistrictOrderingFactoryTest extends TestCase
     }
 
     /**
-     * @return array<array{0: ?string, 1: ?string, 2: int, 3: int}>
+     * @return array<array{0: ?string, 1: ?string, 2: DistrictOrderingField, 3: OrderingDirection}>
      */
     public static function createDataProvider(): array
     {
         return [
             [
-                "city", null, DistrictOrdering::FULL_NAME, DistrictOrdering::ASC,
+                "city", null, DistrictOrderingField::FullName, OrderingDirection::Asc,
             ],
             [
-                null, "asc", DistrictOrdering::FULL_NAME, DistrictOrdering::ASC,
+                null, "asc", DistrictOrderingField::FullName, OrderingDirection::Asc,
             ],
             [
-                "foo", "bar", DistrictOrdering::FULL_NAME, DistrictOrdering::ASC,
+                "foo", "bar", DistrictOrderingField::FullName, OrderingDirection::Asc,
             ],
             [
-                "city", "foo", DistrictOrdering::FULL_NAME, DistrictOrdering::ASC,
+                "city", "foo", DistrictOrderingField::FullName, OrderingDirection::Asc,
             ],
             [
-                "bar", "asc", DistrictOrdering::FULL_NAME, DistrictOrdering::ASC,
+                "bar", "asc", DistrictOrderingField::FullName, OrderingDirection::Asc,
             ],
             [
-                "city", "asc", DistrictOrdering::CITY_NAME, DistrictOrdering::ASC,
+                "city", "asc", DistrictOrderingField::CityName, OrderingDirection::Asc,
             ],
             [
-                "city", "desc", DistrictOrdering::CITY_NAME, DistrictOrdering::DESC,
+                "city", "desc", DistrictOrderingField::CityName, OrderingDirection::Desc,
             ],
             [
-                "name", "asc", DistrictOrdering::DISTRICT_NAME, DistrictOrdering::ASC,
+                "name", "asc", DistrictOrderingField::DistrictName, OrderingDirection::Asc,
             ],
             [
-                "name", "desc", DistrictOrdering::DISTRICT_NAME, DistrictOrdering::DESC,
+                "name", "desc", DistrictOrderingField::DistrictName, OrderingDirection::Desc,
             ],
             [
-                "area", "asc", DistrictOrdering::AREA, DistrictOrdering::ASC,
+                "area", "asc", DistrictOrderingField::Area, OrderingDirection::Asc,
             ],
             [
-                "area", "desc", DistrictOrdering::AREA, DistrictOrdering::DESC,
+                "area", "desc", DistrictOrderingField::Area, OrderingDirection::Desc,
             ],
             [
-                "population", "asc", DistrictOrdering::POPULATION, DistrictOrdering::ASC,
+                "population", "asc", DistrictOrderingField::Population, OrderingDirection::Asc,
             ],
             [
-                "population", "desc", DistrictOrdering::POPULATION, DistrictOrdering::DESC,
+                "population", "desc", DistrictOrderingField::Population, OrderingDirection::Desc,
             ],
         ];
     }

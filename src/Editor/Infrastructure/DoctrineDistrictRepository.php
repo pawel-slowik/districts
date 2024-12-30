@@ -7,7 +7,9 @@ namespace Districts\Editor\Infrastructure;
 use Districts\Editor\Domain\District;
 use Districts\Editor\Domain\DistrictFilter\Filter;
 use Districts\Editor\Domain\DistrictOrdering;
+use Districts\Editor\Domain\DistrictOrderingField;
 use Districts\Editor\Domain\DistrictRepository;
+use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\Domain\Pagination;
 use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
@@ -74,28 +76,21 @@ final class DoctrineDistrictRepository implements DistrictRepository
 
     private function dqlOrderBy(DistrictOrdering $order): string
     {
-        $orderDqlMap = [
-            DistrictOrdering::FULL_NAME => [
-                DistrictOrdering::ASC => "c.name ASC, d.name.name ASC",
-                DistrictOrdering::DESC => "c.name DESC, d.name.name DESC",
-            ],
-            DistrictOrdering::CITY_NAME => [
-                DistrictOrdering::ASC => "c.name ASC",
-                DistrictOrdering::DESC => "c.name DESC",
-            ],
-            DistrictOrdering::DISTRICT_NAME => [
-                DistrictOrdering::ASC => "d.name.name ASC",
-                DistrictOrdering::DESC => "d.name.name DESC",
-            ],
-            DistrictOrdering::AREA => [
-                DistrictOrdering::ASC => "d.area.area ASC",
-                DistrictOrdering::DESC => "d.area.area DESC",
-            ],
-            DistrictOrdering::POPULATION => [
-                DistrictOrdering::ASC => "d.population.population ASC",
-                DistrictOrdering::DESC => "d.population.population DESC",
-            ],
-        ];
-        return $orderDqlMap[$order->getField()][$order->getDirection()];
+        return match ([$order->getField(), $order->getDirection()]) {
+            [DistrictOrderingField::FullName, OrderingDirection::Asc] => "c.name ASC, d.name.name ASC",
+            [DistrictOrderingField::FullName, OrderingDirection::Desc] => "c.name DESC, d.name.name DESC",
+
+            [DistrictOrderingField::CityName, OrderingDirection::Asc] => "c.name ASC",
+            [DistrictOrderingField::CityName, OrderingDirection::Desc] => "c.name DESC",
+
+            [DistrictOrderingField::DistrictName, OrderingDirection::Asc] => "d.name.name ASC",
+            [DistrictOrderingField::DistrictName, OrderingDirection::Desc] => "d.name.name DESC",
+
+            [DistrictOrderingField::Area, OrderingDirection::Asc] => "d.area.area ASC",
+            [DistrictOrderingField::Area, OrderingDirection::Desc] => "d.area.area DESC",
+
+            [DistrictOrderingField::Population, OrderingDirection::Asc] => "d.population.population ASC",
+            [DistrictOrderingField::Population, OrderingDirection::Desc] => "d.population.population DESC",
+        };
     }
 }

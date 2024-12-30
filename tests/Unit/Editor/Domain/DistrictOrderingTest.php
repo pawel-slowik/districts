@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Districts\Test\Unit\Editor\Domain;
 
 use Districts\Editor\Domain\DistrictOrdering;
-use InvalidArgumentException;
+use Districts\Editor\Domain\DistrictOrderingField;
+use Districts\Editor\Domain\OrderingDirection;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,90 +16,36 @@ class DistrictOrderingTest extends TestCase
 {
     public function testGetters(): void
     {
-        $order = new DistrictOrdering(DistrictOrdering::CITY_NAME, DistrictOrdering::ASC);
-        $this->assertSame(DistrictOrdering::CITY_NAME, $order->getField());
-        $this->assertSame(DistrictOrdering::ASC, $order->getDirection());
+        $order = new DistrictOrdering(DistrictOrderingField::CityName, OrderingDirection::Asc);
+        $this->assertSame(DistrictOrderingField::CityName, $order->getField());
+        $this->assertSame(OrderingDirection::Asc, $order->getDirection());
     }
 
     /**
      * @dataProvider validDataProvider
      */
-    public function testValid(int $field, int $direction): void
+    public function testValid(DistrictOrderingField $field, OrderingDirection $direction): void
     {
         $order = new DistrictOrdering($field, $direction);
         $this->assertInstanceOf(DistrictOrdering::class, $order);
     }
 
     /**
-     * @return array<array{0: int, 1: int}>
+     * @return array<array{0: DistrictOrderingField, 1: OrderingDirection}>
      */
     public static function validDataProvider(): array
     {
         return [
-            [DistrictOrdering::FULL_NAME, DistrictOrdering::ASC],
-            [DistrictOrdering::FULL_NAME, DistrictOrdering::DESC],
-            [DistrictOrdering::CITY_NAME, DistrictOrdering::ASC],
-            [DistrictOrdering::CITY_NAME, DistrictOrdering::DESC],
-            [DistrictOrdering::DISTRICT_NAME, DistrictOrdering::ASC],
-            [DistrictOrdering::DISTRICT_NAME, DistrictOrdering::DESC],
-            [DistrictOrdering::AREA, DistrictOrdering::ASC],
-            [DistrictOrdering::AREA, DistrictOrdering::DESC],
-            [DistrictOrdering::POPULATION, DistrictOrdering::ASC],
-            [DistrictOrdering::POPULATION, DistrictOrdering::DESC],
-        ];
-    }
-
-    /**
-     * @dataProvider invalidDataProvider
-     */
-    public function testInvalid(int $field, int $direction): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        new DistrictOrdering($field, $direction);
-    }
-
-    /**
-     * @return array<string, array{0: int, 1: int}>
-     */
-    public static function invalidDataProvider(): array
-    {
-        return [
-            "both invalid and negative" => [
-                -1,
-                -1,
-            ],
-            "field invalid and negative" => [
-                -1,
-                DistrictOrdering::ASC,
-            ],
-            "direction invalid and negative" => [
-                DistrictOrdering::FULL_NAME,
-                -1,
-            ],
-            "both invalid not negative" => [
-                0,
-                0,
-            ],
-            "field invalid not negative" => [
-                0,
-                DistrictOrdering::ASC,
-            ],
-            "direction invalid not negative" => [
-                DistrictOrdering::FULL_NAME,
-                0,
-            ],
-            "both too high" => [
-                11,
-                11,
-            ],
-            "field too high" => [
-                11,
-                DistrictOrdering::ASC,
-            ],
-            "direction too high" => [
-                DistrictOrdering::FULL_NAME,
-                11,
-            ],
+            [DistrictOrderingField::FullName, OrderingDirection::Asc],
+            [DistrictOrderingField::FullName, OrderingDirection::Desc],
+            [DistrictOrderingField::CityName, OrderingDirection::Asc],
+            [DistrictOrderingField::CityName, OrderingDirection::Desc],
+            [DistrictOrderingField::DistrictName, OrderingDirection::Asc],
+            [DistrictOrderingField::DistrictName, OrderingDirection::Desc],
+            [DistrictOrderingField::Area, OrderingDirection::Asc],
+            [DistrictOrderingField::Area, OrderingDirection::Desc],
+            [DistrictOrderingField::Population, OrderingDirection::Asc],
+            [DistrictOrderingField::Population, OrderingDirection::Desc],
         ];
     }
 }
