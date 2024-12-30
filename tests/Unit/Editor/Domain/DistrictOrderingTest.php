@@ -8,6 +8,7 @@ use Districts\Editor\Domain\DistrictOrdering;
 use Districts\Editor\Domain\DistrictOrderingField;
 use Districts\Editor\Domain\OrderingDirection;
 use PHPUnit\Framework\TestCase;
+use Traversable;
 
 /**
  * @covers \Districts\Editor\Domain\DistrictOrdering
@@ -31,21 +32,14 @@ class DistrictOrderingTest extends TestCase
     }
 
     /**
-     * @return array<array{0: DistrictOrderingField, 1: OrderingDirection}>
+     * @return Traversable<array{0: DistrictOrderingField, 1: OrderingDirection}>
      */
-    public static function validDataProvider(): array
+    public static function validDataProvider(): Traversable
     {
-        return [
-            [DistrictOrderingField::FullName, OrderingDirection::Asc],
-            [DistrictOrderingField::FullName, OrderingDirection::Desc],
-            [DistrictOrderingField::CityName, OrderingDirection::Asc],
-            [DistrictOrderingField::CityName, OrderingDirection::Desc],
-            [DistrictOrderingField::DistrictName, OrderingDirection::Asc],
-            [DistrictOrderingField::DistrictName, OrderingDirection::Desc],
-            [DistrictOrderingField::Area, OrderingDirection::Asc],
-            [DistrictOrderingField::Area, OrderingDirection::Desc],
-            [DistrictOrderingField::Population, OrderingDirection::Asc],
-            [DistrictOrderingField::Population, OrderingDirection::Desc],
-        ];
+        foreach (DistrictOrderingField::cases() as $field) {
+            foreach (OrderingDirection::cases() as $direction) {
+                yield [$field, $direction];
+            }
+        }
     }
 }
