@@ -76,7 +76,7 @@ final class DoctrineDistrictRepository implements DistrictRepository
 
     private function dqlOrderBy(DistrictOrdering $order): string
     {
-        return match ([$order->getField(), $order->getDirection()]) {
+        return match ([$order->field, $order->direction]) {
             [DistrictOrderingField::FullName, OrderingDirection::Asc] => "c.name ASC, d.name.name ASC",
             [DistrictOrderingField::FullName, OrderingDirection::Desc] => "c.name DESC, d.name.name DESC",
 

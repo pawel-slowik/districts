@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\Test\Unit\Editor\UI\Factory;
 
+use Districts\Editor\Domain\DistrictOrdering;
+use Districts\Editor\Domain\DistrictOrderingField;
+use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\Domain\Pagination;
 use Districts\Editor\UI\Factory\DistrictFilterFactory;
 use Districts\Editor\UI\Factory\DistrictOrderingFactory;
@@ -68,7 +71,8 @@ class ListDistrictsQueryFactoryTest extends TestCase
             ->with(
                 $this->identicalTo($expectedColumn),
                 $this->identicalTo($expectedDirection)
-            );
+            )
+            ->willReturn(new DistrictOrdering(DistrictOrderingField::FullName, OrderingDirection::Asc));
 
         $this->queryFactory->fromRequest($this->request);
     }
@@ -136,6 +140,9 @@ class ListDistrictsQueryFactoryTest extends TestCase
         ?string $expectedValue
     ): void {
         $this->request->method("getQueryParams")->willReturn($queryParams);
+        $this->districtOrderingFactory
+            ->method("createFromRequestInput")
+            ->willReturn(new DistrictOrdering(DistrictOrderingField::FullName, OrderingDirection::Asc));
         $this->paginationFactory
             ->method("createFromRequestInput")
             ->willReturn(new Pagination(1, 1));
@@ -211,6 +218,9 @@ class ListDistrictsQueryFactoryTest extends TestCase
     public function testPassingPaginationParameters(array $queryParams, ?string $expectedPage): void
     {
         $this->request->method("getQueryParams")->willReturn($queryParams);
+        $this->districtOrderingFactory
+            ->method("createFromRequestInput")
+            ->willReturn(new DistrictOrdering(DistrictOrderingField::FullName, OrderingDirection::Asc));
 
         $this->paginationFactory
             ->expects($this->once())
@@ -256,6 +266,9 @@ class ListDistrictsQueryFactoryTest extends TestCase
 
     public function testDefaults(): void
     {
+        $this->districtOrderingFactory
+            ->method("createFromRequestInput")
+            ->willReturn(new DistrictOrdering(DistrictOrderingField::FullName, OrderingDirection::Asc));
         $this->paginationFactory
             ->method("createFromRequestInput")
             ->willReturn(new Pagination(1, 1));

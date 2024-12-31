@@ -18,8 +18,8 @@ class DistrictOrderingTest extends TestCase
     public function testGetters(): void
     {
         $order = new DistrictOrdering(DistrictOrderingField::CityName, OrderingDirection::Asc);
-        $this->assertSame(DistrictOrderingField::CityName, $order->getField());
-        $this->assertSame(OrderingDirection::Asc, $order->getDirection());
+        $this->assertSame(DistrictOrderingField::CityName, $order->field);
+        $this->assertSame(OrderingDirection::Asc, $order->direction);
     }
 
     /**

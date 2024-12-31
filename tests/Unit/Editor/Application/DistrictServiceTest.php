@@ -19,8 +19,10 @@ use Districts\Editor\Domain\CityRepository;
 use Districts\Editor\Domain\District;
 use Districts\Editor\Domain\DistrictFilter\Filter;
 use Districts\Editor\Domain\DistrictOrdering;
+use Districts\Editor\Domain\DistrictOrderingField;
 use Districts\Editor\Domain\DistrictRepository;
 use Districts\Editor\Domain\Name;
+use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\Domain\Pagination;
 use Districts\Editor\Domain\Population;
@@ -81,7 +83,7 @@ class DistrictServiceTest extends TestCase
             ->willReturn($result);
 
         $query = new ListDistrictsQuery(
-            ordering: $this->createStub(DistrictOrdering::class),
+            ordering: new DistrictOrdering(DistrictOrderingField::FullName, OrderingDirection::Asc),
             // phpcs:ignore Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore
             filter: (new readonly class () extends Filter {}),
             pagination: new Pagination(1, 1),

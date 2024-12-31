@@ -33,8 +33,8 @@ class DistrictOrderingFactoryTest extends TestCase
     ): void {
         $order = $this->districtOrderingFactory->createFromRequestInput($inputColumn, $inputDirection);
         $this->assertInstanceOf(DistrictOrdering::class, $order);
-        $this->assertSame($expectedField, $order->getField());
-        $this->assertSame($expectedDirection, $order->getDirection());
+        $this->assertSame($expectedField, $order->field);
+        $this->assertSame($expectedDirection, $order->direction);
     }
 
     /**
