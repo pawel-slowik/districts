@@ -24,7 +24,7 @@ class PaginationFactoryTest extends TestCase
     {
         $pagination = $this->paginationFactory->createFromRequestInput("5");
         $this->assertInstanceOf(Pagination::class, $pagination);
-        $this->assertSame(5, $pagination->getPageNumber());
+        $this->assertSame(5, $pagination->pageNumber);
     }
 
     /**
@@ -34,7 +34,7 @@ class PaginationFactoryTest extends TestCase
     {
         $pagination = $this->paginationFactory->createFromRequestInput($invalidPage);
         $this->assertInstanceOf(Pagination::class, $pagination);
-        $this->assertSame(1, $pagination->getPageNumber());
+        $this->assertSame(1, $pagination->pageNumber);
     }
 
     /**

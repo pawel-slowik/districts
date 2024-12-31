@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Unit\Editor\UI\Factory;
 
+use Districts\Editor\Domain\Pagination;
 use Districts\Editor\UI\Factory\DistrictFilterFactory;
 use Districts\Editor\UI\Factory\DistrictOrderingFactory;
 use Districts\Editor\UI\Factory\ListDistrictsQueryFactory;
@@ -57,6 +58,9 @@ class ListDistrictsQueryFactoryTest extends TestCase
         ?string $expectedDirection
     ): void {
         $this->request->method("getQueryParams")->willReturn($queryParams);
+        $this->paginationFactory
+            ->method("createFromRequestInput")
+            ->willReturn(new Pagination(1, 1));
 
         $this->districtOrderingFactory
             ->expects($this->once())
@@ -132,6 +136,9 @@ class ListDistrictsQueryFactoryTest extends TestCase
         ?string $expectedValue
     ): void {
         $this->request->method("getQueryParams")->willReturn($queryParams);
+        $this->paginationFactory
+            ->method("createFromRequestInput")
+            ->willReturn(new Pagination(1, 1));
 
         $this->districtFilterFactory
             ->expects($this->once())
@@ -210,7 +217,8 @@ class ListDistrictsQueryFactoryTest extends TestCase
             ->method("createFromRequestInput")
             ->with(
                 $this->identicalTo($expectedPage)
-            );
+            )
+            ->willReturn(new Pagination(1, 1));
 
         $this->queryFactory->fromRequest($this->request);
     }
@@ -248,6 +256,10 @@ class ListDistrictsQueryFactoryTest extends TestCase
 
     public function testDefaults(): void
     {
+        $this->paginationFactory
+            ->method("createFromRequestInput")
+            ->willReturn(new Pagination(1, 1));
+
         $this->queryFactory->fromDefaults();
 
         $this->assertTrue(true);

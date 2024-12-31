@@ -16,8 +16,8 @@ class PaginationTest extends TestCase
     public function testGetters(): void
     {
         $pagination = new Pagination(1, 2);
-        $this->assertSame(1, $pagination->getPageNumber());
-        $this->assertSame(2, $pagination->getPageSize());
+        $this->assertSame(1, $pagination->pageNumber);
+        $this->assertSame(2, $pagination->pageSize);
     }
 
     public function testExceptionOnInvalidNumber(): void

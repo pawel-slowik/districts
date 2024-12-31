@@ -6,25 +6,15 @@ namespace Districts\Editor\Domain;
 
 use InvalidArgumentException;
 
-class Pagination
+readonly class Pagination
 {
     public function __construct(
-        private int $pageNumber,
-        private int $pageSize,
+        public int $pageNumber,
+        public int $pageSize,
     ) {
         if (!self::validate($pageNumber, $pageSize)) {
             throw new InvalidArgumentException();
         }
-    }
-
-    public function getPageNumber(): int
-    {
-        return $this->pageNumber;
-    }
-
-    public function getPageSize(): int
-    {
-        return $this->pageSize;
     }
 
     private static function validate(int $pageNumber, int $pageSize): bool

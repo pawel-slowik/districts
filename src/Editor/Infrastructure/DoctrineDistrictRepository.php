@@ -56,14 +56,14 @@ final class DoctrineDistrictRepository implements DistrictRepository
             }
         }
         if ($pagination) {
-            $query->setFirstResult(($pagination->getPageNumber() - 1) * $pagination->getPageSize());
-            $query->setMaxResults($pagination->getPageSize());
+            $query->setFirstResult(($pagination->pageNumber - 1) * $pagination->pageSize);
+            $query->setMaxResults($pagination->pageSize);
             $paginator = new Paginator($query);
             /** @var District[] $districts */
             $districts = iterator_to_array($paginator);
             $recordsTotal = count($paginator);
-            $pageSize = $pagination->getPageSize();
-            $pageNumber = $pagination->getPageNumber();
+            $pageSize = $pagination->pageSize;
+            $pageNumber = $pagination->pageNumber;
         } else {
             /** @var District[] $districts */
             $districts = $query->getResult();

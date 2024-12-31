@@ -84,7 +84,7 @@ class DistrictServiceTest extends TestCase
             ordering: $this->createStub(DistrictOrdering::class),
             // phpcs:ignore Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore
             filter: (new readonly class () extends Filter {}),
-            pagination: $this->createStub(Pagination::class),
+            pagination: new Pagination(1, 1),
         );
 
         $list = $this->districtService->list($query);
