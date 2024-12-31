@@ -7,11 +7,10 @@ namespace Districts\Test\Unit\Scraper\UI;
 use Districts\Scraper\Domain\CityScraper;
 use Districts\Scraper\UI\ScraperCityFilter;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Scraper\UI\ScraperCityFilter
- */
+#[CoversClass(ScraperCityFilter::class)]
 class ScraperCityFilterTest extends TestCase
 {
     private CityScraper $fooCityScraper;

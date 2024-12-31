@@ -6,11 +6,10 @@ namespace Districts\Test\Unit\Editor\Infrastructure\DistrictFilter;
 
 use Districts\Editor\Domain\DistrictFilter\AreaFilter as DomainAreaFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\AreaFilter;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Infrastructure\DistrictFilter\AreaFilter
- */
+#[CoversClass(AreaFilter::class)]
 class AreaFilterTest extends TestCase
 {
     public function testWhere(): void

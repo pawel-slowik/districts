@@ -6,11 +6,11 @@ namespace Districts\Test\Unit\Editor\UI\Factory;
 
 use Districts\Editor\Domain\Pagination;
 use Districts\Editor\UI\Factory\PaginationFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\UI\Factory\PaginationFactory
- */
+#[CoversClass(PaginationFactory::class)]
 class PaginationFactoryTest extends TestCase
 {
     private PaginationFactory $paginationFactory;
@@ -27,9 +27,7 @@ class PaginationFactoryTest extends TestCase
         $this->assertSame(5, $pagination->pageNumber);
     }
 
-    /**
-     * @dataProvider invalidDataProvider
-     */
+    #[DataProvider('invalidDataProvider')]
     public function testCreateFromInvalidReturnsFirstPage(?string $invalidPage): void
     {
         $pagination = $this->paginationFactory->createFromRequestInput($invalidPage);

@@ -6,11 +6,10 @@ namespace Districts\Test\Unit\Editor\UI\ErrorHandler;
 
 use Districts\Editor\UI\ErrorHandler\HttpMethodNotAllowedHandler;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * @covers \Districts\Editor\UI\ErrorHandler\HttpMethodNotAllowedHandler
- */
+#[CoversClass(HttpMethodNotAllowedHandler::class)]
 class HttpMethodNotAllowedHandlerTest extends BaseTestCase
 {
     public function testResponse(): void

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Districts\Test\Integration\Editor\UI\Controller;
 
+use Districts\Editor\UI\Controller\AddFormController;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
-/**
- * @covers \Districts\Editor\UI\Controller\AddFormController
- *
- * @runTestsInSeparateProcesses
- */
+#[CoversClass(AddFormController::class)]
+#[RunTestsInSeparateProcesses]
 class AddFormControllerTest extends BaseTestCase
 {
     public function testForm(): void

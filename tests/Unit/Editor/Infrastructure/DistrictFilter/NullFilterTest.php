@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Districts\Test\Unit\Editor\Infrastructure\DistrictFilter;
 
 use Districts\Editor\Infrastructure\DistrictFilter\NullFilter;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Infrastructure\DistrictFilter\NullFilter
- */
+#[CoversClass(NullFilter::class)]
 class NullFilterTest extends TestCase
 {
     public function testWhere(): void

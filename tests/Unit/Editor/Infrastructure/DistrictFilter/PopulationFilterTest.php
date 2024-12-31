@@ -6,11 +6,10 @@ namespace Districts\Test\Unit\Editor\Infrastructure\DistrictFilter;
 
 use Districts\Editor\Domain\DistrictFilter\PopulationFilter as DomainPopulationFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\PopulationFilter;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Infrastructure\DistrictFilter\PopulationFilter
- */
+#[CoversClass(PopulationFilter::class)]
 class PopulationFilterTest extends TestCase
 {
     public function testWhere(): void

@@ -6,11 +6,11 @@ namespace Districts\Test\Unit\Editor\Domain\DistrictFilter;
 
 use Districts\Editor\Domain\DistrictFilter\AreaFilter;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Domain\DistrictFilter\AreaFilter
- */
+#[CoversClass(AreaFilter::class)]
 class AreaFilterTest extends TestCase
 {
     public function testProperties(): void
@@ -20,9 +20,7 @@ class AreaFilterTest extends TestCase
         $this->assertSame((float) 2, $filter->end);
     }
 
-    /**
-     * @dataProvider validDataProvider
-     */
+    #[DataProvider('validDataProvider')]
     public function testValid(float $begin, float $end): void
     {
         $filter = new AreaFilter($begin, $end);
@@ -42,9 +40,7 @@ class AreaFilterTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidDataProvider
-     */
+    #[DataProvider('invalidDataProvider')]
     public function testInvalid(float $begin, float $end): void
     {
         $this->expectException(InvalidArgumentException::class);

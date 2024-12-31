@@ -10,11 +10,10 @@ use Districts\Editor\Domain\Exception\DistrictNotFoundException;
 use Districts\Editor\Domain\Exception\DuplicateDistrictNameException;
 use Districts\Editor\Domain\Name;
 use Districts\Editor\Domain\Population;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Domain\City
- */
+#[CoversClass(City::class)]
 class CityTest extends TestCase
 {
     public function testName(): void

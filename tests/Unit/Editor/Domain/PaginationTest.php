@@ -6,11 +6,10 @@ namespace Districts\Test\Unit\Editor\Domain;
 
 use Districts\Editor\Domain\Pagination;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Domain\Pagination
- */
+#[CoversClass(Pagination::class)]
 class PaginationTest extends TestCase
 {
     public function testGetters(): void

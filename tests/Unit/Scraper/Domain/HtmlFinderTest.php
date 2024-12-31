@@ -7,11 +7,10 @@ namespace Districts\Test\Unit\Scraper\Domain;
 use Districts\Scraper\Domain\Exception\InvalidHtmlException;
 use Districts\Scraper\Domain\HtmlFinder;
 use DOMNode;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Scraper\Domain\HtmlFinder
- */
+#[CoversClass(HtmlFinder::class)]
 class HtmlFinderTest extends TestCase
 {
     private const VALID_HTML = <<<'HTML'

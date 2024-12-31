@@ -10,12 +10,11 @@ use Districts\Scraper\Domain\Krakow\CityParser;
 use Districts\Scraper\Domain\Krakow\CityScraper;
 use Districts\Scraper\Domain\Krakow\DistrictParser;
 use Districts\Scraper\Domain\ProgressReporter;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Scraper\Domain\Krakow\CityScraper
- */
+#[CoversClass(CityScraper::class)]
 class CityScraperTest extends TestCase
 {
     private CityScraper $scraper;

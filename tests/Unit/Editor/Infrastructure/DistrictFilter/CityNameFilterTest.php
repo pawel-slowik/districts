@@ -6,12 +6,12 @@ namespace Districts\Test\Unit\Editor\Infrastructure\DistrictFilter;
 
 use Districts\Editor\Domain\DistrictFilter\CityNameFilter as DomainCityNameFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\CityNameFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\Filter;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Infrastructure\DistrictFilter\CityNameFilter
- * @covers \Districts\Editor\Infrastructure\DistrictFilter\Filter
- */
+#[CoversClass(CityNameFilter::class)]
+#[CoversClass(Filter::class)]
 class CityNameFilterTest extends TestCase
 {
     public function testWhere(): void

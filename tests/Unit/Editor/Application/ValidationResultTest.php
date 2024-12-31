@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Districts\Test\Unit\Editor\Application;
 
 use Districts\Editor\Application\ValidationResult;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Application\ValidationResult
- */
+#[CoversClass(ValidationResult::class)]
 class ValidationResultTest extends TestCase
 {
     public function testNewInstanceIsOk(): void

@@ -6,11 +6,11 @@ namespace Districts\Test\Unit\Editor\UI\View;
 
 use Districts\Editor\UI\View\PageReference;
 use Districts\Editor\UI\View\PageReferenceFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\UI\View\PageReferenceFactory
- */
+#[CoversClass(PageReferenceFactory::class)]
 class PageReferenceFactoryTest extends TestCase
 {
     private PageReferenceFactory $pageReferenceFactory;
@@ -38,9 +38,7 @@ class PageReferenceFactoryTest extends TestCase
         $this->assertCount(102, iterator_to_array($pageReferences));
     }
 
-    /**
-     * @dataProvider flagsProvider
-     */
+    #[DataProvider('flagsProvider')]
     public function testFlags(string $baseUrl, int $pageCount, int $currentPageNumber): void
     {
         $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl(

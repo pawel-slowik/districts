@@ -6,14 +6,14 @@ namespace Districts\Test\Unit\Editor\UI\View;
 
 use Districts\Editor\UI\View\OrderingUrlGenerator;
 use Nyholm\Psr7\Uri;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
-/**
- * @covers \Districts\Editor\UI\View\OrderingUrlGenerator
- */
+#[CoversClass(OrderingUrlGenerator::class)]
 class OrderingUrlGeneratorTest extends TestCase
 {
     private OrderingUrlGenerator $orderingUrlGenerator;
@@ -29,9 +29,8 @@ class OrderingUrlGeneratorTest extends TestCase
 
     /**
      * @param array<string, string> $queryParams
-     *
-     * @dataProvider simpleDataProvider
      */
+    #[DataProvider('simpleDataProvider')]
     public function testSimple(string $column, array $queryParams): void
     {
         $request = $this->createRequestStubForList($queryParams);

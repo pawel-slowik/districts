@@ -7,12 +7,11 @@ namespace Districts\Test\Unit\Editor\Application;
 use Districts\Editor\Application\CityIterator;
 use Districts\Editor\Domain\City;
 use Districts\Editor\Domain\CityRepository;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Application\CityIterator
- */
+#[CoversClass(CityIterator::class)]
 class CityIteratorTest extends TestCase
 {
     /** @var CityRepository&MockObject */

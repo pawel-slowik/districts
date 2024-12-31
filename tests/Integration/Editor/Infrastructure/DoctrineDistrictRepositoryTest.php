@@ -11,10 +11,9 @@ use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
 use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use Districts\Test\Integration\DoctrineDbTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Districts\Editor\Infrastructure\DoctrineDistrictRepository
- */
+#[CoversClass(DoctrineDistrictRepository::class)]
 class DoctrineDistrictRepositoryTest extends DoctrineDbTestCase
 {
     private DoctrineDistrictRepository $districtRepository;

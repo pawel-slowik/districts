@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Districts\Test\Unit\Editor\Application;
 
 use Districts\Editor\Application\Exception\ValidationException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Application\Exception\ValidationException
- */
+#[CoversClass(ValidationException::class)]
 class ValidationExceptionTest extends TestCase
 {
     public function testNewInstanceHasNoErrors(): void

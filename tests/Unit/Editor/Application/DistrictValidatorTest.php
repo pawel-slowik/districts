@@ -13,12 +13,11 @@ use Districts\Editor\Domain\District;
 use Districts\Editor\Domain\DistrictRepository;
 use Districts\Editor\Domain\Name;
 use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Application\DistrictValidator
- */
+#[CoversClass(DistrictValidator::class)]
 class DistrictValidatorTest extends TestCase
 {
     private DistrictValidator $districtValidator;

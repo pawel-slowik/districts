@@ -8,14 +8,13 @@ use Districts\Scraper\Domain\Exception\FetchingException;
 use Districts\Scraper\Infrastructure\GuzzleHtmlFetcher;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use GuzzleHttp\ClientInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
-/**
- * @covers \Districts\Scraper\Infrastructure\GuzzleHtmlFetcher
- */
+#[CoversClass(GuzzleHtmlFetcher::class)]
 class GuzzleHtmlFetcherTest extends TestCase
 {
     private GuzzleHtmlFetcher $guzzleHtmlFetcher;

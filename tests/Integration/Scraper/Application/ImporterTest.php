@@ -9,10 +9,9 @@ use Districts\Scraper\Application\Importer;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\DistrictDTO;
 use Districts\Test\Integration\DoctrineDbTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Districts\Scraper\Application\Importer
- */
+#[CoversClass(Importer::class)]
 class ImporterTest extends DoctrineDbTestCase
 {
     private const TESTCASE_SQL = <<<'SQL'

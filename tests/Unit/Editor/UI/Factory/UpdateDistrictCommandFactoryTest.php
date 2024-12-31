@@ -7,14 +7,14 @@ namespace Districts\Test\Unit\Editor\UI\Factory;
 use Districts\Editor\Application\Command\UpdateDistrictCommand;
 use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\UI\Factory\UpdateDistrictCommandFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use StdClass;
 
-/**
- * @covers \Districts\Editor\UI\Factory\UpdateDistrictCommandFactory
- */
+#[CoversClass(UpdateDistrictCommandFactory::class)]
 class UpdateDistrictCommandFactoryTest extends TestCase
 {
     /** @var MockObject&Request */
@@ -61,9 +61,8 @@ class UpdateDistrictCommandFactoryTest extends TestCase
     /**
      * @param array<string, string> $requestData
      * @param array<string, string> $routeArgs
-     *
-     * @dataProvider incompleteUpdateRequestDataProvider
      */
+    #[DataProvider('incompleteUpdateRequestDataProvider')]
     public function testIncompleteUpdateRequest(array $requestData, array $routeArgs): void
     {
         $this->request->method("getParsedBody")->willReturn($requestData);
@@ -116,9 +115,7 @@ class UpdateDistrictCommandFactoryTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider unparseableRequestDataProvider
-     */
+    #[DataProvider('unparseableRequestDataProvider')]
     public function testUnparseableUpdateRequest(?object $parsedBody): void
     {
         $this->request->method("getParsedBody")->willReturn($parsedBody);

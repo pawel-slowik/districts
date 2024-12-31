@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Districts\Test\Unit\Editor\UI;
 
 use Districts\Editor\UI\Session;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use SlimSession\Helper;
 
-/**
- * @covers \Districts\Editor\UI\Session
- */
+#[CoversClass(Session::class)]
 class SessionTest extends TestCase
 {
     public function testSet(): void

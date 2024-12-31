@@ -6,11 +6,10 @@ namespace Districts\Test\Unit\Editor\Domain;
 
 use Districts\Editor\Domain\Exception\InvalidPopulationException;
 use Districts\Editor\Domain\Population;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Domain\Population
- */
+#[CoversClass(Population::class)]
 class PopulationTest extends TestCase
 {
     public function testConstructionFailsOnInvalidValue(): void

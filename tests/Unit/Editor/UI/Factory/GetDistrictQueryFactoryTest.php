@@ -7,12 +7,11 @@ namespace Districts\Test\Unit\Editor\UI\Factory;
 use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\Application\Query\GetDistrictQuery;
 use Districts\Editor\UI\Factory\GetDistrictQueryFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-/**
- * @covers \Districts\Editor\UI\Factory\GetDistrictQueryFactory
- */
+#[CoversClass(GetDistrictQueryFactory::class)]
 class GetDistrictQueryFactoryTest extends TestCase
 {
     private GetDistrictQueryFactory $queryFactory;

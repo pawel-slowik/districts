@@ -26,13 +26,12 @@ use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\Domain\Pagination;
 use Districts\Editor\Domain\Population;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Application\DistrictService
- */
+#[CoversClass(DistrictService::class)]
 class DistrictServiceTest extends TestCase
 {
     private DistrictService $districtService;

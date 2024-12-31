@@ -6,11 +6,10 @@ namespace Districts\Test\Unit\Editor\Domain\DistrictFilter;
 
 use Districts\Editor\Domain\DistrictFilter\CityNameFilter;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Domain\DistrictFilter\CityNameFilter
- */
+#[CoversClass(CityNameFilter::class)]
 class CityNameFilterTest extends TestCase
 {
     public function testProperties(): void

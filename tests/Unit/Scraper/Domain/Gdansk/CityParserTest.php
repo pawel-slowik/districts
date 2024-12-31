@@ -8,12 +8,11 @@ use Districts\Scraper\Domain\Exception\ParsingException;
 use Districts\Scraper\Domain\Gdansk\CityParser;
 use Districts\Scraper\Domain\HtmlFinder;
 use DOMNode;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Scraper\Domain\Gdansk\CityParser
- */
+#[CoversClass(CityParser::class)]
 class CityParserTest extends TestCase
 {
     private CityParser $cityParser;

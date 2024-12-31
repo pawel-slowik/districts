@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace Districts\Test\Integration\Editor\UI\Controller;
 
+use Districts\Editor\UI\Controller\ListController;
 use Districts\Test\Integration\FixtureTool;
 use Doctrine\ORM\EntityManager;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * @covers \Districts\Editor\UI\Controller\ListController
- *
- * @runTestsInSeparateProcesses
- */
+#[CoversClass(ListController::class)]
+#[RunTestsInSeparateProcesses]
 class ListControllerTest extends BaseTestCase
 {
-    /**
-     * @dataProvider listDataProvider
-     */
+    #[DataProvider('listDataProvider')]
     public function testList(string $url): void
     {
         $response = $this->runApp("GET", $url);
@@ -26,9 +25,7 @@ class ListControllerTest extends BaseTestCase
         $this->assertNotEmpty((string) $response->getBody());
     }
 
-    /**
-     * @dataProvider listDataProvider
-     */
+    #[DataProvider('listDataProvider')]
     public function testListWithPaging(string $url): void
     {
         $response = $this->runAppWithPaginatedDataset("GET", $url);

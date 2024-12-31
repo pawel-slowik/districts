@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Districts\Test\Integration\Editor\UI\Controller;
 
+use Districts\Editor\UI\Controller\RemoveFormController;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
-/**
- * @covers \Districts\Editor\UI\Controller\RemoveFormController
- *
- * @runTestsInSeparateProcesses
- */
+#[CoversClass(RemoveFormController::class)]
+#[RunTestsInSeparateProcesses]
 class RemoveFormControllerTest extends BaseTestCase
 {
     public function testForm(): void

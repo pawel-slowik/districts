@@ -9,11 +9,10 @@ use Districts\Editor\Domain\City;
 use Districts\Editor\Domain\District;
 use Districts\Editor\Domain\Name;
 use Districts\Editor\Domain\Population;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Domain\District
- */
+#[CoversClass(District::class)]
 class DistrictTest extends TestCase
 {
     private City $city;

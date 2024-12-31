@@ -9,11 +9,11 @@ use Districts\Editor\Domain\DistrictFilter\CityNameFilter;
 use Districts\Editor\Domain\DistrictFilter\NameFilter;
 use Districts\Editor\Domain\DistrictFilter\PopulationFilter;
 use Districts\Editor\UI\Factory\DistrictFilterFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\UI\Factory\DistrictFilterFactory
- */
+#[CoversClass(DistrictFilterFactory::class)]
 class DistrictFilterFactoryTest extends TestCase
 {
     private DistrictFilterFactory $districtFilterFactory;
@@ -23,9 +23,7 @@ class DistrictFilterFactoryTest extends TestCase
         $this->districtFilterFactory = new DistrictFilterFactory();
     }
 
-    /**
-     * @dataProvider createNullDataProvider
-     */
+    #[DataProvider('createNullDataProvider')]
     public function testCreateNull(?string $column, ?string $value): void
     {
         $filter = $this->districtFilterFactory->createFromRequestInput($column, $value);
@@ -59,9 +57,8 @@ class DistrictFilterFactoryTest extends TestCase
 
     /**
      * @param class-string $expectedClass
-     *
-     * @dataProvider createDataProvider
      */
+    #[DataProvider('createDataProvider')]
     public function testCreate(?string $inputColumn, ?string $inputValue, string $expectedClass): void
     {
         $filter = $this->districtFilterFactory->createFromRequestInput($inputColumn, $inputValue);

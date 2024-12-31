@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Districts\Test\Unit\Editor\Infrastructure\DistrictFilter;
 
 use Districts\Editor\Domain\DistrictFilter\NameFilter as DomainNameFilter;
+use Districts\Editor\Infrastructure\DistrictFilter\Filter;
 use Districts\Editor\Infrastructure\DistrictFilter\NameFilter;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Infrastructure\DistrictFilter\Filter
- * @covers \Districts\Editor\Infrastructure\DistrictFilter\NameFilter
- */
+#[CoversClass(Filter::class)]
+#[CoversClass(NameFilter::class)]
 class NameFilterTest extends TestCase
 {
     public function testWhere(): void

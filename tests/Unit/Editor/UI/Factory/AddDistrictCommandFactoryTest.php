@@ -7,14 +7,14 @@ namespace Districts\Test\Unit\Editor\UI\Factory;
 use Districts\Editor\Application\Command\AddDistrictCommand;
 use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\UI\Factory\AddDistrictCommandFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use StdClass;
 
-/**
- * @covers \Districts\Editor\UI\Factory\AddDistrictCommandFactory
- */
+#[CoversClass(AddDistrictCommandFactory::class)]
 class AddDistrictCommandFactoryTest extends TestCase
 {
     /** @var MockObject&Request */
@@ -62,9 +62,8 @@ class AddDistrictCommandFactoryTest extends TestCase
 
     /**
      * @param array<string, string> $requestData
-     *
-     * @dataProvider incompleteAddRequestDataProvider
      */
+    #[DataProvider('incompleteAddRequestDataProvider')]
     public function testIncompleteAddRequest(array $requestData): void
     {
         $this->request->method("getParsedBody")->willReturn($requestData);
@@ -109,9 +108,7 @@ class AddDistrictCommandFactoryTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider unparseableRequestDataProvider
-     */
+    #[DataProvider('unparseableRequestDataProvider')]
     public function testUnparseableAddRequest(?object $parsedBody): void
     {
         $this->request->method("getParsedBody")->willReturn($parsedBody);

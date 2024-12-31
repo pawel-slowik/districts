@@ -10,6 +10,8 @@ use Districts\Editor\UI\View\ListView;
 use Districts\Editor\UI\View\OrderingUrlGenerator;
 use Districts\Editor\UI\View\PageReferenceFactory;
 use Nyholm\Psr7\Uri;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -19,9 +21,7 @@ use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 use Slim\Views\Twig as TwigView;
 
-/**
- * @covers \Districts\Editor\UI\View\ListView
- */
+#[CoversClass(ListView::class)]
 class ListViewTest extends TestCase
 {
     /** @var ListView<District> */
@@ -74,9 +74,7 @@ class ListViewTest extends TestCase
         $this->listView->render($this->createStub(ResponseInterface::class), $paginatedResult, $request, [], "", []);
     }
 
-    /**
-     * @dataProvider computedDataKeyProvider
-     */
+    #[DataProvider('computedDataKeyProvider')]
     public function testSetsComputedDataKey(string $key): void
     {
         $paginatedResult = $this->createStub(PaginatedResult::class);

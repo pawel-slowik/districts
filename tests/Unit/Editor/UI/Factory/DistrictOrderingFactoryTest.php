@@ -8,11 +8,11 @@ use Districts\Editor\Domain\DistrictOrdering;
 use Districts\Editor\Domain\DistrictOrderingField;
 use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\UI\Factory\DistrictOrderingFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\UI\Factory\DistrictOrderingFactory
- */
+#[CoversClass(DistrictOrderingFactory::class)]
 class DistrictOrderingFactoryTest extends TestCase
 {
     private DistrictOrderingFactory $districtOrderingFactory;
@@ -22,9 +22,7 @@ class DistrictOrderingFactoryTest extends TestCase
         $this->districtOrderingFactory = new DistrictOrderingFactory();
     }
 
-    /**
-     * @dataProvider createDataProvider
-     */
+    #[DataProvider('createDataProvider')]
     public function testCreate(
         ?string $inputColumn,
         ?string $inputDirection,

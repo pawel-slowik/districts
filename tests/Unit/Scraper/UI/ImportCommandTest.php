@@ -8,15 +8,14 @@ use Districts\Scraper\Application\Importer;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\CityScraper;
 use Districts\Scraper\UI\ImportCommand;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * @covers \Districts\Scraper\UI\ImportCommand
- */
+#[CoversClass(ImportCommand::class)]
 class ImportCommandTest extends TestCase
 {
     /** @var Importer&MockObject */

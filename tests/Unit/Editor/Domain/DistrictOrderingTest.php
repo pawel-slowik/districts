@@ -7,12 +7,12 @@ namespace Districts\Test\Unit\Editor\Domain;
 use Districts\Editor\Domain\DistrictOrdering;
 use Districts\Editor\Domain\DistrictOrderingField;
 use Districts\Editor\Domain\OrderingDirection;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Traversable;
 
-/**
- * @covers \Districts\Editor\Domain\DistrictOrdering
- */
+#[CoversClass(DistrictOrdering::class)]
 class DistrictOrderingTest extends TestCase
 {
     public function testGetters(): void
@@ -22,9 +22,7 @@ class DistrictOrderingTest extends TestCase
         $this->assertSame(OrderingDirection::Asc, $order->direction);
     }
 
-    /**
-     * @dataProvider validDataProvider
-     */
+    #[DataProvider('validDataProvider')]
     public function testValid(DistrictOrderingField $field, OrderingDirection $direction): void
     {
         $order = new DistrictOrdering($field, $direction);

@@ -23,11 +23,11 @@ use Districts\Editor\Infrastructure\DistrictFilter\NullFilter as DqlNullFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\PopulationFilter as DqlPopulationFilter;
 use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Districts\Test\Integration\DoctrineDbTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Stub;
 
-/**
- * @covers \Districts\Editor\Infrastructure\DoctrineDistrictRepository
- */
+#[CoversClass(DoctrineDistrictRepository::class)]
 class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 {
     private DoctrineDistrictRepository $districtRepository;
@@ -58,9 +58,8 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 
     /**
      * @param string[] $expectedCityNames
-     *
-     * @dataProvider listOrderCityDataProvider
      */
+    #[DataProvider('listOrderCityDataProvider')]
     public function testListOrderCity(DistrictOrdering $order, array $expectedCityNames): void
     {
         $this->assertSame(
@@ -91,9 +90,8 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 
     /**
      * @param int[] $expectedIds
-     *
-     * @dataProvider listOrderDataProvider
      */
+    #[DataProvider('listOrderDataProvider')]
     public function testListOrder(DistrictOrdering $order, array $expectedIds): void
     {
         $this->assertSame(
@@ -148,9 +146,8 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 
     /**
      * @param int[] $expectedIds
-     *
-     * @dataProvider listFilterDataProvider
      */
+    #[DataProvider('listFilterDataProvider')]
     public function testListFilter(?Filter $filter, DqlFilter $dqlFilter, array $expectedIds): void
     {
         $this->filterFactory

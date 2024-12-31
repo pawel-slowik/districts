@@ -10,10 +10,9 @@ use Districts\Editor\Domain\Name;
 use Districts\Editor\Domain\Population;
 use Districts\Editor\Infrastructure\DoctrineCityRepository;
 use Districts\Test\Integration\DoctrineDbTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Districts\Editor\Infrastructure\DoctrineCityRepository
- */
+#[CoversClass(DoctrineCityRepository::class)]
 class DoctrineCityRepositoryUpdateTest extends DoctrineDbTestCase
 {
     private const TESTCASE_SQL = <<<'SQL'

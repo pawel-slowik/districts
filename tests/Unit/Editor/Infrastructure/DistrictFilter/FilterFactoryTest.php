@@ -16,11 +16,11 @@ use Districts\Editor\Infrastructure\DistrictFilter\NameFilter as DqlNameFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\NullFilter as DqlNullFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\PopulationFilter as DqlPopulationFilter;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Infrastructure\DistrictFilter\FilterFactory
- */
+#[CoversClass(FilterFactory::class)]
 class FilterFactoryTest extends TestCase
 {
     private FilterFactory $filterFactory;
@@ -32,9 +32,8 @@ class FilterFactoryTest extends TestCase
 
     /**
      * @param class-string $expectedDqlFilterClass
-     *
-     * @dataProvider typesDataProvider
      */
+    #[DataProvider('typesDataProvider')]
     public function testTypes(?DomainFilter $domainFilter, string $expectedDqlFilterClass): void
     {
         $dqlFilter = $this->filterFactory->fromDomainFilter($domainFilter);

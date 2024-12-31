@@ -7,14 +7,14 @@ namespace Districts\Test\Integration\Editor\UI;
 use DI\Container;
 use Districts\Editor\UI\RoutingConfiguration;
 use Nyholm\Psr7\Factory\Psr17Factory;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
 use Slim\App;
 
-/**
- * @covers \Districts\Editor\UI\RoutingConfiguration
- */
+#[CoversClass(RoutingConfiguration::class)]
 class RoutingConfigurationTest extends TestCase
 {
     /**
@@ -36,9 +36,7 @@ class RoutingConfigurationTest extends TestCase
         $this->assertNotEmpty($routeCollector->getRoutes());
     }
 
-    /**
-     * @dataProvider namedDataProvider
-     */
+    #[DataProvider('namedDataProvider')]
     public function testNamed(string $name): void
     {
         RoutingConfiguration::apply($this->app);

@@ -7,11 +7,10 @@ namespace Districts\Test\Unit\Editor\UI\Factory;
 use Districts\Editor\Application\Command\RemoveDistrictCommand;
 use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\UI\Factory\RemoveDistrictCommandFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\UI\Factory\RemoveDistrictCommandFactory
- */
+#[CoversClass(RemoveDistrictCommandFactory::class)]
 class RemoveDistrictCommandFactoryTest extends TestCase
 {
     private RemoveDistrictCommandFactory $commandFactory;

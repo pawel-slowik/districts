@@ -6,11 +6,10 @@ namespace Districts\Test\Unit\Editor\Domain;
 
 use Districts\Editor\Domain\Area;
 use Districts\Editor\Domain\Exception\InvalidAreaException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Domain\Area
- */
+#[CoversClass(Area::class)]
 class AreaTest extends TestCase
 {
     public function testConstructionFailsOnInvalidValue(): void

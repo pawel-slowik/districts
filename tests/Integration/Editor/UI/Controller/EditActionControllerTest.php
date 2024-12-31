@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Districts\Test\Integration\Editor\UI\Controller;
 
+use Districts\Editor\UI\Controller\EditActionController;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
-/**
- * @covers \Districts\Editor\UI\Controller\EditActionController
- *
- * @runTestsInSeparateProcesses
- */
+#[CoversClass(EditActionController::class)]
+#[RunTestsInSeparateProcesses]
 class EditActionControllerTest extends BaseTestCase
 {
     public function testAction(): void

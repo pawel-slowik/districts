@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Districts\Test\Integration\Editor\UI\Controller;
 
+use Districts\Editor\UI\Controller\HomeController;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
-/**
- * @covers \Districts\Editor\UI\Controller\HomeController
- *
- * @runTestsInSeparateProcesses
- */
+#[CoversClass(HomeController::class)]
+#[RunTestsInSeparateProcesses]
 class HomeControllerTest extends BaseTestCase
 {
     public function testRedirect(): void

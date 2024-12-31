@@ -6,11 +6,10 @@ namespace Districts\Test\Unit\Editor\Domain;
 
 use Districts\Editor\Domain\Exception\InvalidNameException;
 use Districts\Editor\Domain\Name;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Domain\Name
- */
+#[CoversClass(Name::class)]
 class NameTest extends TestCase
 {
     public function testConstructionFailsOnInvalidValue(): void

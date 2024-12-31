@@ -9,11 +9,10 @@ use Districts\Scraper\Domain\Exception\ParsingException;
 use Districts\Scraper\Domain\Gdansk\DistrictParser;
 use Districts\Scraper\Domain\HtmlFinder;
 use LogicException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Scraper\Domain\Gdansk\DistrictParser
- */
+#[CoversClass(DistrictParser::class)]
 class DistrictParserTest extends TestCase
 {
     private DistrictParser $districtParser;

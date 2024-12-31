@@ -8,10 +8,9 @@ use Districts\Editor\Domain\City;
 use Districts\Editor\Infrastructure\DoctrineCityRepository;
 use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use Districts\Test\Integration\DoctrineDbTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Districts\Editor\Infrastructure\DoctrineCityRepository
- */
+#[CoversClass(DoctrineCityRepository::class)]
 class DoctrineCityRepositoryTest extends DoctrineDbTestCase
 {
     private DoctrineCityRepository $cityRepository;

@@ -7,12 +7,12 @@ namespace Districts\Test\Unit\Editor\UI\View;
 use Districts\Editor\UI\View\PageReference;
 use Exception;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Traversable;
 
-/**
- * @covers \Districts\Editor\UI\View\PageReference
- */
+#[CoversClass(PageReference::class)]
 class PageReferenceTest extends TestCase
 {
     public function testPropertiesForPrevious(): void
@@ -47,9 +47,8 @@ class PageReferenceTest extends TestCase
 
     /**
      * @param array<mixed> $args
-     *
-     * @dataProvider nullUrlDataProvider
      */
+    #[DataProvider('nullUrlDataProvider')]
     public function testAcceptsNullAsUrl(callable $constructor, array $args): void
     {
         $exceptionThrown = false;
@@ -73,9 +72,8 @@ class PageReferenceTest extends TestCase
 
     /**
      * @param array<mixed> $args
-     *
-     * @dataProvider validUrlProvider
      */
+    #[DataProvider('validUrlProvider')]
     public function testAcceptsValidUrl(callable $constructor, array $args): void
     {
         $exceptionThrown = false;
@@ -123,9 +121,8 @@ class PageReferenceTest extends TestCase
 
     /**
      * @param array<mixed> $args
-     *
-     * @dataProvider invalidUrlProvider
      */
+    #[DataProvider('invalidUrlProvider')]
     public function testExceptionOnInvalidUrl(callable $constructor, array $args): void
     {
         $this->expectException(InvalidArgumentException::class);

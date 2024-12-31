@@ -6,11 +6,11 @@ namespace Districts\Test\Unit\Editor\Domain\DistrictFilter;
 
 use Districts\Editor\Domain\DistrictFilter\PopulationFilter;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Districts\Editor\Domain\DistrictFilter\PopulationFilter
- */
+#[CoversClass(PopulationFilter::class)]
 class PopulationFilterTest extends TestCase
 {
     public function testProperties(): void
@@ -20,9 +20,7 @@ class PopulationFilterTest extends TestCase
         $this->assertSame(2, $filter->end);
     }
 
-    /**
-     * @dataProvider invalidDataProvider
-     */
+    #[DataProvider('invalidDataProvider')]
     public function testInvalid(int $begin, int $end): void
     {
         $this->expectException(InvalidArgumentException::class);

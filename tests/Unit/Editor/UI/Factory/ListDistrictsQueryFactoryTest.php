@@ -12,14 +12,14 @@ use Districts\Editor\UI\Factory\DistrictFilterFactory;
 use Districts\Editor\UI\Factory\DistrictOrderingFactory;
 use Districts\Editor\UI\Factory\ListDistrictsQueryFactory;
 use Districts\Editor\UI\Factory\PaginationFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-/**
- * @covers \Districts\Editor\UI\Factory\ListDistrictsQueryFactory
- */
+#[CoversClass(ListDistrictsQueryFactory::class)]
 class ListDistrictsQueryFactoryTest extends TestCase
 {
     private ListDistrictsQueryFactory $queryFactory;
@@ -52,9 +52,8 @@ class ListDistrictsQueryFactoryTest extends TestCase
 
     /**
      * @param array<string, string> $queryParams
-     *
-     * @dataProvider orderingParametersDataProvider
      */
+    #[DataProvider('orderingParametersDataProvider')]
     public function testPassingOrderingParameters(
         array $queryParams,
         ?string $expectedColumn,
@@ -131,9 +130,8 @@ class ListDistrictsQueryFactoryTest extends TestCase
 
     /**
      * @param array<string, string> $queryParams
-     *
-     * @dataProvider filterParametersDataProvider
      */
+    #[DataProvider('filterParametersDataProvider')]
     public function testPassingFilterParameters(
         array $queryParams,
         ?string $expectedColumn,
@@ -212,9 +210,8 @@ class ListDistrictsQueryFactoryTest extends TestCase
 
     /**
      * @param array<string, string> $queryParams
-     *
-     * @dataProvider paginationParametersDataProvider
      */
+    #[DataProvider('paginationParametersDataProvider')]
     public function testPassingPaginationParameters(array $queryParams, ?string $expectedPage): void
     {
         $this->request->method("getQueryParams")->willReturn($queryParams);
