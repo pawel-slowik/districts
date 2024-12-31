@@ -19,10 +19,8 @@ use Districts\Editor\Domain\CityRepository;
 use Districts\Editor\Domain\District;
 use Districts\Editor\Domain\DistrictFilter\Filter;
 use Districts\Editor\Domain\DistrictOrdering;
-use Districts\Editor\Domain\DistrictOrderingField;
 use Districts\Editor\Domain\DistrictRepository;
 use Districts\Editor\Domain\Name;
-use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\Domain\Pagination;
 use Districts\Editor\Domain\Population;
@@ -82,10 +80,9 @@ class DistrictServiceTest extends TestCase
             ->willReturn($result);
 
         $query = new ListDistrictsQuery(
-            ordering: new DistrictOrdering(DistrictOrderingField::FullName, OrderingDirection::Asc),
-            // phpcs:ignore Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore
-            filter: (new readonly class () extends Filter {}),
-            pagination: new Pagination(1, 1),
+            ordering: $this->createStub(DistrictOrdering::class),
+            filter: $this->createStub(Filter::class),
+            pagination: $this->createStub(Pagination::class),
         );
 
         $list = $this->districtService->list($query);
@@ -160,7 +157,7 @@ class DistrictServiceTest extends TestCase
 
     public function testAddInvalid(): void
     {
-        $command = new AddDistrictCommand(cityId: 1, name: "", area: 1, population: 1);
+        $command = $this->createStub(AddDistrictCommand::class);
 
         $this->districtValidator
             ->method("validateAdd")
@@ -177,7 +174,7 @@ class DistrictServiceTest extends TestCase
 
     public function testAddExceptionErrors(): void
     {
-        $command = new AddDistrictCommand(cityId: 1, name: "", area: 1, population: 1);
+        $command = $this->createStub(AddDistrictCommand::class);
 
         $this->districtValidator
             ->method("validateAdd")
@@ -235,7 +232,7 @@ class DistrictServiceTest extends TestCase
 
     public function testUpdateInvalid(): void
     {
-        $command = new UpdateDistrictCommand(id: 1, name: "", area: 1, population: 1);
+        $command = $this->createStub(UpdateDistrictCommand::class);
 
         $this->districtValidator
             ->method("validateUpdate")
@@ -252,7 +249,7 @@ class DistrictServiceTest extends TestCase
 
     public function testUpdateExceptionErrors(): void
     {
-        $command = new UpdateDistrictCommand(id: 1, name: "", area: 1, population: 1);
+        $command = $this->createStub(UpdateDistrictCommand::class);
 
         $this->districtValidator
             ->method("validateUpdate")

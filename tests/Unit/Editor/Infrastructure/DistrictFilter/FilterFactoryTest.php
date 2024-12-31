@@ -59,7 +59,6 @@ class FilterFactoryTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        // phpcs:ignore Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore
-        $this->filterFactory->fromDomainFilter((new readonly class () extends DomainFilter {}));
+        $this->filterFactory->fromDomainFilter($this->createStub(DomainFilter::class));
     }
 }
