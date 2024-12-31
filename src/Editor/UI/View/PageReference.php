@@ -10,24 +10,31 @@ use Laminas\Uri\Uri;
 
 readonly class PageReference
 {
-    public function __construct(
+    private function __construct(
         public ?string $url,
         public string $text,
         public bool $isCurrent,
         public bool $isPrevious,
         public bool $isNext,
     ) {
-        if (!self::validate($url, $text, $isCurrent, $isPrevious, $isNext)) {
+        if (!self::validateUrl($url)) {
             throw new InvalidArgumentException();
         }
     }
 
-    private static function validate(?string $url, string $text, bool $isCurrent, bool $isPrevious, bool $isNext): bool
+    public static function forPrevious(?string $url): self
     {
-        return
-            self::validateUrl($url)
-            && self::validateText($text)
-            && self::validateFlags($isCurrent, $isPrevious, $isNext);
+        return new self($url, "previous", false, true, false);
+    }
+
+    public static function forNext(?string $url): self
+    {
+        return new self($url, "next", false, false, true);
+    }
+
+    public static function forNumber(?string $url, int $pageNumber, bool $isCurrent): self
+    {
+        return new self($url, strval($pageNumber), $isCurrent, false, false);
     }
 
     private static function validateUrl(?string $url): bool
@@ -55,18 +62,5 @@ readonly class PageReference
             && is_null($uri->getUserInfo())
             && is_null($uri->getHost())
             && is_null($uri->getPort());
-    }
-
-    private static function validateText(string $text): bool
-    {
-        return $text !== "";
-    }
-
-    private static function validateFlags(bool $isCurrent, bool $isPrevious, bool $isNext): bool
-    {
-        if ($isCurrent) {
-            return !$isPrevious && !$isNext;
-        }
-        return !($isPrevious && $isNext);
     }
 }

@@ -20,28 +20,18 @@ class PageReferenceFactory
         if ($pageCount <= 1) {
             return;
         }
-        yield new PageReference(
+        yield PageReference::forPrevious(
             ($currentPageNumber === 1) ? null : self::urlForPageNumber($baseUrl, $currentPageNumber - 1),
-            "previous",
-            false,
-            true,
-            false,
         );
         foreach (range(1, $pageCount) as $pageNumber) {
-            yield new PageReference(
+            yield PageReference::forNumber(
                 self::urlForPageNumber($baseUrl, $pageNumber),
-                strval($pageNumber),
+                $pageNumber,
                 $pageNumber === $currentPageNumber,
-                false,
-                false,
             );
         }
-        yield new PageReference(
+        yield PageReference::forNext(
             ($currentPageNumber === $pageCount) ? null : self::urlForPageNumber($baseUrl, $currentPageNumber + 1),
-            "next",
-            false,
-            false,
-            true,
         );
     }
 
