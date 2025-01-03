@@ -25,7 +25,7 @@ class RoutingConfigurationTest extends TestCase
     protected function setUp(): void
     {
         /** @var ContainerInterface */
-        $container = new Container();
+        $container = new Container(); // @phpstan-ignore varTag.nativeType
         $this->app = new App(new Psr17Factory(), $container);
     }
 
