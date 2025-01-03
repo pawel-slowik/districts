@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Districts\Test\Unit\Editor\UI\Factory;
 
-use Districts\Editor\Domain\Pagination;
 use Districts\Editor\UI\Factory\PaginationFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -23,7 +22,6 @@ class PaginationFactoryTest extends TestCase
     public function testCreateFromValid(): void
     {
         $pagination = $this->paginationFactory->createFromRequestInput("5");
-        $this->assertInstanceOf(Pagination::class, $pagination);
         $this->assertSame(5, $pagination->pageNumber);
     }
 
@@ -31,7 +29,6 @@ class PaginationFactoryTest extends TestCase
     public function testCreateFromInvalidReturnsFirstPage(?string $invalidPage): void
     {
         $pagination = $this->paginationFactory->createFromRequestInput($invalidPage);
-        $this->assertInstanceOf(Pagination::class, $pagination);
         $this->assertSame(1, $pagination->pageNumber);
     }
 

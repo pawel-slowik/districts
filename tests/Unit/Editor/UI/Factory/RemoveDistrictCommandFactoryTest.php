@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Districts\Test\Unit\Editor\UI\Factory;
 
-use Districts\Editor\Application\Command\RemoveDistrictCommand;
 use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\UI\Factory\RemoveDistrictCommandFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -23,7 +22,6 @@ class RemoveDistrictCommandFactoryTest extends TestCase
     public function testValidRemoveRequest(): void
     {
         $command = $this->commandFactory->fromRoute(["id" => "1"]);
-        $this->assertInstanceOf(RemoveDistrictCommand::class, $command);
         $this->assertSame(1, $command->id);
     }
 

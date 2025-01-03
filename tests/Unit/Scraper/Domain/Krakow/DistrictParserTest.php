@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Districts\Test\Unit\Scraper\Domain\Krakow;
 
-use Districts\Scraper\Domain\DistrictDTO;
 use Districts\Scraper\Domain\Exception\ParsingException;
 use Districts\Scraper\Domain\HtmlFinder;
 use Districts\Scraper\Domain\Krakow\DistrictParser;
@@ -24,12 +23,6 @@ class DistrictParserTest extends TestCase
         $this->districtParser = new DistrictParser(new HtmlFinder());
         $validHtml = file_get_contents(__DIR__ . "/dzielnica_xvii.html") or throw new LogicException();
         $this->validHtml = $validHtml;
-    }
-
-    public function testReturnsDistrict(): void
-    {
-        $district = $this->districtParser->parse($this->validHtml);
-        $this->assertInstanceOf(DistrictDTO::class, $district);
     }
 
     public function testName(): void

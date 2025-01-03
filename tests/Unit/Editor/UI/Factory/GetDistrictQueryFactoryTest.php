@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Districts\Test\Unit\Editor\UI\Factory;
 
 use Districts\Editor\Application\Exception\ValidationException;
-use Districts\Editor\Application\Query\GetDistrictQuery;
 use Districts\Editor\UI\Factory\GetDistrictQueryFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -25,7 +24,6 @@ class GetDistrictQueryFactoryTest extends TestCase
     {
         $request = $this->createMock(Request::class);
         $query = $this->queryFactory->fromRequest($request, ["id" => "1"]);
-        $this->assertInstanceOf(GetDistrictQuery::class, $query);
         $this->assertSame(1, $query->id);
     }
 

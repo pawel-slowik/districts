@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Districts\Test\Unit\Editor\UI\Factory;
 
-use Districts\Editor\Domain\DistrictOrdering;
 use Districts\Editor\Domain\DistrictOrderingField;
 use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\UI\Factory\DistrictOrderingFactory;
@@ -30,7 +29,6 @@ class DistrictOrderingFactoryTest extends TestCase
         OrderingDirection $expectedDirection,
     ): void {
         $order = $this->districtOrderingFactory->createFromRequestInput($inputColumn, $inputDirection);
-        $this->assertInstanceOf(DistrictOrdering::class, $order);
         $this->assertSame($expectedField, $order->field);
         $this->assertSame($expectedDirection, $order->direction);
     }

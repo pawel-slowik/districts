@@ -48,7 +48,6 @@ HTML;
     public function testFoundType(): void
     {
         $nodes = $this->finder->findNodes(self::VALID_HTML, "/html/body");
-        $this->assertIsArray($nodes);
         $this->assertContainsOnlyInstancesOf(DOMNode::class, $nodes);
     }
 

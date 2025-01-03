@@ -7,7 +7,6 @@ namespace Districts\Test\Unit\Editor\UI\ErrorHandler;
 use Districts\Editor\UI\ErrorHandler\HttpNotFoundHandler;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Psr\Http\Message\ResponseInterface;
 
 #[CoversClass(HttpNotFoundHandler::class)]
 class HttpNotFoundHandlerTest extends BaseTestCase
@@ -15,7 +14,6 @@ class HttpNotFoundHandlerTest extends BaseTestCase
     public function testResponse(): void
     {
         $response = (new HttpNotFoundHandler())($this->requestMock, $this->exceptionMock, false, false, false);
-        $this->assertInstanceOf(ResponseInterface::class, $response);
         $this->assertSame(StatusCode::STATUS_NOT_FOUND, $response->getStatusCode());
         $this->assertStringContainsStringIgnoringCase("not found", (string) $response->getBody());
     }

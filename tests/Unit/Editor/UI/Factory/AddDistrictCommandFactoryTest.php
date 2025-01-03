@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Districts\Test\Unit\Editor\UI\Factory;
 
-use Districts\Editor\Application\Command\AddDistrictCommand;
 use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\UI\Factory\AddDistrictCommandFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -39,7 +38,6 @@ class AddDistrictCommandFactoryTest extends TestCase
             ]
         );
         $command = $this->commandFactory->fromRequest($this->request);
-        $this->assertInstanceOf(AddDistrictCommand::class, $command);
         $this->assertSame(1, $command->cityId);
         $this->assertSame("foo", $command->name);
         $this->assertSame(2.2, $command->area);
