@@ -20,19 +20,19 @@ Build the development containers:
 
 Install required components:
 
-    docker compose run php-fpm composer install
+    docker compose run --rm php-fpm composer install
 
 Create the database structure:
 
-    docker compose run php-fpm bin/doctrine orm:schema-tool:update --force
+    docker compose run --rm php-fpm bin/doctrine orm:schema-tool:update --force
 
 ## Usage
 
 Run the scraper to populate the database:
 
-    docker compose run php-fpm bin/console import --help
+    docker compose run --rm php-fpm bin/console import --help
 
-    docker compose run php-fpm bin/console import
+    docker compose run --rm php-fpm bin/console import
 
 Start the development containers:
 
@@ -47,11 +47,11 @@ the default conflicts with some other service.
 
 Run tests with:
 
-    docker compose run php-fpm composer test
+    docker compose run --rm php-fpm composer test
 
 Run static analysis and coding style checks with:
 
-    docker compose run php-tools
+    docker compose run --rm php-tools
 
 ## TODO
 
