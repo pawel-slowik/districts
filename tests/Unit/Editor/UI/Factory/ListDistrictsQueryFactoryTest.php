@@ -8,6 +8,7 @@ use Districts\Editor\UI\Factory\DistrictFilterFactory;
 use Districts\Editor\UI\Factory\DistrictOrderingFactory;
 use Districts\Editor\UI\Factory\ListDistrictsQueryFactory;
 use Districts\Editor\UI\Factory\PaginationFactory;
+use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -245,8 +246,13 @@ class ListDistrictsQueryFactoryTest extends TestCase
 
     public function testDefaults(): void
     {
-        $this->queryFactory->fromDefaults();
+        try {
+            $this->queryFactory->fromDefaults();
+            $exceptionThrown = false;
+        } catch (InvalidArgumentException) {
+            $exceptionThrown = true;
+        }
 
-        $this->assertTrue(true);
+        $this->assertFalse($exceptionThrown);
     }
 }

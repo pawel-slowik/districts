@@ -7,6 +7,7 @@ namespace Districts\Test\Unit\Editor\Domain;
 use Districts\Editor\Domain\DistrictOrdering;
 use Districts\Editor\Domain\DistrictOrderingField;
 use Districts\Editor\Domain\OrderingDirection;
+use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -15,7 +16,7 @@ use Traversable;
 #[CoversClass(DistrictOrdering::class)]
 class DistrictOrderingTest extends TestCase
 {
-    public function testGetters(): void
+    public function testProperties(): void
     {
         $order = new DistrictOrdering(DistrictOrderingField::CityName, OrderingDirection::Asc);
         $this->assertSame(DistrictOrderingField::CityName, $order->field);
@@ -25,8 +26,14 @@ class DistrictOrderingTest extends TestCase
     #[DataProvider('validDataProvider')]
     public function testValid(DistrictOrderingField $field, OrderingDirection $direction): void
     {
-        $order = new DistrictOrdering($field, $direction);
-        $this->assertInstanceOf(DistrictOrdering::class, $order);
+        try {
+            new DistrictOrdering($field, $direction); // @phpstan-ignore new.resultUnused
+            $exceptionThrown = false;
+        } catch (InvalidArgumentException) {
+            $exceptionThrown = true;
+        }
+
+        $this->assertFalse($exceptionThrown);
     }
 
     /**

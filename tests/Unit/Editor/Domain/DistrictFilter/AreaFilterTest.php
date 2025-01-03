@@ -23,8 +23,14 @@ class AreaFilterTest extends TestCase
     #[DataProvider('validDataProvider')]
     public function testValid(float $begin, float $end): void
     {
-        $filter = new AreaFilter($begin, $end);
-        $this->assertInstanceOf(AreaFilter::class, $filter);
+        try {
+            new AreaFilter($begin, $end);
+            $exceptionThrown = false;
+        } catch (InvalidArgumentException) {
+            $exceptionThrown = true;
+        }
+
+        $this->assertFalse($exceptionThrown);
     }
 
     /**
