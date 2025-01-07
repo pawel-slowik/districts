@@ -50,7 +50,7 @@ class ListView
             $this->pageReferenceFactory->createPageReferencesForUrl(
                 (string) $relativeUrl,
                 $paginatedResult->pageCount,
-                $paginatedResult->currentPageNumber
+                $paginatedResult->pagination->pageNumber
             )
         );
 

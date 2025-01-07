@@ -6,6 +6,7 @@ namespace Districts\Test\Unit\Editor\UI\View;
 
 use Districts\Editor\Domain\District;
 use Districts\Editor\Domain\PaginatedResult;
+use Districts\Editor\Domain\Pagination;
 use Districts\Editor\UI\View\ListView;
 use Districts\Editor\UI\View\OrderingUrlGenerator;
 use Districts\Editor\UI\View\PageReferenceFactory;
@@ -57,7 +58,7 @@ class ListViewTest extends TestCase
 
     public function testRenders(): void
     {
-        $paginatedResult = new PaginatedResult(1, 1, 1, []);
+        $paginatedResult = new PaginatedResult(new Pagination(1, 1), 1, []);
         $request = $this->createStub(ServerRequestInterface::class);
         $requestUri = $this->createStub(UriInterface::class);
         $requestUri
@@ -77,7 +78,7 @@ class ListViewTest extends TestCase
     #[DataProvider('computedDataKeyProvider')]
     public function testSetsComputedDataKey(string $key): void
     {
-        $paginatedResult = new PaginatedResult(1, 1, 1, []);
+        $paginatedResult = new PaginatedResult(new Pagination(1, 1), 1, []);
         $request = $this->createStub(ServerRequestInterface::class);
         $requestUri = $this->createStub(UriInterface::class);
         $requestUri

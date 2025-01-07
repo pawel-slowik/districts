@@ -63,9 +63,7 @@ final class DoctrineDistrictRepository implements DistrictRepository
         /** @var District[] $districts */
         $districts = iterator_to_array($paginator);
         $recordsTotal = count($paginator);
-        $pageSize = $pagination->pageSize;
-        $pageNumber = $pagination->pageNumber;
-        return new PaginatedResult($pageSize, $recordsTotal, $pageNumber, $districts);
+        return new PaginatedResult($pagination, $recordsTotal, $districts);
     }
 
     /**

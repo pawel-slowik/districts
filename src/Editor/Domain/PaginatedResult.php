@@ -17,19 +17,18 @@ readonly class PaginatedResult
      * @param T[] $currentPageEntries
      */
     public function __construct(
-        public int $pageSize,
+        public Pagination $pagination,
         public int $totalEntryCount,
-        public int $currentPageNumber,
         public array $currentPageEntries,
     ) {
-        if (!self::validate($pageSize, $totalEntryCount, $currentPageNumber)) {
+        if (!self::validate($totalEntryCount)) {
             throw new InvalidArgumentException();
         }
-        $this->pageCount = intval(ceil($this->totalEntryCount / $this->pageSize));
+        $this->pageCount = intval(ceil($this->totalEntryCount / $this->pagination->pageSize));
     }
 
-    private static function validate(int $pageSize, int $totalEntryCount, int $currentPageNumber): bool
+    private static function validate(int $totalEntryCount): bool
     {
-        return ($pageSize > 0) && ($totalEntryCount >= 0) && ($currentPageNumber > 0);
+        return $totalEntryCount >= 0;
     }
 }
