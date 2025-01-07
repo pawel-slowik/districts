@@ -12,17 +12,10 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(PaginatedResult::class)]
 class PaginatedResultTest extends TestCase
 {
-    public function testGetters(): void
-    {
-        $result = new PaginatedResult(100, 202, 333, ["foo", "bar"]);
-        $this->assertSame(["foo", "bar"], $result->getCurrentPageEntries());
-        $this->assertSame(333, $result->getCurrentPageNumber());
-    }
-
     public function testPageCount(): void
     {
         $result = new PaginatedResult(100, 202, 1, ["foo", "bar"]);
-        $this->assertSame(3, $result->getPageCount());
+        $this->assertSame(3, $result->pageCount);
     }
 
     public function testExceptionOnInvalidPageSize(): void

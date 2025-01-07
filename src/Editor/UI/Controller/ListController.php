@@ -48,7 +48,7 @@ final class ListController
         ];
         $templateData = [
             "title" => "List of districts",
-            "districts" => $districts->getCurrentPageEntries(),
+            "districts" => $districts->currentPageEntries,
             "filterColumn" => $queryParams["filterColumn"] ?? null,
             "filterValue" => $queryParams["filterValue"] ?? null,
             "successMessage" => $this->session->getAndDelete("success.message"),

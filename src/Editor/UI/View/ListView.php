@@ -49,8 +49,8 @@ class ListView
         $data["pagination"] = iterator_to_array(
             $this->pageReferenceFactory->createPageReferencesForUrl(
                 (string) $relativeUrl,
-                $paginatedResult->getPageCount(),
-                $paginatedResult->getCurrentPageNumber()
+                $paginatedResult->pageCount,
+                $paginatedResult->currentPageNumber
             )
         );
 

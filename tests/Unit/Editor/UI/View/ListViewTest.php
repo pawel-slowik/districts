@@ -57,7 +57,7 @@ class ListViewTest extends TestCase
 
     public function testRenders(): void
     {
-        $paginatedResult = $this->createStub(PaginatedResult::class);
+        $paginatedResult = new PaginatedResult(1, 1, 1, []);
         $request = $this->createStub(ServerRequestInterface::class);
         $requestUri = $this->createStub(UriInterface::class);
         $requestUri
@@ -77,7 +77,7 @@ class ListViewTest extends TestCase
     #[DataProvider('computedDataKeyProvider')]
     public function testSetsComputedDataKey(string $key): void
     {
-        $paginatedResult = $this->createStub(PaginatedResult::class);
+        $paginatedResult = new PaginatedResult(1, 1, 1, []);
         $request = $this->createStub(ServerRequestInterface::class);
         $requestUri = $this->createStub(UriInterface::class);
         $requestUri
