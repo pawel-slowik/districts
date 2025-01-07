@@ -13,15 +13,15 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(PaginatedResult::class)]
 class PaginatedResultTest extends TestCase
 {
-    public function testPageCount(): void
+    public function testExceptionOnInvalidPageCount(): void
     {
-        $result = new PaginatedResult(new Pagination(1, 100), 202, ["foo", "bar"]);
-        $this->assertSame(3, $result->pageCount);
+        $this->expectException(InvalidArgumentException::class);
+        new PaginatedResult($this->createStub(Pagination::class), -1, 1, []);
     }
 
     public function testExceptionOnInvalidTotalCount(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        new PaginatedResult($this->createStub(Pagination::class), -1, []);
+        new PaginatedResult($this->createStub(Pagination::class), 1, -1, []);
     }
 }

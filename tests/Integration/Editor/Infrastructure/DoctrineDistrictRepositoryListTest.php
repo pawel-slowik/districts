@@ -207,10 +207,22 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
         ];
     }
 
-    public function testCountSinglePage(): void
+    public function testCurrentPageEntryCount(): void
     {
         $list = $this->districtRepository->listWithPagination($this->defaultOrder, new Pagination(1, 10));
         $this->assertCount(10, $list->currentPageEntries);
+    }
+
+    public function testTotalRecordsCount(): void
+    {
+        $list = $this->districtRepository->listWithPagination($this->defaultOrder, new Pagination(1, 10));
+        $this->assertSame(15, $list->totalEntryCount);
+    }
+
+    public function testPageCount(): void
+    {
+        $list = $this->districtRepository->listWithPagination($this->defaultOrder, new Pagination(1, 10));
+        $this->assertSame(2, $list->pageCount);
     }
 
     public function testCountPageOutsideOfRange(): void

@@ -11,24 +11,22 @@ use InvalidArgumentException;
  */
 readonly class PaginatedResult
 {
-    public int $pageCount;
-
     /**
      * @param T[] $currentPageEntries
      */
     public function __construct(
         public Pagination $pagination,
+        public int $pageCount,
         public int $totalEntryCount,
         public array $currentPageEntries,
     ) {
-        if (!self::validate($totalEntryCount)) {
+        if (!self::validate($pageCount, $totalEntryCount)) {
             throw new InvalidArgumentException();
         }
-        $this->pageCount = intval(ceil($this->totalEntryCount / $this->pagination->pageSize));
     }
 
-    private static function validate(int $totalEntryCount): bool
+    private static function validate(int $pageCount, int $totalEntryCount): bool
     {
-        return $totalEntryCount >= 0;
+        return ($pageCount >= 0) && ($totalEntryCount >= 0);
     }
 }
