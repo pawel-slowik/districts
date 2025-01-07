@@ -76,7 +76,7 @@ class DistrictServiceTest extends TestCase
     {
         $result = $this->createStub(PaginatedResult::class);
         $this->districtRepository
-            ->method("list")
+            ->method("listWithPagination")
             ->willReturn($result);
 
         $query = new ListDistrictsQuery(

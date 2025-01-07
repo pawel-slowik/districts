@@ -25,18 +25,18 @@ class ListDistrictsQueryFactory
         $filterValue = $queryParams["filterValue"] ?? null;
         $pageNumber = $queryParams["page"] ?? null;
         return new ListDistrictsQuery(
-            $this->orderingFactory->createFromRequestInput($orderColumn, $orderDirection),
-            $this->filterFactory->createFromRequestInput($filterColumn, $filterValue),
-            $this->paginationFactory->createFromRequestInput($pageNumber),
+            ordering: $this->orderingFactory->createFromRequestInput($orderColumn, $orderDirection),
+            filter: $this->filterFactory->createFromRequestInput($filterColumn, $filterValue),
+            pagination: $this->paginationFactory->createFromRequestInput($pageNumber),
         );
     }
 
     public function fromDefaults(): ListDistrictsQuery
     {
         return new ListDistrictsQuery(
-            $this->orderingFactory->createFromRequestInput(null, null),
-            $this->filterFactory->createFromRequestInput(null, null),
-            $this->paginationFactory->createFromRequestInput(null),
+            ordering: $this->orderingFactory->createFromRequestInput(null, null),
+            filter: $this->filterFactory->createFromRequestInput(null, null),
+            pagination: $this->paginationFactory->createFromRequestInput(null),
         );
     }
 }

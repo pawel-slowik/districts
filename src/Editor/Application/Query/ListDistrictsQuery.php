@@ -12,8 +12,8 @@ readonly class ListDistrictsQuery
 {
     public function __construct(
         public DistrictOrdering $ordering,
+        public Pagination $pagination,
         public ?Filter $filter,
-        public ?Pagination $pagination,
     ) {
     }
 }

@@ -14,6 +14,7 @@ use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\Domain\Pagination;
 use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
 final class DoctrineDistrictRepository implements DistrictRepository
@@ -35,13 +36,45 @@ final class DoctrineDistrictRepository implements DistrictRepository
     }
 
     /**
-     * @return PaginatedResult<District>
+     * @return District[]
      */
     public function list(
         DistrictOrdering $order,
         ?Filter $filter = null,
-        ?Pagination $pagination = null
+    ): array {
+        $query = $this->createDqlQuery($order, $filter);
+        /** @var District[] $districts */
+        $districts = $query->getResult();
+        return $districts;
+    }
+
+    /**
+     * @return PaginatedResult<District>
+     */
+    public function listWithPagination(
+        DistrictOrdering $order,
+        Pagination $pagination,
+        ?Filter $filter = null,
     ): PaginatedResult {
+        $query = $this->createDqlQuery($order, $filter);
+        $query->setFirstResult(($pagination->pageNumber - 1) * $pagination->pageSize);
+        $query->setMaxResults($pagination->pageSize);
+        $paginator = new Paginator($query);
+        /** @var District[] $districts */
+        $districts = iterator_to_array($paginator);
+        $recordsTotal = count($paginator);
+        $pageSize = $pagination->pageSize;
+        $pageNumber = $pagination->pageNumber;
+        return new PaginatedResult($pageSize, $recordsTotal, $pageNumber, $districts);
+    }
+
+    /**
+     * @phpstan-ignore missingType.generics
+     */
+    private function createDqlQuery(
+        DistrictOrdering $order,
+        ?Filter $filter = null,
+    ): Query {
         $dqlOrderBy = $this->dqlOrderBy($order);
         $dqlFilter = $this->filterFactory->fromDomainFilter($filter);
         $dql = "SELECT d, c FROM " . District::class . " d JOIN d.city c";
@@ -55,23 +88,7 @@ final class DoctrineDistrictRepository implements DistrictRepository
                 $query->setParameter($name, $value);
             }
         }
-        if ($pagination) {
-            $query->setFirstResult(($pagination->pageNumber - 1) * $pagination->pageSize);
-            $query->setMaxResults($pagination->pageSize);
-            $paginator = new Paginator($query);
-            /** @var District[] $districts */
-            $districts = iterator_to_array($paginator);
-            $recordsTotal = count($paginator);
-            $pageSize = $pagination->pageSize;
-            $pageNumber = $pagination->pageNumber;
-        } else {
-            /** @var District[] $districts */
-            $districts = $query->getResult();
-            $recordsTotal = count($districts);
-            $pageSize = ($recordsTotal === 0) ? 1 : $recordsTotal;
-            $pageNumber = 1;
-        }
-        return new PaginatedResult($pageSize, $recordsTotal, $pageNumber, $districts);
+        return $query;
     }
 
     private function dqlOrderBy(DistrictOrdering $order): string

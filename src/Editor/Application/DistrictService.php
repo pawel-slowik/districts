@@ -72,7 +72,7 @@ class DistrictService
      */
     public function list(ListDistrictsQuery $query): PaginatedResult
     {
-        return $this->districtRepository->list($query->ordering, $query->filter, $query->pagination);
+        return $this->districtRepository->listWithPagination($query->ordering, $query->pagination, $query->filter);
     }
 
     public function get(GetDistrictQuery $query): District

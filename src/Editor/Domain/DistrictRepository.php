@@ -11,11 +11,19 @@ interface DistrictRepository
     public function get(int $id): District;
 
     /**
-     * @return PaginatedResult<District>
+     * @return District[]
      */
     public function list(
         DistrictOrdering $order,
         ?Filter $filter = null,
-        ?Pagination $pagination = null
+    ): array;
+
+    /**
+     * @return PaginatedResult<District>
+     */
+    public function listWithPagination(
+        DistrictOrdering $order,
+        Pagination $pagination,
+        ?Filter $filter = null,
     ): PaginatedResult;
 }
