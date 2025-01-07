@@ -10,4 +10,5 @@ parameters:
 
 includes:
     - /opt/phpstan/vendor/phpstan/phpstan-doctrine/extension.neon
+    - /opt/phpstan/vendor/phpstan/phpstan-doctrine/rules.neon
     - /opt/phpstan/vendor/phpstan/phpstan-phpunit/extension.neon

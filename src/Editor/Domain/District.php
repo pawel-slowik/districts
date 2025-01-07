@@ -26,6 +26,7 @@ class District
     private Population $population;
 
     #[ORM\ManyToOne(targetEntity: City::class, inversedBy: "districts")]
+    #[ORM\JoinColumn(nullable: false)]
     private City $city;
 
     public function __construct(City $city, Name $name, Area $area, Population $population)
