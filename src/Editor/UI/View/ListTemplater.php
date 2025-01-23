@@ -34,7 +34,6 @@ class ListTemplater
         mixed $successMessage,
         mixed $errorMessage,
     ): array {
-        $queryParams = $request->getQueryParams();
         return [
             "title" => $title,
             "successMessage" => $successMessage,
@@ -42,8 +41,7 @@ class ListTemplater
             "entries" => $paginatedResult->currentPageEntries,
             "orderingUrls" => $this->createOrderingUrls($request, $orderingColumns),
             "pagination" => $this->createPagination($request, $paginatedResult),
-            "filterColumn" => $queryParams["filterColumn"] ?? null,
-            "filterValue" => $queryParams["filterValue"] ?? null,
+            "filter" => $this->createFilter($request),
         ];
     }
 
@@ -78,6 +76,15 @@ class ListTemplater
                 $paginatedResult->pageCount,
                 $paginatedResult->pagination->pageNumber
             )
+        );
+    }
+
+    private function createFilter(ServerRequestInterface $request): Filter
+    {
+        $queryParams = $request->getQueryParams();
+        return new Filter(
+            $queryParams["filterColumn"] ?? null,
+            $queryParams["filterValue"] ?? null,
         );
     }
 }

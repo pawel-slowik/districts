@@ -75,8 +75,7 @@ class ListTemplaterTest extends TestCase
             ["entries"],
             ["orderingUrls"],
             ["pagination"],
-            ["filterColumn"],
-            ["filterValue"],
+            ["filter"],
         ];
     }
 }

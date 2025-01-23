@@ -17,14 +17,14 @@
 
     <label for="filterColumn">filter column:</label>
     <select name="filterColumn">
-        <option value="city" {% if filterColumn == 'city' %} selected="selected" {% endif %}>city name</option>
-        <option value="name" {% if filterColumn == 'name' %} selected="selected" {% endif %}>district name</option>
-        <option value="area" {% if filterColumn == 'area' %} selected="selected" {% endif %}>area</option>
-        <option value="population" {% if filterColumn == 'population' %} selected="selected" {% endif %}>population</option>
+        <option value="city" {% if filter.column == 'city' %} selected="selected" {% endif %}>city name</option>
+        <option value="name" {% if filter.column == 'name' %} selected="selected" {% endif %}>district name</option>
+        <option value="area" {% if filter.column == 'area' %} selected="selected" {% endif %}>area</option>
+        <option value="population" {% if filter.column == 'population' %} selected="selected" {% endif %}>population</option>
     </select>
 
     <label for="name">filter value:</label>
-    <input type="text" name="filterValue" value="{{ filterValue }}">
+    <input type="text" name="filterValue" value="{{ filter.value }}">
 
     <input type="submit" name="" value="filter">
 
