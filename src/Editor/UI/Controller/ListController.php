@@ -40,17 +40,15 @@ final class ListController
             $query = $this->queryFactory->fromDefaults();
             $errorMessage = "Invalid query parameters";
         }
-        $districts = $this->districtService->list($query);
-        $orderingColumns = [
-            "city",
-            "name",
-            "area",
-            "population",
-        ];
         $templateData = $this->listTemplater->prepareTemplateData(
-            $districts,
+            $this->districtService->list($query),
             $request,
-            $orderingColumns,
+            [
+                "city",
+                "name",
+                "area",
+                "population",
+            ],
             "List of districts",
             $this->session->getAndDelete("success.message"),
             $errorMessage ?? null,
