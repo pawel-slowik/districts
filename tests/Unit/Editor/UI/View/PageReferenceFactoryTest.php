@@ -6,9 +6,11 @@ namespace Districts\Test\Unit\Editor\UI\View;
 
 use Districts\Editor\UI\View\PageReference;
 use Districts\Editor\UI\View\PageReferenceFactory;
+use Nyholm\Psr7\Uri;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\UriInterface;
 
 #[CoversClass(PageReferenceFactory::class)]
 class PageReferenceFactoryTest extends TestCase
@@ -22,24 +24,36 @@ class PageReferenceFactoryTest extends TestCase
 
     public function testType(): void
     {
-        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl("https://example.com/", 5, 1);
+        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl(
+            new Uri("https://example.com/"),
+            5,
+            1,
+        );
         $this->assertContainsOnlyInstancesOf(PageReference::class, $pageReferences);
     }
 
     public function testSinglePage(): void
     {
-        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl("https://example.com/", 1, 1);
+        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl(
+            new Uri("https://example.com/"),
+            1,
+            1,
+        );
         $this->assertCount(0, iterator_to_array($pageReferences));
     }
 
     public function testNumberOfReferences(): void
     {
-        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl("https://example.com/", 100, 1);
+        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl(
+            new Uri("https://example.com/"),
+            100,
+            1,
+        );
         $this->assertCount(102, iterator_to_array($pageReferences));
     }
 
     #[DataProvider('flagsProvider')]
-    public function testFlags(string $baseUrl, int $pageCount, int $currentPageNumber): void
+    public function testFlags(UriInterface $baseUrl, int $pageCount, int $currentPageNumber): void
     {
         $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl(
             $baseUrl,
@@ -62,20 +76,24 @@ class PageReferenceFactoryTest extends TestCase
     }
 
     /**
-     * @return array<array{0: string, 1: int, 2: int}>
+     * @return array<array{0: UriInterface, 1: int, 2: int}>
      */
     public static function flagsProvider(): array
     {
         return [
-            ["https://example.com/", 10, 1],
-            ["https://example.com/", 10, 5],
-            ["https://example.com/", 10, 10],
+            [new Uri("https://example.com/"), 10, 1],
+            [new Uri("https://example.com/"), 10, 5],
+            [new Uri("https://example.com/"), 10, 10],
         ];
     }
 
     public function testPreviousUrlForFirstPage(): void
     {
-        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl("https://example.com/", 3, 1);
+        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl(
+            new Uri("https://example.com/"),
+            3,
+            1,
+        );
         foreach ($pageReferences as $pageReference) {
             if ($pageReference->isPrevious) {
                 $this->assertNull($pageReference->url);
@@ -85,7 +103,11 @@ class PageReferenceFactoryTest extends TestCase
 
     public function testNextUrlForLastPage(): void
     {
-        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl("https://example.com/", 3, 3);
+        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl(
+            new Uri("https://example.com/"),
+            3,
+            3,
+        );
         foreach ($pageReferences as $pageReference) {
             if ($pageReference->isNext) {
                 $this->assertNull($pageReference->url);
@@ -95,7 +117,11 @@ class PageReferenceFactoryTest extends TestCase
 
     public function testUrlsForInBetweenPage(): void
     {
-        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl("https://example.com/", 3, 2);
+        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl(
+            new Uri("https://example.com/"),
+            3,
+            2,
+        );
         $urls = [];
         foreach ($pageReferences as $pageReference) {
             $urls[] = $pageReference->url;
@@ -115,7 +141,11 @@ class PageReferenceFactoryTest extends TestCase
 
     public function testCurrentOffset(): void
     {
-        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl("https://example.com/", 20, 10);
+        $pageReferences = $this->pageReferenceFactory->createPageReferencesForUrl(
+            new Uri("https://example.com/"),
+            20,
+            10,
+        );
         $currentOffset = null;
         foreach ($pageReferences as $offset => $pageReference) {
             if ($pageReference->isCurrent) {

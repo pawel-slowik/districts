@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI\View;
 
-use Laminas\Uri\Uri;
+use Psr\Http\Message\UriInterface;
 use Traversable;
 
 class PageReferenceFactory
@@ -13,7 +13,7 @@ class PageReferenceFactory
      * @return Traversable<PageReference>
      */
     public function createPageReferencesForUrl(
-        string $baseUrl,
+        UriInterface $baseUrl,
         int $pageCount,
         int $currentPageNumber
     ): Traversable {
@@ -35,10 +35,11 @@ class PageReferenceFactory
         );
     }
 
-    private static function urlForPageNumber(string $baseUrl, int $pageNumber): string
+    private static function urlForPageNumber(UriInterface $baseUrl, int $pageNumber): string
     {
-        $parsedUrl = new Uri($baseUrl);
-        $parsedUrl->setQuery(array_merge($parsedUrl->getQueryAsArray(), ["page" => $pageNumber]));
-        return $parsedUrl->toString();
+        $queryArgs = [];
+        parse_str($baseUrl->getQuery(), $queryArgs);
+        $queryArgs["page"] = $pageNumber;
+        return (string) $baseUrl->withQuery(http_build_query($queryArgs));
     }
 }
