@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Districts\Test\Unit\Editor\UI\View;
 
-use Districts\Editor\Domain\District;
 use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\Domain\Pagination;
+use Districts\Editor\UI\View\Filter;
 use Districts\Editor\UI\View\ListTemplater;
 use Districts\Editor\UI\View\OrderingUrlGenerator;
 use Districts\Editor\UI\View\PageReferenceFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
@@ -20,7 +19,7 @@ use Psr\Http\Message\UriFactoryInterface;
 #[CoversClass(ListTemplater::class)]
 class ListTemplaterTest extends TestCase
 {
-    /** @var ListTemplater<District> */
+    /** @var ListTemplater<string> */
     private ListTemplater $listTemplater;
 
     /** @var PageReferenceFactory&Stub */
@@ -45,14 +44,110 @@ class ListTemplaterTest extends TestCase
         );
     }
 
-    #[DataProvider('computedDataKeyProvider')]
-    public function testSetsComputedDataKey(string $key): void
+    public function testTitle(): void
     {
-        $paginatedResult = new PaginatedResult(new Pagination(1, 1), 1, 1, []);
+        $templateData = $this->listTemplater->prepareTemplateData(
+            new PaginatedResult(new Pagination(1, 1), 1, 1, []),
+            $this->createStub(ServerRequestInterface::class),
+            [],
+            "search results",
+            null,
+            null,
+        );
+
+        $this->assertArrayHasKey("title", $templateData);
+        $this->assertIsString($templateData["title"]);
+    }
+
+    public function testSuccessMessage(): void
+    {
+        $templateData = $this->listTemplater->prepareTemplateData(
+            new PaginatedResult(new Pagination(1, 1), 1, 1, []),
+            $this->createStub(ServerRequestInterface::class),
+            [],
+            "",
+            "success :)",
+            null,
+        );
+
+        $this->assertArrayHasKey("successMessage", $templateData);
+        $this->assertIsString($templateData["successMessage"]);
+    }
+
+    public function testErrorMessage(): void
+    {
+        $templateData = $this->listTemplater->prepareTemplateData(
+            new PaginatedResult(new Pagination(1, 1), 1, 1, []),
+            $this->createStub(ServerRequestInterface::class),
+            [],
+            "",
+            null,
+            "error :(",
+        );
+
+        $this->assertArrayHasKey("errorMessage", $templateData);
+        $this->assertIsString($templateData["errorMessage"]);
+    }
+
+    public function testEntries(): void
+    {
+        $templateData = $this->listTemplater->prepareTemplateData(
+            new PaginatedResult(new Pagination(1, 1), 1, 1, ["a", "b", "c"]),
+            $this->createStub(ServerRequestInterface::class),
+            [],
+            "",
+            null,
+            null,
+        );
+
+        $this->assertArrayHasKey("entries", $templateData);
+        $this->assertSame(["a", "b", "c"], $templateData["entries"]);
+    }
+
+    public function testOrderingUrls(): void
+    {
+        $templateData = $this->listTemplater->prepareTemplateData(
+            new PaginatedResult(new Pagination(1, 1), 1, 1, []),
+            $this->createStub(ServerRequestInterface::class),
+            ["foo", "bar"],
+            "",
+            null,
+            null,
+        );
+
+        $this->assertArrayHasKey("orderingUrls", $templateData);
+        $this->assertIsArray($templateData["orderingUrls"]);
+        $this->assertCount(2, $templateData["orderingUrls"]);
+        $this->assertArrayHasKey("foo", $templateData["orderingUrls"]);
+        $this->assertArrayHasKey("bar", $templateData["orderingUrls"]);
+        $this->assertIsString($templateData["orderingUrls"]["foo"]);
+        $this->assertIsString($templateData["orderingUrls"]["bar"]);
+    }
+
+    public function testPagination(): void
+    {
+        $templateData = $this->listTemplater->prepareTemplateData(
+            new PaginatedResult(new Pagination(1, 1), 1, 1, []),
+            $this->createStub(ServerRequestInterface::class),
+            [],
+            "",
+            null,
+            null,
+        );
+
+        $this->assertArrayHasKey("pagination", $templateData);
+        $this->assertIsArray($templateData["pagination"]);
+    }
+
+    public function testFilter(): void
+    {
         $request = $this->createStub(ServerRequestInterface::class);
+        $request
+            ->method("getQueryParams")
+            ->willReturn(["filterColumn" => "x", "filterValue" => "y"]);
 
         $templateData = $this->listTemplater->prepareTemplateData(
-            $paginatedResult,
+            new PaginatedResult(new Pagination(1, 1), 1, 1, []),
             $request,
             [],
             "",
@@ -60,22 +155,9 @@ class ListTemplaterTest extends TestCase
             null,
         );
 
-        $this->assertArrayHasKey($key, $templateData);
-    }
-
-    /**
-     * @return array<array{0: string}>
-     */
-    public static function computedDataKeyProvider(): array
-    {
-        return [
-            ["title"],
-            ["successMessage"],
-            ["errorMessage"],
-            ["entries"],
-            ["orderingUrls"],
-            ["pagination"],
-            ["filter"],
-        ];
+        $this->assertArrayHasKey("filter", $templateData);
+        $this->assertInstanceOf(Filter::class, $templateData["filter"]);
+        $this->assertSame("x", $templateData["filter"]->column);
+        $this->assertSame("y", $templateData["filter"]->value);
     }
 }
