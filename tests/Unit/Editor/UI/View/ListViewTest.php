@@ -72,7 +72,16 @@ class ListViewTest extends TestCase
             ->expects($this->once())
             ->method("render");
 
-        $this->listView->render($this->createStub(ResponseInterface::class), $paginatedResult, $request, [], "", []);
+        $this->listView->render(
+            $this->createStub(ResponseInterface::class),
+            $paginatedResult,
+            $request,
+            [],
+            "",
+            null,
+            null,
+            "",
+        );
     }
 
     #[DataProvider('computedDataKeyProvider')]
@@ -99,7 +108,16 @@ class ListViewTest extends TestCase
                 )
             );
 
-        $this->listView->render($this->createStub(ResponseInterface::class), $paginatedResult, $request, [""], "", []);
+        $this->listView->render(
+            $this->createStub(ResponseInterface::class),
+            $paginatedResult,
+            $request,
+            [],
+            "",
+            null,
+            null,
+            "",
+        );
     }
 
     /**
@@ -108,6 +126,9 @@ class ListViewTest extends TestCase
     public static function computedDataKeyProvider(): array
     {
         return [
+            ["title"],
+            ["successMessage"],
+            ["errorMessage"],
             ["entries"],
             ["orderingUrls"],
             ["pagination"],

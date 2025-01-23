@@ -45,18 +45,15 @@ final class ListController
             "area",
             "population",
         ];
-        $templateData = [
-            "title" => "List of districts",
-            "successMessage" => $this->session->getAndDelete("success.message"),
-            "errorMessage" => $errorMessage ?? null,
-        ];
         return $this->listView->render(
             $response,
             $districts,
             $request,
             $orderingColumns,
+            "List of districts",
+            $this->session->getAndDelete("success.message"),
+            $errorMessage ?? null,
             "list.html",
-            $templateData
         );
     }
 }

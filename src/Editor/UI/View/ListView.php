@@ -26,16 +26,23 @@ class ListView
     /**
      * @param PaginatedResult<T> $paginatedResult
      * @param string[] $orderingColumns
-     * @param array<string, mixed> $data
      */
     public function render(
         ResponseInterface $response,
         PaginatedResult $paginatedResult,
         ServerRequestInterface $request,
         array $orderingColumns,
+        string $title,
+        mixed $successMessage,
+        mixed $errorMessage,
         string $template,
-        array $data = []
     ): ResponseInterface {
+        $data = [
+            "title" => $title,
+            "successMessage" => $successMessage,
+            "errorMessage" => $errorMessage,
+        ];
+
         $data["entries"] = $paginatedResult->currentPageEntries;
 
         $data["orderingUrls"] = $this->createOrderingUrls(
