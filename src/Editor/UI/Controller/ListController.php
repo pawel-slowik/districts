@@ -39,7 +39,6 @@ final class ListController
             $errorMessage = "Invalid query parameters";
         }
         $districts = $this->districtService->list($query);
-        $queryParams = $request->getQueryParams();
         $orderingColumns = [
             "city",
             "name",
@@ -48,8 +47,6 @@ final class ListController
         ];
         $templateData = [
             "title" => "List of districts",
-            "filterColumn" => $queryParams["filterColumn"] ?? null,
-            "filterValue" => $queryParams["filterValue"] ?? null,
             "successMessage" => $this->session->getAndDelete("success.message"),
             "errorMessage" => $errorMessage ?? null,
         ];

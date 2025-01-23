@@ -56,6 +56,10 @@ class ListView
             )
         );
 
+        $queryParams = $request->getQueryParams();
+        $data["filterColumn"] = $queryParams["filterColumn"] ?? null;
+        $data["filterValue"] = $queryParams["filterValue"] ?? null;
+
         return $this->view->render($response, $template, $data);
     }
 

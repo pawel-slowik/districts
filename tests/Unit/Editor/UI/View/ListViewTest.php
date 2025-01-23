@@ -111,6 +111,8 @@ class ListViewTest extends TestCase
             ["entries"],
             ["orderingUrls"],
             ["pagination"],
+            ["filterColumn"],
+            ["filterValue"],
         ];
     }
 }
