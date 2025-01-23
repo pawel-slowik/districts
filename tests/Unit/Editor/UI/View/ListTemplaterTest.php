@@ -7,7 +7,7 @@ namespace Districts\Test\Unit\Editor\UI\View;
 use Districts\Editor\Domain\District;
 use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\Domain\Pagination;
-use Districts\Editor\UI\View\ListView;
+use Districts\Editor\UI\View\ListTemplater;
 use Districts\Editor\UI\View\OrderingUrlGenerator;
 use Districts\Editor\UI\View\PageReferenceFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -17,11 +17,11 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriFactoryInterface;
 
-#[CoversClass(ListView::class)]
-class ListViewTest extends TestCase
+#[CoversClass(ListTemplater::class)]
+class ListTemplaterTest extends TestCase
 {
-    /** @var ListView<District> */
-    private ListView $listView;
+    /** @var ListTemplater<District> */
+    private ListTemplater $listTemplater;
 
     /** @var PageReferenceFactory&Stub */
     private PageReferenceFactory $pageReferenceFactory;
@@ -38,7 +38,7 @@ class ListViewTest extends TestCase
         $this->orderingUrlGenerator = $this->createStub(OrderingUrlGenerator::class);
         $this->uriFactory = $this->createStub(UriFactoryInterface::class);
 
-        $this->listView = new ListView(
+        $this->listTemplater = new ListTemplater(
             $this->pageReferenceFactory,
             $this->orderingUrlGenerator,
             $this->uriFactory,
@@ -51,7 +51,7 @@ class ListViewTest extends TestCase
         $paginatedResult = new PaginatedResult(new Pagination(1, 1), 1, 1, []);
         $request = $this->createStub(ServerRequestInterface::class);
 
-        $templateData = $this->listView->prepareTemplateData(
+        $templateData = $this->listTemplater->prepareTemplateData(
             $paginatedResult,
             $request,
             [],

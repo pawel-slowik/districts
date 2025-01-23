@@ -8,7 +8,7 @@ use Districts\Editor\Application\DistrictService;
 use Districts\Editor\Domain\District;
 use Districts\Editor\UI\Factory\ListDistrictsQueryFactory;
 use Districts\Editor\UI\Session;
-use Districts\Editor\UI\View\ListView;
+use Districts\Editor\UI\View\ListTemplater;
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -17,13 +17,13 @@ use Slim\Views\Twig as View;
 final class ListController
 {
     /**
-     * @param ListView<District> $listView
+     * @param ListTemplater<District> $listTemplater
      */
     public function __construct(
         private DistrictService $districtService,
         private ListDistrictsQueryFactory $queryFactory,
         private Session $session,
-        private ListView $listView,
+        private ListTemplater $listTemplater,
         private View $view,
     ) {
     }
@@ -47,7 +47,7 @@ final class ListController
             "area",
             "population",
         ];
-        $templateData = $this->listView->prepareTemplateData(
+        $templateData = $this->listTemplater->prepareTemplateData(
             $districts,
             $request,
             $orderingColumns,

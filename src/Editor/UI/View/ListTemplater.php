@@ -11,7 +11,7 @@ use Psr\Http\Message\UriFactoryInterface;
 /**
  * @template T
  */
-class ListView
+class ListTemplater
 {
     public function __construct(
         private PageReferenceFactory $pageReferenceFactory,
