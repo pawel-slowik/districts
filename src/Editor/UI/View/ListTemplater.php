@@ -34,37 +34,17 @@ class ListTemplater
         mixed $successMessage,
         mixed $errorMessage,
     ): array {
-        $data = [
+        $queryParams = $request->getQueryParams();
+        return [
             "title" => $title,
             "successMessage" => $successMessage,
             "errorMessage" => $errorMessage,
+            "entries" => $paginatedResult->currentPageEntries,
+            "orderingUrls" => $this->createOrderingUrls($request, $orderingColumns),
+            "pagination" => $this->createPagination($request, $paginatedResult),
+            "filterColumn" => $queryParams["filterColumn"] ?? null,
+            "filterValue" => $queryParams["filterValue"] ?? null,
         ];
-
-        $data["entries"] = $paginatedResult->currentPageEntries;
-
-        $data["orderingUrls"] = $this->createOrderingUrls(
-            $request,
-            $orderingColumns
-        );
-
-        $requestUrl = $request->getUri();
-        $relativeUrl = ($this->uriFactory->createUri())
-            ->withPath($requestUrl->getPath())
-            ->withQuery($requestUrl->getQuery()); // query parameters must be preserved for filtering
-
-        $data["pagination"] = iterator_to_array(
-            $this->pageReferenceFactory->createPageReferencesForUrl(
-                $relativeUrl,
-                $paginatedResult->pageCount,
-                $paginatedResult->pagination->pageNumber
-            )
-        );
-
-        $queryParams = $request->getQueryParams();
-        $data["filterColumn"] = $queryParams["filterColumn"] ?? null;
-        $data["filterValue"] = $queryParams["filterValue"] ?? null;
-
-        return $data;
     }
 
     /**
@@ -72,14 +52,32 @@ class ListTemplater
      *
      * @return array<string, string>
      */
-    private function createOrderingUrls(
-        ServerRequestInterface $request,
-        array $columns
-    ): array {
+    private function createOrderingUrls(ServerRequestInterface $request, array $columns): array
+    {
         $urls = [];
         foreach ($columns as $column) {
             $urls[$column] = $this->orderingUrlGenerator->createOrderingUrl($request, $column);
         }
         return $urls;
+    }
+
+    /**
+     * @param PaginatedResult<T> $paginatedResult
+     *
+     * @return PageReference[]
+     */
+    private function createPagination(ServerRequestInterface $request, PaginatedResult $paginatedResult): array
+    {
+        $requestUrl = $request->getUri();
+        $relativeUrl = ($this->uriFactory->createUri())
+            ->withPath($requestUrl->getPath())
+            ->withQuery($requestUrl->getQuery()); // query parameters must be preserved for filtering
+        return iterator_to_array(
+            $this->pageReferenceFactory->createPageReferencesForUrl(
+                $relativeUrl,
+                $paginatedResult->pageCount,
+                $paginatedResult->pagination->pageNumber
+            )
+        );
     }
 }
