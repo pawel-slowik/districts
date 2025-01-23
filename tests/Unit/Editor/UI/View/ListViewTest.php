@@ -108,6 +108,7 @@ class ListViewTest extends TestCase
     public static function computedDataKeyProvider(): array
     {
         return [
+            ["entries"],
             ["orderingUrls"],
             ["pagination"],
         ];

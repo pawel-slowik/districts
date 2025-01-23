@@ -36,6 +36,8 @@ class ListView
         string $template,
         array $data = []
     ): ResponseInterface {
+        $data["entries"] = $paginatedResult->currentPageEntries;
+
         $data["orderingUrls"] = $this->createOrderingUrls(
             $request,
             $orderingColumns
