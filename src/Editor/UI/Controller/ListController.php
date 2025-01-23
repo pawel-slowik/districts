@@ -12,6 +12,7 @@ use Districts\Editor\UI\View\ListView;
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Views\Twig as View;
 
 final class ListController
 {
@@ -23,6 +24,7 @@ final class ListController
         private ListDistrictsQueryFactory $queryFactory,
         private Session $session,
         private ListView $listView,
+        private View $view,
     ) {
     }
 
@@ -45,15 +47,14 @@ final class ListController
             "area",
             "population",
         ];
-        return $this->listView->render(
-            $response,
+        $templateData = $this->listView->prepareTemplateData(
             $districts,
             $request,
             $orderingColumns,
             "List of districts",
             $this->session->getAndDelete("success.message"),
             $errorMessage ?? null,
-            "list.html",
         );
+        return $this->view->render($response, "list.html", $templateData);
     }
 }

@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace Districts\Editor\UI\View;
 
 use Districts\Editor\Domain\PaginatedResult;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriFactoryInterface;
-use Slim\Views\Twig as View;
 
 /**
  * @template T
@@ -16,7 +14,6 @@ use Slim\Views\Twig as View;
 class ListView
 {
     public function __construct(
-        private View $view,
         private PageReferenceFactory $pageReferenceFactory,
         private OrderingUrlGenerator $orderingUrlGenerator,
         private UriFactoryInterface $uriFactory,
@@ -26,17 +23,17 @@ class ListView
     /**
      * @param PaginatedResult<T> $paginatedResult
      * @param string[] $orderingColumns
+     *
+     * @return array<string, mixed>
      */
-    public function render(
-        ResponseInterface $response,
+    public function prepareTemplateData(
         PaginatedResult $paginatedResult,
         ServerRequestInterface $request,
         array $orderingColumns,
         string $title,
         mixed $successMessage,
         mixed $errorMessage,
-        string $template,
-    ): ResponseInterface {
+    ): array {
         $data = [
             "title" => $title,
             "successMessage" => $successMessage,
@@ -67,7 +64,7 @@ class ListView
         $data["filterColumn"] = $queryParams["filterColumn"] ?? null;
         $data["filterValue"] = $queryParams["filterValue"] ?? null;
 
-        return $this->view->render($response, $template, $data);
+        return $data;
     }
 
     /**
