@@ -7,14 +7,14 @@ namespace Districts\Editor\UI\View;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriFactoryInterface;
 
-class OrderingUrlGenerator
+class OrderingLinkGenerator
 {
     public function __construct(
         private UriFactoryInterface $uriFactory,
     ) {
     }
 
-    public function createOrderingUrl(ServerRequestInterface $request, string $column): string
+    public function createOrderingLink(ServerRequestInterface $request, string $column): OrderingLink
     {
         $queryParams = $request->getQueryParams();
         $orderingQueryParams = [
@@ -28,7 +28,13 @@ class OrderingUrlGenerator
         $uri = $this->uriFactory->createUri()
             ->withPath($request->getUri()->getPath())
             ->withQuery(http_build_query($updatedQueryParams));
-        return (string) $uri;
+
+        if (!$this->isOrderedByColumn($column, $queryParams)) {
+            return OrderingLink::createUnordered($uri);
+        }
+        return $this->isOrderedAscending($queryParams)
+            ? OrderingLink::createOrderedAscending($uri)
+            : OrderingLink::createOrderedDescending($uri);
     }
 
     /**
@@ -45,6 +51,22 @@ class OrderingUrlGenerator
             return "desc";
         }
         return "asc";
+    }
+
+    /**
+     * @param array<string, string> $queryParams
+     */
+    private static function isOrderedByColumn(string $column, array $queryParams): bool
+    {
+        return array_key_exists("orderColumn", $queryParams) && ($queryParams["orderColumn"] === $column);
+    }
+
+    /**
+     * @param array<string, string> $queryParams
+     */
+    private static function isOrderedAscending(array $queryParams): bool
+    {
+        return array_key_exists("orderDirection", $queryParams) && ($queryParams["orderDirection"] === "asc");
     }
 
     /**

@@ -46,16 +46,24 @@
     <thead>
         <tr>
             <th class="city">
-                <a href="{{ orderingUrls['city'] }}">city name</a>
+                <a href="{{ orderingLinks['city'].url }}">city name</a>
+                {% if orderingLinks['city'].isOrderedAscending %} &uarr;{% endif %}
+                {% if orderingLinks['city'].isOrderedDescending %} &darr;{% endif %}
             </th>
             <th class="name">
-                <a href="{{ orderingUrls['name'] }}">district name</a>
+                <a href="{{ orderingLinks['name'].url }}">district name</a>
+                {% if orderingLinks['name'].isOrderedAscending %} &uarr;{% endif %}
+                {% if orderingLinks['name'].isOrderedDescending %} &darr;{% endif %}
             </th>
             <th class="area">
-                <a href="{{ orderingUrls['area'] }}">area [km²]</a>
+                <a href="{{ orderingLinks['area'].url }}">area [km²]</a>
+                {% if orderingLinks['area'].isOrderedAscending %} &uarr;{% endif %}
+                {% if orderingLinks['area'].isOrderedDescending %} &darr;{% endif %}
             </th>
             <th class="population">
-                <a href="{{ orderingUrls['population'] }}">population</a>
+                <a href="{{ orderingLinks['population'].url }}">population</a>
+                {% if orderingLinks['population'].isOrderedAscending %} &uarr;{% endif %}
+                {% if orderingLinks['population'].isOrderedDescending %} &darr;{% endif %}
             </th>
             <th class="edit"></th>
             <th class="remove"></th>

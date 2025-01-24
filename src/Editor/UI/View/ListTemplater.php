@@ -15,7 +15,7 @@ class ListTemplater
 {
     public function __construct(
         private PageReferenceFactory $pageReferenceFactory,
-        private OrderingUrlGenerator $orderingUrlGenerator,
+        private OrderingLinkGenerator $orderingLinkGenerator,
         private UriFactoryInterface $uriFactory,
     ) {
     }
@@ -39,7 +39,7 @@ class ListTemplater
             "successMessage" => $successMessage,
             "errorMessage" => $errorMessage,
             "entries" => $paginatedResult->currentPageEntries,
-            "orderingUrls" => $this->createOrderingUrls($request, $orderingColumns),
+            "orderingLinks" => $this->createOrderingLinks($request, $orderingColumns),
             "pagination" => $this->createPagination($request, $paginatedResult),
             "filter" => $this->createFilter($request),
         ];
@@ -48,15 +48,15 @@ class ListTemplater
     /**
      * @param string[] $columns
      *
-     * @return array<string, string>
+     * @return array<string, OrderingLink>
      */
-    private function createOrderingUrls(ServerRequestInterface $request, array $columns): array
+    private function createOrderingLinks(ServerRequestInterface $request, array $columns): array
     {
-        $urls = [];
+        $links = [];
         foreach ($columns as $column) {
-            $urls[$column] = $this->orderingUrlGenerator->createOrderingUrl($request, $column);
+            $links[$column] = $this->orderingLinkGenerator->createOrderingLink($request, $column);
         }
-        return $urls;
+        return $links;
     }
 
     /**

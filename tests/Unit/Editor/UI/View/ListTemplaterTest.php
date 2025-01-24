@@ -8,7 +8,8 @@ use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\Domain\Pagination;
 use Districts\Editor\UI\View\Filter;
 use Districts\Editor\UI\View\ListTemplater;
-use Districts\Editor\UI\View\OrderingUrlGenerator;
+use Districts\Editor\UI\View\OrderingLink;
+use Districts\Editor\UI\View\OrderingLinkGenerator;
 use Districts\Editor\UI\View\PageReferenceFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
@@ -25,8 +26,8 @@ class ListTemplaterTest extends TestCase
     /** @var PageReferenceFactory&Stub */
     private PageReferenceFactory $pageReferenceFactory;
 
-    /** @var OrderingUrlGenerator&Stub */
-    private OrderingUrlGenerator $orderingUrlGenerator;
+    /** @var OrderingLinkGenerator&Stub */
+    private OrderingLinkGenerator $orderingLinkGenerator;
 
     /** @var Stub&UriFactoryInterface */
     private UriFactoryInterface $uriFactory;
@@ -34,12 +35,12 @@ class ListTemplaterTest extends TestCase
     protected function setUp(): void
     {
         $this->pageReferenceFactory = $this->createStub(PageReferenceFactory::class);
-        $this->orderingUrlGenerator = $this->createStub(OrderingUrlGenerator::class);
+        $this->orderingLinkGenerator = $this->createStub(OrderingLinkGenerator::class);
         $this->uriFactory = $this->createStub(UriFactoryInterface::class);
 
         $this->listTemplater = new ListTemplater(
             $this->pageReferenceFactory,
-            $this->orderingUrlGenerator,
+            $this->orderingLinkGenerator,
             $this->uriFactory,
         );
     }
@@ -104,7 +105,7 @@ class ListTemplaterTest extends TestCase
         $this->assertSame(["a", "b", "c"], $templateData["entries"]);
     }
 
-    public function testOrderingUrls(): void
+    public function testOrderingLinks(): void
     {
         $templateData = $this->listTemplater->prepareTemplateData(
             new PaginatedResult(new Pagination(1, 1), 1, 1, []),
@@ -115,13 +116,13 @@ class ListTemplaterTest extends TestCase
             null,
         );
 
-        $this->assertArrayHasKey("orderingUrls", $templateData);
-        $this->assertIsArray($templateData["orderingUrls"]);
-        $this->assertCount(2, $templateData["orderingUrls"]);
-        $this->assertArrayHasKey("foo", $templateData["orderingUrls"]);
-        $this->assertArrayHasKey("bar", $templateData["orderingUrls"]);
-        $this->assertIsString($templateData["orderingUrls"]["foo"]);
-        $this->assertIsString($templateData["orderingUrls"]["bar"]);
+        $this->assertArrayHasKey("orderingLinks", $templateData);
+        $this->assertIsArray($templateData["orderingLinks"]);
+        $this->assertCount(2, $templateData["orderingLinks"]);
+        $this->assertArrayHasKey("foo", $templateData["orderingLinks"]);
+        $this->assertArrayHasKey("bar", $templateData["orderingLinks"]);
+        $this->assertInstanceOf(OrderingLink::class, $templateData["orderingLinks"]["foo"]);
+        $this->assertInstanceOf(OrderingLink::class, $templateData["orderingLinks"]["bar"]);
     }
 
     public function testPagination(): void
