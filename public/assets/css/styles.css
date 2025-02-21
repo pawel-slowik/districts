@@ -1,0 +1,108 @@
+form.entity div
+{
+    vertical-align: middle;
+    display: table-cell;
+}
+
+form.entity label
+{
+    width: 7em;
+    display: inline-block;
+}
+
+form.entity input[type="text"]
+{
+    padding: 0.5ex;
+    border-style: solid;
+    border-color: grey;
+}
+
+form.entity input[type="text"].error
+{
+    border-color: red;
+}
+
+form#filter
+{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+p.message
+{
+	width: 30em;
+	height: 2em;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 2em;
+}
+
+p.message.success
+{
+	background-color: lightgreen;
+	border: solid 2px green;
+}
+
+p.message.error
+{
+	background-color: pink;
+	border: solid 2px red;
+}
+
+p.message a.close
+{
+    text-decoration: none;
+    color: black;
+    float: right;
+    margin-right: 0.5em;
+}
+
+p#close_message:target,
+p#close_error_message:target
+{
+    display: none;
+}
+
+table#districts
+{
+    border-spacing: 0;
+}
+
+table#districts td,
+table#districts th
+{
+    padding: 1ex;
+    border-bottom: solid 1px black;
+}
+
+table#districts th
+{
+    border-top: solid 1px black;
+}
+
+table#districts th
+{
+    font-weight: normal;
+    text-align: center;
+    background-color: lightgray;
+}
+
+table#districts th.edit,
+table#districts th.remove,
+table#districts td.edit,
+table#districts td.remove
+{
+    width: 5em;
+    text-align: center;
+}
+
+table#districts td.area,
+table#districts td.population
+{
+    text-align: right;
+}
+
+p.pagination a.current
+{
+    font-weight: bold;
+}

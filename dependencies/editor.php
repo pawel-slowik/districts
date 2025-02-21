@@ -28,12 +28,14 @@ return [
     RouteParserInterface::class => static fn ($cont) => $cont->get(RouteCollectorInterface::class)->getRouteParser(),
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     Twig::class => static function ($container) {
-        return Twig::create(
+        $twig = Twig::create(
             __DIR__ . "/../templates",
             [
                 "cache" => "/tmp/twig_cache",
                 "auto_reload" => true,
             ]
         );
+        $twig["ASSETS_URL"] = (string) getenv("ASSETS_URL");
+        return $twig;
     },
 ];

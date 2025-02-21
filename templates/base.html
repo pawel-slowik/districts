@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ ASSETS_URL }}/css/styles.css">
 </head>
 
 <body>
@@ -11,70 +12,6 @@
 <h1>{{ title }}</h1>
 
 {% block content %}{% endblock %}
-
-<style type="text/css">
-
-form.entity div {
-    vertical-align: middle;
-    display: table-cell;
-}
-
-form.entity label {
-    width: 7em;
-    display: inline-block;
-}
-
-form.entity input[type="text"] {
-    padding: 0.5ex;
-    border-style: solid;
-    border-color: grey;
-}
-
-form.entity input[type="text"].error {
-    border-color: red;
-}
-
-form#filter {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-p.message
-{
-	width: 30em;
-	height: 2em;
-	vertical-align: middle;
-	text-align: center;
-	line-height: 2em;
-}
-
-p.message.success
-{
-	background-color: lightgreen;
-	border: solid 2px green;
-}
-
-p.message.error
-{
-	background-color: pink;
-	border: solid 2px red;
-}
-
-p.message a.close
-{
-    text-decoration: none;
-    color: black;
-    float: right;
-    margin-right: 0.5em;
-}
-
-p#close_message:target,
-p#close_error_message:target
-{
-    display: none;
-}
-
-</style>
 
 </body>
 
