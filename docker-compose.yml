@@ -2,9 +2,9 @@ version: "3.4"
 
 services:
 
-  nginx:
-    build: ./docker/nginx
-    image: districts-nginx
+  php-nginx:
+    build: ./docker/php-nginx
+    image: districts-php-nginx
     depends_on:
       - php-fpm
     ports:
