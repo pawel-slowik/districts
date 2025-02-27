@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI\Controller;
 
+use Districts\Core\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\Application\DistrictService;
 use Districts\Editor\Application\Exception\ValidationException;
-use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\UI\Factory\UpdateDistrictCommandFactory;
 use Districts\Editor\UI\Session;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;

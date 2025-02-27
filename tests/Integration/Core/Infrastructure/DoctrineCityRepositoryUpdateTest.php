@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Integration\Editor\Infrastructure;
+namespace Districts\Test\Integration\Core\Infrastructure;
 
-use Districts\Editor\Domain\Area;
-use Districts\Editor\Domain\City;
-use Districts\Editor\Domain\Name;
-use Districts\Editor\Domain\Population;
-use Districts\Editor\Infrastructure\DoctrineCityRepository;
+use Districts\Core\Domain\Area;
+use Districts\Core\Domain\City;
+use Districts\Core\Domain\Name;
+use Districts\Core\Domain\Population;
+use Districts\Core\Infrastructure\DoctrineCityRepository;
 use Districts\Test\Integration\DoctrineDbTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 

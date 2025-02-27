@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Districts\Editor\Application;
 
+use Districts\Core\Domain\Area;
+use Districts\Core\Domain\CityRepository;
+use Districts\Core\Domain\Exception\InvalidAreaException;
+use Districts\Core\Domain\Exception\InvalidNameException;
+use Districts\Core\Domain\Exception\InvalidPopulationException;
+use Districts\Core\Domain\Name;
+use Districts\Core\Domain\Population;
+use Districts\Core\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\Application\Command\AddDistrictCommand;
 use Districts\Editor\Application\Command\UpdateDistrictCommand;
-use Districts\Editor\Domain\Area;
-use Districts\Editor\Domain\CityRepository;
 use Districts\Editor\Domain\DistrictRepository;
-use Districts\Editor\Domain\Exception\InvalidAreaException;
-use Districts\Editor\Domain\Exception\InvalidNameException;
-use Districts\Editor\Domain\Exception\InvalidPopulationException;
-use Districts\Editor\Domain\Name;
-use Districts\Editor\Domain\Population;
-use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 
 class DistrictValidator
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Districts\Editor\Infrastructure;
+namespace Districts\Core\Infrastructure;
 
-use Districts\Editor\Domain\City;
-use Districts\Editor\Domain\CityRepository;
+use Districts\Core\Domain\City;
+use Districts\Core\Domain\CityRepository;
 use Doctrine\ORM\EntityManager;
 
 final class DoctrineCityRepository implements CityRepository

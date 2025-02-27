@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Editor\Infrastructure;
 
-use Districts\Editor\Domain\District;
+use Districts\Core\Domain\District;
+use Districts\Core\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\Domain\DistrictFilter\Filter;
 use Districts\Editor\Domain\DistrictOrdering;
 use Districts\Editor\Domain\DistrictOrderingField;

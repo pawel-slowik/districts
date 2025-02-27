@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Editor\Domain\Exception;
+namespace Districts\Core\Domain\Exception;
 
 use DomainException;
 

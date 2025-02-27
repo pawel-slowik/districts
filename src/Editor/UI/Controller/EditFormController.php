@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI\Controller;
 
+use Districts\Core\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\Application\DistrictService;
-use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\UI\Factory\GetDistrictQueryFactory;
 use Districts\Editor\UI\Session;
 use Psr\Http\Message\ResponseInterface as Response;

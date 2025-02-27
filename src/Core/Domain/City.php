@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Districts\Editor\Domain;
+namespace Districts\Core\Domain;
 
-use Districts\Editor\Domain\Exception\DistrictNotFoundException;
-use Districts\Editor\Domain\Exception\DuplicateDistrictNameException;
+use Districts\Core\Domain\Exception\DistrictNotFoundException;
+use Districts\Core\Domain\Exception\DuplicateDistrictNameException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

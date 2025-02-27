@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Districts\Editor\Application;
 
 use ArrayIterator;
-use Districts\Editor\Domain\City;
-use Districts\Editor\Domain\CityRepository;
+use Districts\Core\Domain\City;
+use Districts\Core\Domain\CityRepository;
 use IteratorAggregate;
 use Traversable;
 

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Unit\Editor\Domain;
+namespace Districts\Test\Unit\Core\Domain;
 
-use Districts\Editor\Domain\Exception\InvalidPopulationException;
-use Districts\Editor\Domain\Population;
+use Districts\Core\Domain\Exception\InvalidPopulationException;
+use Districts\Core\Domain\Population;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

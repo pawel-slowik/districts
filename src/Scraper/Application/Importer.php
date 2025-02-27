@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Districts\Scraper\Application;
 
-use Districts\Editor\Domain\Area;
-use Districts\Editor\Domain\City;
-use Districts\Editor\Domain\CityRepository;
-use Districts\Editor\Domain\Name;
-use Districts\Editor\Domain\Population;
+use Districts\Core\Domain\Area;
+use Districts\Core\Domain\City;
+use Districts\Core\Domain\CityRepository;
+use Districts\Core\Domain\Name;
+use Districts\Core\Domain\Population;
 use Districts\Scraper\Domain\CityDTO;
 
 class Importer

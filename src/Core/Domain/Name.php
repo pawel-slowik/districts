@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Districts\Editor\Domain;
+namespace Districts\Core\Domain;
 
-use Districts\Editor\Domain\Exception\InvalidNameException;
+use Districts\Core\Domain\Exception\InvalidNameException;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Embeddable]

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Unit\Editor\Domain;
+namespace Districts\Test\Unit\Core\Domain;
 
-use Districts\Editor\Domain\Area;
-use Districts\Editor\Domain\Exception\InvalidAreaException;
+use Districts\Core\Domain\Area;
+use Districts\Core\Domain\Exception\InvalidAreaException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

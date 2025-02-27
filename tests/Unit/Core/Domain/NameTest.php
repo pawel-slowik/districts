@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Unit\Editor\Domain;
+namespace Districts\Test\Unit\Core\Domain;
 
-use Districts\Editor\Domain\Exception\InvalidNameException;
-use Districts\Editor\Domain\Name;
+use Districts\Core\Domain\Exception\InvalidNameException;
+use Districts\Core\Domain\Name;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

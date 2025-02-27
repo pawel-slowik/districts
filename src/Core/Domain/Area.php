@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Districts\Editor\Domain;
+namespace Districts\Core\Domain;
 
-use Districts\Editor\Domain\Exception\InvalidAreaException;
+use Districts\Core\Domain\Exception\InvalidAreaException;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Embeddable]

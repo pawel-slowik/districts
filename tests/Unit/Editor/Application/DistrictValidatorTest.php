@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Districts\Test\Unit\Editor\Application;
 
+use Districts\Core\Domain\City;
+use Districts\Core\Domain\CityRepository;
+use Districts\Core\Domain\District;
+use Districts\Core\Domain\Name;
+use Districts\Core\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\Application\Command\AddDistrictCommand;
 use Districts\Editor\Application\Command\UpdateDistrictCommand;
 use Districts\Editor\Application\DistrictValidator;
-use Districts\Editor\Domain\City;
-use Districts\Editor\Domain\CityRepository;
-use Districts\Editor\Domain\District;
 use Districts\Editor\Domain\DistrictRepository;
-use Districts\Editor\Domain\Name;
-use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;

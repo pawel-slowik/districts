@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Integration\Editor\Infrastructure;
+namespace Districts\Test\Integration\Core\Infrastructure;
 
-use Districts\Editor\Domain\City;
-use Districts\Editor\Infrastructure\DoctrineCityRepository;
-use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
+use Districts\Core\Domain\City;
+use Districts\Core\Infrastructure\DoctrineCityRepository;
+use Districts\Core\Infrastructure\NotFoundInRepositoryException;
 use Districts\Test\Integration\DoctrineDbTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 

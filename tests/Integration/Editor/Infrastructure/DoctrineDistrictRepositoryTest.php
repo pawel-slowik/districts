@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Districts\Test\Integration\Editor\Infrastructure;
 
-use Districts\Editor\Domain\Area;
-use Districts\Editor\Domain\Name;
-use Districts\Editor\Domain\Population;
+use Districts\Core\Domain\Area;
+use Districts\Core\Domain\Name;
+use Districts\Core\Domain\Population;
+use Districts\Core\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
 use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
-use Districts\Editor\Infrastructure\NotFoundInRepositoryException;
 use Districts\Test\Integration\DoctrineDbTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 

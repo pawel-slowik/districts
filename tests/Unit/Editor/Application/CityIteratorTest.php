@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Districts\Test\Unit\Editor\Application;
 
+use Districts\Core\Domain\City;
+use Districts\Core\Domain\CityRepository;
 use Districts\Editor\Application\CityIterator;
-use Districts\Editor\Domain\City;
-use Districts\Editor\Domain\CityRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Editor\Infrastructure;
+namespace Districts\Core\Infrastructure;
 
 use RuntimeException;
 

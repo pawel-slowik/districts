@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Editor\Domain;
+namespace Districts\Core\Domain;
 
 use Doctrine\ORM\Mapping as ORM;
 

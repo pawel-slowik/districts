@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Districts\Editor\Domain;
+namespace Districts\Core\Domain;
 
-use Districts\Editor\Domain\Exception\InvalidPopulationException;
+use Districts\Core\Domain\Exception\InvalidPopulationException;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Embeddable]

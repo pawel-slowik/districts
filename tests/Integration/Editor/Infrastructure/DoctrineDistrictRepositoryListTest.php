@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Integration\Editor\Infrastructure;
 
-use Districts\Editor\Domain\District;
+use Districts\Core\Domain\District;
 use Districts\Editor\Domain\DistrictFilter\AreaFilter;
 use Districts\Editor\Domain\DistrictFilter\CityNameFilter;
 use Districts\Editor\Domain\DistrictFilter\Filter;

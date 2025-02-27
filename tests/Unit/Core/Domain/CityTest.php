@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Unit\Editor\Domain;
+namespace Districts\Test\Unit\Core\Domain;
 
-use Districts\Editor\Domain\Area;
-use Districts\Editor\Domain\City;
-use Districts\Editor\Domain\Exception\DistrictNotFoundException;
-use Districts\Editor\Domain\Exception\DuplicateDistrictNameException;
-use Districts\Editor\Domain\Name;
-use Districts\Editor\Domain\Population;
+use Districts\Core\Domain\Area;
+use Districts\Core\Domain\City;
+use Districts\Core\Domain\Exception\DistrictNotFoundException;
+use Districts\Core\Domain\Exception\DuplicateDistrictNameException;
+use Districts\Core\Domain\Name;
+use Districts\Core\Domain\Population;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Test\Integration\Scraper\Application;
 
-use Districts\Editor\Infrastructure\DoctrineCityRepository;
+use Districts\Core\Infrastructure\DoctrineCityRepository;
 use Districts\Scraper\Application\Importer;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\DistrictDTO;
