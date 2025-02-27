@@ -77,12 +77,12 @@ final class DoctrineDistrictRepository implements DistrictRepository
         $dqlOrderBy = $this->dqlOrderBy($order);
         $dqlFilter = $this->filterFactory->fromDomainFilter($filter);
         $dql = "SELECT d, c FROM " . District::class . " d JOIN d.city c";
-        if ($dqlFilter->where() !== "") {
+        if ($dqlFilter) {
             $dql .= " WHERE " . $dqlFilter->where();
         }
         $dql .= " ORDER BY " . $dqlOrderBy;
         $query = $this->entityManager->createQuery($dql);
-        if ($dqlFilter->parameters()) {
+        if ($dqlFilter) {
             foreach ($dqlFilter->parameters() as $name => $value) {
                 $query->setParameter($name, $value);
             }

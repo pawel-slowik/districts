@@ -19,7 +19,6 @@ use Districts\Editor\Infrastructure\DistrictFilter\CityNameFilter as DqlCityName
 use Districts\Editor\Infrastructure\DistrictFilter\Filter as DqlFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
 use Districts\Editor\Infrastructure\DistrictFilter\NameFilter as DqlNameFilter;
-use Districts\Editor\Infrastructure\DistrictFilter\NullFilter as DqlNullFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\PopulationFilter as DqlPopulationFilter;
 use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Districts\Test\Integration\DoctrineDbTestCase;
@@ -148,7 +147,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
      * @param int[] $expectedIds
      */
     #[DataProvider('listFilterDataProvider')]
-    public function testListFilter(?Filter $filter, DqlFilter $dqlFilter, array $expectedIds): void
+    public function testListFilter(?Filter $filter, ?DqlFilter $dqlFilter, array $expectedIds): void
     {
         $this->filterFactory
             ->method("fromDomainFilter")
@@ -164,14 +163,14 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     }
 
     /**
-     * @return array<array{0: ?Filter, 1: DqlFilter, 2: int[]}>
+     * @return array<array{0: ?Filter, 1: ?DqlFilter, 2: int[]}>
      */
     public static function listFilterDataProvider(): array
     {
         return [
             [
                 null,
-                new DqlNullFilter(),
+                null,
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             ],
             [

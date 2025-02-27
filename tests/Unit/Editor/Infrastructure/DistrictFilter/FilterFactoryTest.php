@@ -13,7 +13,6 @@ use Districts\Editor\Infrastructure\DistrictFilter\AreaFilter as DqlAreaFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\CityNameFilter as DqlCityNameFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
 use Districts\Editor\Infrastructure\DistrictFilter\NameFilter as DqlNameFilter;
-use Districts\Editor\Infrastructure\DistrictFilter\NullFilter as DqlNullFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\PopulationFilter as DqlPopulationFilter;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -47,7 +46,6 @@ class FilterFactoryTest extends TestCase
     public static function typesDataProvider(): array
     {
         return [
-            [null, DqlNullFilter::class],
             [new DomainAreaFilter(1, 2), DqlAreaFilter::class],
             [new DomainCityNameFilter("foo"), DqlCityNameFilter::class],
             [new DomainNameFilter("bar"), DqlNameFilter::class],
