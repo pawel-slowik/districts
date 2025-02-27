@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Districts\Editor\Domain\DistrictRepository;
+use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
@@ -15,6 +17,7 @@ use Slim\Views\Twig;
 use function DI\get;
 
 return [
+    DistrictRepository::class => get(DoctrineDistrictRepository::class),
     ResponseFactoryInterface::class => get(Psr17Factory::class),
     UriFactoryInterface::class => get(Psr17Factory::class),
     CallableResolverInterface::class => static fn ($container) => new CallableResolver($container),
