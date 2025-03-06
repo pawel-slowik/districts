@@ -17,6 +17,7 @@ use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Traversable;
 
 final class DoctrineDistrictRepository implements DistrictRepository
 {
@@ -75,39 +76,39 @@ final class DoctrineDistrictRepository implements DistrictRepository
         DistrictOrdering $order,
         ?Filter $filter = null,
     ): Query {
-        $dqlOrderBy = $this->dqlOrderBy($order);
         $dqlFilter = $this->filterFactory->fromDomainFilter($filter);
-        $dql = "SELECT d, c FROM " . District::class . " d JOIN d.city c";
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select("d, c")->from(District::class, "d")->join("d.city", "c");
         if ($dqlFilter) {
-            $dql .= " WHERE " . $dqlFilter->where();
-        }
-        $dql .= " ORDER BY " . $dqlOrderBy;
-        $query = $this->entityManager->createQuery($dql);
-        if ($dqlFilter) {
+            $queryBuilder->where($dqlFilter->where());
             foreach ($dqlFilter->parameters() as $name => $value) {
-                $query->setParameter($name, $value);
+                $queryBuilder->setParameter($name, $value);
             }
         }
-        return $query;
+        foreach ($this->dqlOrderBy($order) as [$field, $direction]) {
+            $queryBuilder->addOrderBy($field, $direction);
+        }
+        return $queryBuilder->getQuery();
     }
 
-    private function dqlOrderBy(DistrictOrdering $order): string
+    /**
+     * @return Traversable<array{0: string, 1: string}>
+     */
+    private function dqlOrderBy(DistrictOrdering $order): Traversable
     {
-        return match ([$order->field, $order->direction]) {
-            [DistrictOrderingField::FullName, OrderingDirection::Asc] => "c.name ASC, d.name.name ASC",
-            [DistrictOrderingField::FullName, OrderingDirection::Desc] => "c.name DESC, d.name.name DESC",
-
-            [DistrictOrderingField::CityName, OrderingDirection::Asc] => "c.name ASC",
-            [DistrictOrderingField::CityName, OrderingDirection::Desc] => "c.name DESC",
-
-            [DistrictOrderingField::DistrictName, OrderingDirection::Asc] => "d.name.name ASC",
-            [DistrictOrderingField::DistrictName, OrderingDirection::Desc] => "d.name.name DESC",
-
-            [DistrictOrderingField::Area, OrderingDirection::Asc] => "d.area.area ASC",
-            [DistrictOrderingField::Area, OrderingDirection::Desc] => "d.area.area DESC",
-
-            [DistrictOrderingField::Population, OrderingDirection::Asc] => "d.population.population ASC",
-            [DistrictOrderingField::Population, OrderingDirection::Desc] => "d.population.population DESC",
+        $fields = match ($order->field) {
+            DistrictOrderingField::FullName => ["c.name", "d.name.name"],
+            DistrictOrderingField::CityName => ["c.name"],
+            DistrictOrderingField::DistrictName => ["d.name.name"],
+            DistrictOrderingField::Area => ["d.area.area"],
+            DistrictOrderingField::Population => ["d.population.population"],
         };
+        $direction = match ($order->direction) {
+            OrderingDirection::Asc => "ASC",
+            OrderingDirection::Desc => "DESC",
+        };
+        foreach ($fields as $field) {
+            yield [$field, $direction];
+        }
     }
 }
