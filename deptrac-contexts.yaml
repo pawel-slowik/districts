@@ -1,0 +1,25 @@
+deptrac:
+
+  paths:
+    - ./src
+
+  layers:
+    - name: Core
+      collectors:
+        - type: classLike
+          value: Districts\\Core\\.*
+    - name: Editor
+      collectors:
+        - type: classLike
+          value: Districts\\Editor\\.*
+    - name: Scraper
+      collectors:
+        - type: classLike
+          value: Districts\\Scraper\\.*
+
+  ruleset:
+    Scraper:
+      - Core
+    Editor:
+      - Core
+    Core: ~

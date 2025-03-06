@@ -18,8 +18,13 @@ WORKDIR /opt/php_codesniffer
 RUN composer install
 ENV PATH="/opt/php_codesniffer/vendor/bin:$PATH"
 
+COPY deptrac/composer.json deptrac/composer.lock /opt/deptrac/
+WORKDIR /opt/deptrac
+RUN composer install
+ENV PATH="/opt/deptrac/vendor/bin:$PATH"
+
 WORKDIR /app
 
 ENTRYPOINT ["sh"]
 
-CMD ["-c", "result=0; trap result=1 ERR; phpstan -V; phpstan analyse; php-cs-fixer fix -v --dry-run --diff; phpcs --version; phpcs; exit $result"]
+CMD ["-c", "result=0; trap result=1 ERR; phpstan -V; phpstan analyse; php-cs-fixer fix -v --dry-run --diff; phpcs --version; phpcs; deptrac --version; deptrac analyse -c deptrac-contexts.yaml; exit $result"]
