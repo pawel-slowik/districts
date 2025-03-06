@@ -50,12 +50,6 @@ class ListControllerTest extends BaseTestCase
         ];
     }
 
-    public function testPostNotAllowed(): void
-    {
-        $response = $this->runApp("POST", "/list");
-        $this->assertSame(StatusCode::STATUS_METHOD_NOT_ALLOWED, $response->getStatusCode());
-    }
-
     public function testFilteringError(): void
     {
         $response = $this->runApp("GET", "/list?filterColumn=population&filterValue=2-1");

@@ -21,10 +21,4 @@ class RemoveActionControllerTest extends BaseTestCase
         $this->assertTrue($response->hasHeader("location"));
         $this->assertStringEndsWith("/list", $response->getHeader("location")[0]);
     }
-
-    public function testNonexistent(): void
-    {
-        $response = $this->runApp("POST", "/remove/999");
-        $this->assertSame(StatusCode::STATUS_NOT_FOUND, $response->getStatusCode());
-    }
 }

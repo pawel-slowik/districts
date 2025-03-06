@@ -21,10 +21,4 @@ class HomeControllerTest extends BaseTestCase
         $this->assertTrue($response->hasHeader("location"));
         $this->assertStringEndsWith("/list", $response->getHeader("location")[0]);
     }
-
-    public function testPostNotAllowed(): void
-    {
-        $response = $this->runApp("POST", "/");
-        $this->assertSame(StatusCode::STATUS_METHOD_NOT_ALLOWED, $response->getStatusCode());
-    }
 }

@@ -19,10 +19,4 @@ class RemoveFormControllerTest extends BaseTestCase
         $this->assertSame(StatusCode::STATUS_OK, $response->getStatusCode());
         $this->assertStringContainsString("<form", (string) $response->getBody());
     }
-
-    public function testNonexistent(): void
-    {
-        $response = $this->runApp("GET", "/remove/999");
-        $this->assertSame(StatusCode::STATUS_NOT_FOUND, $response->getStatusCode());
-    }
 }

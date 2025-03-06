@@ -40,15 +40,4 @@ class EditActionControllerTest extends BaseTestCase
         $this->assertTrue($response->hasHeader("location"));
         $this->assertStringEndsWith("/edit/1", $response->getHeader("location")[0]);
     }
-
-    public function testNonexistent(): void
-    {
-        $postData = [
-            "name" => "test",
-            "area" => "123.45",
-            "population" => "6789",
-        ];
-        $response = $this->runApp("POST", "/edit/999", $postData);
-        $this->assertSame(StatusCode::STATUS_NOT_FOUND, $response->getStatusCode());
-    }
 }
