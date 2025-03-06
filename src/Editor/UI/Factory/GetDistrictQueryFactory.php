@@ -15,13 +15,10 @@ class GetDistrictQueryFactory
      */
     public function fromRoute(array $routeArgs, Request $request): GetDistrictQuery
     {
-        if (array_key_exists("id", $routeArgs)) {
-            $id = intval($routeArgs["id"]);
-        }
-        if (isset($id)) {
-            return new GetDistrictQuery($id);
+        if (!array_key_exists("id", $routeArgs)) {
+            throw new HttpBadRequestException($request);
         }
 
-        throw new HttpBadRequestException($request);
+        return new GetDistrictQuery(intval($routeArgs["id"]));
     }
 }

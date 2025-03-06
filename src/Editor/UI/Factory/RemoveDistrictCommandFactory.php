@@ -15,14 +15,10 @@ class RemoveDistrictCommandFactory
      */
     public function fromRoute(array $routeArgs, Request $request): RemoveDistrictCommand
     {
-        if (array_key_exists("id", $routeArgs)) {
-            $id = intval($routeArgs["id"]);
+        if (!array_key_exists("id", $routeArgs)) {
+            throw new HttpBadRequestException($request);
         }
 
-        if (isset($id)) {
-            return new RemoveDistrictCommand($id);
-        }
-
-        throw new HttpBadRequestException($request);
+        return new RemoveDistrictCommand(intval($routeArgs["id"]));
     }
 }
