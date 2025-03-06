@@ -31,7 +31,7 @@ final class EditFormController
         $district = $this->session->getAndDelete("form.edit.values");
         if (!$district) {
             try {
-                $district = $this->districtService->get($this->queryFactory->fromRequest($request, $args));
+                $district = $this->districtService->get($this->queryFactory->fromRoute($args, $request));
             } catch (NotFoundInRepositoryException) {
                 throw new HttpNotFoundException($request);
             }

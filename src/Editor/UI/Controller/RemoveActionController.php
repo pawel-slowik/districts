@@ -32,7 +32,7 @@ final class RemoveActionController
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $command = $this->commandFactory->fromRoute($args);
+        $command = $this->commandFactory->fromRoute($args, $request);
         try {
             $this->districtService->remove($command);
             $this->session->set("success.message", "District data removed.");

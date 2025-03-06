@@ -34,7 +34,7 @@ final class EditActionController
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         try {
-            $command = $this->commandFactory->fromRequest($request, $args);
+            $command = $this->commandFactory->fromRequestAndRoute($request, $args);
             $this->districtService->update($command);
             $this->session->set("success.message", "District data saved successfully.");
             $this->session->delete("form.edit.values");

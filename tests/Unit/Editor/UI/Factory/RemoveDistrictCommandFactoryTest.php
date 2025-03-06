@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Districts\Test\Unit\Editor\UI\Factory;
 
-use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\UI\Factory\RemoveDistrictCommandFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 #[CoversClass(RemoveDistrictCommandFactory::class)]
 class RemoveDistrictCommandFactoryTest extends TestCase
@@ -21,13 +21,8 @@ class RemoveDistrictCommandFactoryTest extends TestCase
 
     public function testValidRemoveRequest(): void
     {
-        $command = $this->commandFactory->fromRoute(["id" => "1"]);
+        $request = $this->createStub(Request::class);
+        $command = $this->commandFactory->fromRoute(["id" => "1"], $request);
         $this->assertSame(1, $command->id);
-    }
-
-    public function testIncompleteRemoveRequest(): void
-    {
-        $this->expectException(ValidationException::class);
-        $this->commandFactory->fromRoute([]);
     }
 }

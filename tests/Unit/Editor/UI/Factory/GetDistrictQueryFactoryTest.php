@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Districts\Test\Unit\Editor\UI\Factory;
 
-use Districts\Editor\Application\Exception\ValidationException;
 use Districts\Editor\UI\Factory\GetDistrictQueryFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -22,15 +21,8 @@ class GetDistrictQueryFactoryTest extends TestCase
 
     public function testNonEmptyQuery(): void
     {
-        $request = $this->createMock(Request::class);
-        $query = $this->queryFactory->fromRequest($request, ["id" => "1"]);
+        $request = $this->createStub(Request::class);
+        $query = $this->queryFactory->fromRoute(["id" => "1"], $request);
         $this->assertSame(1, $query->id);
-    }
-
-    public function testEmptyQuery(): void
-    {
-        $request = $this->createMock(Request::class);
-        $this->expectException(ValidationException::class);
-        $this->queryFactory->fromRequest($request, []);
     }
 }

@@ -27,7 +27,7 @@ final class RemoveFormController
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         try {
-            $district = $this->districtService->get($this->queryFactory->fromRequest($request, $args));
+            $district = $this->districtService->get($this->queryFactory->fromRoute($args, $request));
         } catch (NotFoundInRepositoryException) {
             throw new HttpNotFoundException($request);
         }
