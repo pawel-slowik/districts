@@ -7,7 +7,7 @@ namespace Districts\Scraper\UI;
 use Districts\Scraper\Domain\CityScraper;
 use InvalidArgumentException;
 
-class ScraperCityFilter
+readonly class ScraperCityFilter
 {
     /**
      * @param string[] $names

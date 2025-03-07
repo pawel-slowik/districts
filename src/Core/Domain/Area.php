@@ -8,7 +8,7 @@ use Districts\Core\Domain\Exception\InvalidAreaException;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Embeddable]
-class Area
+readonly class Area
 {
     #[ORM\Column(type: "float")]
     private float $area;

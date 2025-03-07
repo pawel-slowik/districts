@@ -6,7 +6,7 @@ namespace Districts\Editor\Infrastructure\DistrictFilter;
 
 use Districts\Editor\Domain\DistrictFilter\PopulationFilter as DomainPopulationFilter;
 
-class PopulationFilter extends Filter
+readonly class PopulationFilter extends Filter
 {
     private int $low;
 

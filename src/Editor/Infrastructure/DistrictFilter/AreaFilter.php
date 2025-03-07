@@ -6,7 +6,7 @@ namespace Districts\Editor\Infrastructure\DistrictFilter;
 
 use Districts\Editor\Domain\DistrictFilter\AreaFilter as DomainAreaFilter;
 
-class AreaFilter extends Filter
+readonly class AreaFilter extends Filter
 {
     private float $low;
 

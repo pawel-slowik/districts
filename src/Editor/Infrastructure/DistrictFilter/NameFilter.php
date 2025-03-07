@@ -6,7 +6,7 @@ namespace Districts\Editor\Infrastructure\DistrictFilter;
 
 use Districts\Editor\Domain\DistrictFilter\NameFilter as DomainNameFilter;
 
-class NameFilter extends Filter
+readonly class NameFilter extends Filter
 {
     private string $name;
 

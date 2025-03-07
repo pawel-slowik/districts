@@ -8,7 +8,7 @@ use Districts\Core\Domain\Exception\InvalidPopulationException;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Embeddable]
-class Population
+readonly class Population
 {
     #[ORM\Column(type: "integer")]
     private int $population;

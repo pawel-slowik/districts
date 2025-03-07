@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Districts\Editor\Infrastructure\DistrictFilter;
 
-abstract class Filter
+abstract readonly class Filter
 {
     abstract public function where(): string;
 
