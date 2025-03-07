@@ -34,11 +34,9 @@ class DistrictTest extends TestCase
         $this->assertSame($this->city, $this->district->getCity());
     }
 
-    public function testSetters(): void
+    public function testUpdate(): void
     {
-        $this->district->setName(new Name("bar"));
-        $this->district->setArea(new Area(30.3));
-        $this->district->setPopulation(new Population(404));
+        $this->district->update(new Name("bar"), new Area(30.3), new Population(404));
 
         $this->assertObjectEquals(new Name("bar"), $this->district->getName());
         $this->assertObjectEquals(new Area(30.3), $this->district->getArea());

@@ -62,18 +62,10 @@ class District
         return $this->city;
     }
 
-    public function setName(Name $name): void
+    public function update(Name $name, Area $area, Population $population): void
     {
         $this->name = $name;
-    }
-
-    public function setArea(Area $area): void
-    {
         $this->area = $area;
-    }
-
-    public function setPopulation(Population $population): void
-    {
         $this->population = $population;
     }
 }

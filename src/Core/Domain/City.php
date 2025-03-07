@@ -61,9 +61,7 @@ class City
             }
         }
         $district = $this->getDistrictByName($currentName);
-        $district->setName($updatedName);
-        $district->setArea($updatedArea);
-        $district->setPopulation($updatedPopulation);
+        $district->update($updatedName, $updatedArea, $updatedPopulation);
     }
 
     public function removeDistrict(Name $name): void
