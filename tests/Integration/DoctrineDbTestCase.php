@@ -23,15 +23,12 @@ abstract class DoctrineDbTestCase extends TestCase
         FixtureTool::loadSql($this->entityManager, $sql);
     }
 
-    protected function loadDefaultDbContents(): void
+    /**
+     * @param string[] $fileNames
+     */
+    protected function loadFiles(array $fileNames): void
     {
-        FixtureTool::loadFiles(
-            $this->entityManager,
-            [
-                "tests/Integration/Editor/Infrastructure/data/cities.sql",
-                "tests/Integration/Editor/Infrastructure/data/districts.sql",
-            ]
-        );
+        FixtureTool::loadFiles($this->entityManager, $fileNames);
     }
 
     /**

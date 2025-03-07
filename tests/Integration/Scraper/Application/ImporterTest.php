@@ -26,7 +26,7 @@ SQL;
     protected function setUp(): void
     {
         parent::setUp();
-        parent::loadSql(self::TESTCASE_SQL);
+        $this->loadSql(self::TESTCASE_SQL);
         $this->importer = new Importer(new DoctrineCityRepository($this->entityManager));
     }
 

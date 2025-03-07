@@ -27,7 +27,7 @@ SQL;
     protected function setUp(): void
     {
         parent::setUp();
-        parent::loadSql(self::TESTCASE_SQL);
+        $this->loadSql(self::TESTCASE_SQL);
 
         $this->cityRepository = new DoctrineCityRepository($this->entityManager);
     }

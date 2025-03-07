@@ -39,7 +39,12 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        parent::loadDefaultDbContents();
+        $this->loadFiles(
+            [
+                "tests/Integration/Editor/Infrastructure/data/cities.sql",
+                "tests/Integration/Editor/Infrastructure/data/districts.sql",
+            ]
+        );
         $this->filterFactory = $this->createStub(FilterFactory::class);
         $this->districtRepository = new DoctrineDistrictRepository(
             $this->entityManager,
