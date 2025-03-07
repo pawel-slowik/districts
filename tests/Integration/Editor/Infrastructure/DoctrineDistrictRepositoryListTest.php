@@ -41,8 +41,8 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
         parent::setUp();
         $this->loadFiles(
             [
-                "tests/Integration/Editor/Infrastructure/data/cities.sql",
-                "tests/Integration/Editor/Infrastructure/data/districts.sql",
+                "tests/Integration/Editor/data/cities.sql",
+                "tests/Integration/Editor/data/districts.sql",
             ]
         );
         $this->filterFactory = $this->createStub(FilterFactory::class);
