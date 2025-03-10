@@ -5,10 +5,12 @@ declare(strict_types=1);
 use Districts\Scraper\Domain\Gdansk\CityScraper as GdanskScraper;
 use Districts\Scraper\Domain\HtmlFetcher;
 use Districts\Scraper\Domain\Krakow\CityScraper as KrakowScraper;
-use Districts\Scraper\Infrastructure\GuzzleHtmlFetcher;
+use Districts\Scraper\Infrastructure\PsrHtmlFetcher;
 use Districts\Scraper\UI\ImportCommand;
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 
 use function DI\autowire;
 use function DI\get;
@@ -20,8 +22,8 @@ return [
             get(KrakowScraper::class),
         ],
     ),
-    HtmlFetcher::class => get(GuzzleHtmlFetcher::class),
-    ClientInterface::class => get(Client::class),
+    HtmlFetcher::class => get(PsrHtmlFetcher::class),
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-    Client::class => static fn ($container) => new Client(["verify" => false]),
+    ClientInterface::class => static fn ($container) => new Client(["verify" => false]),
+    RequestFactoryInterface::class => get(Psr17Factory::class),
 ];

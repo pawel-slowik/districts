@@ -7,18 +7,21 @@ namespace Districts\Scraper\Infrastructure;
 use Districts\Scraper\Domain\Exception\FetchingException;
 use Districts\Scraper\Domain\HtmlFetcher;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
-use GuzzleHttp\ClientInterface;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 
-class GuzzleHtmlFetcher implements HtmlFetcher
+class PsrHtmlFetcher implements HtmlFetcher
 {
     public function __construct(
         private ClientInterface $httpClient,
+        private RequestFactoryInterface $requestFactory,
     ) {
     }
 
     public function fetchHtml(string $url): string
     {
-        $response = $this->httpClient->request("GET", $url);
+        $request = $this->requestFactory->createRequest("GET", $url);
+        $response = $this->httpClient->sendRequest($request);
         if ($response->getStatusCode() !== StatusCode::STATUS_OK) {
             throw new FetchingException();
         }

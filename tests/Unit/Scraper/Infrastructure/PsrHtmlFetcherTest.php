@@ -5,19 +5,20 @@ declare(strict_types=1);
 namespace Districts\Test\Unit\Scraper\Infrastructure;
 
 use Districts\Scraper\Domain\Exception\FetchingException;
-use Districts\Scraper\Infrastructure\GuzzleHtmlFetcher;
+use Districts\Scraper\Infrastructure\PsrHtmlFetcher;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
-use GuzzleHttp\ClientInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
-#[CoversClass(GuzzleHtmlFetcher::class)]
-class GuzzleHtmlFetcherTest extends TestCase
+#[CoversClass(PsrHtmlFetcher::class)]
+class PsrHtmlFetcherTest extends TestCase
 {
-    private GuzzleHtmlFetcher $guzzleHtmlFetcher;
+    private PsrHtmlFetcher $guzzleHtmlFetcher;
 
     /** @var ResponseInterface&Stub */
     private ResponseInterface $response;
@@ -28,10 +29,12 @@ class GuzzleHtmlFetcherTest extends TestCase
 
         $httpClient = $this->createStub(ClientInterface::class);
         $httpClient
-            ->method("request")
+            ->method("sendRequest")
             ->willReturn($this->response);
 
-        $this->guzzleHtmlFetcher = new GuzzleHtmlFetcher($httpClient);
+        $requestFactory = $this->createStub(RequestFactoryInterface::class);
+
+        $this->guzzleHtmlFetcher = new PsrHtmlFetcher($httpClient, $requestFactory);
     }
 
     public function testExceptionOnError(): void
