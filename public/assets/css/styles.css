@@ -72,6 +72,7 @@ p#close_error_message:target
 table#districts
 {
     border-spacing: 0;
+    width: 100%;
 }
 
 table#districts td,
@@ -91,6 +92,20 @@ table#districts th
     font-weight: normal;
     text-align: center;
     background-color: lightgray;
+}
+
+table#districts th.city,
+table#districts td.city
+{
+    width: 15%;
+}
+
+table#districts th.area,
+table#districts th.population,
+table#districts td.area,
+table#districts td.population
+{
+    width: 7em;
 }
 
 table#districts th.edit,
