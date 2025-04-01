@@ -1,3 +1,9 @@
+body
+{
+	width: min(55em, 95%);
+	margin: auto;
+}
+
 form p
 {
 	margin-top: 0.25em;
