@@ -1,17 +1,14 @@
-<div>
+<p>
     <label for="name">name:</label>
     <input type="text" name="name" value="{{ district.name }}" {% if errors.name %} class="error" {% endif %}>
-</div>
-<br>
+</p>
 
-<div>
+<p>
     <label for="area">area:</label>
     <input type="text" name="area" value="{{ district.area }}" {% if errors.area %} class="error" {% endif %}> km²
-</div>
-<br>
+</p>
 
-<div>
+<p>
     <label for="population">population:</label>
     <input type="text" name="population" value="{{ district.population }}" {% if errors.population %} class="error" {% endif %}>
-</div>
-<br>
+</p>

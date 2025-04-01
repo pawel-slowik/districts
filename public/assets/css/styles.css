@@ -1,7 +1,7 @@
-form.entity div
+form p
 {
-    vertical-align: middle;
-    display: table-cell;
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
 }
 
 form.entity label
