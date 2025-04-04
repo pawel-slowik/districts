@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b24adc61b10b682c6d17b375ad19d912",
+    "content-hash": "570c5a3af28716ce23c55145c218dcde",
     "packages": [
         {
             "name": "bryanjhv/slim-session",
@@ -1201,6 +1201,15 @@
                 }
             ],
             "time": "2024-07-18T11:15:46+00:00"
+        },
+        {
+            "name": "kevquirk/simple.css",
+            "version": "2.3.5",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/kevquirk/simple.css/archive/refs/tags/v2.3.5.zip"
+            },
+            "type": "library"
         },
         {
             "name": "laminas/laminas-escaper",

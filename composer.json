@@ -16,6 +16,7 @@
         "doctrine/orm": "^3.0",
         "fig/http-message-util": "^1.1",
         "guzzlehttp/guzzle": "^7.4",
+        "kevquirk/simple.css": "^2.3",
         "laminas/laminas-uri": "^2.11",
         "nyholm/psr7": "^1.2",
         "nyholm/psr7-server": "^1.0.1",
@@ -38,8 +39,24 @@
     "scripts": {
         "test": [
             "vendor/bin/phpunit"
-        ]
+        ],
+        "assets": "php -r \"copy('vendor/kevquirk/simple.css/simple.min.css', 'public/assets/css/simple.min.css');\"",
+        "post-install-cmd": "@assets",
+        "post-update-cmd": "@assets"
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "kevquirk/simple.css",
+                "version": "2.3.5",
+                "dist": {
+                    "url": "https://github.com/kevquirk/simple.css/archive/refs/tags/v2.3.5.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    ],
     "config": {
         "sort-packages": true
     }

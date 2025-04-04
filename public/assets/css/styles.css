@@ -1,7 +1,14 @@
 body
 {
+	font-size: initial; /* reset superfluous Simple.css framework settings */
+	display: block;
 	width: min(55em, 95%);
 	margin: auto;
+}
+
+label
+{
+	display: initial; /* reset superfluous Simple.css framework settings */
 }
 
 form p
@@ -14,13 +21,6 @@ form.entity label
 {
     width: 7em;
     display: inline-block;
-}
-
-form.entity input[type="text"]
-{
-    padding: 0.5ex;
-    border-style: solid;
-    border-color: grey;
 }
 
 form.entity input[type="text"].error

@@ -57,4 +57,3 @@ Run static analysis and coding style checks with:
 
 - replace the validator with Valitron? zend-validator?
 - automatically generate forms with [zend-form and model annotations](https://docs.zendframework.com/zend-form/quick-start/#using-annotations)?
-- pretty HTML / CSS - use a CSS framework
