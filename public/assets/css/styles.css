@@ -19,19 +19,19 @@ form p
 
 form.entity label
 {
-    width: 7em;
-    display: inline-block;
+	width: 7em;
+	display: inline-block;
 }
 
 form.entity input[type="text"].error
 {
-    border-color: red;
+	border-color: red;
 }
 
 form#filter
 {
-    margin-top: 1em;
-    margin-bottom: 1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
 p.message
@@ -54,47 +54,47 @@ p.message.error
 
 p.message a.close
 {
-    text-decoration: none;
-    color: black;
-    float: right;
-    margin-right: 0.5em;
+	text-decoration: none;
+	color: black;
+	float: right;
+	margin-right: 0.5em;
 }
 
 p#close_message:target,
 p#close_error_message:target
 {
-    display: none;
+	display: none;
 }
 
 table#districts
 {
-    border-spacing: 0;
-    width: 100%;
+	border-spacing: 0;
+	width: 100%;
 }
 
 table#districts td,
 table#districts th
 {
-    padding: 1ex;
-    border-bottom: solid 1px black;
+	padding: 1ex;
+	border-bottom: solid 1px black;
 }
 
 table#districts th
 {
-    border-top: solid 1px black;
+	border-top: solid 1px black;
 }
 
 table#districts th
 {
-    font-weight: normal;
-    text-align: center;
-    background-color: lightgray;
+	font-weight: normal;
+	text-align: center;
+	background-color: lightgray;
 }
 
 table#districts th.city,
 table#districts td.city
 {
-    width: 15%;
+	width: 15%;
 }
 
 table#districts th.area,
@@ -102,7 +102,7 @@ table#districts th.population,
 table#districts td.area,
 table#districts td.population
 {
-    width: 7em;
+	width: 7em;
 }
 
 table#districts th.edit,
@@ -110,17 +110,17 @@ table#districts th.remove,
 table#districts td.edit,
 table#districts td.remove
 {
-    width: 5em;
-    text-align: center;
+	width: 5em;
+	text-align: center;
 }
 
 table#districts td.area,
 table#districts td.population
 {
-    text-align: right;
+	text-align: right;
 }
 
 p.pagination a.current
 {
-    font-weight: bold;
+	font-weight: bold;
 }
