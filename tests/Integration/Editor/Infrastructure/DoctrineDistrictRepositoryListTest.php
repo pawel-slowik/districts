@@ -31,8 +31,7 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 {
     private DoctrineDistrictRepository $districtRepository;
 
-    /** @var FilterFactory&Stub */
-    private FilterFactory $filterFactory;
+    private FilterFactory&Stub $filterFactory;
 
     private DistrictOrdering $defaultOrder;
 

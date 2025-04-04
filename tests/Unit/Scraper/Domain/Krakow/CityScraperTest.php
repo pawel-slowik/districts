@@ -19,14 +19,11 @@ class CityScraperTest extends TestCase
 {
     private CityScraper $scraper;
 
-    /** @var HtmlFetcher&Stub */
-    private HtmlFetcher $htmlFetcher;
+    private HtmlFetcher&Stub $htmlFetcher;
 
-    /** @var CityParser&Stub */
-    private CityParser $cityParser;
+    private CityParser&Stub $cityParser;
 
-    /** @var DistrictParser&Stub */
-    private DistrictParser $districtParser;
+    private DistrictParser&Stub $districtParser;
 
     protected function setUp(): void
     {

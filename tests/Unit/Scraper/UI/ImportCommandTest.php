@@ -18,19 +18,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[CoversClass(ImportCommand::class)]
 class ImportCommandTest extends TestCase
 {
-    /** @var Importer&MockObject */
-    private Importer $importer;
+    private Importer&MockObject $importer;
 
-    /** @var CityScraper&MockObject */
-    private CityScraper $scraper;
+    private CityScraper&MockObject $scraper;
 
     private ImportCommand $command;
 
-    /** @var InputInterface&MockObject */
-    private InputInterface $input;
+    private InputInterface&MockObject $input;
 
-    /** @var MockObject&OutputInterface */
-    private OutputInterface $output;
+    private OutputInterface&MockObject $output;
 
     protected function setUp(): void
     {

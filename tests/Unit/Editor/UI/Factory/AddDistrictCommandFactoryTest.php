@@ -13,8 +13,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 #[CoversClass(AddDistrictCommandFactory::class)]
 class AddDistrictCommandFactoryTest extends TestCase
 {
-    /** @var MockObject&Request */
-    private Request $request;
+    private Request&MockObject $request;
 
     private AddDistrictCommandFactory $commandFactory;
 

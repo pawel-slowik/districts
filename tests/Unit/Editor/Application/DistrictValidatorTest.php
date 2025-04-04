@@ -22,11 +22,9 @@ class DistrictValidatorTest extends TestCase
 {
     private DistrictValidator $districtValidator;
 
-    /** @var CityRepository&Stub */
-    private CityRepository $cityRepository;
+    private CityRepository&Stub $cityRepository;
 
-    /** @var DistrictRepository&Stub */
-    private DistrictRepository $districtRepository;
+    private DistrictRepository&Stub $districtRepository;
 
     protected function setUp(): void
     {

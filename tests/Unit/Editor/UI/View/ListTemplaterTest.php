@@ -23,14 +23,11 @@ class ListTemplaterTest extends TestCase
     /** @var ListTemplater<string> */
     private ListTemplater $listTemplater;
 
-    /** @var PageReferenceFactory&Stub */
-    private PageReferenceFactory $pageReferenceFactory;
+    private PageReferenceFactory&Stub $pageReferenceFactory;
 
-    /** @var OrderingLinkGenerator&Stub */
-    private OrderingLinkGenerator $orderingLinkGenerator;
+    private OrderingLinkGenerator&Stub $orderingLinkGenerator;
 
-    /** @var Stub&UriFactoryInterface */
-    private UriFactoryInterface $uriFactory;
+    private UriFactoryInterface&Stub $uriFactory;
 
     protected function setUp(): void
     {

@@ -17,8 +17,7 @@ class CityParserTest extends TestCase
 {
     private CityParser $cityParser;
 
-    /** @var HtmlFinder&Stub */
-    private HtmlFinder $htmlFinder;
+    private HtmlFinder&Stub $htmlFinder;
 
     protected function setUp(): void
     {

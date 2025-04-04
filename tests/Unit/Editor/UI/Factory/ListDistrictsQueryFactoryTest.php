@@ -21,17 +21,13 @@ class ListDistrictsQueryFactoryTest extends TestCase
 {
     private ListDistrictsQueryFactory $queryFactory;
 
-    /** @var DistrictOrderingFactory&MockObject */
-    private DistrictOrderingFactory $districtOrderingFactory;
+    private DistrictOrderingFactory&MockObject $districtOrderingFactory;
 
-    /** @var DistrictFilterFactory&MockObject */
-    private DistrictFilterFactory $districtFilterFactory;
+    private DistrictFilterFactory&MockObject $districtFilterFactory;
 
-    /** @var MockObject&PaginationFactory */
-    private PaginationFactory $paginationFactory;
+    private PaginationFactory&MockObject $paginationFactory;
 
-    /** @var Request&Stub */
-    private Request $request;
+    private Request&Stub $request;
 
     protected function setUp(): void
     {

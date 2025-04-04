@@ -14,8 +14,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(CityIterator::class)]
 class CityIteratorTest extends TestCase
 {
-    /** @var CityRepository&MockObject */
-    private CityRepository $cityRepository;
+    private CityRepository&MockObject $cityRepository;
 
     private CityIterator $cityIterator;
 

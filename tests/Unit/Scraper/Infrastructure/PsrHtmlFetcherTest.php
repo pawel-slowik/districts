@@ -20,8 +20,7 @@ class PsrHtmlFetcherTest extends TestCase
 {
     private PsrHtmlFetcher $guzzleHtmlFetcher;
 
-    /** @var ResponseInterface&Stub */
-    private ResponseInterface $response;
+    private ResponseInterface&Stub $response;
 
     protected function setUp(): void
     {

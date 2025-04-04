@@ -34,14 +34,11 @@ class DistrictServiceTest extends TestCase
 {
     private DistrictService $districtService;
 
-    /** @var DistrictRepository&Stub */
-    private DistrictRepository $districtRepository;
+    private DistrictRepository&Stub $districtRepository;
 
-    /** @var DistrictValidator&Stub */
-    private DistrictValidator $districtValidator;
+    private DistrictValidator&Stub $districtValidator;
 
-    /** @var CityRepository&MockObject */
-    private CityRepository $cityRepository;
+    private CityRepository&MockObject $cityRepository;
 
     protected function setUp(): void
     {
