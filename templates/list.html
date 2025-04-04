@@ -3,7 +3,7 @@
 {% block content %}
 
 {% if successMessage %}
-<p class="success message" id="close_message">
+<p class="success message notice" id="close_message">
     {{ successMessage }}
     <a class="close" href="#close_message" title="dismiss message">&#x2715;</a>
 </p>
@@ -35,7 +35,7 @@
 </form>
 
 {% if errorMessage %}
-<p class="error message" id="close_error_message">
+<p class="error message notice" id="close_error_message">
     {{ errorMessage }}
     <a class="close" href="#close_error_message" title="dismiss message">&#x2715;</a>
 </p>

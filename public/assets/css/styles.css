@@ -36,23 +36,20 @@ form#filter
 
 p.message
 {
-	width: 30em;
-	height: 2em;
-	vertical-align: middle;
+	width: min(30em, 95%);
 	text-align: center;
-	line-height: 2em;
 }
 
 p.message.success
 {
 	background-color: lightgreen;
-	border: solid 2px green;
+	border-color: green;
 }
 
 p.message.error
 {
 	background-color: pink;
-	border: solid 2px red;
+	border-color: red;
 }
 
 p.message a.close
