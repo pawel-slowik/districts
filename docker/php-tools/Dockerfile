@@ -25,6 +25,6 @@ ENV PATH="/opt/deptrac/vendor/bin:$PATH"
 
 WORKDIR /app
 
-COPY check.sh /usr/local/bin/
+COPY docker-entrypoint.sh /usr/local/bin/
 
-ENTRYPOINT ["check.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]

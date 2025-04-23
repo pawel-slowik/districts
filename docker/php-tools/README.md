@@ -30,7 +30,7 @@ Examples:
         RUN composer install
         ENV PATH="/opt/php-cs-fixer/vendor/bin:$PATH"
 
-    Finally, modify `check.sh` to include a call to `php-cs-fixer`:
+    Finally, modify `docker-entrypoint.sh` to include a call to `php-cs-fixer`:
 
         if [ $run_fixer -eq 1 ]; then
         	php-cs-fixer fix -v --dry-run --diff

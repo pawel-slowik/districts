@@ -23,8 +23,9 @@ case "$1" in
 		run_all=1
 		;;
 	*)
-		echo "$0: invalid command: $1" >&2
-		exit 1
+		# https://github.com/docker-library/official-images/blob/master/README.md#consistency
+		# Ensure that `docker run official-image bash` (or `sh`) works too.
+		exec "${@}"
 		;;
 esac
 
