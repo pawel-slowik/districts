@@ -52,7 +52,7 @@ fi
 
 if [ $run_sniffer -eq 1 ]; then
 	phpcs --version
-	phpcs
+	phpcs -p
 fi
 
 if [ $run_deptrac -eq 1 ]; then
