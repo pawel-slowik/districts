@@ -36,6 +36,8 @@ if [ $run_all -eq 1 ]; then
 fi
 
 result=0
+# BusyBox supports traps on ERR since version 1.35.0, 2021-12-26
+# shellcheck disable=SC3047
 trap result=1 ERR
 
 if [ $run_phpstan -eq 1 ]; then
