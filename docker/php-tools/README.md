@@ -32,7 +32,9 @@ Examples:
 
     Finally, modify `check.sh` to include a call to `php-cs-fixer`:
 
-        php-cs-fixer fix -v --dry-run --diff
+        if [ $run_fixer -eq 1 ]; then
+        	php-cs-fixer fix -v --dry-run --diff
+        fi
 
 - Rebuild the image
 

@@ -27,4 +27,4 @@ WORKDIR /app
 
 COPY check.sh /usr/local/bin/
 
-ENTRYPOINT check.sh
+ENTRYPOINT ["check.sh"]
