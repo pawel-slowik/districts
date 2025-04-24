@@ -14,24 +14,16 @@ use Districts\Editor\Domain\DistrictOrdering;
 use Districts\Editor\Domain\DistrictOrderingField;
 use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\Domain\Pagination;
-use Districts\Editor\Infrastructure\DistrictFilter\AreaFilter as DqlAreaFilter;
-use Districts\Editor\Infrastructure\DistrictFilter\CityNameFilter as DqlCityNameFilter;
-use Districts\Editor\Infrastructure\DistrictFilter\Filter as DqlFilter;
 use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
-use Districts\Editor\Infrastructure\DistrictFilter\NameFilter as DqlNameFilter;
-use Districts\Editor\Infrastructure\DistrictFilter\PopulationFilter as DqlPopulationFilter;
 use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Districts\Test\Integration\DoctrineDbTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\MockObject\Stub;
 
 #[CoversClass(DoctrineDistrictRepository::class)]
 class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 {
     private DoctrineDistrictRepository $districtRepository;
-
-    private FilterFactory&Stub $filterFactory;
 
     private DistrictOrdering $defaultOrder;
 
@@ -44,10 +36,9 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
                 "tests/Integration/Editor/data/districts.sql",
             ]
         );
-        $this->filterFactory = $this->createStub(FilterFactory::class);
         $this->districtRepository = new DoctrineDistrictRepository(
             $this->entityManager,
-            $this->filterFactory
+            new FilterFactory(),
         );
         $this->defaultOrder = new DistrictOrdering(DistrictOrderingField::FullName, OrderingDirection::Asc);
     }
@@ -151,12 +142,8 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
      * @param int[] $expectedIds
      */
     #[DataProvider('listFilterDataProvider')]
-    public function testListFilter(?Filter $filter, ?DqlFilter $dqlFilter, array $expectedIds): void
+    public function testListFilter(?Filter $filter, array $expectedIds): void
     {
-        $this->filterFactory
-            ->method("fromDomainFilter")
-            ->willReturnMap([[$filter, $dqlFilter]]);
-
         sort($expectedIds);
         $actualIds = array_map(
             static fn ($district) => $district->getId(),
@@ -167,44 +154,37 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     }
 
     /**
-     * @return array<array{0: ?Filter, 1: ?DqlFilter, 2: int[]}>
+     * @return array<array{0: ?Filter, 1: int[]}>
      */
     public static function listFilterDataProvider(): array
     {
         return [
             [
                 null,
-                null,
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
             ],
             [
                 new CityNameFilter("Bar"),
-                new DqlCityNameFilter(new CityNameFilter("Bar")),
                 [12, 13, 14, 15],
             ],
             [
                 new CityNameFilter("o"),
-                new DqlCityNameFilter(new CityNameFilter("o")),
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
             ],
             [
                 new NameFilter("Xyzzy"),
-                new DqlNameFilter(new NameFilter("Xyzzy")),
                 [11],
             ],
             [
                 new NameFilter("bb"),
-                new DqlNameFilter(new NameFilter("bb")),
                 [12, 13, 15],
             ],
             [
                 new AreaFilter(100, 101),
-                new DqlAreaFilter(new AreaFilter(100, 101)),
                 [5, 10],
             ],
             [
                 new PopulationFilter(900, 1300),
-                new DqlPopulationFilter(new PopulationFilter(900, 1300)),
                 [2, 3, 5, 6, 10],
             ],
         ];

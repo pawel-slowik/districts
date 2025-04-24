@@ -31,7 +31,7 @@ SQL;
         $this->loadSql(self::TESTCASE_SQL);
         $this->districtRepository = new DoctrineDistrictRepository(
             $this->entityManager,
-            $this->createStub(FilterFactory::class)
+            new FilterFactory(),
         );
     }
 
