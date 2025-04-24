@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Districts\Test\Integration\Editor\UI;
 
-use DI\Container;
 use Districts\Editor\UI\RoutingConfiguration;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerInterface;
 use RuntimeException;
 use Slim\App;
 
@@ -18,15 +16,13 @@ use Slim\App;
 class RoutingConfigurationTest extends TestCase
 {
     /**
-     * @var App<ContainerInterface>
+     * @var App<null>
      */
     private App $app;
 
     protected function setUp(): void
     {
-        /** @var ContainerInterface */
-        $container = new Container(); // @phpstan-ignore varTag.nativeType
-        $this->app = new App(new Psr17Factory(), $container);
+        $this->app = new App(new Psr17Factory(), null);
     }
 
     public function testApply(): void

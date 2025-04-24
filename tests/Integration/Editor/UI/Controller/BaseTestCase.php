@@ -19,6 +19,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slim\App;
 use Slim\Interfaces\CallableResolverInterface;
 use Slim\Interfaces\RouteCollectorInterface;
+use Slim\Views\Twig;
 
 abstract class BaseTestCase extends TestCase
 {
@@ -43,7 +44,7 @@ abstract class BaseTestCase extends TestCase
     }
 
     /**
-     * @return App<ContainerInterface>
+     * @return App<null>
      */
     protected function createApp(ContainerInterface $container): App
     {
@@ -53,9 +54,11 @@ abstract class BaseTestCase extends TestCase
         $callableResolver = $container->get(CallableResolverInterface::class);
         /** @var RouteCollectorInterface */
         $routeCollector = $container->get(RouteCollectorInterface::class);
-        $app = new App($responseFactory, $container, $callableResolver, $routeCollector);
+        /** @var Twig */
+        $twig = $container->get(Twig::class);
 
-        Middleware::setUp($app);
+        $app = new App($responseFactory, null, $callableResolver, $routeCollector);
+        Middleware::setUp($app, $twig);
         RoutingConfiguration::apply($app);
 
         return $app;

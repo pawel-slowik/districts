@@ -11,6 +11,7 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\App;
 use Slim\Interfaces\CallableResolverInterface;
 use Slim\Interfaces\RouteCollectorInterface;
+use Slim\Views\Twig;
 
 $container = DependencyContainerFactory::create(["common", "editor"]);
 
@@ -20,9 +21,11 @@ $responseFactory = $container->get(ResponseFactoryInterface::class);
 $callableResolver = $container->get(CallableResolverInterface::class);
 /** @var RouteCollectorInterface */
 $routeCollector = $container->get(RouteCollectorInterface::class);
-$app = new App($responseFactory, $container, $callableResolver, $routeCollector);
+/** @var Twig */
+$twig = $container->get(Twig::class);
 
-Middleware::setUp($app);
+$app = new App($responseFactory, null, $callableResolver, $routeCollector);
+Middleware::setUp($app, $twig);
 RoutingConfiguration::apply($app);
 
 $app->run();

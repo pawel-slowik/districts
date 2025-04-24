@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Districts\Editor\UI;
 
-use Psr\Container\ContainerInterface;
 use Slim\App;
 use Slim\Middleware\Session;
 use Slim\Views\Twig;
@@ -13,12 +12,12 @@ use Slim\Views\TwigMiddleware;
 class Middleware
 {
     /**
-     * @param App<ContainerInterface> $app
+     * @param App<null> $app
      */
-    public static function setUp(App $app): void
+    public static function setUp(App $app, Twig $twig): void
     {
         $app->add(new Session());
-        $app->add(TwigMiddleware::createFromContainer($app, Twig::class));
+        $app->add(TwigMiddleware::create($app, $twig));
         $app->addErrorMiddleware(false, true, true);
     }
 }
