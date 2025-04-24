@@ -14,12 +14,13 @@ use Slim\Interfaces\RouteCollectorInterface;
 
 $container = DependencyContainerFactory::create(["common", "editor"]);
 
-$app = new App(
-    $container->get(ResponseFactoryInterface::class),
-    $container,
-    $container->get(CallableResolverInterface::class),
-    $container->get(RouteCollectorInterface::class)
-);
+/** @var ResponseFactoryInterface */
+$responseFactory = $container->get(ResponseFactoryInterface::class);
+/** @var CallableResolverInterface */
+$callableResolver = $container->get(CallableResolverInterface::class);
+/** @var RouteCollectorInterface */
+$routeCollector = $container->get(RouteCollectorInterface::class);
+$app = new App($responseFactory, $container, $callableResolver, $routeCollector);
 
 Middleware::setUp($app);
 RoutingConfiguration::apply($app);

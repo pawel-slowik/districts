@@ -3,6 +3,7 @@ parameters:
     paths:
         - src
         - tests
+        - public
         - dependencies
         - bin/console
         - bin/doctrine

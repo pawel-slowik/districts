@@ -6,9 +6,11 @@
     <file>dependencies</file>
     <file>src</file>
     <file>tests</file>
+    <file>public</file>
 
     <!-- s = show sniff codes -->
     <arg value="s"/>
+    <arg name="extensions" value="php"/>
 
     <config name="installed_paths" value="../../slevomat/coding-standard"/>
 
