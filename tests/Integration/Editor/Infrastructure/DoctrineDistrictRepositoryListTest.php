@@ -27,6 +27,8 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 
     private DistrictOrdering $defaultOrder;
 
+    private Pagination $pagination;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -41,13 +43,14 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
             new FilterFactory(),
         );
         $this->defaultOrder = new DistrictOrdering(DistrictOrderingField::FullName, OrderingDirection::Asc);
+        $this->pagination = new Pagination(1, 99_999);
     }
 
     public function testListStructure(): void
     {
-        $list = $this->districtRepository->list($this->defaultOrder);
-        $this->assertCount(15, $list);
-        $this->assertContainsOnlyInstancesOf(District::class, $list);
+        $result = $this->districtRepository->listWithPagination($this->defaultOrder, $this->pagination);
+        $this->assertCount(15, $result->currentPageEntries);
+        $this->assertContainsOnlyInstancesOf(District::class, $result->currentPageEntries);
     }
 
     /**
@@ -56,13 +59,12 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     #[DataProvider('listOrderCityDataProvider')]
     public function testListOrderCity(DistrictOrdering $order, array $expectedCityNames): void
     {
-        $this->assertSame(
-            $expectedCityNames,
-            array_values(array_unique(array_map(
-                static fn ($district) => $district->getCity()->getName(),
-                $this->districtRepository->list($order)
-            )))
-        );
+        $result = $this->districtRepository->listWithPagination($order, $this->pagination);
+        $actualCityNames = array_values(array_unique(array_map(
+            static fn ($district) => $district->getCity()->getName(),
+            $result->currentPageEntries,
+        )));
+        $this->assertSame($expectedCityNames, $actualCityNames);
     }
 
     /**
@@ -88,13 +90,12 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     #[DataProvider('listOrderDataProvider')]
     public function testListOrder(DistrictOrdering $order, array $expectedIds): void
     {
-        $this->assertSame(
-            $expectedIds,
-            array_map(
-                static fn ($district) => $district->getId(),
-                $this->districtRepository->list($order)
-            )
+        $result = $this->districtRepository->listWithPagination($order, $this->pagination);
+        $actualIds = array_map(
+            static fn ($district) => $district->getId(),
+            $result->currentPageEntries,
         );
+        $this->assertSame($expectedIds, $actualIds);
     }
 
     /**
@@ -144,11 +145,12 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
     #[DataProvider('listFilterDataProvider')]
     public function testListFilter(?Filter $filter, array $expectedIds): void
     {
-        sort($expectedIds);
+        $result = $this->districtRepository->listWithPagination($this->defaultOrder, $this->pagination, $filter);
         $actualIds = array_map(
             static fn ($district) => $district->getId(),
-            $this->districtRepository->list($this->defaultOrder, $filter)
+            $result->currentPageEntries,
         );
+        sort($expectedIds);
         sort($actualIds);
         $this->assertSame($expectedIds, $actualIds);
     }
@@ -192,25 +194,25 @@ class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 
     public function testCurrentPageEntryCount(): void
     {
-        $list = $this->districtRepository->listWithPagination($this->defaultOrder, new Pagination(1, 10));
-        $this->assertCount(10, $list->currentPageEntries);
+        $result = $this->districtRepository->listWithPagination($this->defaultOrder, new Pagination(1, 10));
+        $this->assertCount(10, $result->currentPageEntries);
     }
 
     public function testTotalRecordsCount(): void
     {
-        $list = $this->districtRepository->listWithPagination($this->defaultOrder, new Pagination(1, 10));
-        $this->assertSame(15, $list->totalEntryCount);
+        $result = $this->districtRepository->listWithPagination($this->defaultOrder, new Pagination(1, 10));
+        $this->assertSame(15, $result->totalEntryCount);
     }
 
     public function testPageCount(): void
     {
-        $list = $this->districtRepository->listWithPagination($this->defaultOrder, new Pagination(1, 10));
-        $this->assertSame(2, $list->pageCount);
+        $result = $this->districtRepository->listWithPagination($this->defaultOrder, new Pagination(1, 10));
+        $this->assertSame(2, $result->pageCount);
     }
 
     public function testCountPageOutsideOfRange(): void
     {
-        $list = $this->districtRepository->listWithPagination($this->defaultOrder, new Pagination(999, 10));
-        $this->assertEmpty($list->currentPageEntries);
+        $result = $this->districtRepository->listWithPagination($this->defaultOrder, new Pagination(999, 10));
+        $this->assertEmpty($result->currentPageEntries);
     }
 }

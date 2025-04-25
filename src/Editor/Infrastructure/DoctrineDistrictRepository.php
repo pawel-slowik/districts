@@ -38,19 +38,6 @@ final class DoctrineDistrictRepository implements DistrictRepository
     }
 
     /**
-     * @return District[]
-     */
-    public function list(
-        DistrictOrdering $order,
-        ?Filter $filter = null,
-    ): array {
-        $query = $this->createDqlQuery($order, $filter);
-        /** @var District[] $districts */
-        $districts = $query->getResult();
-        return $districts;
-    }
-
-    /**
      * @return PaginatedResult<District>
      */
     public function listWithPagination(
