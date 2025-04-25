@@ -13,12 +13,9 @@ use Nyholm\Psr7\ServerRequest;
 use Nyholm\Psr7\Uri;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\App;
-use Slim\Interfaces\CallableResolverInterface;
-use Slim\Interfaces\RouteCollectorInterface;
 use Slim\Views\Twig;
 
 abstract class BaseTestCase extends TestCase
@@ -48,16 +45,11 @@ abstract class BaseTestCase extends TestCase
      */
     protected function createApp(ContainerInterface $container): App
     {
-        /** @var ResponseFactoryInterface */
-        $responseFactory = $container->get(ResponseFactoryInterface::class);
-        /** @var CallableResolverInterface */
-        $callableResolver = $container->get(CallableResolverInterface::class);
-        /** @var RouteCollectorInterface */
-        $routeCollector = $container->get(RouteCollectorInterface::class);
         /** @var Twig */
         $twig = $container->get(Twig::class);
+        /** @var App<null> */
+        $app = $container->get(App::class);
 
-        $app = new App($responseFactory, null, $callableResolver, $routeCollector);
         Middleware::setUp($app, $twig);
         RoutingConfiguration::apply($app);
 

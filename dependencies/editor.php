@@ -7,6 +7,7 @@ use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
+use Slim\App;
 use Slim\CallableResolver;
 use Slim\Interfaces\CallableResolverInterface;
 use Slim\Interfaces\RouteCollectorInterface;
@@ -40,5 +41,13 @@ return [
         );
         $twig["ASSETS_URL"] = (string) getenv("ASSETS_URL");
         return $twig;
+    },
+    App::class => static function ($container) {
+        return new App(
+            $container->get(ResponseFactoryInterface::class),
+            null,
+            $container->get(CallableResolverInterface::class),
+            $container->get(RouteCollectorInterface::class),
+        );
     },
 ];
