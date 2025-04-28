@@ -21,8 +21,8 @@ class DistrictFilterFactory
         return match ($column) {
             "city" => new CityNameFilter($value),
             "name" => new NameFilter($value),
-            "area" => new AreaFilter(...array_map("floatval", self::stringToRange($value))),
-            "population" => new PopulationFilter(...array_map("intval", self::stringToRange($value))),
+            "area" => new AreaFilter(...array_map(floatval(...), self::stringToRange($value))),
+            "population" => new PopulationFilter(...array_map(intval(...), self::stringToRange($value))),
             default => null,
         };
     }
