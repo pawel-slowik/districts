@@ -13,7 +13,7 @@ use Traversable;
 /**
  * @implements IteratorAggregate<City>
  */
-class CityIterator implements IteratorAggregate
+final class CityIterator implements IteratorAggregate
 {
     public function __construct(
         private CityRepository $cityRepository,

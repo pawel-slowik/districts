@@ -8,7 +8,7 @@ use Districts\Editor\Application\Command\RemoveDistrictCommand;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
 
-class RemoveDistrictCommandFactory
+final class RemoveDistrictCommandFactory
 {
     /**
      * @param array<string, string> $routeArgs

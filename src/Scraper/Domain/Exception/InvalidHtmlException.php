@@ -6,6 +6,6 @@ namespace Districts\Scraper\Domain\Exception;
 
 use UnexpectedValueException;
 
-class InvalidHtmlException extends UnexpectedValueException
+final class InvalidHtmlException extends UnexpectedValueException
 {
 }

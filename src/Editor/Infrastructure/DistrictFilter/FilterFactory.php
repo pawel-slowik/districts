@@ -11,7 +11,7 @@ use Districts\Editor\Domain\DistrictFilter\NameFilter as DomainNameFilter;
 use Districts\Editor\Domain\DistrictFilter\PopulationFilter as DomainPopulationFilter;
 use InvalidArgumentException;
 
-class FilterFactory
+final class FilterFactory
 {
     public function fromDomainFilter(?DomainFilter $domainFilter): ?Filter
     {

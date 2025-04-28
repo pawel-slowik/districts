@@ -10,7 +10,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\ORM\ORMSetup;
 
-class DoctrineEntityManagerFactory
+final class DoctrineEntityManagerFactory
 {
     public static function create(string $entitySourcePath): EntityManager
     {

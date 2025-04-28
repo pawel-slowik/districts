@@ -9,7 +9,7 @@ use Slim\Middleware\Session;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
-class Middleware
+final class Middleware
 {
     /**
      * @param App<null> $app

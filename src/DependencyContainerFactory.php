@@ -7,7 +7,7 @@ namespace Districts;
 use DI\ContainerBuilder;
 use Psr\Container\ContainerInterface;
 
-class DependencyContainerFactory
+final class DependencyContainerFactory
 {
     /**
      * @param string[] $modules

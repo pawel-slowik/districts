@@ -6,6 +6,6 @@ namespace Districts\Core\Infrastructure;
 
 use RuntimeException;
 
-class NotFoundInRepositoryException extends RuntimeException
+final class NotFoundInRepositoryException extends RuntimeException
 {
 }

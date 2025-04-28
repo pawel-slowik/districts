@@ -10,7 +10,7 @@ use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 
-class PsrHtmlFetcher implements HtmlFetcher
+final class PsrHtmlFetcher implements HtmlFetcher
 {
     public function __construct(
         private ClientInterface $httpClient,

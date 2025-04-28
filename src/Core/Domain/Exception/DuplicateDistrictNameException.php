@@ -6,6 +6,6 @@ namespace Districts\Core\Domain\Exception;
 
 use DomainException;
 
-class DuplicateDistrictNameException extends DomainException
+final class DuplicateDistrictNameException extends DomainException
 {
 }

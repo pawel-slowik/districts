@@ -6,6 +6,6 @@ namespace Districts\Scraper\Domain\Exception;
 
 use DomainException;
 
-class InvalidQueryException extends DomainException
+final class InvalidQueryException extends DomainException
 {
 }

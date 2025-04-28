@@ -6,7 +6,7 @@ namespace Districts\Editor\UI;
 
 use SlimSession\Helper;
 
-class Session
+final class Session
 {
     /**
      * @param Helper<mixed> $helper

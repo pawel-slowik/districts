@@ -6,7 +6,7 @@ namespace Districts\Editor\Application\Exception;
 
 use RuntimeException;
 
-class ValidationException extends RuntimeException
+final class ValidationException extends RuntimeException
 {
     /**
      * @var string[]

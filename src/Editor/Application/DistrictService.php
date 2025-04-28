@@ -18,7 +18,7 @@ use Districts\Editor\Application\Query\ListDistrictsQuery;
 use Districts\Editor\Domain\DistrictRepository;
 use Districts\Editor\Domain\PaginatedResult;
 
-class DistrictService
+final class DistrictService
 {
     public function __construct(
         private DistrictValidator $districtValidator,

@@ -6,6 +6,6 @@ namespace Districts\Core\Domain\Exception;
 
 use DomainException;
 
-class InvalidNameException extends DomainException
+final class InvalidNameException extends DomainException
 {
 }

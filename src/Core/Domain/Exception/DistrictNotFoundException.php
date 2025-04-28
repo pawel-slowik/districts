@@ -6,6 +6,6 @@ namespace Districts\Core\Domain\Exception;
 
 use DomainException;
 
-class DistrictNotFoundException extends DomainException
+final class DistrictNotFoundException extends DomainException
 {
 }

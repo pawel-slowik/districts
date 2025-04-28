@@ -8,7 +8,7 @@ use Districts\Editor\Application\Command\AddDistrictCommand;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
 
-class AddDistrictCommandFactory
+final class AddDistrictCommandFactory
 {
     public function fromRequest(Request $request): AddDistrictCommand
     {

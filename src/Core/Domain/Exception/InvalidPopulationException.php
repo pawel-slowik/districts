@@ -6,6 +6,6 @@ namespace Districts\Core\Domain\Exception;
 
 use DomainException;
 
-class InvalidPopulationException extends DomainException
+final class InvalidPopulationException extends DomainException
 {
 }

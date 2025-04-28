@@ -6,6 +6,6 @@ namespace Districts\Scraper\Domain\Exception;
 
 use UnexpectedValueException;
 
-class FetchingException extends UnexpectedValueException
+final class FetchingException extends UnexpectedValueException
 {
 }

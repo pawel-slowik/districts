@@ -6,6 +6,6 @@ namespace Districts\Core\Domain\Exception;
 
 use DomainException;
 
-class InvalidAreaException extends DomainException
+final class InvalidAreaException extends DomainException
 {
 }

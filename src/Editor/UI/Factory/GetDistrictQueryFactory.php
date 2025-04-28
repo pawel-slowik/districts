@@ -8,7 +8,7 @@ use Districts\Editor\Application\Query\GetDistrictQuery;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
 
-class GetDistrictQueryFactory
+final class GetDistrictQueryFactory
 {
     /**
      * @param array<string, string> $routeArgs

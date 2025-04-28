@@ -14,7 +14,7 @@ use Districts\Editor\UI\Controller\RemoveActionController;
 use Districts\Editor\UI\Controller\RemoveFormController;
 use Slim\App;
 
-class RoutingConfiguration
+final class RoutingConfiguration
 {
     /**
      * @param App<null> $app
