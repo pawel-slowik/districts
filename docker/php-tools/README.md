@@ -28,12 +28,11 @@ Examples:
         COPY php-cs-fixer/composer.json php-cs-fixer/composer.lock /opt/php-cs-fixer/
         WORKDIR /opt/php-cs-fixer
         RUN composer install
-        ENV PATH="/opt/php-cs-fixer/vendor/bin:$PATH"
 
     Finally, modify `docker-entrypoint.sh` to include a call to `php-cs-fixer`:
 
         if [ $run_fixer -eq 1 ]; then
-        	php-cs-fixer fix -v --dry-run --diff
+        	/opt/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --dry-run --diff
         fi
 
 - Rebuild the image

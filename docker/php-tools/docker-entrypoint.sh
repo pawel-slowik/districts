@@ -4,6 +4,7 @@ run_phpstan=0
 run_fixer=0
 run_sniffer=0
 run_deptrac=0
+run_rector=0
 run_all=0
 
 case "$1" in
@@ -18,6 +19,9 @@ case "$1" in
 		;;
 	"deptrac")
 		run_deptrac=1
+		;;
+	"rector")
+		run_rector=1
 		;;
 	"")
 		run_all=1
@@ -34,6 +38,7 @@ if [ $run_all -eq 1 ]; then
 	run_fixer=1
 	run_sniffer=1
 	run_deptrac=1
+	run_rector=1
 fi
 
 result=0
@@ -42,22 +47,27 @@ result=0
 trap result=1 ERR
 
 if [ $run_phpstan -eq 1 ]; then
-	phpstan -V
-	phpstan analyse
+	/opt/phpstan/vendor/bin/phpstan -V
+	/opt/phpstan/vendor/bin/phpstan analyse
 fi
 
 if [ $run_fixer -eq 1 ]; then
-	php-cs-fixer fix -v --dry-run --diff
+	/opt/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --dry-run --diff
 fi
 
 if [ $run_sniffer -eq 1 ]; then
-	phpcs --version
-	phpcs -p
+	/opt/php_codesniffer/vendor/bin/phpcs --version
+	/opt/php_codesniffer/vendor/bin/phpcs -p
 fi
 
 if [ $run_deptrac -eq 1 ]; then
-	deptrac --version
-	deptrac analyse -c deptrac-contexts.yaml
+	/opt/deptrac/vendor/bin/deptrac --version
+	/opt/deptrac/vendor/bin/deptrac analyse -c deptrac-contexts.yaml
+fi
+
+if [ $run_rector -eq 1 ]; then
+	/opt/rector/vendor/bin/rector -V
+	/opt/rector/vendor/bin/rector process --dry-run
 fi
 
 exit $result
