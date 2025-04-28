@@ -9,6 +9,7 @@
     "require": {
         "php": "^8.3",
         "ext-dom": "*",
+        "ext-libxml": "*",
         "ext-pdo_mysql": "*",
         "ext-xml": "*",
         "bryanjhv/slim-session": "^4.0",
