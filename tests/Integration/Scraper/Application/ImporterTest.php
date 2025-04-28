@@ -9,6 +9,7 @@ use Districts\Scraper\Application\Importer;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\DistrictDTO;
 use Districts\Test\Integration\DoctrineDbTestCase;
+use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(Importer::class)]
@@ -23,6 +24,7 @@ SQL;
 
     private Importer $importer;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

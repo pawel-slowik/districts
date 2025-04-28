@@ -10,6 +10,7 @@ use Districts\Core\Domain\Name;
 use Districts\Core\Domain\Population;
 use Districts\Core\Infrastructure\DoctrineCityRepository;
 use Districts\Test\Integration\DoctrineDbTestCase;
+use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(DoctrineCityRepository::class)]
@@ -24,6 +25,7 @@ SQL;
 
     private DoctrineCityRepository $cityRepository;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

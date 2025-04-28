@@ -11,6 +11,7 @@ use Districts\Core\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
 use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Districts\Test\Integration\DoctrineDbTestCase;
+use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(DoctrineDistrictRepository::class)]
@@ -25,6 +26,7 @@ SQL;
 
     private DoctrineDistrictRepository $districtRepository;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

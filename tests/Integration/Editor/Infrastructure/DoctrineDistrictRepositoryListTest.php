@@ -17,6 +17,7 @@ use Districts\Editor\Domain\Pagination;
 use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
 use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Districts\Test\Integration\DoctrineDbTestCase;
+use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -29,6 +30,7 @@ final class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 
     private Pagination $pagination;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();
