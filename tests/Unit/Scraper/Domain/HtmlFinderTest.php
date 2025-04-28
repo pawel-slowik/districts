@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(HtmlFinder::class)]
 final class HtmlFinderTest extends TestCase
 {
-    private const VALID_HTML = <<<'HTML'
+    private const string VALID_HTML = <<<'HTML'
 <!DOCTYPE html>
 <html lang="en">
   <head>

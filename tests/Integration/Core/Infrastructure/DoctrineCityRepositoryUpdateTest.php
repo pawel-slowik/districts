@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(DoctrineCityRepository::class)]
 final class DoctrineCityRepositoryUpdateTest extends DoctrineDbTestCase
 {
-    private const TESTCASE_SQL = <<<'SQL'
+    private const string TESTCASE_SQL = <<<'SQL'
 BEGIN;
 INSERT INTO cities (id, name) VALUES (1, 'Foo');
 INSERT INTO districts (city_id, name, area, population) VALUES (1, 'Plugh', 10.0, 5000);

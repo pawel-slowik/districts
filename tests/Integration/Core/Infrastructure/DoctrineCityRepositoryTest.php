@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(DoctrineCityRepository::class)]
 final class DoctrineCityRepositoryTest extends DoctrineDbTestCase
 {
-    private const TESTCASE_SQL = <<<'SQL'
+    private const string TESTCASE_SQL = <<<'SQL'
 BEGIN;
 INSERT INTO cities (id, name) VALUES (1, 'Foo');
 INSERT INTO cities (id, name) VALUES (2, 'Bar');
