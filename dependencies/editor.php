@@ -22,13 +22,11 @@ return [
     ResponseFactoryInterface::class => get(Psr17Factory::class),
     UriFactoryInterface::class => get(Psr17Factory::class),
     CallableResolverInterface::class => static fn ($container) => new CallableResolver($container),
-    RouteCollectorInterface::class => static function ($container) {
-        return new RouteCollector(
-            $container->get(ResponseFactoryInterface::class),
-            $container->get(CallableResolverInterface::class),
-            $container
-        );
-    },
+    RouteCollectorInterface::class => static fn ($container) => new RouteCollector(
+        $container->get(ResponseFactoryInterface::class),
+        $container->get(CallableResolverInterface::class),
+        $container,
+    ),
     RouteParserInterface::class => static fn ($cont) => $cont->get(RouteCollectorInterface::class)->getRouteParser(),
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     Twig::class => static function ($container) {
@@ -42,12 +40,10 @@ return [
         $twig["ASSETS_URL"] = (string) getenv("ASSETS_URL");
         return $twig;
     },
-    App::class => static function ($container) {
-        return new App(
-            $container->get(ResponseFactoryInterface::class),
-            null,
-            $container->get(CallableResolverInterface::class),
-            $container->get(RouteCollectorInterface::class),
-        );
-    },
+    App::class => static fn ($container) => new App(
+        $container->get(ResponseFactoryInterface::class),
+        null,
+        $container->get(CallableResolverInterface::class),
+        $container->get(RouteCollectorInterface::class),
+    ),
 ];

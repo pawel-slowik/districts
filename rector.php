@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
 use Rector\Php70\Rector\MethodCall\ThisCallOnStaticMethodToStaticCallRector;
-use Rector\Php74\Rector\Closure\ClosureToArrowFunctionRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Php80\Rector\Class_\StringableForToStringRector;
 use Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector;
@@ -26,9 +25,6 @@ return RectorConfig::configure()
     ->withSkip([
         // PHP 7.0
         ThisCallOnStaticMethodToStaticCallRector::class,
-
-        // PHP 7.4
-        ClosureToArrowFunctionRector::class,
 
         // PHP 8.0
         ClassPropertyAssignToConstructorPromotionRector::class,
