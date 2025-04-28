@@ -8,26 +8,27 @@ use Districts\Scraper\Domain\CityScraper;
 use Districts\Scraper\UI\ScraperCityFilter;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(ScraperCityFilter::class)]
 final class ScraperCityFilterTest extends TestCase
 {
-    private CityScraper $fooCityScraper;
+    private CityScraper&Stub $fooCityScraper;
 
-    private CityScraper $barCityScraper;
+    private CityScraper&Stub $barCityScraper;
 
     /**
-     * @var CityScraper[]
+     * @var (CityScraper&Stub)[]
      */
     private array $cityScrapers;
 
     protected function setUp(): void
     {
-        $this->fooCityScraper = $this->createMock(CityScraper::class);
+        $this->fooCityScraper = $this->createStub(CityScraper::class);
         $this->fooCityScraper->method("getCityName")->willReturn("foo");
 
-        $this->barCityScraper = $this->createMock(CityScraper::class);
+        $this->barCityScraper = $this->createStub(CityScraper::class);
         $this->barCityScraper->method("getCityName")->willReturn("bar");
 
         $this->cityScrapers = [$this->fooCityScraper, $this->barCityScraper];
