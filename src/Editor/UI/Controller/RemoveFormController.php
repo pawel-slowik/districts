@@ -12,7 +12,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Views\Twig as View;
 
-final class RemoveFormController
+final readonly class RemoveFormController
 {
     public function __construct(
         private DistrictService $districtService,

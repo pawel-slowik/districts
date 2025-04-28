@@ -10,7 +10,7 @@ use Psr\Http\Message\UriFactoryInterface;
 class OrderingLinkGenerator
 {
     public function __construct(
-        private UriFactoryInterface $uriFactory,
+        private readonly UriFactoryInterface $uriFactory,
     ) {
     }
 

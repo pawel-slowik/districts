@@ -11,7 +11,7 @@ use Districts\Scraper\Domain\HtmlFinder;
 class CityParser
 {
     public function __construct(
-        private HtmlFinder $htmlFinder,
+        private readonly HtmlFinder $htmlFinder,
     ) {
     }
 

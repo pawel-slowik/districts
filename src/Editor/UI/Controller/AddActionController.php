@@ -14,7 +14,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Interfaces\RouteParserInterface;
 
-final class AddActionController
+final readonly class AddActionController
 {
     public function __construct(
         private DistrictService $districtService,

@@ -21,8 +21,8 @@ final class ImportCommand extends Command
      * @param CityScraper[] $scrapers
      */
     public function __construct(
-        private Importer $importer,
-        private array $scrapers,
+        private readonly Importer $importer,
+        private readonly array $scrapers,
     ) {
         parent::__construct();
         $this->setName("import");

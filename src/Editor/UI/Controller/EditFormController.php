@@ -13,7 +13,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Views\Twig as View;
 
-final class EditFormController
+final readonly class EditFormController
 {
     public function __construct(
         private DistrictService $districtService,

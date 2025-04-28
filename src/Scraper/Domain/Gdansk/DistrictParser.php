@@ -12,7 +12,7 @@ use Districts\Scraper\Domain\HtmlFinder;
 class DistrictParser
 {
     public function __construct(
-        private HtmlFinder $htmlFinder,
+        private readonly HtmlFinder $htmlFinder,
     ) {
     }
 

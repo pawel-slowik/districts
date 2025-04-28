@@ -15,7 +15,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Interfaces\RouteParserInterface;
 
-final class RemoveActionController
+final readonly class RemoveActionController
 {
     public function __construct(
         private DistrictService $districtService,

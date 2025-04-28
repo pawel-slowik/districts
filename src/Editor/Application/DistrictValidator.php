@@ -19,8 +19,8 @@ use Districts\Editor\Domain\DistrictRepository;
 class DistrictValidator
 {
     public function __construct(
-        private CityRepository $cityRepository,
-        private DistrictRepository $districtRepository,
+        private readonly CityRepository $cityRepository,
+        private readonly DistrictRepository $districtRepository,
     ) {
     }
 

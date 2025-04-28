@@ -7,7 +7,7 @@ namespace Districts\Editor\UI\Factory;
 use Districts\Editor\Application\Query\ListDistrictsQuery;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-final class ListDistrictsQueryFactory
+final readonly class ListDistrictsQueryFactory
 {
     public function __construct(
         private DistrictOrderingFactory $orderingFactory,

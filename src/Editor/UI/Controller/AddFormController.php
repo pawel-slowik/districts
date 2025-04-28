@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig as View;
 
-final class AddFormController
+final readonly class AddFormController
 {
     public function __construct(
         private CityIterator $cityIterator,

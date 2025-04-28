@@ -19,7 +19,7 @@ use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Traversable;
 
-final class DoctrineDistrictRepository implements DistrictRepository
+final readonly class DoctrineDistrictRepository implements DistrictRepository
 {
     public function __construct(
         private EntityManager $entityManager,

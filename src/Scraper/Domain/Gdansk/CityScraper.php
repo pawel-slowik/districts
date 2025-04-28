@@ -12,7 +12,7 @@ use Districts\Scraper\Domain\ProgressReporter;
 use Iterator;
 use Laminas\Uri\Uri;
 
-final class CityScraper implements CityScraperInterface
+final readonly class CityScraper implements CityScraperInterface
 {
     public function __construct(
         private HtmlFetcher $htmlFetcher,

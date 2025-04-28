@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Interfaces\RouteParserInterface;
 
-final class HomeController
+final readonly class HomeController
 {
     public function __construct(
         private RouteParserInterface $routeParser,

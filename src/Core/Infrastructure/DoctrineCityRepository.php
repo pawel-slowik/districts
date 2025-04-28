@@ -8,7 +8,7 @@ use Districts\Core\Domain\City;
 use Districts\Core\Domain\CityRepository;
 use Doctrine\ORM\EntityManager;
 
-final class DoctrineCityRepository implements CityRepository
+final readonly class DoctrineCityRepository implements CityRepository
 {
     public function __construct(
         private EntityManager $entityManager,
