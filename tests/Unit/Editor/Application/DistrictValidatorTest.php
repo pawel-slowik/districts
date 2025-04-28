@@ -18,7 +18,7 @@ use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(DistrictValidator::class)]
-class DistrictValidatorTest extends TestCase
+final class DistrictValidatorTest extends TestCase
 {
     private DistrictValidator $districtValidator;
 

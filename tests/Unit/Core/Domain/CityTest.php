@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(City::class)]
-class CityTest extends TestCase
+final class CityTest extends TestCase
 {
     public function testName(): void
     {

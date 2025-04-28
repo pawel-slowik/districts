@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(PopulationFilter::class)]
-class PopulationFilterTest extends TestCase
+final class PopulationFilterTest extends TestCase
 {
     public function testWhere(): void
     {

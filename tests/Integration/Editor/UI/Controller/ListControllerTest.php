@@ -15,7 +15,7 @@ use Psr\Http\Message\ResponseInterface;
 
 #[CoversClass(ListController::class)]
 #[RunTestsInSeparateProcesses]
-class ListControllerTest extends BaseTestCase
+final class ListControllerTest extends BaseTestCase
 {
     #[DataProvider('listDataProvider')]
     public function testList(string $url): void

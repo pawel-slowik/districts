@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(DistrictOrderingFactory::class)]
-class DistrictOrderingFactoryTest extends TestCase
+final class DistrictOrderingFactoryTest extends TestCase
 {
     private DistrictOrderingFactory $districtOrderingFactory;
 

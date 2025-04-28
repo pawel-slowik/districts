@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(CityNameFilter::class)]
 #[CoversClass(Filter::class)]
-class CityNameFilterTest extends TestCase
+final class CityNameFilterTest extends TestCase
 {
     public function testWhere(): void
     {

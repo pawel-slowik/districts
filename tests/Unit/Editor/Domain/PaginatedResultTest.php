@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(PaginatedResult::class)]
-class PaginatedResultTest extends TestCase
+final class PaginatedResultTest extends TestCase
 {
     public function testExceptionOnInvalidPageCount(): void
     {

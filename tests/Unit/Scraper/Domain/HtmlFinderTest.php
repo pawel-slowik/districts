@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(HtmlFinder::class)]
-class HtmlFinderTest extends TestCase
+final class HtmlFinderTest extends TestCase
 {
     private const VALID_HTML = <<<'HTML'
 <!DOCTYPE html>

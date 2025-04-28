@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 #[CoversClass(ListDistrictsQueryFactory::class)]
-class ListDistrictsQueryFactoryTest extends TestCase
+final class ListDistrictsQueryFactoryTest extends TestCase
 {
     private ListDistrictsQueryFactory $queryFactory;
 

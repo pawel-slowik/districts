@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(DistrictParser::class)]
-class DistrictParserTest extends TestCase
+final class DistrictParserTest extends TestCase
 {
     private DistrictParser $districtParser;
 

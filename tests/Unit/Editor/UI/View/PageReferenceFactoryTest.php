@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UriInterface;
 
 #[CoversClass(PageReferenceFactory::class)]
-class PageReferenceFactoryTest extends TestCase
+final class PageReferenceFactoryTest extends TestCase
 {
     private PageReferenceFactory $pageReferenceFactory;
 

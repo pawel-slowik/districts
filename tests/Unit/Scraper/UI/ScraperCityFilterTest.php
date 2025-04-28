@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(ScraperCityFilter::class)]
-class ScraperCityFilterTest extends TestCase
+final class ScraperCityFilterTest extends TestCase
 {
     private CityScraper $fooCityScraper;
 

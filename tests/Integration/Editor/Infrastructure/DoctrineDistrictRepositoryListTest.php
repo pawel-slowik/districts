@@ -21,7 +21,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 #[CoversClass(DoctrineDistrictRepository::class)]
-class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
+final class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
 {
     private DoctrineDistrictRepository $districtRepository;
 

@@ -16,7 +16,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
 #[CoversClass(PsrHtmlFetcher::class)]
-class PsrHtmlFetcherTest extends TestCase
+final class PsrHtmlFetcherTest extends TestCase
 {
     private PsrHtmlFetcher $guzzleHtmlFetcher;
 

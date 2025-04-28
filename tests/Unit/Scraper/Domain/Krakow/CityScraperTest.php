@@ -15,7 +15,7 @@ use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(CityScraper::class)]
-class CityScraperTest extends TestCase
+final class CityScraperTest extends TestCase
 {
     private CityScraper $scraper;
 

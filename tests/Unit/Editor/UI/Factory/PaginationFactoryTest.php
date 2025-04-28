@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(PaginationFactory::class)]
-class PaginationFactoryTest extends TestCase
+final class PaginationFactoryTest extends TestCase
 {
     private PaginationFactory $paginationFactory;
 

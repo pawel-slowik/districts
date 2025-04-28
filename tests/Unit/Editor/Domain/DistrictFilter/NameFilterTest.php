@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(NameFilter::class)]
-class NameFilterTest extends TestCase
+final class NameFilterTest extends TestCase
 {
     public function testProperties(): void
     {

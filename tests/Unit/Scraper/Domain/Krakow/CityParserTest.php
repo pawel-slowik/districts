@@ -13,7 +13,7 @@ use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(CityParser::class)]
-class CityParserTest extends TestCase
+final class CityParserTest extends TestCase
 {
     private CityParser $cityParser;
 

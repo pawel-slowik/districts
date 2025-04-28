@@ -14,7 +14,7 @@ use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
 #[CoversClass(OrderingLinkGenerator::class)]
-class OrderingLinkGeneratorTest extends TestCase
+final class OrderingLinkGeneratorTest extends TestCase
 {
     private OrderingLinkGenerator $orderingLinkGenerator;
 

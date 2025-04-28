@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 use Traversable;
 
 #[CoversClass(PageReference::class)]
-class PageReferenceTest extends TestCase
+final class PageReferenceTest extends TestCase
 {
     public function testPropertiesForPrevious(): void
     {

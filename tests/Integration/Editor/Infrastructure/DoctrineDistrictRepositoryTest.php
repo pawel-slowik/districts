@@ -14,7 +14,7 @@ use Districts\Test\Integration\DoctrineDbTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(DoctrineDistrictRepository::class)]
-class DoctrineDistrictRepositoryTest extends DoctrineDbTestCase
+final class DoctrineDistrictRepositoryTest extends DoctrineDbTestCase
 {
     private const TESTCASE_SQL = <<<'SQL'
 BEGIN;

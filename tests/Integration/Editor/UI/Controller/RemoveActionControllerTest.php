@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 #[CoversClass(RemoveActionController::class)]
 #[RunTestsInSeparateProcesses]
-class RemoveActionControllerTest extends BaseTestCase
+final class RemoveActionControllerTest extends BaseTestCase
 {
     public function testAction(): void
     {

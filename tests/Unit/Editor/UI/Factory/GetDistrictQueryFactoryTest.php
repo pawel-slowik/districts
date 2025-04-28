@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 #[CoversClass(GetDistrictQueryFactory::class)]
-class GetDistrictQueryFactoryTest extends TestCase
+final class GetDistrictQueryFactoryTest extends TestCase
 {
     private GetDistrictQueryFactory $queryFactory;
 

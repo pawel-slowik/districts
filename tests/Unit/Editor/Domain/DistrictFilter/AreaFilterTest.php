@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(AreaFilter::class)]
-class AreaFilterTest extends TestCase
+final class AreaFilterTest extends TestCase
 {
     public function testProperties(): void
     {

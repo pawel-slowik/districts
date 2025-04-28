@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(DistrictFilterFactory::class)]
-class DistrictFilterFactoryTest extends TestCase
+final class DistrictFilterFactoryTest extends TestCase
 {
     private DistrictFilterFactory $districtFilterFactory;
 

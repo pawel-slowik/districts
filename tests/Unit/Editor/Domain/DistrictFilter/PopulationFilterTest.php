@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(PopulationFilter::class)]
-class PopulationFilterTest extends TestCase
+final class PopulationFilterTest extends TestCase
 {
     public function testProperties(): void
     {

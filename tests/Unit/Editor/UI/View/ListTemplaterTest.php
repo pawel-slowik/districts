@@ -18,7 +18,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriFactoryInterface;
 
 #[CoversClass(ListTemplater::class)]
-class ListTemplaterTest extends TestCase
+final class ListTemplaterTest extends TestCase
 {
     /** @var ListTemplater<string> */
     private ListTemplater $listTemplater;

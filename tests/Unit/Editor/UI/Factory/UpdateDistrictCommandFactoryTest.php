@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 #[CoversClass(UpdateDistrictCommandFactory::class)]
-class UpdateDistrictCommandFactoryTest extends TestCase
+final class UpdateDistrictCommandFactoryTest extends TestCase
 {
     private Request&MockObject $request;
 

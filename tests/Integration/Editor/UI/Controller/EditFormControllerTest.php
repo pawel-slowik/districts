@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 #[CoversClass(EditFormController::class)]
 #[RunTestsInSeparateProcesses]
-class EditFormControllerTest extends BaseTestCase
+final class EditFormControllerTest extends BaseTestCase
 {
     public function testForm(): void
     {

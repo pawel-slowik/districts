@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 #[CoversClass(RemoveDistrictCommandFactory::class)]
-class RemoveDistrictCommandFactoryTest extends TestCase
+final class RemoveDistrictCommandFactoryTest extends TestCase
 {
     private RemoveDistrictCommandFactory $commandFactory;
 

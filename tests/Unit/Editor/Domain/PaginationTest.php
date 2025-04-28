@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(Pagination::class)]
-class PaginationTest extends TestCase
+final class PaginationTest extends TestCase
 {
     public function testGetters(): void
     {

@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(Population::class)]
-class PopulationTest extends TestCase
+final class PopulationTest extends TestCase
 {
     public function testConstructionFailsOnInvalidValue(): void
     {

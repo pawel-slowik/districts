@@ -13,7 +13,7 @@ use RuntimeException;
 use Slim\App;
 
 #[CoversClass(RoutingConfiguration::class)]
-class RoutingConfigurationTest extends TestCase
+final class RoutingConfigurationTest extends TestCase
 {
     /**
      * @var App<null>

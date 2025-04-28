@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 use Traversable;
 
 #[CoversClass(DistrictOrdering::class)]
-class DistrictOrderingTest extends TestCase
+final class DistrictOrderingTest extends TestCase
 {
     public function testProperties(): void
     {

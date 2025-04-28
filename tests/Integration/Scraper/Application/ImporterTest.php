@@ -12,7 +12,7 @@ use Districts\Test\Integration\DoctrineDbTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(Importer::class)]
-class ImporterTest extends DoctrineDbTestCase
+final class ImporterTest extends DoctrineDbTestCase
 {
     private const TESTCASE_SQL = <<<'SQL'
 BEGIN;

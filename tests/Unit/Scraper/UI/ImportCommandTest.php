@@ -16,7 +16,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 #[CoversClass(ImportCommand::class)]
-class ImportCommandTest extends TestCase
+final class ImportCommandTest extends TestCase
 {
     private Importer&MockObject $importer;
 

@@ -12,7 +12,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(CityIterator::class)]
-class CityIteratorTest extends TestCase
+final class CityIteratorTest extends TestCase
 {
     private CityRepository&MockObject $cityRepository;
 

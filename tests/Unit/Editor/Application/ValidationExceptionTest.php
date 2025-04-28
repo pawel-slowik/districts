@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(ValidationException::class)]
-class ValidationExceptionTest extends TestCase
+final class ValidationExceptionTest extends TestCase
 {
     public function testNewInstanceHasNoErrors(): void
     {

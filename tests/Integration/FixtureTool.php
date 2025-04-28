@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
 use LogicException;
 
-class FixtureTool
+final class FixtureTool
 {
     public static function reset(EntityManager $entityManager): void
     {

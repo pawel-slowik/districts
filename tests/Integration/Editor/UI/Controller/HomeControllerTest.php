@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 #[CoversClass(HomeController::class)]
 #[RunTestsInSeparateProcesses]
-class HomeControllerTest extends BaseTestCase
+final class HomeControllerTest extends BaseTestCase
 {
     public function testRedirect(): void
     {

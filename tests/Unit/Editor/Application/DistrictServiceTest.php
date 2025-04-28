@@ -30,7 +30,7 @@ use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(DistrictService::class)]
-class DistrictServiceTest extends TestCase
+final class DistrictServiceTest extends TestCase
 {
     private DistrictService $districtService;
 

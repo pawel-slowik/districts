@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(District::class)]
-class DistrictTest extends TestCase
+final class DistrictTest extends TestCase
 {
     private City $city;
 

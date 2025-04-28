@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use SlimSession\Helper;
 
 #[CoversClass(Session::class)]
-class SessionTest extends TestCase
+final class SessionTest extends TestCase
 {
     public function testSet(): void
     {

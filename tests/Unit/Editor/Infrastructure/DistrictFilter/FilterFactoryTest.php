@@ -20,7 +20,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(FilterFactory::class)]
-class FilterFactoryTest extends TestCase
+final class FilterFactoryTest extends TestCase
 {
     private FilterFactory $filterFactory;
 

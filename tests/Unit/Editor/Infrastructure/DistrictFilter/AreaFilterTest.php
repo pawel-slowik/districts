@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(AreaFilter::class)]
-class AreaFilterTest extends TestCase
+final class AreaFilterTest extends TestCase
 {
     public function testWhere(): void
     {
