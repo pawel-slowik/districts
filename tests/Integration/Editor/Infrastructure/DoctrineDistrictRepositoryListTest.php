@@ -14,7 +14,6 @@ use Districts\Editor\Domain\DistrictOrdering;
 use Districts\Editor\Domain\DistrictOrderingField;
 use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\Domain\Pagination;
-use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
 use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Districts\Test\Integration\DoctrineDbTestCase;
 use Override;
@@ -40,10 +39,7 @@ final class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
                 "tests/Integration/Editor/data/districts.sql",
             ]
         );
-        $this->districtRepository = new DoctrineDistrictRepository(
-            $this->entityManager,
-            new FilterFactory(),
-        );
+        $this->districtRepository = new DoctrineDistrictRepository($this->entityManager);
         $this->defaultOrder = new DistrictOrdering(DistrictOrderingField::FullName, OrderingDirection::Asc);
         $this->pagination = new Pagination(1, 99_999);
     }

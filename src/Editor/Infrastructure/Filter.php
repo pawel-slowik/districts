@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Editor\Infrastructure\DistrictFilter;
+namespace Districts\Editor\Infrastructure;
 
 abstract readonly class Filter
 {

@@ -13,7 +13,7 @@ use Districts\Editor\Domain\DistrictRepository;
 use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\Domain\Pagination;
-use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
+use Districts\Editor\Infrastructure\DistrictFilter as DqlFilter;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -23,7 +23,6 @@ final readonly class DoctrineDistrictRepository implements DistrictRepository
 {
     public function __construct(
         private EntityManager $entityManager,
-        private FilterFactory $filterFactory,
     ) {
     }
 
@@ -66,7 +65,7 @@ final readonly class DoctrineDistrictRepository implements DistrictRepository
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select("d, c")->from(District::class, "d")->join("d.city", "c");
         if ($filter) {
-            $dqlFilter = $this->filterFactory->fromDomainFilter($filter);
+            $dqlFilter = DqlFilter::fromDomainFilter($filter);
             $queryBuilder->where($dqlFilter->where);
             foreach ($dqlFilter->parameters as $name => $value) {
                 $queryBuilder->setParameter($name, $value);

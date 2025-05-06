@@ -8,7 +8,6 @@ use Districts\Core\Domain\Area;
 use Districts\Core\Domain\Name;
 use Districts\Core\Domain\Population;
 use Districts\Core\Infrastructure\NotFoundInRepositoryException;
-use Districts\Editor\Infrastructure\DistrictFilter\FilterFactory;
 use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
 use Districts\Test\Integration\DoctrineDbTestCase;
 use Override;
@@ -31,10 +30,7 @@ SQL;
     {
         parent::setUp();
         $this->loadSql(self::TESTCASE_SQL);
-        $this->districtRepository = new DoctrineDistrictRepository(
-            $this->entityManager,
-            new FilterFactory(),
-        );
+        $this->districtRepository = new DoctrineDistrictRepository($this->entityManager);
     }
 
     public function testGet(): void
