@@ -33,7 +33,7 @@ final class FilterFactoryTest extends TestCase
      * @param class-string $expectedDqlFilterClass
      */
     #[DataProvider('typesDataProvider')]
-    public function testTypes(?DomainFilter $domainFilter, string $expectedDqlFilterClass): void
+    public function testTypes(DomainFilter $domainFilter, string $expectedDqlFilterClass): void
     {
         $dqlFilter = $this->filterFactory->fromDomainFilter($domainFilter);
 

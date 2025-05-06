@@ -13,12 +13,8 @@ use InvalidArgumentException;
 
 final class FilterFactory
 {
-    public function fromDomainFilter(?DomainFilter $domainFilter): ?Filter
+    public function fromDomainFilter(DomainFilter $domainFilter): Filter
     {
-        if (!$domainFilter) {
-            return null;
-        }
-
         if ($domainFilter instanceof DomainCityNameFilter) {
             return new CityNameFilter($domainFilter);
         }
