@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Integration\Editor\Infrastructure;
+namespace Districts\Test\Integration\Editor\Infrastructure\Doctrine;
 
 use Districts\Core\Domain\Area;
 use Districts\Core\Domain\Name;
 use Districts\Core\Domain\Population;
 use Districts\Core\Infrastructure\NotFoundInRepositoryException;
-use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
+use Districts\Editor\Infrastructure\Doctrine\DistrictRepository;
 use Districts\Test\Integration\DoctrineDbTestCase;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(DoctrineDistrictRepository::class)]
-final class DoctrineDistrictRepositoryTest extends DoctrineDbTestCase
+#[CoversClass(DistrictRepository::class)]
+final class DistrictRepositoryTest extends DoctrineDbTestCase
 {
     private const string TESTCASE_SQL = <<<'SQL'
 BEGIN;
@@ -23,14 +23,14 @@ INSERT INTO districts (city_id, name, area, population) VALUES (1, 'Plugh', 10.0
 COMMIT;
 SQL;
 
-    private DoctrineDistrictRepository $districtRepository;
+    private DistrictRepository $districtRepository;
 
     #[Override]
     protected function setUp(): void
     {
         parent::setUp();
         $this->loadSql(self::TESTCASE_SQL);
-        $this->districtRepository = new DoctrineDistrictRepository($this->entityManager);
+        $this->districtRepository = new DistrictRepository($this->entityManager);
     }
 
     public function testGet(): void

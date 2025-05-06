@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Districts\Core\Infrastructure;
+namespace Districts\Core\Infrastructure\Doctrine;
 
 use Districts\Core\Domain\City;
-use Districts\Core\Domain\CityRepository;
+use Districts\Core\Domain\CityRepository as CityRepositoryInterface;
+use Districts\Core\Infrastructure\NotFoundInRepositoryException;
 use Doctrine\ORM\EntityManager;
 
-final readonly class DoctrineCityRepository implements CityRepository
+final readonly class CityRepository implements CityRepositoryInterface
 {
     public function __construct(
         private EntityManager $entityManager,

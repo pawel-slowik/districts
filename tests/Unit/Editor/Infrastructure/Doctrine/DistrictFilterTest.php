@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Unit\Editor\Infrastructure;
+namespace Districts\Test\Unit\Editor\Infrastructure\Doctrine;
 
 use Districts\Editor\Domain\DistrictFilter\AreaFilter;
 use Districts\Editor\Domain\DistrictFilter\CityNameFilter;
 use Districts\Editor\Domain\DistrictFilter\Filter as DomainFilter;
 use Districts\Editor\Domain\DistrictFilter\NameFilter;
 use Districts\Editor\Domain\DistrictFilter\PopulationFilter;
-use Districts\Editor\Infrastructure\DistrictFilter;
+use Districts\Editor\Infrastructure\Doctrine\DistrictFilter;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;

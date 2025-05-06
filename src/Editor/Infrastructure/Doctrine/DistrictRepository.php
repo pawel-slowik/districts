@@ -2,24 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Districts\Editor\Infrastructure;
+namespace Districts\Editor\Infrastructure\Doctrine;
 
 use Districts\Core\Domain\District;
 use Districts\Core\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\Domain\DistrictFilter\Filter;
 use Districts\Editor\Domain\DistrictOrdering;
 use Districts\Editor\Domain\DistrictOrderingField;
-use Districts\Editor\Domain\DistrictRepository;
+use Districts\Editor\Domain\DistrictRepository as DistrictRepositoryInterface;
 use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\Domain\PaginatedResult;
 use Districts\Editor\Domain\Pagination;
-use Districts\Editor\Infrastructure\DistrictFilter as DqlFilter;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Traversable;
 
-final readonly class DoctrineDistrictRepository implements DistrictRepository
+final readonly class DistrictRepository implements DistrictRepositoryInterface
 {
     public function __construct(
         private EntityManager $entityManager,
@@ -65,7 +64,7 @@ final readonly class DoctrineDistrictRepository implements DistrictRepository
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select("d, c")->from(District::class, "d")->join("d.city", "c");
         if ($filter) {
-            $dqlFilter = DqlFilter::fromDomainFilter($filter);
+            $dqlFilter = DistrictFilter::fromDomainFilter($filter);
             $queryBuilder->where($dqlFilter->where);
             foreach ($dqlFilter->parameters as $name => $value) {
                 $queryBuilder->setParameter($name, $value);

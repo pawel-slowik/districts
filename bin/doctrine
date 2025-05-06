@@ -5,10 +5,10 @@ declare(strict_types=1);
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Districts\Core\Infrastructure\DoctrineEntityManagerFactory;
+use Districts\Core\Infrastructure\Doctrine\EntityManagerFactory;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
 
-$entityManager = DoctrineEntityManagerFactory::create(__DIR__ . '/../src');
+$entityManager = EntityManagerFactory::create(__DIR__ . '/../src');
 
 ConsoleRunner::run(new SingleManagerProvider($entityManager));

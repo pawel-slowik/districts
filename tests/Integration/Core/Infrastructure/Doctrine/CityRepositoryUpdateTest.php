@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Integration\Core\Infrastructure;
+namespace Districts\Test\Integration\Core\Infrastructure\Doctrine;
 
 use Districts\Core\Domain\Area;
 use Districts\Core\Domain\City;
 use Districts\Core\Domain\Name;
 use Districts\Core\Domain\Population;
-use Districts\Core\Infrastructure\DoctrineCityRepository;
+use Districts\Core\Infrastructure\Doctrine\CityRepository;
 use Districts\Test\Integration\DoctrineDbTestCase;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(DoctrineCityRepository::class)]
-final class DoctrineCityRepositoryUpdateTest extends DoctrineDbTestCase
+#[CoversClass(CityRepository::class)]
+final class CityRepositoryUpdateTest extends DoctrineDbTestCase
 {
     private const string TESTCASE_SQL = <<<'SQL'
 BEGIN;
@@ -23,7 +23,7 @@ INSERT INTO districts (city_id, name, area, population) VALUES (1, 'Plugh', 10.0
 COMMIT;
 SQL;
 
-    private DoctrineCityRepository $cityRepository;
+    private CityRepository $cityRepository;
 
     #[Override]
     protected function setUp(): void
@@ -31,7 +31,7 @@ SQL;
         parent::setUp();
         $this->loadSql(self::TESTCASE_SQL);
 
-        $this->cityRepository = new DoctrineCityRepository($this->entityManager);
+        $this->cityRepository = new CityRepository($this->entityManager);
     }
 
     public function testAdd(): void

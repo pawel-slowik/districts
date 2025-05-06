@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Districts\Test\Integration\Editor\Infrastructure;
+namespace Districts\Test\Integration\Editor\Infrastructure\Doctrine;
 
 use Districts\Core\Domain\District;
 use Districts\Editor\Domain\DistrictFilter\AreaFilter;
@@ -14,16 +14,16 @@ use Districts\Editor\Domain\DistrictOrdering;
 use Districts\Editor\Domain\DistrictOrderingField;
 use Districts\Editor\Domain\OrderingDirection;
 use Districts\Editor\Domain\Pagination;
-use Districts\Editor\Infrastructure\DoctrineDistrictRepository;
+use Districts\Editor\Infrastructure\Doctrine\DistrictRepository;
 use Districts\Test\Integration\DoctrineDbTestCase;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-#[CoversClass(DoctrineDistrictRepository::class)]
-final class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
+#[CoversClass(DistrictRepository::class)]
+final class DistrictRepositoryListTest extends DoctrineDbTestCase
 {
-    private DoctrineDistrictRepository $districtRepository;
+    private DistrictRepository $districtRepository;
 
     private DistrictOrdering $defaultOrder;
 
@@ -39,7 +39,7 @@ final class DoctrineDistrictRepositoryListTest extends DoctrineDbTestCase
                 "tests/Integration/Editor/data/districts.sql",
             ]
         );
-        $this->districtRepository = new DoctrineDistrictRepository($this->entityManager);
+        $this->districtRepository = new DistrictRepository($this->entityManager);
         $this->defaultOrder = new DistrictOrdering(DistrictOrderingField::FullName, OrderingDirection::Asc);
         $this->pagination = new Pagination(1, 99_999);
     }
