@@ -6,14 +6,16 @@ namespace Districts\Editor\Infrastructure\DistrictFilter;
 
 abstract readonly class Filter
 {
-    abstract public function where(): string;
-
     /**
-     * @return array<string, scalar>
+     * @param array<string, scalar> $parameters
      */
-    abstract public function parameters(): array;
+    protected function __construct(
+        public string $where,
+        public array $parameters,
+    ) {
+    }
 
-    protected function dqlLike(string $string): string
+    protected static function dqlLike(string $string): string
     {
         // Doctrine will handle SQL injections, we just need to escape the LIKE syntax
         return "%" . addcslashes($string, "%_") . "%";

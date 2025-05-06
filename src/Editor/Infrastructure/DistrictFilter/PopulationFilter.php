@@ -8,26 +8,14 @@ use Districts\Editor\Domain\DistrictFilter\PopulationFilter as DomainPopulationF
 
 readonly class PopulationFilter extends Filter
 {
-    private int $low;
-
-    private int $high;
-
     public function __construct(DomainPopulationFilter $domainFilter)
     {
-        $this->low = $domainFilter->begin;
-        $this->high = $domainFilter->end;
-    }
-
-    public function where(): string
-    {
-        return "d.population.population >= :low AND d.population.population <= :high";
-    }
-
-    public function parameters(): array
-    {
-        return [
-            "low" => $this->low,
-            "high" => $this->high,
-        ];
+        parent::__construct(
+            "d.population.population >= :low AND d.population.population <= :high",
+            [
+                "low" => $domainFilter->begin,
+                "high" => $domainFilter->end,
+            ],
+        );
     }
 }

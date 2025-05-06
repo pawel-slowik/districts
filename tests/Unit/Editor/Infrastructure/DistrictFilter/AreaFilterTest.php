@@ -18,7 +18,7 @@ final class AreaFilterTest extends TestCase
 
         $filter = new AreaFilter($domainFilter);
 
-        $this->assertSame("d.area.area >= :low AND d.area.area <= :high", $filter->where());
+        $this->assertSame("d.area.area >= :low AND d.area.area <= :high", $filter->where);
     }
 
     public function testParameters(): void
@@ -27,6 +27,6 @@ final class AreaFilterTest extends TestCase
 
         $filter = new AreaFilter($domainFilter);
 
-        $this->assertSame(["low" => 1.1, "high" => 2.2], $filter->parameters());
+        $this->assertSame(["low" => 1.1, "high" => 2.2], $filter->parameters);
     }
 }

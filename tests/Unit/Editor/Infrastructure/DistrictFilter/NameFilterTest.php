@@ -20,7 +20,7 @@ final class NameFilterTest extends TestCase
 
         $filter = new NameFilter($domainFilter);
 
-        $this->assertSame("d.name.name LIKE :search", $filter->where());
+        $this->assertSame("d.name.name LIKE :search", $filter->where);
     }
 
     public function testParameters(): void
@@ -29,7 +29,7 @@ final class NameFilterTest extends TestCase
 
         $filter = new NameFilter($domainFilter);
 
-        $this->assertSame(["search" => "%bar%"], $filter->parameters());
+        $this->assertSame(["search" => "%bar%"], $filter->parameters);
     }
 
     public function testEscapeLike(): void
@@ -38,6 +38,6 @@ final class NameFilterTest extends TestCase
 
         $filter = new NameFilter($domainFilter);
 
-        $this->assertSame("%\\%%", $filter->parameters()["search"]);
+        $this->assertSame("%\\%%", $filter->parameters["search"]);
     }
 }

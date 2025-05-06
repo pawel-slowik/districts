@@ -18,7 +18,7 @@ final class PopulationFilterTest extends TestCase
 
         $filter = new PopulationFilter($domainFilter);
 
-        $this->assertSame("d.population.population >= :low AND d.population.population <= :high", $filter->where());
+        $this->assertSame("d.population.population >= :low AND d.population.population <= :high", $filter->where);
     }
 
     public function testParameters(): void
@@ -27,6 +27,6 @@ final class PopulationFilterTest extends TestCase
 
         $filter = new PopulationFilter($domainFilter);
 
-        $this->assertSame(["low" => 3, "high" => 4], $filter->parameters());
+        $this->assertSame(["low" => 3, "high" => 4], $filter->parameters);
     }
 }

@@ -67,8 +67,8 @@ final readonly class DoctrineDistrictRepository implements DistrictRepository
         $queryBuilder->select("d, c")->from(District::class, "d")->join("d.city", "c");
         if ($filter) {
             $dqlFilter = $this->filterFactory->fromDomainFilter($filter);
-            $queryBuilder->where($dqlFilter->where());
-            foreach ($dqlFilter->parameters() as $name => $value) {
+            $queryBuilder->where($dqlFilter->where);
+            foreach ($dqlFilter->parameters as $name => $value) {
                 $queryBuilder->setParameter($name, $value);
             }
         }

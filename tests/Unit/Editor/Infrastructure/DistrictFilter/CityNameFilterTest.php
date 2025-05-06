@@ -20,7 +20,7 @@ final class CityNameFilterTest extends TestCase
 
         $filter = new CityNameFilter($domainFilter);
 
-        $this->assertSame("c.name LIKE :search", $filter->where());
+        $this->assertSame("c.name LIKE :search", $filter->where);
     }
 
     public function testParameters(): void
@@ -29,7 +29,7 @@ final class CityNameFilterTest extends TestCase
 
         $filter = new CityNameFilter($domainFilter);
 
-        $this->assertSame(["search" => "%foo%"], $filter->parameters());
+        $this->assertSame(["search" => "%foo%"], $filter->parameters);
     }
 
     public function testEscapeLike(): void
@@ -38,6 +38,6 @@ final class CityNameFilterTest extends TestCase
 
         $filter = new CityNameFilter($domainFilter);
 
-        $this->assertSame("%\\%%", $filter->parameters()["search"]);
+        $this->assertSame("%\\%%", $filter->parameters["search"]);
     }
 }
