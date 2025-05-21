@@ -16,11 +16,11 @@ use Districts\Editor\Application\Command\AddDistrictCommand;
 use Districts\Editor\Application\Command\UpdateDistrictCommand;
 use Districts\Editor\Domain\DistrictRepository;
 
-class DistrictValidator
+readonly class DistrictValidator
 {
     public function __construct(
-        private readonly CityRepository $cityRepository,
-        private readonly DistrictRepository $districtRepository,
+        private CityRepository $cityRepository,
+        private DistrictRepository $districtRepository,
     ) {
     }
 

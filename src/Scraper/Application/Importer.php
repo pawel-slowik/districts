@@ -11,10 +11,10 @@ use Districts\Core\Domain\Name;
 use Districts\Core\Domain\Population;
 use Districts\Scraper\Domain\CityDTO;
 
-class Importer
+readonly class Importer
 {
     public function __construct(
-        private readonly CityRepository $cityRepository,
+        private CityRepository $cityRepository,
     ) {
     }
 

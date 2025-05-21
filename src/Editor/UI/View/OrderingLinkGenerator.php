@@ -7,10 +7,10 @@ namespace Districts\Editor\UI\View;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriFactoryInterface;
 
-class OrderingLinkGenerator
+readonly class OrderingLinkGenerator
 {
     public function __construct(
-        private readonly UriFactoryInterface $uriFactory,
+        private UriFactoryInterface $uriFactory,
     ) {
     }
 

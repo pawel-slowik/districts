@@ -8,10 +8,10 @@ use Districts\Scraper\Domain\Exception\InvalidHtmlException;
 use Districts\Scraper\Domain\Exception\ParsingException;
 use Districts\Scraper\Domain\HtmlFinder;
 
-class CityParser
+readonly class CityParser
 {
     public function __construct(
-        private readonly HtmlFinder $htmlFinder,
+        private HtmlFinder $htmlFinder,
     ) {
     }
 
