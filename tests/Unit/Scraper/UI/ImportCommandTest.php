@@ -25,11 +25,11 @@ final class ImportCommandTest extends TestCase
 
     private ScraperCollection&Stub $scraperCollection;
 
+    private InputInterface&Stub $input;
+
+    private OutputInterface&Stub $output;
+
     private ImportCommand $command;
-
-    private InputInterface&MockObject $input;
-
-    private OutputInterface&MockObject $output;
 
     protected function setUp(): void
     {
@@ -50,8 +50,7 @@ final class ImportCommandTest extends TestCase
     {
         $this->input
             ->method("getArgument")
-            ->with($this->identicalTo("city_names"))
-            ->willReturn([]);
+            ->willReturnMap([["city_names", []]]);
 
         $this->scraperCollection
             ->method("filterByCityNames")
@@ -65,8 +64,7 @@ final class ImportCommandTest extends TestCase
     {
         $this->input
             ->method("getArgument")
-            ->with($this->identicalTo("city_names"))
-            ->willReturn([]);
+            ->willReturnMap([["city_names", []]]);
 
         $this->scraperCollection
             ->method("filterByCityNames")
