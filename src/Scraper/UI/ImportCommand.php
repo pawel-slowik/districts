@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Districts\Scraper\UI;
 
 use Districts\Scraper\Application\Importer;
+use Districts\Scraper\Application\ScraperCollection;
 use Districts\Scraper\Domain\CityDTO;
 use Districts\Scraper\Domain\CityScraper;
-use InvalidArgumentException as FilterInvalidArgumentException;
+use InvalidArgumentException;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
+use Symfony\Component\Console\Exception\InvalidArgumentException as SymfonyConsoleInvalidArgumentException;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,12 +18,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class ImportCommand extends Command
 {
-    /**
-     * @param CityScraper[] $scrapers
-     */
     public function __construct(
         private readonly Importer $importer,
-        private readonly array $scrapers,
+        private readonly ScraperCollection $scraperCollection,
     ) {
         parent::__construct();
         $this->setName("import");
@@ -39,14 +37,13 @@ final class ImportCommand extends Command
         /** @var string[] $cityNames */
         $cityNames = $input->getArgument("city_names");
         try {
-            $cityFilter = new ScraperCityFilter($cityNames);
-            foreach ($cityFilter->filter($this->scrapers) as $scraper) {
+            foreach ($this->scraperCollection->filterByCityNames($cityNames) as $scraper) {
                 $output->writeln("processing city: " . $scraper->getCityName());
                 $cityDTO = self::scrapeCity($scraper, $output);
                 $this->importer->import($cityDTO);
             }
-        } catch (FilterInvalidArgumentException $ex) {
-            throw new InvalidArgumentException($ex->getMessage(), $ex->getCode());
+        } catch (InvalidArgumentException $ex) {
+            throw new SymfonyConsoleInvalidArgumentException($ex->getMessage(), $ex->getCode());
         }
         return 0;
     }
