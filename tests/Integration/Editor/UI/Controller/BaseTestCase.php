@@ -71,7 +71,7 @@ abstract class BaseTestCase extends TestCase
         parse_str($inputUri->getQuery(), $queryParams);
         $requestUri = (new Uri())->withScheme('http')->withHost('localhost')->withPath($inputUri->getPath());
         $request = (new ServerRequest($method, $requestUri))->withQueryParams($queryParams);
-        if (!empty($data)) {
+        if ($data !== []) {
             $request = $request->withParsedBody($data);
         }
         return $request;
