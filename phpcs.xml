@@ -22,11 +22,12 @@
         <properties>
             <property name="forbiddenFunctions" type="array">
                 <!--
-                the isset / empty functions are problematic because of corner cases
+                the isset / empty / is_null functions are problematic because of corner cases
                 https://www.php.net/manual/en/types.comparisons.php
                 -->
                 <element key="isset" value="null"/>
                 <element key="empty" value="null"/>
+                <element key="is_null" value="null"/>
             </property>
         </properties>
     </rule>

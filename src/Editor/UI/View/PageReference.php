@@ -39,7 +39,7 @@ readonly class PageReference
 
     private static function validateUrl(?string $url): bool
     {
-        if (is_null($url)) {
+        if ($url === null) {
             return true;
         }
         try {
@@ -58,9 +58,9 @@ readonly class PageReference
     private static function validateRelativeUri(Uri $uri): bool
     {
         return $uri->isValidRelative()
-            && is_null($uri->getScheme())
-            && is_null($uri->getUserInfo())
-            && is_null($uri->getHost())
-            && is_null($uri->getPort());
+            && ($uri->getScheme() === null)
+            && ($uri->getUserInfo() === null)
+            && ($uri->getHost() === null)
+            && ($uri->getPort() === null);
     }
 }
