@@ -11,7 +11,6 @@ use Districts\Core\Domain\Exception\InvalidNameException;
 use Districts\Core\Domain\Exception\InvalidPopulationException;
 use Districts\Core\Domain\Name;
 use Districts\Core\Domain\Population;
-use Districts\Core\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\Application\Command\AddDistrictCommand;
 use Districts\Editor\Application\Command\UpdateDistrictCommand;
 use Districts\Editor\Domain\DistrictRepository;
@@ -28,15 +27,10 @@ readonly class DistrictValidator
     {
         $result = $this->validate($command);
 
-        try {
-            $city = $this->cityRepository->get($command->cityId);
-        } catch (NotFoundInRepositoryException) {
-            $result->addError("city");
-        }
+        $city = $this->cityRepository->get($command->cityId);
 
         if (
-            isset($city)
-            && $this->validateName($command->name)
+            $this->validateName($command->name)
             && $city->hasDistrictWithName(new Name($command->name))
         ) {
             $result->addError("name");
@@ -49,15 +43,10 @@ readonly class DistrictValidator
     {
         $result = $this->validate($command);
 
-        try {
-            $district = $this->districtRepository->get($command->id);
-        } catch (NotFoundInRepositoryException) {
-            // pass
-        }
+        $district = $this->districtRepository->get($command->id);
 
         if (
-            isset($district)
-            && $this->validateName($command->name)
+            $this->validateName($command->name)
             && !$district->getName()->equals(new Name($command->name))
             && $district->getCity()->hasDistrictWithName(new Name($command->name))
         ) {

@@ -17,6 +17,19 @@
     <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
     <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
     <rule ref="Generic.Strings.UnnecessaryStringConcat"/>
+    <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
+    <rule ref="Generic.PHP.ForbiddenFunctions">
+        <properties>
+            <property name="forbiddenFunctions" type="array">
+                <!--
+                the isset function is problematic because of corner cases
+                https://www.php.net/manual/en/types.comparisons.php
+                -->
+                <element key="isset" value="null"/>
+            </property>
+        </properties>
+    </rule>
+
     <rule ref="PSR12"/>
     <rule ref="PEAR.Commenting.FunctionComment">
         <exclude name="PEAR.Commenting.FunctionComment.MissingReturn"/>

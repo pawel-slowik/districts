@@ -34,7 +34,7 @@ final class AddActionControllerTest extends BaseTestCase
             "name" => "",
             "area" => "",
             "population" => "",
-            "city" => "",
+            "city" => "3",
         ];
         $response = $this->runApp("POST", "/add", $postData);
         $this->assertSame(StatusCode::STATUS_FOUND, $response->getStatusCode());

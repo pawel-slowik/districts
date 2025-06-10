@@ -8,7 +8,6 @@ use Districts\Core\Domain\City;
 use Districts\Core\Domain\CityRepository;
 use Districts\Core\Domain\District;
 use Districts\Core\Domain\Name;
-use Districts\Core\Infrastructure\NotFoundInRepositoryException;
 use Districts\Editor\Application\Command\AddDistrictCommand;
 use Districts\Editor\Application\Command\UpdateDistrictCommand;
 use Districts\Editor\Application\DistrictValidator;
@@ -71,18 +70,6 @@ final class DistrictValidatorTest extends TestCase
 
         $this->assertFalse($result->isOk());
         $this->assertEqualsCanonicalizing(["population"], $result->getErrors());
-    }
-
-    public function testAddNonexistentCityId(): void
-    {
-        $this->cityRepository
-            ->method("get")
-            ->will($this->throwException(new NotFoundInRepositoryException()));
-
-        $result = $this->districtValidator->validateAdd(new AddDistrictCommand(1, "Foo", 1, 1));
-
-        $this->assertFalse($result->isOk());
-        $this->assertEqualsCanonicalizing(["city"], $result->getErrors());
     }
 
     public function testAddMultipleErrors(): void
