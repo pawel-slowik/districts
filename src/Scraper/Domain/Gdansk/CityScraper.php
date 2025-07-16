@@ -29,9 +29,7 @@ final readonly class CityScraper implements CityScraperInterface
     public function scrape(?ProgressReporter $progressReporter = null): CityDTO
     {
         $districtUrls = iterator_to_array($this->scrapeDistrictUrls());
-        if ($progressReporter) {
-            $progressReporter->setTotal(count($districtUrls));
-        }
+        $progressReporter?->setTotal(count($districtUrls));
         $districts = $this->scrapeDistricts($districtUrls, $progressReporter);
         return new CityDTO($this->getCityName(), iterator_to_array($districts));
     }
@@ -46,9 +44,7 @@ final readonly class CityScraper implements CityScraperInterface
         foreach ($districtUrls as $url) {
             $districtHtml = $this->htmlFetcher->fetchHtml($url);
             yield $this->districtParser->parse($districtHtml);
-            if ($progressReporter) {
-                $progressReporter->advance();
-            }
+            $progressReporter?->advance();
         }
     }
 
