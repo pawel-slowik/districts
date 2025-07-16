@@ -20,10 +20,9 @@ final class EntityManagerFactory
             'sqlite' => 'pdo_sqlite',
             'mysql' => 'pdo_mysql',
         ];
-        $entityManager = new EntityManager(
+        return new EntityManager(
             DriverManager::getConnection((new DsnParser($driverMap))->parse((string) getenv('DB_URL'))),
             $metadataConfig,
         );
-        return $entityManager;
     }
 }
