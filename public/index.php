@@ -12,9 +12,9 @@ use Slim\Views\Twig;
 
 $container = DependencyContainerFactory::create(["common", "editor"]);
 
-/** @var Twig */
+/** @var Twig $twig */
 $twig = $container->get(Twig::class);
-/** @var App<null> */
+/** @var App<null> $app */
 $app = $container->get(App::class);
 
 Middleware::setUp($app, $twig);

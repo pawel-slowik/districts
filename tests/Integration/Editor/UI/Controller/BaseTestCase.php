@@ -28,7 +28,7 @@ abstract class BaseTestCase extends TestCase
         $container = $this->createContainer();
         $app = $this->createApp($container);
 
-        /** @var EntityManager */
+        /** @var EntityManager $entityManager */
         $entityManager = $container->get(EntityManager::class);
         FixtureTool::reset($entityManager);
         FixtureTool::loadFiles($entityManager, [
@@ -45,9 +45,9 @@ abstract class BaseTestCase extends TestCase
      */
     protected function createApp(ContainerInterface $container): App
     {
-        /** @var Twig */
+        /** @var Twig $twig */
         $twig = $container->get(Twig::class);
-        /** @var App<null> */
+        /** @var App<null> $app */
         $app = $container->get(App::class);
 
         Middleware::setUp($app, $twig);
