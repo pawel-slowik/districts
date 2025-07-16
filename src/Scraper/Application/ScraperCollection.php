@@ -20,6 +20,14 @@ readonly class ScraperCollection
     }
 
     /**
+     * @param CityScraper[] $scrapers
+     */
+    public static function fromArray(array $scrapers): self
+    {
+        return new self(...$scrapers);
+    }
+
+    /**
      * @param string[] $names
      *
      * @return CityScraper[]

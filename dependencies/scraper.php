@@ -12,14 +12,18 @@ use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 
-use function DI\create;
+use function DI\factory;
 use function DI\get;
 
 return [
-    ScraperCollection::class => create()->constructor(
-        get(GdanskScraper::class),
-        get(KrakowScraper::class),
-    ),
+    ScraperCollection::class => factory([ScraperCollection::class, 'fromArray'])
+        ->parameter(
+            'scrapers',
+            [
+                get(GdanskScraper::class),
+                get(KrakowScraper::class),
+            ]
+        ),
     HtmlFetcher::class => get(PsrHtmlFetcher::class),
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     ClientInterface::class => static fn ($container) => new Client(["verify" => false]),
