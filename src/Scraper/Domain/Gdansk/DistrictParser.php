@@ -69,7 +69,7 @@ readonly class DistrictParser
         $allMatches = [];
         foreach ($texts as $text) {
             $currentMatches = [];
-            if (preg_match($regexp, $text, $currentMatches)) {
+            if (preg_match($regexp, $text, $currentMatches) === 1) {
                 $allMatches[] = $currentMatches[1];
             }
         }

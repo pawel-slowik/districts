@@ -29,7 +29,7 @@ final readonly class EditFormController
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $district = $this->session->getAndDelete("form.edit.values");
-        if (!$district) {
+        if ($district === null) {
             try {
                 $district = $this->districtService->get($this->queryFactory->fromRoute($args, $request));
             } catch (NotFoundInRepositoryException) {

@@ -21,7 +21,10 @@ final class DistrictParserTest extends TestCase
     protected function setUp(): void
     {
         $this->districtParser = new DistrictParser(new HtmlFinder());
-        $validHtml = file_get_contents(__DIR__ . "/dzielnice_mapa_alert.php?id=16") or throw new LogicException();
+        $validHtml = file_get_contents(__DIR__ . "/dzielnice_mapa_alert.php?id=16");
+        if ($validHtml === false) {
+            throw new LogicException();
+        }
         $this->validHtml = $validHtml;
     }
 

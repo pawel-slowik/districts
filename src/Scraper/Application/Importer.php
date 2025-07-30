@@ -21,7 +21,7 @@ readonly class Importer
     public function import(CityDTO $cityDTO): void
     {
         $city = $this->cityRepository->findByName($cityDTO->name);
-        if ($city) {
+        if ($city !== null) {
             $city->removeAllDistricts();
             $this->cityRepository->update($city);
         } else {

@@ -29,7 +29,7 @@ final readonly class DistrictRepository implements DistrictRepositoryInterface
     {
         $ormRepository = $this->entityManager->getRepository(District::class);
         $district = $ormRepository->find($id);
-        if (!$district) {
+        if ($district === null) {
             throw new NotFoundInRepositoryException();
         }
         return $district;
@@ -63,7 +63,7 @@ final readonly class DistrictRepository implements DistrictRepositoryInterface
     ): Query {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select("d, c")->from(District::class, "d")->join("d.city", "c");
-        if ($filter) {
+        if ($filter !== null) {
             $dqlFilter = DistrictFilter::fromDomainFilter($filter);
             $queryBuilder->where($dqlFilter->where);
             foreach ($dqlFilter->parameters as $name => $value) {

@@ -64,7 +64,7 @@ readonly class DistrictParser
         }
         $value = $nodes[0]->textContent;
         $matches = [];
-        if (!preg_match($regexp, $value, $matches)) {
+        if (preg_match($regexp, $value, $matches) !== 1) {
             throw new ParsingException();
         }
         return $matches[1];

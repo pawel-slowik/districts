@@ -19,7 +19,7 @@ final readonly class CityRepository implements CityRepositoryInterface
     public function get(int $id): City
     {
         $city = $this->entityManager->getRepository(City::class)->find($id);
-        if (!$city) {
+        if ($city === null) {
             throw new NotFoundInRepositoryException();
         }
         return $city;

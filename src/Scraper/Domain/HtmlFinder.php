@@ -8,7 +8,7 @@ use Districts\Scraper\Domain\Exception\InvalidHtmlException;
 use Districts\Scraper\Domain\Exception\InvalidQueryException;
 use DOMDocument;
 use DOMNode;
-use DOMXpath;
+use DOMXPath;
 use ValueError;
 
 class HtmlFinder
@@ -26,7 +26,7 @@ class HtmlFinder
         } catch (ValueError) {
             throw new InvalidHtmlException();
         }
-        $nodes = (new DOMXpath($document))->query($xpath);
+        $nodes = (new DOMXPath($document))->query($xpath);
         if ($nodes === false) {
             throw new InvalidQueryException();
         }

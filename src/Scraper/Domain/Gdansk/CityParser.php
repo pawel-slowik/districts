@@ -38,7 +38,7 @@ readonly class CityParser
     private function fixPolygonId(string $id): string
     {
         $match = [];
-        if (!preg_match("/^([0-9]+)/", $id, $match)) {
+        if (preg_match("/^([0-9]+)/", $id, $match) !== 1) {
             throw new ParsingException();
         }
         return $match[1];
