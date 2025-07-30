@@ -49,7 +49,7 @@ final class CityParserTest extends TestCase
 
         $urls = $this->cityParser->extractDistrictUrls("");
 
-        $this->assertContainsOnly("string", $urls, true);
+        $this->assertContainsOnlyString($urls);
     }
 
     public function testThrowsExceptionOnMissingNodes(): void
