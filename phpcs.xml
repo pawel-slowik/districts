@@ -3,7 +3,6 @@
          xsi:noNamespaceSchemaLocation="./vendor/squizlabs/php_codesniffer/phpcs.xsd">
 
     <file>bin</file>
-    <file>dependencies</file>
     <file>src</file>
     <file>tests</file>
     <file>public</file>

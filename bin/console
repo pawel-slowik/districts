@@ -5,11 +5,14 @@ declare(strict_types=1);
 
 require __DIR__ . "/../vendor/autoload.php";
 
-use Districts\DependencyContainerFactory;
+use DI\ContainerBuilder;
 use Districts\Scraper\UI\ImportCommand;
 use Symfony\Component\Console\Application;
 
-$container = DependencyContainerFactory::create(["common", "scraper"]);
+$container = (new ContainerBuilder())
+    ->addDefinitions(__DIR__ . "/../src/Core/config.php")
+    ->addDefinitions(__DIR__ . "/../src/Scraper/config.php")
+    ->build();
 
 $application = new Application();
 /** @var ImportCommand $importCommand */

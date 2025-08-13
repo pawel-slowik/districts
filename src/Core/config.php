@@ -11,6 +11,6 @@ use function DI\get;
 
 return [
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-    EntityManager::class => static fn ($container) => EntityManagerFactory::create(__DIR__ . '/../src'),
+    EntityManager::class => static fn ($container) => EntityManagerFactory::create(__DIR__ . '/../../src'),
     CityRepositoryInterface::class => get(CityRepository::class),
 ];
