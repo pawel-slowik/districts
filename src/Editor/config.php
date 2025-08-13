@@ -31,7 +31,7 @@ return [
     // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
     Twig::class => static function ($container) {
         $twig = Twig::create(
-            __DIR__ . "/../../templates",
+            __DIR__ . "/templates",
             [
                 "cache" => "/tmp/twig_cache",
                 "auto_reload" => true,

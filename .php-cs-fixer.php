@@ -12,7 +12,6 @@ use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 
 $finder = Finder::create()
-    ->exclude(['templates'])
     ->in(__DIR__);
 
 return (new Config())
