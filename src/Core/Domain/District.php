@@ -7,7 +7,7 @@ namespace Districts\Core\Domain;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-#[ORM\Table(name: "districts", options: ["collate" => "utf8_polish_ci"])]
+#[ORM\Table(name: "districts")]
 #[ORM\UniqueConstraint(name: "districts_city_id_name", columns: ["city_id", "name"])]
 class District
 {

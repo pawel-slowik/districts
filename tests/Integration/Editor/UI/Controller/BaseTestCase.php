@@ -8,7 +8,9 @@ use DI\ContainerBuilder;
 use Districts\Editor\UI\Middleware;
 use Districts\Editor\UI\RoutingConfiguration;
 use Districts\Test\Integration\FixtureTool;
+use Districts\Test\Integration\RemoveCollationListener;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Events;
 use Nyholm\Psr7\ServerRequest;
 use Nyholm\Psr7\Uri;
 use PHPUnit\Framework\TestCase;
@@ -52,6 +54,14 @@ abstract class BaseTestCase extends TestCase
 
         Middleware::setUp($app, $twig);
         RoutingConfiguration::apply($app);
+
+        // tests are running on a SQLite database, which doesn't support the required collation
+        /** @var EntityManager $entityManager */
+        $entityManager = $container->get(EntityManager::class);
+        $entityManager->getEventManager()->addEventListener(
+            Events::loadClassMetadata,
+            new RemoveCollationListener()
+        );
 
         return $app;
     }

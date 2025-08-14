@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-#[ORM\Table(name: "cities", options: ["collate" => "utf8_polish_ci"])]
+#[ORM\Table(name: "cities")]
 #[ORM\UniqueConstraint(name: "cities_name", columns: ["name"])]
 class City
 {
@@ -20,7 +20,7 @@ class City
     #[ORM\GeneratedValue]
     private int $id;
 
-    #[ORM\Column(type: "string")]
+    #[ORM\Column(type: "string", options: ["collation" => "utf8_polish_ci"])]
     private string $name;
 
     /** @var Collection<int|string, District> */

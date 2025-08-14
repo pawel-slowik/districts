@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 readonly class Name
 {
-    #[ORM\Column(type: "string")]
+    #[ORM\Column(type: "string", options: ["collation" => "utf8_polish_ci"])]
     private string $name;
 
     public function __construct(string $name)

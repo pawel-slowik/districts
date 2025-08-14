@@ -6,6 +6,7 @@ namespace Districts\Test\Integration;
 
 use Districts\Core\Infrastructure\Doctrine\EntityManagerFactory;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Events;
 use PHPUnit\Framework\TestCase;
 
 abstract class DoctrineDbTestCase extends TestCase
@@ -15,6 +16,11 @@ abstract class DoctrineDbTestCase extends TestCase
     protected function setUp(): void
     {
         $this->entityManager = EntityManagerFactory::create(__DIR__ . '/../../src');
+        // tests are running on a SQLite database, which doesn't support the required collation
+        $this->entityManager->getEventManager()->addEventListener(
+            Events::loadClassMetadata,
+            new RemoveCollationListener()
+        );
         FixtureTool::reset($this->entityManager);
     }
 
