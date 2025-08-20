@@ -31,7 +31,7 @@ final readonly class DistrictService
     {
         $validationResult = $this->districtValidator->validateAdd($command);
         if (!$validationResult->isOk()) {
-            throw (new ValidationException())->withErrors($validationResult->getErrors());
+            throw new ValidationException()->withErrors($validationResult->getErrors());
         }
         $city = $this->cityRepository->get($command->cityId);
         $city->addDistrict(
@@ -46,7 +46,7 @@ final readonly class DistrictService
     {
         $validationResult = $this->districtValidator->validateUpdate($command);
         if (!$validationResult->isOk()) {
-            throw (new ValidationException())->withErrors($validationResult->getErrors());
+            throw new ValidationException()->withErrors($validationResult->getErrors());
         }
         $district = $this->districtRepository->get($command->id);
         $city = $district->getCity();

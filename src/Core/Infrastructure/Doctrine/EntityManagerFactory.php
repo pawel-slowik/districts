@@ -21,7 +21,7 @@ final class EntityManagerFactory
             'mysql' => 'pdo_mysql',
         ];
         return new EntityManager(
-            DriverManager::getConnection((new DsnParser($driverMap))->parse((string) getenv('DB_URL'))),
+            DriverManager::getConnection(new DsnParser($driverMap)->parse((string) getenv('DB_URL'))),
             $metadataConfig,
         );
     }

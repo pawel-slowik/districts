@@ -68,7 +68,7 @@ abstract class BaseTestCase extends TestCase
 
     protected function createContainer(): ContainerInterface
     {
-        return (new ContainerBuilder())
+        return new ContainerBuilder()
             ->addDefinitions(__DIR__ . "/../../../../../src/Core/config.php")
             ->addDefinitions(__DIR__ . "/../../../../../src/Editor/config.php")
             ->build();
@@ -82,8 +82,8 @@ abstract class BaseTestCase extends TestCase
         $inputUri = new Uri($uri);
         $queryParams = [];
         parse_str($inputUri->getQuery(), $queryParams);
-        $requestUri = (new Uri())->withScheme('http')->withHost('localhost')->withPath($inputUri->getPath());
-        $request = (new ServerRequest($method, $requestUri))->withQueryParams($queryParams);
+        $requestUri = new Uri()->withScheme('http')->withHost('localhost')->withPath($inputUri->getPath());
+        $request = new ServerRequest($method, $requestUri)->withQueryParams($queryParams);
         if ($data !== []) {
             $request = $request->withParsedBody($data);
         }

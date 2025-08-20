@@ -10,7 +10,7 @@ use Districts\Editor\UI\RoutingConfiguration;
 use Slim\App;
 use Slim\Views\Twig;
 
-$container = (new ContainerBuilder())
+$container = new ContainerBuilder()
     ->addDefinitions(__DIR__ . "/../src/Core/config.php")
     ->addDefinitions(__DIR__ . "/../src/Editor/config.php")
     ->build();

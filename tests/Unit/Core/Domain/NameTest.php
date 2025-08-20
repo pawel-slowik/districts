@@ -21,9 +21,9 @@ final class NameTest extends TestCase
 
     public function testEquality(): void
     {
-        $this->assertTrue((new Name("foo"))->equals(new Name("foo")));
-        $this->assertFalse((new Name("foo"))->equals(new Name("Foo")));
-        $this->assertFalse((new Name("foo"))->equals(new Name("foo ")));
+        $this->assertTrue(new Name("foo")->equals(new Name("foo")));
+        $this->assertFalse(new Name("foo")->equals(new Name("Foo")));
+        $this->assertFalse(new Name("foo")->equals(new Name("foo ")));
     }
 
     public function testStringValue(): void

@@ -21,8 +21,8 @@ final class AreaTest extends TestCase
 
     public function testEquality(): void
     {
-        $this->assertTrue((new Area(1.23))->equals(new Area(1.23)));
-        $this->assertFalse((new Area(1.23))->equals(new Area(1.2300001)));
+        $this->assertTrue(new Area(1.23)->equals(new Area(1.23)));
+        $this->assertFalse(new Area(1.23)->equals(new Area(1.2300001)));
     }
 
     public function testStringValue(): void
@@ -32,6 +32,6 @@ final class AreaTest extends TestCase
 
     public function testFloatValue(): void
     {
-        $this->assertSame(7.89, (new Area(7.89))->asFloat());
+        $this->assertSame(7.89, new Area(7.89)->asFloat());
     }
 }

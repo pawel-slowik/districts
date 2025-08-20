@@ -26,7 +26,7 @@ class HtmlFinder
         } catch (ValueError) {
             throw new InvalidHtmlException();
         }
-        $nodes = (new DOMXPath($document))->query($xpath);
+        $nodes = new DOMXPath($document)->query($xpath);
         if ($nodes === false) {
             throw new InvalidQueryException();
         }

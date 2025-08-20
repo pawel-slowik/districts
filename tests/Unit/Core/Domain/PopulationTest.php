@@ -21,8 +21,8 @@ final class PopulationTest extends TestCase
 
     public function testEquality(): void
     {
-        $this->assertTrue((new Population(123000))->equals(new Population(123000)));
-        $this->assertFalse((new Population(123000))->equals(new Population(123001)));
+        $this->assertTrue(new Population(123000)->equals(new Population(123000)));
+        $this->assertFalse(new Population(123000)->equals(new Population(123001)));
     }
 
     public function testStringValue(): void
