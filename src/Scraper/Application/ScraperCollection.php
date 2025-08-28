@@ -48,9 +48,11 @@ readonly class ScraperCollection
             }
         }
 
-        return array_values(array_filter(
-            $this->scrapers,
-            static fn ($scraper) => in_array($scraper->getCityName(), $names, true),
-        ));
+        return array_values(
+            array_filter(
+                $this->scrapers,
+                static fn ($scraper) => in_array($scraper->getCityName(), $names, true),
+            )
+        );
     }
 }

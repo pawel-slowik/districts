@@ -41,6 +41,7 @@
         <exclude name="PEAR.Commenting.FunctionComment.Missing"/>
         <exclude name="PEAR.Commenting.FunctionComment.ParamNameNoMatch"/>
     </rule>
+    <rule ref="PEAR.Functions.FunctionCallSignature"/>
 
     <rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition"/>
     <rule ref="SlevomatCodingStandard.ControlStructures.DisallowYodaComparison"/>

@@ -70,9 +70,12 @@ final class ListControllerTest extends BaseTestCase
         /** @var EntityManager $entityManager */
         $entityManager = $container->get(EntityManager::class);
         FixtureTool::reset($entityManager);
-        FixtureTool::loadFiles($entityManager, [
-            "tests/Integration/Editor/data/cities_and_districts_for_pagination_tests.sql",
-        ]);
+        FixtureTool::loadFiles(
+            $entityManager,
+            [
+                "tests/Integration/Editor/data/cities_and_districts_for_pagination_tests.sql",
+            ]
+        );
         $request = $this->createRequest($requestMethod, $requestUri, $requestData);
         return $app->handle($request);
     }

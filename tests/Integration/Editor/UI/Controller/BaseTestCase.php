@@ -33,10 +33,13 @@ abstract class BaseTestCase extends TestCase
         /** @var EntityManager $entityManager */
         $entityManager = $container->get(EntityManager::class);
         FixtureTool::reset($entityManager);
-        FixtureTool::loadFiles($entityManager, [
-            "tests/Integration/Editor/data/cities.sql",
-            "tests/Integration/Editor/data/districts.sql",
-        ]);
+        FixtureTool::loadFiles(
+            $entityManager,
+            [
+                "tests/Integration/Editor/data/cities.sql",
+                "tests/Integration/Editor/data/districts.sql",
+            ]
+        );
 
         $request = $this->createRequest($requestMethod, $requestUri, $requestData);
         return $app->handle($request);

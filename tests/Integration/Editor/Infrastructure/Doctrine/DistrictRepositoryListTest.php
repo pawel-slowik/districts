@@ -58,10 +58,14 @@ final class DistrictRepositoryListTest extends DoctrineDbTestCase
     public function testListOrderCity(DistrictOrdering $order, array $expectedCityNames): void
     {
         $result = $this->districtRepository->listWithPagination($order, $this->pagination);
-        $actualCityNames = array_values(array_unique(array_map(
-            static fn ($district) => $district->getCity()->getName(),
-            $result->currentPageEntries,
-        )));
+        $actualCityNames = array_values(
+            array_unique(
+                array_map(
+                    static fn ($district) => $district->getCity()->getName(),
+                    $result->currentPageEntries,
+                )
+            )
+        );
         $this->assertSame($expectedCityNames, $actualCityNames);
     }
 
