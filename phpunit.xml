@@ -8,6 +8,7 @@
     cacheResult="false"
     cacheDirectory=".phpunit.cache"
     requireCoverageMetadata="true"
+    failOnAllIssues="true"
 >
     <testsuites>
         <testsuite name="Test Suite">

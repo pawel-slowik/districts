@@ -55,7 +55,7 @@ final class CityParserTest extends TestCase
 
         $urls = $this->cityParser->extractDistrictUrls("");
 
-        $this->assertContainsOnlyString($urls);
+        $this->assertContainsOnlyString($urls); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     public function testThrowsExceptionOnMissingNodes(): void
