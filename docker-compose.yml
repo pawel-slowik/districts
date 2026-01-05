@@ -3,24 +3,30 @@ version: "3.4"
 services:
 
   php-nginx:
-    build: ./docker/php-nginx
-    image: districts-php-nginx
+    build:
+      context: ./docker/php-nginx
+      tags:
+        - districts-php-nginx
     depends_on:
       - php-fpm
     ports:
       - "${HTTP_PORT-8080}:80"
 
   assets-nginx:
-    build: ./docker/assets-nginx
-    image: districts-assets-nginx
+    build:
+      context: ./docker/assets-nginx
+      tags:
+        - districts-assets-nginx
     ports:
       - "${ASSETS_HTTP_PORT-8180}:80"
     volumes:
       - ./public/assets:/var/www/html
 
   php-fpm:
-    build: ./docker/php-fpm
-    image: districts-php
+    build:
+      context: ./docker/php-fpm
+      tags:
+        - districts-php
     depends_on:
       - sql
       - assets-nginx
@@ -37,8 +43,10 @@ services:
   php-tools:
     profiles:
       - dev-task # not really a service, don't start by default
-    build: ./docker/php-tools
-    image: districts-php-tools
+    build:
+      context: ./docker/php-tools
+      tags:
+        - districts-php-tools
     volumes:
       - .:/app
 
