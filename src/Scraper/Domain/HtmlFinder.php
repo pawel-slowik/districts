@@ -30,7 +30,13 @@ class HtmlFinder
         if ($nodes === false) {
             throw new InvalidQueryException();
         }
-        return iterator_to_array($nodes);
+        $domNodes = [];
+        foreach ($nodes as $node) {
+            if ($node instanceof DOMNode) {
+                $domNodes[] = $node;
+            }
+        }
+        return $domNodes;
     }
 
     public function getAttribute(DOMNode $node, string $attribute): string
