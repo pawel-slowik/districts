@@ -18,8 +18,8 @@ return (new Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR12' => true,
-        '@PHP70Migration:risky' => true,
-        '@PHP71Migration:risky' => true,
+        '@PHP7x0Migration:risky' => true,
+        '@PHP7x1Migration:risky' => true,
         'align_multiline_comment' => true,
         'array_indentation' => true,
         'array_syntax' => ['syntax' => 'short'],
@@ -132,7 +132,7 @@ return (new Config())
         'trailing_comma_in_multiline' => true, // @Symfony
         'trim_array_spaces' => true, // @Symfony
         'unary_operator_spaces' => true, // @Symfony
-        'void_return' => true, // @PHP71Migration:risky
+        'void_return' => true, // @PHP7x1Migration:risky
         'whitespace_after_comma_in_array' => true, // @Symfony
     ])
     ->setFinder($finder);
