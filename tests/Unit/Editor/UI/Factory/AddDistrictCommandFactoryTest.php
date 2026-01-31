@@ -6,20 +6,20 @@ namespace Districts\Test\Unit\Editor\UI\Factory;
 
 use Districts\Editor\UI\Factory\AddDistrictCommandFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 #[CoversClass(AddDistrictCommandFactory::class)]
 final class AddDistrictCommandFactoryTest extends TestCase
 {
-    private Request&MockObject $request;
+    private Request&Stub $request;
 
     private AddDistrictCommandFactory $commandFactory;
 
     protected function setUp(): void
     {
-        $this->request = $this->createMock(Request::class);
+        $this->request = $this->createStub(Request::class);
         $this->commandFactory = new AddDistrictCommandFactory();
     }
 

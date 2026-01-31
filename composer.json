@@ -33,7 +33,7 @@
     "require-dev": {
         "ext-pdo_sqlite": "*",
         "doctrine/event-manager": "^2.0",
-        "phpunit/phpunit": "^12.3"
+        "phpunit/phpunit": "^12.5"
     },
     "autoload-dev": {
         "psr-4": {"Districts\\Test\\": "./tests/"}

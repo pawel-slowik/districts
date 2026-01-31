@@ -90,7 +90,7 @@ final class DistrictValidatorTest extends TestCase
 
     public function testUpdateDuplicatedName(): void
     {
-        $district = $this->createMock(District::class);
+        $district = $this->createStub(District::class);
         $this->districtRepository
             ->method("get")
             ->willReturnMap([[1, $district]]);
@@ -110,7 +110,7 @@ final class DistrictValidatorTest extends TestCase
 
     public function testUpdateAllowsUnchangedName(): void
     {
-        $district = $this->createMock(District::class);
+        $district = $this->createStub(District::class);
         $district
             ->method("getName")
             ->willReturn(new Name("unchanged name"));

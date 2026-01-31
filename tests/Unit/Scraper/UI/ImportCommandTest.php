@@ -35,9 +35,9 @@ final class ImportCommandTest extends TestCase
     {
         $this->importer = $this->createMock(Importer::class);
         $this->scraperCollection = $this->createStub(ScraperCollection::class);
-        $this->input = $this->createMock(InputInterface::class);
-        $this->output = $this->createMock(OutputInterface::class);
-        // quiet to avoid the need to mock output helpers
+        $this->input = $this->createStub(InputInterface::class);
+        $this->output = $this->createStub(OutputInterface::class);
+        // quiet to avoid the need to stub output helpers
         $this->output->method("getVerbosity")->willReturn(OutputInterface::VERBOSITY_QUIET);
 
         $this->command = new ImportCommand(
@@ -55,6 +55,10 @@ final class ImportCommandTest extends TestCase
         $this->scraperCollection
             ->method("filterByCityNames")
             ->willThrowException(new InvalidArgumentException());
+
+        $this->importer
+            ->expects($this->never())
+            ->method("import");
 
         $this->expectException(SymfonyConsoleInvalidArgumentException::class);
         $this->command->run($this->input, $this->output);

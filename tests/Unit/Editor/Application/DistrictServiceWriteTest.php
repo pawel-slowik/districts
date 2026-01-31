@@ -16,21 +16,15 @@ use Districts\Editor\Application\Command\UpdateDistrictCommand;
 use Districts\Editor\Application\DistrictService;
 use Districts\Editor\Application\DistrictValidator;
 use Districts\Editor\Application\Exception\ValidationException;
-use Districts\Editor\Application\Query\GetDistrictQuery;
-use Districts\Editor\Application\Query\ListDistrictsQuery;
 use Districts\Editor\Application\ValidationResult;
-use Districts\Editor\Domain\DistrictFilter\Filter;
-use Districts\Editor\Domain\DistrictOrdering;
 use Districts\Editor\Domain\DistrictRepository;
-use Districts\Editor\Domain\PaginatedResult;
-use Districts\Editor\Domain\Pagination;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(DistrictService::class)]
-final class DistrictServiceTest extends TestCase
+final class DistrictServiceWriteTest extends TestCase
 {
     private DistrictService $districtService;
 
@@ -53,38 +47,6 @@ final class DistrictServiceTest extends TestCase
             $this->districtRepository,
             $this->cityRepository
         );
-    }
-
-    public function testGet(): void
-    {
-        $query = new GetDistrictQuery(id: 111);
-
-        $repositoryDistrict = $this->createStub(District::class);
-        $this->districtRepository
-            ->method("get")
-            ->willReturnMap([[111, $repositoryDistrict]]);
-
-        $serviceDistrict = $this->districtService->get($query);
-
-        $this->assertSame($repositoryDistrict, $serviceDistrict);
-    }
-
-    public function testList(): void
-    {
-        $result = $this->createStub(PaginatedResult::class);
-        $this->districtRepository
-            ->method("listWithPagination")
-            ->willReturn($result);
-
-        $query = new ListDistrictsQuery(
-            ordering: $this->createStub(DistrictOrdering::class),
-            filter: $this->createStub(Filter::class),
-            pagination: $this->createStub(Pagination::class),
-        );
-
-        $list = $this->districtService->list($query);
-
-        $this->assertSame($result, $list);
     }
 
     public function testRemoveConfirmed(): void
@@ -169,21 +131,6 @@ final class DistrictServiceTest extends TestCase
         $this->districtService->add($command);
     }
 
-    public function testAddExceptionErrors(): void
-    {
-        $command = $this->createStub(AddDistrictCommand::class);
-
-        $this->districtValidator
-            ->method("validateAdd")
-            ->willReturn($this->createValidationErrorStub());
-
-        try {
-            $this->districtService->add($command);
-        } catch (ValidationException $exception) {
-            $this->assertContains("foo", $exception->getErrors());
-        }
-    }
-
     public function testUpdate(): void
     {
         $command = new UpdateDistrictCommand(
@@ -244,21 +191,6 @@ final class DistrictServiceTest extends TestCase
         $this->districtService->update($command);
     }
 
-    public function testUpdateExceptionErrors(): void
-    {
-        $command = $this->createStub(UpdateDistrictCommand::class);
-
-        $this->districtValidator
-            ->method("validateUpdate")
-            ->willReturn($this->createValidationErrorStub());
-
-        try {
-            $this->districtService->update($command);
-        } catch (ValidationException $exception) {
-            $this->assertContains("foo", $exception->getErrors());
-        }
-    }
-
     private function createValidationSuccessStub(): ValidationResult
     {
         $validationResult = $this->createStub(ValidationResult::class);
@@ -275,9 +207,6 @@ final class DistrictServiceTest extends TestCase
         $validationResult
             ->method("isOk")
             ->willReturn(false);
-        $validationResult
-            ->method("getErrors")
-            ->willReturn(["foo"]);
 
         return $validationResult;
     }

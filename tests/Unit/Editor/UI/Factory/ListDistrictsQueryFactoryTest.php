@@ -11,7 +11,6 @@ use Districts\Editor\UI\Factory\PaginationFactory;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -19,28 +18,20 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 #[CoversClass(ListDistrictsQueryFactory::class)]
 final class ListDistrictsQueryFactoryTest extends TestCase
 {
-    private ListDistrictsQueryFactory $queryFactory;
+    private DistrictOrderingFactory&Stub $districtOrderingFactory;
 
-    private DistrictOrderingFactory&MockObject $districtOrderingFactory;
+    private DistrictFilterFactory&Stub $districtFilterFactory;
 
-    private DistrictFilterFactory&MockObject $districtFilterFactory;
-
-    private PaginationFactory&MockObject $paginationFactory;
+    private PaginationFactory&Stub $paginationFactory;
 
     private Request&Stub $request;
 
     protected function setUp(): void
     {
-        $this->districtOrderingFactory = $this->createMock(DistrictOrderingFactory::class);
-        $this->districtFilterFactory = $this->createMock(DistrictFilterFactory::class);
-        $this->paginationFactory = $this->createMock(PaginationFactory::class);
+        $this->districtOrderingFactory = $this->createStub(DistrictOrderingFactory::class);
+        $this->districtFilterFactory = $this->createStub(DistrictFilterFactory::class);
+        $this->paginationFactory = $this->createStub(PaginationFactory::class);
         $this->request = $this->createStub(Request::class);
-
-        $this->queryFactory = new ListDistrictsQueryFactory(
-            $this->districtOrderingFactory,
-            $this->districtFilterFactory,
-            $this->paginationFactory,
-        );
     }
 
     /**
@@ -52,9 +43,16 @@ final class ListDistrictsQueryFactoryTest extends TestCase
         ?string $expectedColumn,
         ?string $expectedDirection
     ): void {
+        $districtOrderingFactory = $this->createMock(DistrictOrderingFactory::class);
+        $queryFactory = new ListDistrictsQueryFactory(
+            $districtOrderingFactory,
+            $this->districtFilterFactory,
+            $this->paginationFactory,
+        );
+
         $this->request->method("getQueryParams")->willReturn($queryParams);
 
-        $this->districtOrderingFactory
+        $districtOrderingFactory
             ->expects($this->once())
             ->method("createFromRequestInput")
             ->with(
@@ -62,7 +60,7 @@ final class ListDistrictsQueryFactoryTest extends TestCase
                 $this->identicalTo($expectedDirection)
             );
 
-        $this->queryFactory->fromRequest($this->request);
+        $queryFactory->fromRequest($this->request);
     }
 
     /**
@@ -126,9 +124,16 @@ final class ListDistrictsQueryFactoryTest extends TestCase
         ?string $expectedColumn,
         ?string $expectedValue
     ): void {
+        $districtFilterFactory = $this->createMock(DistrictFilterFactory::class);
+        $queryFactory = new ListDistrictsQueryFactory(
+            $this->districtOrderingFactory,
+            $districtFilterFactory,
+            $this->paginationFactory,
+        );
+
         $this->request->method("getQueryParams")->willReturn($queryParams);
 
-        $this->districtFilterFactory
+        $districtFilterFactory
             ->expects($this->once())
             ->method("createFromRequestInput")
             ->with(
@@ -136,7 +141,7 @@ final class ListDistrictsQueryFactoryTest extends TestCase
                 $this->identicalTo($expectedValue)
             );
 
-        $this->queryFactory->fromRequest($this->request);
+        $queryFactory->fromRequest($this->request);
     }
 
     /**
@@ -197,16 +202,23 @@ final class ListDistrictsQueryFactoryTest extends TestCase
     #[DataProvider('paginationParametersDataProvider')]
     public function testPassingPaginationParameters(array $queryParams, ?string $expectedPage): void
     {
+        $paginationFactory = $this->createMock(PaginationFactory::class);
+        $queryFactory = new ListDistrictsQueryFactory(
+            $this->districtOrderingFactory,
+            $this->districtFilterFactory,
+            $paginationFactory,
+        );
+
         $this->request->method("getQueryParams")->willReturn($queryParams);
 
-        $this->paginationFactory
+        $paginationFactory
             ->expects($this->once())
             ->method("createFromRequestInput")
             ->with(
                 $this->identicalTo($expectedPage)
             );
 
-        $this->queryFactory->fromRequest($this->request);
+        $queryFactory->fromRequest($this->request);
     }
 
     /**
@@ -242,8 +254,14 @@ final class ListDistrictsQueryFactoryTest extends TestCase
 
     public function testDefaults(): void
     {
+        $queryFactory = new ListDistrictsQueryFactory(
+            $this->districtOrderingFactory,
+            $this->districtFilterFactory,
+            $this->paginationFactory,
+        );
+
         try {
-            $this->queryFactory->fromDefaults();
+            $queryFactory->fromDefaults();
             $exceptionThrown = false;
         } catch (InvalidArgumentException) {
             $exceptionThrown = true;

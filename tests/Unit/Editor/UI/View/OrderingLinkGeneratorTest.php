@@ -130,8 +130,8 @@ final class OrderingLinkGeneratorTest extends TestCase
      */
     private function createRequestStubForList(array $queryParams): ServerRequestInterface
     {
-        $request = $this->createMock(ServerRequestInterface::class);
-        $uri = $this->createMock(UriInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
+        $uri = $this->createStub(UriInterface::class);
         $uri->method("getPath")->willReturn("/list");
         $request->method("getUri")->willReturn($uri);
         $request->method("getQueryParams")->willReturn($queryParams);
