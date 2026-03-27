@@ -2,10 +2,10 @@
 <ruleset name="PHP_CodeSniffer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/squizlabs/php_codesniffer/phpcs.xsd">
 
-    <file>bin</file>
-    <file>src</file>
-    <file>tests</file>
-    <file>public</file>
+    <file>../../bin</file>
+    <file>../../src</file>
+    <file>../../tests</file>
+    <file>../../public</file>
 
     <!-- s = show sniff codes -->
     <arg value="s"/>

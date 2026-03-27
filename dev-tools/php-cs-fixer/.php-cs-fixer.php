@@ -12,7 +12,7 @@ use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 
 $finder = Finder::create()
-    ->in(__DIR__);
+    ->in(__DIR__ . '/../..');
 
 return (new Config())
     ->setRiskyAllowed(true)

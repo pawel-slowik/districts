@@ -51,4 +51,4 @@ Run tests with:
 
 Run static analysis and coding style checks with:
 
-    docker compose run --rm php-tools
+    docker compose run --rm dev-tools

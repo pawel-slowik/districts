@@ -1,11 +1,11 @@
 parameters:
     level: 9
     paths:
-        - src
-        - tests
-        - public
-        - bin/console
-        - bin/doctrine
+        - ../../src
+        - ../../tests
+        - ../../public
+        - ../../bin/console
+        - ../../bin/doctrine
     inferPrivatePropertyTypeFromConstructor: true
     strictRules:
         dynamicCallOnStaticMethod: false

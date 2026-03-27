@@ -48,26 +48,26 @@ trap result=1 ERR
 
 if [ $run_phpstan -eq 1 ]; then
 	/opt/phpstan/vendor/bin/phpstan -V
-	/opt/phpstan/vendor/bin/phpstan analyse
+	/opt/phpstan/vendor/bin/phpstan --configuration=./dev-tools/phpstan/phpstan.neon analyse
 fi
 
 if [ $run_fixer -eq 1 ]; then
-	/opt/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --dry-run --diff
+	/opt/php-cs-fixer/vendor/bin/php-cs-fixer --config=./dev-tools/php-cs-fixer/.php-cs-fixer.php fix -v --dry-run --diff
 fi
 
 if [ $run_sniffer -eq 1 ]; then
 	/opt/php_codesniffer/vendor/bin/phpcs --version
-	/opt/php_codesniffer/vendor/bin/phpcs -p
+	/opt/php_codesniffer/vendor/bin/phpcs --standard=./dev-tools/php_codesniffer/phpcs.xml -p
 fi
 
 if [ $run_deptrac -eq 1 ]; then
 	/opt/deptrac/vendor/bin/deptrac --version
-	/opt/deptrac/vendor/bin/deptrac analyse -c deptrac-contexts.yaml
+	/opt/deptrac/vendor/bin/deptrac analyse -c ./dev-tools/deptrac/deptrac-contexts.yaml
 fi
 
 if [ $run_rector -eq 1 ]; then
 	/opt/rector/vendor/bin/rector -V
-	/opt/rector/vendor/bin/rector process --dry-run
+	/opt/rector/vendor/bin/rector process --config=./dev-tools/rector/rector.php --dry-run
 fi
 
 exit $result
