@@ -47,7 +47,7 @@ readonly class DistrictParser
     private function getPopulation(string $html): int
     {
         $xpath = "//p[contains(., 'Liczba mieszka')]/strong";
-        $regexp = "/^[[:space:]]*([0-9]+)[[:space:]]*$/";
+        $regexp = "/^[[:space:]]*([0-9]+)[[:space:]]*$/u";
         $text = $this->getSingleMatch($html, $xpath, $regexp);
         return intval($text);
     }
