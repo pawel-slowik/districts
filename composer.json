@@ -42,6 +42,10 @@
         "test": [
             "vendor/bin/phpunit"
         ],
+        "test-cover-ci": [
+            "@putenv XDEBUG_MODE=coverage",
+            "vendor/bin/phpunit --coverage-clover=coverage.xml"
+        ],
         "assets": "php -r \"copy('vendor/kevquirk/simple.css/simple.min.css', 'public/assets/css/simple.min.css');\"",
         "post-install-cmd": "@assets",
         "post-update-cmd": "@assets"
