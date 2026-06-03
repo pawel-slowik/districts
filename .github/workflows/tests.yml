@@ -17,6 +17,3 @@ jobs:
       run: docker compose run -T --rm php-fpm composer install
     - name: Test
       run: docker compose run -T --rm php-fpm composer test-cover-ci
-    - name: Upload coverage data to Codecov
-      continue-on-error: true
-      run: bash <(curl -s https://codecov.io/bash)
