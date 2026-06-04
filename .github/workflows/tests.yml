@@ -25,9 +25,9 @@ jobs:
     - name: Build containers
       run: docker compose build
     - name: Install dependencies
-      run: docker compose run -T --rm php-fpm composer install
+      run: docker compose run --user $UID -T --rm php-fpm composer install
     - name: Test
-      run: docker compose run -T --rm php-fpm composer test-cover-ci
+      run: docker compose run --user $UID -T --rm php-fpm composer test-cover-ci
     - name: Install coverage badge dependencies
       run: sudo apt-get install -y xsltproc
     - name: Generate coverage badge
