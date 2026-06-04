@@ -1,6 +1,9 @@
 ![Build Status][build-badge]
+[![Coverage][coverage-badge]][coverage-url]
 
 [build-badge]: https://github.com/pawel-slowik/districts/workflows/tests/badge.svg
+[coverage-badge]: https://pawel-slowik.github.io/districts/badge.svg
+[coverage-url]: https://pawel-slowik.github.io/districts/
 
 Scrape city districts data and save it to a SQL database.
 
