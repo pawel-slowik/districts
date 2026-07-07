@@ -14,7 +14,8 @@ services:
 
   assets-nginx:
     build:
-      context: ./docker/assets-nginx
+      dockerfile: ./docker/assets-nginx/Dockerfile
+      target: dev
       tags:
         - districts-assets-nginx
     ports:
@@ -24,7 +25,8 @@ services:
 
   php-fpm:
     build:
-      context: ./docker/php-fpm
+      dockerfile: ./docker/php-fpm/Dockerfile
+      target: dev
       tags:
         - districts-php
     depends_on:
