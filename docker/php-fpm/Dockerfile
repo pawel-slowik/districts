@@ -11,12 +11,14 @@ FROM base AS tools
 
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/
 
+ENV COMPOSER_CACHE_DIR=/tmp/composer_cache
+
 
 FROM tools AS build
 
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader
+RUN --mount=type=cache,target=/tmp/composer_cache composer install --no-dev --optimize-autoloader
 
 
 FROM tools AS dev
