@@ -152,9 +152,7 @@ final class DistrictRepositoryListTest extends DoctrineDbTestCase
             static fn ($district) => $district->getId(),
             $result->currentPageEntries,
         );
-        sort($expectedIds);
-        sort($actualIds);
-        $this->assertSame($expectedIds, $actualIds);
+        $this->assertArraysHaveIdenticalValuesIgnoringOrder($expectedIds, $actualIds);
     }
 
     /**

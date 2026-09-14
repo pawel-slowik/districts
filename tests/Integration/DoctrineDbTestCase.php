@@ -44,9 +44,9 @@ abstract class DoctrineDbTestCase extends TestCase
     {
         $result = $this->entityManager->getConnection()->fetchAllAssociative("SELECT * FROM {$tableName}");
 
-        $this->assertSame(
-            $this->sortTableContentsForComparision($expectedContents),
-            $this->sortTableContentsForComparision($this->removeIdsFromTableContents($result))
+        $this->assertArraysHaveIdenticalValuesIgnoringOrder(
+            $expectedContents,
+            $this->removeIdsFromTableContents($result)
         );
     }
 
@@ -66,24 +66,5 @@ abstract class DoctrineDbTestCase extends TestCase
             },
             $tableContents
         );
-    }
-
-    /**
-     * @param array<array<string, mixed>> $tableContents
-     *
-     * @return array<array<string, mixed>>
-     */
-    private function sortTableContentsForComparision(array $tableContents): array
-    {
-        foreach (array_keys($tableContents) as $offset) {
-            ksort($tableContents[$offset]);
-        }
-
-        usort(
-            $tableContents,
-            static fn (array $a, array $b): int => strcmp(serialize($a), serialize($b))
-        );
-
-        return $tableContents;
     }
 }
