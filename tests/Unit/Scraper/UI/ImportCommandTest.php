@@ -58,7 +58,8 @@ final class ImportCommandTest extends TestCase
 
         $this->importer
             ->expects($this->never())
-            ->method("import");
+            ->method("import")
+            ->seal();
 
         $this->expectException(SymfonyConsoleInvalidArgumentException::class);
         $this->command->run($this->input, $this->output);
@@ -79,7 +80,8 @@ final class ImportCommandTest extends TestCase
             ->method("import")
             ->with(
                 $this->isInstanceOf(CityDTO::class),
-            );
+            )
+            ->seal();
 
         $this->command->run($this->input, $this->output);
     }

@@ -85,7 +85,8 @@ final class CityScraperTest extends TestCase
             ->with(2);
         $progressReporter
             ->expects($this->exactly(2))
-            ->method("advance");
+            ->method("advance")
+            ->seal();
 
         $this->scraper->scrape($progressReporter);
     }

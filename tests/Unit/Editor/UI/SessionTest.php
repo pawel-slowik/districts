@@ -20,7 +20,8 @@ final class SessionTest extends TestCase
         $helper
             ->expects($this->once())
             ->method("set")
-            ->with("keY", "vaLuE");
+            ->with("keY", "vaLuE")
+            ->seal();
 
         $session->set("keY", "vaLuE");
     }
@@ -33,7 +34,8 @@ final class SessionTest extends TestCase
         $helper
             ->expects($this->once())
             ->method("delete")
-            ->with("__key_to_DELETE");
+            ->with("__key_to_DELETE")
+            ->seal();
 
         $session->delete("__key_to_DELETE");
     }
@@ -50,7 +52,8 @@ final class SessionTest extends TestCase
         $helper
             ->expects($this->once())
             ->method("delete")
-            ->with("flash.message");
+            ->with("flash.message")
+            ->seal();
 
         $session->getAndDelete("flash.message");
     }

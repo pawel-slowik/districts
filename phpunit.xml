@@ -8,6 +8,7 @@
     recordTestRunHistory="false"
     cacheDirectory=".phpunit.cache"
     requireCoverageMetadata="true"
+    requireSealedMockObjects="true"
     failOnAllIssues="true"
 >
     <testsuites>

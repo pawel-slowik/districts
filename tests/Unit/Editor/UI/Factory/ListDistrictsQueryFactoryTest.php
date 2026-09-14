@@ -58,7 +58,8 @@ final class ListDistrictsQueryFactoryTest extends TestCase
             ->with(
                 $this->identicalTo($expectedColumn),
                 $this->identicalTo($expectedDirection)
-            );
+            )
+            ->seal();
 
         $queryFactory->fromRequest($this->request);
     }
@@ -139,7 +140,8 @@ final class ListDistrictsQueryFactoryTest extends TestCase
             ->with(
                 $this->identicalTo($expectedColumn),
                 $this->identicalTo($expectedValue)
-            );
+            )
+            ->seal();
 
         $queryFactory->fromRequest($this->request);
     }
@@ -216,7 +218,8 @@ final class ListDistrictsQueryFactoryTest extends TestCase
             ->method("createFromRequestInput")
             ->with(
                 $this->identicalTo($expectedPage)
-            );
+            )
+            ->seal();
 
         $queryFactory->fromRequest($this->request);
     }

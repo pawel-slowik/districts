@@ -68,12 +68,14 @@ final class DistrictServiceWriteTest extends TestCase
         $city
             ->expects($this->once())
             ->method("removeDistrict")
-            ->with($this->objectEquals(new Name("name to be removed")));
+            ->with($this->objectEquals(new Name("name to be removed")))
+            ->seal();
 
         $this->cityRepository
             ->expects($this->once())
             ->method("update")
-            ->with($this->identicalTo($city));
+            ->with($this->identicalTo($city))
+            ->seal();
 
         $this->districtService->remove($command);
     }
@@ -104,12 +106,14 @@ final class DistrictServiceWriteTest extends TestCase
                 $this->objectEquals(new Name("Lorem ipsum")),
                 $this->objectEquals(new Area(12.3)),
                 $this->objectEquals(new Population(456))
-            );
+            )
+            ->seal();
 
         $this->cityRepository
             ->expects($this->once())
             ->method("update")
-            ->with($this->identicalTo($city));
+            ->with($this->identicalTo($city))
+            ->seal();
 
         $this->districtService->add($command);
     }
@@ -124,7 +128,8 @@ final class DistrictServiceWriteTest extends TestCase
 
         $this->cityRepository
             ->expects($this->never())
-            ->method("update");
+            ->method("update")
+            ->seal();
 
         $this->expectException(ValidationException::class);
 
@@ -164,12 +169,14 @@ final class DistrictServiceWriteTest extends TestCase
                 $this->objectEquals(new Name("update test")),
                 $this->objectEquals(new Area(111.22)),
                 $this->objectEquals(new Population(333))
-            );
+            )
+            ->seal();
 
         $this->cityRepository
             ->expects($this->once())
             ->method("update")
-            ->with($this->identicalTo($city));
+            ->with($this->identicalTo($city))
+            ->seal();
 
         $this->districtService->update($command);
     }
@@ -184,7 +191,8 @@ final class DistrictServiceWriteTest extends TestCase
 
         $this->cityRepository
             ->expects($this->never())
-            ->method("update");
+            ->method("update")
+            ->seal();
 
         $this->expectException(ValidationException::class);
 
