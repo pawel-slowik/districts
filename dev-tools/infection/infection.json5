@@ -10,11 +10,6 @@
     "phpUnit": {
         "configDir": "../.."
     },
-    "staticAnalysisTool": "phpstan",
-    "phpStan": {
-        "customPath": "/opt/phpstan/vendor/bin/phpstan",
-        "configDir": "../../dev-tools/phpstan"
-    },
     "threads": "max",
     "minMsi": 75,
     "minCoveredMsi": 80,
