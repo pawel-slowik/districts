@@ -83,6 +83,7 @@ final class ImportCommandTest extends TestCase
             )
             ->seal();
 
-        $this->command->run($this->input, $this->output);
+        $exitCode = $this->command->run($this->input, $this->output);
+        $this->assertSame(0, $exitCode);
     }
 }
