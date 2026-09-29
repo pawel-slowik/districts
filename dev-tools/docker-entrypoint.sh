@@ -5,6 +5,7 @@ run_fixer=0
 run_sniffer=0
 run_deptrac=0
 run_rector=0
+run_infection=0
 run_all=0
 
 case "$1" in
@@ -23,6 +24,9 @@ case "$1" in
 	"rector")
 		run_rector=1
 		;;
+	"infection")
+		run_infection=1
+		;;
 	"")
 		run_all=1
 		;;
@@ -39,6 +43,7 @@ if [ $run_all -eq 1 ]; then
 	run_sniffer=1
 	run_deptrac=1
 	run_rector=1
+	run_infection=1
 fi
 
 result=0
@@ -68,6 +73,10 @@ fi
 if [ $run_rector -eq 1 ]; then
 	/opt/rector/vendor/bin/rector -V
 	/opt/rector/vendor/bin/rector process --config=./dev-tools/rector/rector.php --dry-run
+fi
+
+if [ $run_infection -eq 1 ]; then
+	/opt/infection/vendor/bin/infection --configuration=./dev-tools/infection/infection.json5 --with-uncovered -vv
 fi
 
 exit $result

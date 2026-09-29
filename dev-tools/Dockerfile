@@ -24,6 +24,14 @@ COPY rector/composer.json rector/composer.lock /opt/rector/
 WORKDIR /opt/rector
 RUN --mount=type=cache,target=/tmp/composer_cache composer install
 
+RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS linux-headers \
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+    && apk del -f .build-deps
+COPY infection/composer.json infection/composer.lock /opt/infection/
+WORKDIR /opt/infection
+RUN composer install
+
 WORKDIR /app
 
 COPY docker-entrypoint.sh /usr/local/bin/
