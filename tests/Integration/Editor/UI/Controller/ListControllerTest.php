@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Districts\Test\Integration\Editor\UI\Controller;
 
 use Districts\Editor\UI\Controller\ListController;
+use Districts\Editor\UI\RoutingConfiguration;
 use Districts\Test\Integration\FixtureTool;
 use Doctrine\ORM\EntityManager;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
@@ -14,6 +15,7 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use Psr\Http\Message\ResponseInterface;
 
 #[CoversClass(ListController::class)]
+#[CoversClass(RoutingConfiguration::class)]
 #[RunTestsInSeparateProcesses]
 final class ListControllerTest extends BaseTestCase
 {

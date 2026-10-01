@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace Districts\Test\Integration\Editor\UI\Controller;
 
 use Districts\Editor\UI\Controller\EditActionController;
+use Districts\Editor\UI\RoutingConfiguration;
 use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 #[CoversClass(EditActionController::class)]
+#[CoversClass(RoutingConfiguration::class)]
 #[RunTestsInSeparateProcesses]
 final class EditActionControllerTest extends BaseTestCase
 {
