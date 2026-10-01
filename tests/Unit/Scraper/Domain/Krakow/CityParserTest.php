@@ -52,6 +52,22 @@ final class CityParserTest extends TestCase
         $this->assertContainsOnlyString($urls); // @phpstan-ignore method.alreadyNarrowedType
     }
 
+    public function testReturnsDistrictUrl(): void
+    {
+        $node = $this->createStub(DOMNode::class);
+
+        $this->htmlFinder
+            ->method("findNodes")
+            ->willReturn([$node]);
+        $this->htmlFinder
+            ->method("getAttribute")
+            ->willReturnMap([[$node, "href", "https://foo.test/123"]]);
+
+        $urls = iterator_to_array($this->cityParser->extractDistrictUrls(""));
+
+        $this->assertSame("https://foo.test/123", $urls[0]);
+    }
+
     public function testThrowsExceptionOnMissingNodes(): void
     {
         $this->htmlFinder

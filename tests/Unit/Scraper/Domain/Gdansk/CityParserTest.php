@@ -58,6 +58,22 @@ final class CityParserTest extends TestCase
         $this->assertContainsOnlyString($urls); // @phpstan-ignore method.alreadyNarrowedType
     }
 
+    public function testReturnsDistrictUrl(): void
+    {
+        $node = $this->createStub(DOMNode::class);
+
+        $this->htmlFinder
+            ->method("findNodes")
+            ->willReturn([$node]);
+        $this->htmlFinder
+            ->method("getAttribute")
+            ->willReturnMap([[$node, "id", "12345-xyz"]]);
+
+        $urls = iterator_to_array($this->cityParser->extractDistrictUrls(""));
+
+        $this->assertSame("subpages/dzielnice/html/4-dzielnice_mapa_alert.php?id=12345", $urls[0]);
+    }
+
     public function testThrowsExceptionOnMissingNodes(): void
     {
         $this->htmlFinder
