@@ -68,6 +68,7 @@ final class PageReferenceFactoryTest extends TestCase
             }
         }
         $first = $materializedPageReferences[0];
+        // @phpstan-ignore offsetAccess.invalidOffset
         $last = $materializedPageReferences[array_key_last($materializedPageReferences)];
 
         $this->assertCount(1, $current);

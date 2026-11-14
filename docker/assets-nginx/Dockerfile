@@ -3,7 +3,7 @@ FROM nginx:1-alpine AS base
 COPY docker/assets-nginx/default.conf /etc/nginx/conf.d/default.conf
 
 
-FROM php:8.4-fpm-alpine AS tools
+FROM php:8.5-fpm-alpine AS tools
 
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/
 
