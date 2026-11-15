@@ -10,7 +10,7 @@ use Districts\Scraper\Domain\DistrictDTO;
 use Districts\Scraper\Domain\HtmlFetcher;
 use Districts\Scraper\Domain\ProgressReporter;
 use Iterator;
-use Laminas\Uri\Uri;
+use Uri\WhatWg\Url;
 
 final readonly class CityScraper implements CityScraperInterface
 {
@@ -53,10 +53,10 @@ final readonly class CityScraper implements CityScraperInterface
      */
     private function scrapeDistrictUrls(): iterable
     {
-        $startUrl = "https://www.bip.krakow.pl/?bip_id=1&mmi=453";
-        $startHtml = $this->htmlFetcher->fetchHtml($startUrl);
+        $startUrl = new Url("https://www.bip.krakow.pl/?bip_id=1&mmi=453");
+        $startHtml = $this->htmlFetcher->fetchHtml($startUrl->toAsciiString());
         foreach ($this->cityParser->extractDistrictUrls($startHtml) as $href) {
-            yield Uri::merge($startUrl, $href)->toString();
+            yield $startUrl->resolve($href)->toAsciiString();
         }
     }
 }

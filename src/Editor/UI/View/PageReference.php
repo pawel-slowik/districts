@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Districts\Editor\UI\View;
 
 use InvalidArgumentException;
-use Laminas\Uri\Exception\InvalidArgumentException as UriException;
-use Laminas\Uri\Uri;
+use Uri\WhatWg\InvalidUrlException;
+use Uri\WhatWg\Url;
 
 readonly class PageReference
 {
@@ -42,25 +42,15 @@ readonly class PageReference
         if ($url === null) {
             return true;
         }
-        try {
-            $uri = new Uri($url);
-        } catch (UriException) {
+        if ($url === "") {
             return false;
         }
-        return self::validateAbsoluteUri($uri) || self::validateRelativeUri($uri);
-    }
-
-    private static function validateAbsoluteUri(Uri $uri): bool
-    {
-        return $uri->isValid() && in_array($uri->getScheme(), ["http", "https"], true);
-    }
-
-    private static function validateRelativeUri(Uri $uri): bool
-    {
-        return $uri->isValidRelative()
-            && ($uri->getScheme() === null)
-            && ($uri->getUserInfo() === null)
-            && ($uri->getHost() === null)
-            && ($uri->getPort() === null);
+        $baseUrl = new Url("http://base.url"); // allow relative URLs
+        try {
+            $parsedUrl = new Url($url, $baseUrl);
+        } catch (InvalidUrlException) {
+            return false;
+        }
+        return in_array($parsedUrl->getScheme(), ["http", "https"], true);
     }
 }
